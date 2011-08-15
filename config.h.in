@@ -1,0 +1,4 @@
+#define VERSION_STRING_FULL "@VERSION_STRING_FULL@"
+#define DATADIR "@datadir@"
+#define LOCALEDIR "@localedir@"
+#define EXEC_PREFIX "@exec_prefix@"

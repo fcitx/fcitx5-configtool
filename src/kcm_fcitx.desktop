@@ -1,0 +1,16 @@
+[Desktop Entry]
+Exec=kcmshell4 kcm_fcitx
+Icon=fcitx
+Type=Service
+X-KDE-ServiceTypes=KCModule
+X-KDE-Library=kcm_fcitx
+X-KDE-ParentApp=kcontrol
+
+X-KDE-System-Settings-Parent-Category=application-appearance-and-behavior
+
+Name=Fcitx
+Name[zh_CN]=Fcitx
+Comment=Configure Fcitx
+Comment[zh_CN]=配置 Fcitx
+
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
