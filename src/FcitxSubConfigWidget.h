@@ -16,6 +16,7 @@ namespace Fcitx
         Q_OBJECT
     public:
         FcitxSubConfigWidget ( FcitxSubConfig* subconfig, QWidget* parent = 0 );
+        virtual ~FcitxSubConfigWidget();
 
     private slots:
         void OpenSubConfig();

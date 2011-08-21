@@ -19,6 +19,8 @@ namespace Fcitx
     {
         Q_OBJECT
     public:
+        FcitxConfigFileItemModel(QObject* parent = 0);
+        virtual ~FcitxConfigFileItemModel();
         virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
         virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
         virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;

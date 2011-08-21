@@ -40,7 +40,7 @@ namespace Fcitx
             QWidget ( parent ), m_cfdesc ( cfdesc ), m_prefix ( prefix ), m_name ( name ), m_ui ( new Ui::FcitxConfigPage ), m_parser( NULL )
     {
         m_parser = new FcitxSubConfigParser(subconfig, this);
-
+        gconfig.configFile = NULL;
         m_ui->setupUi ( this );
         setupConfigUi();
         setupSubConfigUi();
@@ -48,7 +48,8 @@ namespace Fcitx
 
     FcitxConfigPage::~FcitxConfigPage()
     {
-
+        FreeConfigFile(gconfig.configFile);
+        delete m_ui;
     }
 
     void FcitxConfigPage::buttonClicked ( KDialog::ButtonCode code )

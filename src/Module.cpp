@@ -44,7 +44,7 @@ K_PLUGIN_FACTORY_DECLARATION ( KcmFcitxFactory );
 namespace Fcitx
 {
 
-const UT_icd addonicd= {sizeof ( FcitxAddon ), 0, 0, 0};
+const UT_icd addonicd= {sizeof ( FcitxAddon ), 0, 0, FreeAddon};
 
 Module::Module ( QWidget *parent, const QVariantList &args ) :
         KCModule ( KcmFcitxFactory::componentData(), parent, args ),
@@ -101,6 +101,9 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
 
 Module::~Module()
 {
+    delete ui;
+    delete addonSelector;
+    utarray_free(m_addons);
 }
 
 void Module::load()

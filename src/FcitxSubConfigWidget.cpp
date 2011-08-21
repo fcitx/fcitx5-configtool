@@ -30,6 +30,19 @@ namespace Fcitx {
         return m_path;
     }
 
+    FcitxConfigFileItemModel::FcitxConfigFileItemModel(QObject* parent):
+        QAbstractListModel(parent)
+    {
+    }
+
+    FcitxConfigFileItemModel::~FcitxConfigFileItemModel()
+    {
+        Q_FOREACH(FcitxConfigFile* file, m_files)
+        {
+            delete file;
+        }
+    }
+
     QModelIndex FcitxConfigFileItemModel::index(int row, int column, const QModelIndex& parent) const
     {
         Q_UNUSED ( parent );
@@ -77,7 +90,7 @@ namespace Fcitx {
                     this->setLayout(hbox);
                     m_listView = new QListView;
                     m_listView->setSelectionMode(QAbstractItemView::SingleSelection);
-                    m_model = new FcitxConfigFileItemModel;
+                    m_model = new FcitxConfigFileItemModel(this);
                     Q_FOREACH(const QString& file, subconfig->filelist().uniqueKeys())
                     {
                         m_model->addConfigFile(new FcitxConfigFile(file));
@@ -104,6 +117,11 @@ namespace Fcitx {
             default:
                 break;
         }
+    }
+
+    FcitxSubConfigWidget::~FcitxSubConfigWidget()
+    {
+        delete m_subConfig;
     }
 
     void FcitxSubConfigWidget::OpenSubConfig()
