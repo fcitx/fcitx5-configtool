@@ -17,6 +17,7 @@
 #include "Module.h"
 #include "ConfigDescManager.h"
 #include "FcitxSubConfigParser.h"
+#include <fcitx-config/xdg.h>
 
 #define MARGIN 5
 
@@ -117,7 +118,17 @@ bool FcitxAddonSelector::Private::AddonModel::setData ( const QModelIndex& index
 
     if ( role == Qt::CheckStateRole )
     {
-        static_cast<FcitxAddon*> ( index.internalPointer() )->bEnabled = value.toBool();
+        FcitxAddon* addon = static_cast<FcitxAddon*> ( index.internalPointer() );
+        addon->bEnabled = value.toBool();
+        char buf[PATH_MAX];
+        sprintf(buf, "%s.conf", addon->name);
+        FILE* fp = GetXDGFileUserWithPrefix("addon", buf, "w", NULL);
+        if (fp)
+        {
+            fprintf(fp, "[Addon]\nEnabled=%s\n", addon->bEnabled ? "True": "False");
+            fclose(fp);
+        }
+
         ret = true;
     }
 
@@ -292,12 +303,13 @@ void FcitxAddonSelector::Private::AddonDelegate::updateItemWidgets ( const QList
     }
 }
 
-void FcitxAddonSelector::Private::AddonDelegate::slotStateChanged ( bool changed )
+void FcitxAddonSelector::Private::AddonDelegate::slotStateChanged ( bool state )
 {
-    Q_UNUSED ( changed )
-
     if ( !focusedIndex().isValid() )
         return;
+    const QModelIndex index = focusedIndex();
+
+    const_cast<QAbstractItemModel*>(index.model())->setData(index, state, Qt::CheckStateRole);
 }
 
 void FcitxAddonSelector::Private::AddonDelegate::emitChanged()
