@@ -133,7 +133,6 @@ namespace Fcitx {
         FcitxConfigFile* configfile = static_cast<FcitxConfigFile*>(ind.internalPointer());
         KDialog configDialog;
         ConfigDescManager manager;
-        qDebug() << m_subConfig->configdesc();
         ConfigFileDesc* cfdesc = manager.GetConfigDesc(m_subConfig->configdesc());
 
         if ( cfdesc )
@@ -167,7 +166,6 @@ namespace Fcitx {
             {
                 filelist.insert(m_subConfig->nativepath(), FcitxSubConfigPath("", QString(newpath)));
                 fclose(fp);
-                qDebug() << newpath;
                 KRun::runUrl(KUrl(filelist.begin()->path()), "text/plain", NULL);
             }
             free(newpath);

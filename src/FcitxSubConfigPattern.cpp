@@ -5,7 +5,6 @@ namespace Fcitx
 {
     FcitxSubConfigPattern* FcitxSubConfigPattern::parsePattern ( Fcitx::SubConfigType type, const QString& p, QObject* parent )
     {
-        qDebug() << p;
         QString pattern = p;
         if (type == SC_ConfigFile)
             pattern = p.section(':', 0, 0);
