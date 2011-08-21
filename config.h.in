@@ -2,3 +2,4 @@
 #define DATADIR "@datadir@"
 #define LOCALEDIR "@localedir@"
 #define EXEC_PREFIX "@exec_prefix@"
+#define PACKAGE "@package@"

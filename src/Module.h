@@ -24,85 +24,97 @@
 #include <KCModule>
 #include <fcitx-utils/utarray.h>
 
-class ConfigDescManager;
-class FcitxConfigPage;
-class FcitxAddonSelector;
+namespace Ui
+{
 
-namespace Ui {
     class Module;
 }
 
-class QFile;
-class QRadioButton;
-
-class Module : public KCModule
+namespace Fcitx
 {
-    Q_OBJECT
-public:
-    /**
-     * Constructor.
-     *
-     * @param parent Parent widget of the module
-     * @param args Arguments for the module
-     */
-    Module(QWidget *parent, const QVariantList &args = QVariantList());
 
-    /**
-     * Destructor.
-     */
-    ~Module();
+    class ConfigDescManager;
 
-    /**
-     * Overloading the KCModule load() function.
-     */
-    void load();
+    class FcitxConfigPage;
 
-    /**
-     * Overloading the KCModule save() function.
-     *
-     * Saving a script file exporting QT_GRAPHICSSYSTEM to KDE's env directory
-     * which gets included by startkde at startup.
-     *
-     * The file will only be created if:
-     *   * A radio button is checked
-     *   * The checked button is NOT the same as the one probed @see probedButton
-     *
-     * If there is no button selected the script file will be removed.
-     */
-    void save();
+    class FcitxAddonSelector;
 
-    /**
-     * Overloading the KCModule defaults() function.
-     *
-     * Setting all radio buttons to unchecked, which indicates for save() to
-     * restore to system default (i.e. remove the script file).
-     */
-    void defaults();
-    
-    ConfigDescManager* configDescManager();
 
-private:
-    /**
-     * UI
-     */
-    Ui::Module *ui;
+    class QFile;
 
-    /**
-     * The scriptFile to manipulate.
-     */
-    QFile *scriptFile;
-    
-    /**
-     * Addon Selector
-     */
-    FcitxAddonSelector* addonSelector;
-    
-    /**
-     * addon array
-     */
-    UT_array* m_addons;
-    FcitxConfigPage* m_configPage;
-    ConfigDescManager* m_configDescManager;
-};
+    class QRadioButton;
+
+    class Module : public KCModule
+    {
+        Q_OBJECT
+
+    public:
+        /**
+        * Constructor.
+        *
+        * @param parent Parent widget of the module
+        * @param args Arguments for the module
+        */
+        Module ( QWidget *parent, const QVariantList &args = QVariantList() );
+
+        /**
+        * Destructor.
+        */
+        ~Module();
+
+        /**
+        * Overloading the KCModule load() function.
+        */
+        void load();
+
+        /**
+        * Overloading the KCModule save() function.
+        *
+        * Saving a script file exporting QT_GRAPHICSSYSTEM to KDE's env directory
+        * which gets included by startkde at startup.
+        *
+        * The file will only be created if:
+        *   * A radio button is checked
+        *   * The checked button is NOT the same as the one probed @see probedButton
+        *
+        * If there is no button selected the script file will be removed.
+        */
+        void save();
+
+        /**
+        * Overloading the KCModule defaults() function.
+        *
+        * Setting all radio buttons to unchecked, which indicates for save() to
+        * restore to system default (i.e. remove the script file).
+        */
+        void defaults();
+
+        ConfigDescManager* configDescManager();
+
+    private:
+        /**
+        * UI
+        */
+        Ui::Module *ui;
+
+        /**
+        * The scriptFile to manipulate.
+        */
+        QFile *scriptFile;
+
+        /**
+        * Addon Selector
+        */
+        FcitxAddonSelector* addonSelector;
+
+        /**
+        * addon array
+        */
+        UT_array* m_addons;
+        FcitxConfigPage* m_configPage;
+        ConfigDescManager* m_configDescManager;
+    };
+
+}
 
 #endif // MODULE_H

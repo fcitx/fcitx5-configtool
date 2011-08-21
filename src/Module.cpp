@@ -37,58 +37,64 @@
 #include <libintl.h>
 #include "FcitxConfigPage.h"
 #include "ConfigDescManager.h"
+#include "FcitxSubConfigParser.h"
 
-K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
+K_PLUGIN_FACTORY_DECLARATION ( KcmFcitxFactory );
 
-const UT_icd addonicd= {sizeof(FcitxAddon), 0, 0, 0};
-
-Module::Module(QWidget *parent, const QVariantList &args) :
-    KCModule(KcmFcitxFactory::componentData(), parent, args),
-    ui(new Ui::Module),
-    addonSelector(0),
-    m_configPage(0),
-    m_configDescManager(new ConfigDescManager(this))
+namespace Fcitx
 {
-    bindtextdomain("fcitx", LOCALEDIR);
-    bind_textdomain_codeset("fcitx", "UTF-8");
 
-    KAboutData *about = new KAboutData("kcm_fcitx", 0,
-                                       ki18n("Fcitx Configuration Module"),
-                                       VERSION_STRING_FULL,
-                                       ki18n("Configure Fcitx"),
-                                       KAboutData::License_GPL_V2,
-                                       ki18n("Copyright 2011 Xuetian Weng"),
-                                       KLocalizedString(), QByteArray(),
-                                       "wengxt@gmail.com");
+const UT_icd addonicd= {sizeof ( FcitxAddon ), 0, 0, 0};
 
-    about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
-    setAboutData(about);
-    
-    ui->setupUi(this);
+Module::Module ( QWidget *parent, const QVariantList &args ) :
+        KCModule ( KcmFcitxFactory::componentData(), parent, args ),
+        ui ( new Ui::Module ),
+        addonSelector ( 0 ),
+        m_configPage ( 0 ),
+        m_configDescManager ( new ConfigDescManager ( this ) )
+{
+    bindtextdomain ( "fcitx", LOCALEDIR );
+    bind_textdomain_codeset ( "fcitx", "UTF-8" );
+
+    KAboutData *about = new KAboutData ( "kcm_fcitx", 0,
+                                         ki18n ( "Fcitx Configuration Module" ),
+                                         VERSION_STRING_FULL,
+                                         ki18n ( "Configure Fcitx" ),
+                                         KAboutData::License_GPL_V2,
+                                         ki18n ( "Copyright 2011 Xuetian Weng" ),
+                                         KLocalizedString(), QByteArray(),
+                                         "wengxt@gmail.com" );
+
+    about->addAuthor ( ki18n ( "Xuetian Weng" ), ki18n ( "Xuetian Weng" ), "wengxt@gmail.com" );
+    setAboutData ( about );
+
+    ui->setupUi ( this );
     KPageWidgetItem *page;
     {
-        
-        ConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc("config.desc");
-        if (configDesc)
+
+        ConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc ( "config.desc" );
+
+        if ( configDesc )
         {
-            m_configPage = new FcitxConfigPage(this, configDesc, "", "config");
-            page = new KPageWidgetItem(m_configPage);
-            page->setName(i18n("Global Config"));
-            page->setIcon(KIcon("fcitx"));
-            page->setHeader(i18n("Global Config for Fcitx"));
-            ui->pageWidget->addPage(page);
-            connect(m_configPage, SIGNAL(changed()), this, SLOT(changed()));
+            m_configPage = new FcitxConfigPage ( this, configDesc, "", "config", "" );
+            page = new KPageWidgetItem ( m_configPage );
+            page->setName ( i18n ( "Global Config" ) );
+            page->setIcon ( KIcon ( "fcitx" ) );
+            page->setHeader ( i18n ( "Global Config for Fcitx" ) );
+            ui->pageWidget->addPage ( page );
+            connect ( m_configPage, SIGNAL ( changed() ), this, SLOT ( changed() ) );
         }
     }
+
     {
-        if (GetAddonConfigDesc() != NULL)
+        if ( GetAddonConfigDesc() != NULL )
         {
-            addonSelector = new FcitxAddonSelector(this);
-            page = new KPageWidgetItem(addonSelector);
-            page->setName(i18n("Addon Config"));
-            page->setIcon(KIcon("preferences-plugin"));
-            page->setHeader(i18n("Configure Fcitx addon"));
-            ui->pageWidget->addPage(page);
+            addonSelector = new FcitxAddonSelector ( this );
+            page = new KPageWidgetItem ( addonSelector );
+            page->setName ( i18n ( "Addon Config" ) );
+            page->setIcon ( KIcon ( "preferences-plugin" ) );
+            page->setHeader ( i18n ( "Configure Fcitx addon" ) );
+            ui->pageWidget->addPage ( page );
         }
     }
 }
@@ -100,32 +106,34 @@ Module::~Module()
 void Module::load()
 {
     kDebug() << "Load Addon Info";
-    if (GetAddonConfigDesc() != NULL)
+
+    if ( GetAddonConfigDesc() != NULL )
     {
-        utarray_new(m_addons, &addonicd);
-        LoadAddonInfo(m_addons);
-        
-        for (FcitxAddon* addon = (FcitxAddon *) utarray_front(m_addons);
-            addon != NULL;
-            addon = (FcitxAddon *) utarray_next(m_addons, addon))
+        utarray_new ( m_addons, &addonicd );
+        LoadAddonInfo ( m_addons );
+
+        for ( FcitxAddon* addon = ( FcitxAddon * ) utarray_front ( m_addons );
+                addon != NULL;
+                addon = ( FcitxAddon * ) utarray_next ( m_addons, addon ) )
         {
-            this->addonSelector->addAddon(addon);
+            this->addonSelector->addAddon ( addon );
         }
     }
 }
 
 void Module::save()
 {
-    m_configPage->buttonClicked(KDialog::Ok);
+    m_configPage->buttonClicked ( KDialog::Ok );
 }
 
 void Module::defaults()
 {
-    m_configPage->buttonClicked(KDialog::Default);
+    m_configPage->buttonClicked ( KDialog::Default );
     changed();
 }
 
 ConfigDescManager* Module::configDescManager()
 {
     return m_configDescManager;
+}
 }

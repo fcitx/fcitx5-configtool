@@ -1,8 +1,3 @@
-find_package(Qt4 4.7.0 REQUIRED)
-
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
 
@@ -12,6 +7,11 @@ set(kcm_SRCS
     FcitxAddonSelector.cpp
     FcitxConfigPage.cpp
     ConfigDescManager.cpp
+    FcitxSubConfigParser.cpp
+    FcitxSubConfigPattern.cpp
+    FcitxSubConfigPath.cpp
+    FcitxSubConfig.cpp
+    FcitxSubConfigWidget.cpp
 )
 
 kde4_add_ui_files(kcm_SRCS Module.ui FcitxConfigPage.ui)
