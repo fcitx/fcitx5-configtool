@@ -23,7 +23,8 @@
 #ifndef KEYSERVER_X11_H
 #define KEYSERVER_X11_H
 
-#include "fcitx-config/hotkey.h"
+#include <qnamespace.h>
+#include <fcitx-config/hotkey.h>
 
 struct TransKey {
         int keySymQt;
@@ -101,7 +102,8 @@ static const TransKey g_rgQtToSymX[] =
         { Qt::Key_Hyper_L,    Key_Hyper_L },
         { Qt::Key_Hyper_R,    Key_Hyper_R },
         { Qt::Key_Help,       Key_Help },
-
+        { Qt::Key_PageUp,     Key_Page_Up },
+        { Qt::Key_PageDown,   Key_Page_Down },
         { '/',                Key_KP_Divide },
         { '*',                Key_KP_Multiply },
         { '-',                Key_KP_Subtract },
@@ -112,9 +114,9 @@ static const TransKey g_rgQtToSymX[] =
 #include <qstring.h>
 
 static int keyQtToSym(int keyQt) {
-        int symQt = keyQt & 0xffff;
+        int symQt = keyQt & 0x01ffffff;
 
-        if( (keyQt & Qt::UNICODE_ACCEL) || symQt < 0x1000 ) {
+        if( (keyQt & Qt::UNICODE_ACCEL) || symQt < 0x01000000 ) {
                 return QChar(symQt).toUpper().unicode();
         }
 
