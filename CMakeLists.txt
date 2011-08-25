@@ -20,7 +20,7 @@ include(KDE4Defaults)
 
 find_package(PkgConfig REQUIRED)
 FIND_PACKAGE(Gettext REQUIRED)
-find_package(Fcitx4 REQUIRED)
+find_package(Fcitx REQUIRED)
 FIND_PROGRAM(INTLTOOL_EXTRACT intltool-extract)
 FIND_PROGRAM(INTLTOOL_UPDATE intltool-update)
 FIND_PROGRAM(INTLTOOL_MERGE intltool-merge)
