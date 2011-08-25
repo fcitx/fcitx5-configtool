@@ -21,8 +21,8 @@ kde4_add_plugin(kcm_fcitx ${kcm_SRCS})
 target_link_libraries(kcm_fcitx
     ${KDE4_KDEUI_LIBRARY}
     ${KDE4_KIO_LIBS}
-    ${FCITX_CONFIG_LIBRARIES}
-    ${FCITX_LIBRARIES}
+    ${FCITX4_FCITX_CONFIG_LIBRARIES}
+    ${FCITX4_FCITX_LIBRARIES}
 )
 
 install(TARGETS kcm_fcitx DESTINATION ${PLUGIN_INSTALL_DIR})
