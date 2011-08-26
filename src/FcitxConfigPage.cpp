@@ -54,6 +54,9 @@ namespace Fcitx
 
     void FcitxConfigPage::buttonClicked ( KDialog::ButtonCode code )
     {
+        if (!m_cfdesc)
+            return;
+
         if ( code == KDialog::Default )
         {
             ResetConfigToDefaultValue ( &this->gconfig );
