@@ -1,4 +1,3 @@
-#include "FcitxConfigPage.h"
 #include <QTabWidget>
 #include <QVBoxLayout>
 #include <QFormLayout>
@@ -7,6 +6,10 @@
 #include <QCheckBox>
 #include <QScrollArea>
 #include <QDebug>
+#include <QStandardItemModel>
+#include <QListView>
+#include <QProcess>
+
 #include <KColorButton>
 #include <KFontComboBox>
 #include <KComboBox>
@@ -14,19 +17,20 @@
 #include <KLineEdit>
 #include <KRun>
 #include <KPushButton>
-#include <QStandardItemModel>
+#include <KMessageBox>
 
 #include <libintl.h>
 #include <fcitx-config/fcitx-config.h>
-
-#include "config.h"
 #include <fcitx-config/hotkey.h>
 #include <fcitx-config/xdg.h>
+
+#include "FcitxConfigPage.h"
+
+#include "config.h"
 #include "FcitxSubConfigParser.h"
+#include "FcitxSubConfigWidget.h"
 #include "keyserver_x11.h"
 #include "ConfigDescManager.h"
-#include <QListView>
-#include "FcitxSubConfigWidget.h"
 
 namespace Fcitx
 {
@@ -71,6 +75,18 @@ namespace Fcitx
                 SaveConfigFileFp ( fp, &gconfig, m_cfdesc );
                 fclose ( fp );
             }
+
+            const char* reload_config = "kcm_fcitx_reload_config";
+            KMessageBox::information(this,
+                                    i18n("Not all configuration can be reloaded."),
+                                    i18n("Attention"),
+                                    reload_config
+                                );
+
+            QStringList commandAndParameters;
+            commandAndParameters <<"-r";
+            QProcess process;
+            process.startDetached(FCITX4_EXEC_PREFIX "/bin/fcitx-remote", commandAndParameters);
         }
     }
 
