@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2011-08-22 00:35+0800\n"
+"POT-Creation-Date: 2011-09-02 02:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/FcitxAddonSelector.cpp:355
+#: ../src/FcitxAddonSelector.cpp:367
 msgid "Search Addons"
 msgstr ""
 
-#: ../src/FcitxConfigPage.cpp:297
+#: ../src/FcitxConfigPage.cpp:81
+msgid "Not all configuration can be reloaded immediately."
+msgstr ""
+
+#: ../src/FcitxConfigPage.cpp:82
+msgid "Attention"
+msgstr ""
+
+#: ../src/FcitxConfigPage.cpp:323
 msgid "Other"
 msgstr ""
 

@@ -78,7 +78,7 @@ namespace Fcitx
 
             const char* reload_config = "kcm_fcitx_reload_config";
             KMessageBox::information(this,
-                                    i18n("Not all configuration can be reloaded."),
+                                    i18n("Not all configuration can be reloaded immediately."),
                                     i18n("Attention"),
                                     reload_config
                                 );

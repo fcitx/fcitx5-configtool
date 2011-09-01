@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2011-08-22 00:35+0800\n"
-"PO-Revision-Date: 2011-08-22 00:36+0800\n"
+"POT-Creation-Date: 2011-09-02 02:36+0800\n"
+"PO-Revision-Date: 2011-09-02 02:37+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: \n"
@@ -16,25 +16,37 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: ../src/Module.cpp:94
-msgid "Addon Config"
-msgstr "附加组件配置"
+#: ../src/FcitxAddonSelector.cpp:367
+msgid "Search Addons"
+msgstr "搜索附加组件"
+
+#: ../src/FcitxConfigPage.cpp:81
+msgid "Not all configuration can be reloaded immediately."
+msgstr "并非所有设置都可以被立即重新加载。"
+
+#: ../src/FcitxConfigPage.cpp:82
+msgid "Attention"
+msgstr "注意"
+
+#: ../src/FcitxConfigPage.cpp:323
+msgid "Other"
+msgstr "其他"
+
+#: ../src/Module.cpp:60
+msgid "Fcitx Configuration Module"
+msgstr "Fcitx 配置模块"
 
 #: ../src/Module.cpp:62
 msgid "Configure Fcitx"
 msgstr "配置 Fcitx"
 
-#: ../src/Module.cpp:96
-msgid "Configure Fcitx addon"
-msgstr "配置 Fcitx 附加组件"
-
 #: ../src/Module.cpp:64
 msgid "Copyright 2011 Xuetian Weng"
 msgstr "Copyright 2011 Xuetian Weng"
 
-#: ../src/Module.cpp:60
-msgid "Fcitx Configuration Module"
-msgstr "Fcitx 配置模块"
+#: ../src/Module.cpp:68
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
 
 #: ../src/Module.cpp:81
 msgid "Global Config"
@@ -44,27 +56,23 @@ msgstr "全局配置"
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 的全局配置"
 
-#: ../src/FcitxConfigPage.cpp:297
-msgid "Other"
-msgstr "其他"
+#: ../src/Module.cpp:94
+msgid "Addon Config"
+msgstr "附加组件配置"
 
-#: ../src/FcitxAddonSelector.cpp:355
-msgid "Search Addons"
-msgstr "搜索附加组件"
+#: ../src/Module.cpp:96
+msgid "Configure Fcitx addon"
+msgstr "配置 Fcitx 附加组件"
 
-#: ../src/Module.cpp:68
-msgid "Xuetian Weng"
+#: rc.cpp:1
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
 msgstr "Xuetian Weng"
 
 #: rc.cpp:2
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wengxt@gmail.com"
-
-#: rc.cpp:1
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Xuetian Weng"
 
 #~ msgid "Addon"
 #~ msgstr "附加组件"
