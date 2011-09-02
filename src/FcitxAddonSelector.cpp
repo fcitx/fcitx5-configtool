@@ -176,7 +176,9 @@ bool FcitxAddonSelector::Private::ProxyModel::filterAcceptsRow ( int sourceRow, 
     {
         const QModelIndex index = sourceModel()->index ( sourceRow, 0 );
         const FcitxAddon* addonInfo = static_cast<FcitxAddon*> ( index.internalPointer() );
-        return QString ( addonInfo->name ).contains ( addonSelector_d->lineEdit->text(), Qt::CaseInsensitive );
+        return QString ( addonInfo->name ).contains ( addonSelector_d->lineEdit->text(), Qt::CaseInsensitive )
+        || QString::fromUtf8 ( addonInfo->generalname ).contains ( addonSelector_d->lineEdit->text(), Qt::CaseInsensitive )
+        || QString::fromUtf8 ( addonInfo->comment ).contains ( addonSelector_d->lineEdit->text(), Qt::CaseInsensitive );
     }
 
     return true;
