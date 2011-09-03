@@ -157,7 +157,7 @@ namespace Fcitx {
         char *newpath = NULL;
         if (filelist.size() > 0)
         {
-            FILE* fp = GetXDGFileWithPrefix("", m_subConfig->nativepath().toUtf8().data(), "r", &newpath);
+            FILE* fp = GetXDGFileWithPrefix("", filelist.begin()->toUtf8().data(), "r", &newpath);
             if (fp)
                 fclose(fp);
         }
