@@ -1,10 +1,10 @@
 
-#include "FcitxSubConfigParser.h"
 #include <QDir>
+#include <QSet>
 #include <fcitx-config/xdg.h>
 #include "config.h"
 #include "FcitxSubConfigPattern.h"
-#include "FcitxSubConfigPath.h"
+#include "FcitxSubConfigParser.h"
 
 namespace Fcitx
 {
@@ -57,15 +57,15 @@ namespace Fcitx
         return m_subConfigMap.keys();
     }
 
-    QMultiMap<QString, FcitxSubConfigPath > FcitxSubConfigParser::getFiles( const QString& name)
+    QSet<QString> FcitxSubConfigParser::getFiles( const QString& name)
     {
         if (m_subConfigMap.count(name) != 1)
-            return QMultiMap<QString, FcitxSubConfigPath>();
+            return QSet<QString> ();
         FcitxSubConfigPattern* pattern = m_subConfigMap[name];
         size_t size;
         char** xdgpath = GetXDGPath(&size, "XDG_CONFIG_HOME", ".config" , PACKAGE , DATADIR, PACKAGE);
 
-        QMultiMap<QString, FcitxSubConfigPath> result;
+        QSet<QString> result;
         for (size_t i = 0; i < size; i ++)
         {
             QDir dir(xdgpath[i]);
@@ -73,11 +73,7 @@ namespace Fcitx
             Q_FOREACH(const QString& str, list)
             {
                 result.insert(
-                    dir.relativeFilePath(str),
-                    FcitxSubConfigPath(
-                        QString(xdgpath[i]),
-                        str
-                    ));
+                    dir.relativeFilePath(str));
             }
         }
 

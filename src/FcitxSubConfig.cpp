@@ -3,7 +3,7 @@
 namespace Fcitx
 {
 
-    FcitxSubConfig* FcitxSubConfig::GetConfigFileSubConfig( const QString& name, const QString& configdesc, const QMultiMap< QString, Fcitx::FcitxSubConfigPath >& fileList)
+    FcitxSubConfig* FcitxSubConfig::GetConfigFileSubConfig( const QString& name, const QString& configdesc, const QSet< QString >& fileList)
     {
         FcitxSubConfig* subconfig = new FcitxSubConfig;
         subconfig->m_name = name;
@@ -13,7 +13,7 @@ namespace Fcitx
         return subconfig;
     }
 
-    FcitxSubConfig* FcitxSubConfig::GetNativeFileSubConfig( const QString& name, const QString& nativepath, const QMultiMap< QString, Fcitx::FcitxSubConfigPath >& fileList)
+    FcitxSubConfig* FcitxSubConfig::GetNativeFileSubConfig( const QString& name, const QString& nativepath, const QSet< QString >& fileList)
     {
         FcitxSubConfig* subconfig = new FcitxSubConfig;
         subconfig->m_name = name;
@@ -48,7 +48,7 @@ namespace Fcitx
         return m_nativepath;
     }
 
-    QMultiMap< QString, FcitxSubConfigPath >& FcitxSubConfig::filelist()
+    QSet< QString >& FcitxSubConfig::filelist()
     {
         return m_filelist;
     }

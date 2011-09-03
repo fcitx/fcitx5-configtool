@@ -1,7 +1,6 @@
 #ifndef FCITXSUBCONFIGWIDGET_P_H
 #define FCITXSUBCONFIGWIDGET_P_H
 #include <QAbstractListModel>
-#include "FcitxSubConfigPath.h"
 
 namespace Fcitx
 {

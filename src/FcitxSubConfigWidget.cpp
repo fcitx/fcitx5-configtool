@@ -91,7 +91,7 @@ namespace Fcitx {
                     m_listView = new QListView;
                     m_listView->setSelectionMode(QAbstractItemView::SingleSelection);
                     m_model = new FcitxConfigFileItemModel(this);
-                    Q_FOREACH(const QString& file, subconfig->filelist().uniqueKeys())
+                    Q_FOREACH(const QString& file, subconfig->filelist())
                     {
                         m_model->addConfigFile(new FcitxConfigFile(file));
                     }
@@ -153,22 +153,28 @@ namespace Fcitx {
 
     void FcitxSubConfigWidget::OpenNativeFile()
     {
-        QMultiMap< QString, FcitxSubConfigPath >& filelist = m_subConfig->filelist();
+        QSet< QString >& filelist = m_subConfig->filelist();
+        char *newpath = NULL;
         if (filelist.size() > 0)
         {
-            KRun::runUrl(KUrl(filelist.begin()->path()), "text/plain", NULL);
+            FILE* fp = GetXDGFileWithPrefix("", m_subConfig->nativepath().toUtf8().data(), "r", &newpath);
+            if (fp)
+                fclose(fp);
         }
         else
         {
-            char *newpath = NULL;
             FILE* fp = GetXDGFileUserWithPrefix("", m_subConfig->nativepath().toUtf8().data(), "w", &newpath);
             if (fp)
             {
-                filelist.insert(m_subConfig->nativepath(), FcitxSubConfigPath("", QString(newpath)));
+                filelist.insert(m_subConfig->nativepath());
                 fclose(fp);
-                KRun::runUrl(KUrl(filelist.begin()->path()), "text/plain", NULL);
             }
+        }
+        if (newpath)
+        {
+            KRun::runUrl(KUrl(newpath), "text/plain", NULL);
             free(newpath);
         }
     }
+
 }

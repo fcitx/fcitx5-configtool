@@ -9,7 +9,6 @@ set(kcm_SRCS
     ConfigDescManager.cpp
     FcitxSubConfigParser.cpp
     FcitxSubConfigPattern.cpp
-    FcitxSubConfigPath.cpp
     FcitxSubConfig.cpp
     FcitxSubConfigWidget.cpp
 )

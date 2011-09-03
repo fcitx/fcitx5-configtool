@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QStringList>
 #include <QMap>
-#include "FcitxSubConfigPath.h"
+#include <QSet>
 
 namespace Fcitx
 {
@@ -19,10 +19,10 @@ namespace Fcitx
     {
         Q_OBJECT
     public:
-        static FcitxSubConfig* GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QMultiMap< QString, Fcitx::FcitxSubConfigPath >& fileList);
-        static FcitxSubConfig* GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QMultiMap< QString, Fcitx::FcitxSubConfigPath >& fileList);
+        static FcitxSubConfig* GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QSet< QString >& fileList);
+        static FcitxSubConfig* GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QSet< QString >& fileList);
         SubConfigType type();
-        QMultiMap< QString, FcitxSubConfigPath >& filelist();
+        QSet< QString >& filelist();
         const QString& name() const;
         const QString& configdesc() const;
         const QString& nativepath() const;
@@ -30,7 +30,7 @@ namespace Fcitx
         FcitxSubConfig ( QObject* parent = 0 );
         SubConfigType m_type;
         QString m_name;
-        QMultiMap<QString, FcitxSubConfigPath> m_filelist;
+        QSet< QString > m_filelist;
         QString m_configdesc;
         QString m_nativepath;
     };

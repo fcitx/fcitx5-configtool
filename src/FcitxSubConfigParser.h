@@ -6,9 +6,9 @@
 #include <QStringList>
 #include <QFile>
 #include <QMap>
+#include <QSet>
 #include <QDir>
 #include "FcitxSubConfig.h"
-#include "FcitxSubConfigPath.h"
 
 namespace Fcitx
 {
@@ -25,7 +25,7 @@ namespace Fcitx
         const QString& domain() const;
     protected:
         SubConfigType parseType ( const QString& str );
-        QMultiMap<QString, FcitxSubConfigPath > getFiles( const QString& key);
+        QSet<QString> getFiles( const QString& key);
         QStringList getFilesByPattern(QDir& dir, FcitxSubConfigPattern* pattern, int index = 0);
         QMap<QString, FcitxSubConfigPattern*> m_subConfigMap;
         QString m_domain;
