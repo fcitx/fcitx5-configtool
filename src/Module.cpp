@@ -38,6 +38,7 @@
 #include "FcitxConfigPage.h"
 #include "ConfigDescManager.h"
 #include "FcitxSubConfigParser.h"
+#include "FcitxSkinPage.h"
 
 K_PLUGIN_FACTORY_DECLARATION ( KcmFcitxFactory );
 
@@ -71,7 +72,6 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
     ui->setupUi ( this );
     KPageWidgetItem *page;
     {
-
         ConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc ( "config.desc" );
 
         if ( configDesc )
@@ -96,6 +96,15 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
             page->setHeader ( i18n ( "Configure Fcitx addon" ) );
             ui->pageWidget->addPage ( page );
         }
+    }
+    
+    {
+        m_skinPage = new FcitxSkinPage(this);
+        page = new KPageWidgetItem ( m_skinPage );
+        page->setName ( i18n ( "Manage Skin" ) );
+        page->setIcon ( KIcon ( "get-hot-new-stuff" ) );
+        page->setHeader ( i18n ( "Manage Fcitx Skin" ) );
+        ui->pageWidget->addPage ( page );
     }
 }
 
