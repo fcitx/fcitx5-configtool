@@ -33,8 +33,9 @@ namespace Ui
 namespace Fcitx
 {
 
-class FcitxSkinPage;
+    class FcitxIMPage;
 
+    class FcitxSkinPage;
 
     class ConfigDescManager;
 
@@ -117,6 +118,7 @@ class FcitxSkinPage;
         FcitxConfigPage* m_configPage;
         ConfigDescManager* m_configDescManager;
         FcitxSkinPage* m_skinPage;
+        FcitxIMPage* m_imPage;
     };
 
 }

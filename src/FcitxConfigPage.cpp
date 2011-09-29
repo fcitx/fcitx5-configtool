@@ -89,6 +89,20 @@ namespace Fcitx
             process.startDetached(FCITX4_EXEC_PREFIX "/bin/fcitx-remote", commandAndParameters);
         }
     }
+    
+    void FcitxConfigPage::load()
+    {
+        if (m_cfdesc)
+        {
+            FILE *fp;
+            fp = GetXDGFileWithPrefix ( m_prefix.toUtf8().data(), m_name.toUtf8().data(), "rt", NULL );
+            if (!fp)
+                return;
+            
+            gconfig.configFile = ParseIniFp(fp, gconfig.configFile);
+            ConfigBindSync ( &gconfig );
+        }
+    }
 
     void FcitxConfigPage::setupConfigUi()
     {

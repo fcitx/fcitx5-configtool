@@ -39,6 +39,8 @@
 #include "ConfigDescManager.h"
 #include "FcitxSubConfigParser.h"
 #include "FcitxSkinPage.h"
+#include "FcitxIMPage.h"
+#include "FcitxIM.h"
 
 K_PLUGIN_FACTORY_DECLARATION ( KcmFcitxFactory );
 
@@ -56,6 +58,8 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
 {
     bindtextdomain ( "fcitx", LOCALEDIR );
     bind_textdomain_codeset ( "fcitx", "UTF-8" );
+    
+    FcitxIM::registerMetaType();
 
     KAboutData *about = new KAboutData ( "kcm_fcitx", 0,
                                          ki18n ( "Fcitx Configuration Module" ),
@@ -71,6 +75,16 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
 
     ui->setupUi ( this );
     KPageWidgetItem *page;
+    {
+        m_imPage = new FcitxIMPage(this);
+        page = new KPageWidgetItem ( m_imPage );
+        page->setName ( i18n ( "Input Method" ) );
+        page->setIcon ( KIcon ( "draw-freehand" ) );
+        page->setHeader ( i18n ( "Input Method" ) );
+        ui->pageWidget->addPage ( page );
+        connect ( m_imPage, SIGNAL ( changed() ), this, SLOT ( changed() ) );
+    }
+    
     {
         ConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc ( "config.desc" );
 
@@ -106,18 +120,6 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
         page->setHeader ( i18n ( "Manage Fcitx Skin" ) );
         ui->pageWidget->addPage ( page );
     }
-}
-
-Module::~Module()
-{
-    delete ui;
-    delete addonSelector;
-    utarray_free(m_addons);
-}
-
-void Module::load()
-{
-    kDebug() << "Load Addon Info";
 
     if ( GetAddonConfigDesc() != NULL )
     {
@@ -133,8 +135,24 @@ void Module::load()
     }
 }
 
+Module::~Module()
+{
+    delete ui;
+    delete addonSelector;
+    utarray_free(m_addons);
+}
+
+void Module::load()
+{
+    kDebug() << "Load Addon Info";
+    
+    m_imPage->load();
+    m_configPage->load();
+}
+
 void Module::save()
 {
+    m_imPage->save();
     m_configPage->buttonClicked ( KDialog::Ok );
 }
 

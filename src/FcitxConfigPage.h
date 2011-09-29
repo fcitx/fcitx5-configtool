@@ -30,6 +30,7 @@ class FcitxSubConfigParser;
 
     public Q_SLOTS:
         void buttonClicked ( KDialog::ButtonCode );
+        void load();
     private:
         void setupConfigUi();
         void setupSubConfigUi();

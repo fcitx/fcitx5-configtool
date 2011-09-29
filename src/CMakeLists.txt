@@ -23,9 +23,21 @@ set(kcm_SRCS
     FcitxSubConfig.cpp
     FcitxSubConfigWidget.cpp
     FcitxSkinPage.cpp
+    FcitxIMPage.cpp
+    FcitxIM.cpp
 )
 
-kde4_add_ui_files(kcm_SRCS Module.ui FcitxConfigPage.ui FcitxSkinPage.ui)
+set_property(
+    SOURCE org.fcitx.Fcitx.InputMethod.xml
+    PROPERTY INCLUDE FcitxIM.h
+)
+
+QT4_ADD_DBUS_INTERFACE(kcm_SRCS
+    org.fcitx.Fcitx.InputMethod.xml
+    org.fcitx.Fcitx.InputMethod
+)
+
+kde4_add_ui_files(kcm_SRCS Module.ui FcitxConfigPage.ui FcitxSkinPage.ui FcitxIMPage.ui)
 
 kde4_add_plugin(kcm_fcitx ${kcm_SRCS})
 
