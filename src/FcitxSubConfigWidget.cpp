@@ -157,13 +157,13 @@ namespace Fcitx {
         char *newpath = NULL;
         if (filelist.size() > 0)
         {
-            FILE* fp = GetXDGFileWithPrefix("", filelist.begin()->toUtf8().data(), "r", &newpath);
+            FILE* fp = GetXDGFileWithPrefix("", filelist.begin()->toLocal8Bit().data(), "r", &newpath);
             if (fp)
                 fclose(fp);
         }
         else
         {
-            FILE* fp = GetXDGFileUserWithPrefix("", m_subConfig->nativepath().toUtf8().data(), "w", &newpath);
+            FILE* fp = GetXDGFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
             if (fp)
             {
                 filelist.insert(m_subConfig->nativepath());

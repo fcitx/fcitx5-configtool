@@ -41,7 +41,7 @@ namespace Fcitx {
         IMModel* currentIMModel;
         
     Q_SIGNALS:
-        void updateIMList();
+        void updateIMList(QString selection);
         void changed();
 
     public Q_SLOTS:
@@ -52,6 +52,8 @@ namespace Fcitx {
         void moveUpIM();
         void moveDownIM();
         void save();
+        void selectCurrentIM(const QModelIndex& index);
+        void selectAvailIM(const QModelIndex& index);
         
     private:
         QDBusConnection m_connection;
@@ -91,8 +93,10 @@ namespace Fcitx {
         virtual int rowCount ( const QModelIndex& parent = QModelIndex() ) const;
         
         void setShowOnlyEnabled( bool show );
+    Q_SIGNALS:
+        void select(QModelIndex index);
     private Q_SLOTS:
-        void filterIMEntryList();
+        void filterIMEntryList(const QString& selection = QString());
     private:
         Private* impage_d;
         bool showOnlyEnabled;

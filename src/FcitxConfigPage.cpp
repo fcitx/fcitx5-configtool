@@ -68,7 +68,7 @@ namespace Fcitx
         }
         else if ( code == KDialog::Ok )
         {
-            FILE* fp = GetXDGFileUserWithPrefix ( m_prefix.toUtf8().data(), m_name.toUtf8().data(), "wt", NULL );
+            FILE* fp = GetXDGFileUserWithPrefix ( m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "wt", NULL );
 
             if ( fp )
             {
@@ -95,7 +95,7 @@ namespace Fcitx
         if (m_cfdesc)
         {
             FILE *fp;
-            fp = GetXDGFileWithPrefix ( m_prefix.toUtf8().data(), m_name.toUtf8().data(), "rt", NULL );
+            fp = GetXDGFileWithPrefix ( m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL );
             if (!fp)
                 return;
             
@@ -112,7 +112,7 @@ namespace Fcitx
             bind_textdomain_codeset ( m_cfdesc->domain, "UTF-8" );
 
             FILE *fp;
-            fp = GetXDGFileWithPrefix ( m_prefix.toUtf8().data(), m_name.toUtf8().data(), "rt", NULL );
+            fp = GetXDGFileWithPrefix ( m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL );
             ConfigFile *cfile = ParseConfigFileFp ( fp, m_cfdesc );
 
             if ( fp )
@@ -179,7 +179,7 @@ namespace Fcitx
                         {
                             QSpinBox* spinbox = new QSpinBox ( this );
                             spinbox->setMaximum ( 10000 );
-                            spinbox->setMinimum ( -1 );
+                            spinbox->setMinimum ( -10000 );
                             inputWidget = spinbox;
                             argument = inputWidget;
                             connect ( spinbox, SIGNAL ( valueChanged ( int ) ), this, SIGNAL ( changed() ) );

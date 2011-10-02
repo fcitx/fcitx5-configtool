@@ -24,6 +24,8 @@
 #include <KCModule>
 #include <fcitx-utils/utarray.h>
 
+class QFile;
+    
 namespace Ui
 {
 
@@ -42,11 +44,6 @@ namespace Fcitx
     class FcitxConfigPage;
 
     class FcitxAddonSelector;
-
-
-    class QFile;
-
-    class QRadioButton;
 
     class Module : public KCModule
     {

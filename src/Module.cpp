@@ -119,6 +119,7 @@ Module::Module ( QWidget *parent, const QVariantList &args ) :
         page->setIcon ( KIcon ( "get-hot-new-stuff" ) );
         page->setHeader ( i18n ( "Manage Fcitx Skin" ) );
         ui->pageWidget->addPage ( page );
+        connect ( m_skinPage, SIGNAL ( changed() ), this, SLOT ( changed() ) );
     }
 
     if ( GetAddonConfigDesc() != NULL )
@@ -147,12 +148,14 @@ void Module::load()
     kDebug() << "Load Addon Info";
     
     m_imPage->load();
+    m_skinPage->load();
     m_configPage->load();
 }
 
 void Module::save()
 {
     m_imPage->save();
+    m_skinPage->save();
     m_configPage->buttonClicked ( KDialog::Ok );
 }
 

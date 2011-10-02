@@ -15,7 +15,7 @@ namespace Fcitx
         showOnlyEnabled(false),
         locale("kcm_fcitx")
     {
-        connect(d, SIGNAL(updateIMList()), this, SLOT(filterIMEntryList()));
+        connect(d, SIGNAL(updateIMList(QString)), this, SLOT(filterIMEntryList(QString)));
     }
     
     FcitxIMPage::Private::IMModel::~IMModel()
@@ -86,12 +86,13 @@ namespace Fcitx
         }
     }
     
-    void FcitxIMPage::Private::IMModel::filterIMEntryList()
+    void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
     {
         FcitxIMList imEntryList = impage_d->getIMList();
         beginRemoveRows(QModelIndex(), 0, filteredIMEntryList.size());
         filteredIMEntryList.clear();
         endRemoveRows();
+        int row = 0, selectionRow = -1;
         Q_FOREACH(const FcitxIM& im, imEntryList)
         {
             if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled()))
@@ -99,7 +100,15 @@ namespace Fcitx
                 beginInsertRows(QModelIndex(), filteredIMEntryList.size(), filteredIMEntryList.size());
                 filteredIMEntryList.append(im);
                 endInsertRows();
+                if (im.uniqueName() == selection)
+                    selectionRow = row;
+                row ++;
             }
+        }
+        
+        if (selectionRow >= 0)
+        {
+            emit select(index(selectionRow, 0));
         }
     }
     
@@ -172,13 +181,15 @@ namespace Fcitx
         d->currentIMView->setSelectionMode(QAbstractItemView::SingleSelection);
         
         connect ( d->filterTextEdit, SIGNAL ( textChanged ( QString ) ), d->availIMProxyModel, SLOT ( invalidate() ) );
-        connect ( d->availIMView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)), d, SLOT(availIMSelectionChanged()));
+        connect ( d->availIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), d, SLOT(availIMSelectionChanged()));
         connect ( d->currentIMView->selectionModel(), SIGNAL (currentChanged(QModelIndex,QModelIndex)), d, SLOT(currentIMCurrentChanged()));
         connect ( d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(addIM()));
         connect ( d->removeIMButton, SIGNAL(clicked(bool)), d, SLOT(removeIM()));
         connect ( d->moveUpButton, SIGNAL(clicked(bool)), d, SLOT(moveUpIM()));
         connect ( d->moveDownButton, SIGNAL(clicked(bool)), d, SLOT(moveDownIM()));
         connect ( d, SIGNAL(changed()), this, SIGNAL(changed()));
+        connect ( d->availIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectAvailIM(QModelIndex)));
+        connect ( d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
         
         d->fetchIMList();
     }
@@ -212,7 +223,7 @@ namespace Fcitx
     
     void FcitxIMPage::Private::availIMSelectionChanged()
     {
-        if (!availIMView->selectionModel()->currentIndex().isValid())
+        if (!availIMView->currentIndex().isValid())
             addIMButton->setEnabled(false);
         else
             addIMButton->setEnabled(true);
@@ -220,7 +231,7 @@ namespace Fcitx
     
     void FcitxIMPage::Private::currentIMCurrentChanged()
     {
-        if (!currentIMView->selectionModel()->currentIndex().isValid())
+        if (!currentIMView->currentIndex().isValid())
         {
             removeIMButton->setEnabled(false);
             moveUpButton->setEnabled(false);
@@ -228,30 +239,43 @@ namespace Fcitx
         }
         else
         {
-            if (currentIMView->selectionModel()->currentIndex().row() == 0)
+            if (currentIMView->currentIndex().row() == 0)
                 moveUpButton->setEnabled(false);
             else
                 moveUpButton->setEnabled(true);
-            if (currentIMView->selectionModel()->currentIndex().row() == currentIMModel->rowCount() - 1)
+            if (currentIMView->currentIndex().row() == currentIMModel->rowCount() - 1)
                 moveDownButton->setEnabled(false);
             else
                 moveDownButton->setEnabled(true);
             removeIMButton->setEnabled(true);
         }
     }
+
+    void FcitxIMPage::Private::selectCurrentIM(const QModelIndex& index)
+    {
+        currentIMView->selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+    }
+    
+    void FcitxIMPage::Private::selectAvailIM(const QModelIndex& index)
+    {
+        availIMView->selectionModel()->setCurrentIndex(
+            availIMProxyModel->mapFromSource(index),
+            QItemSelectionModel::ClearAndSelect
+        );
+    }
     
     void FcitxIMPage::Private::addIM()
     {
-        if (availIMView->selectionModel()->currentIndex().isValid())
+        if (availIMView->currentIndex().isValid())
         {
-            FcitxIM* im = static_cast<FcitxIM*>(availIMModel->index(availIMView->selectionModel()->currentIndex().row(), 0).internalPointer());
+            FcitxIM* im = static_cast<FcitxIM*>(availIMProxyModel->mapToSource(availIMView->currentIndex()).internalPointer());
             int i = 0;
             for (i = 0; i < m_list.size(); i ++)
             {
                 if (im->uniqueName() == m_list[i].uniqueName()) {
                     m_list[i].setEnabled(true);
                     qStableSort(m_list.begin(), m_list.end());
-                    emit updateIMList();
+                    emit updateIMList(im->uniqueName());
                     emit changed();
                     break;
                 }
@@ -261,16 +285,16 @@ namespace Fcitx
     
     void FcitxIMPage::Private::removeIM()
     {
-        if (currentIMView->selectionModel()->currentIndex().isValid())
+        if (currentIMView->currentIndex().isValid())
         {
-            FcitxIM* im = static_cast<FcitxIM*>(currentIMView->selectionModel()->currentIndex().internalPointer());
+            FcitxIM* im = static_cast<FcitxIM*>(currentIMView->currentIndex().internalPointer());
             int i = 0;
             for (i = 0; i < m_list.size(); i ++)
             {
                 if (im->uniqueName() == m_list[i].uniqueName()) {
                     m_list[i].setEnabled(false);
                     qStableSort(m_list.begin(), m_list.end());
-                    emit updateIMList();
+                    emit updateIMList(im->uniqueName());
                     emit changed();
                     break;
                 }
@@ -280,7 +304,7 @@ namespace Fcitx
     
     void FcitxIMPage::Private::moveDownIM()
     {
-        QModelIndex curIndex = currentIMView->selectionModel()->currentIndex();
+        QModelIndex curIndex = currentIMView->currentIndex();
         if (curIndex.isValid())
         {
             QModelIndex nextIndex = currentIMModel->index(curIndex.row() + 1, 0);
@@ -305,7 +329,7 @@ namespace Fcitx
             {
                 m_list.swap(curIMIdx, nextIMIdx);
                 qStableSort(m_list.begin(), m_list.end());
-                emit updateIMList();
+                emit updateIMList(curIM->uniqueName());
                 emit changed();
             }
         }
@@ -313,7 +337,7 @@ namespace Fcitx
     
     void FcitxIMPage::Private::moveUpIM()
     {
-        QModelIndex curIndex = currentIMView->selectionModel()->currentIndex();
+        QModelIndex curIndex = currentIMView->currentIndex();
         if (curIndex.isValid() && curIndex.row() > 0)
         {
             QModelIndex nextIndex = currentIMModel->index(curIndex.row() - 1, 0);
@@ -338,7 +362,7 @@ namespace Fcitx
             {
                 m_list.swap(curIMIdx, nextIMIdx);
                 qStableSort(m_list.begin(), m_list.end());
-                emit updateIMList();
+                emit updateIMList(curIM->uniqueName());
                 emit changed();
             }
         }
@@ -356,7 +380,7 @@ namespace Fcitx
         {
             m_list = m_inputmethod->iMList();
             qStableSort(m_list.begin(), m_list.end());
-            emit updateIMList();
+            emit updateIMList(QString());
         }
     }
        
