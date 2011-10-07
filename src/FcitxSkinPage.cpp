@@ -91,7 +91,7 @@ namespace Fcitx
         beginRemoveRows(QModelIndex(), 0, m_skins.size());
         m_skins.clear();
         endRemoveRows();
-        
+
         QStringList sortedList = list;
         qSort(sortedList);
 
@@ -120,13 +120,13 @@ namespace Fcitx
             cfile = ParseConfigFileFp(fp, cfdesc);
             fclose(fp);
         }
-            
+
         QString skinName = path.section('/', 1, 1);
 
         if (cfile)
         {
             QString skinDir = path.section('/', 0, 1);
-            
+
             FcitxSkinInputBar inputbar;
             memset(&inputbar, 0, sizeof(FcitxSkinInputBar));
             FcitxSkinInputBarConfigBind(&inputbar, cfile, cfdesc);
@@ -141,6 +141,7 @@ namespace Fcitx
             QString inputExample = skinName;
             QString numberStr[2];
             QString candStr[2];
+            QString spaceStr=" ";
             for (int i=0; i<2; i++) {
                 numberStr[i]=QString("%1.").arg(i+1);
             }
@@ -155,7 +156,7 @@ namespace Fcitx
 
             // inputPos & outputPos is the LeftTop position of the text.
             int inputPos=marginTop+inputbar.iInputPos-fontHeight;
-            int outputPos=marginTop+inputbar.iOutputPos-fontHeight;            
+            int outputPos=marginTop+inputbar.iOutputPos-fontHeight;
 
             QPixmap inputBarPixmap = LoadImage(skinDir.toLocal8Bit().data(), inputbar.backImg);
             int resizeWidth=0;
@@ -196,29 +197,30 @@ namespace Fcitx
             textPainter.drawText(marginLeft, inputPos, metrics.width(inputExample), fontHeight, Qt::AlignVCenter, inputExample);
 
             // Draw candidate number:
+            // TODO:
             textPainter.setPen(indexColor);
             for (int i=0; i<2; i++) {
                 textPainter.drawText(offset, outputPos, metrics.width(numberStr[i]), fontHeight, Qt::AlignVCenter, numberStr[i]);
-                offset=offset + metrics.width(numberStr[i]) + metrics.width(candStr[i]);
+                offset=offset + metrics.width(numberStr[i]) + metrics.width(candStr[i]) + metrics.width(spaceStr);
             }
 
-            offset=marginLeft+metrics.width(numberStr[0]);
+            offset=marginLeft + metrics.width(numberStr[0]);
 
             textPainter.setPen(firstCandColor);
             textPainter.drawText(offset, outputPos, metrics.width(candStr[0]), fontHeight, Qt::AlignVCenter, candStr[0]);
-            offset=offset+metrics.width(candStr[0]) + metrics.width(numberStr[1]);
+            offset=offset+metrics.width(candStr[0]) + metrics.width(spaceStr) + metrics.width(numberStr[1]);
 
             textPainter.setPen(otherColor);
             textPainter.drawText(offset, outputPos, metrics.width(candStr[1]), fontHeight, Qt::AlignVCenter, candStr[1]);
 
             textPainter.end();
-            
+
             free(inputbar.backImg);
             free(inputbar.backArrow);
             free(inputbar.forwardArrow);
-            
+
             FreeConfigFile(cfile);
-            
+
             return destPixmap;
         }
         else
@@ -229,13 +231,13 @@ namespace Fcitx
             int w = fm.width(errmsg);
             QPixmap destPixmap(w, fm.height());
             destPixmap.fill(Qt::transparent);
-            
+
             QPainter textPainter(&destPixmap);
             textPainter.setPen(qApp->palette().color(QPalette::Active, QPalette::Text));
             textPainter.setFont(inputFont);
             textPainter.drawText(0, 0, w, fm.height(), Qt::AlignVCenter, errmsg);
             textPainter.end();
-            
+
             return destPixmap;
         }
     }
@@ -273,10 +275,10 @@ namespace Fcitx
             fclose(fp);
             pixmap = QPixmap(QString::fromLocal8Bit(image));
         }
-        
+
         if (image)
             free(image);
-        
+
         return pixmap;
     }
 
@@ -310,7 +312,7 @@ namespace Fcitx
             resizeWidth = 1;
         if ( resizeHeight <= 0 )
             resizeHeight = 1;
-        
+
         if ( originWidth <= 0 )
             originWidth = 1;
         if ( originHeight <= 0 )
@@ -355,8 +357,8 @@ namespace Fcitx
             backgroundPixmap,
             QRect(marginLeft + originWidth, 0, marginRight, marginTop)
         );
-        
-        
+
+
         /* part 2 & 8 */
         {
             if (fillH == F_COPY) {
@@ -364,7 +366,7 @@ namespace Fcitx
                 int remain_width = resizeWidth % originWidth;
                 int i = 0;
 
-                for (i = 0; i < repaint_times; i++) {                    
+                for (i = 0; i < repaint_times; i++) {
                     painter.drawPixmap(
                         QRect(marginLeft + i * originWidth, 0, originWidth, marginTop),
                         backgroundPixmap,
@@ -489,7 +491,7 @@ namespace Fcitx
                     }
                     else
                         h = resizeHeight;
-                        
+
 
                     if (fillH == F_COPY)
                     {
@@ -561,7 +563,7 @@ namespace Fcitx
             delete m_subConfig;
         m_subConfig = m_parser.getSubConfig("Skin");
         skinModel->setSkinList(m_subConfig->filelist().toList());
-        
+
         ConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
         FILE* fp = NULL;
         ConfigFile* cfile = NULL;
@@ -580,7 +582,7 @@ namespace Fcitx
                 skinName = QString::fromUtf8(option->rawValue);
             FreeConfigFile(cfile);
         }
-        
+
         int row = 0, currentSkin = -1;
         Q_FOREACH(const FcitxSkinInfo& skin, skinModel->skinList())
         {
@@ -589,10 +591,10 @@ namespace Fcitx
                 currentSkin = row;
                 break;
             }
-            
+
             row ++;
         }
-        
+
         if (currentSkin >= 0)
             skinView->selectionModel()->setCurrentIndex(skinModel->index(row, 0), QItemSelectionModel::ClearAndSelect);
     }
@@ -602,7 +604,7 @@ namespace Fcitx
         if (skinView->currentIndex().isValid())
         {
             QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
-            
+
             ConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
             FILE* fp = NULL;
             ConfigFile* cfile = NULL;
@@ -709,7 +711,7 @@ namespace Fcitx
                 connect ( &configDialog, SIGNAL ( buttonClicked ( KDialog::ButtonCode ) ), configPage, SLOT ( buttonClicked ( KDialog::ButtonCode ) ) );
 
                 configDialog.exec();
-                
+
                 load();
             }
         }
@@ -727,7 +729,7 @@ namespace Fcitx
             configureSkinButton->setEnabled(false);
             deleteSkinButton->setEnabled(false);
         }
-        
+
         emit changed();
     }
 
