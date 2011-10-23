@@ -120,9 +120,8 @@ bool FcitxAddonSelector::Private::AddonModel::setData ( const QModelIndex& index
     {
         FcitxAddon* addon = static_cast<FcitxAddon*> ( index.internalPointer() );
         addon->bEnabled = value.toBool();
-        char buf[PATH_MAX];
-        sprintf(buf, "%s.conf", addon->name);
-        FILE* fp = GetXDGFileUserWithPrefix("addon", buf, "w", NULL);
+        QString buf = QString("%1.conf").arg(addon->name);
+        FILE* fp = GetXDGFileUserWithPrefix("addon", buf.toLocal8Bit().data(), "w", NULL);
         if (fp)
         {
             fprintf(fp, "[Addon]\nEnabled=%s\n", addon->bEnabled ? "True": "False");
