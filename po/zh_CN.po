@@ -1,120 +1,21 @@
 # Header entry was created by Lokalize.
 #
 # Weng Xuetian <wengxt@gmail.com>, 2010, 2011.
+# Ukyoi <ukyoi@msn.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-10-02 17:32+0800\n"
-"PO-Revision-Date: 2011-10-02 16:46+0800\n"
-"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
-"Language-Team: Chinese Simplified <kde-china@kde.org>\n"
+"PO-Revision-Date: 2011-10-30 15:42+0800\n"
+"Last-Translator: Ukyoi <ukyoi@msn.com>\n"
+"Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-
-#: ../src/FcitxAddonSelector.cpp:369
-msgid "Search Addons"
-msgstr "搜索附加组件"
-
-#: ../src/FcitxConfigPage.cpp:81
-msgid "Not all configuration can be reloaded immediately."
-msgstr "并非所有设置都可以被立即重新加载。"
-
-#: ../src/FcitxConfigPage.cpp:82
-msgid "Attention"
-msgstr "注意"
-
-#: ../src/FcitxConfigPage.cpp:337
-msgid "Other"
-msgstr "其他"
-
-#: ../src/FcitxIMPage.cpp:55
-msgid "Unknown"
-msgstr "未知"
-
-#: ../src/FcitxIMPage.cpp:167
-msgid "Search Input Method"
-msgstr "搜索输入法"
-
-#: ../src/FcitxSkinPage.cpp:147
-msgid "First candidate "
-msgstr "首个候选词"
-
-#: ../src/FcitxSkinPage.cpp:148
-msgid "Other candidate "
-msgstr "其他候选词"
-
-#: ../src/FcitxSkinPage.cpp:228
-msgid "Skin %1 Cannot be loaded"
-msgstr "皮肤 %1 无法加载"
-
-#: ../src/Module.cpp:65
-msgid "Fcitx Configuration Module"
-msgstr "Fcitx 配置模块"
-
-#: ../src/Module.cpp:67
-msgid "Configure Fcitx"
-msgstr "配置 Fcitx"
-
-#: ../src/Module.cpp:69
-msgid "Copyright 2011 Xuetian Weng"
-msgstr "Copyright 2011 Xuetian Weng"
-
-#: ../src/Module.cpp:73
-msgid "Xuetian Weng"
-msgstr "Xuetian Weng"
-
-#: ../src/Module.cpp:81 ../src/Module.cpp:83
-msgid "Input Method"
-msgstr "输入法"
-
-#: ../src/Module.cpp:95
-msgid "Global Config"
-msgstr "全局配置"
-
-#: ../src/Module.cpp:97
-msgid "Global Config for Fcitx"
-msgstr "Fcitx 的全局配置"
-
-#: ../src/Module.cpp:108
-msgid "Addon Config"
-msgstr "附加组件配置"
-
-#: ../src/Module.cpp:110
-msgid "Configure Fcitx addon"
-msgstr "配置 Fcitx 附加组件"
-
-#: ../src/Module.cpp:118
-msgid "Manage Skin"
-msgstr "管理皮肤"
-
-#: ../src/Module.cpp:120
-msgid "Manage Fcitx Skin"
-msgstr "管理Fcitx 的皮肤"
-
-#. i18n: file: ../src/FcitxIMPage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxIMPage)
-#. i18n: file: ../src/FcitxSkinPage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxSkinPage)
-#: rc.cpp:3 rc.cpp:12
-msgid "Form"
-msgstr "Form"
-
-#. i18n: file: ../src/FcitxIMPage.ui:22
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:6
-msgid "Available Input Method:"
-msgstr "可用的输入法："
-
-#. i18n: file: ../src/FcitxIMPage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:9
-msgid "Current Input Method:"
-msgstr "当前的输入法："
 
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -127,12 +28,6 @@ msgstr "配置皮肤(&C)"
 #: rc.cpp:18
 msgid "&Delete Skin"
 msgstr "删除皮肤(&D)"
-
-#. i18n: file: ../src/FcitxSkinPage.ui:58
-#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:21
-msgid "Get New &Skin..."
-msgstr "获得新皮肤(&S)..."
 
 #. i18n: file: ../src/FcitxSkinPage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -166,15 +61,123 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功"
 "能。</p></body></html>"
 
-#: rc.cpp:30
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
+#: ../src/Module.cpp:108
+msgid "Addon Config"
+msgstr "附加组件配置"
+
+#: ../src/FcitxConfigPage.cpp:82
+msgid "Attention"
+msgstr "注意"
+
+#. i18n: file: ../src/FcitxIMPage.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:6
+msgid "Available Input Method:"
+msgstr "可用的输入法："
+
+#: ../src/Module.cpp:67
+msgid "Configure Fcitx"
+msgstr "配置 Fcitx"
+
+#: ../src/Module.cpp:110
+msgid "Configure Fcitx addon"
+msgstr "配置 Fcitx 附加组件"
+
+#: ../src/Module.cpp:69
+msgid "Copyright 2011 Xuetian Weng"
+msgstr "Copyright 2011 Xuetian Weng"
+
+#. i18n: file: ../src/FcitxIMPage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:9
+msgid "Current Input Method:"
+msgstr "当前的输入法："
+
+#: ../src/Module.cpp:65
+msgid "Fcitx Configuration Module"
+msgstr "Fcitx 配置模块"
+
+#: ../src/FcitxSkinPage.cpp:147
+#, fuzzy
+msgid "First candidate "
+msgstr "第一候选"
+
+#. i18n: file: ../src/FcitxIMPage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxIMPage)
+#. i18n: file: ../src/FcitxSkinPage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxSkinPage)
+#: rc.cpp:3 rc.cpp:12
+msgid "Form"
+msgstr "Form"
+
+#. i18n: file: ../src/FcitxSkinPage.ui:58
+#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
+#: rc.cpp:21
+msgid "Get New &Skin..."
+msgstr "获得新皮肤(&S)..."
+
+#: ../src/Module.cpp:95
+msgid "Global Config"
+msgstr "全局配置"
+
+#: ../src/Module.cpp:97
+msgid "Global Config for Fcitx"
+msgstr "Fcitx 的全局配置"
+
+#: ../src/Module.cpp:81 ../src/Module.cpp:83
+msgid "Input Method"
+msgstr "输入法"
+
+#: ../src/Module.cpp:120
+msgid "Manage Fcitx Skin"
+msgstr "管理Fcitx 的皮肤"
+
+#: ../src/Module.cpp:118
+msgid "Manage Skin"
+msgstr "管理皮肤"
+
+#: ../src/FcitxConfigPage.cpp:81
+msgid "Not all configuration can be reloaded immediately."
+msgstr "并非所有设置都可以被立即重新加载。"
+
+#: ../src/FcitxConfigPage.cpp:337
+msgid "Other"
+msgstr "其他"
+
+#: ../src/FcitxSkinPage.cpp:148
+#, fuzzy
+msgid "Other candidate "
+msgstr "其它候选"
+
+#: ../src/FcitxAddonSelector.cpp:369
+msgid "Search Addons"
+msgstr "搜索附加组件"
+
+#: ../src/FcitxIMPage.cpp:167
+msgid "Search Input Method"
+msgstr "搜索输入法"
+
+#: ../src/FcitxSkinPage.cpp:228
+msgid "Skin %1 Cannot be loaded"
+msgstr "皮肤 %1 无法加载"
+
+#: ../src/FcitxIMPage.cpp:55
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/Module.cpp:73
+msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
 #: rc.cpp:31
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wengxt@gmail.com"
+
+#: rc.cpp:30
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Xuetian Weng"
 
 #~ msgid "Addon"
 #~ msgstr "附加组件"
