@@ -98,14 +98,9 @@ msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
 
 #: ../src/FcitxSkinPage.cpp:147
-<<<<<<< HEAD
 #, fuzzy
 msgid "First candidate "
-msgstr "第一候选"
-=======
-msgid "First candidate "
 msgstr "首个候选词"
->>>>>>> 7bb43fb9f447f63b2753c14cec38f634bafa8ceb
 
 #. i18n: file: ../src/FcitxIMPage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, FcitxIMPage)
@@ -150,14 +145,9 @@ msgid "Other"
 msgstr "其他"
 
 #: ../src/FcitxSkinPage.cpp:148
-<<<<<<< HEAD
 #, fuzzy
 msgid "Other candidate "
-msgstr "其它候选"
-=======
-msgid "Other candidate "
 msgstr "其他候选词"
->>>>>>> 7bb43fb9f447f63b2753c14cec38f634bafa8ceb
 
 #: ../src/FcitxAddonSelector.cpp:369
 msgid "Search Addons"
