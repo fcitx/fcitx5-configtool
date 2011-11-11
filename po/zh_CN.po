@@ -1,14 +1,15 @@
 # Header entry was created by Lokalize.
 #
 # Weng Xuetian <wengxt@gmail.com>, 2010, 2011.
+# Ukyoi <ukyoi@msn.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2011-10-02 17:32+0800\n"
-"PO-Revision-Date: 2011-10-02 16:46+0800\n"
-"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
-"Language-Team: Chinese Simplified <kde-china@kde.org>\n"
+"PO-Revision-Date: 2011-10-30 15:42+0800\n"
+"Last-Translator: Ukyoi <ukyoi@msn.com>\n"
+"Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,6 +98,7 @@ msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
 
 #: ../src/FcitxSkinPage.cpp:147
+#, fuzzy
 msgid "First candidate "
 msgstr "首个候选词"
 
@@ -143,6 +145,7 @@ msgid "Other"
 msgstr "其他"
 
 #: ../src/FcitxSkinPage.cpp:148
+#, fuzzy
 msgid "Other candidate "
 msgstr "其他候选词"
 

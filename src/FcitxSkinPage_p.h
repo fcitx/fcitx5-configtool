@@ -53,9 +53,22 @@ struct FcitxSkinInputBar
     int iOutputPos;
     FillRule fillV;
     FillRule fillH;
+
+    struct FcitxSkinMainBar
+    {
+        char* backImg;
+        char* eng;
+        char* logo;
+        char* active;
+        int marginTop;
+        int marginBottom;
+        int marginLeft;
+        int marginRight;
+    } mainbar;
 };
 
-namespace Fcitx 
+
+namespace Fcitx
 {
     class FcitxSkinInfo
     {
@@ -71,15 +84,15 @@ namespace Fcitx
             PixmapRole = 0x4532efd3,
             PathRole = 0x8F213873
         };
-        
+
         Q_OBJECT
     public:
         Private(QObject* parent = 0);
         virtual ~Private();
-        
+
         class SkinModel;
         class SkinDelegate;
-        
+
         SkinModel* skinModel;
         QListView* skinView;
         KPushButton* configureSkinButton;
@@ -87,7 +100,7 @@ namespace Fcitx
         SkinDelegate* skinDelegate;
         Module* module;
     public Q_SLOTS:
-        void load();    
+        void load();
         void deleteSkin();
         void configureSkin();
         void save();
@@ -99,7 +112,7 @@ namespace Fcitx
         FcitxSubConfigParser m_parser;
         FcitxSubConfig* m_subConfig;
     };
-    
+
     class FcitxSkinPage::Private::SkinModel : public QAbstractListModel
     {
         Q_OBJECT
@@ -134,16 +147,16 @@ namespace Fcitx
         Private* d;
         QList<FcitxSkinInfo> m_skins;
     };
-    
+
     class FcitxSkinPage::Private::SkinDelegate : public QStyledItemDelegate
     {
         Q_OBJECT
         public:
             SkinDelegate(QObject* parent = 0);
             ~SkinDelegate();
-        
+
             virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-            virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const; 
+            virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
         signals:
             void regeneratePreview(const QModelIndex& index, const QSize& size) const;
     };

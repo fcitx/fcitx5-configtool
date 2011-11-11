@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Exec=kcmshell4 kcm_fcitx
 Icon=fcitx

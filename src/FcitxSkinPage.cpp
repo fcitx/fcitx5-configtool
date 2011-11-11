@@ -57,7 +57,21 @@ CONFIG_BINDING_REGISTER("SkinInputBar", "ForwardArrowY", iForwardArrowY)
 CONFIG_BINDING_REGISTER("SkinInputBar", "FillVertical", fillV)
 CONFIG_BINDING_REGISTER("SkinInputBar", "FillHorizontal", fillH)
 
+CONFIG_BINDING_REGISTER("SkinMainBar","BackImg", mainbar.backImg)
+CONFIG_BINDING_REGISTER("SkinMainBar","Logo", mainbar.logo)
+CONFIG_BINDING_REGISTER("SkinMainBar","Eng", mainbar.eng)
+CONFIG_BINDING_REGISTER("SkinMainBar","Active", mainbar.active)
+CONFIG_BINDING_REGISTER("SkinMainBar","MarginLeft", mainbar.marginLeft)
+CONFIG_BINDING_REGISTER("SkinMainBar","MarginRight", mainbar.marginRight)
+CONFIG_BINDING_REGISTER("SkinMainBar","MarginTop", mainbar.marginTop)
+CONFIG_BINDING_REGISTER("SkinMainBar","MarginBottom", mainbar.marginBottom)
+/*
+CONFIG_BINDING_REGISTER("SkinTrayIcon","Active", )
+CONFIG_BINDING_REGISTER("SkinTrayIcon","Inactive", )
+*/
+
 CONFIG_BINDING_END()
+
 
 namespace Fcitx
 {
@@ -164,8 +178,8 @@ namespace Fcitx
             for (int i=0; i<2; i++) {
                 numberStr[i]=QString("%1.").arg(i+1);
             }
-            candStr[0]=i18n("First candidate ");
-            candStr[1]=i18n("Other candidate ");
+            candStr[0]=i18n("First candidate");
+            candStr[1]=i18n("Other candidate");
             int offset=marginLeft;
 
             QFont inputFont(qApp->font());
@@ -187,9 +201,9 @@ namespace Fcitx
             int totalWidth=marginLeft + marginRight + resizeWidth;
             int totalHeight=marginTop + marginBottom + resizeHeight;
 
-            QPixmap destPixmap(totalWidth, totalHeight);
-            destPixmap.fill(Qt::transparent);
-            DrawResizableBackground(destPixmap, inputBarPixmap,
+            QPixmap inputBarDestPixmap(totalWidth, totalHeight);
+            inputBarDestPixmap.fill(Qt::transparent);
+            DrawResizableBackground(inputBarDestPixmap, inputBarPixmap,
                                     marginLeft, marginRight, marginTop, marginBottom,
                                     resizeWidth, resizeHeight,
                                     inputbar.fillV, inputbar.fillH
@@ -197,14 +211,14 @@ namespace Fcitx
 
             QPixmap backArrowPixmap = LoadImage(skinDir.toLocal8Bit().data(), inputbar.backArrow);
             QPixmap forwardArrowPixmap = LoadImage(skinDir.toLocal8Bit().data(), inputbar.forwardArrow);
-            DrawWidget(destPixmap, backArrowPixmap,
+            DrawWidget(inputBarDestPixmap, backArrowPixmap,
                     totalWidth - inputbar.iBackArrowX, inputbar.iBackArrowY
                     );
-            DrawWidget(destPixmap, forwardArrowPixmap,
+            DrawWidget(inputBarDestPixmap, forwardArrowPixmap,
                     totalWidth - inputbar.iForwardArrowX, inputbar.iForwardArrowY
                     );
 
-            QPainter textPainter(&destPixmap);
+            QPainter textPainter(&inputBarDestPixmap);
             textPainter.setFont(inputFont);
 
             QColor inputColor=ConvertColor(inputbar.inputColor);
@@ -216,7 +230,6 @@ namespace Fcitx
             textPainter.drawText(marginLeft, inputPos, metrics.width(inputExample), fontHeight, Qt::AlignVCenter, inputExample);
 
             // Draw candidate number:
-            // TODO:
             textPainter.setPen(indexColor);
             for (int i=0; i<2; i++) {
                 textPainter.drawText(offset, outputPos, metrics.width(numberStr[i]), fontHeight, Qt::AlignVCenter, numberStr[i]);
@@ -234,13 +247,70 @@ namespace Fcitx
 
             textPainter.end();
 
+            /* FIXME:
+             * Why this LoadImage cause error?
+             * Binding problem?
+             * FreeConfigFile also cause crash.
+             * I don't understand the complex Bind system in Fcitx.
+             *  -Ukyoi
+             */
+
+            /*Just define it for convenient:
+             * mainbar->backImg == inputbar.mainbar.backImg;
+             */
+            FcitxSkinInputBar::FcitxSkinMainBar *mainbar=&inputbar.mainbar;
+
+            QPixmap mainBarPixmap = LoadImage(skinDir.toLocal8Bit().data(), mainbar->backImg);
+            int widgetCount=3;
+            QPixmap mainBarWidgetPixmap[widgetCount];
+            mainBarWidgetPixmap[0] = LoadImage(skinDir.toLocal8Bit().data(), mainbar->logo);
+            mainBarWidgetPixmap[1] = LoadImage(skinDir.toLocal8Bit().data(), mainbar->eng);
+            mainBarWidgetPixmap[2] = LoadImage(skinDir.toLocal8Bit().data(), mainbar->active);
+
+            marginLeft=mainbar->marginLeft;
+            marginRight=mainbar->marginRight;
+            marginTop=mainbar->marginTop;
+            marginBottom=mainbar->marginBottom;
+
+            resizeWidth=0;
+            resizeHeight=0;
+            for (int i=0; i<widgetCount; i++) {
+                resizeWidth+=mainBarWidgetPixmap[i].width();
+                if (mainBarWidgetPixmap[i].height()>resizeHeight)
+                    resizeHeight=mainBarWidgetPixmap[i].height();
+            }
+
+            QPixmap mainBarDestPixmap(marginLeft+resizeWidth+marginRight, marginTop+resizeHeight+marginBottom);
+            DrawResizableBackground(mainBarDestPixmap, mainBarPixmap,
+                                    marginLeft, marginRight, marginTop, marginBottom,
+                                    resizeWidth, resizeHeight,
+                                    F_RESIZE, F_RESIZE
+                                );
+            offset=marginLeft;
+            for (int i=0; i<widgetCount; i++) {
+                DrawWidget(mainBarDestPixmap, mainBarWidgetPixmap[i], offset, 0);
+                offset+=mainBarWidgetPixmap[i].width();
+            }
+
+            // destPixmap应该是inputbar和mainbar的合体……
+            QPixmap destPixmap( inputBarDestPixmap.width()+20+mainBarDestPixmap.width(), inputBarDestPixmap.height() );
+            destPixmap.fill(Qt::transparent);
+            DrawWidget(destPixmap, inputBarDestPixmap, 0, 0);
+            DrawWidget(destPixmap, mainBarDestPixmap, inputBarDestPixmap.width()+20, inputBarDestPixmap.height()-mainBarDestPixmap.height());
+
             free(inputbar.backImg);
             free(inputbar.backArrow);
             free(inputbar.forwardArrow);
 
+            free(mainbar->backImg);
+            free(mainbar->active);
+            free(mainbar->eng);
+            free(mainbar->logo);
+
             FreeConfigFile(cfile);
 
             return destPixmap;
+            // return inputBarDestPixmap;
         }
         else
         {
