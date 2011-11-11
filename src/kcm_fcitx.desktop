@@ -6,7 +6,7 @@ X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_fcitx
 X-KDE-ParentApp=kcontrol
 
-X-KDE-System-Settings-Parent-Category=application-appearance-and-behavior
+X-KDE-System-Settings-Parent-Category=locale
 
 Name=Fcitx
 Name[zh_CN]=Fcitx
