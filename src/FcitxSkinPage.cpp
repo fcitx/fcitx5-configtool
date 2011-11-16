@@ -369,6 +369,7 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         free(mainbar->eng);
         free(mainbar->logo);
         free(mainbar->placement);
+        utarray_done(&placement);
 
         FreeConfigFile(cfile);
 
