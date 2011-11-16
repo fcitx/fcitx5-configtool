@@ -1,21 +1,124 @@
-# Header entry was created by Lokalize.
-#
-# Weng Xuetian <wengxt@gmail.com>, 2010, 2011.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 # Ukyoi <ukyoi@msn.com>, 2011.
+#   <wengxt@gmail.com>, 2011.
+# Weng Xuetian <wengxt@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2011-10-02 17:32+0800\n"
-"PO-Revision-Date: 2011-10-30 15:42+0800\n"
-"Last-Translator: Ukyoi <ukyoi@msn.com>\n"
-"Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2011-11-16 15:03+0800\n"
+"PO-Revision-Date: 2011-11-16 07:11+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
+"Language-Team: Chinese (China) <fcitx-dev@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: ../src/FcitxAddonSelector.cpp:387
+msgid "Search Addons"
+msgstr "搜索附加组件"
+
+#: ../src/FcitxConfigPage.cpp:100
+msgid "Not all configuration can be reloaded immediately."
+msgstr "并非所有设置都可以被立即重新加载。"
+
+#: ../src/FcitxConfigPage.cpp:101
+msgid "Attention"
+msgstr "注意"
+
+#: ../src/FcitxConfigPage.cpp:356
+msgid "Other"
+msgstr "其他"
+
+#: ../src/FcitxIMPage.cpp:74
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/FcitxIMPage.cpp:186
+msgid "Search Input Method"
+msgstr "搜索输入法"
+
+#: ../src/FcitxSkinPage.cpp:181
+msgid "First candidate"
+msgstr "第一候选词"
+
+#: ../src/FcitxSkinPage.cpp:182
+msgid "Other candidate"
+msgstr "其他候选词"
+
+#: ../src/FcitxSkinPage.cpp:319
+msgid "Skin %1 Cannot be loaded"
+msgstr "皮肤 %1 无法加载"
+
+#: ../src/Module.cpp:65
+msgid "Fcitx Configuration Module"
+msgstr "Fcitx 配置模块"
+
+#: ../src/Module.cpp:67
+msgid "Configure Fcitx"
+msgstr "配置 Fcitx"
+
+#: ../src/Module.cpp:69
+msgid "Copyright 2011 Xuetian Weng"
+msgstr "Copyright 2011 Xuetian Weng"
+
+#: ../src/Module.cpp:73
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: ../src/Module.cpp:81 ../src/Module.cpp:83
+msgid "Input Method"
+msgstr "输入法"
+
+#: ../src/Module.cpp:95
+msgid "Global Config"
+msgstr "全局配置"
+
+#: ../src/Module.cpp:97
+msgid "Global Config for Fcitx"
+msgstr "Fcitx 的全局配置"
+
+#: ../src/Module.cpp:108
+msgid "Addon Config"
+msgstr "附加组件配置"
+
+#: ../src/Module.cpp:110
+msgid "Configure Fcitx addon"
+msgstr "配置 Fcitx 附加组件"
+
+#: ../src/Module.cpp:118
+msgid "Manage Skin"
+msgstr "管理皮肤"
+
+#: ../src/Module.cpp:120
+msgid "Manage Fcitx Skin"
+msgstr "管理Fcitx 的皮肤"
+
+#. i18n: file: ../src/FcitxIMPage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxIMPage)
+#. i18n: file: ../src/FcitxSkinPage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxSkinPage)
+#: rc.cpp:3 rc.cpp:12
+msgid "Form"
+msgstr "Form"
+
+#. i18n: file: ../src/FcitxIMPage.ui:22
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:6
+msgid "Available Input Method:"
+msgstr "可用的输入法："
+
+#. i18n: file: ../src/FcitxIMPage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:9
+msgid "Current Input Method:"
+msgstr "当前的输入法："
 
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -29,144 +132,33 @@ msgstr "配置皮肤(&C)"
 msgid "&Delete Skin"
 msgstr "删除皮肤(&D)"
 
-#. i18n: file: ../src/FcitxSkinPage.ui:72
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:24
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Notice:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI "
-"to use skin function.</p></body></html>"
-msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">注意：</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功"
-"能。</p></body></html>"
-
-#: ../src/Module.cpp:108
-msgid "Addon Config"
-msgstr "附加组件配置"
-
-#: ../src/FcitxConfigPage.cpp:82
-msgid "Attention"
-msgstr "注意"
-
-#. i18n: file: ../src/FcitxIMPage.ui:22
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:6
-msgid "Available Input Method:"
-msgstr "可用的输入法："
-
-#: ../src/Module.cpp:67
-msgid "Configure Fcitx"
-msgstr "配置 Fcitx"
-
-#: ../src/Module.cpp:110
-msgid "Configure Fcitx addon"
-msgstr "配置 Fcitx 附加组件"
-
-#: ../src/Module.cpp:69
-msgid "Copyright 2011 Xuetian Weng"
-msgstr "Copyright 2011 Xuetian Weng"
-
-#. i18n: file: ../src/FcitxIMPage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:9
-msgid "Current Input Method:"
-msgstr "当前的输入法："
-
-#: ../src/Module.cpp:65
-msgid "Fcitx Configuration Module"
-msgstr "Fcitx 配置模块"
-
-#: ../src/FcitxSkinPage.cpp:147
-#, fuzzy
-msgid "First candidate "
-msgstr "首个候选词"
-
-#. i18n: file: ../src/FcitxIMPage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxIMPage)
-#. i18n: file: ../src/FcitxSkinPage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, FcitxSkinPage)
-#: rc.cpp:3 rc.cpp:12
-msgid "Form"
-msgstr "Form"
-
 #. i18n: file: ../src/FcitxSkinPage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
 #: rc.cpp:21
 msgid "Get New &Skin..."
 msgstr "获得新皮肤(&S)..."
 
-#: ../src/Module.cpp:95
-msgid "Global Config"
-msgstr "全局配置"
+#. i18n: file: ../src/FcitxSkinPage.ui:72
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:24
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
+msgstr ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">注意：</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功能。</p></body></html>"
 
-#: ../src/Module.cpp:97
-msgid "Global Config for Fcitx"
-msgstr "Fcitx 的全局配置"
-
-#: ../src/Module.cpp:81 ../src/Module.cpp:83
-msgid "Input Method"
-msgstr "输入法"
-
-#: ../src/Module.cpp:120
-msgid "Manage Fcitx Skin"
-msgstr "管理Fcitx 的皮肤"
-
-#: ../src/Module.cpp:118
-msgid "Manage Skin"
-msgstr "管理皮肤"
-
-#: ../src/FcitxConfigPage.cpp:81
-msgid "Not all configuration can be reloaded immediately."
-msgstr "并非所有设置都可以被立即重新加载。"
-
-#: ../src/FcitxConfigPage.cpp:337
-msgid "Other"
-msgstr "其他"
-
-#: ../src/FcitxSkinPage.cpp:148
-#, fuzzy
-msgid "Other candidate "
-msgstr "其他候选词"
-
-#: ../src/FcitxAddonSelector.cpp:369
-msgid "Search Addons"
-msgstr "搜索附加组件"
-
-#: ../src/FcitxIMPage.cpp:167
-msgid "Search Input Method"
-msgstr "搜索输入法"
-
-#: ../src/FcitxSkinPage.cpp:228
-msgid "Skin %1 Cannot be loaded"
-msgstr "皮肤 %1 无法加载"
-
-#: ../src/FcitxIMPage.cpp:55
-msgid "Unknown"
-msgstr "未知"
-
-#: ../src/Module.cpp:73
-msgid "Xuetian Weng"
+#: rc.cpp:30
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
 msgstr "Xuetian Weng"
 
 #: rc.cpp:31
@@ -174,58 +166,4 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wengxt@gmail.com"
 
-#: rc.cpp:30
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Xuetian Weng"
 
-#~ msgid "Addon"
-#~ msgstr "附加组件"
-
-#~ msgid "Clear font setting"
-#~ msgstr "清除字体设置"
-
-#~ msgid "Config"
-#~ msgstr "配置"
-
-#~ msgid "Fcitx Config"
-#~ msgstr "Fcitx配置"
-
-#~ msgid "Fcitx Config Tool"
-#~ msgstr "Fcitx配置工具"
-
-#~ msgid "Fcitx Configuration"
-#~ msgstr "Fcitx 配置"
-
-#~ msgid "Fcitx GUI Config Tool"
-#~ msgstr "Fcitx图形化配置工具"
-
-#~ msgid "Others "
-#~ msgstr "其他"
-
-#~ msgid "Profile"
-#~ msgstr "预置文件"
-
-#~ msgid "Reset"
-#~ msgstr "重置"
-
-#~ msgid "Save"
-#~ msgstr "保存"
-
-#~ msgid "Skin"
-#~ msgstr "皮肤"
-
-#~ msgid "Skin Configuration"
-#~ msgstr "皮肤配置"
-
-#~ msgid "Table"
-#~ msgstr "码表"
-
-#~ msgid "Table Configuration"
-#~ msgstr "码表配置"
-
-#~ msgid "_Exit"
-#~ msgstr "退出(_E)"
-
-#~ msgid "_File"
-#~ msgstr "文件(_F)"
