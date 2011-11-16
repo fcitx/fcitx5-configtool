@@ -284,14 +284,6 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 
         textPainter.end();
 
-        /* FIXME:
-         * Why this LoadImage cause error?
-         * Binding problem?
-         * FreeConfigFile also cause crash.
-         * I don't understand the complex Bind system in Fcitx.
-         *  -Ukyoi
-         */
-
         /*Just define it for convenient:
          * mainbar->backImg == inputbar.mainbar.backImg;
          */
