@@ -17,12 +17,14 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+// KDE
 #include <KGenericFactory>
 #include <KPluginFactory>
 
+// self
 #include "Module.h"
 
-K_PLUGIN_FACTORY ( KcmFcitxFactory,
-                   registerPlugin<Fcitx::Module>(); )
-K_EXPORT_PLUGIN ( KcmFcitxFactory ( "kcm_fcitx" ) )
+K_PLUGIN_FACTORY(KcmFcitxFactory,
+                 registerPlugin<Fcitx::Module>();)
+K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
 

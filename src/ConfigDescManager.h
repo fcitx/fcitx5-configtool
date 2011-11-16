@@ -20,25 +20,28 @@
 #ifndef CONFIGDESCMANAGER_H
 #define CONFIGDESCMANAGER_H
 
+// Qt
 #include <QObject>
 #include <QHash>
+
+// Fcitx
 #include <fcitx-config/fcitx-config.h>
 
 namespace Fcitx
 {
 
-    class ConfigDescManager : public QObject
-    {
-        Q_OBJECT
+class ConfigDescManager : public QObject
+{
+    Q_OBJECT
 
-    public:
-        ConfigDescManager ( QObject* parent = NULL );
-        virtual ~ConfigDescManager();
-        ConfigFileDesc* GetConfigDesc ( const QString& name );
+public:
+    ConfigDescManager(QObject* parent = NULL);
+    virtual ~ConfigDescManager();
+    ConfigFileDesc* GetConfigDesc(const QString& name);
 
-    private:
-        QHash<QString, ConfigFileDesc*>* m_hash;
-    };
+private:
+    QHash<QString, ConfigFileDesc*>* m_hash;
+};
 
 }
 

@@ -20,31 +20,32 @@
 #ifndef FCITXCONFIGPAGE_P_H
 #define FCITXCONFIGPAGE_P_H
 
+// Qt
 #include <QWidget>
 
 class QListView;
 namespace Fcitx
 {
 
-    class FcitxConfigFileItemModel;
-    class FcitxSubConfig;
+class FcitxConfigFileItemModel;
+class FcitxSubConfig;
 
-    class FcitxSubConfigWidget : public QWidget
-    {
-        Q_OBJECT
-    public:
-        FcitxSubConfigWidget ( FcitxSubConfig* subconfig, QWidget* parent = 0 );
-        virtual ~FcitxSubConfigWidget();
+class FcitxSubConfigWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    FcitxSubConfigWidget(FcitxSubConfig* subconfig, QWidget* parent = 0);
+    virtual ~FcitxSubConfigWidget();
 
-    private slots:
-        void OpenSubConfig();
-        void OpenNativeFile();
+private slots:
+    void OpenSubConfig();
+    void OpenNativeFile();
 
-    private:
-        FcitxSubConfig* m_subConfig;
-        FcitxConfigFileItemModel* m_model;
-        QListView* m_listView;
-    };
+private:
+    FcitxSubConfig* m_subConfig;
+    FcitxConfigFileItemModel* m_model;
+    QListView* m_listView;
+};
 
 }
 

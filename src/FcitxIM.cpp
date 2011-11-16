@@ -17,9 +17,12 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+// Qt
+#include <QDBusArgument>
+#include <QDBusMetaType>
+
+// self
 #include "FcitxIM.h"
-#include <qdbusargument.h>
-#include <qdbusmetatype.h>
 
 bool FcitxIM::enabled() const
 {
@@ -56,9 +59,9 @@ void FcitxIM::setUniqueName(const QString& name)
 
 void FcitxIM::registerMetaType()
 {
-    qRegisterMetaType<FcitxIM>("FcitxIM"); 
+    qRegisterMetaType<FcitxIM>("FcitxIM");
     qDBusRegisterMetaType<FcitxIM>();
-    qRegisterMetaType<FcitxIMList>("FcitxIMList"); 
+    qRegisterMetaType<FcitxIMList>("FcitxIMList");
     qDBusRegisterMetaType<FcitxIMList>();
 }
 

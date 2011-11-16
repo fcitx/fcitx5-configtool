@@ -17,59 +17,60 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+// self
 #include "FcitxSubConfig.h"
 
 namespace Fcitx
 {
 
-    FcitxSubConfig* FcitxSubConfig::GetConfigFileSubConfig( const QString& name, const QString& configdesc, const QSet< QString >& fileList)
-    {
-        FcitxSubConfig* subconfig = new FcitxSubConfig;
-        subconfig->m_name = name;
-        subconfig->m_type = SC_ConfigFile;
-        subconfig->m_filelist = fileList;
-        subconfig->m_configdesc = configdesc;
-        return subconfig;
-    }
+FcitxSubConfig* FcitxSubConfig::GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QSet< QString >& fileList)
+{
+    FcitxSubConfig* subconfig = new FcitxSubConfig;
+    subconfig->m_name = name;
+    subconfig->m_type = SC_ConfigFile;
+    subconfig->m_filelist = fileList;
+    subconfig->m_configdesc = configdesc;
+    return subconfig;
+}
 
-    FcitxSubConfig* FcitxSubConfig::GetNativeFileSubConfig( const QString& name, const QString& nativepath, const QSet< QString >& fileList)
-    {
-        FcitxSubConfig* subconfig = new FcitxSubConfig;
-        subconfig->m_name = name;
-        subconfig->m_type = SC_NativeFile;
-        subconfig->m_filelist = fileList;
-        subconfig->m_nativepath = nativepath;
-        return subconfig;
-    }
+FcitxSubConfig* FcitxSubConfig::GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QSet< QString >& fileList)
+{
+    FcitxSubConfig* subconfig = new FcitxSubConfig;
+    subconfig->m_name = name;
+    subconfig->m_type = SC_NativeFile;
+    subconfig->m_filelist = fileList;
+    subconfig->m_nativepath = nativepath;
+    return subconfig;
+}
 
-    FcitxSubConfig::FcitxSubConfig ( QObject* parent ) : QObject ( parent )
-    {
+FcitxSubConfig::FcitxSubConfig(QObject* parent) : QObject(parent)
+{
 
-    }
+}
 
-    SubConfigType FcitxSubConfig::type()
-    {
-        return m_type;
-    }
+SubConfigType FcitxSubConfig::type()
+{
+    return m_type;
+}
 
-    const QString& FcitxSubConfig::name() const
-    {
-        return m_name;
-    }
+const QString& FcitxSubConfig::name() const
+{
+    return m_name;
+}
 
-    const QString& FcitxSubConfig::configdesc() const
-    {
-        return m_configdesc;
-    }
+const QString& FcitxSubConfig::configdesc() const
+{
+    return m_configdesc;
+}
 
-    const QString& FcitxSubConfig::nativepath() const
-    {
-        return m_nativepath;
-    }
+const QString& FcitxSubConfig::nativepath() const
+{
+    return m_nativepath;
+}
 
-    QSet< QString >& FcitxSubConfig::filelist()
-    {
-        return m_filelist;
-    }
+QSet< QString >& FcitxSubConfig::filelist()
+{
+    return m_filelist;
+}
 
 }
