@@ -24,6 +24,7 @@
 #include <QObject>
 
 // KDE
+#include <KWidgetItemDelegate>
 #include <KCategorizedSortFilterProxyModel>
 #include <KLocale>
 
@@ -34,7 +35,7 @@ class KCategorizedView;
 class QListView;
 class KPushButton;
 class KLineEdit;
-class KCategoryDrawerV3;
+class KCategoryDrawer;
 namespace Fcitx
 {
 
@@ -47,10 +48,13 @@ public:
     virtual ~Private();
     void fetchIMList();
     const FcitxIMList& getIMList();
+    int dependantLayoutValue(int value, int width, int totalWidth) const;
 
     class IMModel;
 
     class IMProxyModel;
+    
+    class IMDelegate;
 
     KPushButton* addIMButton;
     KPushButton* removeIMButton;
@@ -62,7 +66,7 @@ public:
 
     IMModel* availIMModel;
     IMProxyModel* availIMProxyModel;
-    KCategoryDrawerV3* categoryDrawer;
+    KCategoryDrawer* categoryDrawer;
 
     IMModel* currentIMModel;
 
@@ -129,6 +133,22 @@ private:
     KLocale locale;
     FcitxIMList filteredIMEntryList;
 };
+
+
+class FcitxIMPage::Private::IMDelegate
+    : public KWidgetItemDelegate
+{
+public:
+    explicit IMDelegate(Private* impage_d, QObject* parent = 0);
+    virtual ~IMDelegate();
+    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+    virtual QList< QWidget* > createItemWidgets() const;
+    virtual void updateItemWidgets(const QList< QWidget* > widgets, const QStyleOptionViewItem& option, const QPersistentModelIndex& index) const;
+    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+private:
+    Private* impage_d;
+};
+
 }
 
 #endif

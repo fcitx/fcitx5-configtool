@@ -17,6 +17,8 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+// Qt
+#include <QPainter>
 
 // KDE
 #include <KCategorizedSortFilterProxyModel>
@@ -31,6 +33,8 @@
 #include "FcitxIM.h"
 #include "ui_FcitxIMPage.h"
 #include "FcitxIMPage_p.h"
+
+#define MARGIN 0
 
 namespace Fcitx
 {
@@ -56,28 +60,27 @@ QModelIndex FcitxIMPage::Private::IMModel::index(int row, int column, const QMod
 
 QVariant FcitxIMPage::Private::IMModel::data(const QModelIndex& index, int role) const
 {
-    if (!index.isValid() || !index.internalPointer()) {
+    if (!index.isValid() || index.row() >= filteredIMEntryList.size()) {
         return QVariant();
     }
 
-    FcitxIM *imEntry = static_cast<FcitxIM*>(index.internalPointer());
+    const FcitxIM& imEntry = filteredIMEntryList.at(index.row());
 
     switch (role) {
 
     case Qt::DisplayRole:
-        return imEntry->name();
+        return imEntry.name();
 
     case Qt::DecorationRole:
         return QVariant();
 
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
 
-    case KCategorizedSortFilterProxyModel::CategorySortRole: {
-        if (imEntry->langCode().isEmpty())
+    case KCategorizedSortFilterProxyModel::CategorySortRole:
+        if (imEntry.langCode().isEmpty())
             return i18n("Unknown");
         else
-            return locale.languageCodeToName(imEntry->langCode());
-    }
+            return locale.languageCodeToName(imEntry.langCode());
 
     default:
         return QVariant();
@@ -108,25 +111,36 @@ void FcitxIMPage::Private::IMModel::setShowOnlyEnabled(bool show)
 
 void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
 {
+    
+    impage_d->availIMProxyModel->setCategorizedModel(false);
     FcitxIMList imEntryList = impage_d->getIMList();
     beginRemoveRows(QModelIndex(), 0, filteredIMEntryList.size());
     filteredIMEntryList.clear();
     endRemoveRows();
-    int row = 0, selectionRow = -1;
+    int row = 0, selectionRow = -1, count = 0;
     Q_FOREACH(const FcitxIM & im, imEntryList) {
         if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
-            beginInsertRows(QModelIndex(), filteredIMEntryList.size(), filteredIMEntryList.size());
+            count ++;
+        }
+    }
+    beginInsertRows(QModelIndex(), 0, count - 1);
+    Q_FOREACH(const FcitxIM & im, imEntryList) {
+        if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
             filteredIMEntryList.append(im);
-            endInsertRows();
             if (im.uniqueName() == selection)
                 selectionRow = row;
             row ++;
         }
     }
+    endInsertRows();
+    
+    impage_d->availIMProxyModel->sort(0);
 
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
     }
+    
+    impage_d->availIMProxyModel->setCategorizedModel(true);
 }
 
 FcitxIMPage::Private::IMProxyModel::IMProxyModel(FcitxIMPage::Private *d, QObject* parent)
@@ -159,6 +173,73 @@ bool FcitxIMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left
 }
 
 
+FcitxIMPage::Private::IMDelegate::IMDelegate(FcitxIMPage::Private *impage_d, QObject *parent)
+    : KWidgetItemDelegate(impage_d->availIMView, parent)
+    , impage_d(impage_d)
+{
+}
+
+FcitxIMPage::Private::IMDelegate::~IMDelegate()
+{
+}
+
+void FcitxIMPage::Private::IMDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (!index.isValid()) {
+        return;
+    }
+
+    painter->save();
+
+    QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
+
+    QRect contentsRect(impage_d->dependantLayoutValue(MARGIN * 2 + option.rect.left(), option.rect.width() - MARGIN * 2, option.rect.width()), MARGIN + option.rect.top(), option.rect.width() - MARGIN * 2, option.rect.height() - MARGIN * 2);
+
+    int lessHorizontalSpace = MARGIN * 2;
+
+    contentsRect.setWidth(contentsRect.width() - lessHorizontalSpace);
+
+    if (option.state & QStyle::State_Selected)
+        painter->setPen(option.palette.highlightedText().color());
+
+    if (impage_d->availIMView->layoutDirection() == Qt::RightToLeft)
+        contentsRect.translate(lessHorizontalSpace, 0);
+
+    painter->save();
+
+    const QFont& font = option.font;
+    QFontMetrics fm(font);
+    painter->setFont(option.font);
+    painter->drawText(contentsRect, Qt::AlignLeft | Qt::AlignTop, fm.elidedText(index.model()->data(index, Qt::DisplayRole).toString(), Qt::ElideRight, contentsRect.width()));
+    painter->restore();
+    painter->restore();
+}
+
+QSize FcitxIMPage::Private::IMDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    int i = 4;
+    const QFont& font = option.font;
+    QFontMetrics fm(font);
+
+    return QSize(fm.width(index.model()->data(index, Qt::DisplayRole).toString()) +
+                 0 + MARGIN * i,
+                 fm.height() + MARGIN * 2);
+}
+
+QList<QWidget*> FcitxIMPage::Private::IMDelegate::createItemWidgets() const
+{
+    QList<QWidget*> widgetList;
+
+    return widgetList;
+}
+
+void FcitxIMPage::Private::IMDelegate::updateItemWidgets(const QList<QWidget*> widgets,
+        const QStyleOptionViewItem &option,
+        const QPersistentModelIndex &index) const
+{
+}
+
+
 FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     m_ui(new Ui::FcitxIMPage),
     d(new Private(this))
@@ -181,15 +262,24 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
 
     d->filterTextEdit->setClearButtonShown(true);
     d->filterTextEdit->setClickMessage(i18n("Search Input Method"));
-    d->availIMModel = new Private::IMModel(d, this);
-    d->availIMProxyModel = new Private::IMProxyModel(d, this);
+
+    d->availIMView->setVerticalScrollMode(QListView::ScrollPerPixel);
+    d->availIMView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     d->categoryDrawer = new KCategoryDrawerV3(d->availIMView);
     d->availIMView->setCategoryDrawer(d->categoryDrawer);
-    d->availIMProxyModel->setCategorizedModel(true);
+    
+    d->availIMProxyModel = new Private::IMProxyModel(d, this);
+    d->availIMModel = new Private::IMModel(d, this);
     d->availIMProxyModel->setSourceModel(d->availIMModel);
+    d->availIMProxyModel->setCategorizedModel(false);
     d->availIMView->setModel(d->availIMProxyModel);
     d->availIMView->setAlternatingBlockColors(true);
     d->availIMView->setSelectionMode(QAbstractItemView::SingleSelection);
+    d->availIMView->setMouseTracking(true);
+    d->availIMView->viewport()->setAttribute(Qt::WA_Hover);
+    
+    Private::IMDelegate *imDelegate = new Private::IMDelegate(d, this);
+    d->availIMView->setItemDelegate(imDelegate);
 
     d->currentIMModel = new Private::IMModel(d, this);
     d->currentIMModel->setShowOnlyEnabled(true);
@@ -389,6 +479,15 @@ void FcitxIMPage::Private::fetchIMList()
 const FcitxIMList& FcitxIMPage::Private::getIMList()
 {
     return m_list;
+}
+
+int FcitxIMPage::Private::dependantLayoutValue(int value, int width, int totalWidth) const
+{
+    if (availIMView->layoutDirection() == Qt::LeftToRight) {
+        return value;
+    }
+
+    return totalWidth - width - value;
 }
 
 FcitxIMPage::~FcitxIMPage()
