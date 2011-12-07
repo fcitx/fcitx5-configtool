@@ -43,14 +43,14 @@ struct SkinPlacement {
 };
 
 struct FcitxSkinInputBar {
-    GenericConfig config;
+    FcitxGenericConfig config;
     int fontSize;
-    ConfigColor inputColor;
-    ConfigColor indexColor;
-    ConfigColor firstCandColor;
-    ConfigColor otherColor;
+    FcitxConfigColor inputColor;
+    FcitxConfigColor indexColor;
+    FcitxConfigColor firstCandColor;
+    FcitxConfigColor otherColor;
     char* backImg;
-    ConfigColor cursorColor;
+    FcitxConfigColor cursorColor;
     int marginTop;
     int marginBottom;
     int marginLeft;
@@ -156,7 +156,7 @@ private:
         int x, int y
     );
     QPixmap LoadImage(const char* skinDir, const char* fileName);
-    QColor ConvertColor(ConfigColor floatColor);
+    QColor ConvertColor(FcitxConfigColor floatColor);
     Private* d;
     QList<FcitxSkinInfo> m_skins;
 };

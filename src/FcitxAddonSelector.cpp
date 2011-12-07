@@ -107,7 +107,7 @@ QVariant FcitxAddonSelector::Private::AddonModel::data(const QModelIndex& index,
         return QString::fromUtf8(addonEntry->comment);
 
     case ConfigurableRole: {
-        ConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+        FcitxConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
         return (bool)(cfdesc != NULL || strlen(addonEntry->subconfig) != 0);
     }
 
@@ -120,8 +120,8 @@ QVariant FcitxAddonSelector::Private::AddonModel::data(const QModelIndex& index,
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
 
     case KCategorizedSortFilterProxyModel::CategorySortRole: {
-        const ConfigOptionDesc *codesc = ConfigDescGetOptionDesc(addonEntry->config.configFile->fileDesc, "Addon", "Category");
-        const ConfigEnum *e = &codesc->configEnum;
+        const FcitxConfigOptionDesc *codesc = FcitxConfigDescGetOptionDesc(addonEntry->config.configFile->fileDesc, "Addon", "Category");
+        const FcitxConfigEnum *e = &codesc->configEnum;
         return QString::fromUtf8(dgettext("fcitx", e->enumDesc[addonEntry->category]));
     }
 
@@ -142,7 +142,7 @@ bool FcitxAddonSelector::Private::AddonModel::setData(const QModelIndex& index, 
         FcitxAddon* addon = static_cast<FcitxAddon*>(index.internalPointer());
         addon->bEnabled = value.toBool();
         QString buf = QString("%1.conf").arg(addon->name);
-        FILE* fp = GetXDGFileUserWithPrefix("addon", buf.toLocal8Bit().data(), "w", NULL);
+        FILE* fp = FcitxXDGGetFileUserWithPrefix("addon", buf.toLocal8Bit().data(), "w", NULL);
         if (fp) {
             fprintf(fp, "[Addon]\nEnabled=%s\n", addon->bEnabled ? "True" : "False");
             fclose(fp);
@@ -337,7 +337,7 @@ void FcitxAddonSelector::Private::AddonDelegate::slotConfigureClicked()
     const QModelIndex index = focusedIndex();
 
     FcitxAddon* addonEntry = static_cast<FcitxAddon*>(index.internalPointer());
-    ConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+    FcitxConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
 
     if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
         FcitxConfigPage* configPage = new FcitxConfigPage(

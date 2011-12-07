@@ -37,10 +37,10 @@ class ConfigDescManager : public QObject
 public:
     ConfigDescManager(QObject* parent = NULL);
     virtual ~ConfigDescManager();
-    ConfigFileDesc* GetConfigDesc(const QString& name);
+    FcitxConfigFileDesc* GetConfigDesc(const QString& name);
 
 private:
-    QHash<QString, ConfigFileDesc*>* m_hash;
+    QHash<QString, FcitxConfigFileDesc*>* m_hash;
 };
 
 }

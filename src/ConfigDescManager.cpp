@@ -28,29 +28,29 @@ namespace Fcitx
 {
 
 ConfigDescManager::ConfigDescManager(QObject* parent) :
-    QObject(parent), m_hash(new QHash<QString, ConfigFileDesc*>)
+    QObject(parent), m_hash(new QHash<QString, FcitxConfigFileDesc*>)
 {
 
 }
 
 ConfigDescManager::~ConfigDescManager()
 {
-    QHash<QString, ConfigFileDesc*>::iterator iter;
+    QHash<QString, FcitxConfigFileDesc*>::iterator iter;
 
     for (iter = m_hash->begin();
             iter != m_hash->end();
             iter ++) {
-        FreeConfigFileDesc(iter.value());
+        FcitxConfigFreeConfigFileDesc(iter.value());
     }
 
     delete m_hash;
 }
 
-ConfigFileDesc* ConfigDescManager::GetConfigDesc(const QString& name)
+FcitxConfigFileDesc* ConfigDescManager::GetConfigDesc(const QString& name)
 {
     if (m_hash->count(name) <= 0) {
-        FILE* fp = GetXDGFileWithPrefix("configdesc", name.toLatin1().constData(), "r", NULL);
-        ConfigFileDesc* cfdesc =  ParseConfigFileDescFp(fp);
+        FILE* fp = FcitxXDGGetFileWithPrefix("configdesc", name.toLatin1().constData(), "r", NULL);
+        FcitxConfigFileDesc* cfdesc =  FcitxConfigParseConfigFileDescFp(fp);
 
         if (cfdesc)
             m_hash->insert(name, cfdesc);

@@ -316,7 +316,7 @@ FcitxIMPage::Private::Private(QObject* parent)
       m_connection(QDBusConnection::sessionBus())
 {
     m_inputmethod = new org::fcitx::Fcitx::InputMethod(
-        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(FcitxGetDisplayNumber()),
+        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
         FCITX_IM_DBUS_PATH,
         m_connection,
         this

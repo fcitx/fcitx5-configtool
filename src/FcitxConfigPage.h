@@ -31,7 +31,7 @@
 #include "ui_FcitxConfigPage.h"
 
 class QStandardItemModel;
-struct _ConfigFileDesc;
+struct _FcitxConfigFileDesc;
 
 class QTabWidget;
 
@@ -46,7 +46,7 @@ class FcitxConfigPage : public QWidget
     Q_OBJECT
 
 public:
-    FcitxConfigPage(QWidget* parent, struct _ConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subConfig = QString());
+    FcitxConfigPage(QWidget* parent, struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subConfig = QString());
     virtual ~FcitxConfigPage();
 
 Q_SIGNALS:
@@ -59,12 +59,12 @@ private:
     void setupConfigUi();
     void setupSubConfigUi();
 
-    struct _ConfigFileDesc* m_cfdesc;
+    struct _FcitxConfigFileDesc* m_cfdesc;
     QString m_prefix;
     QString m_name;
     QTabWidget* m_tabWidget;
     Ui::FcitxConfigPage* m_ui;
-    GenericConfig gconfig;
+    FcitxGenericConfig gconfig;
     FcitxSubConfigParser* m_parser;
 };
 

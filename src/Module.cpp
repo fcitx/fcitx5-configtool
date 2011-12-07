@@ -55,7 +55,7 @@ K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
 namespace Fcitx
 {
 
-const UT_icd addonicd = {sizeof(FcitxAddon), 0, 0, FreeAddon};
+const UT_icd addonicd = {sizeof(FcitxAddon), 0, 0, FcitxAddonFree};
 
 Module::Module(QWidget *parent, const QVariantList &args) :
     KCModule(KcmFcitxFactory::componentData(), parent, args),
@@ -94,7 +94,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     }
 
     {
-        ConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc("config.desc");
+        FcitxConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc("config.desc");
 
         if (configDesc) {
             m_configPage = new FcitxConfigPage(this, configDesc, "", "config", "");
@@ -108,7 +108,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     }
 
     {
-        if (GetAddonConfigDesc() != NULL) {
+        if (FcitxAddonGetConfigDesc() != NULL) {
             addonSelector = new FcitxAddonSelector(this);
             page = new KPageWidgetItem(addonSelector);
             page->setName(i18n("Addon Config"));
@@ -128,9 +128,9 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
     }
 
-    if (GetAddonConfigDesc() != NULL) {
+    if (FcitxAddonGetConfigDesc() != NULL) {
         utarray_new(m_addons, &addonicd);
-        LoadAddonInfo(m_addons);
+        FcitxAddonsLoad(m_addons);
 
         for (FcitxAddon* addon = (FcitxAddon *) utarray_front(m_addons);
                 addon != NULL;

@@ -92,7 +92,7 @@ static const UT_icd place_icd = {sizeof(SkinPlacement), NULL, NULL, NULL };
 
 void ParsePlacement(UT_array* sps, char* placment)
 {
-    UT_array* array = SplitString(placment, ';');
+    UT_array* array = fcitx_utils_split_string(placment, ';');
     char** str;
     utarray_clear(sps);
     for (str = (char**) utarray_front(array);
@@ -180,15 +180,15 @@ void FcitxSkinPage::Private::SkinModel::setSkinList(const QStringList& list)
 
 QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 {
-    ConfigFileDesc* cfdesc = d->module->configDescManager()->GetConfigDesc("skin.desc");
+    FcitxConfigFileDesc* cfdesc = d->module->configDescManager()->GetConfigDesc("skin.desc");
     FILE* fp = NULL;
-    ConfigFile* cfile = NULL;
+    FcitxConfigFile* cfile = NULL;
     QDir dir;
     if (cfdesc)
-        fp = GetXDGFileWithPrefix("", path.toLocal8Bit().data(), "r", NULL);
+        fp = FcitxXDGGetFileWithPrefix("", path.toLocal8Bit().data(), "r", NULL);
 
     if (fp) {
-        cfile = ParseConfigFileFp(fp, cfdesc);
+        cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
         fclose(fp);
     }
 
@@ -200,7 +200,7 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         FcitxSkinInputBar inputbar;
         memset(&inputbar, 0, sizeof(FcitxSkinInputBar));
         FcitxSkinInputBarConfigBind(&inputbar, cfile, cfdesc);
-        ConfigBindSync(&inputbar.config);
+        FcitxConfigBindSync(&inputbar.config);
 
         int marginLeft = inputbar.marginLeft;
         int marginRight = inputbar.marginRight;
@@ -363,7 +363,7 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         free(mainbar->placement);
         utarray_done(&placement);
 
-        FreeConfigFile(cfile);
+        FcitxConfigFreeConfigFile(cfile);
 
         return destPixmap;
         // return inputBarDestPixmap;
@@ -385,7 +385,7 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
     }
 }
 
-QColor FcitxSkinPage::Private::SkinModel::ConvertColor(ConfigColor floatColor)
+QColor FcitxSkinPage::Private::SkinModel::ConvertColor(FcitxConfigColor floatColor)
 {
     /**
     * 把浮点颜色转化成RGB整数颜色。
@@ -411,7 +411,7 @@ QColor FcitxSkinPage::Private::SkinModel::ConvertColor(ConfigColor floatColor)
 QPixmap FcitxSkinPage::Private::SkinModel::LoadImage(const char* skinDir, const char* fileName)
 {
     char* image = NULL;
-    FILE* fp = GetXDGFileWithPrefix(skinDir, fileName, "r", &image);
+    FILE* fp = FcitxXDGGetFileWithPrefix(skinDir, fileName, "r", &image);
     QPixmap pixmap;
     if (fp) {
         fclose(fp);
@@ -698,21 +698,21 @@ void FcitxSkinPage::Private::load()
     m_subConfig = m_parser.getSubConfig("Skin");
     skinModel->setSkinList(m_subConfig->filelist().toList());
 
-    ConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
+    FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
     FILE* fp = NULL;
-    ConfigFile* cfile = NULL;
+    FcitxConfigFile* cfile = NULL;
     QString skinName;
     if (cfdesc)
-        fp = GetXDGFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
+        fp = FcitxXDGGetFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
     if (fp) {
-        cfile = ParseConfigFileFp(fp, cfdesc);
+        cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
         fclose(fp);
     }
     if (cfile) {
-        ConfigOption* option = ConfigFileGetOption(cfile, "ClassicUI", "SkinType");
+        FcitxConfigOption* option = FcitxConfigFileGetOption(cfile, "ClassicUI", "SkinType");
         if (option)
             skinName = QString::fromUtf8(option->rawValue);
-        FreeConfigFile(cfile);
+        FcitxConfigFreeConfigFile(cfile);
     }
 
     int row = 0, currentSkin = -1;
@@ -734,30 +734,30 @@ void FcitxSkinPage::Private::save()
     if (skinView->currentIndex().isValid()) {
         QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
 
-        ConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
+        FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
         FILE* fp = NULL;
-        ConfigFile* cfile = NULL;
+        FcitxConfigFile* cfile = NULL;
         if (cfdesc)
-            fp = GetXDGFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
+            fp = FcitxXDGGetFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
         if (fp) {
-            cfile = ParseConfigFileFp(fp, cfdesc);
+            cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
             fclose(fp);
         }
         if (cfile) {
-            ConfigOption* option = ConfigFileGetOption(cfile, "ClassicUI", "SkinType");
+            FcitxConfigOption* option = FcitxConfigFileGetOption(cfile, "ClassicUI", "SkinType");
             if (option) {
                 if (option->rawValue)
                     free(option->rawValue);
                 option->rawValue = strdup(skinName.toUtf8().data());
             }
-            GenericConfig gconfig;
+            FcitxGenericConfig gconfig;
             gconfig.configFile = cfile;
-            fp = GetXDGFileUserWithPrefix("conf", "fcitx-classic-ui.config", "w", NULL);
+            fp = FcitxXDGGetFileUserWithPrefix("conf", "fcitx-classic-ui.config", "w", NULL);
             if (fp) {
-                SaveConfigFileFp(fp, &gconfig, cfdesc);
+                FcitxConfigSaveConfigFileFp(fp, &gconfig, cfdesc);
                 fclose(fp);
             }
-            FreeConfigFile(cfile);
+            FcitxConfigFreeConfigFile(cfile);
         }
     }
 }
@@ -767,7 +767,7 @@ void FcitxSkinPage::Private::deleteSkin()
     if (skinView->currentIndex().isValid()) {
         FcitxSkinInfo* skin = static_cast<FcitxSkinInfo*>(skinView->currentIndex().internalPointer());
         char* path = NULL;
-        FILE* fp = GetXDGFileWithPrefix("", skin->path.toLocal8Bit().data(), "r", &path);
+        FILE* fp = FcitxXDGGetFileWithPrefix("", skin->path.toLocal8Bit().data(), "r", &path);
 
         if (fp)
             fclose(fp);
@@ -817,7 +817,7 @@ void FcitxSkinPage::Private::configureSkin()
         FcitxSkinInfo* skin = static_cast<FcitxSkinInfo*>(ind.internalPointer());
         KDialog configDialog;
         ConfigDescManager manager;
-        ConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("skin.desc");
+        FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("skin.desc");
 
         if (cfdesc) {
             FcitxConfigPage* configPage = new FcitxConfigPage(

@@ -82,7 +82,7 @@ QSet<QString> FcitxSubConfigParser::getFiles(const QString& name)
         return QSet<QString> ();
     FcitxSubConfigPattern* pattern = m_subConfigMap[name];
     size_t size;
-    char** xdgpath = GetXDGPath(&size, "XDG_CONFIG_HOME", ".config" , PACKAGE , DATADIR, PACKAGE);
+    char** xdgpath = FcitxXDGGetPath(&size, "XDG_CONFIG_HOME", ".config" , PACKAGE , DATADIR, PACKAGE);
 
     QSet<QString> result;
     for (size_t i = 0; i < size; i ++) {
@@ -94,7 +94,7 @@ QSet<QString> FcitxSubConfigParser::getFiles(const QString& name)
         }
     }
 
-    FreeXDGPath(xdgpath);
+    FcitxXDGFreePath(xdgpath);
 
     return result;
 }

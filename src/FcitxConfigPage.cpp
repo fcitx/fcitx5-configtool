@@ -56,15 +56,17 @@
 #include "keyserver_x11.h"
 #include "ConfigDescManager.h"
 
+#define RoundColor(c) ((c)>=0?((c)<=255?c:255):0)
+
 namespace Fcitx
 {
-static bool KeySequenceToHotkey(const QKeySequence& keyseq, HOTKEYS* hotkey);
-static QKeySequence HotkeyToKeySequence(HOTKEYS* hotkey);
+static bool KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey);
+static QKeySequence HotkeyToKeySequence(FcitxHotkey* hotkey);
 
 static
-void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *option, void *value, ConfigSync sync, void *arg);
+void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxConfigOption *option, void *value, FcitxConfigSync sync, void *arg);
 
-FcitxConfigPage::FcitxConfigPage(QWidget* parent, _ConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig) :
+FcitxConfigPage::FcitxConfigPage(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig) :
     QWidget(parent), m_cfdesc(cfdesc), m_prefix(prefix), m_name(name), m_ui(new Ui::FcitxConfigPage), m_parser(NULL)
 {
     m_parser = new FcitxSubConfigParser(subconfig, this);
@@ -76,7 +78,7 @@ FcitxConfigPage::FcitxConfigPage(QWidget* parent, _ConfigFileDesc* cfdesc, const
 
 FcitxConfigPage::~FcitxConfigPage()
 {
-    FreeConfigFile(gconfig.configFile);
+    FcitxConfigFreeConfigFile(gconfig.configFile);
     delete m_ui;
 }
 
@@ -86,13 +88,13 @@ void FcitxConfigPage::buttonClicked(KDialog::ButtonCode code)
         return;
 
     if (code == KDialog::Default) {
-        ResetConfigToDefaultValue(&this->gconfig);
-        ConfigBindSync(&this->gconfig);
+        FcitxConfigResetConfigToDefaultValue(&this->gconfig);
+        FcitxConfigBindSync(&this->gconfig);
     } else if (code == KDialog::Ok) {
-        FILE* fp = GetXDGFileUserWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "wt", NULL);
+        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "wt", NULL);
 
         if (fp) {
-            SaveConfigFileFp(fp, &gconfig, m_cfdesc);
+            FcitxConfigSaveConfigFileFp(fp, &gconfig, m_cfdesc);
             fclose(fp);
         }
 
@@ -114,12 +116,12 @@ void FcitxConfigPage::load()
 {
     if (m_cfdesc) {
         FILE *fp;
-        fp = GetXDGFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
         if (!fp)
             return;
 
-        gconfig.configFile = ParseIniFp(fp, gconfig.configFile);
-        ConfigBindSync(&gconfig);
+        gconfig.configFile = FcitxConfigParseIniFp(fp, gconfig.configFile);
+        FcitxConfigBindSync(&gconfig);
     }
 }
 
@@ -130,8 +132,8 @@ void FcitxConfigPage::setupConfigUi()
         bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
 
         FILE *fp;
-        fp = GetXDGFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
-        ConfigFile *cfile = ParseConfigFileFp(fp, m_cfdesc);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
+        FcitxConfigFile *cfile = FcitxConfigParseConfigFileFp(fp, m_cfdesc);
 
         if (fp)
             fclose(fp);
@@ -141,13 +143,13 @@ void FcitxConfigPage::setupConfigUi()
 
         gconfig.configFile = cfile;
 
-        ConfigGroupDesc *cgdesc = NULL;
+        FcitxConfigGroupDesc *cgdesc = NULL;
 
-        ConfigOptionDesc *codesc = NULL;
+        FcitxConfigOptionDesc *codesc = NULL;
 
         for (cgdesc = m_cfdesc->groupsDesc;
                 cgdesc != NULL;
-                cgdesc = (ConfigGroupDesc*) cgdesc->hh.next) {
+                cgdesc = (FcitxConfigGroupDesc*) cgdesc->hh.next) {
             codesc = cgdesc->optionsDesc;
 
             if (codesc == NULL)
@@ -176,7 +178,7 @@ void FcitxConfigPage::setupConfigUi()
             int i = 0;
 
             for (; codesc != NULL;
-                    codesc = (ConfigOptionDesc*) codesc->hh.next, i++) {
+                    codesc = (FcitxConfigOptionDesc*) codesc->hh.next, i++) {
                 QString s;
 
                 if (codesc->desc && strlen(codesc->desc) != 0)
@@ -229,7 +231,7 @@ void FcitxConfigPage::setupConfigUi()
 
                 case T_Enum: {
                     int i;
-                    ConfigEnum *e = &codesc->configEnum;
+                    FcitxConfigEnum *e = &codesc->configEnum;
                     KComboBox* combobox = new KComboBox(this);
                     inputWidget = combobox;
 
@@ -288,7 +290,7 @@ void FcitxConfigPage::setupConfigUi()
                 if (inputWidget) {
                     QLabel* label = new QLabel(s, this);
                     formLayout->addRow(label, inputWidget);
-                    ConfigBindValue(cfile, cgdesc->groupName, codesc->optionName, NULL, SyncFilterFunc, argument);
+                    FcitxConfigBindValue(cfile, cgdesc->groupName, codesc->optionName, NULL, SyncFilterFunc, argument);
                 }
             }
 
@@ -300,7 +302,7 @@ void FcitxConfigPage::setupConfigUi()
             m_ui->tabWidget->addTab(main, QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName)));
         }
 
-        ConfigBindSync(&gconfig);
+        FcitxConfigBindSync(&gconfig);
     }
 
 }
@@ -342,12 +344,12 @@ void FcitxConfigPage::setupSubConfigUi()
     }
 }
 
-void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *option, void *value, ConfigSync sync, void *arg)
+void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxConfigOption *option, void *value, FcitxConfigSync sync, void *arg)
 {
     Q_UNUSED(gconfig);
     Q_UNUSED(group);
     Q_UNUSED(value);
-    ConfigOptionDesc *codesc = option->optionDesc;
+    FcitxConfigOptionDesc *codesc = option->optionDesc;
 
     if (!codesc)
         return;
@@ -403,7 +405,7 @@ void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *op
         break;
 
         case T_Enum: {
-            ConfigEnum* cenum = &codesc->configEnum;
+            FcitxConfigEnum* cenum = &codesc->configEnum;
             int index = 0, i;
 
             for (i = 0; i < cenum->enumCount; i++) {
@@ -420,9 +422,9 @@ void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *op
         break;
 
         case T_Hotkey: {
-            HOTKEYS hotkey[2];
+            FcitxHotkey hotkey[2];
 
-            SetHotKey(option->rawValue, hotkey);
+            FcitxHotkeySetKey(option->rawValue, hotkey);
 
             QHBoxLayout* hbox = static_cast<QHBoxLayout*>(arg);
             KKeySequenceWidget* keyseq[2];
@@ -509,7 +511,7 @@ void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *op
 
         case T_Enum: {
             KComboBox* combobox = static_cast<KComboBox*>(arg);
-            ConfigEnum* cenum = &codesc->configEnum;
+            FcitxConfigEnum* cenum = &codesc->configEnum;
             int index = 0;
             index = combobox->currentIndex();
             option->rawValue = strdup(cenum->enumDesc[index]);
@@ -525,11 +527,11 @@ void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *op
             char *strkey[2] = { NULL, NULL };
             int j = 0, k = 0;
 
-            HOTKEYS hotkey[2];
+            FcitxHotkey hotkey[2];
 
             for (j = 0; j < 2 ; j ++) {
                 if (KeySequenceToHotkey(keyseq[j]->keySequence(), &hotkey[j])) {
-                    strkey[k] = GetKeyString(hotkey[j].sym, hotkey[j].state);
+                    strkey[k] = FcitxHotkeyGetKeyString(hotkey[j].sym, hotkey[j].state);
                     if (strkey[k])
                         k ++;
                 }
@@ -563,28 +565,28 @@ void SyncFilterFunc(GenericConfig* gconfig, ConfigGroup *group, ConfigOption *op
 
 
 bool
-KeySequenceToHotkey(const QKeySequence& keyseq, HOTKEYS* hotkey)
+KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey)
 {
     if (keyseq.count() != 1)
         return false;
     int key = keyseq[0];
     hotkey->sym = (FcitxKeySym) keyQtToSym(key);
-    hotkey->state = KEY_NONE;
+    hotkey->state = FcitxKeyState_None;
 
     if (key & Qt::CTRL)
-        hotkey->state |= KEY_CTRL_COMP;
+        hotkey->state |= FcitxKeyState_Ctrl;
 
     if (key & Qt::ALT)
-        hotkey->state |= KEY_ALT_COMP;
+        hotkey->state |= FcitxKeyState_Alt;
 
     if (key & Qt::SHIFT)
-        hotkey->state |= KEY_SHIFT_COMP;
+        hotkey->state |= FcitxKeyState_Shift;
 
     return true;
 }
 
 QKeySequence
-HotkeyToKeySequence(HOTKEYS* hotkey)
+HotkeyToKeySequence(FcitxHotkey* hotkey)
 {
     int state = hotkey->state;
     FcitxKeySym keyval = hotkey->sym;
@@ -592,17 +594,17 @@ HotkeyToKeySequence(HOTKEYS* hotkey)
     Qt::KeyboardModifiers qstate = Qt::NoModifier;
 
     int count = 1;
-    if (state & KEY_ALT_COMP) {
+    if (state & FcitxKeyState_Alt) {
         qstate |= Qt::AltModifier;
         count ++;
     }
 
-    if (state & KEY_SHIFT_COMP) {
+    if (state & FcitxKeyState_Shift) {
         qstate |= Qt::ShiftModifier;
         count ++;
     }
 
-    if (state & KEY_CTRL_COMP) {
+    if (state & FcitxKeyState_Ctrl) {
         qstate |= Qt::ControlModifier;
         count ++;
     }

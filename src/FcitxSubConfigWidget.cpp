@@ -152,7 +152,7 @@ void FcitxSubConfigWidget::OpenSubConfig()
     FcitxConfigFile* configfile = static_cast<FcitxConfigFile*>(ind.internalPointer());
     KDialog configDialog;
     ConfigDescManager manager;
-    ConfigFileDesc* cfdesc = manager.GetConfigDesc(m_subConfig->configdesc());
+    FcitxConfigFileDesc* cfdesc = manager.GetConfigDesc(m_subConfig->configdesc());
 
     if (cfdesc) {
         FcitxConfigPage* configPage = new FcitxConfigPage(
@@ -175,11 +175,11 @@ void FcitxSubConfigWidget::OpenNativeFile()
     QSet< QString >& filelist = m_subConfig->filelist();
     char *newpath = NULL;
     if (filelist.size() > 0) {
-        FILE* fp = GetXDGFileWithPrefix("", filelist.begin()->toLocal8Bit().data(), "r", &newpath);
+        FILE* fp = FcitxXDGGetFileWithPrefix("", filelist.begin()->toLocal8Bit().data(), "r", &newpath);
         if (fp)
             fclose(fp);
     } else {
-        FILE* fp = GetXDGFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
+        FILE* fp = FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
         if (fp) {
             filelist.insert(m_subConfig->nativepath());
             fclose(fp);
