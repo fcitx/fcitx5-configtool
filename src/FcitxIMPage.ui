@@ -29,6 +29,19 @@
      <item>
       <widget class="KCategorizedView" name="availIMView"/>
      </item>
+     <item>
+      <widget class="QCheckBox" name="onlyCurrentLanguageCheckBox">
+       <property name="text">
+        <string>Only &amp;Show Current Language</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="tristate">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

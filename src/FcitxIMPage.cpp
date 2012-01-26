@@ -156,15 +156,18 @@ FcitxIMPage::Private::IMProxyModel::~IMProxyModel()
 bool FcitxIMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
     Q_UNUSED(source_parent)
+    
+    const QModelIndex index = sourceModel()->index(source_row, 0);
+    const FcitxIM* imEntry = static_cast<FcitxIM*>(index.internalPointer());
+    bool flag = true; 
 
     if (!impage_d->filterTextEdit->text().isEmpty()) {
-        const QModelIndex index = sourceModel()->index(source_row, 0);
-        const FcitxIM* imEntry = static_cast<FcitxIM*>(index.internalPointer());
-        return imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
+        flag &= imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
                || imEntry->uniqueName().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
                || imEntry->langCode().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive);
     }
-    return true;
+    flag &= (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
+    return flag;
 }
 
 bool FcitxIMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left, const QModelIndex& right) const
@@ -258,6 +261,7 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     d->availIMView = m_ui->availIMView;
     d->currentIMView = m_ui->currentIMView;
 
+    d->onlyCurrentLanguageCheckBox = m_ui->onlyCurrentLanguageCheckBox;
     d->filterTextEdit = m_ui->filterTextEdit;
 
     d->filterTextEdit->setClearButtonShown(true);
@@ -287,6 +291,7 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     d->currentIMView->setSelectionMode(QAbstractItemView::SingleSelection);
 
     connect(d->filterTextEdit, SIGNAL(textChanged(QString)), d->availIMProxyModel, SLOT(invalidate()));
+    connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), d->availIMProxyModel, SLOT(invalidate()));
     connect(d->availIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(availIMSelectionChanged()));
     connect(d->currentIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(currentIMCurrentChanged()));
     connect(d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(addIM()));

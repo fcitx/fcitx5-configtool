@@ -31,6 +31,7 @@
 // self
 #include "FcitxIMPage.h"
 
+class QCheckBox;
 class KCategorizedView;
 class QListView;
 class KPushButton;
@@ -69,6 +70,7 @@ public:
     KCategoryDrawer* categoryDrawer;
 
     IMModel* currentIMModel;
+    QCheckBox* onlyCurrentLanguageCheckBox;
 
 Q_SIGNALS:
     void updateIMList(QString selection);
