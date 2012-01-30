@@ -37,7 +37,7 @@ enum FillRule {
 
 
 struct SkinPlacement {
-    char name[MAX_STATUS_NAME + 1];
+    char *name;
     int x;
     int y;
 };

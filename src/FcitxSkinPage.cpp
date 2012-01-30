@@ -83,12 +83,16 @@ CONFIG_BINDING_REGISTER("SkinTrayIcon","Inactive", )
 
 CONFIG_BINDING_END()
 
+static inline void FreePlacement(void* arg) {
+    SkinPlacement* sp = (SkinPlacement*) arg;
+    free(sp->name);
+}
 
 namespace Fcitx
 {
 const int margin = 5;
 
-static const UT_icd place_icd = {sizeof(SkinPlacement), NULL, NULL, NULL };
+static const UT_icd place_icd = {sizeof(SkinPlacement), NULL, NULL, FreePlacement};
 
 void ParsePlacement(UT_array* sps, char* placment)
 {
@@ -102,20 +106,16 @@ void ParsePlacement(UT_array* sps, char* placment)
         char* p = strchr(s, ':');
         if (p == NULL)
             continue;
-        if ((strchr(s, ':') - s) > MAX_STATUS_NAME)
-            continue;
-
         int len = p - s;
         SkinPlacement sp;
-        strncpy(sp.name, s, len);
-        sp.name[len] = '\0';
+        sp.name = strndup(s, len);
         int ret = sscanf(p + 1, "%d,%d", &sp.x, &sp.y);
         if (ret != 2)
             continue;
         utarray_push_back(sps, &sp);
     }
 
-    utarray_free(array);
+    fcitx_utils_free_string_list(array);
 }
 
 FcitxSkinPage::Private::SkinModel::SkinModel(Private* p, QObject* parent) :
@@ -180,6 +180,7 @@ void FcitxSkinPage::Private::SkinModel::setSkinList(const QStringList& list)
 
 QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 {
+    
     FcitxConfigFileDesc* cfdesc = d->module->configDescManager()->GetConfigDesc("skin.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
