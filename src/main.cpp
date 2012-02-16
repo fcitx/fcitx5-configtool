@@ -18,7 +18,6 @@
  ***************************************************************************/
 
 // KDE
-#include <KGenericFactory>
 #include <KPluginFactory>
 
 // self
