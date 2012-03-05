@@ -91,7 +91,7 @@ void FcitxConfigPage::buttonClicked(KDialog::ButtonCode code)
         FcitxConfigResetConfigToDefaultValue(&this->gconfig);
         FcitxConfigBindSync(&this->gconfig);
     } else if (code == KDialog::Ok) {
-        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "wt", NULL);
+        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "w", NULL);
 
         if (fp) {
             FcitxConfigSaveConfigFileFp(fp, &gconfig, m_cfdesc);
@@ -116,7 +116,7 @@ void FcitxConfigPage::load()
 {
     if (m_cfdesc) {
         FILE *fp;
-        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
         if (!fp)
             return;
 
@@ -132,7 +132,7 @@ void FcitxConfigPage::setupConfigUi()
         bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
 
         FILE *fp;
-        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "rt", NULL);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
         FcitxConfigFile *cfile = FcitxConfigParseConfigFileFp(fp, m_cfdesc);
 
         if (fp)
