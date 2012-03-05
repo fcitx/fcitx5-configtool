@@ -132,7 +132,6 @@ private Q_SLOTS:
 private:
     Private* impage_d;
     bool showOnlyEnabled;
-    KLocale locale;
     FcitxIMList filteredIMEntryList;
 };
 

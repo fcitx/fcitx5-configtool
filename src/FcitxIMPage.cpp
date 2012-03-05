@@ -38,11 +38,22 @@
 
 namespace Fcitx
 {
+
+static QString languageName(const QString& langCode)
+{
+    if (langCode.isEmpty()) {
+        return i18n("Unknown");
+    }
+    else if (langCode == "*")
+        return i18n("Multilingual");
+    else
+        return KGlobal::locale()->languageCodeToName(langCode);
+}
+
 FcitxIMPage::Private::IMModel::IMModel(FcitxIMPage::Private *d, QObject* parent)
     : QAbstractListModel(parent),
       impage_d(d),
-      showOnlyEnabled(false),
-      locale("kcm_fcitx")
+      showOnlyEnabled(false)
 {
     connect(d, SIGNAL(updateIMList(QString)), this, SLOT(filterIMEntryList(QString)));
 }
@@ -77,10 +88,8 @@ QVariant FcitxIMPage::Private::IMModel::data(const QModelIndex& index, int role)
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
 
     case KCategorizedSortFilterProxyModel::CategorySortRole:
-        if (imEntry.langCode().isEmpty())
-            return i18n("Unknown");
-        else
-            return locale.languageCodeToName(imEntry.langCode());
+        
+        return languageName(imEntry.langCode());
 
     default:
         return QVariant();
@@ -161,12 +170,14 @@ bool FcitxIMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const 
     const FcitxIM* imEntry = static_cast<FcitxIM*>(index.internalPointer());
     bool flag = true; 
 
+    flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
     if (!impage_d->filterTextEdit->text().isEmpty()) {
-        flag &= imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
+        flag = flag && 
+               (imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
                || imEntry->uniqueName().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
-               || imEntry->langCode().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive);
+               || imEntry->langCode().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
+               || languageName(imEntry->langCode()).contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive));
     }
-    flag &= (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
     return flag;
 }
 

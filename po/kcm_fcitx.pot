@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-01-27 00:12+0800\n"
+"POT-Creation-Date: 2012-03-05 12:59+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,23 +33,27 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: ../src/FcitxIMPage.cpp:81
+#: ../src/FcitxIMPage.cpp:82
+msgid "Multilingual"
+msgstr ""
+
+#: ../src/FcitxIMPage.cpp:84
 msgid "Unknown"
 msgstr ""
 
-#: ../src/FcitxIMPage.cpp:268
+#: ../src/FcitxIMPage.cpp:272
 msgid "Search Input Method"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:218
+#: ../src/FcitxSkinPage.cpp:219
 msgid "First candidate"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:219
+#: ../src/FcitxSkinPage.cpp:220
 msgid "Other candidate"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:373
+#: ../src/FcitxSkinPage.cpp:374
 msgid "Skin %1 Cannot be loaded"
 msgstr ""
 
