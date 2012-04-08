@@ -582,6 +582,9 @@ KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey)
     if (key & Qt::SHIFT)
         hotkey->state |= FcitxKeyState_Shift;
 
+    if (key & Qt::META)
+        hotkey->state |= FcitxKeyState_Super;
+
     return true;
 }
 
@@ -606,6 +609,11 @@ HotkeyToKeySequence(FcitxHotkey* hotkey)
 
     if (state & FcitxKeyState_Ctrl) {
         qstate |= Qt::ControlModifier;
+        count ++;
+    }
+
+    if (state & FcitxKeyState_Super) {
+        qstate |= Qt::MetaModifier;
         count ++;
     }
 
