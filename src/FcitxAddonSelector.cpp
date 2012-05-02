@@ -333,26 +333,27 @@ void FcitxAddonSelector::Private::AddonDelegate::emitChanged()
 
 void FcitxAddonSelector::Private::AddonDelegate::slotConfigureClicked()
 {
-    KDialog configDialog;
     const QModelIndex index = focusedIndex();
 
     FcitxAddon* addonEntry = static_cast<FcitxAddon*>(index.internalPointer());
     FcitxConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
 
     if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
+        QPointer<KDialog> configDialog(new KDialog);
         FcitxConfigPage* configPage = new FcitxConfigPage(
-            &configDialog,
+            configDialog,
             cfdesc,
             QString::fromUtf8("conf"),
             QString::fromUtf8(addonEntry->name).append(".config") ,
             QString::fromUtf8(addonEntry->subconfig)
         );
-        configDialog.setWindowIcon(KIcon("fcitx"));
-        configDialog.setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-        configDialog.setMainWidget(configPage);
-        connect(&configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+        configDialog->setWindowIcon(KIcon("fcitx"));
+        configDialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
+        configDialog->setMainWidget(configPage);
+        connect(configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
 
-        configDialog.exec();
+        configDialog->exec();
+        delete configDialog;
     }
 }
 

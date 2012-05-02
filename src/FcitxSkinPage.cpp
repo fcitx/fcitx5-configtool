@@ -22,6 +22,7 @@
 #include <QSortFilterProxyModel>
 #include <QPainter>
 #include <QFile>
+#include <QPointer>
 
 // KDE
 #include <KDebug>
@@ -180,7 +181,7 @@ void FcitxSkinPage::Private::SkinModel::setSkinList(const QStringList& list)
 
 QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 {
-    
+
     FcitxConfigFileDesc* cfdesc = d->module->configDescManager()->GetConfigDesc("skin.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
@@ -816,24 +817,25 @@ void FcitxSkinPage::Private::configureSkin()
         if (!ind.isValid())
             return;
         FcitxSkinInfo* skin = static_cast<FcitxSkinInfo*>(ind.internalPointer());
-        KDialog configDialog;
         ConfigDescManager manager;
         FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("skin.desc");
 
         if (cfdesc) {
+            QPointer<KDialog> configDialog(new KDialog);
             FcitxConfigPage* configPage = new FcitxConfigPage(
-                &configDialog,
+                configDialog,
                 cfdesc,
                 "",
                 skin->path
             );
 
-            configDialog.setWindowIcon(KIcon("fcitx"));
-            configDialog.setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-            configDialog.setMainWidget(configPage);
-            connect(&configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+            configDialog->setWindowIcon(KIcon("fcitx"));
+            configDialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
+            configDialog->setMainWidget(configPage);
+            connect(configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
 
-            configDialog.exec();
+            configDialog->exec();
+            delete configDialog;
 
             load();
         }
@@ -900,11 +902,12 @@ void FcitxSkinPage::save()
 
 void FcitxSkinPage::installButtonClicked()
 {
-    KNS3::DownloadDialog dialog("fcitx-skin.knsrc");
-    dialog.exec();
-    foreach(const KNS3::Entry & e, dialog.changedEntries()) {
+    QPointer<KNS3::DownloadDialog> dialog(new KNS3::DownloadDialog("fcitx-skin.knsrc"));
+    dialog->exec();
+    foreach(const KNS3::Entry & e, dialog->changedEntries()) {
         kDebug() << "Changed Entry: " << e.name();
     }
+    delete dialog;
     load();
 }
 
