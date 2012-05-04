@@ -246,11 +246,6 @@ void FcitxIMPage::invalidate()
     d->availIMProxyModel->setCategorizedModel(false);
     d->availIMProxyModel->invalidate();
     d->availIMProxyModel->sort(0);
-    QTimer::singleShot(0, this, SLOT(invalidate2()));
-}
-
-void FcitxIMPage::invalidate2()
-{
     d->availIMProxyModel->setCategorizedModel(true);
 }
 
