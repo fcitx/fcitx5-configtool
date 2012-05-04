@@ -46,6 +46,8 @@ Q_SIGNALS:
 public Q_SLOTS:
     void save();
     void load();
+    void invalidate();
+    void invalidate2();
 private:
     Ui::FcitxIMPage* m_ui;
 

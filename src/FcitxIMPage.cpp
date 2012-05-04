@@ -82,13 +82,10 @@ QVariant FcitxIMPage::Private::IMModel::data(const QModelIndex& index, int role)
     case Qt::DisplayRole:
         return imEntry.name();
 
-    case Qt::DecorationRole:
-        return QVariant();
-
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
 
     case KCategorizedSortFilterProxyModel::CategorySortRole:
-        
+
         return languageName(imEntry.langCode());
 
     default:
@@ -120,7 +117,6 @@ void FcitxIMPage::Private::IMModel::setShowOnlyEnabled(bool show)
 
 void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
 {
-    
     impage_d->availIMProxyModel->setCategorizedModel(false);
     FcitxIMList imEntryList = impage_d->getIMList();
     beginRemoveRows(QModelIndex(), 0, filteredIMEntryList.size());
@@ -142,13 +138,13 @@ void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
         }
     }
     endInsertRows();
-    
+
     impage_d->availIMProxyModel->sort(0);
 
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
     }
-    
+
     impage_d->availIMProxyModel->setCategorizedModel(true);
 }
 
@@ -165,14 +161,14 @@ FcitxIMPage::Private::IMProxyModel::~IMProxyModel()
 bool FcitxIMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
     Q_UNUSED(source_parent)
-    
+
     const QModelIndex index = sourceModel()->index(source_row, 0);
     const FcitxIM* imEntry = static_cast<FcitxIM*>(index.internalPointer());
-    bool flag = true; 
+    bool flag = true;
 
     flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
     if (!impage_d->filterTextEdit->text().isEmpty()) {
-        flag = flag && 
+        flag = flag &&
                (imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
                || imEntry->uniqueName().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
                || imEntry->langCode().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
@@ -185,74 +181,6 @@ bool FcitxIMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left
 {
     return QString(static_cast<FcitxIM*>(left.internalPointer())->name()).compare((QString)(static_cast<FcitxIM*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
 }
-
-
-FcitxIMPage::Private::IMDelegate::IMDelegate(FcitxIMPage::Private *impage_d, QObject *parent)
-    : KWidgetItemDelegate(impage_d->availIMView, parent)
-    , impage_d(impage_d)
-{
-}
-
-FcitxIMPage::Private::IMDelegate::~IMDelegate()
-{
-}
-
-void FcitxIMPage::Private::IMDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    if (!index.isValid()) {
-        return;
-    }
-
-    painter->save();
-
-    QApplication::style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &option, painter, 0);
-
-    QRect contentsRect(impage_d->dependantLayoutValue(MARGIN * 2 + option.rect.left(), option.rect.width() - MARGIN * 2, option.rect.width()), MARGIN + option.rect.top(), option.rect.width() - MARGIN * 2, option.rect.height() - MARGIN * 2);
-
-    int lessHorizontalSpace = MARGIN * 2;
-
-    contentsRect.setWidth(contentsRect.width() - lessHorizontalSpace);
-
-    if (option.state & QStyle::State_Selected)
-        painter->setPen(option.palette.highlightedText().color());
-
-    if (impage_d->availIMView->layoutDirection() == Qt::RightToLeft)
-        contentsRect.translate(lessHorizontalSpace, 0);
-
-    painter->save();
-
-    const QFont& font = option.font;
-    QFontMetrics fm(font);
-    painter->setFont(option.font);
-    painter->drawText(contentsRect, Qt::AlignLeft | Qt::AlignTop, fm.elidedText(index.model()->data(index, Qt::DisplayRole).toString(), Qt::ElideRight, contentsRect.width()));
-    painter->restore();
-    painter->restore();
-}
-
-QSize FcitxIMPage::Private::IMDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
-{
-    int i = 4;
-    const QFont& font = option.font;
-    QFontMetrics fm(font);
-
-    return QSize(fm.width(index.model()->data(index, Qt::DisplayRole).toString()) +
-                 0 + MARGIN * i,
-                 fm.height() + MARGIN * 2);
-}
-
-QList<QWidget*> FcitxIMPage::Private::IMDelegate::createItemWidgets() const
-{
-    QList<QWidget*> widgetList;
-
-    return widgetList;
-}
-
-void FcitxIMPage::Private::IMDelegate::updateItemWidgets(const QList<QWidget*> widgets,
-        const QStyleOptionViewItem &option,
-        const QPersistentModelIndex &index) const
-{
-}
-
 
 FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     m_ui(new Ui::FcitxIMPage),
@@ -282,27 +210,24 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     d->availIMView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     d->categoryDrawer = new KCategoryDrawerV3(d->availIMView);
     d->availIMView->setCategoryDrawer(d->categoryDrawer);
-    
+
     d->availIMProxyModel = new Private::IMProxyModel(d, this);
     d->availIMModel = new Private::IMModel(d, this);
     d->availIMProxyModel->setSourceModel(d->availIMModel);
-    d->availIMProxyModel->setCategorizedModel(false);
+    d->availIMProxyModel->setCategorizedModel(true);
     d->availIMView->setModel(d->availIMProxyModel);
     d->availIMView->setAlternatingBlockColors(true);
     d->availIMView->setSelectionMode(QAbstractItemView::SingleSelection);
     d->availIMView->setMouseTracking(true);
     d->availIMView->viewport()->setAttribute(Qt::WA_Hover);
-    
-    Private::IMDelegate *imDelegate = new Private::IMDelegate(d, this);
-    d->availIMView->setItemDelegate(imDelegate);
 
     d->currentIMModel = new Private::IMModel(d, this);
     d->currentIMModel->setShowOnlyEnabled(true);
     d->currentIMView->setModel(d->currentIMModel);
     d->currentIMView->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    connect(d->filterTextEdit, SIGNAL(textChanged(QString)), d->availIMProxyModel, SLOT(invalidate()));
-    connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), d->availIMProxyModel, SLOT(invalidate()));
+    connect(d->filterTextEdit, SIGNAL(textChanged(QString)), this, SLOT(invalidate()));
+    connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), this, SLOT(invalidate()));
     connect(d->availIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(availIMSelectionChanged()));
     connect(d->currentIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(currentIMCurrentChanged()));
     connect(d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(addIM()));
@@ -314,6 +239,19 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     connect(d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
 
     d->fetchIMList();
+}
+
+void FcitxIMPage::invalidate()
+{
+    d->availIMProxyModel->setCategorizedModel(false);
+    d->availIMProxyModel->invalidate();
+    d->availIMProxyModel->sort(0);
+    QTimer::singleShot(0, this, SLOT(invalidate2()));
+}
+
+void FcitxIMPage::invalidate2()
+{
+    d->availIMProxyModel->setCategorizedModel(true);
 }
 
 void FcitxIMPage::save()
