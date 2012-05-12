@@ -172,6 +172,14 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         ui->pageWidget->addPage(page);
         connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
     }
+    
+    if (m_addons) {
+        for (FcitxAddon* addon = (FcitxAddon *) utarray_front(m_addons);
+                addon != NULL;
+                addon = (FcitxAddon *) utarray_next(m_addons, addon)) {
+            this->addonSelector->addAddon(addon);
+        }
+    }
 }
 
 Module::~Module()
