@@ -62,7 +62,9 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     ui(new Ui::Module),
     addonSelector(0),
     m_configPage(0),
-    m_configDescManager(new ConfigDescManager(this))
+    m_configDescManager(new ConfigDescManager(this)),
+    m_skinPage(0),
+    m_imPage(0)
 {
     bindtextdomain("fcitx", LOCALEDIR);
     bind_textdomain_codeset("fcitx", "UTF-8");
@@ -80,6 +82,49 @@ Module::Module(QWidget *parent, const QVariantList &args) :
 
     about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
     setAboutData(about);
+
+    FcitxAddon* addon = NULL;
+    if (FcitxAddonGetConfigDesc() != NULL) {
+        utarray_new(m_addons, &addonicd);
+        FcitxAddonsLoad(m_addons);
+    }
+
+
+    if (args.size() != 0) {
+        QString module = args[0].toString();
+
+        do {
+
+            for (addon = (FcitxAddon *) utarray_front(m_addons);
+                    addon != NULL;
+                    addon = (FcitxAddon *) utarray_next(m_addons, addon)) {
+                if (QString::fromUtf8(addon->name) == module)
+                    break;
+            }
+
+            if (addon == NULL)
+                break;
+
+            FcitxConfigFileDesc* configDesc = m_configDescManager->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
+            bool configurable = (bool)(configDesc != NULL || strlen(addon->subconfig) != 0);
+
+            if (configurable) {
+                m_configPage = new FcitxConfigPage(
+                    this,
+                    configDesc,
+                    QString::fromUtf8("conf"),
+                    QString::fromUtf8(addon->name).append(".config") ,
+                    QString::fromUtf8(addon->subconfig)
+                );
+                QVBoxLayout* lay = new QVBoxLayout(this);
+                lay->addWidget(m_configPage);
+                this->setLayout(lay);
+                connect(m_configPage, SIGNAL(changed()), this, SLOT(changed()));
+                return;
+            }
+        }
+        while(0);
+    }
 
     ui->setupUi(this);
     KPageWidgetItem *page;
@@ -127,45 +172,44 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         ui->pageWidget->addPage(page);
         connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
     }
-
-    if (FcitxAddonGetConfigDesc() != NULL) {
-        utarray_new(m_addons, &addonicd);
-        FcitxAddonsLoad(m_addons);
-
-        for (FcitxAddon* addon = (FcitxAddon *) utarray_front(m_addons);
-                addon != NULL;
-                addon = (FcitxAddon *) utarray_next(m_addons, addon)) {
-            this->addonSelector->addAddon(addon);
-        }
-    }
 }
 
 Module::~Module()
 {
     delete ui;
-    delete addonSelector;
-    utarray_free(m_addons);
+    if (addonSelector)
+        delete addonSelector;
+    if (m_addons)
+        utarray_free(m_addons);
 }
 
 void Module::load()
 {
     kDebug() << "Load Addon Info";
 
-    m_imPage->load();
-    m_skinPage->load();
-    m_configPage->load();
+    if (m_imPage)
+        m_imPage->load();
+    if (m_skinPage)
+        m_skinPage->load();
+    if (m_configPage)
+        m_configPage->load();
 }
 
 void Module::save()
 {
-    m_imPage->save();
-    m_skinPage->save();
-    m_configPage->buttonClicked(KDialog::Ok);
+
+    if (m_imPage)
+        m_imPage->save();
+    if (m_skinPage)
+        m_skinPage->save();
+    if (m_configPage)
+        m_configPage->buttonClicked(KDialog::Ok);
 }
 
 void Module::defaults()
 {
-    m_configPage->buttonClicked(KDialog::Default);
+    if (m_configPage)
+        m_configPage->buttonClicked(KDialog::Default);
     changed();
 }
 
