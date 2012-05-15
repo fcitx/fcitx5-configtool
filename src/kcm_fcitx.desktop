@@ -8,8 +8,8 @@ X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=locale
 
-Name=Input Method Configuration
-Name[zh_CN]=输入法配置
+Name=Input Method
+Name[zh_CN]=输入法
 Comment=Configure Input Method
 Comment[zh_CN]=配置输入法
 
