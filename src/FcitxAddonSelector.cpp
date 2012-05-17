@@ -188,10 +188,13 @@ FcitxAddonSelector::Private::ProxyModel::~ProxyModel()
 bool FcitxAddonSelector::Private::ProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
 {
     Q_UNUSED(sourceParent)
+    const QModelIndex index = sourceModel()->index(sourceRow, 0);
+    const FcitxAddon* addonInfo = static_cast<FcitxAddon*>(index.internalPointer());
+    if (addonInfo->category == AC_FRONTEND && !addonSelector_d->advanceCheckbox->isChecked()) {
+        return false;
+    }
 
     if (!addonSelector_d->lineEdit->text().isEmpty()) {
-        const QModelIndex index = sourceModel()->index(sourceRow, 0);
-        const FcitxAddon* addonInfo = static_cast<FcitxAddon*>(index.internalPointer());
         return QString(addonInfo->name).contains(addonSelector_d->lineEdit->text(), Qt::CaseInsensitive)
                || QString::fromUtf8(addonInfo->generalname).contains(addonSelector_d->lineEdit->text(), Qt::CaseInsensitive)
                || QString::fromUtf8(addonInfo->comment).contains(addonSelector_d->lineEdit->text(), Qt::CaseInsensitive);
@@ -226,7 +229,9 @@ void FcitxAddonSelector::Private::AddonDelegate::paint(QPainter *painter, const 
         return;
     }
 
-    int xOffset = checkBox->sizeHint().width();
+    int xOffset = 0;
+    if (addonSelector_d->advanceCheckbox->isChecked())
+        xOffset = checkBox->sizeHint().width();
 
     painter->save();
 
@@ -301,6 +306,7 @@ void FcitxAddonSelector::Private::AddonDelegate::updateItemWidgets(const QList<Q
     QCheckBox *checkBox = static_cast<QCheckBox*>(widgets[0]);
     checkBox->resize(checkBox->sizeHint());
     checkBox->move(addonSelector_d->dependantLayoutValue(MARGIN, checkBox->sizeHint().width(), option.rect.width()), option.rect.height() / 2 - checkBox->sizeHint().height() / 2);
+    checkBox->setVisible(addonSelector_d->advanceCheckbox->isChecked());
 
     KPushButton *configurePushButton = static_cast<KPushButton*>(widgets[1]);
     QSize configurePushButtonSizeHint = configurePushButton->sizeHint();
@@ -385,6 +391,9 @@ FcitxAddonSelector::FcitxAddonSelector(Module* parent) :
     d->listView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     d->categoryDrawer = new KCategoryDrawerV3(d->listView);
     d->listView->setCategoryDrawer(d->categoryDrawer);
+    d->advanceCheckbox = new QCheckBox(this);
+    d->advanceCheckbox->setText(i18n("Show &Advance option"));
+    d->advanceCheckbox->setChecked(false);
 
     d->proxyModel = new Private::ProxyModel(d, this);
     d->addonModel = new Private::AddonModel(d, this);
@@ -400,11 +409,13 @@ FcitxAddonSelector::FcitxAddonSelector(Module* parent) :
     d->listView->viewport()->setAttribute(Qt::WA_Hover);
 
     connect(d->lineEdit, SIGNAL(textChanged(QString)), d->proxyModel, SLOT(invalidate()));
+    connect(d->advanceCheckbox, SIGNAL(clicked(bool)), d->proxyModel, SLOT(invalidate()));
     connect(addonDelegate, SIGNAL(changed(bool)), this, SIGNAL(changed(bool)));
     connect(addonDelegate, SIGNAL(configCommitted(QByteArray)), this, SIGNAL(configCommitted(QByteArray)));
 
     layout->addWidget(d->lineEdit);
     layout->addWidget(d->listView);
+    layout->addWidget(d->advanceCheckbox);
     this->setLayout(layout);
 }
 

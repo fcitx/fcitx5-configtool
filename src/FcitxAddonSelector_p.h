@@ -74,6 +74,7 @@ public:
     AddonModel *addonModel;
     ProxyModel *proxyModel;
     AddonDelegate *addonDelegate;
+    QCheckBox* advanceCheckbox;
 
 private:
     FcitxAddonSelector* parent;

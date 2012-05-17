@@ -144,6 +144,9 @@ void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
     }
+    else if (showOnlyEnabled && count > 0) {
+        emit select(index(count - 1, 0));
+    }
 
     impage_d->availIMProxyModel->setCategorizedModel(true);
 }
