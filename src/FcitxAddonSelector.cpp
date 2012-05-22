@@ -40,6 +40,7 @@
 #include <fcitx-config/xdg.h>
 
 // self
+#include "config.h"
 #include "FcitxAddonSelector.h"
 #include "FcitxAddonSelector_p.h"
 #include "FcitxConfigPage.h"
@@ -107,7 +108,7 @@ QVariant FcitxAddonSelector::Private::AddonModel::data(const QModelIndex& index,
         return QString::fromUtf8(addonEntry->comment);
 
     case ConfigurableRole: {
-        FcitxConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
         return (bool)(cfdesc != NULL || strlen(addonEntry->subconfig) != 0);
     }
 
@@ -117,13 +118,13 @@ QVariant FcitxAddonSelector::Private::AddonModel::data(const QModelIndex& index,
     case Qt::CheckStateRole:
         return addonEntry->bEnabled;
 
-    case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
-
-    case KCategorizedSortFilterProxyModel::CategorySortRole: {
+    case KCategorizedSortFilterProxyModel::CategoryDisplayRole: {
         const FcitxConfigOptionDesc *codesc = FcitxConfigDescGetOptionDesc(addonEntry->config.configFile->fileDesc, "Addon", "Category");
         const FcitxConfigEnum *e = &codesc->configEnum;
         return QString::fromUtf8(dgettext("fcitx", e->enumDesc[addonEntry->category]));
     }
+    case KCategorizedSortFilterProxyModel::CategorySortRole:
+        return (int) addonEntry->category;
 
     default:
         return QVariant();
@@ -190,6 +191,9 @@ bool FcitxAddonSelector::Private::ProxyModel::filterAcceptsRow(int sourceRow, co
     Q_UNUSED(sourceParent)
     const QModelIndex index = sourceModel()->index(sourceRow, 0);
     const FcitxAddon* addonInfo = static_cast<FcitxAddon*>(index.internalPointer());
+    if (addonInfo->advance && !addonSelector_d->advanceCheckbox->isChecked()) {
+        return false;
+    }
     if (addonInfo->category == AC_FRONTEND && !addonSelector_d->advanceCheckbox->isChecked()) {
         return false;
     }
@@ -205,7 +209,9 @@ bool FcitxAddonSelector::Private::ProxyModel::filterAcceptsRow(int sourceRow, co
 
 bool FcitxAddonSelector::Private::ProxyModel::subSortLessThan(const QModelIndex &left, const QModelIndex &right) const
 {
-    return QString(static_cast<FcitxAddon*>(left.internalPointer())->name).compare((QString)(static_cast<FcitxAddon*>(right.internalPointer())->name), Qt::CaseInsensitive) < 0;
+    FcitxAddon* l = static_cast<FcitxAddon*>(left.internalPointer());
+    FcitxAddon* r = static_cast<FcitxAddon*>(right.internalPointer());
+    return QString::fromUtf8(l->name).compare(QString::fromUtf8(r->name), Qt::CaseInsensitive) < 0;
 }
 
 FcitxAddonSelector::Private::AddonDelegate::AddonDelegate(FcitxAddonSelector::Private *addonSelector_d, QObject *parent)
@@ -342,28 +348,12 @@ void FcitxAddonSelector::Private::AddonDelegate::slotConfigureClicked()
     const QModelIndex index = focusedIndex();
 
     FcitxAddon* addonEntry = static_cast<FcitxAddon*>(index.internalPointer());
-    FcitxConfigFileDesc* cfdesc = this->addonSelector_d->parent->parent->configDescManager()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
-
-    if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
-        QPointer<KDialog> configDialog(new KDialog);
-        FcitxConfigPage* configPage = new FcitxConfigPage(
-            configDialog,
-            cfdesc,
-            QString::fromUtf8("conf"),
-            QString::fromUtf8(addonEntry->name).append(".config") ,
-            QString::fromUtf8(addonEntry->subconfig)
-        );
-        configDialog->setWindowIcon(KIcon("fcitx"));
-        configDialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-        configDialog->setMainWidget(configPage);
-        connect(configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
-
-        configDialog->exec();
-        delete configDialog;
-    }
+    QPointer<KDialog> configDialog(FcitxConfigPage::configDialog(addonSelector_d->parent->parent, addonEntry));
+    if (configDialog.isNull())
+        return;
+    configDialog->exec();
+    delete configDialog;
 }
-
-
 
 void FcitxAddonSelector::load()
 {

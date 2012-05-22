@@ -24,11 +24,28 @@
 // self
 #include "ConfigDescManager.h"
 
+
 namespace Fcitx
 {
+ConfigDescManager* ConfigDescManager::inst = NULL;
 
-ConfigDescManager::ConfigDescManager(QObject* parent) :
-    QObject(parent), m_hash(new QHash<QString, FcitxConfigFileDesc*>)
+ConfigDescManager* ConfigDescManager::instance()
+{
+    if (!inst)
+        inst = new ConfigDescManager;
+    return inst;
+}
+
+void ConfigDescManager::deInit()
+{
+    if (inst) {
+        delete inst;
+        inst = 0;
+    }
+}
+
+ConfigDescManager::ConfigDescManager() :
+    QObject(0), m_hash(new QHash<QString, FcitxConfigFileDesc*>)
 {
 
 }

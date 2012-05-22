@@ -33,6 +33,10 @@
 #include "FcitxIM.h"
 #include "ui_FcitxIMPage.h"
 #include "FcitxIMPage_p.h"
+#include "Module.h"
+#include "ConfigDescManager.h"
+#include "FcitxConfigPage.h"
+#include "FcitxIMConfigDialog.h"
 
 #define MARGIN 0
 
@@ -185,9 +189,9 @@ bool FcitxIMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left
     return QString(static_cast<FcitxIM*>(left.internalPointer())->name()).compare((QString)(static_cast<FcitxIM*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
 }
 
-FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
-    m_ui(new Ui::FcitxIMPage),
-    d(new Private(this))
+FcitxIMPage::FcitxIMPage(Module* parent): QWidget(parent)
+    ,m_ui(new Ui::FcitxIMPage)
+    ,d(new Private(this))
 {
     m_ui->setupUi(this);
 
@@ -195,11 +199,14 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     m_ui->removeIMButton->setIcon(KIcon("go-previous"));
     m_ui->moveUpButton->setIcon(KIcon("go-up"));
     m_ui->moveDownButton->setIcon(KIcon("go-down"));
+    m_ui->configureButton->setIcon(KIcon("configure"));
 
+    d->module = parent;
     d->addIMButton = m_ui->addIMButton;
     d->removeIMButton = m_ui->removeIMButton;
     d->moveUpButton = m_ui->moveUpButton;
     d->moveDownButton = m_ui->moveDownButton;
+    d->configureButton = m_ui->configureButton;
     d->availIMView = m_ui->availIMView;
     d->currentIMView = m_ui->currentIMView;
 
@@ -237,6 +244,7 @@ FcitxIMPage::FcitxIMPage(QWidget* parent): QWidget(parent),
     connect(d->removeIMButton, SIGNAL(clicked(bool)), d, SLOT(removeIM()));
     connect(d->moveUpButton, SIGNAL(clicked(bool)), d, SLOT(moveUpIM()));
     connect(d->moveDownButton, SIGNAL(clicked(bool)), d, SLOT(moveDownIM()));
+    connect(d->configureButton, SIGNAL(clicked(bool)), d, SLOT(configureIM()));
     connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
     connect(d->availIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectAvailIM(QModelIndex)));
     connect(d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
@@ -263,9 +271,9 @@ void FcitxIMPage::load()
 }
 
 FcitxIMPage::Private::Private(QObject* parent)
-    : QObject(parent),
-      availIMModel(0),
-      m_connection(QDBusConnection::sessionBus())
+    : QObject(parent)
+      ,availIMModel(0)
+      ,m_connection(QDBusConnection::sessionBus())
 {
     m_inputmethod = new org::fcitx::Fcitx::InputMethod(
         QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
@@ -293,6 +301,7 @@ void FcitxIMPage::Private::currentIMCurrentChanged()
         removeIMButton->setEnabled(false);
         moveUpButton->setEnabled(false);
         moveDownButton->setEnabled(false);
+        configureButton->setEnabled(false);
     } else {
         if (currentIMView->currentIndex().row() == 0)
             moveUpButton->setEnabled(false);
@@ -303,6 +312,7 @@ void FcitxIMPage::Private::currentIMCurrentChanged()
         else
             moveDownButton->setEnabled(true);
         removeIMButton->setEnabled(true);
+        configureButton->setEnabled(true);
     }
 }
 
@@ -379,6 +389,26 @@ void FcitxIMPage::Private::moveDownIM()
             qStableSort(m_list.begin(), m_list.end());
             emit updateIMList(curIM->uniqueName());
             emit changed();
+        }
+    }
+}
+
+void FcitxIMPage::Private::configureIM()
+{
+    QModelIndex curIndex = currentIMView->currentIndex();
+    if (curIndex.isValid()) {
+        FcitxIM* curIM = static_cast<FcitxIM*>(curIndex.internalPointer());
+        if (curIM == NULL)
+            return;
+        QDBusPendingReply< QString > result = m_inputmethod->GetIMAddon(curIM->uniqueName());
+        result.waitForFinished();
+        if (!result.isError()) {
+            FcitxAddon* addonEntry = module->findAddonByName(result.value());
+
+            QPointer<KDialog> configDialog(new FcitxIMConfigDialog(curIM->uniqueName(), addonEntry));
+
+            configDialog->exec();
+            delete configDialog;
         }
     }
 }

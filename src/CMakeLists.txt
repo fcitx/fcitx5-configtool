@@ -25,6 +25,8 @@ set(kcm_SRCS
     FcitxSkinPage.cpp
     FcitxIMPage.cpp
     FcitxIM.cpp
+    FcitxLayout.cpp
+    FcitxIMConfigDialog.cpp
 )
 
 set_property(
@@ -32,9 +34,19 @@ set_property(
     PROPERTY INCLUDE FcitxIM.h
 )
 
+set_property(
+    SOURCE org.fcitx.Fcitx.Keyboard.xml
+    PROPERTY INCLUDE FcitxLayout.h
+)
+
 QT4_ADD_DBUS_INTERFACE(kcm_SRCS
     org.fcitx.Fcitx.InputMethod.xml
     org.fcitx.Fcitx.InputMethod
+)
+
+QT4_ADD_DBUS_INTERFACE(kcm_SRCS
+    org.fcitx.Fcitx.Keyboard.xml
+    org.fcitx.Fcitx.Keyboard
 )
 
 kde4_add_ui_files(kcm_SRCS Module.ui FcitxConfigPage.ui FcitxSkinPage.ui FcitxIMPage.ui)
@@ -53,7 +65,7 @@ target_link_libraries(kcm_fcitx
 
 install(TARGETS kcm_fcitx DESTINATION ${PLUGIN_INSTALL_DIR})
 install(FILES kcm_fcitx.desktop DESTINATION ${SERVICES_INSTALL_DIR})
-    
+
 message("GHNS DIR : ${CONFIG_INSTALL_DIR}")
 
 install(FILES fcitx-skin.knsrc DESTINATION ${CONFIG_INSTALL_DIR})

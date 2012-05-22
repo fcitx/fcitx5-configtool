@@ -54,13 +54,14 @@ public:
     class IMModel;
 
     class IMProxyModel;
-    
+
     class IMDelegate;
 
     KPushButton* addIMButton;
     KPushButton* removeIMButton;
     KPushButton* moveUpButton;
     KPushButton* moveDownButton;
+    KPushButton* configureButton;
     QListView* currentIMView;
     KCategorizedView* availIMView;
     KLineEdit* filterTextEdit;
@@ -71,6 +72,7 @@ public:
 
     IMModel* currentIMModel;
     QCheckBox* onlyCurrentLanguageCheckBox;
+    Module* module;
 
 Q_SIGNALS:
     void updateIMList(QString selection);
@@ -83,6 +85,7 @@ public Q_SLOTS:
     void removeIM();
     void moveUpIM();
     void moveDownIM();
+    void configureIM();
     void save();
     void selectCurrentIM(const QModelIndex& index);
     void selectAvailIM(const QModelIndex& index);

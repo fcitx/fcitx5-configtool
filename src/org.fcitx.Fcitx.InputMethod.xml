@@ -6,5 +6,9 @@
       <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
       <annotation name="com.trolltech.QtDBus.QtTypeName" value="FcitxIMList" />
     </property>
+    <method name="GetIMAddon">
+        <arg name="im" direction="in" type="s"/>
+        <arg name="addon" direction="out" type="s"/>
+    </method>
   </interface>
 </node>

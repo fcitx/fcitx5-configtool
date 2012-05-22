@@ -35,12 +35,15 @@ class ConfigDescManager : public QObject
     Q_OBJECT
 
 public:
-    ConfigDescManager(QObject* parent = NULL);
+    static ConfigDescManager* instance();
+    static void deInit();
     virtual ~ConfigDescManager();
     FcitxConfigFileDesc* GetConfigDesc(const QString& name);
 
 private:
+    ConfigDescManager();
     QHash<QString, FcitxConfigFileDesc*>* m_hash;
+    static ConfigDescManager* inst;
 };
 
 }

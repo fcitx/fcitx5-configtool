@@ -35,11 +35,13 @@ class FcitxIMPage;
 
 namespace Fcitx
 {
+
+class Module;
 class FcitxIMPage : public QWidget
 {
     Q_OBJECT
 public:
-    FcitxIMPage(QWidget* parent = 0);
+    FcitxIMPage(Module* parent = 0);
     virtual ~FcitxIMPage();
 Q_SIGNALS:
     void changed();

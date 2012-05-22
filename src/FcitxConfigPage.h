@@ -26,6 +26,7 @@
 // Fcitx
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/hotkey.h>
+#include <fcitx/addon.h>
 
 // self
 #include "ui_FcitxConfigPage.h"
@@ -38,6 +39,8 @@ class QTabWidget;
 namespace Fcitx
 {
 
+class ConfigDescManager;
+
 class FcitxSubConfigParser;
 
 
@@ -48,6 +51,9 @@ class FcitxConfigPage : public QWidget
 public:
     FcitxConfigPage(QWidget* parent, struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subConfig = QString());
     virtual ~FcitxConfigPage();
+
+    static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString());
+    static KDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
 
 Q_SIGNALS:
     void changed();

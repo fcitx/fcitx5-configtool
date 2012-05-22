@@ -182,7 +182,7 @@ void FcitxSkinPage::Private::SkinModel::setSkinList(const QStringList& list)
 QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 {
 
-    FcitxConfigFileDesc* cfdesc = d->module->configDescManager()->GetConfigDesc("skin.desc");
+    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("skin.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
     QDir dir;
@@ -700,7 +700,7 @@ void FcitxSkinPage::Private::load()
     m_subConfig = m_parser.getSubConfig("Skin");
     skinModel->setSkinList(m_subConfig->filelist().toList());
 
-    FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
+    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
     QString skinName;
@@ -736,7 +736,7 @@ void FcitxSkinPage::Private::save()
     if (skinView->currentIndex().isValid()) {
         QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
 
-        FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc");
+        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc");
         FILE* fp = NULL;
         FcitxConfigFile* cfile = NULL;
         if (cfdesc)
@@ -817,22 +817,15 @@ void FcitxSkinPage::Private::configureSkin()
         if (!ind.isValid())
             return;
         FcitxSkinInfo* skin = static_cast<FcitxSkinInfo*>(ind.internalPointer());
-        ConfigDescManager manager;
-        FcitxConfigFileDesc* cfdesc = module->configDescManager()->GetConfigDesc("skin.desc");
+        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("skin.desc");
 
         if (cfdesc) {
-            QPointer<KDialog> configDialog(new KDialog);
-            FcitxConfigPage* configPage = new FcitxConfigPage(
-                configDialog,
+            QPointer<KDialog> configDialog(FcitxConfigPage::configDialog(
+                module,
                 cfdesc,
                 "",
                 skin->path
-            );
-
-            configDialog->setWindowIcon(KIcon("fcitx"));
-            configDialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-            configDialog->setMainWidget(configPage);
-            connect(configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+            ));
 
             configDialog->exec();
             delete configDialog;
@@ -889,7 +882,7 @@ FcitxSkinPage::~FcitxSkinPage()
 
 void FcitxSkinPage::load()
 {
-    if (NULL == d->module->configDescManager()->GetConfigDesc("fcitx-classic-ui.desc")) {
+    if (NULL == ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc")) {
         this->setEnabled(false);
     }
     d->load();

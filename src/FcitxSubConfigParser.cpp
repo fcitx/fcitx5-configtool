@@ -29,12 +29,6 @@
 #include "FcitxSubConfigPattern.h"
 #include "FcitxSubConfigParser.h"
 
-#define FCITX_CHECK_VERSION(major,minor,micro)    \
-    (FCITX4_MAJOR_VERSION > (major) || \
-     (FCITX4_MAJOR_VERSION == (major) && FCITX4_MINOR_VERSION > (minor)) || \
-     (FCITX4_MAJOR_VERSION == (major) && FCITX4_MINOR_VERSION == (minor) && \
-      FCITX4_PATCH_VERSION >= (micro)))
-
 namespace Fcitx
 {
 FcitxSubConfigParser::FcitxSubConfigParser(const QString& subConfigString, QObject* parent) :
@@ -88,11 +82,7 @@ QSet<QString> FcitxSubConfigParser::getFiles(const QString& name)
         return QSet<QString> ();
     FcitxSubConfigPattern* pattern = m_subConfigMap[name];
     size_t size;
-#if FCITX_CHECK_VERSION(4,2,1)
     char** xdgpath = FcitxXDGGetPathWithPrefix(&size, "");
-#else
-    char** xdgpath = FcitxXDGGetPath(&size, "XDG_CONFIG_HOME", ".config" , PACKAGE , DATADIR, PACKAGE);
-#endif
 
     QSet<QString> result;
     for (size_t i = 0; i < size; i ++) {

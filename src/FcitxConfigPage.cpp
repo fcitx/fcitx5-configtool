@@ -29,6 +29,8 @@
 #include <QStandardItemModel>
 #include <QListView>
 #include <QProcess>
+#include <QDBusInterface>
+#include <QDBusReply>
 
 // KDE
 #include <KColorButton>
@@ -105,10 +107,17 @@ void FcitxConfigPage::buttonClicked(KDialog::ButtonCode code)
                                  reload_config
                                 );
 
-        QStringList commandAndParameters;
-        commandAndParameters << "-r";
-        QProcess process;
-        process.startDetached(FCITX4_EXEC_PREFIX "/bin/fcitx-remote", commandAndParameters);
+        QDBusInterface fcitx(QString("org.fcitx.Fcitx-%1").arg(fcitx_utils_get_display_number()), "/inputmethod", "org.fcitx.Fcitx.InputMethod");
+        QDBusReply<void> reply;
+        if (fcitx.isValid()) {
+            reply = fcitx.call("ReloadConfig");
+        }
+        if (!reply.isValid()) {
+            QStringList commandAndParameters;
+            commandAndParameters << "-r";
+            QProcess process;
+            process.startDetached(FCITX4_EXEC_PREFIX "/bin/fcitx-remote", commandAndParameters);
+        }
     }
 }
 
@@ -307,6 +316,46 @@ void FcitxConfigPage::setupConfigUi()
 
 }
 
+KDialog* FcitxConfigPage::configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig)
+{
+    KDialog* dialog;
+    dialog = new KDialog(parent);
+    FcitxConfigPage* configPage = new FcitxConfigPage(
+        dialog,
+        cfdesc,
+        prefix,
+        name,
+        subconfig
+    );
+    dialog->setWindowIcon(KIcon("fcitx"));
+    dialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
+    dialog->setMainWidget(configPage);
+    connect(dialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+
+    return dialog;
+}
+
+KDialog* FcitxConfigPage::configDialog(QWidget* parent, FcitxAddon* addonEntry)
+{
+    if (!addonEntry)
+        return NULL;
+
+    KDialog* dialog;
+    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+
+    if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
+        dialog = configDialog(
+            parent,
+            cfdesc,
+            QString::fromUtf8("conf"),
+            QString::fromUtf8(addonEntry->name).append(".config") ,
+            QString::fromUtf8(addonEntry->subconfig)
+        );
+        return dialog;
+    }
+
+    return NULL;
+}
 
 void FcitxConfigPage::setupSubConfigUi()
 {

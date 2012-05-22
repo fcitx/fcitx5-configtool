@@ -25,6 +25,7 @@
 
 // Fcitx
 #include <fcitx-utils/utarray.h>
+#include <fcitx/addon.h>
 
 class QFile;
 
@@ -40,8 +41,6 @@ namespace Fcitx
 class FcitxIMPage;
 
 class FcitxSkinPage;
-
-class ConfigDescManager;
 
 class FcitxConfigPage;
 
@@ -80,7 +79,7 @@ public:
     */
     void defaults();
 
-    ConfigDescManager* configDescManager();
+    FcitxAddon* findAddonByName(const QString& name);
 
 private:
     /**
@@ -98,9 +97,9 @@ private:
     */
     UT_array* m_addons;
     FcitxConfigPage* m_configPage;
-    ConfigDescManager* m_configDescManager;
     FcitxSkinPage* m_skinPage;
     FcitxIMPage* m_imPage;
+    FcitxAddon* m_addonEntry;
 };
 
 }

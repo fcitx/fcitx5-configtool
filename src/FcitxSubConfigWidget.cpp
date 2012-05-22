@@ -151,21 +151,15 @@ void FcitxSubConfigWidget::OpenSubConfig()
     if (!ind.isValid())
         return;
     FcitxConfigFile* configfile = static_cast<FcitxConfigFile*>(ind.internalPointer());
-    ConfigDescManager manager;
-    FcitxConfigFileDesc* cfdesc = manager.GetConfigDesc(m_subConfig->configdesc());
+    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(m_subConfig->configdesc());
 
     if (cfdesc) {
-        QPointer<KDialog> configDialog(new KDialog);
-        FcitxConfigPage* configPage = new FcitxConfigPage(
-            configDialog,
+        QPointer<KDialog> configDialog(FcitxConfigPage::configDialog(
+            NULL,
             cfdesc,
             "",
             configfile->path()
-        );
-        configDialog->setWindowIcon(KIcon("fcitx"));
-        configDialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-        configDialog->setMainWidget(configPage);
-        connect(configDialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+        ));
 
         configDialog->exec();
         delete configDialog;
