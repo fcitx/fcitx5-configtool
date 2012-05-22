@@ -69,14 +69,16 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
 
             l->addWidget(label);
             l->addWidget(m_layoutCombobox);
-            label = new QLabel("<b>Input Method Setting:</b>");
-            l->addWidget(label);
         }
     }
 
     FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
 
     if (cfdesc ||  strlen(addon->subconfig) != 0) {
+        if (m_layoutCombobox) {
+            QLabel* label = new QLabel("<b>Input Method Setting:</b>");
+            l->addWidget(label);
+        }
         m_configPage = new FcitxConfigPage(
             this,
             cfdesc,
@@ -85,11 +87,11 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
             QString::fromUtf8(addon->subconfig)
         );
         l->addWidget(m_configPage);
-        connect(this, SIGNAL(buttonClicked(KDialog::ButtonCode)), this, SLOT(onButtonClicked(KDialog::ButtonCode)));
     }
     setWindowIcon(KIcon("fcitx"));
     setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
     setMainWidget(widget);
+    connect(this, SIGNAL(buttonClicked(KDialog::ButtonCode)), this, SLOT(onButtonClicked(KDialog::ButtonCode)));
 }
 
 void Fcitx::FcitxIMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
