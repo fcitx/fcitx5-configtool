@@ -53,7 +53,7 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
             QString imVariant =  qdbus_cast<QString>(res.argumentAt(1));
 
             QLabel* label;
-            label = new QLabel("<b>Keyboard Layout:</b>");
+            label = new QLabel(i18n("<b>Keyboard Layout:</b>"));
 
             int idx = 1;
             int select = 0;
@@ -76,7 +76,7 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
 
     if (cfdesc ||  strlen(addon->subconfig) != 0) {
         if (m_layoutCombobox) {
-            QLabel* label = new QLabel("<b>Input Method Setting:</b>");
+            QLabel* label = new QLabel(i18n("<b>Input Method Setting:</b>"));
             l->addWidget(label);
         }
         m_configPage = new FcitxConfigPage(
