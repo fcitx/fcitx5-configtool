@@ -41,6 +41,7 @@
 #include <KRun>
 #include <KPushButton>
 #include <KMessageBox>
+#include <KUrlRequester>
 
 // system
 #include <libintl.h>
@@ -276,7 +277,14 @@ void FcitxConfigPage::setupConfigUi()
 
                 break;
 
-                case T_File:
+                case T_File: {
+                    KUrlRequester* requester = new KUrlRequester(this);
+                    inputWidget = requester;
+                    argument = inputWidget;
+
+                    connect(requester, SIGNAL(urlSelected(KUrl)), this, SIGNAL(changed()));
+                }
+                break;
 
                 case T_Char:
 
@@ -490,7 +498,11 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
         break;
 
-        case T_File:
+        case T_File: {
+            KUrlRequester* urlrequester = static_cast<KUrlRequester*>(arg);
+            urlrequester->setUrl(QString::fromUtf8(option->rawValue));
+        }
+        break;
 
         case T_Char:
 
@@ -598,7 +610,11 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
         break;
 
-        case T_File:
+        case T_File: {
+            KUrlRequester* urlrequester = static_cast<KUrlRequester*>(arg);
+            option->rawValue = strdup(urlrequester->url().toLocalFile().toUtf8().data());
+        }
+        break;
 
         case T_Char:
 
