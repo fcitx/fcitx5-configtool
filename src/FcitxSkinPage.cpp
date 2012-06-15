@@ -48,6 +48,7 @@ CONFIG_BINDING_REGISTER("SkinFont", "InputColor", inputColor)
 CONFIG_BINDING_REGISTER("SkinFont", "IndexColor", indexColor)
 CONFIG_BINDING_REGISTER("SkinFont", "FirstCandColor", firstCandColor)
 CONFIG_BINDING_REGISTER("SkinFont", "OtherColor", otherColor)
+CONFIG_BINDING_REGISTER("SkinFont", "RespectDPI", respectDPI)
 
 CONFIG_BINDING_REGISTER("SkinInputBar", "BackImg", backImg)
 CONFIG_BINDING_REGISTER("SkinInputBar", "MarginTop", marginTop)
@@ -222,17 +223,37 @@ QPixmap FcitxSkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         int offset = marginLeft;
 
         QFont inputFont(qApp->font());
-        int fontHeight = inputbar.fontSize;
-        inputFont.setPixelSize(fontHeight);
+        int fontHeight = 0;
+        if (inputbar.respectDPI) {
+            inputFont.setPointSize(fontHeight);
+            QFontMetrics metrics(inputFont);
+            fontHeight = metrics.height();
+        }
+        else {
+            inputFont.setPixelSize(inputbar.fontSize);
+            fontHeight = inputbar.fontSize;
+        }
         QFontMetrics metrics(inputFont);
 
         // inputPos & outputPos is the LeftTop position of the text.
-        int inputPos = marginTop + inputbar.iInputPos - fontHeight;
-        int outputPos = marginTop + inputbar.iOutputPos - fontHeight;
+        int inputPos;
+        if (inputbar.respectDPI)
+            inputPos = marginTop + inputbar.iInputPos;
+        else
+            inputPos = marginTop + inputbar.iInputPos - fontHeight;
+        int outputPos;
+        if (inputbar.respectDPI)
+            outputPos = marginTop + inputbar.iInputPos + fontHeight + inputbar.iOutputPos;
+        else
+            outputPos = marginTop + inputbar.iOutputPos - fontHeight;
 
         QPixmap inputBarPixmap = LoadImage(skinDir.toLocal8Bit().data(), inputbar.backImg);
         int resizeWidth = 0;
-        int resizeHeight = inputbar.iOutputPos;
+        int resizeHeight;
+        if (inputbar.respectDPI)
+            resizeHeight = inputbar.iInputPos + inputbar.iOutputPos + fontHeight * 2;
+        else
+            resizeHeight = inputbar.iOutputPos;
         for (int i = 0; i < 2; i++) {
             resizeWidth += metrics.width(numberStr[i]);
             resizeWidth += metrics.width(candStr[i]);

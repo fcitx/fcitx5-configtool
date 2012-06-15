@@ -49,6 +49,7 @@ struct FcitxSkinInputBar {
     FcitxConfigColor indexColor;
     FcitxConfigColor firstCandColor;
     FcitxConfigColor otherColor;
+    boolean respectDPI;
     char* backImg;
     FcitxConfigColor cursorColor;
     int marginTop;
