@@ -132,18 +132,20 @@ void FcitxIMPage::Private::IMModel::filterIMEntryList(const QString& selection)
             count ++;
         }
     }
-    beginInsertRows(QModelIndex(), 0, count - 1);
-    Q_FOREACH(const FcitxIM & im, imEntryList) {
-        if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
-            filteredIMEntryList.append(im);
-            if (im.uniqueName() == selection)
-                selectionRow = row;
-            row ++;
+    if (count) {
+        beginInsertRows(QModelIndex(), 0, count - 1);
+        Q_FOREACH(const FcitxIM & im, imEntryList) {
+            if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
+                filteredIMEntryList.append(im);
+                if (im.uniqueName() == selection)
+                    selectionRow = row;
+                row ++;
+            }
         }
-    }
-    endInsertRows();
+        endInsertRows();
 
-    impage_d->availIMProxyModel->sort(0);
+        impage_d->availIMProxyModel->sort(0);
+    }
 
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
