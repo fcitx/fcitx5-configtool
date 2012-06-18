@@ -1,5 +1,3 @@
-add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
 include_directories(
     ${FCITX4_FCITX_INCLUDE_DIRS}
     ${FCITX4_FCITX_UTILS_INCLUDE_DIRS}

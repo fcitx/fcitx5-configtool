@@ -12,8 +12,6 @@ else(NOT SUFFIX_VERSION)
     set(VERSION_STRING_FULL "${VERSION_STRING}-${SUFFIX_VERSION}")
 endif(NOT SUFFIX_VERSION)
 
-option(ENABLE_DEBUG "Debug On" Off)
-
 find_package(KDE4 REQUIRED)
 include(KDE4Defaults)
 
@@ -36,13 +34,12 @@ set(datadir ${CMAKE_INSTALL_PREFIX}/share)
 set(localedir ${CMAKE_INSTALL_PREFIX}/share/locale)
 set(exec_prefix "${CMAKE_INSTALL_PREFIX}/bin")
 
-if (ENABLE_DEBUG)
-    set(CMAKE_CXX_FLAGS "-g -O0")
-endif (ENABLE_DEBUG)
-
 configure_file(config.h.in config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
 
 add_subdirectory(src)
 add_subdirectory(layout)
 add_subdirectory(po)
+add_subdirectory(test)
