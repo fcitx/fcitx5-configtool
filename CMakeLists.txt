@@ -66,4 +66,3 @@ link_directories(
 add_subdirectory(src)
 add_subdirectory(layout)
 add_subdirectory(po)
-add_subdirectory(test)
