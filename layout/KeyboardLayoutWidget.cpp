@@ -187,7 +187,7 @@ FcitxXkbInitDefaultLayout (QString& model, QString& option)
     return true;
 }
 
-void KeyboardLayoutWidget::setLayout(const QString& layout, const QString& variant)
+void KeyboardLayoutWidget::setKeyboardLayout(const QString& layout, const QString& variant)
 {
     XkbRF_VarDefsRec rdefs;
     XkbComponentNamesRec rnames;
@@ -274,8 +274,16 @@ void KeyboardLayoutWidget::release()
 {
     physicalIndicators.clear();
     physicalIndicatorsSize = 0;
-    delete[] keys;
-    delete[] colors;
+    if (keys) {
+        delete[] keys;
+        keys = NULL;
+    }
+
+    if (colors) {
+        delete[] colors;
+        colors = NULL;
+    }
+
     foreach(DrawingItem* item, keyboardItems) {
         switch (item->type) {
             case KEYBOARD_DRAWING_ITEM_TYPE_INVALID:

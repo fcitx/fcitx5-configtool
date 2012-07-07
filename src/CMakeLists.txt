@@ -1,4 +1,4 @@
-
+include_directories(${PROJECT_SOURCE_DIR}/layout)
 
 set(kcm_SRCS
     main.cpp
@@ -16,6 +16,7 @@ set(kcm_SRCS
     FcitxLayout.cpp
     FcitxIMConfigDialog.cpp
     qtkeytrans.cpp
+    ../layout/KeyboardLayoutWidget.cpp
 )
 
 set_property(
@@ -50,6 +51,8 @@ target_link_libraries(kcm_fcitx
     ${FCITX4_FCITX_CONFIG_LIBRARIES}
     ${FCITX4_FCITX_LIBRARIES}
     ${LIBINTL_LIBRARY}
+    ${XKBFILE_LIBRARIES}
+    ${X11_X11_LIB}
 )
 
 install(TARGETS kcm_fcitx DESTINATION ${PLUGIN_INSTALL_DIR})

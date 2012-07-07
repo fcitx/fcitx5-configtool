@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
         widget.setGroup(group);
     }
     else if (!layout.isNull()) {
-        widget.setLayout(layout, variant);
+        widget.setKeyboardLayout(layout, variant);
     }
 
     mainWindow.setCentralWidget(&widget);

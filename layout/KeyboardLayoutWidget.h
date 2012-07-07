@@ -77,7 +77,7 @@ public:
     explicit KeyboardLayoutWidget(QWidget* parent = 0);
     virtual ~KeyboardLayoutWidget();
     void setGroup(int group);
-    void setLayout(const QString& layout, const QString& variant);
+    void setKeyboardLayout(const QString& layout, const QString& variant);
     void generatePixmap(bool force = false);
 
 protected:

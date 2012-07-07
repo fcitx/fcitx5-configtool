@@ -2,6 +2,7 @@
 #include <fcitx/addon.h>
 #include "org.fcitx.Fcitx.Keyboard.h"
 
+class KeyboardLayoutWidget;
 class KComboBox;
 namespace Fcitx {
 
@@ -14,6 +15,7 @@ public:
 
 private slots:
     void onButtonClicked(KDialog::ButtonCode code);
+    void layoutComboBoxChanged();
 
 private:
     QDBusConnection m_connection;
@@ -22,5 +24,6 @@ private:
     KComboBox* m_layoutCombobox;
     FcitxConfigPage* m_configPage;
     FcitxLayoutList m_layoutList;
+    KeyboardLayoutWidget* m_layoutWidget;
 };
 }

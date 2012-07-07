@@ -8,6 +8,7 @@
 #include "FcitxIMConfigDialog.h"
 #include "ConfigDescManager.h"
 #include "FcitxConfigPage.h"
+#include "KeyboardLayoutWidget.h"
 
 Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent): KDialog(parent)
     ,m_connection(QDBusConnection::sessionBus())
@@ -69,7 +70,30 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
 
             l->addWidget(label);
             l->addWidget(m_layoutCombobox);
+            connect(m_layoutCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(layoutComboBoxChanged()));
+            m_layoutWidget = new KeyboardLayoutWidget(this);
+            m_layoutWidget->setMinimumSize(QSize(400, 200));
+            m_layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            l->addWidget(m_layoutWidget);
+            layoutComboBoxChanged();
         }
+    }
+    else {
+        KeyboardLayoutWidget* layoutWidget = new KeyboardLayoutWidget(this);
+        layoutWidget->setMinimumSize(QSize(400, 200));
+        layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QString layoutstring = imName.mid(strlen("fcitx-keyboard-"));
+        int p = layoutstring.indexOf("-");
+        QString layout, variant;
+        if (p < 0) {
+            layout = layoutstring;
+        }
+        else {
+            layout = layoutstring.mid(0, p);
+            variant = layoutstring.mid(p + 1);
+        }
+        layoutWidget->setKeyboardLayout(layout, variant);
+        l->addWidget(layoutWidget);
     }
 
     FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
@@ -110,4 +134,18 @@ void Fcitx::FcitxIMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
 
     if (m_configPage)
         m_configPage->buttonClicked(code);
+}
+
+void Fcitx::FcitxIMConfigDialog::layoutComboBoxChanged()
+{
+    if (!m_layoutCombobox || !m_layoutWidget)
+        return;
+
+    int idx = m_layoutCombobox->currentIndex();
+    if (idx != 0) {
+        m_layoutWidget->setKeyboardLayout(m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
+        m_layoutWidget->show();
+    }
+    else
+        m_layoutWidget->hide();
 }
