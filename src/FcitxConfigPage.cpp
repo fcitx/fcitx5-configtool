@@ -56,7 +56,7 @@
 #include "FcitxConfigPage.h"
 #include "FcitxSubConfigParser.h"
 #include "FcitxSubConfigWidget.h"
-#include "keyserver_x11.h"
+#include "qtkeytrans.h"
 #include "ConfigDescManager.h"
 
 #define RoundColor(c) ((c)>=0?((c)<=255?c:255):0)
@@ -634,21 +634,11 @@ KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey)
 {
     if (keyseq.count() != 1)
         return false;
-    int key = keyseq[0];
-    hotkey->sym = (FcitxKeySym) keyQtToSym(key);
-    hotkey->state = FcitxKeyState_None;
-
-    if (key & Qt::CTRL)
-        hotkey->state |= FcitxKeyState_Ctrl;
-
-    if (key & Qt::ALT)
-        hotkey->state |= FcitxKeyState_Alt;
-
-    if (key & Qt::SHIFT)
-        hotkey->state |= FcitxKeyState_Shift;
-
-    if (key & Qt::META)
-        hotkey->state |= FcitxKeyState_Super;
+    int key = keyseq[0] & (~Qt::KeyboardModifierMask);
+    int state = keyseq[0] & Qt::KeyboardModifierMask;
+    int sym = 0;
+    keyQtToSym(key, Qt::KeyboardModifiers(state), sym, hotkey->state);
+    hotkey->sym = (FcitxKeySym) sym;
 
     return true;
 }
@@ -661,29 +651,8 @@ HotkeyToKeySequence(FcitxHotkey* hotkey)
 
     Qt::KeyboardModifiers qstate = Qt::NoModifier;
 
-    int count = 1;
-    if (state & FcitxKeyState_Alt) {
-        qstate |= Qt::AltModifier;
-        count ++;
-    }
-
-    if (state & FcitxKeyState_Shift) {
-        qstate |= Qt::ShiftModifier;
-        count ++;
-    }
-
-    if (state & FcitxKeyState_Ctrl) {
-        qstate |= Qt::ControlModifier;
-        count ++;
-    }
-
-    if (state & FcitxKeyState_Super) {
-        qstate |= Qt::MetaModifier;
-        count ++;
-    }
-
     int key;
-    symToKeyQt((uint) keyval, key);
+    symToKeyQt((int) keyval, state, key, qstate);
 
     return QKeySequence(key | qstate);
 }

@@ -3,6 +3,7 @@
 #define LOCALEDIR "@localedir@"
 #define EXEC_PREFIX "@exec_prefix@"
 #define PACKAGE "@package@"
+#cmakedefine XLIBDIR "@XLIBDIR@"
 #define FCITX4_EXEC_PREFIX "@FCITX4_EXEC_PREFIX@"
 #define FCITX4_MAJOR_VERSION @FCITX4_MAJOR_VERSION@
 #define FCITX4_MINOR_VERSION @FCITX4_MINOR_VERSION@

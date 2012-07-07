@@ -1,14 +1,4 @@
-include_directories(
-    ${FCITX4_FCITX_INCLUDE_DIRS}
-    ${FCITX4_FCITX_UTILS_INCLUDE_DIRS}
-    ${FCITX4_FCITX_CONFIG_INCLUDE_DIRS}
-    )
 
-link_directories(
-    ${FCITX4_FCITX_LIBRARY_DIRS}
-    ${FCITX4_FCITX_UTILS_LIBRARY_DIRS}
-    ${FCITX4_FCITX_CONFIG_LIBRARY_DIRS}
-    )
 
 set(kcm_SRCS
     main.cpp
@@ -25,6 +15,7 @@ set(kcm_SRCS
     FcitxIM.cpp
     FcitxLayout.cpp
     FcitxIMConfigDialog.cpp
+    qtkeytrans.cpp
 )
 
 set_property(

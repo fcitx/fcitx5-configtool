@@ -1,3 +1,4 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -9,16 +10,15 @@ msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-05-25 02:19+0800\n"
-"PO-Revision-Date: 2012-05-25 02:17+0800\n"
-"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
-"Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
+"PO-Revision-Date: 2012-06-16 04:34+0000\n"
+"Last-Translator: Alisha <alisha.4m@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/"
+"language/zh_TW/)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"language/zh_TW/)\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Lokalize 1.4\n"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -65,9 +65,8 @@ msgstr ""
 "能。</p></body></html>"
 
 #: ../src/FcitxIMConfigDialog.cpp:79
-#, fuzzy
 msgid "<b>Input Method Setting:</b>"
-msgstr "輸入法"
+msgstr "<b>輸入法設定：</b>"
 
 #: ../src/FcitxIMConfigDialog.cpp:56
 msgid "<b>Keyboard Layout:</b>"
@@ -96,9 +95,8 @@ msgid "Configure Fcitx addon"
 msgstr "設定 Fcitx 附加元件"
 
 #: ../src/Module.cpp:81
-#, fuzzy
 msgid "Copyright 2012 Xuetian Weng"
-msgstr "Copyright 2011 Xuetian Weng"
+msgstr "版權所有 2012 Xuetian Weng"
 
 #. i18n: file: ../src/FcitxIMPage.ui:96
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -199,6 +197,3 @@ msgstr "alisha.4m@gmail.com"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Alisha"
-
-#~ msgid "Form"
-#~ msgstr "Form"
