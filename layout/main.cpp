@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
                       );
     KCmdLineOptions options;
     options.add("g");
-    options.add("group <group>", ki18n("Keyboard layout group"), "1");
+    options.add("group <group>", ki18n("Keyboard layout group (0-3)"));
     options.add("l");
     options.add("layout <layout>", ki18n("Keyboard layout"));
     options.add("v");

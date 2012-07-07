@@ -48,6 +48,11 @@ static KeyboardDrawingGroupLevel *pGroupsLevels[] = {
     defaultGroupsLevels + 3
 };
 
+static bool
+FcitxXkbInitDefaultLayout (QStringList& layout, QStringList& variant);
+
+static bool
+FcitxXkbInitDefaultOption (QString& model, QString& option);
 
 static QString FcitxXkbGetRulesName()
 {
@@ -161,12 +166,47 @@ KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget* parent): QWidget(parent),
 
 void KeyboardLayoutWidget::setGroup(int group)
 {
+    XkbRF_VarDefsRec rdefs;
+    XkbComponentNamesRec rnames;
+    QString rulesPath = "./rules/evdev";
+    char c[] = "C";
+    XkbRF_RulesPtr rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+    if (rules == NULL) {
+        rulesPath = FcitxXkbFindXkbRulesFile();
+        if (rulesPath.endsWith(".xml")) {
+            rulesPath.chop(4);
+        }
+        rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+    }
+    if (rules == NULL) {
+        return;
+    }
+    memset (&rdefs, 0, sizeof (XkbRF_VarDefsRec));
+    memset (&rnames, 0, sizeof (XkbComponentNamesRec));
+    QString model, option;
+    QStringList layouts, variants;
+    if (!FcitxXkbInitDefaultOption(model, option))
+        return;
 
+    if (!FcitxXkbInitDefaultLayout(layouts, variants))
+        return;
+
+    rdefs.model = !model.isNull() ? strdup(model.toUtf8().data()) : NULL;
+    rdefs.layout =  layouts.count() > group ? strdup(layouts[group].toUtf8().data()) : NULL;
+    rdefs.variant =  variants.count() > group ? strdup(variants[group].toUtf8().data()) : NULL;
+    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().data()) : NULL;
+    XkbRF_GetComponents (rules, &rdefs, &rnames);
+    free (rdefs.model);
+    free (rdefs.layout);
+    free (rdefs.variant);
+    free (rdefs.options);
+
+    setKeyboard(&rnames);
 }
 
 
 static bool
-FcitxXkbInitDefaultLayout (QString& model, QString& option)
+FcitxXkbInitDefaultOption (QString& model, QString& option)
 {
     Display* dpy = QX11Info::display();
     XkbRF_VarDefsRec vd;
@@ -184,6 +224,33 @@ FcitxXkbInitDefaultLayout (QString& model, QString& option)
         option = vd.options;
     else
         option = QString();
+    return true;
+}
+
+
+static bool
+FcitxXkbInitDefaultLayout (QStringList& layout, QStringList& variant)
+{
+    Display* dpy = QX11Info::display();
+    XkbRF_VarDefsRec vd;
+    char *tmp = NULL;
+
+    if (!XkbRF_GetNamesProp(dpy, &tmp, &vd) || !tmp)
+        return false;
+    if (!vd.model || !vd.layout)
+        return false;
+
+    QString variantString, layoutString;
+    if (vd.layout)
+        layoutString = vd.layout;
+    else
+        layoutString = QString();
+    if (vd.variant)
+        variantString = vd.variant;
+    else
+        variantString = QString();
+    layout = layoutString.split(',');
+    variant = variantString.split(',');
     return true;
 }
 
@@ -207,7 +274,7 @@ void KeyboardLayoutWidget::setKeyboardLayout(const QString& layout, const QStrin
     memset (&rdefs, 0, sizeof (XkbRF_VarDefsRec));
     memset (&rnames, 0, sizeof (XkbComponentNamesRec));
     QString model, option;
-    if (!FcitxXkbInitDefaultLayout(model, option))
+    if (!FcitxXkbInitDefaultOption(model, option))
         return;
 
     rdefs.model = !model.isNull() ? strdup(model.toUtf8().data()) : NULL;
