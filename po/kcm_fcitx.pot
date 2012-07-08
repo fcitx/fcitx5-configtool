@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-05-25 02:19+0800\n"
+"POT-Creation-Date: 2012-07-08 11:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,27 +25,27 @@ msgstr ""
 msgid "Show &Advance option"
 msgstr ""
 
-#: ../src/FcitxConfigPage.cpp:105
+#: ../src/FcitxConfigPage.cpp:106
 msgid "Not all configuration can be reloaded immediately."
 msgstr ""
 
-#: ../src/FcitxConfigPage.cpp:106
+#: ../src/FcitxConfigPage.cpp:107
 msgid "Attention"
 msgstr ""
 
-#: ../src/FcitxConfigPage.cpp:392
+#: ../src/FcitxConfigPage.cpp:400
 msgid "Other"
 msgstr ""
 
-#: ../src/FcitxIMConfigDialog.cpp:56
+#: ../src/FcitxIMConfigDialog.cpp:57
 msgid "<b>Keyboard Layout:</b>"
 msgstr ""
 
-#: ../src/FcitxIMConfigDialog.cpp:60
+#: ../src/FcitxIMConfigDialog.cpp:61
 msgid "Default"
 msgstr ""
 
-#: ../src/FcitxIMConfigDialog.cpp:79
+#: ../src/FcitxIMConfigDialog.cpp:106
 msgid "<b>Input Method Setting:</b>"
 msgstr ""
 
@@ -57,19 +57,19 @@ msgstr ""
 msgid "Multilingual"
 msgstr ""
 
-#: ../src/FcitxIMPage.cpp:217
+#: ../src/FcitxIMPage.cpp:220
 msgid "Search Input Method"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:220
+#: ../src/FcitxSkinPage.cpp:221
 msgid "First candidate"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:221
+#: ../src/FcitxSkinPage.cpp:222
 msgid "Other candidate"
 msgstr ""
 
-#: ../src/FcitxSkinPage.cpp:375
+#: ../src/FcitxSkinPage.cpp:396
 msgid "Skin %1 Cannot be loaded"
 msgstr ""
 
@@ -117,45 +117,69 @@ msgstr ""
 msgid "Manage Fcitx Skin"
 msgstr ""
 
-#. i18n: file: ../src/FcitxIMPage.ui:22
+#. i18n: file: ../src/FcitxIMPage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:3
 msgid "Available Input Method:"
 msgstr ""
 
-#. i18n: file: ../src/FcitxIMPage.ui:35
+#. i18n: file: ../src/FcitxIMPage.ui:37
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:6
 msgid "Only &Show Current Language"
 msgstr ""
 
-#. i18n: file: ../src/FcitxIMPage.ui:96
+#. i18n: file: ../src/FcitxIMPage.ui:98
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:9
 msgid "Current Input Method:"
 msgstr ""
 
+#. i18n: file: ../src/FcitxIMPage.ui:162
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:12
+msgid "<b>Select Input Method:</b>"
+msgstr ""
+
+#. i18n: file: ../src/FcitxIMPage.ui:185
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:15
+msgid "<b>Default keyboard layout:</b>"
+msgstr ""
+
+#. i18n: file: ../src/FcitxIMPage.ui:210
+#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:18
+msgid "Keyboard layout to use when no input method active"
+msgstr ""
+
+#. i18n: file: ../src/FcitxIMPage.ui:213
+#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:21
+msgid "Select default keyboard layout"
+msgstr ""
+
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-#: rc.cpp:12
+#: rc.cpp:24
 msgid "&Configure Skin"
 msgstr ""
 
 #. i18n: file: ../src/FcitxSkinPage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-#: rc.cpp:15
+#: rc.cpp:27
 msgid "&Delete Skin"
 msgstr ""
 
 #. i18n: file: ../src/FcitxSkinPage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:18
+#: rc.cpp:30
 msgid "Get New &Skin..."
 msgstr ""
 
 #. i18n: file: ../src/FcitxSkinPage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:21
+#: rc.cpp:33
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -172,12 +196,12 @@ msgid ""
 "to use skin function.</p></body></html>"
 msgstr ""
 
-#: rc.cpp:27
+#: rc.cpp:39
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: rc.cpp:28
+#: rc.cpp:40
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""

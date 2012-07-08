@@ -211,6 +211,7 @@ FcitxIMPage::FcitxIMPage(Module* parent): QWidget(parent)
     d->configureButton = m_ui->configureButton;
     d->availIMView = m_ui->availIMView;
     d->currentIMView = m_ui->currentIMView;
+    d->defaultLayoutButton = m_ui->defaultLayoutButton;
 
     d->onlyCurrentLanguageCheckBox = m_ui->onlyCurrentLanguageCheckBox;
     d->filterTextEdit = m_ui->filterTextEdit;
@@ -250,6 +251,7 @@ FcitxIMPage::FcitxIMPage(Module* parent): QWidget(parent)
     connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
     connect(d->availIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectAvailIM(QModelIndex)));
     connect(d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
+    connect(d->defaultLayoutButton, SIGNAL(clicked(bool)), d, SLOT(selectDefaultLayout()));
 
     d->fetchIMList();
 }
@@ -321,6 +323,14 @@ void FcitxIMPage::Private::currentIMCurrentChanged()
 void FcitxIMPage::Private::selectCurrentIM(const QModelIndex& index)
 {
     currentIMView->selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
+}
+
+void FcitxIMPage::Private::selectDefaultLayout()
+{
+    QPointer<KDialog> configDialog(new FcitxIMConfigDialog("default", NULL));
+
+    configDialog->exec();
+    delete configDialog;
 }
 
 void FcitxIMPage::Private::selectAvailIM(const QModelIndex& index)

@@ -96,21 +96,26 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
         l->addWidget(layoutWidget);
     }
 
-    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
+    FcitxConfigFileDesc* cfdesc = NULL;
 
-    if (cfdesc ||  strlen(addon->subconfig) != 0) {
-        if (m_layoutCombobox) {
-            QLabel* label = new QLabel(i18n("<b>Input Method Setting:</b>"));
-            l->addWidget(label);
+    if (addon) {
+        cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
+
+        if (cfdesc ||  strlen(addon->subconfig) != 0) {
+            if (m_layoutCombobox) {
+                QLabel* label = new QLabel(i18n("<b>Input Method Setting:</b>"));
+                label->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
+                l->addWidget(label);
+            }
+            m_configPage = new FcitxConfigPage(
+                this,
+                cfdesc,
+                QString::fromUtf8("conf"),
+                QString::fromUtf8(addon->name).append(".config") ,
+                QString::fromUtf8(addon->subconfig)
+            );
+            l->addWidget(m_configPage);
         }
-        m_configPage = new FcitxConfigPage(
-            this,
-            cfdesc,
-            QString::fromUtf8("conf"),
-            QString::fromUtf8(addon->name).append(".config") ,
-            QString::fromUtf8(addon->subconfig)
-        );
-        l->addWidget(m_configPage);
     }
     setWindowIcon(KIcon("fcitx"));
     setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);

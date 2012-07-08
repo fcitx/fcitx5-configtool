@@ -1,4 +1,3 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
@@ -9,32 +8,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-05-25 02:19+0800\n"
-"PO-Revision-Date: 2012-06-16 04:34+0000\n"
-"Last-Translator: Alisha <alisha.4m@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/"
-"language/zh_TW/)\n"
+"POT-Creation-Date: 2012-07-08 11:19+0800\n"
+"PO-Revision-Date: 2012-07-08 11:20+0800\n"
+"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
+"Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"language/zh_TW/)\n"
 "Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-#: rc.cpp:12
+#: rc.cpp:24
 msgid "&Configure Skin"
 msgstr "設定皮膚(&C)"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-#: rc.cpp:15
+#: rc.cpp:27
 msgid "&Delete Skin"
 msgstr "刪除皮膚(&D)"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:21
+#: rc.cpp:33
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -64,23 +64,35 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">需要經典介面來使用皮膚功"
 "能。</p></body></html>"
 
-#: ../src/FcitxIMConfigDialog.cpp:79
+#. i18n: file: ../src/FcitxIMPage.ui:185
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:15
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>預設鍵盤佈局：</b>"
+
+#: ../src/FcitxIMConfigDialog.cpp:106
 msgid "<b>Input Method Setting:</b>"
 msgstr "<b>輸入法設定：</b>"
 
-#: ../src/FcitxIMConfigDialog.cpp:56
+#: ../src/FcitxIMConfigDialog.cpp:57
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>鍵盤佈局：</b>"
+
+#. i18n: file: ../src/FcitxIMPage.ui:162
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:12
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>選擇輸入法：</b>"
 
 #: ../src/Module.cpp:129
 msgid "Addon Config"
 msgstr "附加元件設定"
 
-#: ../src/FcitxConfigPage.cpp:106
+#: ../src/FcitxConfigPage.cpp:107
 msgid "Attention"
 msgstr "注意"
 
-#. i18n: file: ../src/FcitxIMPage.ui:22
+#. i18n: file: ../src/FcitxIMPage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:3
 msgid "Available Input Method:"
@@ -98,13 +110,13 @@ msgstr "設定 Fcitx 附加元件"
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "版權所有 2012 Xuetian Weng"
 
-#. i18n: file: ../src/FcitxIMPage.ui:96
+#. i18n: file: ../src/FcitxIMPage.ui:98
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:9
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: ../src/FcitxIMConfigDialog.cpp:60
+#: ../src/FcitxIMConfigDialog.cpp:61
 msgid "Default"
 msgstr "預設"
 
@@ -112,13 +124,13 @@ msgstr "預設"
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 設定模組"
 
-#: ../src/FcitxSkinPage.cpp:220
+#: ../src/FcitxSkinPage.cpp:221
 msgid "First candidate"
 msgstr "第一候選詞"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:18
+#: rc.cpp:30
 msgid "Get New &Skin..."
 msgstr "取得新皮膚(&S)..."
 
@@ -134,6 +146,12 @@ msgstr "Fcitx 全域設定"
 msgid "Input Method"
 msgstr "輸入法"
 
+#. i18n: file: ../src/FcitxIMPage.ui:210
+#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:18
+msgid "Keyboard layout to use when no input method active"
+msgstr "無活動輸入法時使用的鍵盤佈局"
+
 #: ../src/Module.cpp:141
 msgid "Manage Fcitx Skin"
 msgstr "管理 Fcitx 皮膚"
@@ -146,21 +164,21 @@ msgstr "管理皮膚"
 msgid "Multilingual"
 msgstr "多語言"
 
-#: ../src/FcitxConfigPage.cpp:105
+#: ../src/FcitxConfigPage.cpp:106
 msgid "Not all configuration can be reloaded immediately."
 msgstr "並非所有設定都可以立即重新載入。"
 
-#. i18n: file: ../src/FcitxIMPage.ui:35
+#. i18n: file: ../src/FcitxIMPage.ui:37
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:6
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
 
-#: ../src/FcitxConfigPage.cpp:392
+#: ../src/FcitxConfigPage.cpp:400
 msgid "Other"
 msgstr "其他"
 
-#: ../src/FcitxSkinPage.cpp:221
+#: ../src/FcitxSkinPage.cpp:222
 msgid "Other candidate"
 msgstr "其他候選詞"
 
@@ -168,15 +186,21 @@ msgstr "其他候選詞"
 msgid "Search Addons"
 msgstr "搜尋附加元件"
 
-#: ../src/FcitxIMPage.cpp:217
+#: ../src/FcitxIMPage.cpp:220
 msgid "Search Input Method"
 msgstr "搜尋輸入法"
+
+#. i18n: file: ../src/FcitxIMPage.ui:213
+#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:21
+msgid "Select default keyboard layout"
+msgstr "選擇預設鍵盤佈局"
 
 #: ../src/FcitxAddonSelector.cpp:385
 msgid "Show &Advance option"
 msgstr "顯示高級選項(&A)"
 
-#: ../src/FcitxSkinPage.cpp:375
+#: ../src/FcitxSkinPage.cpp:396
 msgid "Skin %1 Cannot be loaded"
 msgstr "無法載入皮膚 %1"
 
@@ -188,12 +212,12 @@ msgstr "未知"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: rc.cpp:28
+#: rc.cpp:40
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alisha.4m@gmail.com"
 
-#: rc.cpp:27
+#: rc.cpp:39
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Alisha"

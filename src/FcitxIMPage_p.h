@@ -73,6 +73,7 @@ public:
     IMModel* currentIMModel;
     QCheckBox* onlyCurrentLanguageCheckBox;
     Module* module;
+    KPushButton* defaultLayoutButton;
 
 Q_SIGNALS:
     void updateIMList(QString selection);
@@ -89,6 +90,7 @@ public Q_SLOTS:
     void save();
     void selectCurrentIM(const QModelIndex& index);
     void selectAvailIM(const QModelIndex& index);
+    void selectDefaultLayout();
 
 private:
     QDBusConnection m_connection;
