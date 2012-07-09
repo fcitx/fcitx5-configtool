@@ -260,6 +260,7 @@ void FcitxConfigPage::setupConfigUi()
                     KKeySequenceWidget* keyseq1 = new KKeySequenceWidget();
                     KKeySequenceWidget* keyseq2 = new KKeySequenceWidget();
                     QHBoxLayout* hbox = new QHBoxLayout();
+                    hbox->setMargin(0);
                     QWidget* widget = new QWidget(this);
                     keyseq1->setMultiKeyShortcutsAllowed(false);
                     keyseq1->setModifierlessAllowed(true);
