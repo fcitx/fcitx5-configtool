@@ -259,19 +259,19 @@ void FcitxConfigPage::setupConfigUi()
                 case T_Hotkey: {
                     KKeySequenceWidget* keyseq1 = new KKeySequenceWidget();
                     KKeySequenceWidget* keyseq2 = new KKeySequenceWidget();
-                    QHBoxLayout* hbox = new QHBoxLayout();
-                    hbox->setMargin(0);
+                    QVBoxLayout* vbox = new QVBoxLayout();
+                    vbox->setMargin(0);
                     QWidget* widget = new QWidget(this);
                     keyseq1->setMultiKeyShortcutsAllowed(false);
                     keyseq1->setModifierlessAllowed(true);
                     keyseq2->setMultiKeyShortcutsAllowed(false);
                     keyseq2->setModifierlessAllowed(true);
-                    hbox->addWidget(keyseq1);
-                    hbox->addWidget(keyseq2);
-                    widget->setLayout(hbox);
+                    vbox->addWidget(keyseq1);
+                    vbox->addWidget(keyseq2);
+                    widget->setLayout(vbox);
 
                     inputWidget = widget;
-                    argument = hbox;
+                    argument = vbox;
                     connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence)), this, SIGNAL(changed()));
                     connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence)), this, SIGNAL(changed()));
                 }
