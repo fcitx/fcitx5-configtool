@@ -264,8 +264,10 @@ void FcitxConfigPage::setupConfigUi()
                     QWidget* widget = new QWidget(this);
                     keyseq1->setMultiKeyShortcutsAllowed(false);
                     keyseq1->setModifierlessAllowed(true);
+                    keyseq1->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
                     keyseq2->setMultiKeyShortcutsAllowed(false);
                     keyseq2->setModifierlessAllowed(true);
+                    keyseq2->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
                     vbox->addWidget(keyseq1);
                     vbox->addWidget(keyseq2);
                     widget->setLayout(vbox);
