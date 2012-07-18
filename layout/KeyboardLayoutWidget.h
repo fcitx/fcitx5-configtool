@@ -4,15 +4,12 @@
 #define KEYBOARDLAYOUTWIDGET_H
 
 #include <QWidget>
-
-#include <X11/Xlib.h>
-#include <X11/extensions/XKBstr.h>
-#include <X11/extensions/XKBgeom.h>
 #include <QMap>
 
 class QPainter;
 struct Doodad;
 struct _XkbDesc;
+struct _XkbShapeDoodad;
 union _XkbDoodad;
 
 typedef enum {
@@ -104,14 +101,14 @@ protected:
     void drawKeyLabel(QPainter* painter, uint keycode, int angle, int arg4, int originY, int x2, int y2, bool pressed);
     void drawKeyLabelHelper(QPainter* painter, int keysym, int angle, int glp, int x, int y, int width, int height, int padding, bool is_pressed);
 
-    void drawShapeDoodad(QPainter* painter, Doodad* doodad, XkbShapeDoodadPtr shapeDoodad);
-    void drawTextDoodad(QPainter* painter, Doodad* doodad, XkbTextDoodadPtr textDoodad);
-    void drawIndicatorDoodad(QPainter* painter, Doodad* doodad, XkbIndicatorDoodadPtr indicatorDoodad);
+    void drawShapeDoodad(QPainter* painter, Doodad* doodad, struct _XkbShapeDoodad* shapeDoodad);
+    void drawTextDoodad(QPainter* painter, Doodad* doodad, struct _XkbTextDoodad* textDoodad);
+    void drawIndicatorDoodad(QPainter* painter, Doodad* doodad, struct _XkbIndicatorDoodad* indicatorDoodad);
 
-    int calcShapeOriginOffsetX(XkbOutlinePtr outline);
-    void drawOutline(QPainter* painter, XkbOutlinePtr outline, QColor color, int angle, int originX, int originY);
+    int calcShapeOriginOffsetX(struct _XkbOutline* outline);
+    void drawOutline(QPainter* painter, struct _XkbOutline* outline, QColor color, int angle, int originX, int originY);
     void drawRectangle(QPainter* painter, QColor color, int angle, int xkb_x, int xkb_y, int xkb_width, int xkb_height, unsigned int radius);
-    void drawPolygon(QPainter* painter, QColor color, int originX, int originY, XkbPointPtr points, unsigned int num_points, unsigned int radius);
+    void drawPolygon(QPainter* painter, QColor color, int originX, int originY, struct _XkbPoint* points, unsigned int num_points, unsigned int radius);
     void rotateCoordinate(int originX, int originY, int x, int y, int angle, int* rotated_x, int* rotated_y);
     int xkbToPixmapCoord (int n);
     double xkbToPixmapDouble (double d);
@@ -119,7 +116,7 @@ protected:
     void drawCurveRectangle(QPainter* painter, bool filled, QColor color, int x, int y, int width, int height, double radius);
     void roundedCorner (QPainterPath& path, QPointF b, QPointF c, double radius);
     void resizeEvent(QResizeEvent* event);
-    void setKeyboard(XkbComponentNamesPtr xkbDesc);
+    void setKeyboard(struct _XkbComponentNames* xkbDesc);
 
 private:
     QList<DrawingItem*> keyboardItems;
