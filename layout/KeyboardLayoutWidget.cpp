@@ -513,6 +513,11 @@ void KeyboardLayoutWidget::initColors()
 
 void KeyboardLayoutWidget::focusOutEvent(QFocusEvent* event)
 {
+    if (!xkb) {
+        QWidget::focusOutEvent(event);
+        return;
+    }
+
     bool update = false;
     for (int i = xkb->min_key_code; i <= xkb->max_key_code; i ++) {
         if (keys[i].pressed) {
@@ -686,6 +691,9 @@ void KeyboardLayoutWidget::initInicatorDoodad(XkbDoodadRec * xkbdoodad, Doodad& 
 
 void KeyboardLayoutWidget::generatePixmap(bool force)
 {
+    if (!xkb)
+        return;
+
     double ratioX = (double) width() / xkb->geom->width_mm;
     double ratioY = (double) height() / xkb->geom->height_mm;
 
@@ -1418,6 +1426,8 @@ void KeyboardLayoutWidget::resizeEvent(QResizeEvent* event)
 bool KeyboardLayoutWidget::x11Event(XEvent* event)
 {
     do {
+        if (!xkb)
+            break;
         if (event->type != KeyPress && event->type != KeyRelease)
             break;
         DrawingKey* key = &keys[event->xkey.keycode];
