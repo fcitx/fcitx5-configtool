@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-07-08 11:19+0800\n"
-"PO-Revision-Date: 2012-07-08 11:19+0800\n"
+"POT-Creation-Date: 2012-07-31 09:19+0800\n"
+"PO-Revision-Date: 2012-07-31 09:19+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -116,10 +116,6 @@ msgstr "Copyright 2012 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "当前的输入法："
 
-#: ../src/FcitxIMConfigDialog.cpp:61
-msgid "Default"
-msgstr "默认"
-
 #: ../src/Module.cpp:77
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
@@ -145,6 +141,10 @@ msgstr "Fcitx 的全局配置"
 #: ../src/Module.cpp:104 ../src/Module.cpp:106
 msgid "Input Method"
 msgstr "输入法"
+
+#: ../src/FcitxIMConfigDialog.cpp:61
+msgid "Input Method Default"
+msgstr "输入法默认"
 
 #. i18n: file: ../src/FcitxIMPage.ui:210
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
@@ -174,7 +174,7 @@ msgstr "并非所有设置都可以被立即重新加载。"
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
 
-#: ../src/FcitxConfigPage.cpp:400
+#: ../src/FcitxConfigPage.cpp:403
 msgid "Other"
 msgstr "其他"
 
@@ -221,6 +221,9 @@ msgstr "wengxt@gmail.com"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Xuetian Weng"
+
+#~ msgid "Default"
+#~ msgstr "默认"
 
 #~ msgid "Form"
 #~ msgstr "Form"

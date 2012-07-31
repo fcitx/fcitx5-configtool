@@ -58,7 +58,7 @@ Fcitx::FcitxIMConfigDialog::FcitxIMConfigDialog(const QString& imName, const Fci
 
             int idx = 1;
             int select = 0;
-            m_layoutCombobox->addItem(i18n("Default"));
+            m_layoutCombobox->addItem(i18n("Input Method Default"));
 
             foreach (const FcitxLayout& layout, layoutList.value()) {
                 if (imLayout == layout.layout() && imVariant == layout.variant())

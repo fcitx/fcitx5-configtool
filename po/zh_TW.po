@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-07-08 11:19+0800\n"
-"PO-Revision-Date: 2012-07-08 11:20+0800\n"
+"POT-Creation-Date: 2012-07-31 09:19+0800\n"
+"PO-Revision-Date: 2012-07-31 09:19+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_TW\n"
@@ -116,10 +116,6 @@ msgstr "版權所有 2012 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: ../src/FcitxIMConfigDialog.cpp:61
-msgid "Default"
-msgstr "預設"
-
 #: ../src/Module.cpp:77
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 設定模組"
@@ -145,6 +141,10 @@ msgstr "Fcitx 全域設定"
 #: ../src/Module.cpp:104 ../src/Module.cpp:106
 msgid "Input Method"
 msgstr "輸入法"
+
+#: ../src/FcitxIMConfigDialog.cpp:61
+msgid "Input Method Default"
+msgstr "輸入法預設"
 
 #. i18n: file: ../src/FcitxIMPage.ui:210
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
@@ -174,7 +174,7 @@ msgstr "並非所有設定都可以立即重新載入。"
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
 
-#: ../src/FcitxConfigPage.cpp:400
+#: ../src/FcitxConfigPage.cpp:403
 msgid "Other"
 msgstr "其他"
 
@@ -221,3 +221,6 @@ msgstr "alisha.4m@gmail.com"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Alisha"
+
+#~ msgid "Default"
+#~ msgstr "預設"
