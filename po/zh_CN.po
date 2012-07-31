@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-07-31 09:19+0800\n"
+"POT-Creation-Date: 2012-07-31 15:51+0800\n"
 "PO-Revision-Date: 2012-07-31 09:19+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
@@ -19,6 +19,152 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Lokalize 1.5\n"
+
+#: ../src/FcitxAddonSelector.cpp:378
+msgid "Search Addons"
+msgstr "搜索附加组件"
+
+#: ../src/FcitxAddonSelector.cpp:385
+msgid "Show &Advance option"
+msgstr "显示高级选项(&A)"
+
+#: ../src/FcitxConfigPage.cpp:106
+msgid "Not all configuration can be reloaded immediately."
+msgstr "并非所有设置都可以被立即重新加载。"
+
+#: ../src/FcitxConfigPage.cpp:107
+msgid "Attention"
+msgstr "注意"
+
+#: ../src/FcitxConfigPage.cpp:403
+msgid "Other"
+msgstr "其他"
+
+#: ../src/FcitxIMConfigDialog.cpp:57
+msgid "<b>Keyboard Layout:</b>"
+msgstr "<b>键盘布局：</b>"
+
+#: ../src/FcitxIMConfigDialog.cpp:62
+msgid "Default"
+msgstr "默认"
+
+#: ../src/FcitxIMConfigDialog.cpp:64
+msgid "Input Method Default"
+msgstr "输入法默认"
+
+#: ../src/FcitxIMConfigDialog.cpp:109
+msgid "<b>Input Method Setting:</b>"
+msgstr "<b>输入法设置：</b>"
+
+#: ../src/FcitxIMPage.cpp:49
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/FcitxIMPage.cpp:52
+msgid "Multilingual"
+msgstr "多语言"
+
+#: ../src/FcitxIMPage.cpp:220
+msgid "Search Input Method"
+msgstr "搜索输入法"
+
+#: ../src/FcitxSkinPage.cpp:221
+msgid "First candidate"
+msgstr "第一候选词"
+
+#: ../src/FcitxSkinPage.cpp:222
+msgid "Other candidate"
+msgstr "其他候选词"
+
+#: ../src/FcitxSkinPage.cpp:396
+msgid "Skin %1 Cannot be loaded"
+msgstr "皮肤 %1 无法加载"
+
+#: ../src/Module.cpp:77
+msgid "Fcitx Configuration Module"
+msgstr "Fcitx 配置模块"
+
+#: ../src/Module.cpp:79
+msgid "Configure Fcitx"
+msgstr "配置 Fcitx"
+
+#: ../src/Module.cpp:81
+msgid "Copyright 2012 Xuetian Weng"
+msgstr "Copyright 2012 Xuetian Weng"
+
+#: ../src/Module.cpp:85
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: ../src/Module.cpp:104 ../src/Module.cpp:106
+msgid "Input Method"
+msgstr "输入法"
+
+#: ../src/Module.cpp:117
+msgid "Global Config"
+msgstr "全局配置"
+
+#: ../src/Module.cpp:119
+msgid "Global Config for Fcitx"
+msgstr "Fcitx 的全局配置"
+
+#: ../src/Module.cpp:129
+msgid "Addon Config"
+msgstr "附加组件配置"
+
+#: ../src/Module.cpp:131
+msgid "Configure Fcitx addon"
+msgstr "配置 Fcitx 附加组件"
+
+#: ../src/Module.cpp:139
+msgid "Manage Skin"
+msgstr "管理皮肤"
+
+#: ../src/Module.cpp:141
+msgid "Manage Fcitx Skin"
+msgstr "管理Fcitx 的皮肤"
+
+#. i18n: file: ../src/FcitxIMPage.ui:24
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:3
+msgid "Available Input Method:"
+msgstr "可用的输入法："
+
+#. i18n: file: ../src/FcitxIMPage.ui:37
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+#: rc.cpp:6
+msgid "Only &Show Current Language"
+msgstr "仅显示当前语言(&S)"
+
+#. i18n: file: ../src/FcitxIMPage.ui:98
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:9
+msgid "Current Input Method:"
+msgstr "当前的输入法："
+
+#. i18n: file: ../src/FcitxIMPage.ui:162
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:12
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>选择输入法：</b>"
+
+#. i18n: file: ../src/FcitxIMPage.ui:185
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:15
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>默认键盘布局：</b>"
+
+#. i18n: file: ../src/FcitxIMPage.ui:210
+#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:18
+msgid "Keyboard layout to use when no input method active"
+msgstr "无输入法时的使用的键盘布局"
+
+#. i18n: file: ../src/FcitxIMPage.ui:213
+#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
+#: rc.cpp:21
+msgid "Select default keyboard layout"
+msgstr "选择默认键盘布局"
 
 #. i18n: file: ../src/FcitxSkinPage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -31,6 +177,12 @@ msgstr "配置皮肤(&C)"
 #: rc.cpp:27
 msgid "&Delete Skin"
 msgstr "删除皮肤(&D)"
+
+#. i18n: file: ../src/FcitxSkinPage.ui:58
+#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
+#: rc.cpp:30
+msgid "Get New &Skin..."
+msgstr "获得新皮肤(&S)..."
 
 #. i18n: file: ../src/FcitxSkinPage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -64,166 +216,15 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功"
 "能。</p></body></html>"
 
-#. i18n: file: ../src/FcitxIMPage.ui:185
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:15
-msgid "<b>Default keyboard layout:</b>"
-msgstr "<b>默认键盘布局：</b>"
-
-#: ../src/FcitxIMConfigDialog.cpp:106
-msgid "<b>Input Method Setting:</b>"
-msgstr "<b>输入法设置：</b>"
-
-#: ../src/FcitxIMConfigDialog.cpp:57
-msgid "<b>Keyboard Layout:</b>"
-msgstr "<b>键盘布局：</b>"
-
-#. i18n: file: ../src/FcitxIMPage.ui:162
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-#: rc.cpp:12
-msgid "<b>Select Input Method:</b>"
-msgstr "<b>选择输入法：</b>"
-
-#: ../src/Module.cpp:129
-msgid "Addon Config"
-msgstr "附加组件配置"
-
-#: ../src/FcitxConfigPage.cpp:107
-msgid "Attention"
-msgstr "注意"
-
-#. i18n: file: ../src/FcitxIMPage.ui:24
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:3
-msgid "Available Input Method:"
-msgstr "可用的输入法："
-
-#: ../src/Module.cpp:79
-msgid "Configure Fcitx"
-msgstr "配置 Fcitx"
-
-#: ../src/Module.cpp:131
-msgid "Configure Fcitx addon"
-msgstr "配置 Fcitx 附加组件"
-
-#: ../src/Module.cpp:81
-msgid "Copyright 2012 Xuetian Weng"
-msgstr "Copyright 2012 Xuetian Weng"
-
-#. i18n: file: ../src/FcitxIMPage.ui:98
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:9
-msgid "Current Input Method:"
-msgstr "当前的输入法："
-
-#: ../src/Module.cpp:77
-msgid "Fcitx Configuration Module"
-msgstr "Fcitx 配置模块"
-
-#: ../src/FcitxSkinPage.cpp:221
-msgid "First candidate"
-msgstr "第一候选词"
-
-#. i18n: file: ../src/FcitxSkinPage.ui:58
-#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:30
-msgid "Get New &Skin..."
-msgstr "获得新皮肤(&S)..."
-
-#: ../src/Module.cpp:117
-msgid "Global Config"
-msgstr "全局配置"
-
-#: ../src/Module.cpp:119
-msgid "Global Config for Fcitx"
-msgstr "Fcitx 的全局配置"
-
-#: ../src/Module.cpp:104 ../src/Module.cpp:106
-msgid "Input Method"
-msgstr "输入法"
-
-#: ../src/FcitxIMConfigDialog.cpp:61
-msgid "Input Method Default"
-msgstr "输入法默认"
-
-#. i18n: file: ../src/FcitxIMPage.ui:210
-#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:18
-msgid "Keyboard layout to use when no input method active"
-msgstr "无输入法时的使用的键盘布局"
-
-#: ../src/Module.cpp:141
-msgid "Manage Fcitx Skin"
-msgstr "管理Fcitx 的皮肤"
-
-#: ../src/Module.cpp:139
-msgid "Manage Skin"
-msgstr "管理皮肤"
-
-#: ../src/FcitxIMPage.cpp:52
-msgid "Multilingual"
-msgstr "多语言"
-
-#: ../src/FcitxConfigPage.cpp:106
-msgid "Not all configuration can be reloaded immediately."
-msgstr "并非所有设置都可以被立即重新加载。"
-
-#. i18n: file: ../src/FcitxIMPage.ui:37
-#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:6
-msgid "Only &Show Current Language"
-msgstr "仅显示当前语言(&S)"
-
-#: ../src/FcitxConfigPage.cpp:403
-msgid "Other"
-msgstr "其他"
-
-#: ../src/FcitxSkinPage.cpp:222
-msgid "Other candidate"
-msgstr "其他候选词"
-
-#: ../src/FcitxAddonSelector.cpp:378
-msgid "Search Addons"
-msgstr "搜索附加组件"
-
-#: ../src/FcitxIMPage.cpp:220
-msgid "Search Input Method"
-msgstr "搜索输入法"
-
-#. i18n: file: ../src/FcitxIMPage.ui:213
-#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:21
-msgid "Select default keyboard layout"
-msgstr "选择默认键盘布局"
-
-#: ../src/FcitxAddonSelector.cpp:385
-msgid "Show &Advance option"
-msgstr "显示高级选项(&A)"
-
-#: ../src/FcitxSkinPage.cpp:396
-msgid "Skin %1 Cannot be loaded"
-msgstr "皮肤 %1 无法加载"
-
-#: ../src/FcitxIMPage.cpp:49
-msgid "Unknown"
-msgstr "未知"
-
-#: ../src/Module.cpp:85
-msgid "Xuetian Weng"
+#: rc.cpp:39
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
 msgstr "Xuetian Weng"
 
 #: rc.cpp:40
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wengxt@gmail.com"
-
-#: rc.cpp:39
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Xuetian Weng"
-
-#~ msgid "Default"
-#~ msgstr "默认"
 
 #~ msgid "Form"
 #~ msgstr "Form"

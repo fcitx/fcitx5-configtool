@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-07-31 09:19+0800\n"
+"POT-Creation-Date: 2012-07-31 15:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,11 +41,15 @@ msgstr ""
 msgid "<b>Keyboard Layout:</b>"
 msgstr ""
 
-#: ../src/FcitxIMConfigDialog.cpp:61
+#: ../src/FcitxIMConfigDialog.cpp:62
+msgid "Default"
+msgstr ""
+
+#: ../src/FcitxIMConfigDialog.cpp:64
 msgid "Input Method Default"
 msgstr ""
 
-#: ../src/FcitxIMConfigDialog.cpp:106
+#: ../src/FcitxIMConfigDialog.cpp:109
 msgid "<b>Input Method Setting:</b>"
 msgstr ""
 
