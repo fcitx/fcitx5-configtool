@@ -349,22 +349,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
 
 void ConfigWidget::setupSimpleConfigUi()
 {
-    if (!m_cfdesc)
-        return;
-
-    bindtextdomain(m_cfdesc->domain, LOCALEDIR);
-    bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
-
-    FILE *fp;
-    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
-    m_config->load(fp);
-
-    if (fp)
-        fclose(fp);
-
-    if (!m_config->isValid())
-        return;
-
+    int row = 0;
     VerticalScrollArea *scrollarea = new VerticalScrollArea;
     scrollarea->setFrameStyle(QFrame::NoFrame);
     scrollarea->setWidgetResizable(true);
@@ -374,50 +359,54 @@ void ConfigWidget::setupSimpleConfigUi()
     scrollarea->setWidget(form);
     form->setLayout(gridLayout);
 
-    int row = 0;
-    HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
-        if (cgdesc->optionsDesc == NULL)
-            continue;
-        else {
-            int count = 0;
+    do {
+        if (!m_cfdesc)
+            break;
+
+        if (!m_config->isValid())
+            break;
+
+        HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
+            if (cgdesc->optionsDesc == NULL)
+                continue;
+            else {
+                int count = 0;
+                HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
+                    FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+                    if (!codesc2->advance)
+                        count++;
+                }
+                if (!count)
+                    continue;
+            }
+            QLabel* grouplabel = new QLabel(QString("<b>%1</b>").arg(QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName))));
+            gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
+
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                 FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                if (!codesc2->advance)
-                    count++;
-            }
-            if (!count)
-                continue;
-        }
-        QLabel* grouplabel = new QLabel(QString("<b>%1</b>").arg(QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName))));
-        gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
+                if (codesc2->advance)
+                    continue;
+                QString s;
+                QWidget* inputWidget = NULL;
+                void* argument = NULL;
+                createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
 
-        HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-            FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-            if (codesc2->advance)
-                continue;
-            QString s;
-            QWidget* inputWidget = NULL;
-            void* argument = NULL;
-            createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
-
-            if (inputWidget) {
-                QLabel* label = new QLabel(s);
-                gridLayout->addWidget(label, row, 1, Qt::AlignTop | Qt::AlignRight);
-                gridLayout->addWidget(inputWidget, row, 2);
-                if (argument)
-                    m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
-                row++;
+                if (inputWidget) {
+                    QLabel* label = new QLabel(s);
+                    gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
+                    gridLayout->addWidget(inputWidget, row, 2);
+                    if (argument)
+                        m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
+                    row++;
+                }
             }
         }
-    }
-
-    if (row >= 2) {
-        QSpacerItem* horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
-    }
+    } while(0);
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length() != 0) {
+        QLabel* grouplabel = new QLabel(QString("<b>Other</b>"));
+        gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
         Q_FOREACH(const QString & key, keys) {
             SubConfig* subconfig = m_parser->getSubConfig(key);
             QLabel* label = new QLabel(QString::fromUtf8(
@@ -425,12 +414,18 @@ void ConfigWidget::setupSimpleConfigUi()
                                 subconfig->name().toUtf8().data()
                             )
                 ));
-            gridLayout->addWidget(label, row, 1, Qt::AlignTop | Qt::AlignRight);
+            gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
             gridLayout->addWidget(new SubConfigWidget(subconfig, this), row, 2);
+            row++;
         }
     }
 
     QSpacerItem* verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+    if (row >= 2) {
+        QSpacerItem* horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
+    }
 
     gridLayout->addItem(verticalSpacer, row, 1, 1, 1);
 
@@ -440,59 +435,50 @@ void ConfigWidget::setupSimpleConfigUi()
 
 void ConfigWidget::setupFullConfigUi()
 {
-    if (!m_cfdesc)
-        return;
-
-    bindtextdomain(m_cfdesc->domain, LOCALEDIR);
-    bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
-
-    FILE *fp;
-    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
-    m_config->load(fp);
-
-    if (fp)
-        fclose(fp);
-
-    if (!m_config->isValid())
-        return;
-
     QTabWidget* tabWidget = new QTabWidget(this);
+    do {
+        if (!m_cfdesc)
+            break;
 
-    HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
-        if (cgdesc->optionsDesc == NULL)
-            continue;
+        if (!m_config->isValid())
+            break;
 
-        QWidget* main = new QWidget(this);
-        QVBoxLayout* mainLayout = new QVBoxLayout;
-        main->setLayout(mainLayout);
+        HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
+            if (cgdesc->optionsDesc == NULL)
+                continue;
 
-        VerticalScrollArea *scrollarea = new VerticalScrollArea;
-        scrollarea->setFrameStyle(QFrame::NoFrame);
-        scrollarea->setWidgetResizable(true);
+            QWidget* main = new QWidget(this);
+            QVBoxLayout* mainLayout = new QVBoxLayout;
+            main->setLayout(mainLayout);
 
-        QWidget* form = new QWidget;
-        QFormLayout* formLayout = new QFormLayout;
-        scrollarea->setWidget(form);
-        form->setLayout(formLayout);
+            VerticalScrollArea *scrollarea = new VerticalScrollArea;
+            scrollarea->setFrameStyle(QFrame::NoFrame);
+            scrollarea->setWidgetResizable(true);
 
-        HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-            QString s;
-            QWidget* inputWidget = NULL;
-            void* argument = NULL;
-            createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
+            QWidget* form = new QWidget;
+            QFormLayout* formLayout = new QFormLayout;
+            scrollarea->setWidget(form);
+            form->setLayout(formLayout);
 
-            if (inputWidget) {
-                QLabel* label = new QLabel(s, this);
-                formLayout->addRow(label, inputWidget);
-                if (argument)
-                    m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
+            HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
+                QString s;
+                QWidget* inputWidget = NULL;
+                void* argument = NULL;
+                createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
+
+                if (inputWidget) {
+                    QLabel* label = new QLabel(s, this);
+                    formLayout->addRow(label, inputWidget);
+                    if (argument)
+                        m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
+                }
             }
+
+            mainLayout->addWidget(scrollarea);
+
+            tabWidget->addTab(main, QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName)));
         }
-
-        mainLayout->addWidget(scrollarea);
-
-        tabWidget->addTab(main, QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName)));
-    }
+    } while(0);
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length()) {
@@ -539,6 +525,16 @@ void ConfigWidget::setupConfigUi()
 
     checkCanUseSimple();
 
+    if (m_cfdesc) {
+        bindtextdomain(m_cfdesc->domain, LOCALEDIR);
+        bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
+        FILE *fp;
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
+        m_config->load(fp);
+
+        if (fp)
+            fclose(fp);
+    }
     if (m_uitype & CW_SimpleOnly)
         setupSimpleConfigUi();
 
@@ -573,15 +569,17 @@ void ConfigWidget::checkCanUseSimple()
 {
     int count = 0;
     int simpleCount = 0;
-    HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
-        if (cgdesc->optionsDesc == NULL)
-            continue;
-        else {
-            HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-                FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                if (!codesc2->advance)
-                    simpleCount++;
-                count ++;
+    if (m_cfdesc) {
+        HASH_FOREACH(cgdesc, m_cfdesc->groupsDesc, FcitxConfigGroupDesc) {
+            if (cgdesc->optionsDesc == NULL)
+                continue;
+            else {
+                HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
+                    FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+                    if (!codesc2->advance)
+                        simpleCount++;
+                    count ++;
+                }
             }
         }
     }
