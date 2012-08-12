@@ -17,13 +17,45 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITX_LAYOUT_H
+#define FCITX_LAYOUT_H
 
-// self
-#include "module.h"
+// Qt
+#include <QString>
+#include <QMetaType>
+#include <QDebug>
+#include <QDBusArgument>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Fcitx {
 
+class Layout
+{
+public:
+    const QString& layout() const;
+    const QString& variant() const;
+    const QString& name() const;
+    const QString& langCode() const;
+    void setLayout(const QString& layout);
+    void setLangCode(const QString& lang);
+    void setName(const QString& name);
+    void setVariant(const QString& variant);
+
+    static void registerMetaType();
+private:
+    QString m_layout;
+    QString m_variant;
+    QString m_name;
+    QString m_langCode;
+};
+
+typedef QList<Layout> LayoutList;
+
+}
+
+QDBusArgument& operator<<(QDBusArgument& argument, const Fcitx::Layout& im);
+const QDBusArgument& operator>>(const QDBusArgument& argument, Fcitx::Layout& l);
+
+Q_DECLARE_METATYPE(Fcitx::Layout)
+Q_DECLARE_METATYPE(Fcitx::LayoutList)
+
+#endif

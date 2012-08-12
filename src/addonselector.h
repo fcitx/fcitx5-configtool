@@ -17,13 +17,42 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef __FCITX_ADDON_SELECTOR_H__
+#define __FCITX_ADDON_SELECTOR_H__
 
-// self
-#include "module.h"
+// Qt
+#include <QWidget>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+struct _FcitxAddon;
 
+namespace Fcitx
+{
+
+class Module;
+
+class AddonSelector : public QWidget
+{
+    Q_OBJECT
+
+public:
+    AddonSelector(Module* parent);
+    virtual ~AddonSelector();
+    void load();
+    void save();
+    void addAddon(struct _FcitxAddon* fcitxAddon);
+
+Q_SIGNALS:
+    void changed(bool hasChanged);
+    void configCommitted(const QByteArray& componentName);
+
+private:
+
+    class Private;
+    Private* d;
+    Module* parent;
+};
+
+
+}
+
+#endif

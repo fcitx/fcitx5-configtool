@@ -17,13 +17,33 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef CONFIGDESCMANAGER_H
+#define CONFIGDESCMANAGER_H
 
-// self
-#include "module.h"
+// Qt
+#include <QHash>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+// Fcitx
+#include <fcitx-config/fcitx-config.h>
 
+namespace Fcitx
+{
+
+class ConfigDescManager : public QObject
+{
+    Q_OBJECT
+public:
+    static ConfigDescManager* instance();
+    static void deInit();
+    virtual ~ConfigDescManager();
+    FcitxConfigFileDesc* GetConfigDesc(const QString& name);
+
+private:
+    ConfigDescManager();
+    QHash<QString, FcitxConfigFileDesc*>* m_hash;
+    static ConfigDescManager* inst;
+};
+
+}
+
+#endif

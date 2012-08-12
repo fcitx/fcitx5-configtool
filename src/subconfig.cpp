@@ -17,13 +17,60 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
-
 // self
-#include "module.h"
+#include "subconfig.h"
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Fcitx
+{
 
+SubConfig* SubConfig::GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QSet< QString >& fileList)
+{
+    SubConfig* subconfig = new SubConfig;
+    subconfig->m_name = name;
+    subconfig->m_type = SC_ConfigFile;
+    subconfig->m_filelist = fileList;
+    subconfig->m_configdesc = configdesc;
+    return subconfig;
+}
+
+SubConfig* SubConfig::GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QSet< QString >& fileList)
+{
+    SubConfig* subconfig = new SubConfig;
+    subconfig->m_name = name;
+    subconfig->m_type = SC_NativeFile;
+    subconfig->m_filelist = fileList;
+    subconfig->m_nativepath = nativepath;
+    return subconfig;
+}
+
+SubConfig::SubConfig(QObject* parent) : QObject(parent)
+{
+
+}
+
+SubConfigType SubConfig::type()
+{
+    return m_type;
+}
+
+const QString& SubConfig::name() const
+{
+    return m_name;
+}
+
+const QString& SubConfig::configdesc() const
+{
+    return m_configdesc;
+}
+
+const QString& SubConfig::nativepath() const
+{
+    return m_nativepath;
+}
+
+QSet< QString >& SubConfig::filelist()
+{
+    return m_filelist;
+}
+
+}

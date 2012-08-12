@@ -23,7 +23,7 @@
 #include <KIcon>
 
 #include "config.h"
-#include "KeyboardLayoutWidget.h"
+#include "keyboardlayoutwidget.h"
 
 int main(int argc, char* argv[])
 {

@@ -17,13 +17,37 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITXSUBCONFIGWIDGET_P_H
+#define FCITXSUBCONFIGWIDGET_P_H
 
-// self
-#include "module.h"
+// Qt
+#include <QAbstractListModel>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Fcitx
+{
+class ConfigFile
+{
+public:
+    ConfigFile(const QString& path);
+    QString name();
+    const QString& path() const;
+private:
+    QString m_path;
+};
 
+class ConfigFileItemModel : public QAbstractListModel
+{
+    Q_OBJECT
+public:
+    ConfigFileItemModel(QObject* parent = 0);
+    virtual ~ConfigFileItemModel();
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+    void addConfigFile(ConfigFile* configfile);
+private:
+    QList<ConfigFile*> m_files;
+};
+}
+
+#endif

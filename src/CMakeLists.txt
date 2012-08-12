@@ -2,44 +2,28 @@ include_directories(${PROJECT_SOURCE_DIR}/layout)
 
 set(kcm_SRCS
     main.cpp
-    Module.cpp
-    FcitxAddonSelector.cpp
-    FcitxConfigPage.cpp
-    ConfigDescManager.cpp
-    FcitxSubConfigParser.cpp
-    FcitxSubConfigPattern.cpp
-    FcitxSubConfig.cpp
-    FcitxSubConfigWidget.cpp
-    FcitxSkinPage.cpp
-    FcitxIMPage.cpp
-    FcitxIM.cpp
-    FcitxLayout.cpp
-    FcitxIMConfigDialog.cpp
+    module.cpp
+    addonselector.cpp
+    configwidget.cpp
+    configdescmanager.cpp
+    subconfigparser.cpp
+    subconfigpattern.cpp
+    subconfig.cpp
+    subconfigwidget.cpp
+    skinpage.cpp
+    impage.cpp
+    im.cpp
+    layout.cpp
+    imconfigdialog.cpp
     qtkeytrans.cpp
-    ../layout/KeyboardLayoutWidget.cpp
+    inputmethodproxy.cpp
+    keyboardproxy.cpp
+    dummyconfig.cpp
+    verticalscrollarea.cpp
+    ../layout/keyboardlayoutwidget.cpp
 )
 
-set_property(
-    SOURCE org.fcitx.Fcitx.InputMethod.xml
-    PROPERTY INCLUDE FcitxIM.h
-)
-
-set_property(
-    SOURCE org.fcitx.Fcitx.Keyboard.xml
-    PROPERTY INCLUDE FcitxLayout.h
-)
-
-QT4_ADD_DBUS_INTERFACE(kcm_SRCS
-    org.fcitx.Fcitx.InputMethod.xml
-    org.fcitx.Fcitx.InputMethod
-)
-
-QT4_ADD_DBUS_INTERFACE(kcm_SRCS
-    org.fcitx.Fcitx.Keyboard.xml
-    org.fcitx.Fcitx.Keyboard
-)
-
-kde4_add_ui_files(kcm_SRCS Module.ui FcitxConfigPage.ui FcitxSkinPage.ui FcitxIMPage.ui)
+kde4_add_ui_files(kcm_SRCS module.ui skinpage.ui impage.ui)
 
 kde4_add_plugin(kcm_fcitx ${kcm_SRCS})
 

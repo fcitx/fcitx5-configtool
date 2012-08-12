@@ -4,7 +4,7 @@ include_directories(
     )
 
 set(kbd_layout_viewer_SOURCES main.cpp
-    KeyboardLayoutWidget.cpp
+    keyboardlayoutwidget.cpp
     )
 
 kde4_add_executable(kbd-layout-viewer ${kbd_layout_viewer_SOURCES})

@@ -17,13 +17,38 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITXSUBCONFIGPATTERN_H
+#define FCITXSUBCONFIGPATTERN_H
+
+// Qt
+#include <QObject>
+#include <QStringList>
 
 // self
-#include "module.h"
+#include "subconfig.h"
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Fcitx
+{
+class SubConfigPattern : public QObject
+{
+    Q_OBJECT
+public:
+    static SubConfigPattern* parsePattern(SubConfigType type, const QString& pattern, QObject* parent = NULL);
+
+    int size();
+    const QString& getPattern(int index);
+    const QString& configdesc();
+    SubConfigType type();
+    const QString&  nativepath();
+private:
+    SubConfigPattern(Fcitx::SubConfigType type, const QStringList& filePatternlist, QObject* parent = 0);
+    QStringList m_filePatternlist;
+    QString m_configdesc;
+    QString m_nativepath;
+    SubConfigType m_type;
+};
+
+}
+
+#endif
 

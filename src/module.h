@@ -17,13 +17,91 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+#ifndef MODULE_H
+#define MODULE_H
+
 // KDE
-#include <KPluginFactory>
+#include <KCModule>
 
-// self
-#include "module.h"
+// Fcitx
+#include <fcitx-utils/utarray.h>
+#include <fcitx/addon.h>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+class QFile;
 
+namespace Ui
+{
+
+class Module;
+}
+
+namespace Fcitx
+{
+
+class IMPage;
+
+class SkinPage;
+
+class ConfigWidget;
+
+class AddonSelector;
+
+class Module : public KCModule
+{
+    Q_OBJECT
+
+public:
+    /**
+    * Constructor.
+    *
+    * @param parent Parent widget of the module
+    * @param args Arguments for the module
+    */
+    Module(QWidget *parent, const QVariantList &args = QVariantList());
+
+    /**
+    * Destructor.
+    */
+    ~Module();
+
+    /**
+    * Overloading the KCModule load() function.
+    */
+    void load();
+
+    /**
+    * Overloading the KCModule save() function.
+    */
+    void save();
+
+    /**
+    * Overloading the KCModule defaults() function.
+    */
+    void defaults();
+
+    FcitxAddon* findAddonByName(const QString& name);
+
+private:
+    /**
+    * UI
+    */
+    Ui::Module *ui;
+
+    /**
+    * Addon Selector
+    */
+    AddonSelector* addonSelector;
+
+    /**
+    * addon array
+    */
+    UT_array* m_addons;
+    ConfigWidget* m_configPage;
+    SkinPage* m_skinPage;
+    IMPage* m_imPage;
+    FcitxAddon* m_addonEntry;
+};
+
+}
+
+#endif // MODULE_H

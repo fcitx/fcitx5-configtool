@@ -17,13 +17,57 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITX_IM_H
+#define FCITX_IM_H
 
-// self
-#include "module.h"
+// Qt
+#include <QString>
+#include <QMetaType>
+#include <QDebug>
+#include <QDBusArgument>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Fcitx {
 
+class IM
+{
+public:
+    const QString& name() const;
+    const QString& uniqueName() const;
+    const QString& langCode() const;
+    bool enabled() const;
+
+    void setName(const QString& name);
+    void setUniqueName(const QString& name);
+    void setLangCode(const QString& name);
+    void setEnabled(bool name);
+    static void registerMetaType();
+
+    bool operator < (const IM& im) const {
+        if (m_enabled == true && im.m_enabled == false)
+            return true;
+        return false;
+    }
+private:
+    QString m_name;
+    QString m_uniqueName;
+    QString m_langCode;
+    bool m_enabled;
+};
+
+typedef QList<IM> IMList;
+
+inline QDebug &operator<<(QDebug& debug, const IM& im)
+{
+    debug << im.name() << " " << im.uniqueName() << " " << im.langCode() << " " << im.enabled();
+    return debug;
+}
+
+}
+
+QDBusArgument& operator<<(QDBusArgument& argument, const Fcitx::IM& im);
+const QDBusArgument& operator>>(const QDBusArgument& argument, Fcitx::IM& im);
+
+Q_DECLARE_METATYPE(Fcitx::IM)
+Q_DECLARE_METATYPE(Fcitx::IMList)
+
+#endif

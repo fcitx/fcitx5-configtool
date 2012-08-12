@@ -17,13 +17,64 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+// Fcitx
+#include <fcitx-config/fcitx-config.h>
+#include <fcitx-config/xdg.h>
 
 // self
-#include "module.h"
+#include "configdescmanager.h"
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
 
+namespace Fcitx
+{
+ConfigDescManager* ConfigDescManager::inst = NULL;
+
+ConfigDescManager* ConfigDescManager::instance()
+{
+    if (!inst)
+        inst = new ConfigDescManager;
+    return inst;
+}
+
+void ConfigDescManager::deInit()
+{
+    if (inst) {
+        inst->deleteLater();;
+        inst = 0;
+    }
+}
+
+ConfigDescManager::ConfigDescManager() :
+    m_hash(new QHash<QString, FcitxConfigFileDesc*>)
+{
+
+}
+
+ConfigDescManager::~ConfigDescManager()
+{
+    QHash<QString, FcitxConfigFileDesc*>::iterator iter;
+
+    for (iter = m_hash->begin();
+            iter != m_hash->end();
+            iter ++) {
+        FcitxConfigFreeConfigFileDesc(iter.value());
+    }
+
+    delete m_hash;
+}
+
+FcitxConfigFileDesc* ConfigDescManager::GetConfigDesc(const QString& name)
+{
+    if (m_hash->count(name) <= 0) {
+        FILE* fp = FcitxXDGGetFileWithPrefix("configdesc", name.toLatin1().constData(), "r", NULL);
+        FcitxConfigFileDesc* cfdesc =  FcitxConfigParseConfigFileDescFp(fp);
+
+        if (cfdesc)
+            m_hash->insert(name, cfdesc);
+
+        return cfdesc;
+    } else
+        return (*m_hash) [name];
+}
+
+}

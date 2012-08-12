@@ -17,13 +17,37 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITXCONFIGPAGE_P_H
+#define FCITXCONFIGPAGE_P_H
 
-// self
-#include "module.h"
+// Qt
+#include <QWidget>
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+class QListView;
+namespace Fcitx
+{
+
+class ConfigFileItemModel;
+class SubConfig;
+
+class SubConfigWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    SubConfigWidget(SubConfig* subconfig, QWidget* parent = 0);
+    virtual ~SubConfigWidget();
+
+private slots:
+    void OpenSubConfig();
+    void OpenNativeFile();
+
+private:
+    SubConfig* m_subConfig;
+    ConfigFileItemModel* m_model;
+    QListView* m_listView;
+};
+
+}
+
+#endif
 

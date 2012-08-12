@@ -1,5 +1,8 @@
 cmake_minimum_required (VERSION 2.6)
-project(fcitx-configtool)
+project(kcm-fcitx)
+
+option(ENABLE_TEST "Enable test" Off)
+
 set(MAJOR_VERSION "0")
 set(MINOR_VERSION "4")
 set(PATCH_VERSION "0")
@@ -19,7 +22,7 @@ include(KDE4Defaults)
 
 find_package(PkgConfig REQUIRED)
 find_package(Gettext REQUIRED)
-find_package(Fcitx 4.2.4 REQUIRED)
+find_package(Fcitx 4.2.6 REQUIRED)
 find_package(XkbFile REQUIRED)
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
@@ -66,3 +69,7 @@ link_directories(
 add_subdirectory(src)
 add_subdirectory(layout)
 add_subdirectory(po)
+
+if (ENABLE_TEST)
+    add_subdirectory(test)
+endif (ENABLE_TEST)

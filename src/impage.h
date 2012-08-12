@@ -17,13 +17,45 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITX_IM_PAGE_H
+#define FCITX_IM_PAGE_H
+
+// Qt
+#include <QString>
+#include <QWidget>
+#include <QDBusConnection>
 
 // self
-#include "module.h"
+#include "inputmethodproxy.h"
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+namespace Ui
+{
+class IMPage;
+}
+
+namespace Fcitx
+{
+
+class Module;
+class IMPage : public QWidget
+{
+    Q_OBJECT
+public:
+    IMPage(Module* parent = 0);
+    virtual ~IMPage();
+Q_SIGNALS:
+    void changed();
+public Q_SLOTS:
+    void save();
+    void load();
+    void invalidate();
+private:
+    Ui::IMPage* m_ui;
+
+    class Private;
+    Private* d;
+};
+}
+
+#endif
 

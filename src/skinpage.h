@@ -17,13 +17,41 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-// KDE
-#include <KPluginFactory>
+#ifndef FCITX_SKIN_PAGE_H
+#define FCITX_SKIN_PAGE_H
+
+// Qt
+#include <QWidget>
 
 // self
-#include "module.h"
+#include "ui_skinpage.h"
 
-K_PLUGIN_FACTORY(KcmFcitxFactory,
-                 registerPlugin<Fcitx::Module>();)
-K_EXPORT_PLUGIN(KcmFcitxFactory("kcm_fcitx"))
+
+namespace Fcitx
+{
+class Module;
+
+class SkinPage : public QWidget
+{
+    Q_OBJECT
+public:
+    SkinPage(Module* module, QWidget* parent = 0);
+    virtual ~SkinPage();
+public Q_SLOTS:
+    void load();
+    void save();
+Q_SIGNALS:
+    void changed();
+protected Q_SLOTS:
+    void installButtonClicked();
+private:
+    class Private;
+    Module* m_module;
+    Private* d;
+    Ui::SkinPage* m_ui;
+};
+
+}
+
+#endif
 

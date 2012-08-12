@@ -3,7 +3,8 @@
     <interface name="org.fcitx.Fcitx.Keyboard">
         <method name="GetLayouts">
             <arg name="layouts" direction="out" type="a(ssss)"/>
-            <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="FcitxLayoutList" />
+            <annotation name="com.trolltech.QtDBus.QtTypeName.Out0" value="Fcitx::LayoutList" />
+            <annotation name="org.qtproject.QtDBus.QtTypeName.Out0" value="Fcitx::LayoutList" />
         </method>
         <method name="GetLayoutForIM">
             <arg name="im" direction="in" type="s"/>

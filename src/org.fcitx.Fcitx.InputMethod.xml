@@ -4,7 +4,8 @@
   <interface name="org.fcitx.Fcitx.InputMethod">
     <property access="readwrite" type="a(sssb)" name="IMList">
       <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
-      <annotation name="com.trolltech.QtDBus.QtTypeName" value="FcitxIMList" />
+      <annotation name="com.trolltech.QtDBus.QtTypeName" value="Fcitx::IMList" />
+      <annotation name="org.qtproject.QtDBus.QtTypeName" value="Fcitx::IMList" />
     </property>
     <method name="GetIMAddon">
         <arg name="im" direction="in" type="s"/>
