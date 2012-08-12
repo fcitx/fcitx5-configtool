@@ -164,6 +164,11 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     else
         s = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->optionName));
 
+    QString tooltip;
+    if (codesc2->longDesc && strlen(codesc2->longDesc) != 0) {
+        tooltip = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc2->longDesc));
+    }
+
     switch (codesc->type) {
 
     case T_Integer: {
@@ -340,6 +345,9 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
         argument = NULL;
         break;
     }
+
+    if (inputWidget && !tooltip.isEmpty())
+        inputWidget->setToolTip(tooltip);
 
     if (argument) {
         m_argMap[name] = argument;

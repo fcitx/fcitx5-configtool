@@ -90,7 +90,7 @@ private:
     void setupFullConfigUi();
     void setupSimpleConfigUi();
     void setupConfigUi();
-    void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& s, QWidget*& inputWidget, void*& argument);
+    void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& s, QWidget*& inputWidget, void*& newarg);
     void checkCanUseSimple();
 
     struct _FcitxConfigFileDesc* m_cfdesc;
