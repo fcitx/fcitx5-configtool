@@ -26,6 +26,10 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
         this
     );
 
+#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
+    m_keyboard->setTimeout(3000);
+#endif
+
     QWidget* widget = new QWidget(this);
     QVBoxLayout* l = new QVBoxLayout(this);
     widget->setLayout(l);

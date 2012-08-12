@@ -93,8 +93,6 @@ public Q_SLOTS:
     void selectDefaultLayout();
 
 private:
-    QDBusConnection m_connection;
-    InputMethodProxy* m_inputmethod;
     IMList m_list;
 };
 

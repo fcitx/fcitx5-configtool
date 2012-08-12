@@ -24,10 +24,6 @@
 #include <KCategorizedSortFilterProxyModel>
 #include <KCategoryDrawer>
 
-// Fcitx
-#include <fcitx/module/dbus/dbusstuff.h>
-#include <fcitx/module/ipc/ipc.h>
-
 // self
 #include "impage.h"
 #include "impage_p.h"
@@ -277,14 +273,7 @@ void IMPage::load()
 IMPage::Private::Private(QObject* parent)
     : QObject(parent)
       ,availIMModel(0)
-      ,m_connection(QDBusConnection::sessionBus())
 {
-    m_inputmethod = new InputMethodProxy(
-        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
-        FCITX_IM_DBUS_PATH,
-        m_connection,
-        this
-    );
 }
 
 IMPage::Private::~Private()
@@ -412,9 +401,9 @@ void IMPage::Private::configureIM()
         IM* curIM = static_cast<IM*>(curIndex.internalPointer());
         if (curIM == NULL)
             return;
-        QDBusPendingReply< QString > result = m_inputmethod->GetIMAddon(curIM->uniqueName());
+        QDBusPendingReply< QString > result = module->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
         result.waitForFinished();
-        if (!result.isError()) {
+        if (result.isValid()) {
             FcitxAddon* addonEntry = module->findAddonByName(result.value());
 
             QPointer<KDialog> configDialog(new IMConfigDialog(curIM->uniqueName(), addonEntry));
@@ -457,14 +446,14 @@ void IMPage::Private::moveUpIM()
 
 void IMPage::Private::save()
 {
-    if (m_inputmethod->isValid())
-        m_inputmethod->setIMList(m_list);
+    if (module->inputMethodProxy()->isValid())
+        module->inputMethodProxy()->setIMList(m_list);
 }
 
 void IMPage::Private::fetchIMList()
 {
-    if (m_inputmethod->isValid()) {
-        m_list = m_inputmethod->iMList();
+    if (module->inputMethodProxy()->isValid()) {
+        m_list = module->inputMethodProxy()->iMList();
         qStableSort(m_list.begin(), m_list.end());
         emit updateIMList(QString());
     }

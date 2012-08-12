@@ -546,7 +546,7 @@ void ConfigWidget::setupConfigUi()
         m_advanceCheckBox = new QCheckBox(this);
         layout->addWidget(m_advanceCheckBox);
         m_advanceCheckBox->setCheckState(Qt::Unchecked);
-        m_advanceCheckBox->setText(i18n("&Advance"));
+        m_advanceCheckBox->setText(i18n("Show &Advance option"));
         connect(m_advanceCheckBox, SIGNAL(clicked(bool)), this, SLOT(toggleSimpleFull()));
         toggleSimpleFull();
     }

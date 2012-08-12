@@ -37,6 +37,8 @@
 #include <fcitx-utils/utils.h>
 #include <fcitx/addon.h>
 #include <fcitx-config/xdg.h>
+#include <fcitx/module/dbus/dbusstuff.h>
+#include <fcitx/module/ipc/ipc.h>
 
 // self
 #include "config.h"
@@ -50,6 +52,7 @@
 #include "impage.h"
 #include "im.h"
 #include "layout.h"
+#include "imconfigdialog.h"
 
 K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
 
@@ -65,7 +68,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     m_configPage(0),
     m_skinPage(0),
     m_imPage(0),
-    m_addonEntry(0)
+    m_connection(QDBusConnection::sessionBus())
 {
     bindtextdomain("fcitx", LOCALEDIR);
     bind_textdomain_codeset("fcitx", "UTF-8");
@@ -85,15 +88,20 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
     setAboutData(about);
 
+    m_inputmethod = new InputMethodProxy(
+        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
+        FCITX_IM_DBUS_PATH,
+        m_connection,
+        this
+    );
+
+#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
+    m_inputmethod->setTimeout(3000);
+#endif
+
     if (FcitxAddonGetConfigDesc() != NULL) {
         utarray_new(m_addons, &addonicd);
         FcitxAddonsLoad(m_addons);
-    }
-
-
-    if (args.size() != 0) {
-        QString module = args[0].toString();
-        m_addonEntry = findAddonByName(module);
     }
 
     ui->setupUi(this);
@@ -150,6 +158,10 @@ Module::Module(QWidget *parent, const QVariantList &args) :
             this->addonSelector->addAddon(addon);
         }
     }
+
+    if (args.size() != 0) {
+        m_arg = args[0].toString();
+    }
 }
 
 Module::~Module()
@@ -174,17 +186,38 @@ FcitxAddon* Module::findAddonByName(const QString& name)
     return addon;
 }
 
-void Module::load()
+InputMethodProxy* Module::inputMethodProxy()
 {
-    kDebug() << "Load Addon Info";
-    if (m_addonEntry) {
+    return m_inputmethod;
+}
 
-        KDialog* configDialog = ConfigWidget::configDialog(0, m_addonEntry);
+
+void Module::load()
+{;
+    KDialog* configDialog = NULL;
+    if (!m_arg.isEmpty()) {
+        do {
+            if (!m_inputmethod->isValid())
+                break;
+            QDBusPendingReply< QString > result = m_inputmethod->GetIMAddon(m_arg);
+            result.waitForFinished();
+            if (!result.isValid() || result.value().isEmpty())
+                break;
+            FcitxAddon* addonEntry = findAddonByName(result.value());
+            if (!addonEntry)
+                break;
+            configDialog = new IMConfigDialog(m_arg, addonEntry, 0);
+        } while(0);
+        if (!configDialog) {
+            FcitxAddon* addonEntry = findAddonByName(m_arg);
+            if (addonEntry)
+                configDialog = ConfigWidget::configDialog(0, addonEntry);
+        }
         if (configDialog) {
             configDialog->setAttribute(Qt::WA_DeleteOnClose);
             configDialog->open();
         }
-        m_addonEntry = 0;
+        m_arg = QString::null;
     }
 
     if (m_imPage)
