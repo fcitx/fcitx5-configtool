@@ -83,7 +83,8 @@ ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, c
     , m_advanceCheckBox(0)
     , m_config(0)
     , m_parser(new SubConfigParser(subconfig, this))
-    , m_uitype(CW_NotSet)
+    , m_simpleUiType(CW_NoShow)
+    , m_fullUiType(CW_NoShow)
 {
     m_parser = new SubConfigParser(subconfig, this);
     if (cfdesc)
@@ -355,7 +356,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     }
 }
 
-void ConfigWidget::setupSimpleConfigUi()
+QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
 {
     int row = 0;
     VerticalScrollArea *scrollarea = new VerticalScrollArea;
@@ -381,7 +382,7 @@ void ConfigWidget::setupSimpleConfigUi()
                 int count = 0;
                 HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                     FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                    if (!codesc2->advance)
+                    if (!skinAdvance || !codesc2->advance)
                         count++;
                 }
                 if (!count)
@@ -392,7 +393,7 @@ void ConfigWidget::setupSimpleConfigUi()
 
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                 FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                if (codesc2->advance)
+                if (skinAdvance && codesc2->advance)
                     continue;
                 QString s;
                 QWidget* inputWidget = NULL;
@@ -437,11 +438,10 @@ void ConfigWidget::setupSimpleConfigUi()
 
     gridLayout->addItem(verticalSpacer, row, 1, 1, 1);
 
-    m_simpleWidget = scrollarea;
-    m_switchLayout->addWidget(m_simpleWidget);
+    return scrollarea;
 }
 
-void ConfigWidget::setupFullConfigUi()
+QWidget* ConfigWidget::createFullConfigUi()
 {
     QTabWidget* tabWidget = new QTabWidget(this);
     do {
@@ -521,8 +521,7 @@ void ConfigWidget::setupFullConfigUi()
         tabWidget->addTab(main, i18n("Other"));
     }
 
-    m_fullWidget = tabWidget;
-    m_switchLayout->addWidget(m_fullWidget);
+    return tabWidget;
 }
 
 void ConfigWidget::setupConfigUi()
@@ -543,21 +542,34 @@ void ConfigWidget::setupConfigUi()
         if (fp)
             fclose(fp);
     }
-    if (m_uitype & CW_SimpleOnly)
-        setupSimpleConfigUi();
+    if (m_simpleUiType != CW_NoShow) {
+        if (m_simpleUiType == CW_Simple)
+            m_simpleWidget = createSimpleConfigUi(true);
+        else
+            m_simpleWidget = createFullConfigUi();
+        m_switchLayout->addWidget(m_simpleWidget);
+    }
 
-    if (m_uitype & CW_FullOnly)
-        setupFullConfigUi();
+    if (m_fullUiType != CW_NoShow) {
+        if (m_fullUiType == CW_Simple)
+            m_fullWidget = createSimpleConfigUi(false);
+        else
+            m_fullWidget = createFullConfigUi();
+        m_switchLayout->addWidget(m_fullWidget);
+    }
 
-    if (m_uitype == CW_SimpleAndFull)
+    if (m_simpleWidget && m_fullWidget)
     {
         m_advanceCheckBox = new QCheckBox(this);
         layout->addWidget(m_advanceCheckBox);
         m_advanceCheckBox->setCheckState(Qt::Unchecked);
         m_advanceCheckBox->setText(i18n("Show &Advance option"));
-        connect(m_advanceCheckBox, SIGNAL(clicked(bool)), this, SLOT(toggleSimpleFull()));
+        connect(m_advanceCheckBox, SIGNAL(toggled(bool)), this, SLOT(toggleSimpleFull()));
         toggleSimpleFull();
     }
+
+    if (m_config)
+        m_config->sync();
 }
 
 void ConfigWidget::toggleSimpleFull()
@@ -594,14 +606,19 @@ void ConfigWidget::checkCanUseSimple()
 
     /* if option is quite few */
     if (count + m_parser->getSubConfigKeys().length() <= 10) {
-        m_uitype = CW_SimpleOnly;
-    }
-    else if (simpleCount + m_parser->getSubConfigKeys().length() <= 10) {
-        m_uitype = CW_SimpleAndFull;
+        m_fullUiType = CW_Simple;
     }
     else {
-        m_uitype = CW_FullOnly;
+        m_fullUiType = CW_Full;
     }
+    if (simpleCount + m_parser->getSubConfigKeys().length() <= 10) {
+        m_simpleUiType = CW_Simple;
+    }
+    else
+        m_simpleUiType = CW_Full;
+
+    if (count == simpleCount)
+        m_simpleUiType = CW_NoShow;
 }
 
 

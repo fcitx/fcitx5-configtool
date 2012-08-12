@@ -64,11 +64,9 @@ class ConfigWidget : public QWidget
     Q_OBJECT
 
     enum UIType {
-        CW_NotSet = 0x4,
-        CW_SimpleOnly = 0x1,
-        CW_FullOnly = 0x2,
-        CW_NoConfig = 0x0,
-        CW_SimpleAndFull=0x3
+        CW_Simple = 0x1,
+        CW_Full = 0x2,
+        CW_NoShow = 0x0
     };
 
 public:
@@ -87,8 +85,8 @@ public Q_SLOTS:
 private Q_SLOTS:
     void toggleSimpleFull();
 private:
-    void setupFullConfigUi();
-    void setupSimpleConfigUi();
+    QWidget* createFullConfigUi();
+    QWidget* createSimpleConfigUi(bool skinAdvance);
     void setupConfigUi();
     void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& s, QWidget*& inputWidget, void*& newarg);
     void checkCanUseSimple();
@@ -102,7 +100,8 @@ private:
     QCheckBox* m_advanceCheckBox;
     DummyConfig* m_config;
     SubConfigParser* m_parser;
-    UIType m_uitype;
+    UIType m_simpleUiType;
+    UIType m_fullUiType;
     QMap<QString, void*> m_argMap;
 };
 
