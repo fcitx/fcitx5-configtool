@@ -121,7 +121,7 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
 
         KPushButton* pushButton = new KPushButton;
         pushButton->setIcon(KIcon("configure"));
-        connect(pushButton, SIGNAL(clicked()), this, SLOT(OpenSubConfig()));
+        connect(pushButton, SIGNAL(clicked()), this, SLOT(openSubConfig()));
         hbox->addWidget(pushButton);
     }
     break;
@@ -130,7 +130,19 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
         this->setLayout(hbox);
         KPushButton* pushButton = new KPushButton;
         pushButton->setIcon(KIcon("document-open"));
-        connect(pushButton, SIGNAL(clicked()), this, SLOT(OpenNativeFile()));
+        connect(pushButton, SIGNAL(clicked()), this, SLOT(openNativeFile()));
+        hbox->addWidget(pushButton);
+    }
+    case SC_Program: {
+        QVBoxLayout* hbox = new QVBoxLayout;
+        this->setLayout(hbox);
+        KPushButton* pushButton = new KPushButton;
+        pushButton->setIcon(KIcon("system-run"));
+        qDebug() << subconfig->program();
+        if (subconfig->program().isNull())
+            pushButton->setEnabled(false);
+        else
+            connect(pushButton, SIGNAL(clicked()), this, SLOT(openProgram()));
         hbox->addWidget(pushButton);
     }
     break;
@@ -144,7 +156,7 @@ SubConfigWidget::~SubConfigWidget()
     delete m_subConfig;
 }
 
-void SubConfigWidget::OpenSubConfig()
+void SubConfigWidget::openSubConfig()
 {
     QItemSelectionModel* selectionModel = m_listView->selectionModel();
     QModelIndex ind = selectionModel->currentIndex();
@@ -166,7 +178,7 @@ void SubConfigWidget::OpenSubConfig()
     }
 }
 
-void SubConfigWidget::OpenNativeFile()
+void SubConfigWidget::openNativeFile()
 {
     QSet< QString >& filelist = m_subConfig->filelist();
     char *newpath = NULL;
@@ -182,9 +194,14 @@ void SubConfigWidget::OpenNativeFile()
         }
     }
     if (newpath) {
-        KRun::runUrl(KUrl(newpath), "text/plain", NULL);
+        KRun::runUrl(KUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL);
         free(newpath);
     }
+}
+
+void SubConfigWidget::openProgram()
+{
+    KRun::runCommand(m_subConfig->program(), NULL);
 }
 
 }

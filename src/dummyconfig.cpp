@@ -1,3 +1,23 @@
+/***************************************************************************
+ *   Copyright (C) 2012~2012 by CSSlayer                                   *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
+ ***************************************************************************/
+
+#include <QDebug>
 #include <fcitx-config/hotkey.h>
 #include <assert.h>
 
@@ -33,6 +53,7 @@ DummyConfig::DummyConfig(FcitxConfigFileDesc* cfdesc) :
                 OPTION_TYPE_CASE(Font, char*);
                 OPTION_TYPE_CASE(Hotkey, FcitxHotkeys);
                 OPTION_TYPE_CASE(String, char*);
+                OPTION_TYPE_CASE(I18NString, char*);
                 default:
                     break;
             }
@@ -65,7 +86,9 @@ void DummyConfig::load(FILE* fp)
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                 QString name("%1/%2");
                 name = name.arg(cgdesc->groupName, codesc->optionName);
-                assert(m_dummyValue[name]);
+                if (!m_dummyValue.contains(name))
+                    continue;
+                // assert(m_dummyValue[name]);
                 FcitxConfigBindValue(m_config.configFile, cgdesc->groupName, codesc->optionName, m_dummyValue[name], NULL, NULL);
             }
         }
@@ -85,7 +108,7 @@ void DummyConfig::bind(char* group, char* option, FcitxSyncFilter filter, void* 
     if (!m_dummyValue.contains(name))
         return;
 
-    assert(m_dummyValue[name]);
+    // assert(m_dummyValue[name]);
     FcitxConfigBindValue(m_config.configFile, group, option, m_dummyValue[name], filter, arg);
 }
 

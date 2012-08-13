@@ -17,6 +17,13 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+#include <QFileInfo>
+#include <QDebug>
+
+#include <KStandardDirs>
+
+#include <fcitx-utils/utils.h>
+
 // self
 #include "subconfig.h"
 
@@ -33,17 +40,48 @@ SubConfig* SubConfig::GetConfigFileSubConfig(const QString& name, const QString&
     return subconfig;
 }
 
-SubConfig* SubConfig::GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QSet< QString >& fileList)
+SubConfig* SubConfig::GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QString& mimetype, const QSet< QString >& fileList)
 {
     SubConfig* subconfig = new SubConfig;
     subconfig->m_name = name;
     subconfig->m_type = SC_NativeFile;
+    subconfig->m_mimetype = mimetype;
     subconfig->m_filelist = fileList;
     subconfig->m_nativepath = nativepath;
     return subconfig;
 }
 
-SubConfig::SubConfig(QObject* parent) : QObject(parent)
+SubConfig* SubConfig::GetProgramSubConfig(const QString& name, const QString& p)
+{
+    QString program = p;
+    qDebug() << p;
+
+    if (p[0] != '/') {
+        program =  KStandardDirs::findExe(p);
+        if (program.isEmpty()) {
+            char* path = fcitx_utils_get_fcitx_path_with_filename("bindir", program.toUtf8().data());
+            if (path) {
+                program = path;
+                free(path);
+            }
+        }
+    }
+    else {
+        program = p;
+    }
+    qDebug() << program;
+    QFileInfo info(program);
+    if (!info.isExecutable())
+        program = QString::null;
+
+    SubConfig* subconfig = new SubConfig;
+    subconfig->m_name = name;
+    subconfig->m_type = SC_Program;
+    subconfig->m_progam = program;
+    return subconfig;
+}
+
+SubConfig::SubConfig()
 {
 
 }
@@ -68,9 +106,20 @@ const QString& SubConfig::nativepath() const
     return m_nativepath;
 }
 
+const QString& SubConfig::program() const
+{
+    return m_progam;
+}
+
 QSet< QString >& SubConfig::filelist()
 {
     return m_filelist;
 }
+
+const QString& SubConfig::mimetype() const
+{
+    return m_mimetype;
+}
+
 
 }

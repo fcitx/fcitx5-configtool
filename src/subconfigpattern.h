@@ -35,16 +35,21 @@ class SubConfigPattern : public QObject
 public:
     static SubConfigPattern* parsePattern(SubConfigType type, const QString& pattern, QObject* parent = NULL);
 
-    int size();
-    const QString& getPattern(int index);
-    const QString& configdesc();
-    SubConfigType type();
-    const QString&  nativepath();
+    int size() const;
+    const QString& getPattern(int index) const;
+    const QString& configdesc() const;
+    SubConfigType type() const;
+    const QString& nativepath() const;
+    const QString& program() const;
+    const QString& mimetype() const;
 private:
-    SubConfigPattern(Fcitx::SubConfigType type, const QStringList& filePatternlist, QObject* parent = 0);
+    SubConfigPattern(Fcitx::SubConfigType type, QObject* parent = 0);
+    static QStringList parseFilePattern(const QString& p);
     QStringList m_filePatternlist;
     QString m_configdesc;
     QString m_nativepath;
+    QString m_mimetype;
+    QString m_progam;
     SubConfigType m_type;
 };
 

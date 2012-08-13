@@ -38,8 +38,9 @@ public:
     virtual ~SubConfigWidget();
 
 private slots:
-    void OpenSubConfig();
-    void OpenNativeFile();
+    void openSubConfig();
+    void openNativeFile();
+    void openProgram();
 
 private:
     SubConfig* m_subConfig;

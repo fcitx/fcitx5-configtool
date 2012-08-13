@@ -31,27 +31,32 @@ namespace Fcitx
 enum SubConfigType {
     SC_None,
     SC_ConfigFile,
-    SC_NativeFile
+    SC_NativeFile,
+    SC_Program
 };
 
-class SubConfig: public QObject
+class SubConfig
 {
-    Q_OBJECT
 public:
     static SubConfig* GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QSet< QString >& fileList);
-    static SubConfig* GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QSet< QString >& fileList);
+    static SubConfig* GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QString& mimetype, const QSet< QString >& fileList);
+    static SubConfig* GetProgramSubConfig(const QString& name, const QString& program);
     SubConfigType type();
     QSet< QString >& filelist();
     const QString& name() const;
     const QString& configdesc() const;
     const QString& nativepath() const;
+    const QString& mimetype() const;
+    const QString& program() const;
 private:
-    SubConfig(QObject* parent = 0);
+    SubConfig();
     SubConfigType m_type;
     QString m_name;
     QSet< QString > m_filelist;
     QString m_configdesc;
     QString m_nativepath;
+    QString m_mimetype;
+    QString m_progam;
 };
 
 }

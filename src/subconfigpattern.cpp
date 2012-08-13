@@ -25,65 +25,117 @@
 
 namespace Fcitx
 {
-SubConfigPattern* SubConfigPattern::parsePattern(Fcitx::SubConfigType type, const QString& p, QObject* parent)
+
+QStringList SubConfigPattern::parseFilePattern(const QString& pattern)
 {
-    QString pattern = p;
-    if (type == SC_ConfigFile)
-        pattern = p.section(':', 0, 0);
+    do {
+        if (pattern.length() == 0 || pattern[0] == '/')
+            break;
+        QStringList filePatternlist = pattern.split('/');
+        if (filePatternlist.length() == 0)
+            break;
+        Q_FOREACH(const QString & str, filePatternlist) {
+            if (str.length() == 0)
+                break;
+            if (str == ".")
+                break;
+            if (str == "..")
+                break;
+        }
+        return filePatternlist;
+    } while(0);
 
-    if (pattern.length() == 0 || pattern[0] == '/')
-        return NULL;
-    if (type == SC_NativeFile && pattern.indexOf('*') > 0)
-        return NULL;
-    QStringList filePatternlist = pattern.split('/');
-    if (filePatternlist.length() == 0)
-        return NULL;
-    Q_FOREACH(const QString & str, filePatternlist) {
-        if (str.length() == 0)
-            return NULL;
-        if (str == ".")
-            return NULL;
-        if (str == "..")
-            return NULL;
-    }
-    SubConfigPattern* result = new SubConfigPattern(type, filePatternlist, parent);
-
-    if (type == SC_ConfigFile)
-        result->m_configdesc = p.section(':', 1, 1);
-    else if (type == SC_NativeFile)
-        result->m_nativepath = pattern;
-
-    return result;
+    return QStringList();
 }
 
-SubConfigPattern::SubConfigPattern(Fcitx::SubConfigType type, const QStringList& filePatternlist, QObject* parent) : QObject(parent)
+SubConfigPattern* SubConfigPattern::parsePattern(Fcitx::SubConfigType type, const QString& p, QObject* parent)
 {
-    m_filePatternlist = filePatternlist;
+    switch (type) {
+        case SC_ConfigFile:
+        {
+            QString pattern = p.section(':', 0, 0);
+            QString configdesc = p.section(':', 1, 1);
+            if (configdesc.isEmpty())
+                return NULL;
+            QStringList filePatternlist = parseFilePattern(pattern);
+            if (filePatternlist.length() == 0)
+                return NULL;
+            SubConfigPattern* result = new SubConfigPattern(type, parent);
+            result->m_configdesc = configdesc;
+            result->m_filePatternlist = filePatternlist;
+            return result;
+        }
+        break;
+    case SC_NativeFile:
+        {
+            QString pattern = p.section(':', 0, 0);
+            if (pattern.indexOf('*') > 0)
+                return NULL;
+            QString mimetype = p.section(':', 1, 1);
+
+            QStringList filePatternlist = parseFilePattern(pattern);
+            if (filePatternlist.length() == 0)
+                return NULL;
+            SubConfigPattern* result = new SubConfigPattern(type, parent);
+            if (!mimetype.isEmpty())
+                result->m_mimetype = mimetype;
+            result->m_filePatternlist = filePatternlist;
+            return result;
+        }
+        break;
+    case SC_Program:
+        {
+            QString pattern = p.section(':', 0, 0);
+            if (pattern.isEmpty())
+                return NULL;
+            SubConfigPattern* result = new SubConfigPattern(type, parent);
+            result->m_progam = pattern;
+            return result;
+        }
+        break;
+    default:
+        return NULL;
+    }
+    return NULL;
+}
+
+SubConfigPattern::SubConfigPattern(Fcitx::SubConfigType type, QObject* parent) : QObject(parent)
+{
     m_type = type;
 }
 
-int SubConfigPattern::size()
+int SubConfigPattern::size() const
 {
     return m_filePatternlist.length();
 }
 
-const QString& SubConfigPattern::getPattern(int index)
+const QString& SubConfigPattern::getPattern(int index) const
 {
     return m_filePatternlist.at(index);
 }
 
 
-const QString& SubConfigPattern::configdesc()
+const QString& SubConfigPattern::configdesc() const
 {
     return m_configdesc;
 }
 
-const QString& SubConfigPattern::nativepath()
+const QString& SubConfigPattern::nativepath() const
 {
     return m_nativepath;
 }
 
-SubConfigType SubConfigPattern::type()
+const QString& SubConfigPattern::program() const
+{
+    return m_progam;
+}
+
+const QString& SubConfigPattern::mimetype() const
+{
+    return m_mimetype;
+}
+
+SubConfigType SubConfigPattern::type() const
 {
     return m_type;
 }

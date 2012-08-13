@@ -34,6 +34,13 @@ namespace Fcitx
 SubConfigParser::SubConfigParser(const QString& subConfigString, QObject* parent) :
     QObject(parent)
 {
+    /*
+     * format like: name:type:XXXXXXX,name:type:XXXXXXX
+     * valid value contains:
+     * <domain name>:domain
+     * <name>:native:path
+     * <name>:configfile:path:configdesc
+     */
     QStringList subConfigList = subConfigString.split(',');
     Q_FOREACH(const QString & str, subConfigList) {
         int i = str.indexOf(':');
@@ -67,6 +74,9 @@ SubConfigType SubConfigParser::parseType(const QString& str)
     }
     if (str == "configfile") {
         return SC_ConfigFile;
+    }
+    if (str == "program") {
+        return SC_Program;
     }
     return SC_None;
 }
@@ -144,7 +154,10 @@ SubConfig* SubConfigParser::getSubConfig(const QString& key)
         subconfig = SubConfig::GetConfigFileSubConfig(key, pattern->configdesc(), this->getFiles(key));
         break;
     case SC_NativeFile:
-        subconfig = SubConfig::GetNativeFileSubConfig(key, pattern->nativepath(), this->getFiles(key));
+        subconfig = SubConfig::GetNativeFileSubConfig(key, pattern->nativepath(), pattern->mimetype(), this->getFiles(key));
+        break;
+    case SC_Program:
+        subconfig = SubConfig::GetProgramSubConfig(key, pattern->program());
         break;
     default:
         break;
