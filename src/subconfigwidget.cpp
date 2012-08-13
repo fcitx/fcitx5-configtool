@@ -28,6 +28,8 @@
 #include <KDialog>
 #include <KPushButton>
 #include <KRun>
+#include <KMessageBox>
+#include <KLocalizedString>
 
 // Fcitx
 #include <fcitx-config/xdg.h>
@@ -113,7 +115,7 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
         m_listView = new QListView;
         m_listView->setSelectionMode(QAbstractItemView::SingleSelection);
         m_model = new ConfigFileItemModel(this);
-        Q_FOREACH(const QString & file, subconfig->filelist()) {
+        Q_FOREACH(const QString & file, subconfig->fileList()) {
             m_model->addConfigFile(new ConfigFile(file));
         }
         m_listView->setModel(m_model);
@@ -138,7 +140,6 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
         this->setLayout(hbox);
         KPushButton* pushButton = new KPushButton;
         pushButton->setIcon(KIcon("system-run"));
-        qDebug() << subconfig->program();
         if (subconfig->program().isNull())
             pushButton->setEnabled(false);
         else
@@ -180,19 +181,58 @@ void SubConfigWidget::openSubConfig()
 
 void SubConfigWidget::openNativeFile()
 {
-    QSet< QString >& filelist = m_subConfig->filelist();
     char *newpath = NULL;
-    if (filelist.size() > 0) {
-        FILE* fp = FcitxXDGGetFileWithPrefix("", filelist.begin()->toLocal8Bit().data(), "r", &newpath);
-        if (fp)
-            fclose(fp);
-    } else {
-        FILE* fp = FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
-        if (fp) {
-            filelist.insert(m_subConfig->nativepath());
-            fclose(fp);
+    /* this configuration file doesn't have user version */
+    if (m_subConfig->userFileList().size() == 0) {
+        /* still if system version doesn't exit either, let's create an empty text file for user */
+        if (m_subConfig->fileList().size() == 0) {
+            FILE* fp = FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
+            if (fp) {
+                fclose(fp);
+                m_subConfig->updateFileList();
+            }
+        }
+        else {
+            switch(KMessageBox::questionYesNoCancel(
+                NULL,
+                i18n("User config doesn't exisits, do you want to open system file or copy system file to user file?"),
+                i18n("What to do"),
+                KGuiItem(i18n("Copy")),
+                KGuiItem(i18n("View system"))))
+            {
+                case KMessageBox::Yes:
+                    {
+                        char* src = NULL;
+                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().data(), "r", &src);
+                        if (fp)
+                            fclose(fp);
+                        FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), NULL, &newpath);
+                        QFile file(src);
+                        free(src);
+                        if (!file.copy(newpath)) {
+                            KMessageBox::error(NULL, i18n("Copy failed"), i18n("Copy failed"));
+                        }
+                        m_subConfig->updateFileList();
+                    }
+                    break;
+                case KMessageBox::No:
+                    {
+                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().data(), "r", &newpath);
+                        if (fp)
+                            fclose(fp);
+                    }
+                   break;
+                default:
+                    return;
+            }
         }
     }
+    else {
+        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->userFileList().begin()->toLocal8Bit().data(), "r", &newpath);
+        if (fp)
+            fclose(fp);
+    }
+
     if (newpath) {
         KRun::runUrl(KUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL);
         free(newpath);

@@ -46,7 +46,7 @@ public:
     const QString& domain() const;
 protected:
     SubConfigType parseType(const QString& str);
-    QSet<QString> getFiles(const QString& key);
+    QSet<QString> getFiles(const QString& key, bool user);
     QStringList getFilesByPattern(QDir& dir, SubConfigPattern* pattern, int index = 0);
     QMap<QString, SubConfigPattern*> m_subConfigMap;
     QString m_domain;

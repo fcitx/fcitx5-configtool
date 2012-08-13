@@ -414,7 +414,7 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length() != 0) {
-        QLabel* grouplabel = new QLabel(QString("<b>Other</b>"));
+        QLabel* grouplabel = new QLabel(i18n("<b>Other</b>"));
         gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
         Q_FOREACH(const QString & key, keys) {
             SubConfig* subconfig = m_parser->getSubConfig(key);

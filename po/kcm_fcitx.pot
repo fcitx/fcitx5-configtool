@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-08-12 20:29+0800\n"
+"POT-Creation-Date: 2012-08-13 23:29+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,95 +21,95 @@ msgstr ""
 msgid "Search Addons"
 msgstr ""
 
-#: ../src/addonselector.cpp:385
+#: ../src/addonselector.cpp:385 ../src/configwidget.cpp:566
 msgid "Show &Advance option"
 msgstr ""
 
-#: ../src/configwidget.cpp:118
+#: ../src/configwidget.cpp:119
 msgid "Not all configuration can be reloaded immediately."
 msgstr ""
 
-#: ../src/configwidget.cpp:119
+#: ../src/configwidget.cpp:120
 msgid "Attention"
 msgstr ""
 
-#: ../src/configwidget.cpp:527
+#: ../src/configwidget.cpp:417
+msgid "<b>Other</b>"
+msgstr ""
+
+#: ../src/configwidget.cpp:521
 msgid "Other"
 msgstr ""
 
-#: ../src/configwidget.cpp:553
-msgid "&Advance"
-msgstr ""
-
-#: ../src/imconfigdialog.cpp:59
+#: ../src/imconfigdialog.cpp:63
 msgid "<b>Keyboard Layout:</b>"
 msgstr ""
 
-#: ../src/imconfigdialog.cpp:64
+#: ../src/imconfigdialog.cpp:68
 msgid "Default"
 msgstr ""
 
-#: ../src/imconfigdialog.cpp:66
+#: ../src/imconfigdialog.cpp:70
 msgid "Input Method Default"
 msgstr ""
 
-#: ../src/imconfigdialog.cpp:111
+#: ../src/imconfigdialog.cpp:115
 msgid "<b>Input Method Setting:</b>"
 msgstr ""
 
-#: ../src/impage.cpp:49
+#: ../src/impage.cpp:45
 msgid "Unknown"
 msgstr ""
 
-#: ../src/impage.cpp:52
+#: ../src/impage.cpp:48
 msgid "Multilingual"
 msgstr ""
 
-#: ../src/impage.cpp:220
+#: ../src/impage.cpp:216
 msgid "Search Input Method"
 msgstr ""
 
-#: ../src/module.cpp:77
+#: ../src/module.cpp:80
 msgid "Fcitx Configuration Module"
 msgstr ""
 
-#: ../src/module.cpp:79
+#: ../src/module.cpp:82
 msgid "Configure Fcitx"
 msgstr ""
 
-#: ../src/module.cpp:81
+#: ../src/module.cpp:84
 msgid "Copyright 2012 Xuetian Weng"
 msgstr ""
 
-#: ../src/module.cpp:85
+#: ../src/module.cpp:88
 msgid "Xuetian Weng"
 msgstr ""
 
-#: ../src/module.cpp:104 ../src/module.cpp:106
+#: ../src/module.cpp:112 ../src/module.cpp:114
 msgid "Input Method"
 msgstr ""
 
-#: ../src/module.cpp:117
+#: ../src/module.cpp:125
 msgid "Global Config"
 msgstr ""
 
-#: ../src/module.cpp:119
+#: ../src/module.cpp:127
 msgid "Global Config for Fcitx"
 msgstr ""
 
-#: ../src/module.cpp:129
+#: ../src/module.cpp:137
 msgid "Addon Config"
 msgstr ""
 
-#: ../src/module.cpp:131
+#: ../src/module.cpp:139
 msgid "Configure Fcitx addon"
 msgstr ""
 
-#: ../src/module.cpp:139
+#: ../src/module.cpp:147
 msgid "Manage Skin"
 msgstr ""
 
-#: ../src/module.cpp:141
+#: ../src/module.cpp:149
 msgid "Manage Fcitx Skin"
 msgstr ""
 
@@ -123,6 +123,28 @@ msgstr ""
 
 #: ../src/skinpage.cpp:386
 msgid "Skin %1 Cannot be loaded"
+msgstr ""
+
+#: ../src/subconfigwidget.cpp:198
+msgid ""
+"User config doesn't exisits, do you want to open system file or copy system "
+"file to user file?"
+msgstr ""
+
+#: ../src/subconfigwidget.cpp:199
+msgid "What to do"
+msgstr ""
+
+#: ../src/subconfigwidget.cpp:200
+msgid "Copy"
+msgstr ""
+
+#: ../src/subconfigwidget.cpp:201
+msgid "View system"
+msgstr ""
+
+#: ../src/subconfigwidget.cpp:213
+msgid "Copy failed"
 msgstr ""
 
 #. i18n: file: ../src/impage.ui:24

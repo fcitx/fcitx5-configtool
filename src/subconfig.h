@@ -28,6 +28,8 @@
 
 namespace Fcitx
 {
+
+class SubConfigPattern;
 enum SubConfigType {
     SC_None,
     SC_ConfigFile,
@@ -38,25 +40,29 @@ enum SubConfigType {
 class SubConfig
 {
 public:
-    static SubConfig* GetConfigFileSubConfig(const QString& name, const QString& configdesc, const QSet< QString >& fileList);
-    static SubConfig* GetNativeFileSubConfig(const QString& name, const QString& nativepath, const QString& mimetype, const QSet< QString >& fileList);
-    static SubConfig* GetProgramSubConfig(const QString& name, const QString& program);
+    explicit SubConfig(const QString& name, SubConfigPattern* pattern);
     SubConfigType type();
-    QSet< QString >& filelist();
+    QSet< QString >& fileList();
+    QSet< QString >& userFileList();
     const QString& name() const;
     const QString& configdesc() const;
     const QString& nativepath() const;
     const QString& mimetype() const;
     const QString& program() const;
+    void updateFileList();
 private:
-    SubConfig();
-    SubConfigType m_type;
+    void parseProgramSubConfig(const SubConfigPattern* pattern);
+    void parseNativeFileSubConfig(const SubConfigPattern* pattern);
+    void parseConfigFileSubConfig(const SubConfigPattern* pattern);
     QString m_name;
-    QSet< QString > m_filelist;
+    SubConfigType m_type;
+    QSet< QString > m_fileList;
+    QSet< QString > m_userFileList;
     QString m_configdesc;
     QString m_nativepath;
     QString m_mimetype;
     QString m_progam;
+    QStringList m_filePatternList;
 };
 
 }

@@ -709,7 +709,7 @@ void SkinPage::Private::load()
     if (m_subConfig)
         delete m_subConfig;
     m_subConfig = m_parser.getSubConfig("Skin");
-    skinModel->setSkinList(m_subConfig->filelist().toList());
+    skinModel->setSkinList(m_subConfig->fileList().toList());
 
     FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc");
     FILE* fp = NULL;

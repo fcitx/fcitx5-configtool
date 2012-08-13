@@ -25,7 +25,6 @@
 
 namespace Fcitx
 {
-
 QStringList SubConfigPattern::parseFilePattern(const QString& pattern)
 {
     do {
@@ -79,6 +78,7 @@ SubConfigPattern* SubConfigPattern::parsePattern(Fcitx::SubConfigType type, cons
             SubConfigPattern* result = new SubConfigPattern(type, parent);
             if (!mimetype.isEmpty())
                 result->m_mimetype = mimetype;
+            result->m_nativepath = pattern;
             result->m_filePatternlist = filePatternlist;
             return result;
         }
@@ -104,16 +104,10 @@ SubConfigPattern::SubConfigPattern(Fcitx::SubConfigType type, QObject* parent) :
     m_type = type;
 }
 
-int SubConfigPattern::size() const
+const QStringList& SubConfigPattern::filePatternList() const
 {
-    return m_filePatternlist.length();
+    return m_filePatternlist;
 }
-
-const QString& SubConfigPattern::getPattern(int index) const
-{
-    return m_filePatternlist.at(index);
-}
-
 
 const QString& SubConfigPattern::configdesc() const
 {

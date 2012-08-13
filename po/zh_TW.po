@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-08-12 20:29+0800\n"
-"PO-Revision-Date: 2012-08-12 20:29+0800\n"
+"POT-Creation-Date: 2012-08-13 23:29+0800\n"
+"PO-Revision-Date: 2012-08-13 23:29+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_TW\n"
@@ -19,10 +19,6 @@ msgstr ""
 "language/zh_TW/)\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Lokalize 1.5\n"
-
-#: ../src/configwidget.cpp:553
-msgid "&Advance"
-msgstr "高級(&A)"
 
 #. i18n: file: ../src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -74,13 +70,17 @@ msgstr ""
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>預設鍵盤佈局：</b>"
 
-#: ../src/imconfigdialog.cpp:111
+#: ../src/imconfigdialog.cpp:115
 msgid "<b>Input Method Setting:</b>"
 msgstr "<b>輸入法設定：</b>"
 
-#: ../src/imconfigdialog.cpp:59
+#: ../src/imconfigdialog.cpp:63
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>鍵盤佈局：</b>"
+
+#: ../src/configwidget.cpp:417
+msgid "<b>Other</b>"
+msgstr "<b>其他</b>"
 
 #. i18n: file: ../src/impage.ui:162
 #. i18n: ectx: property (text), widget (QLabel, label_4)
@@ -88,11 +88,11 @@ msgstr "<b>鍵盤佈局：</b>"
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>選擇輸入法：</b>"
 
-#: ../src/module.cpp:129
+#: ../src/module.cpp:137
 msgid "Addon Config"
 msgstr "附加元件設定"
 
-#: ../src/configwidget.cpp:119
+#: ../src/configwidget.cpp:120
 msgid "Attention"
 msgstr "注意"
 
@@ -102,15 +102,23 @@ msgstr "注意"
 msgid "Available Input Method:"
 msgstr "可用輸入法："
 
-#: ../src/module.cpp:79
+#: ../src/module.cpp:82
 msgid "Configure Fcitx"
 msgstr "設定 Fcitx"
 
-#: ../src/module.cpp:131
+#: ../src/module.cpp:139
 msgid "Configure Fcitx addon"
 msgstr "設定 Fcitx 附加元件"
 
-#: ../src/module.cpp:81
+#: ../src/subconfigwidget.cpp:200
+msgid "Copy"
+msgstr "拷貝"
+
+#: ../src/subconfigwidget.cpp:213
+msgid "Copy failed"
+msgstr "拷貝失败"
+
+#: ../src/module.cpp:84
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "版權所有 2012 Xuetian Weng"
 
@@ -120,11 +128,11 @@ msgstr "版權所有 2012 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: ../src/imconfigdialog.cpp:64
+#: ../src/imconfigdialog.cpp:68
 msgid "Default"
 msgstr "預設"
 
-#: ../src/module.cpp:77
+#: ../src/module.cpp:80
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 設定模組"
 
@@ -138,19 +146,19 @@ msgstr "第一候選詞"
 msgid "Get New &Skin..."
 msgstr "取得新皮膚(&S)..."
 
-#: ../src/module.cpp:117
+#: ../src/module.cpp:125
 msgid "Global Config"
 msgstr "全域設定"
 
-#: ../src/module.cpp:119
+#: ../src/module.cpp:127
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 全域設定"
 
-#: ../src/module.cpp:104 ../src/module.cpp:106
+#: ../src/module.cpp:112 ../src/module.cpp:114
 msgid "Input Method"
 msgstr "輸入法"
 
-#: ../src/imconfigdialog.cpp:66
+#: ../src/imconfigdialog.cpp:70
 msgid "Input Method Default"
 msgstr "輸入法預設"
 
@@ -160,19 +168,19 @@ msgstr "輸入法預設"
 msgid "Keyboard layout to use when no input method active"
 msgstr "無活動輸入法時使用的鍵盤佈局"
 
-#: ../src/module.cpp:141
+#: ../src/module.cpp:149
 msgid "Manage Fcitx Skin"
 msgstr "管理 Fcitx 皮膚"
 
-#: ../src/module.cpp:139
+#: ../src/module.cpp:147
 msgid "Manage Skin"
 msgstr "管理皮膚"
 
-#: ../src/impage.cpp:52
+#: ../src/impage.cpp:48
 msgid "Multilingual"
 msgstr "多語言"
 
-#: ../src/configwidget.cpp:118
+#: ../src/configwidget.cpp:119
 msgid "Not all configuration can be reloaded immediately."
 msgstr "並非所有設定都可以立即重新載入。"
 
@@ -182,7 +190,7 @@ msgstr "並非所有設定都可以立即重新載入。"
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
 
-#: ../src/configwidget.cpp:527
+#: ../src/configwidget.cpp:521
 msgid "Other"
 msgstr "其他"
 
@@ -194,7 +202,7 @@ msgstr "其他候選詞"
 msgid "Search Addons"
 msgstr "搜尋附加元件"
 
-#: ../src/impage.cpp:220
+#: ../src/impage.cpp:216
 msgid "Search Input Method"
 msgstr "搜尋輸入法"
 
@@ -204,7 +212,7 @@ msgstr "搜尋輸入法"
 msgid "Select default keyboard layout"
 msgstr "選擇預設鍵盤佈局"
 
-#: ../src/addonselector.cpp:385
+#: ../src/addonselector.cpp:385 ../src/configwidget.cpp:566
 msgid "Show &Advance option"
 msgstr "顯示高級選項(&A)"
 
@@ -212,11 +220,26 @@ msgstr "顯示高級選項(&A)"
 msgid "Skin %1 Cannot be loaded"
 msgstr "無法載入皮膚 %1"
 
-#: ../src/impage.cpp:49
+#: ../src/impage.cpp:45
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/module.cpp:85
+#: ../src/subconfigwidget.cpp:198
+msgid ""
+"User config doesn't exisits, do you want to open system file or copy system "
+"file to user file?"
+msgstr ""
+"用戶的設定不存在，您想要打開系統的設定還是將系統的設定文件拷貝到用戶文件？"
+
+#: ../src/subconfigwidget.cpp:201
+msgid "View system"
+msgstr "查看系統"
+
+#: ../src/subconfigwidget.cpp:199
+msgid "What to do"
+msgstr "要做什麼"
+
+#: ../src/module.cpp:88
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
@@ -229,3 +252,6 @@ msgstr "alisha.4m@gmail.com"
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Alisha"
+
+#~ msgid "&Advance"
+#~ msgstr "高級(&A)"

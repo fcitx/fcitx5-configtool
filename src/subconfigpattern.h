@@ -35,8 +35,7 @@ class SubConfigPattern : public QObject
 public:
     static SubConfigPattern* parsePattern(SubConfigType type, const QString& pattern, QObject* parent = NULL);
 
-    int size() const;
-    const QString& getPattern(int index) const;
+    const QStringList& filePatternList() const;
     const QString& configdesc() const;
     SubConfigType type() const;
     const QString& nativepath() const;

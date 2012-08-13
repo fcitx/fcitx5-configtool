@@ -86,60 +86,6 @@ QStringList SubConfigParser::getSubConfigKeys()
     return m_subConfigMap.keys();
 }
 
-QSet<QString> SubConfigParser::getFiles(const QString& name)
-{
-    if (m_subConfigMap.count(name) != 1)
-        return QSet<QString> ();
-    SubConfigPattern* pattern = m_subConfigMap[name];
-    size_t size;
-    char** xdgpath = FcitxXDGGetPathWithPrefix(&size, "");
-
-    QSet<QString> result;
-    for (size_t i = 0; i < size; i ++) {
-        QDir dir(xdgpath[i]);
-        QStringList list = getFilesByPattern(dir, pattern, 0);
-        Q_FOREACH(const QString & str, list) {
-            result.insert(
-                dir.relativeFilePath(str));
-        }
-    }
-
-    FcitxXDGFreePath(xdgpath);
-
-    return result;
-}
-
-QStringList SubConfigParser::getFilesByPattern(QDir& currentdir, SubConfigPattern* pattern, int index)
-{
-    QStringList result;
-    if (!currentdir.exists())
-        return result;
-
-    const QString& filter = pattern->getPattern(index);
-    QStringList filters;
-    filters << filter;
-    QDir::Filters filterflag;
-
-    if (index + 1 == pattern->size()) {
-        filterflag = QDir::Files;
-    } else {
-        filterflag = QDir::Dirs | QDir::NoDotAndDotDot;
-    }
-
-    QStringList list = currentdir.entryList(filters, filterflag);
-    if (index + 1 == pattern->size()) {
-        Q_FOREACH(const QString & item, list) {
-            result << currentdir.absoluteFilePath(item);
-        }
-    } else {
-        Q_FOREACH(const QString & item, list) {
-            QDir dir(currentdir.absoluteFilePath(item));
-            result << getFilesByPattern(dir, pattern, index + 1);
-        }
-    }
-    return result;
-}
-
 SubConfig* SubConfigParser::getSubConfig(const QString& key)
 {
     if (m_subConfigMap.count(key) != 1)
@@ -147,21 +93,7 @@ SubConfig* SubConfigParser::getSubConfig(const QString& key)
 
     SubConfigPattern* pattern = m_subConfigMap[key];
 
-    SubConfig* subconfig = NULL;
-
-    switch (pattern->type()) {
-    case SC_ConfigFile:
-        subconfig = SubConfig::GetConfigFileSubConfig(key, pattern->configdesc(), this->getFiles(key));
-        break;
-    case SC_NativeFile:
-        subconfig = SubConfig::GetNativeFileSubConfig(key, pattern->nativepath(), pattern->mimetype(), this->getFiles(key));
-        break;
-    case SC_Program:
-        subconfig = SubConfig::GetProgramSubConfig(key, pattern->program());
-        break;
-    default:
-        break;
-    }
+    SubConfig* subconfig = new SubConfig(key, pattern);
 
     return subconfig;
 }
