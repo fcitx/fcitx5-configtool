@@ -88,7 +88,7 @@ private:
     QWidget* createFullConfigUi();
     QWidget* createSimpleConfigUi(bool skinAdvance);
     void setupConfigUi();
-    void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& s, QWidget*& inputWidget, void*& newarg);
+    void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& label, QString& tooltip, QWidget*& inputWidget, void*& newarg);
     void checkCanUseSimple();
 
     struct _FcitxConfigFileDesc* m_cfdesc;

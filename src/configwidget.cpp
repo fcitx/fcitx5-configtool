@@ -149,7 +149,7 @@ void ConfigWidget::load()
     fclose(fp);
 }
 
-void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& s, QWidget*& inputWidget, void*& newarg)
+void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& label, QString& tooltip, QWidget*& inputWidget, void*& newarg)
 {
     FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
 
@@ -160,13 +160,12 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
         oldarg = m_argMap[name];
     }
 
-    if (codesc->desc && strlen(codesc->desc) != 0)
-        s = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->desc));
+    if (codesc->desc && codesc->desc[0])
+        label = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->desc));
     else
-        s = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->optionName));
+        label = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->optionName));
 
-    QString tooltip;
-    if (codesc2->longDesc && strlen(codesc2->longDesc) != 0) {
+    if (codesc2->longDesc && codesc2->longDesc[0]) {
         tooltip = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc2->longDesc));
     }
 
@@ -395,13 +394,14 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
                 FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
                 if (skinAdvance && codesc2->advance)
                     continue;
-                QString s;
+                QString s, tooltip;
                 QWidget* inputWidget = NULL;
                 void* argument = NULL;
-                createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
+                createConfigOptionWidget(cgdesc, codesc, s, tooltip, inputWidget, argument);
 
                 if (inputWidget) {
                     QLabel* label = new QLabel(s);
+                    label->setToolTip(tooltip);
                     gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
                     gridLayout->addWidget(inputWidget, row, 2);
                     if (argument)
@@ -469,13 +469,14 @@ QWidget* ConfigWidget::createFullConfigUi()
             form->setLayout(formLayout);
 
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-                QString s;
+                QString s, tooltip;
                 QWidget* inputWidget = NULL;
                 void* argument = NULL;
-                createConfigOptionWidget(cgdesc, codesc, s, inputWidget, argument);
+                createConfigOptionWidget(cgdesc, codesc, s, tooltip, inputWidget, argument);
 
                 if (inputWidget) {
                     QLabel* label = new QLabel(s, this);
+                    label->setToolTip(tooltip);
                     formLayout->addRow(label, inputWidget);
                     if (argument)
                         m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
