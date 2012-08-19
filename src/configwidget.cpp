@@ -401,7 +401,8 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
 
                 if (inputWidget) {
                     QLabel* label = new QLabel(s);
-                    label->setToolTip(tooltip);
+                    if (!tooltip.isEmpty())
+                        label->setToolTip(tooltip);
                     gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
                     gridLayout->addWidget(inputWidget, row, 2);
                     if (argument)
@@ -476,7 +477,8 @@ QWidget* ConfigWidget::createFullConfigUi()
 
                 if (inputWidget) {
                     QLabel* label = new QLabel(s, this);
-                    label->setToolTip(tooltip);
+                    if (!tooltip.isEmpty())
+                        label->setToolTip(tooltip);
                     formLayout->addRow(label, inputWidget);
                     if (argument)
                         m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
