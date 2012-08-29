@@ -34,7 +34,6 @@
 
 // KDE
 #include <KColorButton>
-#include <KFontComboBox>
 #include <KComboBox>
 #include <KKeySequenceWidget>
 #include <KLineEdit>
@@ -61,6 +60,7 @@
 #include "configdescmanager.h"
 #include "dummyconfig.h"
 #include "verticalscrollarea.h"
+#include "fontbutton.h"
 
 #define RoundColor(c) ((c)>=0?((c)<=255?c:255):0)
 
@@ -221,16 +221,16 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     }
 
     case T_Font: {
-        KFontComboBox* fontComboBox = new KFontComboBox(this);
-        inputWidget = fontComboBox;
+        FontButton* fontButton = new FontButton(this);
+        inputWidget = fontButton;
         if (!oldarg) {
-            connect(fontComboBox, SIGNAL(currentFontChanged(QFont)), this, SIGNAL(changed()));
+            connect(fontButton, SIGNAL(fontChanged(QFont)), this, SIGNAL(changed()));
             argument = inputWidget;
         }
         else {
-            KFontComboBox* oldFontComboBox = (KFontComboBox*) oldarg;
-            connect(fontComboBox, SIGNAL(currentFontChanged(QFont)), oldFontComboBox, SLOT(setCurrentFont(QFont)));
-            connect(oldFontComboBox, SIGNAL(currentFontChanged(QFont)), fontComboBox, SLOT(setCurrentFont(QFont)));
+            FontButton* oldFontButton = (FontButton*) oldarg;
+            connect(fontButton, SIGNAL(fontChanged(QFont)), oldFontButton, SLOT(setFont(QFont)));
+            connect(oldFontButton, SIGNAL(fontChanged(QFont)), fontButton, SLOT(setFont(QFont)));
         }
     }
 
@@ -711,9 +711,9 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
         case T_Font: {
             char** fontname = (char**) value;
-            KFontComboBox *fontComboBox = static_cast<KFontComboBox*>(arg);
-            QFont font(QString::fromUtf8(*fontname));
-            fontComboBox->setCurrentFont(font);
+            FontButton *fontButton = static_cast<FontButton*>(arg);
+            QFont font = FontButton::parseFont(QString::fromUtf8(*fontname));
+            fontButton->setFont(font);
         }
 
         break;
@@ -806,10 +806,10 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Font: {
-            KFontComboBox *fontComboBox = static_cast<KFontComboBox*>(arg);
-            const QFont& font = fontComboBox->currentFont();
+            FontButton *fontButton = static_cast<FontButton*>(arg);
+            const QString font = fontButton->fontName();
             char** fontname = (char**) value;
-            fcitx_utils_string_swap(fontname, font.family().toUtf8().data());
+            fcitx_utils_string_swap(fontname, font.toUtf8().data());
         }
 
         break;

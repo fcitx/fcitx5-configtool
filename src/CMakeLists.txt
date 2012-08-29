@@ -20,10 +20,11 @@ set(kcm_SRCS
     keyboardproxy.cpp
     dummyconfig.cpp
     verticalscrollarea.cpp
+    fontbutton.cpp
     ../layout/keyboardlayoutwidget.cpp
 )
 
-kde4_add_ui_files(kcm_SRCS module.ui skinpage.ui impage.ui)
+kde4_add_ui_files(kcm_SRCS module.ui skinpage.ui impage.ui fontbutton.ui)
 
 kde4_add_plugin(kcm_fcitx ${kcm_SRCS})
 
@@ -45,3 +46,7 @@ install(FILES kcm_fcitx.desktop DESTINATION ${SERVICES_INSTALL_DIR})
 message("GHNS DIR : ${CONFIG_INSTALL_DIR}")
 
 install(FILES fcitx-skin.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
+
+if (ENABLE_TEST)
+    add_subdirectory(test)
+endif (ENABLE_TEST)
