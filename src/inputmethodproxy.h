@@ -8,8 +8,8 @@
  * Do not edit! All changes made to it will be lost.
  */
 
-#ifndef INPUTMETHODPROXY_H_1344587527
-#define INPUTMETHODPROXY_H_1344587527
+#ifndef INPUTMETHODPROXY_H_1346612809
+#define INPUTMETHODPROXY_H_1346612809
 
 #include <QtCore/QObject>
 #include <QtCore/QByteArray>
@@ -45,6 +45,12 @@ public:
     { setProperty("IMList", QVariant::fromValue(value)); }
 
 public Q_SLOTS: // METHODS
+    inline QDBusPendingReply<QString> GetCurrentUI()
+    {
+        QList<QVariant> argumentList;
+        return asyncCallWithArgumentList(QLatin1String("GetCurrentUI"), argumentList);
+    }
+
     inline QDBusPendingReply<QString> GetIMAddon(const QString &im)
     {
         QList<QVariant> argumentList;

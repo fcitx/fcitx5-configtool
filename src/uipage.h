@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011~2011 by CSSlayer                                   *
+ *   Copyright (C) 2012~2012 by CSSlayer                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -17,101 +17,45 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#ifndef MODULE_H
-#define MODULE_H
+#ifndef FCITX_UI_PAGE_H
+#define FCITX_UI_PAGE_H
 
-// KDE
-#include <KCModule>
-
-// Fcitx
-#include <fcitx-utils/utarray.h>
-#include <fcitx/addon.h>
+// Qt
+#include <QString>
+#include <QWidget>
 #include <QDBusConnection>
 
-class QFile;
+// self
+#include "inputmethodproxy.h"
 
-namespace Ui
-{
-
-class Module;
-}
-
+class QLabel;
+class QVBoxLayout;
 namespace Fcitx
 {
 
-class UIPage;
-
-class InputMethodProxy;
-
-class IMPage;
-
-class SkinPage;
-
 class ConfigWidget;
 
-class AddonSelector;
-
-class Module : public KCModule
+class Module;
+class UIPage : public QWidget
 {
     Q_OBJECT
-
 public:
-    /**
-    * Constructor.
-    *
-    * @param parent Parent widget of the module
-    * @param args Arguments for the module
-    */
-    Module(QWidget *parent, const QVariantList &args = QVariantList());
-
-    /**
-    * Destructor.
-    */
-    ~Module();
-
-    /**
-    * Overloading the KCModule load() function.
-    */
-    void load();
-
-    /**
-    * Overloading the KCModule save() function.
-    */
+    UIPage(Module* parent = 0);
+    virtual ~UIPage();
+Q_SIGNALS:
+    void changed();
+public Q_SLOTS:
     void save();
-
-    /**
-    * Overloading the KCModule defaults() function.
-    */
-    void defaults();
-
-    FcitxAddon* findAddonByName(const QString& name);
-
-    InputMethodProxy* inputMethodProxy();
-
+    void load();
+    void getUIFinished(QDBusPendingCallWatcher* watcher);
 private:
-    /**
-    * UI
-    */
-    Ui::Module *ui;
-
-    /**
-    * Addon Selector
-    */
-    AddonSelector* addonSelector;
-
-    /**
-    * addon array
-    */
-    UT_array* m_addons;
-    ConfigWidget* m_configPage;
-    SkinPage* m_skinPage;
-    IMPage* m_imPage;
-    UIPage* m_uiPage;
-    QDBusConnection m_connection;
-    InputMethodProxy* m_inputmethod;
-    QString m_arg;
+    Module* m_module;
+    InputMethodProxy* m_proxy;
+    QVBoxLayout* m_layout;
+    QLabel* m_label;
+    ConfigWidget* m_widget;
 };
-
 }
 
-#endif // MODULE_H
+#endif
+

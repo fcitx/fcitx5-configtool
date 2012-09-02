@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-08-13 23:29+0800\n"
-"PO-Revision-Date: 2012-08-13 23:29+0800\n"
+"POT-Creation-Date: 2012-09-02 16:06-0400\n"
+"PO-Revision-Date: 2012-09-02 16:06-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -22,19 +22,19 @@ msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-#: rc.cpp:24
+#: rc.cpp:30
 msgid "&Configure Skin"
 msgstr "配置皮肤(&C)"
 
 #. i18n: file: ../src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-#: rc.cpp:27
+#: rc.cpp:33
 msgid "&Delete Skin"
 msgstr "删除皮肤(&D)"
 
 #. i18n: file: ../src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:33
+#: rc.cpp:39
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -66,7 +66,7 @@ msgstr ""
 
 #. i18n: file: ../src/impage.ui:185
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:15
+#: rc.cpp:21
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>默认键盘布局：</b>"
 
@@ -78,35 +78,43 @@ msgstr "<b>输入法设置：</b>"
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>键盘布局：</b>"
 
-#: ../src/configwidget.cpp:417
+#: ../src/configwidget.cpp:436
 msgid "<b>Other</b>"
 msgstr "<b>其它</b>"
 
 #. i18n: file: ../src/impage.ui:162
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: rc.cpp:12
+#: rc.cpp:18
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>选择输入法：</b>"
 
-#: ../src/module.cpp:137
+#: ../src/module.cpp:150
 msgid "Addon Config"
 msgstr "附加组件配置"
 
-#: ../src/configwidget.cpp:120
+#: ../src/module.cpp:138 ../src/module.cpp:140
+msgid "Appearance"
+msgstr "外观"
+
+#: ../src/configwidget.cpp:138
 msgid "Attention"
 msgstr "注意"
 
 #. i18n: file: ../src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:3
+#: rc.cpp:9
 msgid "Available Input Method:"
 msgstr "可用的输入法："
 
-#: ../src/module.cpp:82
+#: ../src/uipage.cpp:14
+msgid "Cannot load currently used user interface info"
+msgstr "无法加载当前用户界面信息"
+
+#: ../src/module.cpp:83
 msgid "Configure Fcitx"
 msgstr "配置 Fcitx"
 
-#: ../src/module.cpp:139
+#: ../src/module.cpp:152
 msgid "Configure Fcitx addon"
 msgstr "配置 Fcitx 附加组件"
 
@@ -118,13 +126,13 @@ msgstr "复制"
 msgid "Copy failed"
 msgstr "复制失败"
 
-#: ../src/module.cpp:84
+#: ../src/module.cpp:85
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
 #. i18n: file: ../src/impage.ui:98
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:9
+#: rc.cpp:15
 msgid "Current Input Method:"
 msgstr "当前的输入法："
 
@@ -132,7 +140,7 @@ msgstr "当前的输入法："
 msgid "Default"
 msgstr "默认"
 
-#: ../src/module.cpp:80
+#: ../src/module.cpp:81
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
 
@@ -140,21 +148,27 @@ msgstr "Fcitx 配置模块"
 msgid "First candidate"
 msgstr "第一候选词"
 
+#. i18n: file: ../src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+#: rc.cpp:3
+msgid "Form"
+msgstr "Form"
+
 #. i18n: file: ../src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:30
+#: rc.cpp:36
 msgid "Get New &Skin..."
 msgstr "获得新皮肤(&S)..."
 
-#: ../src/module.cpp:125
+#: ../src/module.cpp:126
 msgid "Global Config"
 msgstr "全局配置"
 
-#: ../src/module.cpp:127
+#: ../src/module.cpp:128
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 的全局配置"
 
-#: ../src/module.cpp:112 ../src/module.cpp:114
+#: ../src/module.cpp:113 ../src/module.cpp:115
 msgid "Input Method"
 msgstr "输入法"
 
@@ -164,15 +178,15 @@ msgstr "输入法默认"
 
 #. i18n: file: ../src/impage.ui:210
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:18
+#: rc.cpp:24
 msgid "Keyboard layout to use when no input method active"
 msgstr "无输入法时的使用的键盘布局"
 
-#: ../src/module.cpp:149
+#: ../src/module.cpp:162
 msgid "Manage Fcitx Skin"
 msgstr "管理Fcitx 的皮肤"
 
-#: ../src/module.cpp:147
+#: ../src/module.cpp:160
 msgid "Manage Skin"
 msgstr "管理皮肤"
 
@@ -180,17 +194,21 @@ msgstr "管理皮肤"
 msgid "Multilingual"
 msgstr "多语言"
 
-#: ../src/configwidget.cpp:119
+#: ../src/uipage.cpp:41
+msgid "No configuration options."
+msgstr "无配置选项。"
+
+#: ../src/configwidget.cpp:137
 msgid "Not all configuration can be reloaded immediately."
 msgstr "并非所有设置都可以被立即重新加载。"
 
 #. i18n: file: ../src/impage.ui:37
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:6
+#: rc.cpp:12
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
 
-#: ../src/configwidget.cpp:521
+#: ../src/configwidget.cpp:542
 msgid "Other"
 msgstr "其他"
 
@@ -206,13 +224,23 @@ msgstr "搜索附加组件"
 msgid "Search Input Method"
 msgstr "搜索输入法"
 
+#. i18n: file: ../src/fontbutton.ui:48
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+#: rc.cpp:6
+msgid "Select &Font..."
+msgstr "选择字体(&F)..."
+
+#: ../src/fontbutton.cpp:103
+msgid "Select Font"
+msgstr "选择字体"
+
 #. i18n: file: ../src/impage.ui:213
 #. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:21
+#: rc.cpp:27
 msgid "Select default keyboard layout"
 msgstr "选择默认键盘布局"
 
-#: ../src/addonselector.cpp:385 ../src/configwidget.cpp:566
+#: ../src/addonselector.cpp:385 ../src/configwidget.cpp:587
 msgid "Show &Advance option"
 msgstr "显示高级选项(&A)"
 
@@ -238,22 +266,19 @@ msgstr "查看系統"
 msgid "What to do"
 msgstr "要做什么"
 
-#: ../src/module.cpp:88
+#: ../src/module.cpp:89
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: rc.cpp:40
+#: rc.cpp:46
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "wengxt@gmail.com"
 
-#: rc.cpp:39
+#: rc.cpp:45
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Xuetian Weng"
 
 #~ msgid "&Advance"
 #~ msgstr "高级(&A)"
-
-#~ msgid "Form"
-#~ msgstr "Form"

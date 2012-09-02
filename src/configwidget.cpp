@@ -86,11 +86,29 @@ ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, c
     , m_simpleUiType(CW_NoShow)
     , m_fullUiType(CW_NoShow)
 {
-    m_parser = new SubConfigParser(subconfig, this);
     if (cfdesc)
         m_config = new DummyConfig(cfdesc);
     setupConfigUi();
 }
+
+ConfigWidget::ConfigWidget(FcitxAddon* addonEntry, QWidget* parent): QWidget(parent)
+    , m_cfdesc(ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc")))
+    , m_prefix("conf")
+    , m_name(QString::fromUtf8(addonEntry->name).append(".config"))
+    , m_switchLayout(new QVBoxLayout)
+    , m_simpleWidget(0)
+    , m_fullWidget(0)
+    , m_advanceCheckBox(0)
+    , m_config(0)
+    , m_parser(new SubConfigParser(QString::fromUtf8(addonEntry->subconfig), this))
+    , m_simpleUiType(CW_NoShow)
+    , m_fullUiType(CW_NoShow)
+{
+    if (m_cfdesc)
+        m_config = new DummyConfig(m_cfdesc);
+    setupConfigUi();
+}
+
 
 ConfigWidget::~ConfigWidget()
 {

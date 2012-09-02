@@ -13,6 +13,7 @@ set(kcm_SRCS
     skinpage.cpp
     impage.cpp
     im.cpp
+    uipage.cpp
     layout.cpp
     imconfigdialog.cpp
     qtkeytrans.cpp

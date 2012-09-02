@@ -53,6 +53,7 @@
 #include "im.h"
 #include "layout.h"
 #include "imconfigdialog.h"
+#include "uipage.h"
 
 K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
 
@@ -127,6 +128,18 @@ Module::Module(QWidget *parent, const QVariantList &args) :
             page->setHeader(i18n("Global Config for Fcitx"));
             ui->pageWidget->addPage(page);
             connect(m_configPage, SIGNAL(changed()), this, SLOT(changed()));
+        }
+    }
+
+    {
+        if (m_inputmethod->isValid()) {
+            m_uiPage = new UIPage(this);
+            page = new KPageWidgetItem(m_uiPage);
+            page->setName(i18n("Appearance"));
+            page->setIcon(KIcon("preferences-desktop-theme"));
+            page->setHeader(i18n("Appearance"));
+            ui->pageWidget->addPage(page);
+            connect(m_uiPage, SIGNAL(changed()), this, SLOT(changed()));
         }
     }
 
@@ -237,6 +250,8 @@ void Module::save()
         m_skinPage->save();
     if (m_configPage)
         m_configPage->buttonClicked(KDialog::Ok);
+    if (m_uiPage)
+        m_uiPage->save();
 }
 
 void Module::defaults()

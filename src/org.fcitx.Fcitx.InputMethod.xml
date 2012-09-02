@@ -11,5 +11,8 @@
         <arg name="im" direction="in" type="s"/>
         <arg name="addon" direction="out" type="s"/>
     </method>
+    <method name="GetCurrentUI">
+        <arg name="addon" direction="out" type="s"/>
+    </method>
   </interface>
 </node>

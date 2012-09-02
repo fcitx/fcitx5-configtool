@@ -71,6 +71,7 @@ class ConfigWidget : public QWidget
 
 public:
     explicit ConfigWidget(struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), QWidget* parent = NULL);
+    explicit ConfigWidget(FcitxAddon* addonEntry, QWidget* parent = 0);
     virtual ~ConfigWidget();
 
     static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString());
