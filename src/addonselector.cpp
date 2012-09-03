@@ -191,7 +191,7 @@ bool AddonSelector::Private::ProxyModel::filterAcceptsRow(int sourceRow, const Q
     Q_UNUSED(sourceParent)
     const QModelIndex index = sourceModel()->index(sourceRow, 0);
     const FcitxAddon* addonInfo = static_cast<FcitxAddon*>(index.internalPointer());
-    if (addonInfo->advance && !addonSelector_d->advanceCheckbox->isChecked()) {
+    if ((!addonInfo->bEnabled || addonInfo->advance) && !addonSelector_d->advanceCheckbox->isChecked()) {
         return false;
     }
     if (addonInfo->category == AC_FRONTEND && !addonSelector_d->advanceCheckbox->isChecked()) {
