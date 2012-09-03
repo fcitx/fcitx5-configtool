@@ -38,7 +38,7 @@ void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)
             connect(m_widget, SIGNAL(changed()), this, SIGNAL(changed()));
         }
         else {
-            m_label->setText(i18n("No configuration options."));
+            m_label->setText(i18n("No configuration options for %1.").arg(QString::fromUtf8(addon->generalname)));
         }
     }
 }

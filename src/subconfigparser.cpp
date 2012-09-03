@@ -40,6 +40,7 @@ SubConfigParser::SubConfigParser(const QString& subConfigString, QObject* parent
      * <domain name>:domain
      * <name>:native:path
      * <name>:configfile:path:configdesc
+     * <name>:program:path
      */
     QStringList subConfigList = subConfigString.split(',');
     Q_FOREACH(const QString & str, subConfigList) {

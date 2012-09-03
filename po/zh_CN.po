@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-09-02 16:06-0400\n"
-"PO-Revision-Date: 2012-09-02 16:06-0400\n"
+"POT-Creation-Date: 2012-09-02 16:34-0400\n"
+"PO-Revision-Date: 2012-09-02 16:35-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <fcitx-dev@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -195,8 +195,8 @@ msgid "Multilingual"
 msgstr "多语言"
 
 #: ../src/uipage.cpp:41
-msgid "No configuration options."
-msgstr "无配置选项。"
+msgid "No configuration options for %1."
+msgstr "%1 无配置选项。"
 
 #: ../src/configwidget.cpp:137
 msgid "Not all configuration can be reloaded immediately."

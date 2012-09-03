@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-09-02 16:06-0400\n"
+"POT-Creation-Date: 2012-09-02 16:34-0400\n"
 "PO-Revision-Date: 2012-08-13 23:29+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -196,7 +196,7 @@ msgstr "多語言"
 
 #: ../src/uipage.cpp:41
 #, fuzzy
-msgid "No configuration options."
+msgid "No configuration options for %1."
 msgstr "並非所有設定都可以立即重新載入。"
 
 #: ../src/configwidget.cpp:137
