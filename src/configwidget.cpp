@@ -373,7 +373,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     }
 }
 
-QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
+QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
 {
     int row = 0;
     VerticalScrollArea *scrollarea = new VerticalScrollArea;
@@ -399,7 +399,7 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
                 int count = 0;
                 HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                     FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                    if (!skinAdvance || !codesc2->advance)
+                    if (!skipAdvance || !codesc2->advance)
                         count++;
                 }
                 if (!count)
@@ -410,7 +410,7 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skinAdvance)
 
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                 FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
-                if (skinAdvance && codesc2->advance)
+                if (skipAdvance && codesc2->advance)
                     continue;
                 QString s, tooltip;
                 QWidget* inputWidget = NULL;
