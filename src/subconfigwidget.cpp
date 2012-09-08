@@ -111,7 +111,7 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
     switch (subconfig->type()) {
     case SC_ConfigFile: {
         QVBoxLayout* hbox = new QVBoxLayout;
-        this->setLayout(hbox);
+        setLayout(hbox);
         m_listView = new QListView;
         m_listView->setSelectionMode(QAbstractItemView::SingleSelection);
         m_model = new ConfigFileItemModel(this);
@@ -129,15 +129,16 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
     break;
     case SC_NativeFile: {
         QVBoxLayout* hbox = new QVBoxLayout;
-        this->setLayout(hbox);
+        setLayout(hbox);
         KPushButton* pushButton = new KPushButton;
         pushButton->setIcon(KIcon("document-open"));
         connect(pushButton, SIGNAL(clicked()), this, SLOT(openNativeFile()));
         hbox->addWidget(pushButton);
     }
+    break;
     case SC_Program: {
         QVBoxLayout* hbox = new QVBoxLayout;
-        this->setLayout(hbox);
+        setLayout(hbox);
         KPushButton* pushButton = new KPushButton;
         pushButton->setIcon(KIcon("system-run"));
         if (subconfig->program().isNull())
