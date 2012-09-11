@@ -171,6 +171,9 @@ bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QMode
     const IM* imEntry = static_cast<IM*>(index.internalPointer());
     bool flag = true;
 
+    if (imEntry->uniqueName() == "fcitx-keyboard-us")
+        return true;
+
     flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
     if (!impage_d->filterTextEdit->text().isEmpty()) {
         flag = flag &&
