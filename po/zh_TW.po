@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-09-02 16:34-0400\n"
+"POT-Creation-Date: 2012-09-13 14:59-0400\n"
 "PO-Revision-Date: 2012-08-13 23:29+0800\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -22,19 +22,19 @@ msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-#: rc.cpp:30
+#: rc.cpp:33
 msgid "&Configure Skin"
 msgstr "設定皮膚(&C)"
 
 #. i18n: file: ../src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-#: rc.cpp:33
+#: rc.cpp:36
 msgid "&Delete Skin"
 msgstr "刪除皮膚(&D)"
 
 #. i18n: file: ../src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:39
+#: rc.cpp:42
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -64,9 +64,9 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">需要經典介面來使用皮膚功"
 "能。</p></body></html>"
 
-#. i18n: file: ../src/impage.ui:185
+#. i18n: file: ../src/impage.ui:296
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:21
+#: rc.cpp:27
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>預設鍵盤佈局：</b>"
 
@@ -82,9 +82,9 @@ msgstr "<b>鍵盤佈局：</b>"
 msgid "<b>Other</b>"
 msgstr "<b>其他</b>"
 
-#. i18n: file: ../src/impage.ui:162
+#. i18n: file: ../src/impage.ui:306
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: rc.cpp:18
+#: rc.cpp:30
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>選擇輸入法：</b>"
 
@@ -100,9 +100,9 @@ msgstr ""
 msgid "Attention"
 msgstr "注意"
 
-#. i18n: file: ../src/impage.ui:24
+#. i18n: file: ../src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:9
+#: rc.cpp:15
 msgid "Available Input Method:"
 msgstr "可用輸入法："
 
@@ -118,11 +118,11 @@ msgstr "設定 Fcitx"
 msgid "Configure Fcitx addon"
 msgstr "設定 Fcitx 附加元件"
 
-#: ../src/subconfigwidget.cpp:200
+#: ../src/subconfigwidget.cpp:201
 msgid "Copy"
 msgstr "拷貝"
 
-#: ../src/subconfigwidget.cpp:213
+#: ../src/subconfigwidget.cpp:214
 msgid "Copy failed"
 msgstr "拷貝失败"
 
@@ -130,9 +130,9 @@ msgstr "拷貝失败"
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "版權所有 2012 Xuetian Weng"
 
-#. i18n: file: ../src/impage.ui:98
+#. i18n: file: ../src/impage.ui:157
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:15
+#: rc.cpp:21
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
@@ -156,7 +156,7 @@ msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:36
+#: rc.cpp:39
 msgid "Get New &Skin..."
 msgstr "取得新皮膚(&S)..."
 
@@ -176,9 +176,9 @@ msgstr "輸入法"
 msgid "Input Method Default"
 msgstr "輸入法預設"
 
-#. i18n: file: ../src/impage.ui:210
+#. i18n: file: ../src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:24
+#: rc.cpp:9
 msgid "Keyboard layout to use when no input method active"
 msgstr "無活動輸入法時使用的鍵盤佈局"
 
@@ -203,9 +203,9 @@ msgstr "並非所有設定都可以立即重新載入。"
 msgid "Not all configuration can be reloaded immediately."
 msgstr "並非所有設定都可以立即重新載入。"
 
-#. i18n: file: ../src/impage.ui:37
+#. i18n: file: ../src/impage.ui:96
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:12
+#: rc.cpp:18
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
 
@@ -221,11 +221,11 @@ msgstr "其他候選詞"
 msgid "Search Addons"
 msgstr "搜尋附加元件"
 
-#: ../src/impage.cpp:216
+#: ../src/impage.cpp:220
 msgid "Search Input Method"
 msgstr "搜尋輸入法"
 
-#. i18n: file: ../src/fontbutton.ui:48
+#. i18n: file: ../src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 msgid "Select &Font..."
@@ -235,9 +235,9 @@ msgstr ""
 msgid "Select Font"
 msgstr ""
 
-#. i18n: file: ../src/impage.ui:213
+#. i18n: file: ../src/impage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:27
+#: rc.cpp:12
 msgid "Select default keyboard layout"
 msgstr "選擇預設鍵盤佈局"
 
@@ -249,22 +249,30 @@ msgstr "顯示高級選項(&A)"
 msgid "Skin %1 Cannot be loaded"
 msgstr "無法載入皮膚 %1"
 
+#. i18n: file: ../src/impage.ui:271
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#: rc.cpp:24
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
+
 #: ../src/impage.cpp:45
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/subconfigwidget.cpp:198
+#: ../src/subconfigwidget.cpp:199
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
 msgstr ""
 "用戶的設定不存在，您想要打開系統的設定還是將系統的設定文件拷貝到用戶文件？"
 
-#: ../src/subconfigwidget.cpp:201
+#: ../src/subconfigwidget.cpp:202
 msgid "View system"
 msgstr "查看系統"
 
-#: ../src/subconfigwidget.cpp:199
+#: ../src/subconfigwidget.cpp:200
 msgid "What to do"
 msgstr "要做什麼"
 
@@ -272,12 +280,12 @@ msgstr "要做什麼"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: rc.cpp:46
+#: rc.cpp:49
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "alisha.4m@gmail.com"
 
-#: rc.cpp:45
+#: rc.cpp:48
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Alisha"

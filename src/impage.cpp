@@ -196,6 +196,7 @@ IMPage::IMPage(Module* parent): QWidget(parent)
 {
     m_ui->setupUi(this);
 
+    m_ui->infoIconLabel->setPixmap(KIcon("dialog-information").pixmap(KIconLoader::SizeSmallMedium));
     m_ui->addIMButton->setIcon(KIcon("go-next"));
     m_ui->removeIMButton->setIcon(KIcon("go-previous"));
     m_ui->moveUpButton->setIcon(KIcon("go-up"));

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-09-02 16:34-0400\n"
+"POT-Creation-Date: 2012-09-13 14:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,7 +69,7 @@ msgstr ""
 msgid "Multilingual"
 msgstr ""
 
-#: ../src/impage.cpp:216
+#: ../src/impage.cpp:220
 msgid "Search Input Method"
 msgstr ""
 
@@ -133,25 +133,25 @@ msgstr ""
 msgid "Skin %1 Cannot be loaded"
 msgstr ""
 
-#: ../src/subconfigwidget.cpp:198
+#: ../src/subconfigwidget.cpp:199
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
 msgstr ""
 
-#: ../src/subconfigwidget.cpp:199
+#: ../src/subconfigwidget.cpp:200
 msgid "What to do"
 msgstr ""
 
-#: ../src/subconfigwidget.cpp:200
+#: ../src/subconfigwidget.cpp:201
 msgid "Copy"
 msgstr ""
 
-#: ../src/subconfigwidget.cpp:201
+#: ../src/subconfigwidget.cpp:202
 msgid "View system"
 msgstr ""
 
-#: ../src/subconfigwidget.cpp:213
+#: ../src/subconfigwidget.cpp:214
 msgid "Copy failed"
 msgstr ""
 
@@ -169,75 +169,83 @@ msgstr ""
 msgid "Form"
 msgstr ""
 
-#. i18n: file: ../src/fontbutton.ui:48
+#. i18n: file: ../src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 msgid "Select &Font..."
 msgstr ""
 
-#. i18n: file: ../src/impage.ui:24
-#. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:9
-msgid "Available Input Method:"
-msgstr ""
-
-#. i18n: file: ../src/impage.ui:37
-#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:12
-msgid "Only &Show Current Language"
-msgstr ""
-
-#. i18n: file: ../src/impage.ui:98
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:15
-msgid "Current Input Method:"
-msgstr ""
-
-#. i18n: file: ../src/impage.ui:162
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-#: rc.cpp:18
-msgid "<b>Select Input Method:</b>"
-msgstr ""
-
-#. i18n: file: ../src/impage.ui:185
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:21
-msgid "<b>Default keyboard layout:</b>"
-msgstr ""
-
-#. i18n: file: ../src/impage.ui:210
+#. i18n: file: ../src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:24
+#: rc.cpp:9
 msgid "Keyboard layout to use when no input method active"
 msgstr ""
 
-#. i18n: file: ../src/impage.ui:213
+#. i18n: file: ../src/impage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-#: rc.cpp:27
+#: rc.cpp:12
 msgid "Select default keyboard layout"
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:15
+msgid "Available Input Method:"
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:96
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+#: rc.cpp:18
+msgid "Only &Show Current Language"
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:157
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:21
+msgid "Current Input Method:"
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:271
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#: rc.cpp:24
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:296
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:27
+msgid "<b>Default keyboard layout:</b>"
+msgstr ""
+
+#. i18n: file: ../src/impage.ui:306
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:30
+msgid "<b>Select Input Method:</b>"
 msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-#: rc.cpp:30
+#: rc.cpp:33
 msgid "&Configure Skin"
 msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-#: rc.cpp:33
+#: rc.cpp:36
 msgid "&Delete Skin"
 msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-#: rc.cpp:36
+#: rc.cpp:39
 msgid "Get New &Skin..."
 msgstr ""
 
 #. i18n: file: ../src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:39
+#: rc.cpp:42
 msgid ""
 "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
 "REC-html40/strict.dtd\">\n"
@@ -254,12 +262,12 @@ msgid ""
 "to use skin function.</p></body></html>"
 msgstr ""
 
-#: rc.cpp:45
+#: rc.cpp:48
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr ""
 
-#: rc.cpp:46
+#: rc.cpp:49
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr ""
