@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2012-09-13 14:59-0400\n"
-"PO-Revision-Date: 2012-08-13 23:29+0800\n"
+"PO-Revision-Date: 2012-09-29 12:18-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_TW\n"
@@ -94,7 +94,7 @@ msgstr "附加元件設定"
 
 #: ../src/module.cpp:138 ../src/module.cpp:140
 msgid "Appearance"
-msgstr ""
+msgstr "外觀"
 
 #: ../src/configwidget.cpp:138
 msgid "Attention"
@@ -108,7 +108,7 @@ msgstr "可用輸入法："
 
 #: ../src/uipage.cpp:14
 msgid "Cannot load currently used user interface info"
-msgstr ""
+msgstr "無法加載當前用戶介面信息"
 
 #: ../src/module.cpp:83
 msgid "Configure Fcitx"
@@ -152,7 +152,7 @@ msgstr "第一候選詞"
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 #: rc.cpp:3
 msgid "Form"
-msgstr ""
+msgstr "Form"
 
 #. i18n: file: ../src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
@@ -195,9 +195,8 @@ msgid "Multilingual"
 msgstr "多語言"
 
 #: ../src/uipage.cpp:41
-#, fuzzy
 msgid "No configuration options for %1."
-msgstr "並非所有設定都可以立即重新載入。"
+msgstr "%1 無配置選項"
 
 #: ../src/configwidget.cpp:137
 msgid "Not all configuration can be reloaded immediately."
@@ -229,11 +228,11 @@ msgstr "搜尋輸入法"
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 msgid "Select &Font..."
-msgstr ""
+msgstr "選擇字體(&F)"
 
 #: ../src/fontbutton.cpp:103
 msgid "Select Font"
-msgstr ""
+msgstr "選擇字體"
 
 #. i18n: file: ../src/impage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
@@ -255,7 +254,7 @@ msgstr "無法載入皮膚 %1"
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr ""
+msgstr "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱</i></b>放到第一個。"
 
 #: ../src/impage.cpp:45
 msgid "Unknown"
@@ -265,8 +264,7 @@ msgstr "未知"
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
-msgstr ""
-"用戶的設定不存在，您想要打開系統的設定還是將系統的設定文件拷貝到用戶文件？"
+msgstr "用戶的設定不存在，您想要打開系統的設定還是將系統的設定文件拷貝到用戶文件？"
 
 #: ../src/subconfigwidget.cpp:202
 msgid "View system"
