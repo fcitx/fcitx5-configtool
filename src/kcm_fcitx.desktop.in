@@ -8,12 +8,9 @@ X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=locale
 
-Name=Input Method
-Name[zh_CN]=输入法
-Comment=Configure Input Method
-Comment[zh_CN]=配置输入法
+_Name=Input Method
+_Comment=Configure Input Method
 
-X-KDE-Keywords=keyboard,input,im,fcitx
-X-KDE-Keywords[zh_CN]=keyboard,input,im,fcitx,输入法,小企鹅,键盘,输入
+_X-KDE-Keywords=keyboard,input,im,fcitx
 
 Categories=Qt;KDE;X-KDE-settings-looknfeel;

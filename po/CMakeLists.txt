@@ -1,10 +1,5 @@
-set(POT_FILE
-    kcm_fcitx.pot
-)
-
-file(GLOB PO_FILES
-    *.po
-)
-
-# Update .po files and compile them to binary .gmo files
-gettext_create_translations(${POT_FILE} ALL ${PO_FILES})
+set(PO_LANGS zh_CN zh_TW)
+foreach(lang ${PO_LANGS})
+  fcitx_translate_add_po_file("${lang}" "${lang}.po")
+endforeach()
+fcitx_translate_set_pot_target(pot kcm_fcitx kcm_fcitx.pot)
