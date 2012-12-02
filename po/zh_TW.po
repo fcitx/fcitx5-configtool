@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-11-14 23:52-0500\n"
+"POT-Creation-Date: 2012-12-01 19:04-0500\n"
 "PO-Revision-Date: 2012-09-29 12:18-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -169,7 +169,7 @@ msgstr "全域設定"
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 全域設定"
 
-#: src/module.cpp:113 src/module.cpp:115
+#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "輸入法"
 
