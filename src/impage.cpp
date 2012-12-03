@@ -243,8 +243,8 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), this, SLOT(invalidate()));
     connect(d->availIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(availIMSelectionChanged()));
     connect(d->currentIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(currentIMCurrentChanged()));
-    connect(d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(addIM()));
-    connect(d->removeIMButton, SIGNAL(clicked(bool)), d, SLOT(removeIM()));
+    connect(d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(clickAddIM()));
+    connect(d->removeIMButton, SIGNAL(clicked(bool)), d, SLOT(clickRemoveIM()));
     connect(d->moveUpButton, SIGNAL(clicked(bool)), d, SLOT(moveUpIM()));
     connect(d->moveDownButton, SIGNAL(clicked(bool)), d, SLOT(moveDownIM()));
     connect(d->configureButton, SIGNAL(clicked(bool)), d, SLOT(configureIM()));
@@ -252,6 +252,8 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     connect(d->availIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectAvailIM(QModelIndex)));
     connect(d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
     connect(d->defaultLayoutButton, SIGNAL(clicked(bool)), d, SLOT(selectDefaultLayout()));
+    connect(d->availIMView, SIGNAL(doubleClicked(QModelIndex)), d, SLOT(doubleClickAvailIM(QModelIndex)));
+    connect(d->currentIMView, SIGNAL(doubleClicked(QModelIndex)), d, SLOT(doubleClickCurrentIM(QModelIndex)));
 
     d->fetchIMList();
 }
@@ -318,6 +320,16 @@ void IMPage::Private::selectCurrentIM(const QModelIndex& index)
     currentIMView->selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
 }
 
+void IMPage::Private::doubleClickCurrentIM(const QModelIndex& index)
+{
+    removeIM(index);
+}
+
+void IMPage::Private::doubleClickAvailIM(const QModelIndex& index)
+{
+    addIM(index);
+}
+
 void IMPage::Private::selectDefaultLayout()
 {
     QPointer<KDialog> configDialog(new IMConfigDialog("default", NULL));
@@ -334,10 +346,20 @@ void IMPage::Private::selectAvailIM(const QModelIndex& index)
     );
 }
 
-void IMPage::Private::addIM()
+void IMPage::Private::clickAddIM()
 {
-    if (availIMView->currentIndex().isValid()) {
-        IM* im = static_cast<IM*>(availIMProxyModel->mapToSource(availIMView->currentIndex()).internalPointer());
+    addIM(availIMView->currentIndex());
+}
+
+void IMPage::Private::clickRemoveIM()
+{
+    removeIM(currentIMView->currentIndex());
+}
+
+void IMPage::Private::addIM(const QModelIndex& index)
+{
+    if (index.isValid()) {
+        IM* im = static_cast<IM*>(availIMProxyModel->mapToSource(index).internalPointer());
         int i = 0;
         for (i = 0; i < m_list.size(); i ++) {
             if (im->uniqueName() == m_list[i].uniqueName()) {
@@ -351,10 +373,10 @@ void IMPage::Private::addIM()
     }
 }
 
-void IMPage::Private::removeIM()
+void IMPage::Private::removeIM(const QModelIndex& index)
 {
-    if (currentIMView->currentIndex().isValid()) {
-        IM* im = static_cast<IM*>(currentIMView->currentIndex().internalPointer());
+    if (index.isValid()) {
+        IM* im = static_cast<IM*>(index.internalPointer());
         int i = 0;
         for (i = 0; i < m_list.size(); i ++) {
             if (im->uniqueName() == m_list[i].uniqueName()) {

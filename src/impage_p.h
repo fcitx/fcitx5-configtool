@@ -82,12 +82,16 @@ Q_SIGNALS:
 public Q_SLOTS:
     void availIMSelectionChanged();
     void currentIMCurrentChanged();
-    void addIM();
-    void removeIM();
+    void clickAddIM();
+    void clickRemoveIM();
+    void addIM(const QModelIndex& index);
+    void removeIM(const QModelIndex& index);
     void moveUpIM();
     void moveDownIM();
     void configureIM();
     void save();
+    void doubleClickCurrentIM(const QModelIndex& index);
+    void doubleClickAvailIM(const QModelIndex& index);
     void selectCurrentIM(const QModelIndex& index);
     void selectAvailIM(const QModelIndex& index);
     void selectDefaultLayout();
