@@ -795,7 +795,7 @@ QString translateKeySym(int keysym, uint xmodifiers,
     } else if (!chars.isEmpty()) {
         // convert chars (8bit) to text (unicode).
         if (mapper)
-            text = mapper->toUnicode(chars.data(), count, 0);
+            text = mapper->toUnicode(chars.constData(), count, 0);
         if (text.isEmpty()) {
             // no mapper, or codec couldn't convert to unicode (this
             // can happen when running in the C locale or with no LANG

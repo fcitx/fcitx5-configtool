@@ -125,7 +125,7 @@ void ConfigWidget::buttonClicked(KDialog::ButtonCode code)
         FcitxConfigResetConfigToDefaultValue(m_config->genericConfig());
         FcitxConfigBindSync(m_config->genericConfig());
     } else if (code == KDialog::Ok) {
-        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "w", NULL);
+        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "w", NULL);
 
         if (fp) {
             FcitxConfigSaveConfigFileFp(fp, m_config->genericConfig(), m_cfdesc);
@@ -158,7 +158,7 @@ void ConfigWidget::load()
     if (!m_cfdesc)
         return;
     FILE *fp;
-    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
+    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "r", NULL);
     if (!fp)
         return;
 
@@ -438,8 +438,8 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
         Q_FOREACH(const QString & key, keys) {
             SubConfig* subconfig = m_parser->getSubConfig(key);
             QLabel* label = new QLabel(QString::fromUtf8(
-                    dgettext(m_parser->domain().toUtf8().data(),
-                                subconfig->name().toUtf8().data()
+                    dgettext(m_parser->domain().toUtf8().constData(),
+                                subconfig->name().toUtf8().constData()
                             )
                 ));
             gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
@@ -528,8 +528,8 @@ QWidget* ConfigWidget::createFullConfigUi()
             SubConfig* subconfig = m_parser->getSubConfig(key);
             formLayout->addRow(
                 QString::fromUtf8(
-                    dgettext(m_parser->domain().toUtf8().data(),
-                                subconfig->name().toUtf8().data()
+                    dgettext(m_parser->domain().toUtf8().constData(),
+                                subconfig->name().toUtf8().constData()
                             )
                 ),
                 new SubConfigWidget(subconfig, this));
@@ -557,7 +557,7 @@ void ConfigWidget::setupConfigUi()
         bindtextdomain(m_cfdesc->domain, LOCALEDIR);
         bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
         FILE *fp;
-        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().data(), m_name.toLocal8Bit().data(), "r", NULL);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "r", NULL);
         m_config->load(fp);
 
         if (fp)
@@ -827,7 +827,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
             FontButton *fontButton = static_cast<FontButton*>(arg);
             const QString font = fontButton->fontName();
             char** fontname = (char**) value;
-            fcitx_utils_string_swap(fontname, font.toUtf8().data());
+            fcitx_utils_string_swap(fontname, font.toUtf8().constData());
         }
 
         break;
@@ -866,7 +866,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         case T_File: {
             KUrlRequester* urlrequester = static_cast<KUrlRequester*>(arg);
             char** filename = (char**) value;
-            fcitx_utils_string_swap(filename, urlrequester->url().toLocalFile().toUtf8().data());
+            fcitx_utils_string_swap(filename, urlrequester->url().toLocalFile().toUtf8().constData());
         }
         break;
 
@@ -880,7 +880,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         case T_String: {
             KLineEdit* lineEdit = static_cast<KLineEdit*>(arg);
             char** string = (char**) value;
-            fcitx_utils_string_swap(string, lineEdit->text().toUtf8().data());
+            fcitx_utils_string_swap(string, lineEdit->text().toUtf8().constData());
         }
         break;
         }

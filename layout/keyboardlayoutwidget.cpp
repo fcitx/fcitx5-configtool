@@ -191,10 +191,10 @@ void KeyboardLayoutWidget::setGroup(int group)
     if (!FcitxXkbInitDefaultLayout(layouts, variants))
         return;
 
-    rdefs.model = !model.isNull() ? strdup(model.toUtf8().data()) : NULL;
-    rdefs.layout =  layouts.count() > group ? strdup(layouts[group].toUtf8().data()) : NULL;
-    rdefs.variant =  variants.count() > group ? strdup(variants[group].toUtf8().data()) : NULL;
-    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().data()) : NULL;
+    rdefs.model = !model.isNull() ? strdup(model.toUtf8().constData()) : NULL;
+    rdefs.layout =  layouts.count() > group ? strdup(layouts[group].toUtf8().constData()) : NULL;
+    rdefs.variant =  variants.count() > group ? strdup(variants[group].toUtf8().constData()) : NULL;
+    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
     XkbRF_GetComponents (rules, &rdefs, &rnames);
     free (rdefs.model);
     free (rdefs.layout);
@@ -277,10 +277,10 @@ void KeyboardLayoutWidget::setKeyboardLayout(const QString& layout, const QStrin
     if (!FcitxXkbInitDefaultOption(model, option))
         return;
 
-    rdefs.model = !model.isNull() ? strdup(model.toUtf8().data()) : NULL;
-    rdefs.layout =  !layout.isNull() ? strdup(layout.toUtf8().data()) : NULL;
-    rdefs.variant =  !variant.isNull() ? strdup(variant.toUtf8().data()) : NULL;
-    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().data()) : NULL;
+    rdefs.model = !model.isNull() ? strdup(model.toUtf8().constData()) : NULL;
+    rdefs.layout =  !layout.isNull() ? strdup(layout.toUtf8().constData()) : NULL;
+    rdefs.variant =  !variant.isNull() ? strdup(variant.toUtf8().constData()) : NULL;
+    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
     XkbRF_GetComponents (rules, &rdefs, &rnames);
     free (rdefs.model);
     free (rdefs.layout);

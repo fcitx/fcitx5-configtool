@@ -188,7 +188,7 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
     FcitxConfigFile* cfile = NULL;
     QDir dir;
     if (cfdesc)
-        fp = FcitxXDGGetFileWithPrefix("", path.toLocal8Bit().data(), "r", NULL);
+        fp = FcitxXDGGetFileWithPrefix("", path.toLocal8Bit().constData(), "r", NULL);
 
     if (fp) {
         cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
@@ -247,7 +247,7 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         else
             outputPos = marginTop + skin.inputbar.iOutputPos - fontHeight;
 
-        QPixmap inputBarPixmap = LoadImage(skinDir.toLocal8Bit().data(), skin.inputbar.backImg);
+        QPixmap inputBarPixmap = LoadImage(skinDir.toLocal8Bit().constData(), skin.inputbar.backImg);
         int resizeWidth = 0;
         int resizeHeight;
         if (skin.inputbar.respectDPI)
@@ -269,8 +269,8 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
                                 skin.inputbar.fillV, skin.inputbar.fillH
                                );
 
-        QPixmap backArrowPixmap = LoadImage(skinDir.toLocal8Bit().data(), skin.inputbar.backArrow);
-        QPixmap forwardArrowPixmap = LoadImage(skinDir.toLocal8Bit().data(), skin.inputbar.forwardArrow);
+        QPixmap backArrowPixmap = LoadImage(skinDir.toLocal8Bit().constData(), skin.inputbar.backArrow);
+        QPixmap forwardArrowPixmap = LoadImage(skinDir.toLocal8Bit().constData(), skin.inputbar.forwardArrow);
         DrawWidget(inputBarDestPixmap, backArrowPixmap,
                    totalWidth - skin.inputbar.iBackArrowX, skin.inputbar.iBackArrowY
                   );
@@ -316,11 +316,11 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         utarray_init(&placement, &place_icd);
         ParsePlacement(&placement, mainbar->placement);
 
-        QPixmap mainBarPixmap = LoadImage(skinDir.toLocal8Bit().data(), mainbar->backImg);
+        QPixmap mainBarPixmap = LoadImage(skinDir.toLocal8Bit().constData(), mainbar->backImg);
         const int widgetCount = 2;
         QPixmap mainBarWidgetPixmap[widgetCount];
-        mainBarWidgetPixmap[0] = LoadImage(skinDir.toLocal8Bit().data(), mainbar->logo);
-        mainBarWidgetPixmap[1] = LoadImage(skinDir.toLocal8Bit().data(), mainbar->active);
+        mainBarWidgetPixmap[0] = LoadImage(skinDir.toLocal8Bit().constData(), mainbar->logo);
+        mainBarWidgetPixmap[1] = LoadImage(skinDir.toLocal8Bit().constData(), mainbar->active);
 
         marginLeft = mainbar->marginLeft;
         marginRight = mainbar->marginRight;
@@ -761,7 +761,7 @@ void SkinPage::Private::save()
             if (option) {
                 if (option->rawValue)
                     free(option->rawValue);
-                option->rawValue = strdup(skinName.toUtf8().data());
+                option->rawValue = strdup(skinName.toUtf8().constData());
             }
             FcitxGenericConfig gconfig;
             gconfig.configFile = cfile;
@@ -780,7 +780,7 @@ void SkinPage::Private::deleteSkin()
     if (skinView->currentIndex().isValid()) {
         SkinInfo* skin = static_cast<SkinInfo*>(skinView->currentIndex().internalPointer());
         char* path = NULL;
-        FILE* fp = FcitxXDGGetFileWithPrefix("", skin->path.toLocal8Bit().data(), "r", &path);
+        FILE* fp = FcitxXDGGetFileWithPrefix("", skin->path.toLocal8Bit().constData(), "r", &path);
 
         if (fp)
             fclose(fp);

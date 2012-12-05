@@ -121,7 +121,7 @@ void SubConfig::parseProgramSubConfig(const SubConfigPattern* pattern)
     if (pattern->program()[0] != '/') {
         program =  KStandardDirs::findExe(pattern->program());
         if (program.isEmpty()) {
-            char* path = fcitx_utils_get_fcitx_path_with_filename("bindir", program.toUtf8().data());
+            char* path = fcitx_utils_get_fcitx_path_with_filename("bindir", program.toUtf8().constData());
             if (path) {
                 program = path;
                 free(path);

@@ -187,7 +187,7 @@ void SubConfigWidget::openNativeFile()
     if (m_subConfig->userFileList().size() == 0) {
         /* still if system version doesn't exit either, let's create an empty text file for user */
         if (m_subConfig->fileList().size() == 0) {
-            FILE* fp = FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), "w", &newpath);
+            FILE* fp = FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().constData(), "w", &newpath);
             if (fp) {
                 fclose(fp);
                 m_subConfig->updateFileList();
@@ -204,10 +204,10 @@ void SubConfigWidget::openNativeFile()
                 case KMessageBox::Yes:
                     {
                         char* src = NULL;
-                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().data(), "r", &src);
+                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().constData(), "r", &src);
                         if (fp)
                             fclose(fp);
-                        FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().data(), NULL, &newpath);
+                        FcitxXDGGetFileUserWithPrefix("", m_subConfig->nativepath().toLocal8Bit().constData(), NULL, &newpath);
                         QFile file(src);
                         free(src);
                         if (!file.copy(newpath)) {
@@ -218,7 +218,7 @@ void SubConfigWidget::openNativeFile()
                     break;
                 case KMessageBox::No:
                     {
-                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().data(), "r", &newpath);
+                        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->fileList().begin()->toLocal8Bit().constData(), "r", &newpath);
                         if (fp)
                             fclose(fp);
                     }
@@ -229,7 +229,7 @@ void SubConfigWidget::openNativeFile()
         }
     }
     else {
-        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->userFileList().begin()->toLocal8Bit().data(), "r", &newpath);
+        FILE* fp = FcitxXDGGetFileWithPrefix("", m_subConfig->userFileList().begin()->toLocal8Bit().constData(), "r", &newpath);
         if (fp)
             fclose(fp);
     }
