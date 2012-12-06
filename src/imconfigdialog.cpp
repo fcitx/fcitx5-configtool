@@ -37,26 +37,14 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
 
     if (!imName.startsWith("fcitx-keyboard")) {
         QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = m_keyboard->GetLayouts();
-        {
-            QEventLoop loop;
-            QDBusPendingCallWatcher watcher(layoutList);
-            loop.connect(&watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(quit()));
-            loop.exec(QEventLoop::ExcludeUserInputEvents | QEventLoop::WaitForMoreEvents);
-        }
-
-        m_keyboard->GetLayoutForIM(imName);
+        layoutList.waitForFinished();
 
         if (!layoutList.isError()) {
             m_layoutList = layoutList.value();
             m_layoutCombobox = new KComboBox(this);
 
             QDBusPendingReply< QString, QString > res = m_keyboard->GetLayoutForIM(imName);
-            {
-                QEventLoop loop;
-                QDBusPendingCallWatcher watcher(res);
-                loop.connect(&watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), SLOT(quit()));
-                loop.exec(QEventLoop::ExcludeUserInputEvents | QEventLoop::WaitForMoreEvents);
-            }
+            res.waitForFinished();
             QString imLayout = qdbus_cast<QString>(res.argumentAt(0));
             QString imVariant =  qdbus_cast<QString>(res.argumentAt(1));
 
