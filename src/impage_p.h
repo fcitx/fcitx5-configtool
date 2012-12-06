@@ -28,6 +28,9 @@
 #include <KCategorizedSortFilterProxyModel>
 #include <KLocale>
 
+// Fcitx
+#include <fcitx-qt/fcitxqtinputmethoditem.h>
+
 // self
 #include "impage.h"
 
@@ -48,7 +51,7 @@ public:
     Private(QObject* parent);
     virtual ~Private();
     void fetchIMList();
-    const IMList& getIMList();
+    const FcitxQtInputMethodItemList& getIMList();
     int dependantLayoutValue(int value, int width, int totalWidth) const;
 
     class IMModel;
@@ -97,7 +100,7 @@ public Q_SLOTS:
     void selectDefaultLayout();
 
 private:
-    IMList m_list;
+    FcitxQtInputMethodItemList m_list;
 };
 
 
@@ -139,7 +142,7 @@ private Q_SLOTS:
 private:
     Private* impage_d;
     bool showOnlyEnabled;
-    IMList filteredIMEntryList;
+    FcitxQtInputMethodItemList filteredIMEntryList;
 };
 
 

@@ -26,7 +26,7 @@
 #include <QDBusConnection>
 
 // self
-#include "inputmethodproxy.h"
+#include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 class QLabel;
 class QVBoxLayout;
@@ -50,7 +50,7 @@ public Q_SLOTS:
     void getUIFinished(QDBusPendingCallWatcher* watcher);
 private:
     Module* m_module;
-    InputMethodProxy* m_proxy;
+    FcitxQtInputMethodProxy* m_proxy;
     QVBoxLayout* m_layout;
     QLabel* m_label;
     ConfigWidget* m_widget;

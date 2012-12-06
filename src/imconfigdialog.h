@@ -1,13 +1,12 @@
 #include <KDialog>
 #include <fcitx/addon.h>
 #include <QDBusConnection>
-#include "layout.h"
+#include <fcitx-qt/fcitxqtkeyboardproxy.h>
 
 class KeyboardLayoutWidget;
 class KComboBox;
 namespace Fcitx {
 
-class KeyboardProxy;
 class ConfigWidget;
 class IMConfigDialog: public KDialog
 {
@@ -22,10 +21,10 @@ private slots:
 private:
     QDBusConnection m_connection;
     QString m_imName;
-    KeyboardProxy* m_keyboard;
+    FcitxQtKeyboardProxy* m_keyboard;
     KComboBox* m_layoutCombobox;
     ConfigWidget* m_configPage;
-    LayoutList m_layoutList;
+    FcitxQtKeyboardLayoutList m_layoutList;
     KeyboardLayoutWidget* m_layoutWidget;
 };
 }

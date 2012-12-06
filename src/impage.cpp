@@ -27,7 +27,6 @@
 // self
 #include "impage.h"
 #include "impage_p.h"
-#include "im.h"
 #include "ui_impage.h"
 #include "module.h"
 #include "configdescmanager.h"
@@ -75,7 +74,7 @@ QVariant IMPage::Private::IMModel::data(const QModelIndex& index, int role) cons
         return QVariant();
     }
 
-    const IM& imEntry = filteredIMEntryList.at(index.row());
+    const FcitxQtInputMethodItem& imEntry = filteredIMEntryList.at(index.row());
 
     switch (role) {
 
@@ -118,19 +117,19 @@ void IMPage::Private::IMModel::setShowOnlyEnabled(bool show)
 void IMPage::Private::IMModel::filterIMEntryList(const QString& selection)
 {
     impage_d->availIMProxyModel->setCategorizedModel(false);
-    IMList imEntryList = impage_d->getIMList();
+    FcitxQtInputMethodItemList imEntryList = impage_d->getIMList();
     beginRemoveRows(QModelIndex(), 0, filteredIMEntryList.size());
     filteredIMEntryList.clear();
     endRemoveRows();
     int row = 0, selectionRow = -1, count = 0;
-    Q_FOREACH(const IM & im, imEntryList) {
+    Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
         if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
             count ++;
         }
     }
     if (count) {
         beginInsertRows(QModelIndex(), 0, count - 1);
-        Q_FOREACH(const IM & im, imEntryList) {
+        Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
             if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
                 filteredIMEntryList.append(im);
                 if (im.uniqueName() == selection)
@@ -168,7 +167,7 @@ bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QMode
     Q_UNUSED(source_parent)
 
     const QModelIndex index = sourceModel()->index(source_row, 0);
-    const IM* imEntry = static_cast<IM*>(index.internalPointer());
+    const FcitxQtInputMethodItem* imEntry = static_cast<FcitxQtInputMethodItem*>(index.internalPointer());
     bool flag = true;
 
     if (imEntry->uniqueName() == "fcitx-keyboard-us")
@@ -187,7 +186,7 @@ bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QMode
 
 bool IMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left, const QModelIndex& right) const
 {
-    return QString(static_cast<IM*>(left.internalPointer())->name()).compare((QString)(static_cast<IM*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
+    return QString(static_cast<FcitxQtInputMethodItem*>(left.internalPointer())->name()).compare((QString)(static_cast<FcitxQtInputMethodItem*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
 }
 
 IMPage::IMPage(Module* parent): QWidget(parent)
@@ -359,7 +358,7 @@ void IMPage::Private::clickRemoveIM()
 void IMPage::Private::addIM(const QModelIndex& index)
 {
     if (index.isValid()) {
-        IM* im = static_cast<IM*>(availIMProxyModel->mapToSource(index).internalPointer());
+        FcitxQtInputMethodItem* im = static_cast<FcitxQtInputMethodItem*>(availIMProxyModel->mapToSource(index).internalPointer());
         int i = 0;
         for (i = 0; i < m_list.size(); i ++) {
             if (im->uniqueName() == m_list[i].uniqueName()) {
@@ -376,7 +375,7 @@ void IMPage::Private::addIM(const QModelIndex& index)
 void IMPage::Private::removeIM(const QModelIndex& index)
 {
     if (index.isValid()) {
-        IM* im = static_cast<IM*>(index.internalPointer());
+        FcitxQtInputMethodItem* im = static_cast<FcitxQtInputMethodItem*>(index.internalPointer());
         int i = 0;
         for (i = 0; i < m_list.size(); i ++) {
             if (im->uniqueName() == m_list[i].uniqueName()) {
@@ -396,8 +395,8 @@ void IMPage::Private::moveDownIM()
     if (curIndex.isValid()) {
         QModelIndex nextIndex = currentIMModel->index(curIndex.row() + 1, 0);
 
-        IM* curIM = static_cast<IM*>(curIndex.internalPointer());
-        IM* nextIM = static_cast<IM*>(nextIndex.internalPointer());
+        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
+        FcitxQtInputMethodItem* nextIM = static_cast<FcitxQtInputMethodItem*>(nextIndex.internalPointer());
 
         if (curIM == NULL || nextIM == NULL)
             return;
@@ -424,7 +423,7 @@ void IMPage::Private::configureIM()
 {
     QModelIndex curIndex = currentIMView->currentIndex();
     if (curIndex.isValid()) {
-        IM* curIM = static_cast<IM*>(curIndex.internalPointer());
+        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
         if (curIM == NULL)
             return;
         QDBusPendingReply< QString > result = module->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
@@ -446,8 +445,8 @@ void IMPage::Private::moveUpIM()
     if (curIndex.isValid() && curIndex.row() > 0) {
         QModelIndex nextIndex = currentIMModel->index(curIndex.row() - 1, 0);
 
-        IM* curIM = static_cast<IM*>(curIndex.internalPointer());
-        IM* nextIM = static_cast<IM*>(nextIndex.internalPointer());
+        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
+        FcitxQtInputMethodItem* nextIM = static_cast<FcitxQtInputMethodItem*>(nextIndex.internalPointer());
 
         if (curIM == NULL || nextIM == NULL)
             return;
@@ -485,7 +484,7 @@ void IMPage::Private::fetchIMList()
     }
 }
 
-const IMList& IMPage::Private::getIMList()
+const FcitxQtInputMethodItemList& IMPage::Private::getIMList()
 {
     return m_list;
 }

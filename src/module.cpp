@@ -39,6 +39,7 @@
 #include <fcitx-config/xdg.h>
 #include <fcitx/module/dbus/dbusstuff.h>
 #include <fcitx/module/ipc/ipc.h>
+#include <fcitx-qt/fcitxqtkeyboardlayout.h>
 
 // self
 #include "config.h"
@@ -50,8 +51,6 @@
 #include "subconfigparser.h"
 #include "skinpage.h"
 #include "impage.h"
-#include "im.h"
-#include "layout.h"
 #include "imconfigdialog.h"
 #include "uipage.h"
 
@@ -74,8 +73,8 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     bindtextdomain("fcitx", LOCALEDIR);
     bind_textdomain_codeset("fcitx", "UTF-8");
 
-    Fcitx::IM::registerMetaType();
-    Fcitx::Layout::registerMetaType();
+    FcitxQtInputMethodItem::registerMetaType();
+    FcitxQtKeyboardLayout::registerMetaType();
 
     KAboutData *about = new KAboutData("kcm_fcitx", 0,
                                        ki18n("Fcitx Configuration Module"),
@@ -89,7 +88,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
     setAboutData(about);
 
-    m_inputmethod = new InputMethodProxy(
+    m_inputmethod = new FcitxQtInputMethodProxy(
         QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
         FCITX_IM_DBUS_PATH,
         m_connection,
@@ -199,7 +198,7 @@ FcitxAddon* Module::findAddonByName(const QString& name)
     return addon;
 }
 
-InputMethodProxy* Module::inputMethodProxy()
+FcitxQtInputMethodProxy* Module::inputMethodProxy()
 {
     return m_inputmethod;
 }

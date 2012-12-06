@@ -6,10 +6,11 @@
 #include <KComboBox>
 #include <KLocalizedString>
 
+#include <fcitx-qt/fcitxqtkeyboardproxy.h>
+
 #include "imconfigdialog.h"
 #include "configdescmanager.h"
 #include "configwidget.h"
-#include "keyboardproxy.h"
 #include "keyboardlayoutwidget.h"
 
 Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent): KDialog(parent)
@@ -19,7 +20,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     ,m_layoutCombobox(0)
     ,m_configPage(0)
 {
-    m_keyboard = new KeyboardProxy(
+    m_keyboard = new FcitxQtKeyboardProxy(
         QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
         "/keyboard",
         m_connection,
@@ -35,7 +36,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     widget->setLayout(l);
 
     if (!imName.startsWith("fcitx-keyboard")) {
-        QDBusPendingReply< LayoutList > layoutList = m_keyboard->GetLayouts();
+        QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = m_keyboard->GetLayouts();
         {
             QEventLoop loop;
             QDBusPendingCallWatcher watcher(layoutList);
@@ -69,7 +70,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
             else
                 m_layoutCombobox->addItem(i18n("Input Method Default"));
 
-            foreach (const Layout& layout, layoutList.value()) {
+            foreach (const FcitxQtKeyboardLayout& layout, layoutList.value()) {
                 if (imLayout == layout.layout() && imVariant == layout.variant())
                     select = idx;
                 m_layoutCombobox->addItem(layout.name());

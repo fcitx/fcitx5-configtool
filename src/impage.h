@@ -26,7 +26,6 @@
 #include <QDBusConnection>
 
 // self
-#include "inputmethodproxy.h"
 
 namespace Ui
 {

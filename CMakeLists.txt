@@ -25,6 +25,8 @@ find_package(Gettext REQUIRED)
 find_package(Fcitx 4.2.7 REQUIRED)
 find_package(XkbFile REQUIRED)
 
+pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.7" REQUIRED)
+
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
@@ -59,12 +61,14 @@ include_directories(
     ${FCITX4_FCITX_INCLUDE_DIRS}
     ${FCITX4_FCITX_UTILS_INCLUDE_DIRS}
     ${FCITX4_FCITX_CONFIG_INCLUDE_DIRS}
+    ${FCITX_QT_INCLUDE_DIRS}
     )
 
 link_directories(
     ${FCITX4_FCITX_LIBRARY_DIRS}
     ${FCITX4_FCITX_UTILS_LIBRARY_DIRS}
     ${FCITX4_FCITX_CONFIG_LIBRARY_DIRS}
+    ${FCITX_QT_LIBRARY_DIRS}
     )
 
 add_subdirectory(po)

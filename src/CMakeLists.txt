@@ -12,13 +12,9 @@ set(kcm_SRCS
   subconfigwidget.cpp
   skinpage.cpp
   impage.cpp
-  im.cpp
   uipage.cpp
-  layout.cpp
   imconfigdialog.cpp
   qtkeytrans.cpp
-  inputmethodproxy.cpp
-  keyboardproxy.cpp
   dummyconfig.cpp
   verticalscrollarea.cpp
   fontbutton.cpp
@@ -42,6 +38,7 @@ target_link_libraries(kcm_fcitx
   ${LIBINTL_LIBRARY}
   ${XKBFILE_LIBRARIES}
   ${X11_X11_LIB}
+  ${FCITX_QT_LIBRARIES}
   )
 
 install(TARGETS kcm_fcitx DESTINATION ${PLUGIN_INSTALL_DIR})
@@ -57,4 +54,4 @@ install(FILES fcitx-skin.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
 
 if(ENABLE_TEST)
   add_subdirectory(test)
-endif()
+endif(ENABLE_TEST)

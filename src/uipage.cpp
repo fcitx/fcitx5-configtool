@@ -1,11 +1,11 @@
 #include "uipage.h"
-#include "inputmethodproxy.h"
 #include "module.h"
 #include "configwidget.h"
 #include "configdescmanager.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <KLocalizedString>
+#include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
     ,m_module(parent)
