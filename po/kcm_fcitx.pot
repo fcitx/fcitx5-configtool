@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-12-01 19:04-0500\n"
+"POT-Creation-Date: 2012-12-07 22:52-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,79 +65,79 @@ msgstr ""
 msgid "Select Font"
 msgstr ""
 
-#: src/imconfigdialog.cpp:63
+#: src/imconfigdialog.cpp:52
 msgid "<b>Keyboard Layout:</b>"
 msgstr ""
 
-#: src/imconfigdialog.cpp:68
+#: src/imconfigdialog.cpp:57
 msgid "Default"
 msgstr ""
 
-#: src/imconfigdialog.cpp:70
+#: src/imconfigdialog.cpp:59
 msgid "Input Method Default"
 msgstr ""
 
-#: src/imconfigdialog.cpp:115
+#: src/imconfigdialog.cpp:104
 msgid "<b>Input Method Setting:</b>"
 msgstr ""
 
-#: src/impage.cpp:45
+#: src/impage.cpp:44
 msgid "Unknown"
 msgstr ""
 
-#: src/impage.cpp:48
+#: src/impage.cpp:47
 msgid "Multilingual"
 msgstr ""
 
-#: src/impage.cpp:220
+#: src/impage.cpp:219
 msgid "Search Input Method"
 msgstr ""
 
-#: src/module.cpp:81
+#: src/module.cpp:80
 msgid "Fcitx Configuration Module"
 msgstr ""
 
-#: src/module.cpp:83
+#: src/module.cpp:82
 msgid "Configure Fcitx"
 msgstr ""
 
-#: src/module.cpp:85
+#: src/module.cpp:84
 msgid "Copyright 2012 Xuetian Weng"
 msgstr ""
 
-#: src/module.cpp:89
+#: src/module.cpp:88
 msgid "Xuetian Weng"
 msgstr ""
 
-#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:112 src/module.cpp:114 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr ""
 
-#: src/module.cpp:126
+#: src/module.cpp:125
 msgid "Global Config"
 msgstr ""
 
-#: src/module.cpp:128
+#: src/module.cpp:127
 msgid "Global Config for Fcitx"
 msgstr ""
 
-#: src/module.cpp:138 src/module.cpp:140
+#: src/module.cpp:137 src/module.cpp:139
 msgid "Appearance"
 msgstr ""
 
-#: src/module.cpp:150
+#: src/module.cpp:149
 msgid "Addon Config"
 msgstr ""
 
-#: src/module.cpp:152
+#: src/module.cpp:151
 msgid "Configure Fcitx addon"
 msgstr ""
 
-#: src/module.cpp:160
+#: src/module.cpp:159
 msgid "Manage Skin"
 msgstr ""
 
-#: src/module.cpp:162
+#: src/module.cpp:161
 msgid "Manage Fcitx Skin"
 msgstr ""
 

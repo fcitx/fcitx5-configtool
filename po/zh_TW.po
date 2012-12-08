@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-12-01 19:04-0500\n"
+"POT-Creation-Date: 2012-12-07 22:52-0500\n"
 "PO-Revision-Date: 2012-09-29 12:18-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -66,11 +66,11 @@ msgstr ""
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>預設鍵盤佈局：</b>"
 
-#: src/imconfigdialog.cpp:115
+#: src/imconfigdialog.cpp:104
 msgid "<b>Input Method Setting:</b>"
 msgstr "<b>輸入法設定：</b>"
 
-#: src/imconfigdialog.cpp:63
+#: src/imconfigdialog.cpp:52
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>鍵盤佈局：</b>"
 
@@ -88,11 +88,11 @@ msgstr "<b>選擇輸入法：</b>"
 msgid "A general keyboard layout viewer"
 msgstr "選擇預設鍵盤佈局"
 
-#: src/module.cpp:150
+#: src/module.cpp:149
 msgid "Addon Config"
 msgstr "附加元件設定"
 
-#: src/module.cpp:138 src/module.cpp:140
+#: src/module.cpp:137 src/module.cpp:139
 msgid "Appearance"
 msgstr "外觀"
 
@@ -109,11 +109,11 @@ msgstr "可用輸入法："
 msgid "Cannot load currently used user interface info"
 msgstr "無法加載當前用戶介面信息"
 
-#: src/module.cpp:83
+#: src/module.cpp:82
 msgid "Configure Fcitx"
 msgstr "設定 Fcitx"
 
-#: src/module.cpp:152
+#: src/module.cpp:151
 msgid "Configure Fcitx addon"
 msgstr "設定 Fcitx 附加元件"
 
@@ -130,7 +130,7 @@ msgstr "拷貝"
 msgid "Copy failed"
 msgstr "拷貝失败"
 
-#: src/module.cpp:85
+#: src/module.cpp:84
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "版權所有 2012 Xuetian Weng"
 
@@ -139,11 +139,11 @@ msgstr "版權所有 2012 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: src/imconfigdialog.cpp:68
+#: src/imconfigdialog.cpp:57
 msgid "Default"
 msgstr "預設"
 
-#: src/module.cpp:81
+#: src/module.cpp:80
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 設定模組"
 
@@ -161,19 +161,19 @@ msgstr "Form"
 msgid "Get New &Skin..."
 msgstr "取得新皮膚(&S)..."
 
-#: src/module.cpp:126
+#: src/module.cpp:125
 msgid "Global Config"
 msgstr "全域設定"
 
-#: src/module.cpp:128
+#: src/module.cpp:127
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 全域設定"
 
-#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:112 src/module.cpp:114 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "輸入法"
 
-#: src/imconfigdialog.cpp:70
+#: src/imconfigdialog.cpp:59
 msgid "Input Method Default"
 msgstr "輸入法預設"
 
@@ -206,15 +206,15 @@ msgstr "<b>鍵盤佈局：</b>"
 msgid "Keyboard layout viewer"
 msgstr "<b>鍵盤佈局：</b>"
 
-#: src/module.cpp:162
+#: src/module.cpp:161
 msgid "Manage Fcitx Skin"
 msgstr "管理 Fcitx 皮膚"
 
-#: src/module.cpp:160
+#: src/module.cpp:159
 msgid "Manage Skin"
 msgstr "管理皮膚"
 
-#: src/impage.cpp:48
+#: src/impage.cpp:47
 msgid "Multilingual"
 msgstr "多語言"
 
@@ -244,7 +244,7 @@ msgstr "其他候選詞"
 msgid "Search Addons"
 msgstr "搜尋附加元件"
 
-#: src/impage.cpp:220
+#: src/impage.cpp:219
 msgid "Search Input Method"
 msgstr "搜尋輸入法"
 
@@ -280,7 +280,7 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
-#: src/impage.cpp:45
+#: src/impage.cpp:44
 msgid "Unknown"
 msgstr "未知"
 
@@ -304,7 +304,7 @@ msgstr "查看系統"
 msgid "What to do"
 msgstr "要做什麼"
 
-#: src/module.cpp:89
+#: src/module.cpp:88
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
