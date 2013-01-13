@@ -18,10 +18,11 @@ set(kcm_SRCS
   dummyconfig.cpp
   verticalscrollarea.cpp
   fontbutton.cpp
+  configpage.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 
-set(kcm_UIS module.ui skinpage.ui impage.ui fontbutton.ui)
+set(kcm_UIS module.ui skinpage.ui impage.ui fontbutton.ui configpage.ui)
 fcitx_translate_add_sources(${kcm_SRCS} ${kcm_UIS} kcm_fcitx.desktop.in)
 
 kde4_add_ui_files(kcm_SRCS ${kcm_UIS})

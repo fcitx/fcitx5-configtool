@@ -4,15 +4,15 @@
 # Translators:
 # Ukyoi <ukyoi@msn.com>, 2011.
 #   <wengxt@gmail.com>, 2011.
-# Weng Xuetian <wengxt@gmail.com>, 2010, 2011, 2012.
+# Weng Xuetian <wengxt@gmail.com>, 2010, 2011, 2012, 2013.
 # Xuetian Weng <xweng@cs.stonybrook.edu>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-12-07 22:52-0500\n"
-"PO-Revision-Date: 2012-09-13 15:00-0400\n"
-"Last-Translator: Xuetian Weng <xweng@cs.stonybrook.edu>\n"
+"POT-Creation-Date: 2013-01-12 22:26-0500\n"
+"PO-Revision-Date: 2013-01-12 22:26-0500\n"
+"Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功"
 "能。</p></body></html>"
 
-#. i18n: file: src/impage.ui:296
+#. i18n: file: src/impage.ui:273
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>默认键盘布局：</b>"
@@ -79,15 +79,14 @@ msgstr "<b>键盘布局：</b>"
 msgid "<b>Other</b>"
 msgstr "<b>其它</b>"
 
-#. i18n: file: src/impage.ui:306
+#. i18n: file: src/impage.ui:283
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>选择输入法：</b>"
 
 #: layout/main.cpp:34
-#, fuzzy
 msgid "A general keyboard layout viewer"
-msgstr "选择默认键盘布局"
+msgstr "通用键盘布局查看器"
 
 #: src/module.cpp:149
 msgid "Addon Config"
@@ -110,7 +109,7 @@ msgstr "可用的输入法："
 msgid "Cannot load currently used user interface info"
 msgstr "无法加载当前用户界面信息"
 
-#: src/module.cpp:82
+#: src/module.cpp:83
 msgid "Configure Fcitx"
 msgstr "配置 Fcitx"
 
@@ -130,7 +129,7 @@ msgstr "复制"
 msgid "Copy failed"
 msgstr "复制失败"
 
-#: src/module.cpp:84
+#: src/module.cpp:85
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
@@ -143,7 +142,7 @@ msgstr "当前的输入法："
 msgid "Default"
 msgstr "默认"
 
-#: src/module.cpp:80
+#: src/module.cpp:81
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
 
@@ -151,6 +150,8 @@ msgstr "Fcitx 配置模块"
 msgid "First candidate"
 msgstr "第一候选词"
 
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
@@ -169,7 +170,7 @@ msgstr "全局配置"
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 的全局配置"
 
-#: src/module.cpp:112 src/module.cpp:114 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "输入法"
 
@@ -178,18 +179,16 @@ msgid "Input Method Default"
 msgstr "输入法默认"
 
 #: layout/main.cpp:32 layout/main.cpp:59
-#, fuzzy
 msgid "Keyboard Layout viewer"
-msgstr "<b>键盘布局：</b>"
+msgstr "键盘布局查看器"
 
 #: layout/main.cpp:40
-#, fuzzy
 msgid "Keyboard layout"
-msgstr "<b>键盘布局：</b>"
+msgstr "键盘布局"
 
 #: layout/main.cpp:38
 msgid "Keyboard layout group (0-3)"
-msgstr ""
+msgstr "键盘布局分组号 (0-3)"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
@@ -197,9 +196,8 @@ msgid "Keyboard layout to use when no input method active"
 msgstr "无输入法时的使用的键盘布局"
 
 #: layout/main.cpp:42
-#, fuzzy
 msgid "Keyboard layout variant"
-msgstr "<b>键盘布局：</b>"
+msgstr "键盘布局变体"
 
 #: layout/kbd-layout-viewer.desktop.in:6
 msgid "Keyboard layout viewer"
@@ -230,6 +228,16 @@ msgstr "并非所有设置都可以被立即重新加载。"
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"ncluding candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr ""
+"在此列出的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页翻页"
+"键。您可能需要对对应输入法进行配置来修改这些选项。"
 
 #: src/configwidget.cpp:542
 msgid "Other"
@@ -270,7 +278,7 @@ msgstr "显示高级选项(&A)"
 msgid "Skin %1 Cannot be loaded"
 msgstr "皮肤 %1 无法加载"
 
-#. i18n: file: src/impage.ui:271
+#. i18n: file: src/impage.ui:258
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -301,7 +309,7 @@ msgstr "查看系統"
 msgid "What to do"
 msgstr "要做什么"
 
-#: src/module.cpp:88
+#: src/module.cpp:89
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 

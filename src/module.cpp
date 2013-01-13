@@ -53,6 +53,7 @@
 #include "impage.h"
 #include "imconfigdialog.h"
 #include "uipage.h"
+#include "configpage.h"
 
 K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
 
@@ -120,8 +121,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         FcitxConfigFileDesc* configDesc = ConfigDescManager::instance()->GetConfigDesc("config.desc");
 
         if (configDesc) {
-            m_configPage = new ConfigWidget(configDesc, "", "config", "", this);
-            page = new KPageWidgetItem(m_configPage);
+            page = new KPageWidgetItem(new ConfigPage);
             page->setName(i18n("Global Config"));
             page->setIcon(KIcon("fcitx"));
             page->setHeader(i18n("Global Config for Fcitx"));

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-12-07 22:52-0500\n"
+"POT-Creation-Date: 2013-01-12 22:26-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,23 +93,23 @@ msgstr ""
 msgid "Search Input Method"
 msgstr ""
 
-#: src/module.cpp:80
+#: src/module.cpp:81
 msgid "Fcitx Configuration Module"
 msgstr ""
 
-#: src/module.cpp:82
+#: src/module.cpp:83
 msgid "Configure Fcitx"
 msgstr ""
 
-#: src/module.cpp:84
+#: src/module.cpp:85
 msgid "Copyright 2012 Xuetian Weng"
 msgstr ""
 
-#: src/module.cpp:88
+#: src/module.cpp:89
 msgid "Xuetian Weng"
 msgstr ""
 
-#: src/module.cpp:112 src/module.cpp:114 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr ""
 
@@ -205,9 +205,19 @@ msgstr ""
 msgid "keyboard,input,im,fcitx"
 msgstr ""
 
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
+msgstr ""
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"ncluding candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
 msgstr ""
 
 #. i18n: file: src/fontbutton.ui:51
@@ -240,19 +250,19 @@ msgstr ""
 msgid "Current Input Method:"
 msgstr ""
 
-#. i18n: file: src/impage.ui:271
+#. i18n: file: src/impage.ui:258
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 
-#. i18n: file: src/impage.ui:296
+#. i18n: file: src/impage.ui:273
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "<b>Default keyboard layout:</b>"
 msgstr ""
 
-#. i18n: file: src/impage.ui:306
+#. i18n: file: src/impage.ui:283
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "<b>Select Input Method:</b>"
 msgstr ""

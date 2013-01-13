@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2012-12-07 22:52-0500\n"
+"POT-Creation-Date: 2013-01-12 22:26-0500\n"
 "PO-Revision-Date: 2012-12-05 07:04+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/fcitx/"
@@ -57,7 +57,7 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">Um die Skins zu nutzen "
 "muss das Classic-UI verwendet werden.</p></body></html>"
 
-#. i18n: file: src/impage.ui:296
+#. i18n: file: src/impage.ui:273
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>Standard Tastaturlayout:</b>"
@@ -74,7 +74,7 @@ msgstr "<b>Tastatur Layout:</b>"
 msgid "<b>Other</b>"
 msgstr "<b>Weitere</b>"
 
-#. i18n: file: src/impage.ui:306
+#. i18n: file: src/impage.ui:283
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>Auswahl Eingabemethode:</b>"
@@ -107,7 +107,7 @@ msgstr ""
 "Die zur momentan verwendeten Oberfläche gehörende Info-Datei kann nicht "
 "geladen werden"
 
-#: src/module.cpp:82
+#: src/module.cpp:83
 msgid "Configure Fcitx"
 msgstr "Fcitx konfigurieren"
 
@@ -128,7 +128,7 @@ msgstr "Kopieren"
 msgid "Copy failed"
 msgstr "Kopieren gescheitert"
 
-#: src/module.cpp:84
+#: src/module.cpp:85
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
@@ -141,7 +141,7 @@ msgstr "Aktive Eingabemethoden"
 msgid "Default"
 msgstr "Standard"
 
-#: src/module.cpp:80
+#: src/module.cpp:81
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx Konfigurationsmodul"
 
@@ -149,6 +149,8 @@ msgstr "Fcitx Konfigurationsmodul"
 msgid "First candidate"
 msgstr "Erster Kandidat"
 
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
@@ -167,7 +169,7 @@ msgstr "Globale Einstellungen"
 msgid "Global Config for Fcitx"
 msgstr "Globale Einstellungen für Fcitx"
 
-#: src/module.cpp:112 src/module.cpp:114 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "Eingabemethode"
 
@@ -230,6 +232,14 @@ msgstr "Nicht alle Konfigurationen können gleich geladen werden"
 msgid "Only &Show Current Language"
 msgstr "Nur &geganwärtige Sprache anzeigen"
 
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"ncluding candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr ""
+
 #: src/configwidget.cpp:542
 msgid "Other"
 msgstr "Andere"
@@ -269,7 +279,7 @@ msgstr "Erweiterte &Einstellungen anzeigen"
 msgid "Skin %1 Cannot be loaded"
 msgstr "Skin %1 kann nicht geladen werden"
 
-#. i18n: file: src/impage.ui:271
+#. i18n: file: src/impage.ui:258
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -304,7 +314,7 @@ msgstr "System ansehen"
 msgid "What to do"
 msgstr "Was zu tun ist"
 
-#: src/module.cpp:88
+#: src/module.cpp:89
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
