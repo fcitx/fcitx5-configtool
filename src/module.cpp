@@ -121,7 +121,8 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         FcitxConfigFileDesc* configDesc = ConfigDescManager::instance()->GetConfigDesc("config.desc");
 
         if (configDesc) {
-            page = new KPageWidgetItem(new ConfigPage);
+            m_configPage = new ConfigPage;
+            page = new KPageWidgetItem(m_configPage);
             page->setName(i18n("Global Config"));
             page->setIcon(KIcon("fcitx"));
             page->setHeader(i18n("Global Config for Fcitx"));
@@ -248,7 +249,7 @@ void Module::save()
     if (m_skinPage)
         m_skinPage->save();
     if (m_configPage)
-        m_configPage->buttonClicked(KDialog::Ok);
+        m_configPage->save();
     if (m_uiPage)
         m_uiPage->save();
 }
@@ -256,7 +257,7 @@ void Module::save()
 void Module::defaults()
 {
     if (m_configPage)
-        m_configPage->buttonClicked(KDialog::Default);
+        m_configPage->defaults();
     changed();
 }
 

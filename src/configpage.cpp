@@ -29,13 +29,33 @@ ConfigPage::ConfigPage(QWidget* parent): QWidget(parent)
 {
     m_ui->setupUi(this);
     FcitxConfigFileDesc* configDesc = ConfigDescManager::instance()->GetConfigDesc("config.desc");
-    m_ui->layout->insertWidget(0, new ConfigWidget(configDesc, "", "config", ""));
+    m_configWidget = new ConfigWidget(configDesc, "", "config", "");
+    m_ui->layout->insertWidget(0, m_configWidget);
     m_ui->infoIconLabel->setPixmap(KIcon("dialog-information").pixmap(KIconLoader::SizeSmallMedium));
+
+    connect(m_configWidget, SIGNAL(changed()), this, SIGNAL(changed()));
 }
 
 ConfigPage::~ConfigPage()
 {
     delete m_ui;
 }
+
+void ConfigPage::load()
+{
+    m_configWidget->load();
+}
+
+void ConfigPage::save()
+{
+    m_configWidget->buttonClicked(KDialog::Ok);
+}
+
+void ConfigPage::defaults()
+{
+    m_configWidget->buttonClicked(KDialog::Default);
+}
+
+
 
 }

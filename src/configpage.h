@@ -27,12 +27,21 @@ namespace Ui {
 
 namespace Fcitx {
 
+class ConfigWidget;
+
 class ConfigPage : public QWidget {
+    Q_OBJECT
 public:
     explicit ConfigPage(QWidget* parent = 0);
     virtual ~ConfigPage();
+    void load();
+    void save();
+    void defaults();
+signals:
+    void changed();
 private:
     Ui::ConfigPage* m_ui;
+    ConfigWidget* m_configWidget;
 };
 
 }

@@ -42,6 +42,8 @@ class Module;
 namespace Fcitx
 {
 
+class ConfigPage;
+
 class UIPage;
 
 
@@ -105,7 +107,7 @@ private:
     * addon array
     */
     UT_array* m_addons;
-    ConfigWidget* m_configPage;
+    ConfigPage* m_configPage;
     SkinPage* m_skinPage;
     IMPage* m_imPage;
     UIPage* m_uiPage;
