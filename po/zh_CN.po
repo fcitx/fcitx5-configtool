@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-01-12 22:26-0500\n"
+"POT-Creation-Date: 2013-01-17 10:37-0500\n"
 "PO-Revision-Date: 2013-01-12 22:26-0500\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-i18n-doc@kde.org>\n"
@@ -88,11 +88,11 @@ msgstr "<b>选择输入法：</b>"
 msgid "A general keyboard layout viewer"
 msgstr "通用键盘布局查看器"
 
-#: src/module.cpp:149
+#: src/module.cpp:150
 msgid "Addon Config"
 msgstr "附加组件配置"
 
-#: src/module.cpp:137 src/module.cpp:139
+#: src/module.cpp:138 src/module.cpp:140
 msgid "Appearance"
 msgstr "外观"
 
@@ -113,7 +113,7 @@ msgstr "无法加载当前用户界面信息"
 msgid "Configure Fcitx"
 msgstr "配置 Fcitx"
 
-#: src/module.cpp:151
+#: src/module.cpp:152
 msgid "Configure Fcitx addon"
 msgstr "配置 Fcitx 附加组件"
 
@@ -162,11 +162,11 @@ msgstr "Form"
 msgid "Get New &Skin..."
 msgstr "获得新皮肤(&S)..."
 
-#: src/module.cpp:125
+#: src/module.cpp:126
 msgid "Global Config"
 msgstr "全局配置"
 
-#: src/module.cpp:127
+#: src/module.cpp:128
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 的全局配置"
 
@@ -203,11 +203,11 @@ msgstr "键盘布局变体"
 msgid "Keyboard layout viewer"
 msgstr "键盘布局查看器"
 
-#: src/module.cpp:161
+#: src/module.cpp:162
 msgid "Manage Fcitx Skin"
 msgstr "管理Fcitx 的皮肤"
 
-#: src/module.cpp:159
+#: src/module.cpp:160
 msgid "Manage Skin"
 msgstr "管理皮肤"
 

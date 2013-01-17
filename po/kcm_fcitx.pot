@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-01-12 22:26-0500\n"
+"POT-Creation-Date: 2013-01-17 10:37-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,31 +113,31 @@ msgstr ""
 msgid "Input Method"
 msgstr ""
 
-#: src/module.cpp:125
+#: src/module.cpp:126
 msgid "Global Config"
 msgstr ""
 
-#: src/module.cpp:127
+#: src/module.cpp:128
 msgid "Global Config for Fcitx"
 msgstr ""
 
-#: src/module.cpp:137 src/module.cpp:139
+#: src/module.cpp:138 src/module.cpp:140
 msgid "Appearance"
 msgstr ""
 
-#: src/module.cpp:149
+#: src/module.cpp:150
 msgid "Addon Config"
 msgstr ""
 
-#: src/module.cpp:151
+#: src/module.cpp:152
 msgid "Configure Fcitx addon"
 msgstr ""
 
-#: src/module.cpp:159
+#: src/module.cpp:160
 msgid "Manage Skin"
 msgstr ""
 
-#: src/module.cpp:161
+#: src/module.cpp:162
 msgid "Manage Fcitx Skin"
 msgstr ""
 

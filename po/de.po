@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-01-12 22:26-0500\n"
-"PO-Revision-Date: 2012-12-05 07:04+0000\n"
+"POT-Creation-Date: 2013-01-17 10:37-0500\n"
+"PO-Revision-Date: 2013-01-13 08:51+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/fcitx/"
 "language/de_DE/)\n"
@@ -80,15 +80,14 @@ msgid "<b>Select Input Method:</b>"
 msgstr "<b>Auswahl Eingabemethode:</b>"
 
 #: layout/main.cpp:34
-#, fuzzy
 msgid "A general keyboard layout viewer"
-msgstr "Standard Tastaturlayout auswählen"
+msgstr ""
 
-#: src/module.cpp:149
+#: src/module.cpp:150
 msgid "Addon Config"
 msgstr "Konfiguration Addons"
 
-#: src/module.cpp:137 src/module.cpp:139
+#: src/module.cpp:138 src/module.cpp:140
 msgid "Appearance"
 msgstr "Aussehen"
 
@@ -111,14 +110,13 @@ msgstr ""
 msgid "Configure Fcitx"
 msgstr "Fcitx konfigurieren"
 
-#: src/module.cpp:151
+#: src/module.cpp:152
 msgid "Configure Fcitx addon"
 msgstr "Fcitx Addon konfigurieren"
 
 #: src/kcm_fcitx.desktop.in:12
-#, fuzzy
 msgid "Configure Input Method"
-msgstr "Aktive Eingabemethoden"
+msgstr ""
 
 #: src/subconfigwidget.cpp:201
 msgid "Copy"
@@ -161,11 +159,11 @@ msgstr "Form"
 msgid "Get New &Skin..."
 msgstr "&Neue Skins herunterladen"
 
-#: src/module.cpp:125
+#: src/module.cpp:126
 msgid "Global Config"
 msgstr "Globale Einstellungen"
 
-#: src/module.cpp:127
+#: src/module.cpp:128
 msgid "Global Config for Fcitx"
 msgstr "Globale Einstellungen für Fcitx"
 
@@ -178,14 +176,12 @@ msgid "Input Method Default"
 msgstr "Standard Eingabemethode"
 
 #: layout/main.cpp:32 layout/main.cpp:59
-#, fuzzy
 msgid "Keyboard Layout viewer"
-msgstr "<b>Tastatur Layout:</b>"
+msgstr ""
 
 #: layout/main.cpp:40
-#, fuzzy
 msgid "Keyboard layout"
-msgstr "<b>Tastatur Layout:</b>"
+msgstr ""
 
 #: layout/main.cpp:38
 msgid "Keyboard layout group (0-3)"
@@ -197,20 +193,18 @@ msgid "Keyboard layout to use when no input method active"
 msgstr "Verwendetes Tastaturlayout wenn keine Eingabemethode Aktiv ist"
 
 #: layout/main.cpp:42
-#, fuzzy
 msgid "Keyboard layout variant"
-msgstr "<b>Tastatur Layout:</b>"
+msgstr ""
 
 #: layout/kbd-layout-viewer.desktop.in:6
-#, fuzzy
 msgid "Keyboard layout viewer"
-msgstr "<b>Tastatur Layout:</b>"
+msgstr ""
 
-#: src/module.cpp:161
+#: src/module.cpp:162
 msgid "Manage Fcitx Skin"
 msgstr "Managed Fcitz Skins"
 
-#: src/module.cpp:159
+#: src/module.cpp:160
 msgid "Manage Skin"
 msgstr "Skins managen"
 
@@ -302,9 +296,8 @@ msgstr ""
 "verwendet werden?"
 
 #: layout/kbd-layout-viewer.desktop.in:7
-#, fuzzy
 msgid "View keyboard layout"
-msgstr "Standard Tastaturlayout auswählen"
+msgstr ""
 
 #: src/subconfigwidget.cpp:202
 msgid "View system"
