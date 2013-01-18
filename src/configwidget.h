@@ -70,11 +70,11 @@ class ConfigWidget : public QWidget
     };
 
 public:
-    explicit ConfigWidget(struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), QWidget* parent = NULL);
+    explicit ConfigWidget(struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString(), QWidget* parent = NULL);
     explicit ConfigWidget(FcitxAddon* addonEntry, QWidget* parent = 0);
     virtual ~ConfigWidget();
 
-    static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString());
+    static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString());
     static KDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
 
 Q_SIGNALS:
@@ -95,6 +95,7 @@ private:
     struct _FcitxConfigFileDesc* m_cfdesc;
     QString m_prefix;
     QString m_name;
+    QString m_addonName;
     QVBoxLayout* m_switchLayout;
     QWidget* m_simpleWidget;
     QWidget* m_fullWidget;

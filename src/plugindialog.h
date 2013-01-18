@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2011~2011 by CSSlayer                                   *
+ *   Copyright (C) 2013~2013 by CSSlayer                                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -16,52 +16,24 @@
  *   Free Software Foundation, Inc.,                                       *
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
+#ifndef PLUGINDIALOG_H
+#define PLUGINDIALOG_H
 
-#ifndef CONFIGDESCMANAGER_H
-#define CONFIGDESCMANAGER_H
+#include <KDialog>
+#include <fcitx-qt/fcitxqtconfiguiwidget.h>
 
-// Qt
-#include <QHash>
+namespace Fcitx {
 
-// Fcitx
-#include <fcitx-config/fcitx-config.h>
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
-#include <fcitx-qt/fcitxqtkeyboardproxy.h>
-
-class FcitxQtKeyboardProxy;
-class FcitxQtInputMethodProxy;
-class FcitxQtConfigUIFactory;
-class FcitxQtConnection;
-namespace Fcitx
-{
-
-class ConfigDescManager : public QObject
-{
+class PluginDialog : public KDialog {
     Q_OBJECT
 public:
-    static ConfigDescManager* instance();
-    static void deInit();
-    virtual ~ConfigDescManager();
-    FcitxConfigFileDesc* GetConfigDesc(const QString& name);
-    FcitxQtConfigUIFactory* factory() { return m_factory; }
-    FcitxQtConnection* connection() { return m_connection; }
-    FcitxQtInputMethodProxy* inputMethodProxy() { return  (m_inputmethod && m_inputmethod->isValid()) ? m_inputmethod : 0; }
-    FcitxQtKeyboardProxy* keyboardProxy() { return  (m_keyboard && m_keyboard->isValid()) ? m_keyboard : 0; }
-
-public slots:
-    void connected();
-    void disconnected();
+    explicit PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent = 0, Qt::WindowFlags flags = 0);
+    virtual void slotButtonClicked(int button);
 
 private:
-    ConfigDescManager();
-    QHash<QString, FcitxConfigFileDesc*>* m_hash;
-    FcitxQtConfigUIFactory* m_factory;
-    FcitxQtConnection* m_connection;
-    FcitxQtInputMethodProxy* m_inputmethod;
-    FcitxQtKeyboardProxy* m_keyboard;
-    static ConfigDescManager* inst;
+    FcitxQtConfigUIWidget* m_widget;
 };
 
 }
 
-#endif
+#endif // PLUGINDIALOG_H

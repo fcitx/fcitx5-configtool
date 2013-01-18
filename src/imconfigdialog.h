@@ -1,6 +1,5 @@
 #include <KDialog>
 #include <fcitx/addon.h>
-#include <QDBusConnection>
 #include <fcitx-qt/fcitxqtkeyboardproxy.h>
 
 class KeyboardLayoutWidget;
@@ -19,9 +18,7 @@ private slots:
     void layoutComboBoxChanged();
 
 private:
-    QDBusConnection m_connection;
     QString m_imName;
-    FcitxQtKeyboardProxy* m_keyboard;
     KComboBox* m_layoutCombobox;
     ConfigWidget* m_configPage;
     FcitxQtKeyboardLayoutList m_layoutList;

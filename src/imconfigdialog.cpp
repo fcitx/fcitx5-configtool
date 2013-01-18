@@ -7,6 +7,7 @@
 #include <KLocalizedString>
 
 #include <fcitx-qt/fcitxqtkeyboardproxy.h>
+#include <fcitx-qt/fcitxqtconnection.h>
 
 #include "imconfigdialog.h"
 #include "configdescmanager.h"
@@ -14,36 +15,23 @@
 #include "keyboardlayoutwidget.h"
 
 Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent): KDialog(parent)
-    ,m_connection(QDBusConnection::sessionBus())
     ,m_imName(imName)
-    ,m_keyboard(0)
     ,m_layoutCombobox(0)
     ,m_configPage(0)
 {
-    m_keyboard = new FcitxQtKeyboardProxy(
-        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
-        "/keyboard",
-        m_connection,
-        this
-    );
-
-#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
-    m_keyboard->setTimeout(3000);
-#endif
-
     QWidget* widget = new QWidget(this);
     QVBoxLayout* l = new QVBoxLayout(this);
     widget->setLayout(l);
 
-    if (!imName.startsWith("fcitx-keyboard")) {
-        QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = m_keyboard->GetLayouts();
+    if (!imName.startsWith("fcitx-keyboard") && ConfigDescManager::instance()->keyboardProxy()) {
+        QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = ConfigDescManager::instance()->keyboardProxy()->GetLayouts();
         layoutList.waitForFinished();
 
         if (!layoutList.isError()) {
             m_layoutList = layoutList.value();
             m_layoutCombobox = new KComboBox(this);
 
-            QDBusPendingReply< QString, QString > res = m_keyboard->GetLayoutForIM(imName);
+            QDBusPendingReply< QString, QString > res = ConfigDescManager::instance()->keyboardProxy()->GetLayoutForIM(imName);
             res.waitForFinished();
             QString imLayout = qdbus_cast<QString>(res.argumentAt(0));
             QString imVariant =  qdbus_cast<QString>(res.argumentAt(1));
@@ -110,6 +98,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
                 QString::fromUtf8("conf"),
                 QString::fromUtf8(addon->name).append(".config") ,
                 QString::fromUtf8(addon->subconfig),
+                QString::fromUtf8(addon->name),
                 this
             );
             l->addWidget(m_configPage);
@@ -123,13 +112,13 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
 
 void Fcitx::IMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
 {
-    if (m_layoutCombobox) {
+    if (m_layoutCombobox && ConfigDescManager::instance()->keyboardProxy()) {
         if (code == KDialog::Ok) {
             int idx = m_layoutCombobox->currentIndex();
             if (idx == 0)
-                m_keyboard->SetLayoutForIM(m_imName, "", "");
+                ConfigDescManager::instance()->keyboardProxy()->SetLayoutForIM(m_imName, "", "");
             else
-                m_keyboard->SetLayoutForIM(m_imName, m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
+                ConfigDescManager::instance()->keyboardProxy()->SetLayoutForIM(m_imName, m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
         }
         else if (code == KDialog::Default)
             m_layoutCombobox->setCurrentIndex(0);

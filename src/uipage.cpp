@@ -9,16 +9,17 @@
 
 Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
     ,m_module(parent)
-    ,m_proxy (m_module->inputMethodProxy())
     ,m_layout(new QVBoxLayout(this))
     ,m_label(new QLabel(i18n("Cannot load currently used user interface info"), this))
     ,m_widget(0)
 {
     setLayout(m_layout);
     m_layout->addWidget(m_label);
-    QDBusPendingReply< QString > reply = m_proxy->GetCurrentUI();
-    QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(reply, this);
-    connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(getUIFinished(QDBusPendingCallWatcher*)));
+    if (ConfigDescManager::instance()->inputMethodProxy()) {
+        QDBusPendingReply< QString > reply = ConfigDescManager::instance()->inputMethodProxy()->GetCurrentUI();
+        QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(reply, this);
+        connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(getUIFinished(QDBusPendingCallWatcher*)));
+    }
 }
 
 void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)

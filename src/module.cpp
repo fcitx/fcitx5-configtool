@@ -40,6 +40,7 @@
 #include <fcitx/module/dbus/dbusstuff.h>
 #include <fcitx/module/ipc/ipc.h>
 #include <fcitx-qt/fcitxqtkeyboardlayout.h>
+#include <fcitx-qt/fcitxqtconnection.h>
 
 // self
 #include "config.h"
@@ -68,8 +69,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     addonSelector(0),
     m_configPage(0),
     m_skinPage(0),
-    m_imPage(0),
-    m_connection(QDBusConnection::sessionBus())
+    m_imPage(0)
 {
     bindtextdomain("fcitx", LOCALEDIR);
     bind_textdomain_codeset("fcitx", "UTF-8");
@@ -89,21 +89,12 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
     setAboutData(about);
 
-    m_inputmethod = new FcitxQtInputMethodProxy(
-        QString("%1-%2").arg(FCITX_DBUS_SERVICE).arg(fcitx_utils_get_display_number()),
-        FCITX_IM_DBUS_PATH,
-        m_connection,
-        this
-    );
-
-#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
-    m_inputmethod->setTimeout(3000);
-#endif
-
     if (FcitxAddonGetConfigDesc() != NULL) {
         utarray_new(m_addons, &addonicd);
         FcitxAddonsLoad(m_addons);
     }
+
+    ConfigDescManager::instance();
 
     ui->setupUi(this);
     KPageWidgetItem *page;
@@ -132,7 +123,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     }
 
     {
-        if (m_inputmethod->isValid()) {
+        if (ConfigDescManager::instance()->inputMethodProxy()) {
             m_uiPage = new UIPage(this);
             page = new KPageWidgetItem(m_uiPage);
             page->setName(i18n("Appearance"));
@@ -199,20 +190,15 @@ FcitxAddon* Module::findAddonByName(const QString& name)
     return addon;
 }
 
-FcitxQtInputMethodProxy* Module::inputMethodProxy()
-{
-    return m_inputmethod;
-}
-
 
 void Module::load()
 {;
     KDialog* configDialog = NULL;
     if (!m_arg.isEmpty()) {
         do {
-            if (!m_inputmethod->isValid())
+            if (!ConfigDescManager::instance()->inputMethodProxy())
                 break;
-            QDBusPendingReply< QString > result = m_inputmethod->GetIMAddon(m_arg);
+            QDBusPendingReply< QString > result = ConfigDescManager::instance()->inputMethodProxy()->GetIMAddon(m_arg);
             result.waitForFinished();
             if (!result.isValid() || result.value().isEmpty())
                 break;

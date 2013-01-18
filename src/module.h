@@ -26,12 +26,8 @@
 // Fcitx
 #include <fcitx-utils/utarray.h>
 #include <fcitx/addon.h>
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
-
-#include <QDBusConnection>
 
 class QFile;
-class FcitxQtInputMethodProxy;
 
 namespace Ui
 {
@@ -90,8 +86,6 @@ public:
 
     FcitxAddon* findAddonByName(const QString& name);
 
-    FcitxQtInputMethodProxy* inputMethodProxy();
-
 private:
     /**
     * UI
@@ -111,8 +105,6 @@ private:
     SkinPage* m_skinPage;
     IMPage* m_imPage;
     UIPage* m_uiPage;
-    QDBusConnection m_connection;
-    FcitxQtInputMethodProxy* m_inputmethod;
     QString m_arg;
 };
 

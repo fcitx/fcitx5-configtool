@@ -23,6 +23,7 @@
 // KDE
 #include <KCategorizedSortFilterProxyModel>
 #include <KCategoryDrawer>
+#include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 // self
 #include "impage.h"
@@ -422,20 +423,24 @@ void IMPage::Private::moveDownIM()
 void IMPage::Private::configureIM()
 {
     QModelIndex curIndex = currentIMView->currentIndex();
-    if (curIndex.isValid()) {
-        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
-        if (curIM == NULL)
-            return;
-        QDBusPendingReply< QString > result = module->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
-        result.waitForFinished();
-        if (result.isValid()) {
-            FcitxAddon* addonEntry = module->findAddonByName(result.value());
+    if (!curIndex.isValid())
+        return;
+    FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
+    if (!curIM) {
+        return;
+    }
+    if (!ConfigDescManager::instance()->inputMethodProxy()) {
+        return;
+    }
+    QDBusPendingReply< QString > result = ConfigDescManager::instance()->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
+    result.waitForFinished();
+    if (result.isValid()) {
+        FcitxAddon* addonEntry = module->findAddonByName(result.value());
 
-            QPointer<KDialog> configDialog(new IMConfigDialog(curIM->uniqueName(), addonEntry));
+        QPointer<KDialog> configDialog(new IMConfigDialog(curIM->uniqueName(), addonEntry));
 
-            configDialog->exec();
-            delete configDialog;
-        }
+        configDialog->exec();
+        delete configDialog;
     }
 }
 
@@ -471,14 +476,14 @@ void IMPage::Private::moveUpIM()
 
 void IMPage::Private::save()
 {
-    if (module->inputMethodProxy()->isValid())
-        module->inputMethodProxy()->setIMList(m_list);
+    if (ConfigDescManager::instance()->inputMethodProxy())
+        ConfigDescManager::instance()->inputMethodProxy()->setIMList(m_list);
 }
 
 void IMPage::Private::fetchIMList()
 {
-    if (module->inputMethodProxy()->isValid()) {
-        m_list = module->inputMethodProxy()->iMList();
+    if (ConfigDescManager::instance()->inputMethodProxy()) {
+        m_list = ConfigDescManager::instance()->inputMethodProxy()->iMList();
         qStableSort(m_list.begin(), m_list.end());
         emit updateIMList(QString());
     }

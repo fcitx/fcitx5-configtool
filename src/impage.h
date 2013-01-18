@@ -23,7 +23,6 @@
 // Qt
 #include <QString>
 #include <QWidget>
-#include <QDBusConnection>
 
 // self
 

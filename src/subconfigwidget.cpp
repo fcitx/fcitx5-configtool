@@ -33,6 +33,7 @@
 
 // Fcitx
 #include <fcitx-config/xdg.h>
+#include <fcitx-qt/fcitxqtconfiguifactory.h>
 
 // self
 #include "configdescmanager.h"
@@ -40,6 +41,7 @@
 #include "subconfigparser.h"
 #include "subconfigwidget.h"
 #include "subconfigwidget_p.h"
+#include "plugindialog.h"
 namespace Fcitx
 {
 
@@ -183,6 +185,16 @@ void SubConfigWidget::openSubConfig()
 void SubConfigWidget::openNativeFile()
 {
     char *newpath = NULL;
+
+    FcitxQtConfigUIWidget* widget = ConfigDescManager::instance()->factory()->create(m_subConfig->nativepath());
+    if (widget) {
+        QPointer<KDialog> pluginDialog(new PluginDialog(widget, 0));
+
+        pluginDialog->exec();
+        delete pluginDialog;
+        return;
+    }
+
     /* this configuration file doesn't have user version */
     if (m_subConfig->userFileList().size() == 0) {
         /* still if system version doesn't exit either, let's create an empty text file for user */

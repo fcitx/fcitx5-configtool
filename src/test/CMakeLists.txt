@@ -13,6 +13,7 @@ kde4_add_executable(testconfigpage
     ../dummyconfig.cpp
     ../verticalscrollarea.cpp
     ../fontbutton.cpp
+    ../plugindialog.cpp
 )
 
 target_link_libraries(testconfigpage
@@ -20,6 +21,7 @@ target_link_libraries(testconfigpage
     ${KDE4_KIO_LIBS}
     ${FCITX4_FCITX_UTILS_LIBRARIES}
     ${FCITX4_FCITX_CONFIG_LIBRARIES}
+    ${FCITX_QT_LIBRARIES}
 )
 
 kde4_add_executable(testdummyconfig
@@ -34,6 +36,7 @@ target_link_libraries(testdummyconfig
     ${KDE4_KIO_LIBS}
     ${FCITX4_FCITX_UTILS_LIBRARIES}
     ${FCITX4_FCITX_CONFIG_LIBRARIES}
+    ${FCITX_QT_LIBRARIES}
 )
 
 kde4_add_executable(testfontbutton

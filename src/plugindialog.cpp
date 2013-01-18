@@ -17,45 +17,27 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#include "configpage.h"
-#include "configdescmanager.h"
-#include "configwidget.h"
-#include "ui_configpage.h"
+#include "plugindialog.h"
 
 namespace Fcitx {
 
-ConfigPage::ConfigPage(QWidget* parent): QWidget(parent)
-    ,m_ui(new Ui::ConfigPage)
+PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::WindowFlags flags) : KDialog(parent, flags)
+    ,m_widget(widget)
 {
-    m_ui->setupUi(this);
-    FcitxConfigFileDesc* configDesc = ConfigDescManager::instance()->GetConfigDesc("config.desc");
-    m_configWidget = new ConfigWidget(configDesc, "", "config", QString(), "global");
-    m_ui->layout->insertWidget(0, m_configWidget);
-    m_ui->infoIconLabel->setPixmap(KIcon("dialog-information").pixmap(KIconLoader::SizeSmallMedium));
-
-    connect(m_configWidget, SIGNAL(changed()), this, SIGNAL(changed()));
+    setWindowIcon(KIcon(widget->icon()));
+    setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Reset);
+    setMainWidget(widget);
 }
 
-ConfigPage::~ConfigPage()
+void PluginDialog::slotButtonClicked(int button)
 {
-    delete m_ui;
+    if (button == KDialog::Reset) {
+        m_widget->load();
+    } else if (button == KDialog::Ok) {
+        m_widget->save();
+    }
+
+    KDialog::slotButtonClicked(button);
 }
-
-void ConfigPage::load()
-{
-    m_configWidget->load();
-}
-
-void ConfigPage::save()
-{
-    m_configWidget->buttonClicked(KDialog::Ok);
-}
-
-void ConfigPage::defaults()
-{
-    m_configWidget->buttonClicked(KDialog::Default);
-}
-
-
 
 }

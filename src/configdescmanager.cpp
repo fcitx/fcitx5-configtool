@@ -20,6 +20,9 @@
 // Fcitx
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/xdg.h>
+#include <fcitx-qt/fcitxqtconnection.h>
+#include <fcitx-qt/fcitxqtconfiguifactory.h>
+#include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 // self
 #include "configdescmanager.h"
@@ -39,15 +42,22 @@ ConfigDescManager* ConfigDescManager::instance()
 void ConfigDescManager::deInit()
 {
     if (inst) {
-        inst->deleteLater();;
+        inst->deleteLater();
         inst = 0;
     }
 }
 
 ConfigDescManager::ConfigDescManager() :
-    m_hash(new QHash<QString, FcitxConfigFileDesc*>)
+    m_hash(new QHash<QString, FcitxConfigFileDesc*>),
+    m_factory(new FcitxQtConfigUIFactory(this)),
+    m_connection(new FcitxQtConnection(this)),
+    m_inputmethod(0),
+    m_keyboard(0)
 {
+    connect(m_connection, SIGNAL(connected()), this, SLOT(connected()));
+    connect(m_connection, SIGNAL(disconnected()), this, SLOT(disconnected()));
 
+    m_connection->startConnection();
 }
 
 ConfigDescManager::~ConfigDescManager()
@@ -61,6 +71,44 @@ ConfigDescManager::~ConfigDescManager()
     }
 
     delete m_hash;
+}
+
+void ConfigDescManager::connected()
+{
+    if (m_inputmethod)
+        delete m_inputmethod;
+
+    if (m_keyboard)
+        delete m_keyboard;
+
+    m_inputmethod = new FcitxQtInputMethodProxy(
+        m_connection->serviceName(),
+        "/inputmethod",
+        *m_connection->connection(),
+        this
+    );
+
+    m_keyboard = new FcitxQtKeyboardProxy(
+        m_connection->serviceName(),
+        "/keyboard",
+        *m_connection->connection(),
+        this
+    );
+
+#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
+    m_inputmethod->setTimeout(3000);
+    m_keyboard->setTimeout(3000);
+#endif
+}
+
+void ConfigDescManager::disconnected()
+{
+    if (m_inputmethod)
+        delete m_inputmethod;
+    m_inputmethod = 0;
+    if (m_keyboard)
+        delete m_keyboard;
+    m_keyboard = 0;
 }
 
 FcitxConfigFileDesc* ConfigDescManager::GetConfigDesc(const QString& name)

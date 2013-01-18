@@ -29,8 +29,6 @@
 #include <QStandardItemModel>
 #include <QListView>
 #include <QProcess>
-#include <QDBusInterface>
-#include <QDBusReply>
 
 // KDE
 #include <KColorButton>
@@ -73,10 +71,11 @@ static QKeySequence HotkeyToKeySequence(FcitxHotkey* hotkey);
 static
 void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxConfigOption *option, void *value, FcitxConfigSync sync, void *arg);
 
-ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, QWidget* parent) : QWidget(parent)
+ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName, QWidget* parent) : QWidget(parent)
     , m_cfdesc(cfdesc)
     , m_prefix(prefix)
     , m_name(name)
+    , m_addonName(addonName)
     , m_switchLayout(new QVBoxLayout)
     , m_simpleWidget(0)
     , m_fullWidget(0)
@@ -95,6 +94,7 @@ ConfigWidget::ConfigWidget(FcitxAddon* addonEntry, QWidget* parent): QWidget(par
     , m_cfdesc(ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc")))
     , m_prefix("conf")
     , m_name(QString::fromUtf8(addonEntry->name).append(".config"))
+    , m_addonName(addonEntry->name)
     , m_switchLayout(new QVBoxLayout)
     , m_simpleWidget(0)
     , m_fullWidget(0)
@@ -139,16 +139,12 @@ void ConfigWidget::buttonClicked(KDialog::ButtonCode code)
                                  reload_config
                                 );
 
-        QDBusInterface fcitx(QString("org.fcitx.Fcitx-%1").arg(fcitx_utils_get_display_number()), "/inputmethod", "org.fcitx.Fcitx.InputMethod");
-        QDBusReply<void> reply;
-        if (fcitx.isValid()) {
-            reply = fcitx.call("ReloadConfig");
-        }
-        if (!reply.isValid()) {
-            QStringList commandAndParameters;
-            commandAndParameters << "-r";
-            QProcess process;
-            process.startDetached(FCITX4_EXEC_PREFIX "/bin/fcitx-remote", commandAndParameters);
+        if (ConfigDescManager::instance()->inputMethodProxy()) {
+            if (m_addonName.isEmpty()) {
+                ConfigDescManager::instance()->inputMethodProxy()->ReloadConfig();
+            } else {
+                ConfigDescManager::instance()->inputMethodProxy()->ReloadAddonConfig(m_addonName);
+            }
         }
     }
 }
@@ -643,7 +639,7 @@ void ConfigWidget::checkCanUseSimple()
 }
 
 
-KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig)
+KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName)
 {
     KDialog* dialog;
     dialog = new KDialog(parent);
@@ -652,6 +648,7 @@ KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc
         prefix,
         name,
         subconfig,
+        addonName,
         dialog
     );
     dialog->setWindowIcon(KIcon("fcitx"));
@@ -676,7 +673,8 @@ KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxAddon* addonEntry)
             cfdesc,
             QString::fromUtf8("conf"),
             QString::fromUtf8(addonEntry->name).append(".config") ,
-            QString::fromUtf8(addonEntry->subconfig)
+            QString::fromUtf8(addonEntry->subconfig),
+            QString::fromUtf8(addonEntry->name)
         );
         return dialog;
     }
