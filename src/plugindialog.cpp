@@ -27,6 +27,9 @@ PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::W
     setWindowIcon(KIcon(widget->icon()));
     setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Reset);
     setMainWidget(widget);
+    connect(m_widget, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
+
+    changed(false);
 }
 
 void PluginDialog::slotButtonClicked(int button)
@@ -38,6 +41,12 @@ void PluginDialog::slotButtonClicked(int button)
     }
 
     KDialog::slotButtonClicked(button);
+}
+
+void PluginDialog::changed(bool changed)
+{
+    enableButton(KDialog::Ok, changed);
+    enableButton(KDialog::Reset, changed);
 }
 
 }

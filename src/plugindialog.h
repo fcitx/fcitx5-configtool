@@ -32,6 +32,8 @@ public:
 
 private:
     FcitxQtConfigUIWidget* m_widget;
+public slots:
+    void changed(bool changed);
 };
 
 }
