@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-01-17 10:37-0500\n"
+"POT-Creation-Date: 2013-01-18 15:07-0500\n"
 "PO-Revision-Date: 2013-01-13 08:51+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/fcitx/"
@@ -62,15 +62,15 @@ msgstr ""
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>Standard Tastaturlayout:</b>"
 
-#: src/imconfigdialog.cpp:104
+#: src/imconfigdialog.cpp:92
 msgid "<b>Input Method Setting:</b>"
 msgstr "<b>Einstellungen Eingabemethode:</b>"
 
-#: src/imconfigdialog.cpp:52
+#: src/imconfigdialog.cpp:40
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>Tastatur Layout:</b>"
 
-#: src/configwidget.cpp:436
+#: src/configwidget.cpp:432
 msgid "<b>Other</b>"
 msgstr "<b>Weitere</b>"
 
@@ -83,11 +83,11 @@ msgstr "<b>Auswahl Eingabemethode:</b>"
 msgid "A general keyboard layout viewer"
 msgstr ""
 
-#: src/module.cpp:150
+#: src/module.cpp:141
 msgid "Addon Config"
 msgstr "Konfiguration Addons"
 
-#: src/module.cpp:138 src/module.cpp:140
+#: src/module.cpp:129 src/module.cpp:131
 msgid "Appearance"
 msgstr "Aussehen"
 
@@ -100,7 +100,7 @@ msgstr "Achtung"
 msgid "Available Input Method:"
 msgstr "Verfügbare Eingabemethoden"
 
-#: src/uipage.cpp:14
+#: src/uipage.cpp:13
 msgid "Cannot load currently used user interface info"
 msgstr ""
 "Die zur momentan verwendeten Oberfläche gehörende Info-Datei kann nicht "
@@ -110,7 +110,7 @@ msgstr ""
 msgid "Configure Fcitx"
 msgstr "Fcitx konfigurieren"
 
-#: src/module.cpp:152
+#: src/module.cpp:143
 msgid "Configure Fcitx addon"
 msgstr "Fcitx Addon konfigurieren"
 
@@ -118,11 +118,11 @@ msgstr "Fcitx Addon konfigurieren"
 msgid "Configure Input Method"
 msgstr ""
 
-#: src/subconfigwidget.cpp:201
+#: src/subconfigwidget.cpp:213
 msgid "Copy"
 msgstr "Kopieren"
 
-#: src/subconfigwidget.cpp:214
+#: src/subconfigwidget.cpp:226
 msgid "Copy failed"
 msgstr "Kopieren gescheitert"
 
@@ -135,7 +135,7 @@ msgstr "Copyright 2012 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "Aktive Eingabemethoden"
 
-#: src/imconfigdialog.cpp:57
+#: src/imconfigdialog.cpp:45
 msgid "Default"
 msgstr "Standard"
 
@@ -159,19 +159,19 @@ msgstr "Form"
 msgid "Get New &Skin..."
 msgstr "&Neue Skins herunterladen"
 
-#: src/module.cpp:126
+#: src/module.cpp:117
 msgid "Global Config"
 msgstr "Globale Einstellungen"
 
-#: src/module.cpp:128
+#: src/module.cpp:119
 msgid "Global Config for Fcitx"
 msgstr "Globale Einstellungen für Fcitx"
 
-#: src/module.cpp:113 src/module.cpp:115 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:104 src/module.cpp:106 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "Eingabemethode"
 
-#: src/imconfigdialog.cpp:59
+#: src/imconfigdialog.cpp:47
 msgid "Input Method Default"
 msgstr "Standard Eingabemethode"
 
@@ -200,19 +200,19 @@ msgstr ""
 msgid "Keyboard layout viewer"
 msgstr ""
 
-#: src/module.cpp:162
+#: src/module.cpp:153
 msgid "Manage Fcitx Skin"
 msgstr "Managed Fcitz Skins"
 
-#: src/module.cpp:160
+#: src/module.cpp:151
 msgid "Manage Skin"
 msgstr "Skins managen"
 
-#: src/impage.cpp:47
+#: src/impage.cpp:48
 msgid "Multilingual"
 msgstr "Mehrsprachig"
 
-#: src/uipage.cpp:41
+#: src/uipage.cpp:42
 #, kde-format
 msgid "No configuration options for %1."
 msgstr "Keine Optionen zur Konfiguration für %1"
@@ -234,7 +234,7 @@ msgid ""
 "need go to configuration of corresponding input method to change them."
 msgstr ""
 
-#: src/configwidget.cpp:542
+#: src/configwidget.cpp:538
 msgid "Other"
 msgstr "Andere"
 
@@ -246,7 +246,7 @@ msgstr "Anderer Kandidat"
 msgid "Search Addons"
 msgstr "Addons suchen"
 
-#: src/impage.cpp:219
+#: src/impage.cpp:220
 msgid "Search Input Method"
 msgstr "Eingabemethode suchen"
 
@@ -264,7 +264,7 @@ msgstr "Font auswählen"
 msgid "Select default keyboard layout"
 msgstr "Standard Tastaturlayout auswählen"
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:587
+#: src/addonselector.cpp:385 src/configwidget.cpp:583
 msgid "Show &Advance option"
 msgstr "Erweiterte &Einstellungen anzeigen"
 
@@ -282,11 +282,11 @@ msgstr ""
 "Die erste Eingabemethode wird die inaktive sein. Normalerweise sollte "
 "<b>Tastatur</b> or <b>Tastatur - <i>Tastaturlayout</i></b>als Erstes stehen."
 
-#: src/impage.cpp:44
+#: src/impage.cpp:45
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/subconfigwidget.cpp:199
+#: src/subconfigwidget.cpp:211
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
@@ -299,11 +299,11 @@ msgstr ""
 msgid "View keyboard layout"
 msgstr ""
 
-#: src/subconfigwidget.cpp:202
+#: src/subconfigwidget.cpp:214
 msgid "View system"
 msgstr "System ansehen"
 
-#: src/subconfigwidget.cpp:200
+#: src/subconfigwidget.cpp:212
 msgid "What to do"
 msgstr "Was zu tun ist"
 
