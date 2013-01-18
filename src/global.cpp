@@ -25,21 +25,21 @@
 #include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 // self
-#include "configdescmanager.h"
+#include "global.h"
 
 
 namespace Fcitx
 {
-ConfigDescManager* ConfigDescManager::inst = NULL;
+Global* Global::inst = NULL;
 
-ConfigDescManager* ConfigDescManager::instance()
+Global* Global::instance()
 {
     if (!inst)
-        inst = new ConfigDescManager;
+        inst = new Global;
     return inst;
 }
 
-void ConfigDescManager::deInit()
+void Global::deInit()
 {
     if (inst) {
         inst->deleteLater();
@@ -47,7 +47,7 @@ void ConfigDescManager::deInit()
     }
 }
 
-ConfigDescManager::ConfigDescManager() :
+Global::Global() :
     m_hash(new QHash<QString, FcitxConfigFileDesc*>),
     m_factory(new FcitxQtConfigUIFactory(this)),
     m_connection(new FcitxQtConnection(this)),
@@ -60,7 +60,7 @@ ConfigDescManager::ConfigDescManager() :
     m_connection->startConnection();
 }
 
-ConfigDescManager::~ConfigDescManager()
+Global::~Global()
 {
     QHash<QString, FcitxConfigFileDesc*>::iterator iter;
 
@@ -73,7 +73,7 @@ ConfigDescManager::~ConfigDescManager()
     delete m_hash;
 }
 
-void ConfigDescManager::connected()
+void Global::connected()
 {
     if (m_inputmethod)
         delete m_inputmethod;
@@ -101,7 +101,7 @@ void ConfigDescManager::connected()
 #endif
 }
 
-void ConfigDescManager::disconnected()
+void Global::disconnected()
 {
     if (m_inputmethod)
         delete m_inputmethod;
@@ -111,7 +111,7 @@ void ConfigDescManager::disconnected()
     m_keyboard = 0;
 }
 
-FcitxConfigFileDesc* ConfigDescManager::GetConfigDesc(const QString& name)
+FcitxConfigFileDesc* Global::GetConfigDesc(const QString& name)
 {
     if (m_hash->count(name) <= 0) {
         FILE* fp = FcitxXDGGetFileWithPrefix("configdesc", name.toLatin1().constData(), "r", NULL);

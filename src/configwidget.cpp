@@ -55,7 +55,7 @@
 #include "subconfigparser.h"
 #include "subconfigwidget.h"
 #include "qtkeytrans.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "dummyconfig.h"
 #include "verticalscrollarea.h"
 #include "fontbutton.h"
@@ -91,7 +91,7 @@ ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, c
 }
 
 ConfigWidget::ConfigWidget(FcitxAddon* addonEntry, QWidget* parent): QWidget(parent)
-    , m_cfdesc(ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc")))
+    , m_cfdesc(Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc")))
     , m_prefix("conf")
     , m_name(QString::fromUtf8(addonEntry->name).append(".config"))
     , m_addonName(addonEntry->name)
@@ -139,11 +139,11 @@ void ConfigWidget::buttonClicked(KDialog::ButtonCode code)
                                  reload_config
                                 );
 
-        if (ConfigDescManager::instance()->inputMethodProxy()) {
+        if (Global::instance()->inputMethodProxy()) {
             if (m_addonName.isEmpty()) {
-                ConfigDescManager::instance()->inputMethodProxy()->ReloadConfig();
+                Global::instance()->inputMethodProxy()->ReloadConfig();
             } else {
-                ConfigDescManager::instance()->inputMethodProxy()->ReloadAddonConfig(m_addonName);
+                Global::instance()->inputMethodProxy()->ReloadAddonConfig(m_addonName);
             }
         }
     }
@@ -665,7 +665,7 @@ KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxAddon* addonEntry)
         return NULL;
 
     KDialog* dialog;
-    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
 
     if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
         dialog = configDialog(

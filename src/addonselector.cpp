@@ -45,7 +45,7 @@
 #include "addonselector_p.h"
 #include "configwidget.h"
 #include "module.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "subconfigparser.h"
 
 #define MARGIN 5
@@ -108,7 +108,7 @@ QVariant AddonSelector::Private::AddonModel::data(const QModelIndex& index, int 
         return QString::fromUtf8(addonEntry->comment);
 
     case ConfigurableRole: {
-        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+        FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
         return (bool)(cfdesc != NULL || strlen(addonEntry->subconfig) != 0);
     }
 

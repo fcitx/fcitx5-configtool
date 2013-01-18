@@ -1,7 +1,7 @@
 #include "uipage.h"
 #include "module.h"
 #include "configwidget.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <KLocalizedString>
@@ -15,8 +15,8 @@ Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
 {
     setLayout(m_layout);
     m_layout->addWidget(m_label);
-    if (ConfigDescManager::instance()->inputMethodProxy()) {
-        QDBusPendingReply< QString > reply = ConfigDescManager::instance()->inputMethodProxy()->GetCurrentUI();
+    if (Global::instance()->inputMethodProxy()) {
+        QDBusPendingReply< QString > reply = Global::instance()->inputMethodProxy()->GetCurrentUI();
         QDBusPendingCallWatcher* watcher = new QDBusPendingCallWatcher(reply, this);
         connect(watcher, SIGNAL(finished(QDBusPendingCallWatcher*)), this, SLOT(getUIFinished(QDBusPendingCallWatcher*)));
     }
@@ -30,7 +30,7 @@ void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)
     QString name = reply.value();
     FcitxAddon* addon = m_module->findAddonByName(name);
     if (addon) {
-        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
+        FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
         bool configurable = (bool)(cfdesc != NULL || strlen(addon->subconfig) != 0);
         if (configurable) {
             m_label->hide();

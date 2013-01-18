@@ -5,7 +5,7 @@ set(kcm_SRCS
   module.cpp
   addonselector.cpp
   configwidget.cpp
-  configdescmanager.cpp
+  global.cpp
   subconfigparser.cpp
   subconfigpattern.cpp
   subconfig.cpp

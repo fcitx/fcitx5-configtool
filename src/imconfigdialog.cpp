@@ -10,7 +10,7 @@
 #include <fcitx-qt/fcitxqtconnection.h>
 
 #include "imconfigdialog.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "configwidget.h"
 #include "keyboardlayoutwidget.h"
 
@@ -23,15 +23,15 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     QVBoxLayout* l = new QVBoxLayout(this);
     widget->setLayout(l);
 
-    if (!imName.startsWith("fcitx-keyboard") && ConfigDescManager::instance()->keyboardProxy()) {
-        QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = ConfigDescManager::instance()->keyboardProxy()->GetLayouts();
+    if (!imName.startsWith("fcitx-keyboard") && Global::instance()->keyboardProxy()) {
+        QDBusPendingReply< FcitxQtKeyboardLayoutList > layoutList = Global::instance()->keyboardProxy()->GetLayouts();
         layoutList.waitForFinished();
 
         if (!layoutList.isError()) {
             m_layoutList = layoutList.value();
             m_layoutCombobox = new KComboBox(this);
 
-            QDBusPendingReply< QString, QString > res = ConfigDescManager::instance()->keyboardProxy()->GetLayoutForIM(imName);
+            QDBusPendingReply< QString, QString > res = Global::instance()->keyboardProxy()->GetLayoutForIM(imName);
             res.waitForFinished();
             QString imLayout = qdbus_cast<QString>(res.argumentAt(0));
             QString imVariant =  qdbus_cast<QString>(res.argumentAt(1));
@@ -85,7 +85,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     FcitxConfigFileDesc* cfdesc = NULL;
 
     if (addon) {
-        cfdesc = ConfigDescManager::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
+        cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addon->name).append(".desc"));
 
         if (cfdesc ||  strlen(addon->subconfig) != 0) {
             if (m_layoutCombobox) {
@@ -112,13 +112,13 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
 
 void Fcitx::IMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
 {
-    if (m_layoutCombobox && ConfigDescManager::instance()->keyboardProxy()) {
+    if (m_layoutCombobox && Global::instance()->keyboardProxy()) {
         if (code == KDialog::Ok) {
             int idx = m_layoutCombobox->currentIndex();
             if (idx == 0)
-                ConfigDescManager::instance()->keyboardProxy()->SetLayoutForIM(m_imName, "", "");
+                Global::instance()->keyboardProxy()->SetLayoutForIM(m_imName, "", "");
             else
-                ConfigDescManager::instance()->keyboardProxy()->SetLayoutForIM(m_imName, m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
+                Global::instance()->keyboardProxy()->SetLayoutForIM(m_imName, m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
         }
         else if (code == KDialog::Default)
             m_layoutCombobox->setCurrentIndex(0);

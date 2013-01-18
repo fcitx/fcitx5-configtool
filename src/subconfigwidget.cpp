@@ -36,7 +36,7 @@
 #include <fcitx-qt/fcitxqtconfiguifactory.h>
 
 // self
-#include "configdescmanager.h"
+#include "global.h"
 #include "configwidget.h"
 #include "subconfigparser.h"
 #include "subconfigwidget.h"
@@ -167,7 +167,7 @@ void SubConfigWidget::openSubConfig()
     if (!ind.isValid())
         return;
     ConfigFile* configfile = static_cast<ConfigFile*>(ind.internalPointer());
-    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc(m_subConfig->configdesc());
+    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(m_subConfig->configdesc());
 
     if (cfdesc) {
         QPointer<KDialog> configDialog(ConfigWidget::configDialog(
@@ -186,7 +186,7 @@ void SubConfigWidget::openNativeFile()
 {
     char *newpath = NULL;
 
-    FcitxQtConfigUIWidget* widget = ConfigDescManager::instance()->factory()->create(m_subConfig->nativepath());
+    FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
     if (widget) {
         QPointer<KDialog> pluginDialog(new PluginDialog(widget, 0));
 

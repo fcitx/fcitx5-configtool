@@ -34,7 +34,7 @@
 
 // self
 #include "module.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "configwidget.h"
 #include "skinpage.h"
 #include "skinpage_p.h"
@@ -183,7 +183,7 @@ void SkinPage::Private::SkinModel::setSkinList(const QStringList& list)
 QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 {
 
-    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("skin.desc");
+    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("skin.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
     QDir dir;
@@ -711,7 +711,7 @@ void SkinPage::Private::load()
     m_subConfig = m_parser.getSubConfig("Skin");
     skinModel->setSkinList(m_subConfig->fileList().toList());
 
-    FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc");
+    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("fcitx-classic-ui.desc");
     FILE* fp = NULL;
     FcitxConfigFile* cfile = NULL;
     QString skinName;
@@ -747,7 +747,7 @@ void SkinPage::Private::save()
     if (skinView->currentIndex().isValid()) {
         QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
 
-        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc");
+        FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("fcitx-classic-ui.desc");
         FILE* fp = NULL;
         FcitxConfigFile* cfile = NULL;
         if (cfdesc)
@@ -828,7 +828,7 @@ void SkinPage::Private::configureSkin()
         if (!ind.isValid())
             return;
         SkinInfo* skin = static_cast<SkinInfo*>(ind.internalPointer());
-        FcitxConfigFileDesc* cfdesc = ConfigDescManager::instance()->GetConfigDesc("skin.desc");
+        FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("skin.desc");
 
         if (cfdesc) {
             QPointer<KDialog> configDialog(ConfigWidget::configDialog(
@@ -893,7 +893,7 @@ SkinPage::~SkinPage()
 
 void SkinPage::load()
 {
-    if (NULL == ConfigDescManager::instance()->GetConfigDesc("fcitx-classic-ui.desc")) {
+    if (NULL == Global::instance()->GetConfigDesc("fcitx-classic-ui.desc")) {
         this->setEnabled(false);
     }
     d->load();

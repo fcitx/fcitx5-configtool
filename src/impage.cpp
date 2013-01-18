@@ -30,7 +30,7 @@
 #include "impage_p.h"
 #include "ui_impage.h"
 #include "module.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "configwidget.h"
 #include "imconfigdialog.h"
 
@@ -429,10 +429,10 @@ void IMPage::Private::configureIM()
     if (!curIM) {
         return;
     }
-    if (!ConfigDescManager::instance()->inputMethodProxy()) {
+    if (!Global::instance()->inputMethodProxy()) {
         return;
     }
-    QDBusPendingReply< QString > result = ConfigDescManager::instance()->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
+    QDBusPendingReply< QString > result = Global::instance()->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
     result.waitForFinished();
     if (result.isValid()) {
         FcitxAddon* addonEntry = module->findAddonByName(result.value());
@@ -476,14 +476,14 @@ void IMPage::Private::moveUpIM()
 
 void IMPage::Private::save()
 {
-    if (ConfigDescManager::instance()->inputMethodProxy())
-        ConfigDescManager::instance()->inputMethodProxy()->setIMList(m_list);
+    if (Global::instance()->inputMethodProxy())
+        Global::instance()->inputMethodProxy()->setIMList(m_list);
 }
 
 void IMPage::Private::fetchIMList()
 {
-    if (ConfigDescManager::instance()->inputMethodProxy()) {
-        m_list = ConfigDescManager::instance()->inputMethodProxy()->iMList();
+    if (Global::instance()->inputMethodProxy()) {
+        m_list = Global::instance()->inputMethodProxy()->iMList();
         qStableSort(m_list.begin(), m_list.end());
         emit updateIMList(QString());
     }

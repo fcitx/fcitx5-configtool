@@ -17,8 +17,8 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#ifndef CONFIGDESCMANAGER_H
-#define CONFIGDESCMANAGER_H
+#ifndef KCM_FCITX_GLOBAL_H
+#define KCM_FCITX_GLOBAL_H
 
 // Qt
 #include <QHash>
@@ -35,13 +35,13 @@ class FcitxQtConnection;
 namespace Fcitx
 {
 
-class ConfigDescManager : public QObject
+class Global : public QObject
 {
     Q_OBJECT
 public:
-    static ConfigDescManager* instance();
+    static Global* instance();
     static void deInit();
-    virtual ~ConfigDescManager();
+    virtual ~Global();
     FcitxConfigFileDesc* GetConfigDesc(const QString& name);
     FcitxQtConfigUIFactory* factory() { return m_factory; }
     FcitxQtConnection* connection() { return m_connection; }
@@ -53,13 +53,13 @@ public slots:
     void disconnected();
 
 private:
-    ConfigDescManager();
+    Global();
     QHash<QString, FcitxConfigFileDesc*>* m_hash;
     FcitxQtConfigUIFactory* m_factory;
     FcitxQtConnection* m_connection;
     FcitxQtInputMethodProxy* m_inputmethod;
     FcitxQtKeyboardProxy* m_keyboard;
-    static ConfigDescManager* inst;
+    static Global* inst;
 };
 
 }

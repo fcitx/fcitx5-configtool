@@ -3,7 +3,7 @@ include_directories(${PROJECT_BINARY_DIR}/src)
 
 kde4_add_executable(testconfigpage
     testconfigpage.cpp
-    ../configdescmanager.cpp
+    ../global.cpp
     ../configwidget.cpp
     ../subconfig.cpp
     ../subconfigparser.cpp
@@ -26,7 +26,7 @@ target_link_libraries(testconfigpage
 
 kde4_add_executable(testdummyconfig
     testdummyconfig.cpp
-    ../configdescmanager.cpp
+    ../global.cpp
     ../dummyconfig.cpp
     ../verticalscrollarea.cpp
 )

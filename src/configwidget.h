@@ -44,7 +44,7 @@ namespace Fcitx
 
 class DummyConfig;
 
-class ConfigDescManager;
+class Global;
 
 class SubConfigParser;
 

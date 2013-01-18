@@ -48,7 +48,7 @@
 #include "module.h"
 #include "addonselector.h"
 #include "configwidget.h"
-#include "configdescmanager.h"
+#include "global.h"
 #include "subconfigparser.h"
 #include "skinpage.h"
 #include "impage.h"
@@ -94,7 +94,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         FcitxAddonsLoad(m_addons);
     }
 
-    ConfigDescManager::instance();
+    Global::instance();
 
     ui->setupUi(this);
     KPageWidgetItem *page;
@@ -109,7 +109,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     }
 
     {
-        FcitxConfigFileDesc* configDesc = ConfigDescManager::instance()->GetConfigDesc("config.desc");
+        FcitxConfigFileDesc* configDesc = Global::instance()->GetConfigDesc("config.desc");
 
         if (configDesc) {
             m_configPage = new ConfigPage;
@@ -123,7 +123,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     }
 
     {
-        if (ConfigDescManager::instance()->inputMethodProxy()) {
+        if (Global::instance()->inputMethodProxy()) {
             m_uiPage = new UIPage(this);
             page = new KPageWidgetItem(m_uiPage);
             page->setName(i18n("Appearance"));
@@ -175,7 +175,7 @@ Module::~Module()
         delete addonSelector;
     if (m_addons)
         utarray_free(m_addons);
-    ConfigDescManager::deInit();
+    Global::deInit();
 }
 
 FcitxAddon* Module::findAddonByName(const QString& name)
@@ -196,9 +196,9 @@ void Module::load()
     KDialog* configDialog = NULL;
     if (!m_arg.isEmpty()) {
         do {
-            if (!ConfigDescManager::instance()->inputMethodProxy())
+            if (!Global::instance()->inputMethodProxy())
                 break;
-            QDBusPendingReply< QString > result = ConfigDescManager::instance()->inputMethodProxy()->GetIMAddon(m_arg);
+            QDBusPendingReply< QString > result = Global::instance()->inputMethodProxy()->GetIMAddon(m_arg);
             result.waitForFinished();
             if (!result.isValid() || result.value().isEmpty())
                 break;
