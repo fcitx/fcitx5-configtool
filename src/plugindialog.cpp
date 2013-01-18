@@ -24,6 +24,7 @@ namespace Fcitx {
 PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::WindowFlags flags) : KDialog(parent, flags)
     ,m_widget(widget)
 {
+    setWindowTitle(widget->title());
     setWindowIcon(KIcon(widget->icon()));
     setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Reset);
     setMainWidget(widget);
