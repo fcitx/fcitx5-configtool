@@ -29,19 +29,33 @@ PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::W
     setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Reset);
     setMainWidget(widget);
     connect(m_widget, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
+    if (m_widget->asyncSave())
+        connect(m_widget, SIGNAL(saveFinished()), this, SLOT(saveFinished()));
+}
 
-    changed(false);
+void PluginDialog::saveFinished()
+{
+    if (m_widget->asyncSave())
+        m_widget->setEnabled(true);
+    KDialog::slotButtonClicked(KDialog::Ok);
 }
 
 void PluginDialog::slotButtonClicked(int button)
 {
-    if (button == KDialog::Reset) {
-        m_widget->load();
-    } else if (button == KDialog::Ok) {
-        m_widget->save();
+    switch (button) {
+        case KDialog::Reset:
+            m_widget->load();
+            break;
+        case KDialog::Ok:
+            if (m_widget->asyncSave())
+                m_widget->setEnabled(false);
+            m_widget->save();
+            if (!m_widget->asyncSave())
+                KDialog::slotButtonClicked(button);
+            break;
+        default:
+            KDialog::slotButtonClicked(button);
     }
-
-    KDialog::slotButtonClicked(button);
 }
 
 void PluginDialog::changed(bool changed)
