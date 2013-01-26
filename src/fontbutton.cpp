@@ -75,10 +75,13 @@ void FontButton::setFont(const QFont& font)
 {
     m_font = font;
     QString style;
+#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
     if (!font.styleName().isEmpty()) {
         style = font.styleName();
     }
-    else {
+    else
+#endif
+    {
         QStringList styles;
         if (font.bold())
             styles << "Bold";
