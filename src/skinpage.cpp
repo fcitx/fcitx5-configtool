@@ -369,17 +369,16 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
             }
         }
 
-        // destPixmap应该是inputbar和mainbar的合体……
-        // TODO: 这里申请到的destPixmap的大小未必够，需要取mainbar和inputbar高度的较大值. 就是这样喵……
-        int maxHeight;
-        if ( mainBarDestPixmap.height() > inputBarDestPixmap.height() )
-            maxHeight = mainBarDestPixmap.height();
-        else
-            maxHeight = inputBarDestPixmap.height();
-        QPixmap destPixmap(inputBarDestPixmap.width() + 20 + mainBarDestPixmap.width(), maxHeight);
+        // destPixmap includes both inputbar and mainbar
+        int maxHeight = qMax(mainBarDestPixmap.height(),
+                             inputBarDestPixmap.height());
+        QPixmap destPixmap(inputBarDestPixmap.width() + 20 +
+                           mainBarDestPixmap.width(), maxHeight);
         destPixmap.fill(Qt::transparent);
         DrawWidget(destPixmap, inputBarDestPixmap, 0, 0);
-        DrawWidget(destPixmap, mainBarDestPixmap, inputBarDestPixmap.width() + 20, maxHeight - mainBarDestPixmap.height());
+        DrawWidget(destPixmap, mainBarDestPixmap,
+                   inputBarDestPixmap.width() + 20,
+                   maxHeight - mainBarDestPixmap.height());
 
         FcitxConfigFree(&skin.config);
         utarray_done(&placement);
@@ -407,24 +406,11 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
 QColor SkinPage::Private::SkinModel::ConvertColor(FcitxConfigColor floatColor)
 {
     /**
-    * 把浮点颜色转化成RGB整数颜色。
-    */
-
-    short r = (int)(floatColor.r * 256);
-    short g = (int)(floatColor.g * 256);
-    short b = (int)(floatColor.b * 256);
-    switch (r) {
-    case 256 : r=255; break;
-    }
-    switch (g) {
-    case 256 : g=255; break;
-    }
-    switch (b) {
-    case 256 : b=255; break;
-    }
-
-    QColor converted(r, g, b);
-    return converted;
+     * 0-1 to 0-255
+     */
+    return QColor(qBound(0, int(floatColor.r * 256), 255),
+                  qBound(0, int(floatColor.g * 256), 255),
+                  qBound(0, int(floatColor.b * 256), 255));
 }
 
 QPixmap SkinPage::Private::SkinModel::LoadImage(const char* skinDir, const char* fileName)
