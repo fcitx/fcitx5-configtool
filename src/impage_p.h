@@ -22,6 +22,7 @@
 
 // Qt
 #include <QObject>
+#include <QSet>
 
 // KDE
 #include <KWidgetItemDelegate>
@@ -78,6 +79,8 @@ public:
     Module* module;
     KPushButton* defaultLayoutButton;
 
+    QSet<QString> languageSet;
+
 Q_SIGNALS:
     void updateIMList(QString selection);
     void changed();
@@ -98,7 +101,6 @@ public Q_SLOTS:
     void selectCurrentIM(const QModelIndex& index);
     void selectAvailIM(const QModelIndex& index);
     void selectDefaultLayout();
-
 private:
     FcitxQtInputMethodItemList m_list;
 };
@@ -116,6 +118,7 @@ public:
 protected:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
     virtual bool subSortLessThan(const QModelIndex& left, const QModelIndex& right) const;
+    virtual int compareCategories(const QModelIndex& left, const QModelIndex& right) const;
 
 private:
     IMPage::Private* impage_d;

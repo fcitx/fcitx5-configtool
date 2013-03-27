@@ -84,9 +84,10 @@ QVariant IMPage::Private::IMModel::data(const QModelIndex& index, int role) cons
 
     case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
 
-    case KCategorizedSortFilterProxyModel::CategorySortRole:
-
         return languageName(imEntry.langCode());
+
+    case KCategorizedSortFilterProxyModel::CategorySortRole:
+        return imEntry.langCode();
 
     default:
         return QVariant();
@@ -119,17 +120,22 @@ void IMPage::Private::IMModel::filterIMEntryList(const QString& selection)
 {
     impage_d->availIMProxyModel->setCategorizedModel(false);
     FcitxQtInputMethodItemList imEntryList = impage_d->getIMList();
-    beginRemoveRows(QModelIndex(), 0, filteredIMEntryList.size());
+    beginResetModel();
+
+    impage_d->languageSet.clear();
+
     filteredIMEntryList.clear();
-    endRemoveRows();
     int row = 0, selectionRow = -1, count = 0;
     Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
         if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
             count ++;
         }
+
+        if (showOnlyEnabled && im.enabled()) {
+            impage_d->languageSet.insert(im.langCode().left(2));
+        }
     }
     if (count) {
-        beginInsertRows(QModelIndex(), 0, count - 1);
         Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
             if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
                 filteredIMEntryList.append(im);
@@ -138,10 +144,10 @@ void IMPage::Private::IMModel::filterIMEntryList(const QString& selection)
                 row ++;
             }
         }
-        endInsertRows();
-
-        impage_d->availIMProxyModel->sort(0);
     }
+    endResetModel();
+
+    impage_d->availIMProxyModel->sort(0);
 
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
@@ -174,7 +180,11 @@ bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QMode
     if (imEntry->uniqueName() == "fcitx-keyboard-us")
         return true;
 
-    flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked() ? imEntry->langCode().startsWith(KGlobal::locale()->language().left(2)) : true );
+    QString lang = imEntry->langCode().left(2);
+
+    flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked()
+                    ? !lang.isEmpty() && (KGlobal::locale()->language().startsWith(lang) || impage_d->languageSet.contains(lang))
+                    : true );
     if (!impage_d->filterTextEdit->text().isEmpty()) {
         flag = flag &&
                (imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
@@ -188,6 +198,29 @@ bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QMode
 bool IMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left, const QModelIndex& right) const
 {
     return QString(static_cast<FcitxQtInputMethodItem*>(left.internalPointer())->name()).compare((QString)(static_cast<FcitxQtInputMethodItem*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
+}
+
+int IMPage::Private::IMProxyModel::compareCategories(const QModelIndex& left, const QModelIndex& right) const
+{
+    QString l = left.data(CategorySortRole).toString();
+    QString r = right.data(CategorySortRole).toString();
+
+    if (l == r)
+        return 0;
+
+    if (KGlobal::locale()->language() == l)
+        return -1;
+
+    if (KGlobal::locale()->language() == r)
+        return 1;
+
+    bool fl = KGlobal::locale()->language().startsWith(l.left(2));
+    bool fr = KGlobal::locale()->language().startsWith(r.left(2));
+
+    if (fl == fr) {
+        return l.compare(r);
+    }
+    return fl ? -1 : 1;
 }
 
 IMPage::IMPage(Module* parent): QWidget(parent)
