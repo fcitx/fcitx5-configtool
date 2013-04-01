@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-01 16:45-0400\n"
-"PO-Revision-Date: 2013-04-01 16:47-0400\n"
+"POT-Creation-Date: 2013-04-01 16:39-0400\n"
+"PO-Revision-Date: 2013-04-01 16:50-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-china@kde.org>\n"
 "language/zh_TW/)\n"
@@ -105,9 +105,9 @@ msgstr "注意"
 msgid "Available Input Method:"
 msgstr "可用輸入法："
 
-#: src/erroroverlay.cpp:43
-msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
+#: src/erroroverlay.cpp:42
+msgid "Cannot connect to Fcitx dbus, is Fcitx running?"
+msgstr "無法連接到 Fcitx 的 DBus，Fcitx 是否正在運行？"
 
 #: src/uipage.cpp:16
 msgid "Cannot load currently used user interface info"
@@ -239,7 +239,7 @@ msgid ""
 "Options listed here might be overridden by specific input method, usually "
 "ncluding candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
-msgstr "在此列出的選項可能被具體的輸入法覆蓋，通常包括候選字數，上一頁和下一頁翻頁鍵。您可能需要對對應輸入法進行設定來修改這些選項。"
+msgstr ""
 
 #: src/configwidget.cpp:538
 msgid "Other"
@@ -325,9 +325,9 @@ msgstr "Alisha"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
-msgstr "keyboard,input,im,fcitx,輸入法,鍵盤,輸入"
+msgstr ""
 
 #: layout/kbd-layout-viewer.desktop.in:9
 msgid "keyboard;input;im"
-msgstr "keyboard;input;im;輸入法;鍵盤;輸入"
+msgstr ""
 
