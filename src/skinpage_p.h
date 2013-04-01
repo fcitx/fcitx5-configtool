@@ -92,6 +92,7 @@ namespace Fcitx
 class SkinInfo
 {
 public:
+    QString name;
     QString path;
     QPixmap pixmap;
 };
@@ -117,6 +118,7 @@ public:
     KPushButton* deleteSkinButton;
     SkinDelegate* skinDelegate;
     Module* module;
+    KLineEdit* skinField;
 public Q_SLOTS:
     void load();
     void deleteSkin();

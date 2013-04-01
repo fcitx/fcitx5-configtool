@@ -712,27 +712,16 @@ SkinPage::Private::~Private()
 
 void SkinPage::Private::load()
 {
+    if (!skinField)
+        return;
+
     if (m_subConfig)
         delete m_subConfig;
+
     m_subConfig = m_parser.getSubConfig("Skin");
     skinModel->setSkinList(m_subConfig->fileList().toList());
 
-    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("fcitx-classic-ui.desc");
-    FILE* fp = NULL;
-    FcitxConfigFile* cfile = NULL;
-    QString skinName;
-    if (cfdesc)
-        fp = FcitxXDGGetFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
-    if (fp) {
-        cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
-        fclose(fp);
-    }
-    if (cfile) {
-        FcitxConfigOption* option = FcitxConfigFileGetOption(cfile, "ClassicUI", "SkinType");
-        if (option)
-            skinName = QString::fromUtf8(option->rawValue);
-        FcitxConfigFreeConfigFile(cfile);
-    }
+    QString skinName = skinField->text();
 
     int row = 0, currentSkin = -1;
     Q_FOREACH(const SkinInfo & skin, skinModel->skinList()) {
@@ -750,35 +739,6 @@ void SkinPage::Private::load()
 
 void SkinPage::Private::save()
 {
-    if (skinView->currentIndex().isValid()) {
-        QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
-
-        FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("fcitx-classic-ui.desc");
-        FILE* fp = NULL;
-        FcitxConfigFile* cfile = NULL;
-        if (cfdesc)
-            fp = FcitxXDGGetFileWithPrefix("conf", "fcitx-classic-ui.config", "r", NULL);
-        if (fp) {
-            cfile = FcitxConfigParseConfigFileFp(fp, cfdesc);
-            fclose(fp);
-        }
-        if (cfile) {
-            FcitxConfigOption* option = FcitxConfigFileGetOption(cfile, "ClassicUI", "SkinType");
-            if (option) {
-                if (option->rawValue)
-                    free(option->rawValue);
-                option->rawValue = strdup(skinName.toUtf8().constData());
-            }
-            FcitxGenericConfig gconfig;
-            gconfig.configFile = cfile;
-            fp = FcitxXDGGetFileUserWithPrefix("conf", "fcitx-classic-ui.config", "w", NULL);
-            if (fp) {
-                FcitxConfigSaveConfigFileFp(fp, &gconfig, cfdesc);
-                fclose(fp);
-            }
-            FcitxConfigFreeConfigFile(cfile);
-        }
-    }
 }
 
 void SkinPage::Private::deleteSkin()
@@ -857,6 +817,11 @@ void SkinPage::Private::currentSkinChanged()
     if (skinView->currentIndex().isValid()) {
         configureSkinButton->setEnabled(true);
         deleteSkinButton->setEnabled(true);
+
+        if (skinField) {
+            QString skinName = skinView->currentIndex().data(PathRole).toString().section('/', 1, 1);
+            skinField->setText(skinName);
+        }
     } else {
         configureSkinButton->setEnabled(false);
         deleteSkinButton->setEnabled(false);
@@ -908,6 +873,17 @@ void SkinPage::load()
 void SkinPage::save()
 {
     d->save();
+}
+
+void SkinPage::setSkinField(KLineEdit* lineEdit)
+{
+    d->skinField = lineEdit;
+
+    setEnabled(d->skinField != 0);
+
+    if (d->skinField) {
+        load();
+    }
 }
 
 void SkinPage::installButtonClicked()

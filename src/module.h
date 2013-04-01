@@ -86,6 +86,8 @@ public:
 
     FcitxAddon* findAddonByName(const QString& name);
 
+    SkinPage* skinPage() { return m_skinPage; }
+
 private:
     /**
     * UI
@@ -101,6 +103,7 @@ private:
     * addon array
     */
     UT_array* m_addons;
+
     ConfigPage* m_configPage;
     SkinPage* m_skinPage;
     IMPage* m_imPage;

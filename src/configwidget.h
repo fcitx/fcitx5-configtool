@@ -77,6 +77,8 @@ public:
     static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString());
     static KDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
 
+    DummyConfig* config() { return m_config; }
+
 Q_SIGNALS:
     void changed();
 

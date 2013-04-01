@@ -2,9 +2,12 @@
 #include "module.h"
 #include "configwidget.h"
 #include "global.h"
+#include "skinpage.h"
+#include "dummyconfig.h"
 #include <QVBoxLayout>
 #include <QLabel>
 #include <KLocalizedString>
+#include <KLineEdit>
 #include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
@@ -40,6 +43,14 @@ void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)
         }
         else {
             m_label->setText(i18n("No configuration options for %1.").arg(QString::fromUtf8(addon->generalname)));
+        }
+
+        if (name == "fcitx-classic-ui") {
+            FcitxConfigOption* option = FcitxConfigFileGetOption(m_widget->config()->genericConfig()->configFile, "ClassicUI", "SkinType");
+            KLineEdit* lineEdit = static_cast<KLineEdit*>(option->filterArg);
+            m_module->skinPage()->setSkinField(lineEdit);
+        } else {
+            m_module->skinPage()->setSkinField(0);
         }
     }
 }

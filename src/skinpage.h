@@ -23,6 +23,9 @@
 // Qt
 #include <QWidget>
 
+// KDE
+#include <KLineEdit>
+
 // self
 #include "ui_skinpage.h"
 
@@ -37,6 +40,8 @@ class SkinPage : public QWidget
 public:
     SkinPage(Module* module, QWidget* parent = 0);
     virtual ~SkinPage();
+
+    void setSkinField(KLineEdit* lineEdit);
 public Q_SLOTS:
     void load();
     void save();
