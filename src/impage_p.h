@@ -101,6 +101,7 @@ public Q_SLOTS:
     void selectCurrentIM(const QModelIndex& index);
     void selectAvailIM(const QModelIndex& index);
     void selectDefaultLayout();
+    void onConnectStatusChanged(bool connected);
 private:
     FcitxQtInputMethodItemList m_list;
 };

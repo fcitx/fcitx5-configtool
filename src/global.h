@@ -48,7 +48,10 @@ public:
     FcitxQtInputMethodProxy* inputMethodProxy() { return  (m_inputmethod && m_inputmethod->isValid()) ? m_inputmethod : 0; }
     FcitxQtKeyboardProxy* keyboardProxy() { return  (m_keyboard && m_keyboard->isValid()) ? m_keyboard : 0; }
 
-public slots:
+signals:
+    void connectStatusChanged(bool connected);
+
+private slots:
     void connected();
     void disconnected();
 

@@ -33,6 +33,7 @@
 #include "global.h"
 #include "configwidget.h"
 #include "imconfigdialog.h"
+#include "erroroverlay.h"
 
 #define MARGIN 0
 
@@ -287,8 +288,13 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     connect(d->defaultLayoutButton, SIGNAL(clicked(bool)), d, SLOT(selectDefaultLayout()));
     connect(d->availIMView, SIGNAL(doubleClicked(QModelIndex)), d, SLOT(doubleClickAvailIM(QModelIndex)));
     connect(d->currentIMView, SIGNAL(doubleClicked(QModelIndex)), d, SLOT(doubleClickCurrentIM(QModelIndex)));
+    connect(Global::instance(), SIGNAL(connectStatusChanged(bool)), d, SLOT(onConnectStatusChanged(bool)));
 
-    d->fetchIMList();
+    new ErrorOverlay(this);
+
+    if (Global::instance()->connection()) {
+        d->fetchIMList();
+    }
 }
 
 void IMPage::invalidate()
@@ -534,6 +540,10 @@ int IMPage::Private::dependantLayoutValue(int value, int width, int totalWidth) 
     }
 
     return totalWidth - width - value;
+}
+
+void IMPage::Private::onConnectStatusChanged(bool connected) {
+    fetchIMList();
 }
 
 IMPage::~IMPage()

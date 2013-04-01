@@ -99,6 +99,8 @@ void Global::connected()
     m_inputmethod->setTimeout(3000);
     m_keyboard->setTimeout(3000);
 #endif
+
+    emit connectStatusChanged(true);
 }
 
 void Global::disconnected()
@@ -109,6 +111,8 @@ void Global::disconnected()
     if (m_keyboard)
         delete m_keyboard;
     m_keyboard = 0;
+
+    emit connectStatusChanged(false);
 }
 
 FcitxConfigFileDesc* Global::GetConfigDesc(const QString& name)

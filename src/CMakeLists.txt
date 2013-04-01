@@ -20,6 +20,7 @@ set(kcm_SRCS
   fontbutton.cpp
   configpage.cpp
   plugindialog.cpp
+  erroroverlay.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 

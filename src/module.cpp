@@ -55,6 +55,7 @@
 #include "imconfigdialog.h"
 #include "uipage.h"
 #include "configpage.h"
+#include "erroroverlay.h"
 
 K_PLUGIN_FACTORY_DECLARATION(KcmFcitxFactory);
 
@@ -69,10 +70,12 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     addonSelector(0),
     m_configPage(0),
     m_skinPage(0),
-    m_imPage(0)
+    m_imPage(0),
+    m_uiPage(0)
 {
     bindtextdomain("fcitx", LOCALEDIR);
     bind_textdomain_codeset("fcitx", "UTF-8");
+    FcitxLogSetLevel(FCITX_NONE);
 
     FcitxQtInputMethodItem::registerMetaType();
     FcitxQtKeyboardLayout::registerMetaType();
