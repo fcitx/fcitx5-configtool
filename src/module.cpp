@@ -145,16 +145,6 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         }
     }
 
-    {
-        m_skinPage = new SkinPage(this);
-        page = new KPageWidgetItem(m_skinPage);
-        page->setName(i18n("Manage Skin"));
-        page->setIcon(KIcon("get-hot-new-stuff"));
-        page->setHeader(i18n("Manage Fcitx Skin"));
-        ui->pageWidget->addPage(page);
-        connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
-    }
-
     if (m_addons) {
         for (FcitxAddon* addon = (FcitxAddon *) utarray_front(m_addons);
                 addon != NULL;
@@ -190,6 +180,21 @@ FcitxAddon* Module::findAddonByName(const QString& name)
     return addon;
 }
 
+SkinPage* Module::skinPage() {
+
+    if (!m_skinPage) {
+        KPageWidgetItem *page;
+        m_skinPage = new SkinPage(this);
+        page = new KPageWidgetItem(m_skinPage);
+        page->setName(i18n("Manage Skin"));
+        page->setIcon(KIcon("get-hot-new-stuff"));
+        page->setHeader(i18n("Manage Fcitx Skin"));
+        ui->pageWidget->addPage(page);
+        connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
+    }
+
+    return m_skinPage;
+}
 
 void Module::load()
 {;

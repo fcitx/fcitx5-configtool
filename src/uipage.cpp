@@ -46,11 +46,19 @@ void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)
         }
 
         if (name == "fcitx-classic-ui") {
-            FcitxConfigOption* option = FcitxConfigFileGetOption(m_widget->config()->genericConfig()->configFile, "ClassicUI", "SkinType");
-            KLineEdit* lineEdit = static_cast<KLineEdit*>(option->filterArg);
-            m_module->skinPage()->setSkinField(lineEdit);
-        } else {
-            m_module->skinPage()->setSkinField(0);
+            do {
+                FcitxConfigOption* option = FcitxConfigFileGetOption(m_widget->config()->genericConfig()->configFile, "ClassicUI", "SkinType");
+                // this should not happen,  but ,we just protect it
+                if (!option)
+                    break;
+
+                // this should not happen,  but ,we just protect it
+                KLineEdit* lineEdit = static_cast<KLineEdit*>(option->filterArg);
+                if (!lineEdit)
+                    break;
+
+                m_module->skinPage()->setSkinField(lineEdit);
+            } while(0);
         }
     }
 }

@@ -86,7 +86,7 @@ public:
 
     FcitxAddon* findAddonByName(const QString& name);
 
-    SkinPage* skinPage() { return m_skinPage; }
+    SkinPage* skinPage();
 
 private:
     /**
