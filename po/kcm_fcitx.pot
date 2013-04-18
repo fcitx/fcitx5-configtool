@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-01 16:45-0400\n"
+"POT-Creation-Date: 2013-04-18 15:37-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,23 +41,15 @@ msgstr ""
 msgid "Search Addons"
 msgstr ""
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:583
+#: src/addonselector.cpp:385 src/configwidget.cpp:576
 msgid "Show &Advance option"
 msgstr ""
 
-#: src/configwidget.cpp:137
-msgid "Not all configuration can be reloaded immediately."
-msgstr ""
-
-#: src/configwidget.cpp:138
-msgid "Attention"
-msgstr ""
-
-#: src/configwidget.cpp:432
+#: src/configwidget.cpp:425
 msgid "<b>Other</b>"
 msgstr ""
 
-#: src/configwidget.cpp:538
+#: src/configwidget.cpp:531
 msgid "Other"
 msgstr ""
 

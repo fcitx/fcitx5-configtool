@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-01 16:45-0400\n"
+"POT-Creation-Date: 2013-04-18 15:37-0400\n"
 "PO-Revision-Date: 2013-04-01 16:45-0400\n"
 "Last-Translator: Weng Xuetian <wengxt@gmail.com>\n"
 "Language-Team: Chinese Simplified <kde-china@kde.org>\n"
@@ -76,7 +76,7 @@ msgstr "<b>输入法设置：</b>"
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>键盘布局：</b>"
 
-#: src/configwidget.cpp:432
+#: src/configwidget.cpp:425
 msgid "<b>Other</b>"
 msgstr "<b>其它</b>"
 
@@ -96,10 +96,6 @@ msgstr "附加组件配置"
 #: src/module.cpp:132 src/module.cpp:134
 msgid "Appearance"
 msgstr "外观"
-
-#: src/configwidget.cpp:138
-msgid "Attention"
-msgstr "注意"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -225,10 +221,6 @@ msgstr "多语言"
 msgid "No configuration options for %1."
 msgstr "%1 无配置选项。"
 
-#: src/configwidget.cpp:137
-msgid "Not all configuration can be reloaded immediately."
-msgstr "并非所有设置都可以被立即重新加载。"
-
 #. i18n: file: src/impage.ui:96
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
@@ -244,7 +236,7 @@ msgstr ""
 "在此列出的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页翻页"
 "键。您可能需要对对应输入法进行配置来修改这些选项。"
 
-#: src/configwidget.cpp:538
+#: src/configwidget.cpp:531
 msgid "Other"
 msgstr "其他"
 
@@ -274,7 +266,7 @@ msgstr "选择字体"
 msgid "Select default keyboard layout"
 msgstr "选择默认键盘布局"
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:583
+#: src/addonselector.cpp:385 src/configwidget.cpp:576
 msgid "Show &Advance option"
 msgstr "显示高级选项(&A)"
 
@@ -334,3 +326,8 @@ msgstr "keyboard,input,im,fcitx,输入法,小企鹅,键盘,输入"
 msgid "keyboard;input;im"
 msgstr "keyboard;input;im;输入法;键盘;输入"
 
+#~ msgid "Attention"
+#~ msgstr "注意"
+
+#~ msgid "Not all configuration can be reloaded immediately."
+#~ msgstr "并非所有设置都可以被立即重新加载。"

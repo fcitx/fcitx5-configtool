@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-01 16:45-0400\n"
+"POT-Creation-Date: 2013-04-18 15:37-0400\n"
 "PO-Revision-Date: 2013-01-13 08:51+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/fcitx/"
@@ -70,7 +70,7 @@ msgstr "<b>Einstellungen Eingabemethode:</b>"
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>Tastatur Layout:</b>"
 
-#: src/configwidget.cpp:432
+#: src/configwidget.cpp:425
 msgid "<b>Other</b>"
 msgstr "<b>Weitere</b>"
 
@@ -90,10 +90,6 @@ msgstr "Konfiguration Addons"
 #: src/module.cpp:132 src/module.cpp:134
 msgid "Appearance"
 msgstr "Aussehen"
-
-#: src/configwidget.cpp:138
-msgid "Attention"
-msgstr "Achtung"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -221,10 +217,6 @@ msgstr "Mehrsprachig"
 msgid "No configuration options for %1."
 msgstr "Keine Optionen zur Konfiguration für %1"
 
-#: src/configwidget.cpp:137
-msgid "Not all configuration can be reloaded immediately."
-msgstr "Nicht alle Konfigurationen können gleich geladen werden"
-
 #. i18n: file: src/impage.ui:96
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
@@ -238,7 +230,7 @@ msgid ""
 "need go to configuration of corresponding input method to change them."
 msgstr ""
 
-#: src/configwidget.cpp:538
+#: src/configwidget.cpp:531
 msgid "Other"
 msgstr "Andere"
 
@@ -268,7 +260,7 @@ msgstr "Font auswählen"
 msgid "Select default keyboard layout"
 msgstr "Standard Tastaturlayout auswählen"
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:583
+#: src/addonselector.cpp:385 src/configwidget.cpp:576
 msgid "Show &Advance option"
 msgstr "Erweiterte &Einstellungen anzeigen"
 
@@ -330,3 +322,9 @@ msgstr ""
 #: layout/kbd-layout-viewer.desktop.in:9
 msgid "keyboard;input;im"
 msgstr ""
+
+#~ msgid "Attention"
+#~ msgstr "Achtung"
+
+#~ msgid "Not all configuration can be reloaded immediately."
+#~ msgstr "Nicht alle Konfigurationen können gleich geladen werden"
