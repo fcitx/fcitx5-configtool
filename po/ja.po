@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-25 00:02-0400\n"
-"PO-Revision-Date: 2013-04-18 19:41+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2013-04-26 00:44-0400\n"
+"PO-Revision-Date: 2013-04-25 13:31+0000\n"
+"Last-Translator: しろう <>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -153,7 +153,7 @@ msgstr "最初の候補"
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
-msgstr ""
+msgstr "フォーム"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
@@ -236,7 +236,7 @@ msgstr ""
 
 #: src/configwidget.cpp:531
 msgid "Other"
-msgstr ""
+msgstr "その他"
 
 #: src/skinpage.cpp:222
 msgid "Other candidate"
@@ -244,11 +244,11 @@ msgstr "他の候補"
 
 #: src/addonselector.cpp:378
 msgid "Search Addons"
-msgstr ""
+msgstr "アドオンの検索"
 
 #: src/impage.cpp:254
 msgid "Search Input Method"
-msgstr ""
+msgstr "入力メソッドの検索"
 
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -284,7 +284,7 @@ msgstr ""
 
 #: src/impage.cpp:46
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 #: src/subconfigwidget.cpp:211
 msgid ""
@@ -320,8 +320,8 @@ msgstr "名前"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
-msgstr ""
+msgstr "keyboard,input,im,fcitx"
 
 #: layout/kbd-layout-viewer.desktop.in:9
 msgid "keyboard;input;im"
-msgstr ""
+msgstr "keyboard;input;im"
