@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-26 00:44-0400\n"
-"PO-Revision-Date: 2013-04-25 13:31+0000\n"
-"Last-Translator: しろう <>\n"
+"POT-Creation-Date: 2013-05-12 00:02-0400\n"
+"PO-Revision-Date: 2013-05-11 04:06+0000\n"
+"Last-Translator: いくや あわしろ <ikunya@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -84,7 +84,7 @@ msgstr "<b>入力メソッド選択:</b>"
 
 #: layout/main.cpp:34
 msgid "A general keyboard layout viewer"
-msgstr ""
+msgstr "一般的なキーボドレイアウトビューアー"
 
 #: src/module.cpp:144
 msgid "Addon Config"
@@ -125,7 +125,7 @@ msgstr "コピー"
 
 #: src/subconfigwidget.cpp:226
 msgid "Copy failed"
-msgstr "コピーが失敗しました"
+msgstr "コピーに失敗しました"
 
 #: src/module.cpp:88
 msgid "Copyright 2012 Xuetian Weng"
@@ -138,7 +138,7 @@ msgstr "現在の入力メソッド:"
 
 #: src/imconfigdialog.cpp:45
 msgid "Default"
-msgstr "標準設定"
+msgstr "既定"
 
 #: src/module.cpp:84
 msgid "Fcitx Configuration Module"
@@ -158,7 +158,7 @@ msgstr "フォーム"
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
 msgid "Get New &Skin..."
-msgstr "新スキンを取得 (&S) ..."
+msgstr "新しいスキンを取得 (&S) ..."
 
 #: src/module.cpp:120
 msgid "Global Config"
@@ -191,11 +191,11 @@ msgstr "キーボードレイアウトグループ (0-3)"
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
 msgid "Keyboard layout to use when no input method active"
-msgstr "どの入力メソッドが有効でない場合のキーボードレイアウト"
+msgstr "どの入力メソッドも有効でない場合のキーボードレイアウト"
 
 #: layout/main.cpp:42
 msgid "Keyboard layout variant"
-msgstr ""
+msgstr "キーボードレイアウトのバリアント"
 
 #: layout/kbd-layout-viewer.desktop.in:6
 msgid "Keyboard layout viewer"
@@ -279,8 +279,8 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"最初の入力メソッドは無効の状態で使用されます。通常は、最初の<b>キーボード</b>"
-"または<b>キーボード -<i>レイアウト名</i></b>で追加できます。"
+"最初の入力メソッドは [直接入力] のときに使用されます。通常は <b>キーボード</"
+"b> または <b>キーボード-<i>レイアウト名</i></b> を最上段に指定してください。"
 
 #: src/impage.cpp:46
 msgid "Unknown"
@@ -291,8 +291,8 @@ msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
 msgstr ""
-"ユーザー設定がありｒません。システム全体のファイルを開くか、システム全体の"
-"ファイルをユーザーのファイルとしてコピーしますか？"
+"ユーザー設定がありません。システム全体のファイルを開くか、システム全体のファ"
+"イルをユーザーのファイルとしてコピーしますか？"
 
 #: layout/kbd-layout-viewer.desktop.in:7
 msgid "View keyboard layout"
@@ -300,11 +300,11 @@ msgstr "キーボードレイアウトを見る"
 
 #: src/subconfigwidget.cpp:214
 msgid "View system"
-msgstr ""
+msgstr "システムの表示"
 
 #: src/subconfigwidget.cpp:212
 msgid "What to do"
-msgstr ""
+msgstr "したいこと"
 
 #: src/module.cpp:92
 msgid "Xuetian Weng"
@@ -312,11 +312,11 @@ msgstr "Xuetian Weng"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "メールアドレス"
+msgstr "shirou.faw@gmail.com,ikunya@gmail.com"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "名前"
+msgstr "r_rudi, ikunya"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
