@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# mar well <marwell.1980@freenet.de>, 2012
+# mar well <marwell.1980@freenet.de>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-25 00:02-0400\n"
-"PO-Revision-Date: 2013-04-18 19:41+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2013-05-22 00:02-0400\n"
+"PO-Revision-Date: 2013-05-22 03:25+0000\n"
+"Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
 "Language: de\n"
@@ -98,7 +98,7 @@ msgstr "Verfügbare Eingabemethoden"
 
 #: src/erroroverlay.cpp:43
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr ""
+msgstr "DBus kann sich nicht mit FCITX verbinden. Läuft FCITX?"
 
 #: src/uipage.cpp:16
 msgid "Cannot load currently used user interface info"
@@ -116,7 +116,7 @@ msgstr "Fcitx Addon konfigurieren"
 
 #: src/kcm_fcitx.desktop.in:12
 msgid "Configure Input Method"
-msgstr ""
+msgstr "FCITX konfigurieren"
 
 #: src/subconfigwidget.cpp:213
 msgid "Copy"
@@ -177,11 +177,11 @@ msgstr "Standard Eingabemethode"
 
 #: layout/main.cpp:32 layout/main.cpp:59
 msgid "Keyboard Layout viewer"
-msgstr ""
+msgstr "Ansicht Tastaturlayout"
 
 #: layout/main.cpp:40
 msgid "Keyboard layout"
-msgstr ""
+msgstr "Tastaturlayout"
 
 #: layout/main.cpp:38
 msgid "Keyboard layout group (0-3)"
@@ -229,6 +229,10 @@ msgid ""
 "ncluding candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
+"Hier aufgeführte Einstellungen, z.B. Kanditatnummer, Hotkeys für nächste/"
+"vorherige Seite der Kandidaten, werden von Einstellungen einiger "
+"Eingabemethoden beeinflusst. Einstellungen müssen eventuell in der "
+"Konfiguration der Eingabemethode vorgenommen werden."
 
 #: src/configwidget.cpp:531
 msgid "Other"
@@ -244,7 +248,7 @@ msgstr "Addons suchen"
 
 #: src/impage.cpp:254
 msgid "Search Input Method"
-msgstr "Eingabemethode suchen"
+msgstr "Eingabemethoden filtern"
 
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -293,7 +297,7 @@ msgstr ""
 
 #: layout/kbd-layout-viewer.desktop.in:7
 msgid "View keyboard layout"
-msgstr ""
+msgstr "Tastaturlayout ansehen"
 
 #: src/subconfigwidget.cpp:214
 msgid "View system"
@@ -309,11 +313,11 @@ msgstr "Xuetian Weng"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "marwell.1980@freenet.de"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Marcus Wellendorf"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
