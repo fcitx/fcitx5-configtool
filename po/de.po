@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-05-22 00:02-0400\n"
-"PO-Revision-Date: 2013-05-22 03:25+0000\n"
+"POT-Creation-Date: 2013-05-23 00:02-0400\n"
+"PO-Revision-Date: 2013-05-22 05:51+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
@@ -81,7 +81,7 @@ msgstr "<b>Auswahl Eingabemethode:</b>"
 
 #: layout/main.cpp:34
 msgid "A general keyboard layout viewer"
-msgstr ""
+msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
 
 #: src/module.cpp:144
 msgid "Addon Config"
@@ -185,7 +185,7 @@ msgstr "Tastaturlayout"
 
 #: layout/main.cpp:38
 msgid "Keyboard layout group (0-3)"
-msgstr ""
+msgstr "Tastaturlayout - Gruppe (0-3)"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
@@ -194,11 +194,11 @@ msgstr "Verwendetes Tastaturlayout wenn keine Eingabemethode Aktiv ist"
 
 #: layout/main.cpp:42
 msgid "Keyboard layout variant"
-msgstr ""
+msgstr "Variante Tastaturlayout"
 
 #: layout/kbd-layout-viewer.desktop.in:6
 msgid "Keyboard layout viewer"
-msgstr ""
+msgstr "Tastaturlayout-Betrachter"
 
 #: src/module.cpp:194
 msgid "Manage Fcitx Skin"
