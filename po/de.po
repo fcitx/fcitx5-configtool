@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-05-23 00:02-0400\n"
-"PO-Revision-Date: 2013-05-22 05:51+0000\n"
+"POT-Creation-Date: 2013-06-02 00:02-0400\n"
+"PO-Revision-Date: 2013-06-01 10:04+0000\n"
 "Last-Translator: mar well <marwell.1980@freenet.de>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/fcitx/language/"
 "de/)\n"
@@ -321,8 +321,8 @@ msgstr "Marcus Wellendorf"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
-msgstr ""
+msgstr "Tastatur,Eingabe,Eingabemethode,fcitx"
 
 #: layout/kbd-layout-viewer.desktop.in:9
 msgid "keyboard;input;im"
-msgstr ""
+msgstr "Tastatur;Eingabe;Eingabemethode"
