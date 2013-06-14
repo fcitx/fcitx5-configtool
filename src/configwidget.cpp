@@ -33,7 +33,6 @@
 // KDE
 #include <KColorButton>
 #include <KComboBox>
-#include <KKeySequenceWidget>
 #include <KLineEdit>
 #include <KRun>
 #include <KPushButton>
@@ -48,6 +47,7 @@
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/hotkey.h>
 #include <fcitx-config/xdg.h>
+#include <fcitx-qt/fcitxqtkeysequencewidget.h>
 
 // self
 #include "config.h"
@@ -65,7 +65,7 @@
 namespace Fcitx
 {
 
-static bool KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey);
+static bool KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxHotkey* hotkey);
 static QKeySequence HotkeyToKeySequence(FcitxHotkey* hotkey);
 
 static
@@ -268,15 +268,18 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     break;
 
     case T_Hotkey: {
-        KKeySequenceWidget* keyseq1 = new KKeySequenceWidget();
-        KKeySequenceWidget* keyseq2 = new KKeySequenceWidget();
+        FcitxQtKeySequenceWidget* keyseq1 = new FcitxQtKeySequenceWidget();
+        FcitxQtKeySequenceWidget* keyseq2 = new FcitxQtKeySequenceWidget();
         QHBoxLayout* hbox = new QHBoxLayout();
         hbox->setMargin(0);
         QWidget* widget = new QWidget(this);
         keyseq1->setMultiKeyShortcutsAllowed(false);
-        keyseq1->setModifierlessAllowed(true);
+        keyseq1->setModifierOnlyAllowed(codesc2->constrain.hotkeyConstrain.allowModifierOnly);
+        keyseq1->setModifierlessAllowed(!codesc2->constrain.hotkeyConstrain.disallowNoModifer);
         keyseq1->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         keyseq2->setMultiKeyShortcutsAllowed(false);
+        keyseq2->setModifierOnlyAllowed(codesc2->constrain.hotkeyConstrain.allowModifierOnly);
+        keyseq1->setModifierlessAllowed(!codesc2->constrain.hotkeyConstrain.disallowNoModifer);
         keyseq2->setModifierlessAllowed(true);
         keyseq2->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         hbox->addWidget(keyseq1);
@@ -286,18 +289,22 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
         inputWidget = widget;
 
         if (!oldarg) {
-            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence)), this, SIGNAL(changed()));
-            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence)), this, SIGNAL(changed()));
+            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence,FcitxQtModifierSide)), this, SIGNAL(changed()));
+            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence,FcitxQtModifierSide)), this, SIGNAL(changed()));
             argument = hbox;
         }
         else {
             QHBoxLayout* hbox = static_cast<QHBoxLayout*>(oldarg);
-            KKeySequenceWidget* oldkeyseq1 = static_cast<KKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            KKeySequenceWidget* oldkeyseq2 = static_cast<KKeySequenceWidget*>(hbox->itemAt(1)->widget());
-            connect(oldkeyseq1, SIGNAL(keySequenceChanged(QKeySequence)), keyseq1, SLOT(setKeySequence(QKeySequence)));
-            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence)), oldkeyseq1, SLOT(setKeySequence(QKeySequence)));
-            connect(oldkeyseq2, SIGNAL(keySequenceChanged(QKeySequence)), keyseq2, SLOT(setKeySequence(QKeySequence)));
-            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence)), oldkeyseq2, SLOT(setKeySequence(QKeySequence)));
+            FcitxQtKeySequenceWidget* oldkeyseq1 = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
+            FcitxQtKeySequenceWidget* oldkeyseq2 = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
+            connect(oldkeyseq1, SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
+                    keyseq1,    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(oldkeyseq2, SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
+                    keyseq2,    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(keyseq1,    SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
+                    oldkeyseq1, SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(keyseq2,    SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
+                    oldkeyseq2, SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
         }
     }
 
@@ -741,13 +748,26 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
             FcitxHotkey* hotkey = (FcitxHotkey*) value;
 
             QHBoxLayout* hbox = static_cast<QHBoxLayout*>(arg);
-            KKeySequenceWidget* keyseq[2];
-            keyseq[0] = static_cast<KKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            keyseq[1] = static_cast<KKeySequenceWidget*>(hbox->itemAt(1)->widget());
+            FcitxQtKeySequenceWidget* keyseq[2];
+            keyseq[0] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
+            keyseq[1] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
 
             int j;
             for (j = 0; j < 2; j ++) {
-                keyseq[j]->setKeySequence(HotkeyToKeySequence(&hotkey[j]));
+                FcitxQtModifierSide side = MS_Unknown;
+                if (hotkey[j].sym == FcitxKey_Control_L
+                 || hotkey[j].sym == FcitxKey_Alt_L
+                 || hotkey[j].sym == FcitxKey_Shift_L
+                 || hotkey[j].sym == FcitxKey_Super_L) {
+                    side = MS_Left;
+                }
+                if (hotkey[j].sym == FcitxKey_Control_R
+                 || hotkey[j].sym == FcitxKey_Alt_R
+                 || hotkey[j].sym == FcitxKey_Shift_R
+                 || hotkey[j].sym == FcitxKey_Super_R) {
+                    side = MS_Right;
+                }
+                keyseq[j]->setKeySequence(HotkeyToKeySequence(&hotkey[j]), side);
             }
         }
 
@@ -833,15 +853,15 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
         case T_Hotkey: {
             QHBoxLayout* hbox = static_cast<QHBoxLayout*>(arg);
-            KKeySequenceWidget* keyseq[2];
-            keyseq[0] = static_cast<KKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            keyseq[1] = static_cast<KKeySequenceWidget*>(hbox->itemAt(1)->widget());
+            FcitxQtKeySequenceWidget* keyseq[2];
+            keyseq[0] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
+            keyseq[1] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
             int j = 0;
 
             FcitxHotkey* hotkey = (FcitxHotkey*) value;
 
             for (j = 0; j < 2 ; j ++) {
-                if (KeySequenceToHotkey(keyseq[j]->keySequence(), &hotkey[j])) {
+                if (KeySequenceToHotkey(keyseq[j]->keySequence(), keyseq[j]->modifierSide(), &hotkey[j])) {
                     char* keystring = FcitxHotkeyGetKeyString(hotkey[j].sym, hotkey[j].state);
                     fcitx_utils_string_swap(&hotkey[j].desc, keystring);
                     fcitx_utils_free(keystring);
@@ -880,7 +900,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
 
 bool
-KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey)
+KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxHotkey* hotkey)
 {
     if (keyseq.count() != 1)
         return false;
@@ -888,6 +908,23 @@ KeySequenceToHotkey(const QKeySequence& keyseq, FcitxHotkey* hotkey)
     int state = keyseq[0] & Qt::KeyboardModifierMask;
     int sym = 0;
     keyQtToSym(key, Qt::KeyboardModifiers(state), sym, hotkey->state);
+    if (side == MS_Right) {
+        switch (sym) {
+            case FcitxKey_Control_L:
+                sym = FcitxKey_Control_R;
+                break;
+            case FcitxKey_Alt_L:
+                sym = FcitxKey_Alt_R;
+                break;
+            case FcitxKey_Shift_L:
+                sym = FcitxKey_Shift_R;
+                break;
+            case FcitxKey_Super_L:
+                sym = FcitxKey_Super_R;
+                break;
+        }
+    }
+
     hotkey->sym = (FcitxKeySym) sym;
 
     return true;
