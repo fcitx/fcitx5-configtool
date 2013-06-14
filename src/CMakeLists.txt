@@ -14,7 +14,6 @@ set(kcm_SRCS
   impage.cpp
   uipage.cpp
   imconfigdialog.cpp
-  qtkeytrans.cpp
   dummyconfig.cpp
   verticalscrollarea.cpp
   fontbutton.cpp

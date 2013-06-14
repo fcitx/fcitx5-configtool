@@ -9,7 +9,6 @@ kde4_add_executable(testconfigpage
     ../subconfigparser.cpp
     ../subconfigpattern.cpp
     ../subconfigwidget.cpp
-    ../qtkeytrans.cpp
     ../dummyconfig.cpp
     ../verticalscrollarea.cpp
     ../fontbutton.cpp

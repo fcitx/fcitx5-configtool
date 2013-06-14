@@ -54,7 +54,6 @@
 #include "configwidget.h"
 #include "subconfigparser.h"
 #include "subconfigwidget.h"
-#include "qtkeytrans.h"
 #include "global.h"
 #include "dummyconfig.h"
 #include "verticalscrollarea.h"
@@ -904,27 +903,9 @@ KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxH
 {
     if (keyseq.count() != 1)
         return false;
-    int key = keyseq[0] & (~Qt::KeyboardModifierMask);
-    int state = keyseq[0] & Qt::KeyboardModifierMask;
-    int sym = 0;
-    keyQtToSym(key, Qt::KeyboardModifiers(state), sym, hotkey->state);
-    if (side == MS_Right) {
-        switch (sym) {
-            case FcitxKey_Control_L:
-                sym = FcitxKey_Control_R;
-                break;
-            case FcitxKey_Alt_L:
-                sym = FcitxKey_Alt_R;
-                break;
-            case FcitxKey_Shift_L:
-                sym = FcitxKey_Shift_R;
-                break;
-            case FcitxKey_Super_L:
-                sym = FcitxKey_Super_R;
-                break;
-        }
-    }
 
+    int sym = 0;
+    FcitxQtKeySequenceWidget::keyQtToFcitx(keyseq[0], side, sym, hotkey->state);
     hotkey->sym = (FcitxKeySym) sym;
 
     return true;
@@ -933,15 +914,10 @@ KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxH
 QKeySequence
 HotkeyToKeySequence(FcitxHotkey* hotkey)
 {
-    int state = hotkey->state;
+    uint state = hotkey->state;
     FcitxKeySym keyval = hotkey->sym;
 
-    Qt::KeyboardModifiers qstate = Qt::NoModifier;
-
-    int key;
-    symToKeyQt((int) keyval, state, key, qstate);
-
-    return QKeySequence(key | qstate);
+    return QKeySequence(FcitxQtKeySequenceWidget::keyFcitxToQt((int) keyval, state));
 }
 
 }
