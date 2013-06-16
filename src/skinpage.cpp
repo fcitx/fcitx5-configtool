@@ -369,13 +369,9 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
             }
         }
 
-        // destPixmap应该是inputbar和mainbar的合体……
-        // TODO: 这里申请到的destPixmap的大小未必够，需要取mainbar和inputbar高度的较大值. 就是这样喵……
-        int maxHeight;
-        if ( mainBarDestPixmap.height() > inputBarDestPixmap.height() )
-            maxHeight = mainBarDestPixmap.height();
-        else
-            maxHeight = inputBarDestPixmap.height();
+        // destPixmap should be the combination of inputbar and mainbar.
+        // Here the despPixmap.height() should be max value of mainBar.height() and inputbar.height.
+        int maxHeight = qMax(mainBarDestPixmap.height(), inputBarDestPixmap.height());
         QPixmap destPixmap(inputBarDestPixmap.width() + 20 + mainBarDestPixmap.width(), maxHeight);
         destPixmap.fill(Qt::transparent);
         DrawWidget(destPixmap, inputBarDestPixmap, 0, 0);
@@ -385,7 +381,6 @@ QPixmap SkinPage::Private::SkinModel::drawSkinPreview(const QString& path)
         utarray_done(&placement);
 
         return destPixmap;
-        // return inputBarDestPixmap;
     } else {
         QFont inputFont(qApp->font());
         QFontMetrics fm(inputFont);
