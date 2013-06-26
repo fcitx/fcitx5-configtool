@@ -23,10 +23,12 @@
 // Qt
 #include <QObject>
 #include <QSet>
+#include <QAbstractItemModel>
+#include <QSortFilterProxyModel>
+#include <QStyledItemDelegate>
 
 // KDE
 #include <KWidgetItemDelegate>
-#include <KCategorizedSortFilterProxyModel>
 #include <KLocale>
 
 // Fcitx
@@ -35,12 +37,22 @@
 // self
 #include "impage.h"
 
+enum {
+    FcitxRowTypeRole = 0x324da8fc,
+    FcitxLanguageRole,
+    FcitxIMUniqueNameRole
+};
+
+enum {
+    LanguageType,
+    IMType
+};
+
+class QTreeView;
 class QCheckBox;
-class KCategorizedView;
 class QListView;
 class KPushButton;
 class KLineEdit;
-class KCategoryDrawer;
 namespace Fcitx
 {
 
@@ -56,7 +68,7 @@ public:
     int dependantLayoutValue(int value, int width, int totalWidth) const;
 
     class IMModel;
-
+    class AvailIMModel;
     class IMProxyModel;
 
     class IMDelegate;
@@ -67,22 +79,19 @@ public:
     KPushButton* moveDownButton;
     KPushButton* configureButton;
     QListView* currentIMView;
-    KCategorizedView* availIMView;
+    QTreeView* availIMView;
     KLineEdit* filterTextEdit;
 
-    IMModel* availIMModel;
+    AvailIMModel* availIMModel;
     IMProxyModel* availIMProxyModel;
-    KCategoryDrawer* categoryDrawer;
 
     IMModel* currentIMModel;
     QCheckBox* onlyCurrentLanguageCheckBox;
     Module* module;
     KPushButton* defaultLayoutButton;
 
-    QSet<QString> languageSet;
-
 Q_SIGNALS:
-    void updateIMList(QString selection);
+    void updateIMList(const FcitxQtInputMethodItemList& list, const QString& selection);
     void changed();
 
 public Q_SLOTS:
@@ -107,22 +116,64 @@ private:
 };
 
 
-class IMPage::Private::IMProxyModel
-    : public KCategorizedSortFilterProxyModel
+class IMDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    explicit IMDelegate(QObject* parent = 0);
+    virtual ~IMDelegate();
+
+    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+};
+
+class IMPage::Private::IMProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 
 public:
-    IMProxyModel(IMPage::Private *impage_d, QObject* parent = 0);
+    IMProxyModel(QAbstractItemModel* sourceModel);
     virtual ~IMProxyModel();
+    void setFilterText(const QString& text);
+    void setShowOnlyCurrentLanguage(bool checked);
+public Q_SLOTS:
+    void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
 
 protected:
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
-    virtual bool subSortLessThan(const QModelIndex& left, const QModelIndex& right) const;
-    virtual int compareCategories(const QModelIndex& left, const QModelIndex& right) const;
+    virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
+    int compareCategories(const QModelIndex& left, const QModelIndex& right) const;
 
 private:
-    IMPage::Private* impage_d;
+    bool filterLanguage(const QModelIndex& index) const;
+    bool filterIM(const QModelIndex& index) const;
+
+    bool m_showOnlyCurrentLanguage;
+    QString m_filterText;
+    QSet< QString > m_languageSet;
+};
+
+
+class IMPage::Private::AvailIMModel : public QAbstractItemModel
+{
+    Q_OBJECT
+    void m_languageSet();
+
+public:
+    AvailIMModel(QObject* parent = 0);
+    virtual ~AvailIMModel();
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const;
+    virtual QModelIndex parent(const QModelIndex& child) const;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
+Q_SIGNALS:
+    void select(QModelIndex index);
+    void updateIMListFinished();
+public Q_SLOTS:
+    void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
+private:
+    QList<QPair<QString, FcitxQtInputMethodItemList> > filteredIMEntryList;
 };
 
 class IMPage::Private::IMModel : public QAbstractListModel
@@ -130,22 +181,17 @@ class IMPage::Private::IMModel : public QAbstractListModel
     Q_OBJECT
 public:
 
-    IMModel(IMPage::Private *impage_d, QObject* parent = 0);
+    IMModel(QObject* parent = 0);
     virtual ~IMModel();
 
     virtual QModelIndex index(int row, int column = 0, const QModelIndex& parent = QModelIndex()) const;
     virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const;
-    virtual bool setData(const QModelIndex& index, const QVariant& value, int role = Qt::EditRole);
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
-
-    void setShowOnlyEnabled(bool show);
 Q_SIGNALS:
     void select(QModelIndex index);
-private Q_SLOTS:
-    void filterIMEntryList(const QString& selection = QString());
+public Q_SLOTS:
+    void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
 private:
-    Private* impage_d;
-    bool showOnlyEnabled;
     FcitxQtInputMethodItemList filteredIMEntryList;
 };
 

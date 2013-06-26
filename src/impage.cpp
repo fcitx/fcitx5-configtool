@@ -18,11 +18,13 @@
  ***************************************************************************/
 
 // Qt
+#include <QStandardItemModel>
+#include <QStyledItemDelegate>
 #include <QPainter>
 
 // KDE
-#include <KCategorizedSortFilterProxyModel>
-#include <KCategoryDrawer>
+#include <KStringHandler>
+
 #include <fcitx-qt/fcitxqtinputmethodproxy.h>
 
 // self
@@ -40,6 +42,22 @@
 namespace Fcitx
 {
 
+static bool languageIsUnknown(const QString& langCode)
+{
+    if (langCode.isEmpty()) {
+        return true;
+    }
+    else if (langCode == "*")
+        return false;
+    else {
+        const QString result = KGlobal::locale()->languageCodeToName(langCode);
+        if (result.isEmpty()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 static QString languageName(const QString& langCode)
 {
     if (langCode.isEmpty()) {
@@ -47,16 +65,171 @@ static QString languageName(const QString& langCode)
     }
     else if (langCode == "*")
         return i18n("Multilingual");
-    else
-        return KGlobal::locale()->languageCodeToName(langCode);
+    else {
+        const QString result = KGlobal::locale()->languageCodeToName(langCode);
+        if (result.isEmpty()) {
+            return i18n("Unknown");
+        }
+        return result;
+    }
 }
 
-IMPage::Private::IMModel::IMModel(IMPage::Private *d, QObject* parent)
-    : QAbstractListModel(parent),
-      impage_d(d),
-      showOnlyEnabled(false)
+IMPage::Private::AvailIMModel::AvailIMModel(QObject* parent)
+    : QAbstractItemModel(parent)
 {
-    connect(d, SIGNAL(updateIMList(QString)), this, SLOT(filterIMEntryList(QString)));
+}
+
+IMPage::Private::AvailIMModel::~AvailIMModel()
+{
+}
+
+QModelIndex IMPage::Private::AvailIMModel::index(int row, int column, const QModelIndex& parent) const
+{
+    if (!parent.isValid()) {
+        if (column > 0 || row >= filteredIMEntryList.count()) {
+            return QModelIndex();
+        } else {
+            return createIndex(row, column, -1);
+        }
+    }
+
+    if (parent.column() > 0 || parent.row() >= filteredIMEntryList.count()) {
+        return QModelIndex();
+    }
+
+    return createIndex(row, column, parent.row());
+}
+
+QVariant IMPage::Private::AvailIMModel::data(const QModelIndex& index, int role) const
+{
+    if (!index.isValid()) {
+        return QVariant();
+    }
+
+    if (!index.parent().isValid()) {
+        if (index.column() > 0 || index.row() >= filteredIMEntryList.count()) {
+            return QVariant();
+        }
+        switch (role) {
+
+        case Qt::DisplayRole:
+            return languageName(filteredIMEntryList[index.row()].first);
+
+        case FcitxLanguageRole:
+            return filteredIMEntryList[index.row()].first;
+
+        case FcitxIMUniqueNameRole:
+            return QString();
+
+        case FcitxRowTypeRole:
+            return LanguageType;
+
+        default:
+            return QVariant();
+        }
+    }
+
+    if (index.column() > 0 || index.parent().column() > 0 || index.parent().row() >= filteredIMEntryList.count()) {
+        return QVariant();
+    }
+
+    const FcitxQtInputMethodItemList& imEntryList = filteredIMEntryList[index.parent().row()].second;
+
+    if (index.row() >= imEntryList.count()) {
+        return QVariant();
+    }
+
+    const FcitxQtInputMethodItem& imEntry = imEntryList[index.row()];
+
+    switch (role) {
+
+    case Qt::DisplayRole:
+        return imEntry.name();
+
+    case FcitxRowTypeRole:
+        return IMType;
+
+    case FcitxIMUniqueNameRole:
+        return imEntry.uniqueName();
+
+    case FcitxLanguageRole:
+        return imEntry.langCode();
+    }
+    return QVariant();
+}
+
+QModelIndex IMPage::Private::AvailIMModel::parent(const QModelIndex& child) const
+{
+    if (!child.isValid()) {
+        return QModelIndex();
+    }
+
+    qint64 row = child.internalId();
+    if (row >= filteredIMEntryList.count() || row < 0) {
+        return QModelIndex();
+    }
+
+    return createIndex(row, 0, -1);
+}
+
+int IMPage::Private::AvailIMModel::rowCount(const QModelIndex& parent) const
+{
+    if (!parent.isValid()) {
+        return filteredIMEntryList.count();
+    }
+
+    if (parent.internalId() >= 0) {
+        return 0;
+    }
+
+    if (parent.column() > 0 || parent.row() >= filteredIMEntryList.count()) {
+        return 0;
+    }
+
+    return filteredIMEntryList[parent.row()].second.count();
+}
+
+int IMPage::Private::AvailIMModel::columnCount(const QModelIndex& parent) const
+{
+    Q_UNUSED(parent);
+    return 1;
+}
+
+void IMPage::Private::AvailIMModel::filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection)
+{
+    beginResetModel();
+
+    QMap<QString, int> languageMap;
+    filteredIMEntryList.clear();
+    int langRow = -1;
+    int imRow = -1;
+    Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
+        if (!im.enabled()) {
+            int idx;
+            if (!languageMap.contains(im.langCode())) {
+                idx = filteredIMEntryList.count();
+                languageMap[im.langCode()] = idx;
+                filteredIMEntryList.append(QPair<QString, FcitxQtInputMethodItemList>(im.langCode(), FcitxQtInputMethodItemList()));
+            } else {
+                idx = languageMap[im.langCode()];
+            }
+            filteredIMEntryList[idx].second.append(im);
+            if (im.uniqueName() == selection) {
+                langRow = idx;
+                imRow = filteredIMEntryList[idx].second.count() - 1;
+            }
+        }
+    }
+    endResetModel();
+
+    if (imRow >= 0) {
+        emit select(index(imRow, 0, index(langRow, 0)));
+    }
+}
+
+IMPage::Private::IMModel::IMModel(QObject* parent)
+    : QAbstractListModel(parent)
+{
 }
 
 IMPage::Private::IMModel::~IMModel()
@@ -83,21 +256,18 @@ QVariant IMPage::Private::IMModel::data(const QModelIndex& index, int role) cons
     case Qt::DisplayRole:
         return imEntry.name();
 
-    case KCategorizedSortFilterProxyModel::CategoryDisplayRole: // fall through
+    case FcitxRowTypeRole:
+        return IMType;
 
-        return languageName(imEntry.langCode());
+    case FcitxIMUniqueNameRole:
+        return imEntry.uniqueName();
 
-    case KCategorizedSortFilterProxyModel::CategorySortRole:
+    case FcitxLanguageRole:
         return imEntry.langCode();
 
     default:
         return QVariant();
     }
-}
-
-bool IMPage::Private::IMModel::setData(const QModelIndex& index, const QVariant& value, int role)
-{
-    return false;
 }
 
 int IMPage::Private::IMModel::rowCount(const QModelIndex& parent) const
@@ -109,102 +279,145 @@ int IMPage::Private::IMModel::rowCount(const QModelIndex& parent) const
     return filteredIMEntryList.count();
 }
 
-void IMPage::Private::IMModel::setShowOnlyEnabled(bool show)
+void IMPage::Private::IMModel::filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection)
 {
-    if (show != showOnlyEnabled) {
-        showOnlyEnabled = show;
-        filterIMEntryList();
-    }
-}
-
-void IMPage::Private::IMModel::filterIMEntryList(const QString& selection)
-{
-    impage_d->availIMProxyModel->setCategorizedModel(false);
-    FcitxQtInputMethodItemList imEntryList = impage_d->getIMList();
     beginResetModel();
 
-    impage_d->languageSet.clear();
-
+    QSet<QString> languageSet;
     filteredIMEntryList.clear();
-    int row = 0, selectionRow = -1, count = 0;
+    int row = 0, selectionRow = -1;
     Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
-        if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
-            count ++;
-        }
-
-        if (showOnlyEnabled && im.enabled()) {
-            impage_d->languageSet.insert(im.langCode().left(2));
-        }
-    }
-    if (count) {
-        Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
-            if ((showOnlyEnabled && im.enabled()) || (!showOnlyEnabled && !im.enabled())) {
-                filteredIMEntryList.append(im);
-                if (im.uniqueName() == selection)
-                    selectionRow = row;
-                row ++;
-            }
+        if (im.enabled()) {
+            filteredIMEntryList.append(im);
+            if (im.uniqueName() == selection)
+                selectionRow = row;
+            row ++;
         }
     }
     endResetModel();
 
-    impage_d->availIMProxyModel->sort(0);
-
     if (selectionRow >= 0) {
         emit select(index(selectionRow, 0));
     }
-    else if (showOnlyEnabled && count > 0) {
-        emit select(index(count - 1, 0));
+    else if (row > 0) {
+        emit select(index(row - 1, 0));
     }
-
-    impage_d->availIMProxyModel->setCategorizedModel(true);
 }
 
-IMPage::Private::IMProxyModel::IMProxyModel(IMPage::Private *d, QObject* parent)
-    : KCategorizedSortFilterProxyModel(parent),
-      impage_d(d)
+IMPage::Private::IMProxyModel::IMProxyModel(QAbstractItemModel* sourceModel)
+    : QSortFilterProxyModel(sourceModel)
+     ,m_showOnlyCurrentLanguage(true)
 {
-
 }
+
 IMPage::Private::IMProxyModel::~IMProxyModel()
 {
 }
 
+void
+IMPage::Private::IMProxyModel::setFilterText(const QString& text)
+{
+    if (m_filterText != text) {
+        m_filterText = text;
+        invalidate();
+    }
+}
+
+void
+IMPage::Private::IMProxyModel::setShowOnlyCurrentLanguage(bool show)
+{
+    if (m_showOnlyCurrentLanguage != show) {
+        m_showOnlyCurrentLanguage = show;
+        invalidate();
+    }
+}
+
+void IMPage::Private::IMProxyModel::filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection)
+{
+    m_languageSet.clear();
+    Q_FOREACH(const FcitxQtInputMethodItem & im, imEntryList) {
+        if (im.enabled()) {
+            m_languageSet.insert(im.langCode().left(2));
+        }
+    }
+    sort(0);
+    invalidate();
+}
+
+
 bool IMPage::Private::IMProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const
 {
-    Q_UNUSED(source_parent)
+    const QModelIndex index = sourceModel()->index(source_row, 0, source_parent);
 
-    const QModelIndex index = sourceModel()->index(source_row, 0);
-    const FcitxQtInputMethodItem* imEntry = static_cast<FcitxQtInputMethodItem*>(index.internalPointer());
-    bool flag = true;
+    if (index.data(FcitxRowTypeRole) == LanguageType) {
+        return filterLanguage(index);
+    }
 
-    if (imEntry->uniqueName() == "fcitx-keyboard-us")
+    return filterIM(index);
+}
+
+bool IMPage::Private::IMProxyModel::filterLanguage(const QModelIndex& index) const
+{
+    if (!index.isValid()) {
+        return false;
+    }
+
+    int childCount = index.model()->rowCount(index);
+    if (childCount == 0)
+        return false;
+
+    for (int i = 0; i < childCount; ++i) {
+        if (filterIM(index.model()->index(i, 0, index))) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool IMPage::Private::IMProxyModel::filterIM(const QModelIndex& index) const
+{
+    QString uniqueName = index.data(FcitxIMUniqueNameRole).toString();
+    QString name = index.data(Qt::DisplayRole).toString();
+    QString langCode = index.data(FcitxLanguageRole).toString();
+
+    if (uniqueName == "fcitx-keyboard-us")
         return true;
 
-    QString lang = imEntry->langCode().left(2);
+    bool flag = true;
+    QString lang = langCode.left(2);
 
-    flag = flag && (impage_d->onlyCurrentLanguageCheckBox->isChecked()
-                    ? !lang.isEmpty() && (KGlobal::locale()->language().startsWith(lang) || impage_d->languageSet.contains(lang))
+    flag = flag && (m_showOnlyCurrentLanguage
+                    ? !lang.isEmpty() && (KGlobal::locale()->language().startsWith(lang) || m_languageSet.contains(lang))
                     : true );
-    if (!impage_d->filterTextEdit->text().isEmpty()) {
+    if (!m_filterText.isEmpty()) {
         flag = flag &&
-               (imEntry->name().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
-               || imEntry->uniqueName().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
-               || imEntry->langCode().contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive)
-               || languageName(imEntry->langCode()).contains(impage_d->filterTextEdit->text(), Qt::CaseInsensitive));
+               (name.contains(m_filterText, Qt::CaseInsensitive)
+               || uniqueName.contains(m_filterText, Qt::CaseInsensitive)
+               || langCode.contains(m_filterText, Qt::CaseInsensitive)
+               || languageName(langCode).contains(m_filterText, Qt::CaseInsensitive));
     }
     return flag;
 }
 
-bool IMPage::Private::IMProxyModel::subSortLessThan(const QModelIndex& left, const QModelIndex& right) const
+bool IMPage::Private::IMProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right) const
 {
-    return QString(static_cast<FcitxQtInputMethodItem*>(left.internalPointer())->name()).compare((QString)(static_cast<FcitxQtInputMethodItem*>(right.internalPointer())->name()), Qt::CaseInsensitive) < 0;
+    int result = compareCategories(left, right);
+    if (result < 0) {
+        return true;
+    } else if (result > 0) {
+        return false;
+    }
+
+    QString l = left.data(Qt::DisplayRole).toString();
+    QString r = right.data(Qt::DisplayRole).toString();
+    return KStringHandler::naturalCompare(l, r) < 0;
 }
 
 int IMPage::Private::IMProxyModel::compareCategories(const QModelIndex& left, const QModelIndex& right) const
 {
-    QString l = left.data(CategorySortRole).toString();
-    QString r = right.data(CategorySortRole).toString();
+    QString l = left.data(FcitxLanguageRole).toString();
+    QString r = right.data(FcitxLanguageRole).toString();
 
     if (l == r)
         return 0;
@@ -219,7 +432,7 @@ int IMPage::Private::IMProxyModel::compareCategories(const QModelIndex& left, co
     bool fr = KGlobal::locale()->language().startsWith(r.left(2));
 
     if (fl == fr) {
-        return l.compare(r);
+        return l.size() == r.size() ? l.compare(r) : l.size() < r.size();
     }
     return fl ? -1 : 1;
 }
@@ -253,28 +466,21 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     d->filterTextEdit->setClearButtonShown(true);
     d->filterTextEdit->setClickMessage(i18n("Search Input Method"));
 
-    d->availIMView->setVerticalScrollMode(QListView::ScrollPerPixel);
-    d->availIMView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    d->categoryDrawer = new KCategoryDrawerV3(d->availIMView);
-    d->availIMView->setCategoryDrawer(d->categoryDrawer);
-
-    d->availIMProxyModel = new Private::IMProxyModel(d, this);
-    d->availIMModel = new Private::IMModel(d, this);
+    d->availIMModel = new Private::AvailIMModel(d);
+    connect(d, SIGNAL(updateIMList(FcitxQtInputMethodItemList,QString)), d->availIMModel, SLOT(filterIMEntryList(FcitxQtInputMethodItemList,QString)));
+    d->availIMProxyModel = new Private::IMProxyModel(d->availIMModel);
     d->availIMProxyModel->setSourceModel(d->availIMModel);
-    d->availIMProxyModel->setCategorizedModel(true);
+    connect(d, SIGNAL(updateIMList(FcitxQtInputMethodItemList,QString)), d->availIMProxyModel, SLOT(filterIMEntryList(FcitxQtInputMethodItemList,QString)));
     d->availIMView->setModel(d->availIMProxyModel);
-    d->availIMView->setAlternatingBlockColors(true);
-    d->availIMView->setSelectionMode(QAbstractItemView::SingleSelection);
-    d->availIMView->setMouseTracking(true);
-    d->availIMView->viewport()->setAttribute(Qt::WA_Hover);
+    d->availIMView->setItemDelegate(new IMDelegate);
 
-    d->currentIMModel = new Private::IMModel(d, this);
-    d->currentIMModel->setShowOnlyEnabled(true);
+    d->currentIMModel = new Private::IMModel(this);
+    connect(d, SIGNAL(updateIMList(FcitxQtInputMethodItemList,QString)), d->currentIMModel, SLOT(filterIMEntryList(FcitxQtInputMethodItemList,QString)));
     d->currentIMView->setModel(d->currentIMModel);
     d->currentIMView->setSelectionMode(QAbstractItemView::SingleSelection);
 
-    connect(d->filterTextEdit, SIGNAL(textChanged(QString)), this, SLOT(invalidate()));
-    connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), this, SLOT(invalidate()));
+    connect(d->filterTextEdit, SIGNAL(textChanged(QString)), this, SLOT(filterTextChanged(QString)));
+    connect(d->onlyCurrentLanguageCheckBox, SIGNAL(toggled(bool)), this, SLOT(onlyLanguageChanged(bool)));
     connect(d->availIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(availIMSelectionChanged()));
     connect(d->currentIMView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(currentIMCurrentChanged()));
     connect(d->addIMButton, SIGNAL(clicked(bool)), d, SLOT(clickAddIM()));
@@ -282,6 +488,7 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     connect(d->moveUpButton, SIGNAL(clicked(bool)), d, SLOT(moveUpIM()));
     connect(d->moveDownButton, SIGNAL(clicked(bool)), d, SLOT(moveDownIM()));
     connect(d->configureButton, SIGNAL(clicked(bool)), d, SLOT(configureIM()));
+    connect(d->availIMProxyModel, SIGNAL(layoutChanged()), d->availIMView, SLOT(expandAll()));
     connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
     connect(d->availIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectAvailIM(QModelIndex)));
     connect(d->currentIMModel, SIGNAL(select(QModelIndex)), d, SLOT(selectCurrentIM(QModelIndex)));
@@ -297,12 +504,14 @@ IMPage::IMPage(Module* parent): QWidget(parent)
     }
 }
 
-void IMPage::invalidate()
+void IMPage::filterTextChanged(const QString & text)
 {
-    d->availIMProxyModel->setCategorizedModel(false);
-    d->availIMProxyModel->invalidate();
-    d->availIMProxyModel->sort(0);
-    d->availIMProxyModel->setCategorizedModel(true);
+    d->availIMProxyModel->setFilterText(text);
+}
+
+void IMPage::onlyLanguageChanged(bool checked)
+{
+    d->availIMProxyModel->setShowOnlyCurrentLanguage(checked);
 }
 
 void IMPage::save()
@@ -397,14 +606,13 @@ void IMPage::Private::clickRemoveIM()
 
 void IMPage::Private::addIM(const QModelIndex& index)
 {
-    if (index.isValid()) {
-        FcitxQtInputMethodItem* im = static_cast<FcitxQtInputMethodItem*>(availIMProxyModel->mapToSource(index).internalPointer());
-        int i = 0;
-        for (i = 0; i < m_list.size(); i ++) {
-            if (im->uniqueName() == m_list[i].uniqueName()) {
+    if (index.isValid() && index.data(FcitxRowTypeRole) == IMType) {
+        const QString uniqueName =index.data(FcitxIMUniqueNameRole).toString();
+        for (int i = 0; i < m_list.size(); i ++) {
+            if (uniqueName == m_list[i].uniqueName()) {
                 m_list[i].setEnabled(true);
                 qStableSort(m_list.begin(), m_list.end());
-                emit updateIMList(im->uniqueName());
+                emit updateIMList(m_list, uniqueName);
                 emit changed();
                 break;
             }
@@ -414,14 +622,13 @@ void IMPage::Private::addIM(const QModelIndex& index)
 
 void IMPage::Private::removeIM(const QModelIndex& index)
 {
-    if (index.isValid()) {
-        FcitxQtInputMethodItem* im = static_cast<FcitxQtInputMethodItem*>(index.internalPointer());
-        int i = 0;
-        for (i = 0; i < m_list.size(); i ++) {
-            if (im->uniqueName() == m_list[i].uniqueName()) {
+    if (index.isValid() && index.data(FcitxRowTypeRole) == IMType) {
+        const QString uniqueName =index.data(FcitxIMUniqueNameRole).toString();
+        for (int i = 0; i < m_list.size(); i ++) {
+            if (uniqueName == m_list[i].uniqueName()) {
                 m_list[i].setEnabled(false);
                 qStableSort(m_list.begin(), m_list.end());
-                emit updateIMList(im->uniqueName());
+                emit updateIMList(m_list, uniqueName);
                 emit changed();
                 break;
             }
@@ -432,28 +639,22 @@ void IMPage::Private::removeIM(const QModelIndex& index)
 void IMPage::Private::moveDownIM()
 {
     QModelIndex curIndex = currentIMView->currentIndex();
-    if (curIndex.isValid()) {
+    if (curIndex.isValid() && curIndex.data(FcitxRowTypeRole) == IMType) {
         QModelIndex nextIndex = currentIMModel->index(curIndex.row() + 1, 0);
-
-        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
-        FcitxQtInputMethodItem* nextIM = static_cast<FcitxQtInputMethodItem*>(nextIndex.internalPointer());
-
-        if (curIM == NULL || nextIM == NULL)
-            return;
 
         int i = 0, curIMIdx = -1, nextIMIdx = -1;
         for (i = 0; i < m_list.size(); i ++) {
-            if (curIM->uniqueName() == m_list[i].uniqueName())
+            if (curIndex.data(FcitxIMUniqueNameRole) == m_list[i].uniqueName())
                 curIMIdx = i;
 
-            if (nextIM->uniqueName() == m_list[i].uniqueName())
+            if (nextIndex.data(FcitxIMUniqueNameRole) == m_list[i].uniqueName())
                 nextIMIdx = i;
         }
 
         if (curIMIdx >= 0 && nextIMIdx >= 0 && curIMIdx != nextIMIdx) {
             m_list.swap(curIMIdx, nextIMIdx);
             qStableSort(m_list.begin(), m_list.end());
-            emit updateIMList(curIM->uniqueName());
+            emit updateIMList(m_list, curIndex.data(FcitxIMUniqueNameRole).toString());
             emit changed();
         }
     }
@@ -462,21 +663,19 @@ void IMPage::Private::moveDownIM()
 void IMPage::Private::configureIM()
 {
     QModelIndex curIndex = currentIMView->currentIndex();
-    if (!curIndex.isValid())
-        return;
-    FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
-    if (!curIM) {
+    if (!curIndex.isValid() || curIndex.data(FcitxRowTypeRole) != IMType) {
         return;
     }
     if (!Global::instance()->inputMethodProxy()) {
         return;
     }
-    QDBusPendingReply< QString > result = Global::instance()->inputMethodProxy()->GetIMAddon(curIM->uniqueName());
+    const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
+    QDBusPendingReply< QString > result = Global::instance()->inputMethodProxy()->GetIMAddon(uniqueName);
     result.waitForFinished();
     if (result.isValid()) {
         FcitxAddon* addonEntry = module->findAddonByName(result.value());
 
-        QPointer<KDialog> configDialog(new IMConfigDialog(curIM->uniqueName(), addonEntry));
+        QPointer<KDialog> configDialog(new IMConfigDialog(uniqueName, addonEntry));
 
         configDialog->exec();
         delete configDialog;
@@ -486,28 +685,22 @@ void IMPage::Private::configureIM()
 void IMPage::Private::moveUpIM()
 {
     QModelIndex curIndex = currentIMView->currentIndex();
-    if (curIndex.isValid() && curIndex.row() > 0) {
+    if (curIndex.isValid() && curIndex.row() > 0 && curIndex.data(FcitxRowTypeRole) == IMType) {
         QModelIndex nextIndex = currentIMModel->index(curIndex.row() - 1, 0);
-
-        FcitxQtInputMethodItem* curIM = static_cast<FcitxQtInputMethodItem*>(curIndex.internalPointer());
-        FcitxQtInputMethodItem* nextIM = static_cast<FcitxQtInputMethodItem*>(nextIndex.internalPointer());
-
-        if (curIM == NULL || nextIM == NULL)
-            return;
 
         int i = 0, curIMIdx = -1, nextIMIdx = -1;
         for (i = 0; i < m_list.size(); i ++) {
-            if (curIM->uniqueName() == m_list[i].uniqueName())
+            if (curIndex.data(FcitxIMUniqueNameRole) == m_list[i].uniqueName())
                 curIMIdx = i;
 
-            if (nextIM->uniqueName() == m_list[i].uniqueName())
+            if (nextIndex.data(FcitxIMUniqueNameRole) == m_list[i].uniqueName())
                 nextIMIdx = i;
         }
 
         if (curIMIdx >= 0 && nextIMIdx >= 0 && curIMIdx != nextIMIdx) {
             m_list.swap(curIMIdx, nextIMIdx);
             qStableSort(m_list.begin(), m_list.end());
-            emit updateIMList(curIM->uniqueName());
+            emit updateIMList(m_list, curIndex.data(FcitxIMUniqueNameRole).toString());
             emit changed();
         }
     }
@@ -523,8 +716,13 @@ void IMPage::Private::fetchIMList()
 {
     if (Global::instance()->inputMethodProxy()) {
         m_list = Global::instance()->inputMethodProxy()->iMList();
+        for (int i = 0; i < m_list.size(); i ++) {
+            if (languageIsUnknown(m_list[i].langCode())) {
+                m_list[i].setLangCode("");
+            }
+        }
         qStableSort(m_list.begin(), m_list.end());
-        emit updateIMList(QString());
+        emit updateIMList(m_list, QString());
     }
 }
 
@@ -549,6 +747,135 @@ void IMPage::Private::onConnectStatusChanged(bool connected) {
 IMPage::~IMPage()
 {
     delete m_ui;
+}
+
+IMDelegate::IMDelegate(QObject* parent) : QStyledItemDelegate(parent)
+{
+}
+
+IMDelegate::~IMDelegate()
+{
+}
+
+const int SPACING = 4;
+
+void IMDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
+{
+    if (index.data(FcitxRowTypeRole).toInt() == IMType) {
+        QStyledItemDelegate::paint(painter, option, index);
+        return;
+    }
+
+    painter->save();
+    painter->setRenderHint(QPainter::Antialiasing);
+
+    const QString category = index.model()->data(index, Qt::DisplayRole).toString();
+    QRect optRect = option.rect;
+    optRect.translate(SPACING, SPACING);
+    optRect.setWidth(optRect.width() - SPACING * 2);
+    optRect.setHeight(optRect.height() - SPACING * 2);
+    QFont font(QApplication::font());
+    font.setBold(true);
+    const QFontMetrics fontMetrics = QFontMetrics(font);
+
+    QColor outlineColor = option.palette.text().color();
+    outlineColor.setAlphaF(0.35);
+
+    //BEGIN: top left corner
+    {
+        painter->save();
+        painter->setPen(outlineColor);
+        const QPointF topLeft(optRect.topLeft());
+        QRectF arc(topLeft, QSizeF(4, 4));
+        arc.translate(0.5, 0.5);
+        painter->drawArc(arc, 1440, 1440);
+        painter->restore();
+    }
+    //END: top left corner
+
+    //BEGIN: left vertical line
+    {
+        QPoint start(optRect.topLeft());
+        start.ry() += 3;
+        QPoint verticalGradBottom(optRect.topLeft());
+        verticalGradBottom.ry() += fontMetrics.height() + 5;
+        QLinearGradient gradient(start, verticalGradBottom);
+        gradient.setColorAt(0, outlineColor);
+        gradient.setColorAt(1, Qt::transparent);
+        painter->fillRect(QRect(start, QSize(1, fontMetrics.height() + 5)), gradient);
+    }
+    //END: left vertical line
+
+    //BEGIN: horizontal line
+    {
+        QPoint start(optRect.topLeft());
+        start.rx() += 3;
+        QPoint horizontalGradTop(optRect.topLeft());
+        horizontalGradTop.rx() += optRect.width() - 6;
+        painter->fillRect(QRect(start, QSize(optRect.width() - 6, 1)), outlineColor);
+    }
+    //END: horizontal line
+
+    //BEGIN: top right corner
+    {
+        painter->save();
+        painter->setPen(outlineColor);
+        QPointF topRight(optRect.topRight());
+        topRight.rx() -= 4;
+        QRectF arc(topRight, QSizeF(4, 4));
+        arc.translate(0.5, 0.5);
+        painter->drawArc(arc, 0, 1440);
+        painter->restore();
+    }
+    //END: top right corner
+
+    //BEGIN: right vertical line
+    {
+        QPoint start(optRect.topRight());
+        start.ry() += 3;
+        QPoint verticalGradBottom(optRect.topRight());
+        verticalGradBottom.ry() += fontMetrics.height() + 5;
+        QLinearGradient gradient(start, verticalGradBottom);
+        gradient.setColorAt(0, outlineColor);
+        gradient.setColorAt(1, Qt::transparent);
+        painter->fillRect(QRect(start, QSize(1, fontMetrics.height() + 5)), gradient);
+    }
+    //END: right vertical line
+
+    //BEGIN: text
+    {
+        QRect textRect(option.rect);
+        textRect.setTop(textRect.top() + 7);
+        textRect.setLeft(textRect.left() + 7);
+        textRect.setHeight(fontMetrics.height());
+        textRect.setRight(textRect.right() - 7);
+
+        painter->save();
+        painter->setFont(font);
+        QColor penColor(option.palette.text().color());
+        penColor.setAlphaF(0.6);
+        painter->setPen(penColor);
+        painter->drawText(textRect, Qt::AlignLeft | Qt::AlignVCenter, category);
+        painter->restore();
+    }
+    //END: text
+
+    painter->restore();
+}
+
+QSize IMDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
+{
+    if (index.data(FcitxRowTypeRole).toInt() == IMType) {
+        return QStyledItemDelegate::sizeHint(option, index);
+    }
+    else {
+        QFont font(QApplication::font());
+        font.setBold(true);
+        QFontMetrics fontMetrics(font);
+        const int height = fontMetrics.height() + 1 /* 1 pixel-width gradient */
+                                                + 11 /* top and bottom separation */ + SPACING;
+        return QSize(0, height);
+    }
 }
 
 }

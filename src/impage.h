@@ -23,6 +23,7 @@
 // Qt
 #include <QString>
 #include <QWidget>
+#include <fcitx-qt/fcitxqtinputmethoditem.h>
 
 // self
 
@@ -46,7 +47,8 @@ Q_SIGNALS:
 public Q_SLOTS:
     void save();
     void load();
-    void invalidate();
+    void filterTextChanged(const QString& text);
+    void onlyLanguageChanged(bool);
 private:
     Ui::IMPage* m_ui;
 
