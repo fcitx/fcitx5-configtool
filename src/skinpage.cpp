@@ -719,8 +719,9 @@ void SkinPage::Private::load()
         row ++;
     }
 
-    if (currentSkin >= 0)
+    if (currentSkin >= 0) {
         skinView->selectionModel()->setCurrentIndex(skinModel->index(row, 0), QItemSelectionModel::ClearAndSelect);
+    }
 }
 
 void SkinPage::Private::save()
@@ -840,7 +841,6 @@ SkinPage::SkinPage(Module* module, QWidget* parent):
     connect(d->deleteSkinButton, SIGNAL(clicked(bool)), d, SLOT(deleteSkin()));
     connect(d->configureSkinButton, SIGNAL(clicked(bool)), d, SLOT(configureSkin()));
     connect(d->skinView->selectionModel(), SIGNAL(currentChanged(QModelIndex, QModelIndex)), d, SLOT(currentSkinChanged()));
-    connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
 }
 
 SkinPage::~SkinPage()
@@ -853,7 +853,9 @@ void SkinPage::load()
     if (NULL == Global::instance()->GetConfigDesc("fcitx-classic-ui.desc")) {
         this->setEnabled(false);
     }
+    disconnect(d, SIGNAL(changed()), this, SIGNAL(changed()));
     d->load();
+    connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
 }
 
 void SkinPage::save()

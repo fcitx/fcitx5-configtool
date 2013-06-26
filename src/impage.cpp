@@ -524,6 +524,14 @@ void IMPage::load()
     d->fetchIMList();
 }
 
+void IMPage::defaults()
+{
+    if (Global::instance()->inputMethodProxy()) {
+        Global::instance()->inputMethodProxy()->ResetIMList();
+    }
+    d->fetchIMList();
+}
+
 IMPage::Private::Private(QObject* parent)
     : QObject(parent)
       ,availIMModel(0)

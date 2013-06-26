@@ -250,8 +250,12 @@ void Module::save()
 
 void Module::defaults()
 {
-    if (m_configPage)
+    if (m_configPage) {
         m_configPage->defaults();
+    }
+    if (m_imPage) {
+        m_imPage->defaults();
+    }
     changed();
 }
 

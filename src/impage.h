@@ -49,6 +49,7 @@ public Q_SLOTS:
     void load();
     void filterTextChanged(const QString& text);
     void onlyLanguageChanged(bool);
+    void defaults();
 private:
     Ui::IMPage* m_ui;
 
