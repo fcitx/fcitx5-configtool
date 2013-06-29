@@ -68,6 +68,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     KCModule(KcmFcitxFactory::componentData(), parent, args),
     ui(new Ui::Module),
     addonSelector(0),
+    m_addons(0),
     m_configPage(0),
     m_skinPage(0),
     m_imPage(0),
@@ -164,15 +165,21 @@ Module::Module(QWidget *parent, const QVariantList &args) :
 Module::~Module()
 {
     delete ui;
-    if (addonSelector)
+    if (addonSelector) {
         delete addonSelector;
-    if (m_addons)
+    }
+    if (m_addons) {
         utarray_free(m_addons);
+    }
     Global::deInit();
 }
 
 FcitxAddon* Module::findAddonByName(const QString& name)
 {
+    if (!m_addons) {
+        return NULL;
+    }
+
     FcitxAddon* addon = NULL;
     for (addon = (FcitxAddon *) utarray_front(m_addons);
          addon != NULL;
