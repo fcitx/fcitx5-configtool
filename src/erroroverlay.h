@@ -22,14 +22,14 @@
 
 #include <QtGui/QWidget>
 
-#include <kdemacros.h>
-
-class KDE_EXPORT ErrorOverlay : public QWidget
+class ErrorOverlay : public QWidget
 {
     Q_OBJECT
 public:
     explicit ErrorOverlay(QWidget *baseWidget, QWidget *parent = 0);
     virtual ~ErrorOverlay();
+public slots:
+    void onConnectStatusChanged(bool connected);
 
 protected:
     bool eventFilter(QObject *object, QEvent *event);
@@ -40,8 +40,6 @@ private:
 private:
     QWidget *m_BaseWidget;
     bool m_enable;
-public slots:
-    void onConnectStatusChanged(bool connected);
 };
 
 #endif // ERROROVERLAY_H
