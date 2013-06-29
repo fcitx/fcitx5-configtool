@@ -25,10 +25,12 @@
 
 #include <fcitx-utils/utils.h>
 #include <fcitx-config/xdg.h>
+#include <fcitx-qt/fcitxqtconfiguifactory.h>
 
 // self
 #include "subconfig.h"
 #include "subconfigpattern.h"
+#include "global.h"
 
 namespace Fcitx
 {
@@ -92,7 +94,6 @@ QSet<QString> getFiles(const QStringList& filePatternList, bool user)
 
 void SubConfig::parseConfigFileSubConfig(const SubConfigPattern* pattern)
 {
-    m_type = SC_ConfigFile;
     m_fileList = getFiles(pattern->filePatternList(), false);
     m_configdesc = pattern->configdesc();
 }
@@ -103,6 +104,11 @@ void SubConfig::parseNativeFileSubConfig(const SubConfigPattern* pattern)
     m_nativepath = pattern->nativepath();
     m_filePatternList = pattern->filePatternList();
     updateFileList();
+}
+
+void SubConfig::parsePluginSubConfig(const SubConfigPattern* pattern)
+{
+    m_nativepath = pattern->nativepath();
 }
 
 void SubConfig::updateFileList()
@@ -152,6 +158,9 @@ SubConfig::SubConfig(const QString& name, SubConfigPattern* pattern) :
     case SC_Program:
         parseProgramSubConfig(pattern);
         break;
+    case SC_Plugin:
+        parsePluginSubConfig(pattern);
+        break;
     default:
         break;
     }
@@ -197,5 +206,21 @@ const QString& SubConfig::mimetype() const
     return m_mimetype;
 }
 
+bool SubConfig::isValid() const
+{
+    switch (m_type) {
+    case SC_ConfigFile:
+        return true;
+    case SC_NativeFile:
+        return true;
+    case SC_Program:
+        return !m_progam.isEmpty();
+    case SC_Plugin:
+        return Global::instance()->factory()->test(m_nativepath);
+    default:
+        break;
+    }
+    return false;
+}
 
 }

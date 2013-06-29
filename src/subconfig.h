@@ -34,7 +34,8 @@ enum SubConfigType {
     SC_None,
     SC_ConfigFile,
     SC_NativeFile,
-    SC_Program
+    SC_Program,
+    SC_Plugin
 };
 
 class SubConfig
@@ -49,11 +50,14 @@ public:
     const QString& nativepath() const;
     const QString& mimetype() const;
     const QString& program() const;
+    bool isValid() const;
+
     void updateFileList();
 private:
     void parseProgramSubConfig(const SubConfigPattern* pattern);
     void parseNativeFileSubConfig(const SubConfigPattern* pattern);
     void parseConfigFileSubConfig(const SubConfigPattern* pattern);
+    void parsePluginSubConfig(const SubConfigPattern* pattern);
     QString m_name;
     SubConfigType m_type;
     QSet< QString > m_fileList;

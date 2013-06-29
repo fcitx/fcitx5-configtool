@@ -150,6 +150,15 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
         hbox->addWidget(pushButton);
     }
     break;
+    case SC_Plugin: {
+        QVBoxLayout* hbox = new QVBoxLayout;
+        setLayout(hbox);
+        KPushButton* pushButton = new KPushButton;
+        pushButton->setIcon(KIcon("configure"));
+        connect(pushButton, SIGNAL(clicked()), this, SLOT(openPlugin()));
+        hbox->addWidget(pushButton);
+    }
+    break;
     default:
         break;
     }
@@ -179,6 +188,18 @@ void SubConfigWidget::openSubConfig()
 
         configDialog->exec();
         delete configDialog;
+    }
+}
+
+void SubConfigWidget::openPlugin()
+{
+    FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
+    if (widget) {
+        QPointer<KDialog> pluginDialog(new PluginDialog(widget, 0));
+
+        pluginDialog->exec();
+        delete pluginDialog;
+        return;
     }
 }
 

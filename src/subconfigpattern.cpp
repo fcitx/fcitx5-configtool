@@ -93,6 +93,16 @@ SubConfigPattern* SubConfigPattern::parsePattern(Fcitx::SubConfigType type, cons
             return result;
         }
         break;
+    case SC_Plugin:
+        {
+            QString pattern = p.section(':', 0, 0);
+            if (pattern.isEmpty())
+                return NULL;
+            SubConfigPattern* result = new SubConfigPattern(type, parent);
+            result->m_nativepath = pattern;
+            return result;
+        }
+        break;
     default:
         return NULL;
     }

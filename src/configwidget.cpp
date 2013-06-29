@@ -428,10 +428,18 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length() != 0) {
-        QLabel* grouplabel = new QLabel(i18n("<b>Other</b>"));
-        gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
+        int labelrow = row;
+        row ++;
         Q_FOREACH(const QString & key, keys) {
             SubConfig* subconfig = m_parser->getSubConfig(key);
+            if (!subconfig) {
+                continue;
+            }
+            if (!subconfig->isValid()) {
+                delete subconfig;
+                continue;
+            }
+
             QLabel* label = new QLabel(QString::fromUtf8(
                     dgettext(m_parser->domain().toUtf8().constData(),
                                 subconfig->name().toUtf8().constData()
@@ -440,6 +448,10 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
             gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
             gridLayout->addWidget(new SubConfigWidget(subconfig, this), row, 2);
             row++;
+        }
+        if (row != labelrow + 1) {
+            QLabel* grouplabel = new QLabel(i18n("<b>Other</b>"));
+            gridLayout->addWidget(grouplabel, labelrow, 0, 1, 3);
         }
     }
 
@@ -506,35 +518,50 @@ QWidget* ConfigWidget::createFullConfigUi()
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length()) {
-        QWidget* main = new QWidget(this);
-        QVBoxLayout* mainLayout = new QVBoxLayout;
-        main->setLayout(mainLayout);
-
-        QScrollArea *scrollarea = new QScrollArea;
-        scrollarea->setFrameStyle(QFrame::NoFrame);
-        scrollarea->setWidgetResizable(true);
-
-        QWidget* form = new QWidget;
-        QFormLayout* formLayout = new QFormLayout;
-        scrollarea->setWidget(form);
-        form->setLayout(formLayout);
-
+        QList<SubConfig*> subConfigs;
         Q_FOREACH(const QString & key, keys) {
             SubConfig* subconfig = m_parser->getSubConfig(key);
-            formLayout->addRow(
-                QString::fromUtf8(
-                    dgettext(m_parser->domain().toUtf8().constData(),
-                                subconfig->name().toUtf8().constData()
-                            )
-                ),
-                new SubConfigWidget(subconfig, this));
+            if (!subconfig) {
+                continue;
+            }
+            if (!subconfig->isValid()) {
+                delete subconfig;
+                continue;
+            }
+
+            subConfigs << subconfig;
         }
 
-        scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        if (subConfigs.length() > 0) {
+            QWidget* main = new QWidget(this);
+            QVBoxLayout* mainLayout = new QVBoxLayout;
+            main->setLayout(mainLayout);
 
-        scrollarea->setMinimumWidth(form->sizeHint().width() + 20);
-        mainLayout->addWidget(scrollarea);
-        tabWidget->addTab(main, i18n("Other"));
+            QScrollArea *scrollarea = new QScrollArea;
+            scrollarea->setFrameStyle(QFrame::NoFrame);
+            scrollarea->setWidgetResizable(true);
+
+            QWidget* form = new QWidget;
+            QFormLayout* formLayout = new QFormLayout;
+            scrollarea->setWidget(form);
+            form->setLayout(formLayout);
+
+            Q_FOREACH(SubConfig* subconfig, subConfigs) {
+                formLayout->addRow(
+                    QString::fromUtf8(
+                        dgettext(m_parser->domain().toUtf8().constData(),
+                                    subconfig->name().toUtf8().constData()
+                                )
+                    ),
+                    new SubConfigWidget(subconfig, this));
+            }
+
+            scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+            scrollarea->setMinimumWidth(form->sizeHint().width() + 20);
+            mainLayout->addWidget(scrollarea);
+            tabWidget->addTab(main, i18n("Other"));
+        }
     }
 
     return tabWidget;

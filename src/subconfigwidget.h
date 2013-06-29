@@ -41,6 +41,7 @@ private slots:
     void openSubConfig();
     void openNativeFile();
     void openProgram();
+    void openPlugin();
 
 private:
     SubConfig* m_subConfig;

@@ -79,6 +79,9 @@ SubConfigType SubConfigParser::parseType(const QString& str)
     if (str == "program") {
         return SC_Program;
     }
+    if (str == "plugin") {
+        return SC_Plugin;
+    }
     return SC_None;
 }
 
