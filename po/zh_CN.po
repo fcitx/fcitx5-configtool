@@ -12,10 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2013-04-25 00:02-0400\n"
-"PO-Revision-Date: 2013-04-18 19:41+0000\n"
+"POT-Creation-Date: 2013-10-26 14:42-0400\n"
+"PO-Revision-Date: 2013-04-26 13:18+0000\n"
 "Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
-"Language-Team: Chinese (China) <fcitx-dev@googlegroups.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
+"language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +64,7 @@ msgstr ""
 "right:0px; -qt-block-indent:0; text-indent:0px;\">你需要经典界面来使用皮肤功"
 "能。</p></body></html>"
 
-#. i18n: file: src/impage.ui:273
+#. i18n: file: src/impage.ui:310
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "<b>Default keyboard layout:</b>"
 msgstr "<b>默认键盘布局：</b>"
@@ -76,11 +77,11 @@ msgstr "<b>输入法设置：</b>"
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>键盘布局：</b>"
 
-#: src/configwidget.cpp:425
+#: src/configwidget.cpp:453
 msgid "<b>Other</b>"
 msgstr "<b>其它</b>"
 
-#. i18n: file: src/impage.ui:283
+#. i18n: file: src/impage.ui:320
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "<b>Select Input Method:</b>"
 msgstr "<b>选择输入法：</b>"
@@ -89,11 +90,11 @@ msgstr "<b>选择输入法：</b>"
 msgid "A general keyboard layout viewer"
 msgstr "通用键盘布局查看器"
 
-#: src/module.cpp:144
+#: src/module.cpp:145
 msgid "Addon Config"
 msgstr "附加组件配置"
 
-#: src/module.cpp:132 src/module.cpp:134
+#: src/module.cpp:133 src/module.cpp:135
 msgid "Appearance"
 msgstr "外观"
 
@@ -110,11 +111,11 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 msgid "Cannot load currently used user interface info"
 msgstr "无法加载当前用户界面信息"
 
-#: src/module.cpp:86
+#: src/module.cpp:87
 msgid "Configure Fcitx"
 msgstr "配置 Fcitx"
 
-#: src/module.cpp:146
+#: src/module.cpp:147
 msgid "Configure Fcitx addon"
 msgstr "配置 Fcitx 附加组件"
 
@@ -122,19 +123,19 @@ msgstr "配置 Fcitx 附加组件"
 msgid "Configure Input Method"
 msgstr "配置输入法"
 
-#: src/subconfigwidget.cpp:213
+#: src/subconfigwidget.cpp:234
 msgid "Copy"
 msgstr "复制"
 
-#: src/subconfigwidget.cpp:226
+#: src/subconfigwidget.cpp:247
 msgid "Copy failed"
 msgstr "复制失败"
 
-#: src/module.cpp:88
+#: src/module.cpp:89
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
-#. i18n: file: src/impage.ui:157
+#. i18n: file: src/impage.ui:194
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Current Input Method:"
 msgstr "当前的输入法："
@@ -143,7 +144,7 @@ msgstr "当前的输入法："
 msgid "Default"
 msgstr "默认"
 
-#: src/module.cpp:84
+#: src/module.cpp:85
 msgid "Fcitx Configuration Module"
 msgstr "Fcitx 配置模块"
 
@@ -163,15 +164,15 @@ msgstr "Form"
 msgid "Get New &Skin..."
 msgstr "获得新皮肤(&S)..."
 
-#: src/module.cpp:120
+#: src/module.cpp:121
 msgid "Global Config"
 msgstr "全局配置"
 
-#: src/module.cpp:122
+#: src/module.cpp:123
 msgid "Global Config for Fcitx"
 msgstr "Fcitx 的全局配置"
 
-#: src/module.cpp:107 src/module.cpp:109 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
 msgstr "输入法"
 
@@ -204,15 +205,15 @@ msgstr "键盘布局变体"
 msgid "Keyboard layout viewer"
 msgstr "键盘布局查看器"
 
-#: src/module.cpp:194
+#: src/module.cpp:201
 msgid "Manage Fcitx Skin"
 msgstr "管理Fcitx 的皮肤"
 
-#: src/module.cpp:192
+#: src/module.cpp:199
 msgid "Manage Skin"
 msgstr "管理皮肤"
 
-#: src/impage.cpp:49
+#: src/impage.cpp:67
 msgid "Multilingual"
 msgstr "多语言"
 
@@ -221,7 +222,7 @@ msgstr "多语言"
 msgid "No configuration options for %1."
 msgstr "%1 无配置选项。"
 
-#. i18n: file: src/impage.ui:96
+#. i18n: file: src/impage.ui:133
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
@@ -236,7 +237,7 @@ msgstr ""
 "在此列出的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页翻页"
 "键。您可能需要对对应输入法进行配置来修改这些选项。"
 
-#: src/configwidget.cpp:531
+#: src/configwidget.cpp:563
 msgid "Other"
 msgstr "其他"
 
@@ -248,7 +249,7 @@ msgstr "其他候选词"
 msgid "Search Addons"
 msgstr "搜索附加组件"
 
-#: src/impage.cpp:254
+#: src/impage.cpp:467
 msgid "Search Input Method"
 msgstr "搜索输入法"
 
@@ -266,16 +267,16 @@ msgstr "选择字体"
 msgid "Select default keyboard layout"
 msgstr "选择默认键盘布局"
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:576
+#: src/addonselector.cpp:385 src/configwidget.cpp:609
 msgid "Show &Advance option"
 msgstr "显示高级选项(&A)"
 
-#: src/skinpage.cpp:392
+#: src/skinpage.cpp:391
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
 msgstr "皮肤 %1 无法加载"
 
-#. i18n: file: src/impage.ui:258
+#. i18n: file: src/impage.ui:295
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -284,11 +285,11 @@ msgstr ""
 "第一个输入法将作为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称"
 "</i></b>放在第一个。"
 
-#: src/impage.cpp:46
+#: src/impage.cpp:64 src/impage.cpp:71
 msgid "Unknown"
 msgstr "未知"
 
-#: src/subconfigwidget.cpp:211
+#: src/subconfigwidget.cpp:232
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
@@ -298,15 +299,15 @@ msgstr "用户的配置不存在，你想要打开系统配置还是将系统配
 msgid "View keyboard layout"
 msgstr "查看键盘布局"
 
-#: src/subconfigwidget.cpp:214
+#: src/subconfigwidget.cpp:235
 msgid "View system"
 msgstr "查看系統"
 
-#: src/subconfigwidget.cpp:212
+#: src/subconfigwidget.cpp:233
 msgid "What to do"
 msgstr "要做什么"
 
-#: src/module.cpp:92
+#: src/module.cpp:93
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
