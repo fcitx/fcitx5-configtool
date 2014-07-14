@@ -4,18 +4,20 @@
 #
 # Translators:
 # Christopher Meng <cickumqt@gmail.com>, 2012
+# marguerite su <i@marguerite.su>, 2014
 # Ukyoi <ukyoi@msn.com>, 2011
-# Xuetian Weng <wengxt@gmail.com>, 2014
-# Xuetian Weng <wengxt@gmail.com>, 2011
-# Xuetian Weng <wengxt@gmail.com>, 2010-2013
+# csslayer <wengxt@gmail.com>, 2014
+# csslayer <wengxt@gmail.com>, 2011
+# csslayer <wengxt@gmail.com>, 2010-2013
+# csslayer <wengxt@gmail.com>, 2011,2014
 # Xuetian Weng <xweng@cs.stonybrook.edu>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-02-04 12:51+0000\n"
-"PO-Revision-Date: 2014-02-04 12:44+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2014-07-14 12:02+0200\n"
+"PO-Revision-Date: 2014-07-14 10:00+0000\n"
+"Last-Translator: marguerite su <i@marguerite.su>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
 "language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -110,7 +112,7 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 
 #: src/uipage.cpp:16
 msgid "Cannot load currently used user interface info"
-msgstr "无法加载当前用户界面信息"
+msgstr "无法加载当前所用用户界面信息"
 
 #: src/module.cpp:87
 msgid "Configure Fcitx"
@@ -158,7 +160,7 @@ msgstr "第一候选词"
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
-msgstr "Form"
+msgstr "表格"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
@@ -171,7 +173,7 @@ msgstr "全局配置"
 
 #: src/module.cpp:123
 msgid "Global Config for Fcitx"
-msgstr "Fcitx 的全局配置"
+msgstr "Fcitx 全局配置"
 
 #: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
 msgid "Input Method"
@@ -208,7 +210,7 @@ msgstr "键盘布局查看器"
 
 #: src/module.cpp:201
 msgid "Manage Fcitx Skin"
-msgstr "管理Fcitx 的皮肤"
+msgstr "管理 Fcitx 皮肤"
 
 #: src/module.cpp:199
 msgid "Manage Skin"
@@ -235,16 +237,16 @@ msgid ""
 "ncluding candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
-"在此列出的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页翻页"
-"键。您可能需要对对应输入法进行配置来修改这些选项。"
+"此处列示的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页的热"
+"键。您可能需要去对应输入法配置来修改这些选项。"
 
 #: src/configwidget.cpp:563
 msgid "Other"
-msgstr "其他"
+msgstr "其它"
 
 #: src/skinpage.cpp:222
 msgid "Other candidate"
-msgstr "其他候选词"
+msgstr "其它候选词"
 
 #: src/addonselector.cpp:378
 msgid "Search Addons"
@@ -275,7 +277,7 @@ msgstr "显示高级选项(&A)"
 #: src/skinpage.cpp:391
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
-msgstr "皮肤 %1 无法加载"
+msgstr "无法加载皮肤 %1"
 
 #. i18n: file: src/impage.ui:295
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -294,7 +296,7 @@ msgstr "未知"
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
-msgstr "用户的配置不存在，你想要打开系统配置还是将系统配置复制到用户文件？"
+msgstr "用户配置不存在，您想要打开系统配置还是将系统配置复制为用户配置？"
 
 #: layout/kbd-layout-viewer.desktop.in:7
 msgid "View keyboard layout"
@@ -302,15 +304,15 @@ msgstr "查看键盘布局"
 
 #: src/subconfigwidget.cpp:235
 msgid "View system"
-msgstr "查看系統"
+msgstr "查看系統配置"
 
 #: src/subconfigwidget.cpp:233
 msgid "What to do"
-msgstr "要做什么"
+msgstr "操作"
 
 #: src/module.cpp:93
 msgid "Xuetian Weng"
-msgstr "Xuetian Weng"
+msgstr "翁学天"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
@@ -318,7 +320,7 @@ msgstr "wengxt@gmail.com"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Xuetian Weng"
+msgstr "翁学天"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
