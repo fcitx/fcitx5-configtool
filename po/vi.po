@@ -3,15 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# dinhdangkhoi <dinhdangkhoi.fs@gmail.com>, 2014
 # Lê Trường An <truongan@linuxmail.org>, 2013
-# Xuetian Weng <wengxt@gmail.com>, 2014
+# csslayer <wengxt@gmail.com>, 2014
+# csslayer <wengxt@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-02-04 12:51+0000\n"
-"PO-Revision-Date: 2014-02-04 12:48+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2014-08-06 12:03+0200\n"
+"PO-Revision-Date: 2014-08-06 10:01+0000\n"
+"Last-Translator: dinhdangkhoi <dinhdangkhoi.fs@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/"
 "language/vi/)\n"
 "Language: vi\n"
@@ -80,7 +82,7 @@ msgstr ""
 
 #: src/module.cpp:133 src/module.cpp:135
 msgid "Appearance"
-msgstr ""
+msgstr "Dáng vẻ bên ngoài"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -101,7 +103,7 @@ msgstr "Cấu hình Fcitx"
 
 #: src/module.cpp:147
 msgid "Configure Fcitx addon"
-msgstr ""
+msgstr "Cấu hình Fcitx addon"
 
 #: src/kcm_fcitx.desktop.in:12
 msgid "Configure Input Method"
@@ -113,7 +115,7 @@ msgstr ""
 
 #: src/subconfigwidget.cpp:247
 msgid "Copy failed"
-msgstr ""
+msgstr "Sao chép thất bại"
 
 #: src/module.cpp:89
 msgid "Copyright 2012 Xuetian Weng"
@@ -229,7 +231,7 @@ msgstr ""
 
 #: src/addonselector.cpp:378
 msgid "Search Addons"
-msgstr ""
+msgstr "Tìm kiếm Addons"
 
 #: src/impage.cpp:467
 msgid "Search Input Method"
@@ -281,7 +283,7 @@ msgstr ""
 
 #: src/subconfigwidget.cpp:235
 msgid "View system"
-msgstr ""
+msgstr "Xem thông tin hệ thống"
 
 #: src/subconfigwidget.cpp:233
 msgid "What to do"
@@ -293,11 +295,11 @@ msgstr "Xuetian Weng"
 
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr ""
+msgstr "dinhdangkhoi.fs@gmail.com"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr ""
+msgstr "Đinh Đăng Khôi"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
