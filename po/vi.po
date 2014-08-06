@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-06 12:03+0200\n"
-"PO-Revision-Date: 2014-08-06 10:01+0000\n"
+"POT-Creation-Date: 2014-08-06 13:02+0200\n"
+"PO-Revision-Date: 2014-08-06 10:29+0000\n"
 "Last-Translator: dinhdangkhoi <dinhdangkhoi.fs@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/"
 "language/vi/)\n"
@@ -25,12 +25,12 @@ msgstr ""
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
 msgid "&Configure Skin"
-msgstr ""
+msgstr "&Cấu hình vỏ ngoài"
 
 #. i18n: file: src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
 msgid "&Delete Skin"
-msgstr ""
+msgstr "&Xóa vỏ ngoài"
 
 #. i18n: file: src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -78,7 +78,7 @@ msgstr ""
 
 #: src/module.cpp:145
 msgid "Addon Config"
-msgstr ""
+msgstr "Cấu hình Addon"
 
 #: src/module.cpp:133 src/module.cpp:135
 msgid "Appearance"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: src/subconfigwidget.cpp:234
 msgid "Copy"
-msgstr ""
+msgstr "Sao chép"
 
 #: src/subconfigwidget.cpp:247
 msgid "Copy failed"
@@ -119,7 +119,7 @@ msgstr "Sao chép thất bại"
 
 #: src/module.cpp:89
 msgid "Copyright 2012 Xuetian Weng"
-msgstr ""
+msgstr "Copyright 2012 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:194
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -136,19 +136,19 @@ msgstr ""
 
 #: src/skinpage.cpp:221
 msgid "First candidate"
-msgstr ""
+msgstr "Ứng cử viên đầu tiên"
 
 #. i18n: file: src/configpage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
-msgstr ""
+msgstr "Mẫu"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
 msgid "Get New &Skin..."
-msgstr ""
+msgstr "Thêm mới vỏ &ngoài..."
 
 #: src/module.cpp:121
 msgid "Global Config"
@@ -193,15 +193,15 @@ msgstr ""
 
 #: src/module.cpp:201
 msgid "Manage Fcitx Skin"
-msgstr ""
+msgstr "Quản lý vỏ ngoài Fcitx "
 
 #: src/module.cpp:199
 msgid "Manage Skin"
-msgstr ""
+msgstr "Quản lý vỏ ngoài"
 
 #: src/impage.cpp:67
 msgid "Multilingual"
-msgstr ""
+msgstr "Đa ngôn ngữ"
 
 #: src/uipage.cpp:45
 #, kde-format
@@ -220,6 +220,10 @@ msgid ""
 "ncluding candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
+"Các tùy chọn được liệt kê ở đây có thể được ghi đè bằng phương pháp đầu vào "
+"cụ thể, thường bao gồm số ứng cử viên, phím nóng của trang trước và trang "
+"tiếp theo. Bạn có thể cần đến cấu hình của phương pháp đầu vào tương ứng để "
+"thay đổi chúng."
 
 #: src/configwidget.cpp:563
 msgid "Other"
@@ -227,7 +231,7 @@ msgstr "Khác"
 
 #: src/skinpage.cpp:222
 msgid "Other candidate"
-msgstr ""
+msgstr "Ứng cử viên khác"
 
 #: src/addonselector.cpp:378
 msgid "Search Addons"
@@ -240,11 +244,11 @@ msgstr ""
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 msgid "Select &Font..."
-msgstr ""
+msgstr "Chọn &Font..."
 
 #: src/fontbutton.cpp:106
 msgid "Select Font"
-msgstr ""
+msgstr "Chọn Font"
 
 #. i18n: file: src/impage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
@@ -253,12 +257,12 @@ msgstr ""
 
 #: src/addonselector.cpp:385 src/configwidget.cpp:609
 msgid "Show &Advance option"
-msgstr ""
+msgstr "Hiện tùy c&họn nâng cao"
 
 #: src/skinpage.cpp:391
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
-msgstr ""
+msgstr "Vỏ ngoài %1 không thể nạp"
 
 #. i18n: file: src/impage.ui:295
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -287,7 +291,7 @@ msgstr "Xem thông tin hệ thống"
 
 #: src/subconfigwidget.cpp:233
 msgid "What to do"
-msgstr ""
+msgstr "Phải làm gì"
 
 #: src/module.cpp:93
 msgid "Xuetian Weng"
