@@ -5,14 +5,15 @@
 # Translators:
 # Alisha <alisha.4m@gmail.com>, 2012
 # Alisha <alisha.4m@gmail.com>, 2011-2012
-# Xuetian Weng <wengxt@gmail.com>, 2012-2013
+# csslayer <wengxt@gmail.com>, 2014
+# csslayer <wengxt@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-02-04 12:41+0000\n"
-"PO-Revision-Date: 2013-04-26 13:18+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2014-08-07 18:03+0200\n"
+"PO-Revision-Date: 2014-04-10 16:53+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/"
 "language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -227,9 +228,10 @@ msgstr "只顯示目前語言(&S)"
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#, fuzzy
 msgid ""
 "Options listed here might be overridden by specific input method, usually "
-"ncluding candidate number, hotkey of previous page and next page. You may "
+"including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
 "在此列出的選項可能被具體的輸入法覆蓋，通常包括候選字數，上一頁和下一頁翻頁"

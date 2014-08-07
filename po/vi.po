@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-06 13:02+0200\n"
+"POT-Creation-Date: 2014-08-07 18:03+0200\n"
 "PO-Revision-Date: 2014-08-06 10:29+0000\n"
 "Last-Translator: dinhdangkhoi <dinhdangkhoi.fs@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/"
@@ -215,9 +215,10 @@ msgstr ""
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#, fuzzy
 msgid ""
 "Options listed here might be overridden by specific input method, usually "
-"ncluding candidate number, hotkey of previous page and next page. You may "
+"including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
 "Các tùy chọn được liệt kê ở đây có thể được ghi đè bằng phương pháp đầu vào "

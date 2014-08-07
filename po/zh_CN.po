@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-07-14 13:03+0200\n"
+"POT-Creation-Date: 2014-08-07 18:03+0200\n"
 "PO-Revision-Date: 2014-07-14 10:02+0000\n"
 "Last-Translator: marguerite su <i@marguerite.su>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
@@ -232,9 +232,10 @@ msgstr "仅显示当前语言(&S)"
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#, fuzzy
 msgid ""
 "Options listed here might be overridden by specific input method, usually "
-"ncluding candidate number, hotkey of previous page and next page. You may "
+"including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
 "此处列示的选项可能被具体的输入法覆盖，通常包括候选词个数，上一页和下一页的热"
