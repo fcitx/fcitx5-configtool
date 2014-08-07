@@ -51,7 +51,7 @@
      <item>
       <widget class="QLabel" name="infoLabel">
        <property name="text">
-        <string>Options listed here might be overridden by specific input method, usually ncluding candidate number, hotkey of previous page and next page. You may need go to configuration of corresponding input method to change them.</string>
+        <string>Options listed here might be overridden by specific input method, usually including candidate number, hotkey of previous page and next page. You may need go to configuration of corresponding input method to change them.</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
