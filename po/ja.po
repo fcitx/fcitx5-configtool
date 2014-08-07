@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-07 18:03+0200\n"
-"PO-Revision-Date: 2014-04-10 16:53+0000\n"
+"POT-Creation-Date: 2014-08-08 00:02+0200\n"
+"PO-Revision-Date: 2014-08-07 16:03+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/fcitx/language/"
 "ja/)\n"
@@ -227,15 +227,11 @@ msgstr "現在の言語のみ表示 (&S)"
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#, fuzzy
 msgid ""
 "Options listed here might be overridden by specific input method, usually "
 "including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
-"これらのオプションは特定の入力メソッドで上書きされることがあります。候補数、"
-"前ページや次ページのホットキーなどはその可能性が高いです。これらの動作を変え"
-"るには、対応する入力メソッドの設定が必要です。"
 
 #: src/configwidget.cpp:563
 msgid "Other"

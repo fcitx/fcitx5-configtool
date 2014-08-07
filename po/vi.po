@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-07 18:03+0200\n"
-"PO-Revision-Date: 2014-08-06 10:29+0000\n"
-"Last-Translator: dinhdangkhoi <dinhdangkhoi.fs@gmail.com>\n"
+"POT-Creation-Date: 2014-08-08 00:02+0200\n"
+"PO-Revision-Date: 2014-08-07 16:03+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/"
 "language/vi/)\n"
 "Language: vi\n"
@@ -215,16 +215,11 @@ msgstr ""
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#, fuzzy
 msgid ""
 "Options listed here might be overridden by specific input method, usually "
 "including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
-"Các tùy chọn được liệt kê ở đây có thể được ghi đè bằng phương pháp đầu vào "
-"cụ thể, thường bao gồm số ứng cử viên, phím nóng của trang trước và trang "
-"tiếp theo. Bạn có thể cần đến cấu hình của phương pháp đầu vào tương ứng để "
-"thay đổi chúng."
 
 #: src/configwidget.cpp:563
 msgid "Other"
