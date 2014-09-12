@@ -9,15 +9,16 @@
 # csslayer <wengxt@gmail.com>, 2014
 # csslayer <wengxt@gmail.com>, 2011
 # csslayer <wengxt@gmail.com>, 2010-2013
+# wwj402 <wwj402@gmail.com>, 2014
 # csslayer <wengxt@gmail.com>, 2011,2014
 # Xuetian Weng <xweng@cs.stonybrook.edu>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-08 00:02+0200\n"
-"PO-Revision-Date: 2014-08-07 16:03+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2014-09-12 12:03+0200\n"
+"PO-Revision-Date: 2014-09-12 06:44+0000\n"
+"Last-Translator: wwj402 <wwj402@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/fcitx/"
 "language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -237,6 +238,8 @@ msgid ""
 "including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
 msgstr ""
+"这里列出的选项可能是由特定的输入法占用了，通常包括候选编号，上一页和下一页的"
+"热键。你可能需要去相应的输入法配置中更改。"
 
 #: src/configwidget.cpp:563
 msgid "Other"
