@@ -8,7 +8,7 @@
 #include <QLabel>
 #include <KLocalizedString>
 #include <KLineEdit>
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
+#include <fcitxqtinputmethodproxy.h>
 
 Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
     ,m_module(parent)
@@ -73,7 +73,7 @@ void Fcitx::UIPage::load()
 void Fcitx::UIPage::save()
 {
     if (m_widget)
-        m_widget->buttonClicked(KDialog::Ok);
+        m_widget->buttonClicked(QDialogButtonBox::Ok);
 }
 
 Fcitx::UIPage::~UIPage()

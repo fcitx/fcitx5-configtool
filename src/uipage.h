@@ -25,7 +25,7 @@
 #include <QWidget>
 
 // self
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
+#include <fcitxqtinputmethodproxy.h>
 
 class QLabel;
 class QVBoxLayout;

@@ -23,10 +23,9 @@
 #include <QPainter>
 #include <QFile>
 #include <QPointer>
+#include <QLineEdit>
 
 // KDE
-#include <KDebug>
-#include <KStandardDirs>
 #include <KNS3/DownloadDialog>
 
 // Fcitx
@@ -784,7 +783,7 @@ void SkinPage::Private::configureSkin()
         FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc("skin.desc");
 
         if (cfdesc) {
-            QPointer<KDialog> configDialog(ConfigWidget::configDialog(
+            QPointer<QDialog> configDialog(ConfigWidget::configDialog(
                 module,
                 cfdesc,
                 "",
@@ -825,11 +824,11 @@ SkinPage::SkinPage(Module* module, QWidget* parent):
 
 {
     m_ui->setupUi(this);
-    m_ui->installSkinButton->setIcon(KIcon("get-hot-new-stuff"));
+    m_ui->installSkinButton->setIcon(QIcon::fromTheme("get-hot-new-stuff"));
 
     d->configureSkinButton = m_ui->configureSkinButton;
     d->deleteSkinButton = m_ui->deleteSkinButton;
-    d->configureSkinButton->setIcon(KIcon("configure"));
+    d->configureSkinButton->setIcon(QIcon::fromTheme("configure"));
     d->skinView = m_ui->skinView;
     d->skinModel = new Private::SkinModel(d, this);
     d->skinDelegate = new Private::SkinDelegate(this);
@@ -863,7 +862,7 @@ void SkinPage::save()
     d->save();
 }
 
-void SkinPage::setSkinField(KLineEdit* lineEdit)
+void SkinPage::setSkinField(QLineEdit* lineEdit)
 {
     d->skinField = lineEdit;
 
@@ -879,7 +878,7 @@ void SkinPage::installButtonClicked()
     QPointer<KNS3::DownloadDialog> dialog(new KNS3::DownloadDialog("fcitx-skin.knsrc"));
     dialog->exec();
     foreach(const KNS3::Entry & e, dialog->changedEntries()) {
-        kDebug() << "Changed Entry: " << e.name();
+        qDebug() << "Changed Entry: " << e.name();
     }
     delete dialog;
     load();

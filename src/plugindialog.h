@@ -19,19 +19,21 @@
 #ifndef PLUGINDIALOG_H
 #define PLUGINDIALOG_H
 
-#include <KDialog>
-#include <fcitx-qt/fcitxqtconfiguiwidget.h>
+#include <QDialog>
+#include <QDialogButtonBox>
+#include <fcitxqtconfiguiwidget.h>
 
 namespace Fcitx {
 
-class PluginDialog : public KDialog {
+class PluginDialog : public QDialog {
     Q_OBJECT
 public:
     explicit PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent = 0, Qt::WindowFlags flags = 0);
-    virtual void slotButtonClicked(int button);
+    virtual void slotButtonClicked(QDialogButtonBox::StandardButton button);
 
 private:
     FcitxQtConfigUIWidget* m_widget;
+    QDialogButtonBox* m_buttonBox;
 public slots:
     void changed(bool changed);
     void saveFinished();

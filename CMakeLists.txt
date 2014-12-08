@@ -1,7 +1,29 @@
-cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 project(kcm-fcitx)
 
+set(QT_MIN_VERSION "5.3.0")
+find_package(ECM 1.0.0 REQUIRED NO_MODULE)
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings)
+include(FeatureSummary)
 option(ENABLE_TEST "Enable test" Off)
+
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets)
+
+find_package(KF5 REQUIRED COMPONENTS
+    CoreAddons
+    WidgetsAddons
+    KCMUtils
+    ItemViews
+    I18n
+    KIO
+    NewStuff
+)
+
+find_package(FcitxQt5DBusAddons REQUIRED)
+find_package(FcitxQt5WidgetsAddons REQUIRED)
 
 set(MAJOR_VERSION "0")
 set(MINOR_VERSION "4")
@@ -17,15 +39,12 @@ else(NOT SUFFIX_VERSION)
     set(VERSION_STRING_FULL "${VERSION_STRING}-${SUFFIX_VERSION}")
 endif(NOT SUFFIX_VERSION)
 
-find_package(KDE4 REQUIRED)
-include(KDE4Defaults)
-
 find_package(PkgConfig REQUIRED)
 find_package(Gettext REQUIRED)
 find_package(Fcitx 4.2.8 REQUIRED)
 find_package(XkbFile REQUIRED)
 
-pkg_check_modules(FCITX_QT "fcitx-qt>=4.2.8" REQUIRED)
+pkg_check_modules(FCITX_QT "fcitx-qt5" REQUIRED)
 
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
@@ -55,8 +74,6 @@ set(XLIBDIR "${xrootdir}/lib/X11")
 
 configure_file(config.h.in config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
-include_directories(${KDE4_INCLUDES} ${QT_INCLUDES})
 include_directories(
     ${FCITX4_FCITX_INCLUDE_DIRS}
     ${FCITX4_FCITX_UTILS_INCLUDE_DIRS}
@@ -73,4 +90,4 @@ link_directories(
 
 add_subdirectory(po)
 add_subdirectory(src)
-add_subdirectory(layout)
+#add_subdirectory(layout)

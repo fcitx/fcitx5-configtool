@@ -1,4 +1,5 @@
 include_directories(${PROJECT_SOURCE_DIR}/layout)
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx\")
 
 set(kcm_SRCS
   main.cpp
@@ -20,35 +21,39 @@ set(kcm_SRCS
   configpage.cpp
   plugindialog.cpp
   erroroverlay.cpp
-  ../layout/keyboardlayoutwidget.cpp
+#   ../layout/keyboardlayoutwidget.cpp
   )
 
 set(kcm_UIS module.ui skinpage.ui impage.ui fontbutton.ui configpage.ui)
 fcitx_translate_add_sources(${kcm_SRCS} ${kcm_UIS} kcm_fcitx.desktop.in)
 
-kde4_add_ui_files(kcm_SRCS ${kcm_UIS})
+ki18n_wrap_ui(kcm_SRCS ${kcm_UIS})
 
-kde4_add_plugin(kcm_fcitx ${kcm_SRCS})
+add_library(kcm_fcitx MODULE ${kcm_SRCS})
 
 target_link_libraries(kcm_fcitx
-  ${KDE4_KDEUI_LIBRARY}
-  ${KDE4_KIO_LIBS}
-  ${KDE4_KNEWSTUFF3_LIBS}
+  KF5::CoreAddons
+  KF5::WidgetsAddons
+  KF5::KCMUtils
+  KF5::ItemViews
+  KF5::I18n
+  KF5::KIOCore
+  KF5::KIOWidgets
+  KF5::NewStuff
+  FcitxQt5::WidgetsAddons
+  FcitxQt5::DBusAddons
   ${FCITX4_FCITX_UTILS_LIBRARIES}
   ${FCITX4_FCITX_CONFIG_LIBRARIES}
   ${FCITX4_FCITX_LIBRARIES}
   ${LIBINTL_LIBRARY}
-  ${XKBFILE_LIBRARIES}
-  ${X11_X11_LIB}
-  ${FCITX_QT_LIBRARIES}
   )
 
-install(TARGETS kcm_fcitx DESTINATION ${PLUGIN_INSTALL_DIR})
+install(TARGETS kcm_fcitx DESTINATION ${CMAKE_INSTALL_PLUGINDIR})
 fcitx_translate_add_apply_source(
   kcm_fcitx.desktop.in
   "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx.desktop")
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx.desktop"
-  DESTINATION ${SERVICES_INSTALL_DIR})
+  DESTINATION ${CMAKE_INSTALL_KSERVICES5DIR})
 
 message("GHNS DIR : ${CONFIG_INSTALL_DIR}")
 

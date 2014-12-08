@@ -25,12 +25,9 @@
 #include <QPainter>
 
 // KDE
-#include <KPushButton>
-#include <KLineEdit>
 #include <KCategorizedView>
 #include <KCategoryDrawer>
 #include <KLocalizedString>
-#include <KDebug>
 
 // system
 #include <libintl.h>
@@ -217,10 +214,10 @@ bool AddonSelector::Private::ProxyModel::subSortLessThan(const QModelIndex &left
 AddonSelector::Private::AddonDelegate::AddonDelegate(AddonSelector::Private *addonSelector_d, QObject *parent)
     : KWidgetItemDelegate(addonSelector_d->listView, parent)
     , checkBox(new QCheckBox)
-    , pushButton(new KPushButton)
+    , pushButton(new QPushButton)
     , addonSelector_d(addonSelector_d)
 {
-    pushButton->setIcon(KIcon("configure"));       // only for getting size matters
+    pushButton->setIcon(QIcon::fromTheme("configure"));       // only for getting size matters
 }
 
 AddonSelector::Private::AddonDelegate::~AddonDelegate()
@@ -280,7 +277,7 @@ QSize AddonSelector::Private::AddonDelegate::sizeHint(const QStyleOptionViewItem
                  fmTitle.height() + option.fontMetrics.height() + MARGIN * 2);
 }
 
-QList<QWidget*> AddonSelector::Private::AddonDelegate::createItemWidgets() const
+QList<QWidget*> AddonSelector::Private::AddonDelegate::createItemWidgets(const QModelIndex& index) const
 {
     QList<QWidget*> widgetList;
 
@@ -288,8 +285,8 @@ QList<QWidget*> AddonSelector::Private::AddonDelegate::createItemWidgets() const
     connect(enabledCheckBox, SIGNAL(clicked(bool)), this, SLOT(slotStateChanged(bool)));
     connect(enabledCheckBox, SIGNAL(clicked(bool)), this, SLOT(emitChanged()));
 
-    KPushButton *configurePushButton = new KPushButton;
-    configurePushButton->setIcon(KIcon("configure"));
+    QPushButton *configurePushButton = new QPushButton;
+    configurePushButton->setIcon(QIcon::fromTheme("configure"));
     connect(configurePushButton, SIGNAL(clicked(bool)), this, SLOT(slotConfigureClicked()));
 
     setBlockedEventTypes(enabledCheckBox, QList<QEvent::Type>() << QEvent::MouseButtonPress
@@ -314,7 +311,7 @@ void AddonSelector::Private::AddonDelegate::updateItemWidgets(const QList<QWidge
     checkBox->move(addonSelector_d->dependantLayoutValue(MARGIN, checkBox->sizeHint().width(), option.rect.width()), option.rect.height() / 2 - checkBox->sizeHint().height() / 2);
     checkBox->setVisible(addonSelector_d->advanceCheckbox->isChecked());
 
-    KPushButton *configurePushButton = static_cast<KPushButton*>(widgets[1]);
+    QPushButton *configurePushButton = static_cast<QPushButton*>(widgets[1]);
     QSize configurePushButtonSizeHint = configurePushButton->sizeHint();
     configurePushButton->resize(configurePushButtonSizeHint);
     configurePushButton->move(addonSelector_d->dependantLayoutValue(option.rect.width() - MARGIN - configurePushButtonSizeHint.width(), configurePushButtonSizeHint.width(), option.rect.width()), option.rect.height() / 2 - configurePushButtonSizeHint.height() / 2);
@@ -348,7 +345,7 @@ void AddonSelector::Private::AddonDelegate::slotConfigureClicked()
     const QModelIndex index = focusedIndex();
 
     FcitxAddon* addonEntry = static_cast<FcitxAddon*>(index.internalPointer());
-    QPointer<KDialog> configDialog(ConfigWidget::configDialog(addonSelector_d->parent->parent, addonEntry));
+    QPointer<QDialog> configDialog(ConfigWidget::configDialog(addonSelector_d->parent->parent, addonEntry));
     if (configDialog.isNull())
         return;
     configDialog->exec();
@@ -373,13 +370,13 @@ AddonSelector::AddonSelector(Module* parent) :
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setMargin(0);
 
-    d->lineEdit = new KLineEdit(this);
-    d->lineEdit->setClearButtonShown(true);
-    d->lineEdit->setClickMessage(i18n("Search Addons"));
+    d->lineEdit = new QLineEdit(this);
+    d->lineEdit->setClearButtonEnabled(true);
+    d->lineEdit->setPlaceholderText(i18n("Search Addons"));
     d->listView = new KCategorizedView(this);
     d->listView->setVerticalScrollMode(QListView::ScrollPerPixel);
     d->listView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    d->categoryDrawer = new KCategoryDrawerV3(d->listView);
+    d->categoryDrawer = new KCategoryDrawer(d->listView);
     d->listView->setCategoryDrawer(d->categoryDrawer);
     d->advanceCheckbox = new QCheckBox(this);
     d->advanceCheckbox->setText(i18n("Show &Advance option"));

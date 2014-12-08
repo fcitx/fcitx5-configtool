@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>933</width>
+    <width>1024</width>
     <height>648</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@
    <item row="1" column="1" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="KPushButton" name="defaultLayoutButton">
+      <widget class="QPushButton" name="defaultLayoutButton">
        <property name="toolTip">
         <string>Keyboard layout to use when no input method active</string>
        </property>
@@ -85,47 +85,10 @@
         </widget>
        </item>
        <item>
-        <widget class="KLineEdit" name="filterTextEdit"/>
+        <widget class="QLineEdit" name="filterTextEdit"/>
        </item>
        <item>
-        <widget class="QTreeView" name="availIMView">
-         <property name="mouseTracking">
-          <bool>true</bool>
-         </property>
-         <property name="acceptDrops">
-          <bool>false</bool>
-         </property>
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="showDropIndicator" stdset="0">
-          <bool>true</bool>
-         </property>
-         <property name="dragEnabled">
-          <bool>false</bool>
-         </property>
-         <property name="selectionMode">
-          <enum>QAbstractItemView::SingleSelection</enum>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerItem</enum>
-         </property>
-         <property name="indentation">
-          <number>0</number>
-         </property>
-         <property name="rootIsDecorated">
-          <bool>false</bool>
-         </property>
-         <property name="sortingEnabled">
-          <bool>true</bool>
-         </property>
-         <property name="expandsOnDoubleClick">
-          <bool>false</bool>
-         </property>
-         <attribute name="headerVisible">
-          <bool>false</bool>
-         </attribute>
-        </widget>
+        <widget class="KCategorizedView" name="availIMView"/>
        </item>
        <item>
         <widget class="QCheckBox" name="onlyCurrentLanguageCheckBox">
@@ -158,14 +121,14 @@
         </spacer>
        </item>
        <item>
-        <widget class="KPushButton" name="addIMButton">
+        <widget class="QPushButton" name="addIMButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="KPushButton" name="removeIMButton">
+        <widget class="QPushButton" name="removeIMButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -216,21 +179,21 @@
         </spacer>
        </item>
        <item>
-        <widget class="KPushButton" name="moveUpButton">
+        <widget class="QPushButton" name="moveUpButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="KPushButton" name="moveDownButton">
+        <widget class="QPushButton" name="moveDownButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="KPushButton" name="configureButton"/>
+        <widget class="QPushButton" name="configureButton"/>
        </item>
        <item>
         <spacer name="verticalSpacer_4">
@@ -325,14 +288,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>KLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>klineedit.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KPushButton</class>
-   <extends>QPushButton</extends>
-   <header>kpushbutton.h</header>
+    <class>KCategorizedView</class>
+    <extends>QListView</extends>
+    <header>kcategorizedview.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

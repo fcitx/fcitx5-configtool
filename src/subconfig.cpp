@@ -19,13 +19,12 @@
 
 #include <QFileInfo>
 #include <QDebug>
+#include <QStandardPaths>
 #include <QDir>
-
-#include <KStandardDirs>
 
 #include <fcitx-utils/utils.h>
 #include <fcitx-config/xdg.h>
-#include <fcitx-qt/fcitxqtconfiguifactory.h>
+#include <fcitxqtconfiguifactory.h>
 
 // self
 #include "subconfig.h"
@@ -125,7 +124,7 @@ void SubConfig::parseProgramSubConfig(const SubConfigPattern* pattern)
     QString program = pattern->program();
 
     if (pattern->program()[0] != '/') {
-        program =  KStandardDirs::findExe(pattern->program());
+        program =  QStandardPaths::findExecutable(pattern->program());
         if (program.isEmpty()) {
             char* path = fcitx_utils_get_fcitx_path_with_filename("bindir", program.toUtf8().constData());
             if (path) {

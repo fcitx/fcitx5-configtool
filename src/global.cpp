@@ -20,9 +20,9 @@
 // Fcitx
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/xdg.h>
-#include <fcitx-qt/fcitxqtconnection.h>
-#include <fcitx-qt/fcitxqtconfiguifactory.h>
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
+#include <fcitxqtconnection.h>
+#include <fcitxqtconfiguifactory.h>
+#include <fcitxqtinputmethodproxy.h>
 
 // self
 #include "global.h"

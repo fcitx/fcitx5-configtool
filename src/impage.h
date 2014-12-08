@@ -23,7 +23,7 @@
 // Qt
 #include <QString>
 #include <QWidget>
-#include <fcitx-qt/fcitxqtinputmethoditem.h>
+#include <fcitxqtinputmethoditem.h>
 
 // self
 

@@ -20,11 +20,11 @@
 #include "erroroverlay.h"
 #include "global.h"
 
-#include <QtCore/QEvent>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QIcon>
+#include <QEvent>
+#include <QLabel>
+#include <QVBoxLayout>
 
-#include <KIcon>
 #include <KLocalizedString>
 
 ErrorOverlay::ErrorOverlay(QWidget *baseWidget, QWidget *parent) :
@@ -38,7 +38,7 @@ ErrorOverlay::ErrorOverlay(QWidget *baseWidget, QWidget *parent) :
     layout->setSpacing(10);
 
     QLabel *pixmap = new QLabel();
-    pixmap->setPixmap(KIcon("dialog-error").pixmap(64));
+    pixmap->setPixmap(QIcon::fromTheme("dialog-error").pixmap(64));
 
     QLabel *message = new QLabel(i18n("Cannot connect to Fcitx by DBus, is Fcitx running?"));
 

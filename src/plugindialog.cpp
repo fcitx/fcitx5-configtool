@@ -18,50 +18,63 @@
  ***************************************************************************/
 
 #include "plugindialog.h"
+#include <QIcon>
+#include <QHBoxLayout>
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 namespace Fcitx {
 
-PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::WindowFlags flags) : KDialog(parent, flags)
+PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::WindowFlags flags) : QDialog(parent, flags)
     ,m_widget(widget)
 {
     setWindowTitle(widget->title());
-    setWindowIcon(KIcon(widget->icon()));
-    setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Reset);
-    setMainWidget(widget);
+    setWindowIcon(QIcon::fromTheme(widget->icon()));
+    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    setLayout(dialogLayout);
+    m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    dialogLayout->addWidget(m_widget);
+    dialogLayout->addWidget(m_buttonBox);
     connect(m_widget, SIGNAL(changed(bool)), this, SLOT(changed(bool)));
     if (m_widget->asyncSave())
         connect(m_widget, SIGNAL(saveFinished()), this, SLOT(saveFinished()));
+    connect(m_buttonBox, &QDialogButtonBox::clicked, this, [this](QAbstractButton* button) {
+        slotButtonClicked(m_buttonBox->standardButton(button));
+    });
+    connect(m_buttonBox, &QDialogButtonBox::accepted, this, &PluginDialog::accept);
+    connect(m_buttonBox, &QDialogButtonBox::rejected, this, &PluginDialog::reject);
 }
 
 void PluginDialog::saveFinished()
 {
     if (m_widget->asyncSave())
         m_widget->setEnabled(true);
-    KDialog::slotButtonClicked(KDialog::Ok);
+    m_buttonBox->button(QDialogButtonBox::Ok)->click();
 }
 
-void PluginDialog::slotButtonClicked(int button)
+void PluginDialog::slotButtonClicked(QDialogButtonBox::StandardButton button)
 {
     switch (button) {
-        case KDialog::Reset:
+        case QDialogButtonBox::Reset:
             m_widget->load();
             break;
-        case KDialog::Ok:
+        case QDialogButtonBox::Ok:
             if (m_widget->asyncSave())
                 m_widget->setEnabled(false);
             m_widget->save();
-            if (!m_widget->asyncSave())
-                KDialog::slotButtonClicked(button);
+            if (!m_widget->asyncSave()) {
+                m_buttonBox->button(button)->click();
+            }
             break;
         default:
-            KDialog::slotButtonClicked(button);
+            m_buttonBox->button(button)->click();
     }
 }
 
 void PluginDialog::changed(bool changed)
 {
-    enableButton(KDialog::Ok, changed);
-    enableButton(KDialog::Reset, changed);
+    m_buttonBox->button(QDialogButtonBox::Ok)->setEnabled(changed);
+    m_buttonBox->button(QDialogButtonBox::Reset)->setEnabled(changed);
 }
 
 }

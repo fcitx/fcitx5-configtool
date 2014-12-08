@@ -1,4 +1,3 @@
-#include <QX11Info>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QDebug>

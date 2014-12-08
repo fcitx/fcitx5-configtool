@@ -6,15 +6,15 @@
 #include <KComboBox>
 #include <KLocalizedString>
 
-#include <fcitx-qt/fcitxqtkeyboardproxy.h>
-#include <fcitx-qt/fcitxqtconnection.h>
+#include <fcitxqtkeyboardproxy.h>
+#include <fcitxqtconnection.h>
 
 #include "imconfigdialog.h"
 #include "global.h"
 #include "configwidget.h"
 #include "keyboardlayoutwidget.h"
 
-Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent): KDialog(parent)
+Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent): QDialog(parent)
     ,m_imName(imName)
     ,m_layoutCombobox(0)
     ,m_configPage(0)
@@ -57,14 +57,17 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
             l->addWidget(label);
             l->addWidget(m_layoutCombobox);
             connect(m_layoutCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(layoutComboBoxChanged()));
+#if 0
             m_layoutWidget = new KeyboardLayoutWidget(this);
             m_layoutWidget->setMinimumSize(QSize(400, 200));
             m_layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
             l->addWidget(m_layoutWidget);
+#endif
             layoutComboBoxChanged();
         }
     }
     else {
+#if 0
         KeyboardLayoutWidget* layoutWidget = new KeyboardLayoutWidget(this);
         layoutWidget->setMinimumSize(QSize(400, 200));
         layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -80,6 +83,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
         }
         layoutWidget->setKeyboardLayout(layout, variant);
         l->addWidget(layoutWidget);
+#endif
     }
 
     FcitxConfigFileDesc* cfdesc = NULL;
@@ -104,23 +108,28 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
             l->addWidget(m_configPage);
         }
     }
-    setWindowIcon(KIcon("fcitx"));
-    setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-    setMainWidget(widget);
-    connect(this, SIGNAL(buttonClicked(KDialog::ButtonCode)), this, SLOT(onButtonClicked(KDialog::ButtonCode)));
+    setWindowIcon(QIcon::fromTheme("fcitx"));
+    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    setLayout(dialogLayout);
+    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    dialogLayout->addWidget(widget);
+    dialogLayout->addWidget(buttonBox);
+    connect(buttonBox, &QDialogButtonBox::clicked, this, [this, buttonBox](QAbstractButton* button) {
+        this->onButtonClicked(buttonBox->standardButton(button));
+    });
 }
 
-void Fcitx::IMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
+void Fcitx::IMConfigDialog::onButtonClicked(QDialogButtonBox::StandardButton code)
 {
     if (m_layoutCombobox && Global::instance()->keyboardProxy()) {
-        if (code == KDialog::Ok) {
+        if (code == QDialogButtonBox::Ok) {
             int idx = m_layoutCombobox->currentIndex();
             if (idx == 0)
                 Global::instance()->keyboardProxy()->SetLayoutForIM(m_imName, "", "");
             else
                 Global::instance()->keyboardProxy()->SetLayoutForIM(m_imName, m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
         }
-        else if (code == KDialog::Default)
+        else if (code == QDialogButtonBox::RestoreDefaults)
             m_layoutCombobox->setCurrentIndex(0);
     }
 
@@ -130,9 +139,11 @@ void Fcitx::IMConfigDialog::onButtonClicked(KDialog::ButtonCode code)
 
 void Fcitx::IMConfigDialog::layoutComboBoxChanged()
 {
+#if 0
     if (!m_layoutCombobox || !m_layoutWidget)
+#endif
         return;
-
+#if 0
     int idx = m_layoutCombobox->currentIndex();
     if (idx != 0) {
         m_layoutWidget->setKeyboardLayout(m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
@@ -140,4 +151,5 @@ void Fcitx::IMConfigDialog::layoutComboBoxChanged()
     }
     else
         m_layoutWidget->hide();
+#endif
 }
