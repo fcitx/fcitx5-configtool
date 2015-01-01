@@ -1,6 +1,6 @@
 #include <fcitx/module/dbus/dbusstuff.h>
 #include <fcitx/module/ipc/ipc.h>
-#include <QVBoxLayout>
+#include <QHBoxLayout>
 #include <QComboBox>
 #include <QLabel>
 #include <KComboBox>
@@ -20,7 +20,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     ,m_configPage(0)
 {
     QWidget* widget = new QWidget(this);
-    QVBoxLayout* l = new QVBoxLayout(this);
+    QHBoxLayout* l = new QHBoxLayout(this);
     widget->setLayout(l);
 
     if (!imName.startsWith("fcitx-keyboard") && Global::instance()->keyboardProxy()) {
