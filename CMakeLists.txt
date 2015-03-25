@@ -44,8 +44,6 @@ find_package(Gettext REQUIRED)
 find_package(Fcitx 4.2.8 REQUIRED)
 find_package(XkbFile REQUIRED)
 
-pkg_check_modules(FCITX_QT "fcitx-qt5" REQUIRED)
-
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
 set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}")
