@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>555</width>
+    <width>663</width>
     <height>451</height>
    </rect>
   </property>
@@ -33,7 +33,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="KPushButton" name="configureSkinButton">
+      <widget class="QPushButton" name="configureSkinButton">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -43,7 +43,7 @@
       </widget>
      </item>
      <item>
-      <widget class="KPushButton" name="deleteSkinButton">
+      <widget class="QPushButton" name="deleteSkinButton">
        <property name="enabled">
         <bool>false</bool>
        </property>
@@ -53,7 +53,7 @@
       </widget>
      </item>
      <item>
-      <widget class="KPushButton" name="installSkinButton">
+      <widget class="QPushButton" name="installSkinButton">
        <property name="text">
         <string>Get New &amp;Skin...</string>
        </property>
@@ -75,13 +75,6 @@ p, li { white-space: pre-wrap; }
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KPushButton</class>
-   <extends>QPushButton</extends>
-   <header>kpushbutton.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

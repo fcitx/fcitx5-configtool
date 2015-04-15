@@ -23,6 +23,7 @@
 // Qt
 #include <QObject>
 #include <QAbstractListModel>
+#include <QLineEdit>
 
 // KDE
 #include <KCategorizedSortFilterProxyModel>
@@ -34,7 +35,7 @@
 // self
 #include "addonselector.h"
 
-class KCategoryDrawerV3;
+class KCategoryDrawer;
 
 class KCategorizedView;
 
@@ -68,9 +69,9 @@ public:
     class ProxyModel;
 
     class AddonDelegate;
-    KLineEdit* lineEdit;
+    QLineEdit* lineEdit;
     KCategorizedView* listView;
-    KCategoryDrawerV3 *categoryDrawer;
+    KCategoryDrawer *categoryDrawer;
     AddonModel *addonModel;
     ProxyModel *proxyModel;
     AddonDelegate *addonDelegate;
@@ -133,7 +134,7 @@ Q_SIGNALS:
     void configCommitted(const QByteArray& addonName);
 
 protected:
-    virtual QList< QWidget* > createItemWidgets() const;
+    virtual QList< QWidget* > createItemWidgets(const QModelIndex &index) const;
     virtual void updateItemWidgets(const QList< QWidget* > widgets, const QStyleOptionViewItem& option, const QPersistentModelIndex& index) const;
 
 private Q_SLOTS:

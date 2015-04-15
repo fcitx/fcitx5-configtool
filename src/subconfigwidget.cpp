@@ -25,15 +25,14 @@
 #include <QStandardItemModel>
 
 // KDE
-#include <KDialog>
-#include <KPushButton>
+#include <QDialog>
 #include <KRun>
 #include <KMessageBox>
 #include <KLocalizedString>
 
 // Fcitx
 #include <fcitx-config/xdg.h>
-#include <fcitx-qt/fcitxqtconfiguifactory.h>
+#include <fcitxqtconfiguifactory.h>
 
 // self
 #include "global.h"
@@ -123,8 +122,8 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
         m_listView->setModel(m_model);
         hbox->addWidget(m_listView);
 
-        KPushButton* pushButton = new KPushButton;
-        pushButton->setIcon(KIcon("configure"));
+        QPushButton* pushButton = new QPushButton;
+        pushButton->setIcon(QIcon::fromTheme("configure"));
         connect(pushButton, SIGNAL(clicked()), this, SLOT(openSubConfig()));
         hbox->addWidget(pushButton);
     }
@@ -132,8 +131,8 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
     case SC_NativeFile: {
         QVBoxLayout* hbox = new QVBoxLayout;
         setLayout(hbox);
-        KPushButton* pushButton = new KPushButton;
-        pushButton->setIcon(KIcon("document-open"));
+        QPushButton* pushButton = new QPushButton;
+        pushButton->setIcon(QIcon::fromTheme("document-open"));
         connect(pushButton, SIGNAL(clicked()), this, SLOT(openNativeFile()));
         hbox->addWidget(pushButton);
     }
@@ -141,8 +140,8 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
     case SC_Program: {
         QVBoxLayout* hbox = new QVBoxLayout;
         setLayout(hbox);
-        KPushButton* pushButton = new KPushButton;
-        pushButton->setIcon(KIcon("system-run"));
+        QPushButton* pushButton = new QPushButton;
+        pushButton->setIcon(QIcon::fromTheme("system-run"));
         if (subconfig->program().isNull())
             pushButton->setEnabled(false);
         else
@@ -153,8 +152,8 @@ SubConfigWidget::SubConfigWidget(SubConfig* subconfig, QWidget* parent) :
     case SC_Plugin: {
         QVBoxLayout* hbox = new QVBoxLayout;
         setLayout(hbox);
-        KPushButton* pushButton = new KPushButton;
-        pushButton->setIcon(KIcon("configure"));
+        QPushButton* pushButton = new QPushButton;
+        pushButton->setIcon(QIcon::fromTheme("configure"));
         connect(pushButton, SIGNAL(clicked()), this, SLOT(openPlugin()));
         hbox->addWidget(pushButton);
     }
@@ -179,7 +178,7 @@ void SubConfigWidget::openSubConfig()
     FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(m_subConfig->configdesc());
 
     if (cfdesc) {
-        QPointer<KDialog> configDialog(ConfigWidget::configDialog(
+        QPointer<QDialog> configDialog(ConfigWidget::configDialog(
             NULL,
             cfdesc,
             "",
@@ -195,7 +194,7 @@ void SubConfigWidget::openPlugin()
 {
     FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
     if (widget) {
-        QPointer<KDialog> pluginDialog(new PluginDialog(widget, 0));
+        QPointer<QDialog> pluginDialog(new PluginDialog(widget, 0));
 
         pluginDialog->exec();
         delete pluginDialog;
@@ -209,7 +208,7 @@ void SubConfigWidget::openNativeFile()
 
     FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
     if (widget) {
-        QPointer<KDialog> pluginDialog(new PluginDialog(widget, 0));
+        QPointer<QDialog> pluginDialog(new PluginDialog(widget, 0));
 
         pluginDialog->exec();
         delete pluginDialog;
@@ -268,7 +267,7 @@ void SubConfigWidget::openNativeFile()
     }
 
     if (newpath) {
-        KRun::runUrl(KUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL);
+        KRun::runUrl(QUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL);
         free(newpath);
     }
 }

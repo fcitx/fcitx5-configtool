@@ -93,7 +93,6 @@ protected:
     bool parseXkbColorSpec(char* colorspec, QColor& color);
     void initColors();
 
-    virtual bool x11Event(XEvent* event);
     virtual void focusOutEvent(QFocusEvent* event);
 
     void drawKey(QPainter* painter, DrawingKey* item);

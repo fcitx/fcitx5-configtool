@@ -31,7 +31,7 @@ ConfigPage::ConfigPage(QWidget* parent): QWidget(parent)
     FcitxConfigFileDesc* configDesc = Global::instance()->GetConfigDesc("config.desc");
     m_configWidget = new ConfigWidget(configDesc, "", "config", QString(), "global");
     m_ui->layout->insertWidget(0, m_configWidget);
-    m_ui->infoIconLabel->setPixmap(KIcon("dialog-information").pixmap(KIconLoader::SizeSmallMedium));
+    // m_ui->infoIconLabel->setPixmap(KIcon("dialog-information").pixmap(KIconLoader::SizeSmallMedium));
 
     connect(m_configWidget, SIGNAL(changed()), this, SIGNAL(changed()));
 }
@@ -48,12 +48,12 @@ void ConfigPage::load()
 
 void ConfigPage::save()
 {
-    m_configWidget->buttonClicked(KDialog::Ok);
+    m_configWidget->buttonClicked(QDialogButtonBox::Ok);
 }
 
 void ConfigPage::defaults()
 {
-    m_configWidget->buttonClicked(KDialog::Default);
+    m_configWidget->buttonClicked(QDialogButtonBox::RestoreDefaults);
 }
 
 

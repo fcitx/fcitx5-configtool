@@ -114,11 +114,11 @@ public:
 
     SkinModel* skinModel;
     QListView* skinView;
-    KPushButton* configureSkinButton;
-    KPushButton* deleteSkinButton;
+    QPushButton* configureSkinButton;
+    QPushButton* deleteSkinButton;
     SkinDelegate* skinDelegate;
     Module* module;
-    KLineEdit* skinField;
+    QLineEdit* skinField;
 public Q_SLOTS:
     void load();
     void deleteSkin();

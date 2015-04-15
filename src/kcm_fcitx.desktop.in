@@ -1,16 +1,16 @@
 [Desktop Entry]
-Exec=kcmshell4 kcm_fcitx
+Exec=kcmshell5 kcm_fcitx
 Icon=fcitx
 Type=Service
 X-KDE-ServiceTypes=KCModule
 X-KDE-Library=kcm_fcitx
 X-KDE-ParentApp=kcontrol
 
-X-KDE-System-Settings-Parent-Category=locale
+X-KDE-System-Settings-Parent-Category=regionalsettings
 
 _Name=Input Method
 _Comment=Configure Input Method
 
 _X-KDE-Keywords=keyboard,input,im,fcitx
 
-Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Categories=Qt;KDE;X-KDE-settings-fcitx;

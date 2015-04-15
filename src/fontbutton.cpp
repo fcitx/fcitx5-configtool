@@ -18,8 +18,9 @@
  ***************************************************************************/
 
 #include <QDebug>
-
-#include <KFontDialog>
+#include <QDialogButtonBox>
+#include <QDialog>
+#include <KFontChooser>
 
 #include "fontbutton.h"
 #include "ui_fontbutton.h"
@@ -98,15 +99,19 @@ void FontButton::setFont(const QFont& font)
 
 void FontButton::selectFont()
 {
-    KDialog dialog(NULL);
+    QDialog dialog(NULL);
     KFontChooser* chooser = new KFontChooser(&dialog);
     chooser->enableColumn(KFontChooser::SizeList, false);
     chooser->setFont(m_font);
-    dialog.setMainWidget(chooser);
-    dialog.setCaption(i18n("Select Font"));
-    dialog.setButtons(KDialog::Ok | KDialog::Cancel);
-    dialog.setDefaultButton(KDialog::Ok);
-    if (dialog.exec() == KDialog::Accepted) {
+    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    dialog.setLayout(dialogLayout);
+    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    dialogLayout->addWidget(chooser);
+    dialogLayout->addWidget(buttonBox);
+    connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
+
+    if (dialog.exec() == QDialog::Accepted) {
         setFont(chooser->font());
     }
 }

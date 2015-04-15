@@ -24,7 +24,8 @@
 #include <QWidget>
 
 // KDE
-#include <KDialog>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <KColorButton>
 
 // Fcitx
@@ -74,8 +75,8 @@ public:
     explicit ConfigWidget(FcitxAddon* addonEntry, QWidget* parent = 0);
     virtual ~ConfigWidget();
 
-    static KDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString());
-    static KDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
+    static QDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString());
+    static QDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
 
     DummyConfig* config() { return m_config; }
 
@@ -83,7 +84,7 @@ Q_SIGNALS:
     void changed();
 
 public Q_SLOTS:
-    void buttonClicked(KDialog::ButtonCode);
+    void buttonClicked(QDialogButtonBox::StandardButton);
     void load();
 private Q_SLOTS:
     void toggleSimpleFull();

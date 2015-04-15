@@ -27,8 +27,6 @@
 // KDE
 #include <KAboutData>
 #include <KPluginFactory>
-#include <KStandardDirs>
-#include <KDebug>
 
 // system
 #include <libintl.h>
@@ -39,8 +37,8 @@
 #include <fcitx-config/xdg.h>
 #include <fcitx/module/dbus/dbusstuff.h>
 #include <fcitx/module/ipc/ipc.h>
-#include <fcitx-qt/fcitxqtkeyboardlayout.h>
-#include <fcitx-qt/fcitxqtconnection.h>
+#include <fcitxqtkeyboardlayout.h>
+#include <fcitxqtconnection.h>
 
 // self
 #include "config.h"
@@ -65,7 +63,7 @@ namespace Fcitx
 const UT_icd addonicd = {sizeof(FcitxAddon), 0, 0, FcitxAddonFree};
 
 Module::Module(QWidget *parent, const QVariantList &args) :
-    KCModule(KcmFcitxFactory::componentData(), parent, args),
+    KCModule(parent, args),
     ui(new Ui::Module),
     addonSelector(0),
     m_addons(0),
@@ -81,16 +79,16 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     FcitxQtInputMethodItem::registerMetaType();
     FcitxQtKeyboardLayout::registerMetaType();
 
-    KAboutData *about = new KAboutData("kcm_fcitx", 0,
-                                       ki18n("Fcitx Configuration Module"),
+    KAboutData *about = new KAboutData("kcm_fcitx",
+                                       i18n("Fcitx Configuration Module"),
                                        VERSION_STRING_FULL,
-                                       ki18n("Configure Fcitx"),
-                                       KAboutData::License_GPL_V2,
-                                       ki18n("Copyright 2012 Xuetian Weng"),
-                                       KLocalizedString(), QByteArray(),
+                                       i18n("Configure Fcitx"),
+                                       KAboutLicense::GPL_V2,
+                                       i18n("Copyright 2012 Xuetian Weng"),
+                                       QString(), QString(),
                                        "wengxt@gmail.com");
 
-    about->addAuthor(ki18n("Xuetian Weng"), ki18n("Xuetian Weng"), "wengxt@gmail.com");
+    about->addAuthor(i18n("Xuetian Weng"), i18n("Author"), "wengxt@gmail.com");
     setAboutData(about);
 
     if (FcitxAddonGetConfigDesc() != NULL) {
@@ -106,7 +104,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
         m_imPage = new IMPage(this);
         page = new KPageWidgetItem(m_imPage);
         page->setName(i18n("Input Method"));
-        page->setIcon(KIcon("draw-freehand"));
+        page->setIcon(QIcon::fromTheme("draw-freehand"));
         page->setHeader(i18n("Input Method"));
         ui->pageWidget->addPage(page);
         connect(m_imPage, SIGNAL(changed()), this, SLOT(changed()));
@@ -119,7 +117,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
             m_configPage = new ConfigPage;
             page = new KPageWidgetItem(m_configPage);
             page->setName(i18n("Global Config"));
-            page->setIcon(KIcon("fcitx"));
+            page->setIcon(QIcon::fromTheme("fcitx"));
             page->setHeader(i18n("Global Config for Fcitx"));
             ui->pageWidget->addPage(page);
             connect(m_configPage, SIGNAL(changed()), this, SLOT(changed()));
@@ -131,7 +129,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
             m_uiPage = new UIPage(this);
             page = new KPageWidgetItem(m_uiPage);
             page->setName(i18n("Appearance"));
-            page->setIcon(KIcon("preferences-desktop-theme"));
+            page->setIcon(QIcon::fromTheme("preferences-desktop-theme"));
             page->setHeader(i18n("Appearance"));
             ui->pageWidget->addPage(page);
             connect(m_uiPage, SIGNAL(changed()), this, SLOT(changed()));
@@ -143,7 +141,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
             addonSelector = new AddonSelector(this);
             page = new KPageWidgetItem(addonSelector);
             page->setName(i18n("Addon Config"));
-            page->setIcon(KIcon("preferences-plugin"));
+            page->setIcon(QIcon::fromTheme("preferences-plugin"));
             page->setHeader(i18n("Configure Fcitx addon"));
             ui->pageWidget->addPage(page);
         }
@@ -197,7 +195,7 @@ SkinPage* Module::skinPage() {
         m_skinPage = new SkinPage(this);
         page = new KPageWidgetItem(m_skinPage);
         page->setName(i18n("Manage Skin"));
-        page->setIcon(KIcon("get-hot-new-stuff"));
+        page->setIcon(QIcon::fromTheme("get-hot-new-stuff"));
         page->setHeader(i18n("Manage Fcitx Skin"));
         ui->pageWidget->addPage(page);
         connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
@@ -207,8 +205,8 @@ SkinPage* Module::skinPage() {
 }
 
 void Module::load()
-{;
-    KDialog* configDialog = NULL;
+{
+    QDialog* configDialog = NULL;
     if (!m_arg.isEmpty()) {
         do {
             if (!Global::instance()->inputMethodProxy())

@@ -28,17 +28,15 @@
 #include <QDebug>
 #include <QStandardItemModel>
 #include <QListView>
+#include <QComboBox>
+#include <QLineEdit>
 #include <QProcess>
 
 // KDE
 #include <KColorButton>
-#include <KComboBox>
-#include <KLineEdit>
-#include <KRun>
-#include <KPushButton>
 #include <KMessageBox>
-#include <KUrlRequester>
 #include <KLocalizedString>
+#include <KUrlRequester>
 
 // system
 #include <libintl.h>
@@ -47,7 +45,7 @@
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/hotkey.h>
 #include <fcitx-config/xdg.h>
-#include <fcitx-qt/fcitxqtkeysequencewidget.h>
+#include <fcitxqtkeysequencewidget.h>
 
 // self
 #include "config.h"
@@ -115,15 +113,15 @@ ConfigWidget::~ConfigWidget()
         delete m_config;
 }
 
-void ConfigWidget::buttonClicked(KDialog::ButtonCode code)
+void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton code)
 {
     if (!m_cfdesc)
         return;
 
-    if (code == KDialog::Default) {
+    if (code == QDialogButtonBox::RestoreDefaults) {
         FcitxConfigResetConfigToDefaultValue(m_config->genericConfig());
         FcitxConfigBindSync(m_config->genericConfig());
-    } else if (code == KDialog::Ok) {
+    } else if (code == QDialogButtonBox::Ok) {
         FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "w", NULL);
 
         if (fp) {
@@ -245,7 +243,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     case T_Enum: {
         int i;
         FcitxConfigEnum *e = &codesc->configEnum;
-        KComboBox* combobox = new KComboBox(this);
+        QComboBox* combobox = new QComboBox(this);
         inputWidget = combobox;
 
         for (i = 0; i < e->enumCount; i ++) {
@@ -257,7 +255,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
             argument = inputWidget;
         }
         else {
-            KComboBox* oldComboBox = (KComboBox*) oldarg;
+            QComboBox* oldComboBox = (QComboBox*) oldarg;
             connect(combobox, SIGNAL(currentIndexChanged(int)), oldComboBox, SLOT(setCurrentIndex(int)));
             connect(oldComboBox, SIGNAL(currentIndexChanged(int)), combobox, SLOT(setCurrentIndex(int)));
         }
@@ -328,7 +326,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     case T_Char:
 
     case T_String: {
-        KLineEdit* lineEdit = new KLineEdit(this);
+        QLineEdit* lineEdit = new QLineEdit(this);
         inputWidget = lineEdit;
         argument = inputWidget;
 
@@ -344,7 +342,7 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
             argument = inputWidget;
         }
         else {
-            KLineEdit* oldLineEdit = static_cast<KLineEdit*>(oldarg);
+            QLineEdit* oldLineEdit = static_cast<QLineEdit*>(oldarg);
             connect(lineEdit, SIGNAL(textChanged(QString)), oldLineEdit, SLOT(setText(QString)));
             connect(oldLineEdit, SIGNAL(textChanged(QString)), lineEdit, SLOT(setText(QString)));
         }
@@ -665,10 +663,10 @@ void ConfigWidget::checkCanUseSimple()
 }
 
 
-KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName)
+QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName)
 {
-    KDialog* dialog;
-    dialog = new KDialog(parent);
+    QDialog* dialog;
+    dialog = new QDialog(parent);
     ConfigWidget* configPage = new ConfigWidget(
         cfdesc,
         prefix,
@@ -677,20 +675,26 @@ KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc
         addonName,
         dialog
     );
-    dialog->setWindowIcon(KIcon("fcitx"));
-    dialog->setButtons(KDialog::Ok | KDialog::Cancel | KDialog::Default);
-    dialog->setMainWidget(configPage);
-    connect(dialog, SIGNAL(buttonClicked(KDialog::ButtonCode)), configPage, SLOT(buttonClicked(KDialog::ButtonCode)));
+    dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
+    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    dialog->setLayout(dialogLayout);
+    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    dialogLayout->addWidget(configPage);
+    dialogLayout->addWidget(buttonBox);
+
+    connect(buttonBox, &QDialogButtonBox::clicked, configPage, [configPage, buttonBox](QAbstractButton* button) {
+        configPage->buttonClicked(buttonBox->standardButton(button));
+    });
 
     return dialog;
 }
 
-KDialog* ConfigWidget::configDialog(QWidget* parent, FcitxAddon* addonEntry)
+QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxAddon* addonEntry)
 {
     if (!addonEntry)
         return NULL;
 
-    KDialog* dialog;
+    QDialog* dialog;
     FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
 
     if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
@@ -763,7 +767,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         case T_Enum: {
             int index = *(int*) value;
 
-            KComboBox* combobox = static_cast<KComboBox*>(arg);
+            QComboBox* combobox = static_cast<QComboBox*>(arg);
 
             combobox->setCurrentIndex(index);
         }
@@ -809,14 +813,14 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         case T_Char: {
             char* string = (char*) value;
             char temp[2] = { *string, '\0' };
-            KLineEdit* lineEdit = static_cast<KLineEdit*>(arg);
+            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
             lineEdit->setText(QString::fromUtf8(temp));
         }
         break;
 
         case T_String: {
             char** string = (char**) value;
-            KLineEdit* lineEdit = static_cast<KLineEdit*>(arg);
+            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
             lineEdit->setText(QString::fromUtf8(*string));
         }
 
@@ -870,7 +874,7 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Enum: {
-            KComboBox* combobox = static_cast<KComboBox*>(arg);
+            QComboBox* combobox = static_cast<QComboBox*>(arg);
             int* index = (int*) value;
             *index = combobox->currentIndex();
         }
@@ -908,14 +912,14 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Char: {
-            KLineEdit* lineEdit = static_cast<KLineEdit*>(arg);
+            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
             char* c = (char*) value;
-            *c = lineEdit->text()[0].toAscii();
+            *c = lineEdit->text()[0].toLatin1();
         }
         break;
 
         case T_String: {
-            KLineEdit* lineEdit = static_cast<KLineEdit*>(arg);
+            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
             char** string = (char**) value;
             fcitx_utils_string_swap(string, lineEdit->text().toUtf8().constData());
         }

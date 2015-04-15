@@ -25,8 +25,8 @@
 
 // Fcitx
 #include <fcitx-config/fcitx-config.h>
-#include <fcitx-qt/fcitxqtinputmethodproxy.h>
-#include <fcitx-qt/fcitxqtkeyboardproxy.h>
+#include <fcitxqtinputmethodproxy.h>
+#include <fcitxqtkeyboardproxy.h>
 
 class FcitxQtKeyboardProxy;
 class FcitxQtInputMethodProxy;

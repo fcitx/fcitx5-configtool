@@ -20,7 +20,6 @@
 #include <KApplication>
 #include <KCmdLineArgs>
 #include <QMainWindow>
-#include <KIcon>
 
 #include "config.h"
 #include "keyboardlayoutwidget.h"
@@ -55,7 +54,7 @@ int main(int argc, char* argv[])
 
     KApplication app;
     QMainWindow mainWindow;
-    mainWindow.setWindowIcon(KIcon("input-keyboard"));
+    mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
     mainWindow.setWindowTitle(i18n("Keyboard Layout viewer"));
     mainWindow.setMinimumSize(QSize(900,400));
     KeyboardLayoutWidget widget;
