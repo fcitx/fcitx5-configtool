@@ -685,6 +685,8 @@ QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc
     connect(buttonBox, &QDialogButtonBox::clicked, configPage, [configPage, buttonBox](QAbstractButton* button) {
         configPage->buttonClicked(buttonBox->standardButton(button));
     });
+    connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
     return dialog;
 }

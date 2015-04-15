@@ -109,14 +109,16 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
         }
     }
     setWindowIcon(QIcon::fromTheme("fcitx"));
-    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    auto dialogLayout = new QVBoxLayout;
     setLayout(dialogLayout);
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    auto buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(widget);
     dialogLayout->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::clicked, this, [this, buttonBox](QAbstractButton* button) {
         this->onButtonClicked(buttonBox->standardButton(button));
     });
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &Fcitx::IMConfigDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &Fcitx::IMConfigDialog::reject);
 }
 
 void Fcitx::IMConfigDialog::onButtonClicked(QDialogButtonBox::StandardButton code)
