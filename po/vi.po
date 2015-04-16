@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # dinhdangkhoi <dinhdangkhoi.fs@gmail.com>, 2014
 # Lê Trường An <truongan@linuxmail.org>, 2013
@@ -11,16 +11,262 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-08 00:02+0200\n"
+"POT-Creation-Date: 2014-08-07 18:03+0200\n"
 "PO-Revision-Date: 2014-08-07 16:03+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/"
-"language/vi/)\n"
-"Language: vi\n"
+"Language-Team: Vietnamese (http://www.transifex.com/projects/p/fcitx/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: layout/main.cpp:32 layout/main.cpp:59
+msgid "Keyboard Layout viewer"
+msgstr ""
+
+#: layout/main.cpp:34
+msgid "A general keyboard layout viewer"
+msgstr ""
+
+#: layout/main.cpp:38
+msgid "Keyboard layout group (0-3)"
+msgstr ""
+
+#: layout/main.cpp:40
+msgid "Keyboard layout"
+msgstr ""
+
+#: layout/main.cpp:42
+msgid "Keyboard layout variant"
+msgstr ""
+
+#: src/addonselector.cpp:378
+msgid "Search Addons"
+msgstr "Tìm kiếm Addons"
+
+#: src/addonselector.cpp:385 src/configwidget.cpp:609
+msgid "Show &Advance option"
+msgstr "Hiện tùy c&họn nâng cao"
+
+#: src/configwidget.cpp:453
+msgid "<b>Other</b>"
+msgstr ""
+
+#: src/configwidget.cpp:563
+msgid "Other"
+msgstr "Khác"
+
+#: src/erroroverlay.cpp:43
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr ""
+
+#: src/fontbutton.cpp:106
+msgid "Select Font"
+msgstr "Chọn Font"
+
+#: src/imconfigdialog.cpp:40
+msgid "<b>Keyboard Layout:</b>"
+msgstr ""
+
+#: src/imconfigdialog.cpp:45
+msgid "Default"
+msgstr "Mặc định"
+
+#: src/imconfigdialog.cpp:47
+msgid "Input Method Default"
+msgstr ""
+
+#: src/imconfigdialog.cpp:92
+msgid "<b>Input Method Setting:</b>"
+msgstr ""
+
+#: src/impage.cpp:64 src/impage.cpp:71
+msgid "Unknown"
+msgstr "Không rõ"
+
+#: src/impage.cpp:67
+msgid "Multilingual"
+msgstr "Đa ngôn ngữ"
+
+#: src/impage.cpp:467
+msgid "Search Input Method"
+msgstr ""
+
+#: src/module.cpp:85
+msgid "Fcitx Configuration Module"
+msgstr ""
+
+#: src/module.cpp:87
+msgid "Configure Fcitx"
+msgstr "Cấu hình Fcitx"
+
+#: src/module.cpp:89
+msgid "Copyright 2012 Xuetian Weng"
+msgstr "Copyright 2012 Xuetian Weng"
+
+#: src/module.cpp:93
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
+msgid "Input Method"
+msgstr "Kiểu gõ"
+
+#: src/module.cpp:121
+msgid "Global Config"
+msgstr "Cấu hình chung"
+
+#: src/module.cpp:123
+msgid "Global Config for Fcitx"
+msgstr "Cấu hình chung cho Fcitx"
+
+#: src/module.cpp:133 src/module.cpp:135
+msgid "Appearance"
+msgstr "Dáng vẻ bên ngoài"
+
+#: src/module.cpp:145
+msgid "Addon Config"
+msgstr "Cấu hình Addon"
+
+#: src/module.cpp:147
+msgid "Configure Fcitx addon"
+msgstr "Cấu hình Fcitx addon"
+
+#: src/module.cpp:199
+msgid "Manage Skin"
+msgstr "Quản lý vỏ ngoài"
+
+#: src/module.cpp:201
+msgid "Manage Fcitx Skin"
+msgstr "Quản lý vỏ ngoài Fcitx "
+
+#: src/skinpage.cpp:221
+msgid "First candidate"
+msgstr "Ứng cử viên đầu tiên"
+
+#: src/skinpage.cpp:222
+msgid "Other candidate"
+msgstr "Ứng cử viên khác"
+
+#: src/skinpage.cpp:391
+#, kde-format
+msgid "Skin %1 Cannot be loaded"
+msgstr "Vỏ ngoài %1 không thể nạp"
+
+#: src/subconfigwidget.cpp:232
+msgid ""
+"User config doesn't exisits, do you want to open system file or copy system "
+"file to user file?"
+msgstr ""
+
+#: src/subconfigwidget.cpp:233
+msgid "What to do"
+msgstr "Phải làm gì"
+
+#: src/subconfigwidget.cpp:234
+msgid "Copy"
+msgstr "Sao chép"
+
+#: src/subconfigwidget.cpp:235
+msgid "View system"
+msgstr "Xem thông tin hệ thống"
+
+#: src/subconfigwidget.cpp:247
+msgid "Copy failed"
+msgstr "Sao chép thất bại"
+
+#: src/uipage.cpp:16
+msgid "Cannot load currently used user interface info"
+msgstr ""
+
+#: src/uipage.cpp:45
+#, kde-format
+msgid "No configuration options for %1."
+msgstr ""
+
+#: layout/kbd-layout-viewer.desktop.in:6
+msgid "Keyboard layout viewer"
+msgstr ""
+
+#: layout/kbd-layout-viewer.desktop.in:7
+msgid "View keyboard layout"
+msgstr ""
+
+#: layout/kbd-layout-viewer.desktop.in:9
+msgid "keyboard;input;im"
+msgstr ""
+
+#: src/kcm_fcitx.desktop.in:12
+msgid "Configure Input Method"
+msgstr ""
+
+#: src/kcm_fcitx.desktop.in:14
+msgid "keyboard,input,im,fcitx"
+msgstr ""
+
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+msgid "Form"
+msgstr "Mẫu"
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"including candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr ""
+
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+msgid "Select &Font..."
+msgstr "Chọn &Font..."
+
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
+msgid "Keyboard layout to use when no input method active"
+msgstr ""
+
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
+msgid "Select default keyboard layout"
+msgstr ""
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Available Input Method:"
+msgstr ""
+
+#. i18n: file: src/impage.ui:133
+#. i18n: ectx: property (text), widget (QCheckBox,
+#. onlyCurrentLanguageCheckBox)
+msgid "Only &Show Current Language"
+msgstr ""
+
+#. i18n: file: src/impage.ui:194
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Current Input Method:"
+msgstr ""
+
+#. i18n: file: src/impage.ui:295
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
+
+#. i18n: file: src/impage.ui:310
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "<b>Default keyboard layout:</b>"
+msgstr ""
+
+#. i18n: file: src/impage.ui:320
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "<b>Select Input Method:</b>"
+msgstr ""
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
@@ -32,279 +278,26 @@ msgstr "&Cấu hình vỏ ngoài"
 msgid "&Delete Skin"
 msgstr "&Xóa vỏ ngoài"
 
-#. i18n: file: src/skinpage.ui:72
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-"REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
-"\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
-"weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-"weight:600;\">Notice:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-"right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI "
-"to use skin function.</p></body></html>"
-msgstr ""
-
-#. i18n: file: src/impage.ui:310
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "<b>Default keyboard layout:</b>"
-msgstr ""
-
-#: src/imconfigdialog.cpp:92
-msgid "<b>Input Method Setting:</b>"
-msgstr ""
-
-#: src/imconfigdialog.cpp:40
-msgid "<b>Keyboard Layout:</b>"
-msgstr ""
-
-#: src/configwidget.cpp:453
-msgid "<b>Other</b>"
-msgstr ""
-
-#. i18n: file: src/impage.ui:320
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "<b>Select Input Method:</b>"
-msgstr ""
-
-#: layout/main.cpp:34
-msgid "A general keyboard layout viewer"
-msgstr ""
-
-#: src/module.cpp:145
-msgid "Addon Config"
-msgstr "Cấu hình Addon"
-
-#: src/module.cpp:133 src/module.cpp:135
-msgid "Appearance"
-msgstr "Dáng vẻ bên ngoài"
-
-#. i18n: file: src/impage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Available Input Method:"
-msgstr ""
-
-#: src/erroroverlay.cpp:43
-msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr ""
-
-#: src/uipage.cpp:16
-msgid "Cannot load currently used user interface info"
-msgstr ""
-
-#: src/module.cpp:87
-msgid "Configure Fcitx"
-msgstr "Cấu hình Fcitx"
-
-#: src/module.cpp:147
-msgid "Configure Fcitx addon"
-msgstr "Cấu hình Fcitx addon"
-
-#: src/kcm_fcitx.desktop.in:12
-msgid "Configure Input Method"
-msgstr ""
-
-#: src/subconfigwidget.cpp:234
-msgid "Copy"
-msgstr "Sao chép"
-
-#: src/subconfigwidget.cpp:247
-msgid "Copy failed"
-msgstr "Sao chép thất bại"
-
-#: src/module.cpp:89
-msgid "Copyright 2012 Xuetian Weng"
-msgstr "Copyright 2012 Xuetian Weng"
-
-#. i18n: file: src/impage.ui:194
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Current Input Method:"
-msgstr ""
-
-#: src/imconfigdialog.cpp:45
-msgid "Default"
-msgstr "Mặc định"
-
-#: src/module.cpp:85
-msgid "Fcitx Configuration Module"
-msgstr ""
-
-#: src/skinpage.cpp:221
-msgid "First candidate"
-msgstr "Ứng cử viên đầu tiên"
-
-#. i18n: file: src/configpage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-msgid "Form"
-msgstr "Mẫu"
-
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
 msgid "Get New &Skin..."
 msgstr "Thêm mới vỏ &ngoài..."
 
-#: src/module.cpp:121
-msgid "Global Config"
-msgstr "Cấu hình chung"
-
-#: src/module.cpp:123
-msgid "Global Config for Fcitx"
-msgstr "Cấu hình chung cho Fcitx"
-
-#: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
-msgid "Input Method"
-msgstr "Kiểu gõ"
-
-#: src/imconfigdialog.cpp:47
-msgid "Input Method Default"
-msgstr ""
-
-#: layout/main.cpp:32 layout/main.cpp:59
-msgid "Keyboard Layout viewer"
-msgstr ""
-
-#: layout/main.cpp:40
-msgid "Keyboard layout"
-msgstr ""
-
-#: layout/main.cpp:38
-msgid "Keyboard layout group (0-3)"
-msgstr ""
-
-#. i18n: file: src/impage.ui:38
-#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-msgid "Keyboard layout to use when no input method active"
-msgstr ""
-
-#: layout/main.cpp:42
-msgid "Keyboard layout variant"
-msgstr ""
-
-#: layout/kbd-layout-viewer.desktop.in:6
-msgid "Keyboard layout viewer"
-msgstr ""
-
-#: src/module.cpp:201
-msgid "Manage Fcitx Skin"
-msgstr "Quản lý vỏ ngoài Fcitx "
-
-#: src/module.cpp:199
-msgid "Manage Skin"
-msgstr "Quản lý vỏ ngoài"
-
-#: src/impage.cpp:67
-msgid "Multilingual"
-msgstr "Đa ngôn ngữ"
-
-#: src/uipage.cpp:45
-#, kde-format
-msgid "No configuration options for %1."
-msgstr ""
-
-#. i18n: file: src/impage.ui:133
-#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-msgid "Only &Show Current Language"
-msgstr ""
-
-#. i18n: file: src/configpage.ui:54
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#. i18n: file: src/skinpage.ui:72
+#. i18n: ectx: property (text), widget (QLabel, label)
 msgid ""
-"Options listed here might be overridden by specific input method, usually "
-"including candidate number, hotkey of previous page and next page. You may "
-"need go to configuration of corresponding input method to change them."
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
 msgstr ""
-
-#: src/configwidget.cpp:563
-msgid "Other"
-msgstr "Khác"
-
-#: src/skinpage.cpp:222
-msgid "Other candidate"
-msgstr "Ứng cử viên khác"
-
-#: src/addonselector.cpp:378
-msgid "Search Addons"
-msgstr "Tìm kiếm Addons"
-
-#: src/impage.cpp:467
-msgid "Search Input Method"
-msgstr ""
-
-#. i18n: file: src/fontbutton.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-msgid "Select &Font..."
-msgstr "Chọn &Font..."
-
-#: src/fontbutton.cpp:106
-msgid "Select Font"
-msgstr "Chọn Font"
-
-#. i18n: file: src/impage.ui:41
-#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-msgid "Select default keyboard layout"
-msgstr ""
-
-#: src/addonselector.cpp:385 src/configwidget.cpp:609
-msgid "Show &Advance option"
-msgstr "Hiện tùy c&họn nâng cao"
-
-#: src/skinpage.cpp:391
-#, kde-format
-msgid "Skin %1 Cannot be loaded"
-msgstr "Vỏ ngoài %1 không thể nạp"
-
-#. i18n: file: src/impage.ui:295
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"The first input method will be inactive state. Usually you need to put "
-"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr ""
-
-#: src/impage.cpp:64 src/impage.cpp:71
-msgid "Unknown"
-msgstr "Không rõ"
-
-#: src/subconfigwidget.cpp:232
-msgid ""
-"User config doesn't exisits, do you want to open system file or copy system "
-"file to user file?"
-msgstr ""
-
-#: layout/kbd-layout-viewer.desktop.in:7
-msgid "View keyboard layout"
-msgstr ""
-
-#: src/subconfigwidget.cpp:235
-msgid "View system"
-msgstr "Xem thông tin hệ thống"
-
-#: src/subconfigwidget.cpp:233
-msgid "What to do"
-msgstr "Phải làm gì"
-
-#: src/module.cpp:93
-msgid "Xuetian Weng"
-msgstr "Xuetian Weng"
-
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "dinhdangkhoi.fs@gmail.com"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
 msgstr "Đinh Đăng Khôi"
 
-#: src/kcm_fcitx.desktop.in:14
-msgid "keyboard,input,im,fcitx"
-msgstr ""
-
-#: layout/kbd-layout-viewer.desktop.in:9
-msgid "keyboard;input;im"
-msgstr ""
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "dinhdangkhoi.fs@gmail.com"
