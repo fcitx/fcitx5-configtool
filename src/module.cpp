@@ -99,14 +99,9 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     Global::instance();
 
     ui->setupUi(this);
-    KPageWidgetItem *page;
     {
         m_imPage = new IMPage(this);
-        page = new KPageWidgetItem(m_imPage);
-        page->setName(i18n("Input Method"));
-        page->setIcon(QIcon::fromTheme("draw-freehand"));
-        page->setHeader(i18n("Input Method"));
-        ui->pageWidget->addPage(page);
+        ui->pageWidget->addTab(m_imPage, i18n("Input Method"));
         connect(m_imPage, SIGNAL(changed()), this, SLOT(changed()));
     }
 
@@ -115,11 +110,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
 
         if (configDesc) {
             m_configPage = new ConfigPage;
-            page = new KPageWidgetItem(m_configPage);
-            page->setName(i18n("Global Config"));
-            page->setIcon(QIcon::fromTheme("fcitx"));
-            page->setHeader(i18n("Global Config for Fcitx"));
-            ui->pageWidget->addPage(page);
+            ui->pageWidget->addTab(m_configPage, i18n("Global Config"));
             connect(m_configPage, SIGNAL(changed()), this, SLOT(changed()));
         }
     }
@@ -127,11 +118,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     {
         if (Global::instance()->inputMethodProxy()) {
             m_uiPage = new UIPage(this);
-            page = new KPageWidgetItem(m_uiPage);
-            page->setName(i18n("Appearance"));
-            page->setIcon(QIcon::fromTheme("preferences-desktop-theme"));
-            page->setHeader(i18n("Appearance"));
-            ui->pageWidget->addPage(page);
+            ui->pageWidget->addTab(m_uiPage, i18n("Appearance"));
             connect(m_uiPage, SIGNAL(changed()), this, SLOT(changed()));
         }
     }
@@ -139,11 +126,7 @@ Module::Module(QWidget *parent, const QVariantList &args) :
     {
         if (FcitxAddonGetConfigDesc() != NULL) {
             addonSelector = new AddonSelector(this);
-            page = new KPageWidgetItem(addonSelector);
-            page->setName(i18n("Addon Config"));
-            page->setIcon(QIcon::fromTheme("preferences-plugin"));
-            page->setHeader(i18n("Configure Fcitx addon"));
-            ui->pageWidget->addPage(page);
+            ui->pageWidget->addTab(addonSelector, i18n("Addon Config"));
         }
     }
 
@@ -191,13 +174,8 @@ FcitxAddon* Module::findAddonByName(const QString& name)
 SkinPage* Module::skinPage() {
 
     if (!m_skinPage) {
-        KPageWidgetItem *page;
         m_skinPage = new SkinPage(this);
-        page = new KPageWidgetItem(m_skinPage);
-        page->setName(i18n("Manage Skin"));
-        page->setIcon(QIcon::fromTheme("get-hot-new-stuff"));
-        page->setHeader(i18n("Manage Fcitx Skin"));
-        ui->pageWidget->addPage(page);
+        ui->pageWidget->addTab(m_skinPage, i18n("Manage Skin"));
         connect(m_skinPage, SIGNAL(changed()), this, SLOT(changed()));
     }
 
