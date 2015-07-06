@@ -13,22 +13,10 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="KPageWidget" name="pageWidget"/>
+    <widget class="QTabWidget" name="pageWidget"/>
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KPageView</class>
-   <extends>QWidget</extends>
-   <header>kpageview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KPageWidget</class>
-   <extends>KPageView</extends>
-   <header>kpagewidget.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
