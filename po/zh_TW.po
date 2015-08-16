@@ -5,6 +5,7 @@
 # Translators:
 # Alisha <alisha.4m@gmail.com>, 2012
 # Alisha <alisha.4m@gmail.com>, 2011-2012
+# Gerald Du <frozenmouse@gmail.com>, 2015
 # csslayer <wengxt@gmail.com>, 2014
 # csslayer <wengxt@gmail.com>, 2012-2013
 msgid ""
@@ -12,9 +13,9 @@ msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2014-08-07 18:03+0200\n"
-"PO-Revision-Date: 2014-08-07 16:03+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/fcitx/language/zh_TW/)\n"
+"PO-Revision-Date: 2015-08-16 07:29+0000\n"
+"Last-Translator: Gerald Du <frozenmouse@gmail.com>\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/fcitx/fcitx/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -135,11 +136,11 @@ msgstr "設定 Fcitx 附加元件"
 
 #: src/module.cpp:199
 msgid "Manage Skin"
-msgstr "管理皮膚"
+msgstr "管理佈景"
 
 #: src/module.cpp:201
 msgid "Manage Fcitx Skin"
-msgstr "管理 Fcitx 皮膚"
+msgstr "管理 Fcitx 佈景"
 
 #: src/skinpage.cpp:221
 msgid "First candidate"
@@ -152,7 +153,7 @@ msgstr "其他候選詞"
 #: src/skinpage.cpp:391
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
-msgstr "無法載入皮膚 %1"
+msgstr "無法載入佈景 %1"
 
 #: src/subconfigwidget.cpp:232
 msgid ""
@@ -271,17 +272,17 @@ msgstr "<b>選擇輸入法：</b>"
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
 msgid "&Configure Skin"
-msgstr "設定皮膚(&C)"
+msgstr "設定佈景(&C)"
 
 #. i18n: file: src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
 msgid "&Delete Skin"
-msgstr "刪除皮膚(&D)"
+msgstr "刪除佈景(&D)"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
 msgid "Get New &Skin..."
-msgstr "取得新皮膚(&S)..."
+msgstr "取得新佈景(&S)..."
 
 #. i18n: file: src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
