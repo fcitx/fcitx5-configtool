@@ -676,7 +676,7 @@ QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc
         dialog
     );
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
-    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    QVBoxLayout* dialogLayout = new QVBoxLayout;
     dialog->setLayout(dialogLayout);
     QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(configPage);

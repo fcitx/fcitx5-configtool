@@ -19,7 +19,7 @@
 
 #include "plugindialog.h"
 #include <QIcon>
-#include <QHBoxLayout>
+#include <QVBoxLayout>
 #include <QDialogButtonBox>
 #include <QPushButton>
 
@@ -30,7 +30,7 @@ PluginDialog::PluginDialog(FcitxQtConfigUIWidget* widget, QWidget* parent, Qt::W
 {
     setWindowTitle(widget->title());
     setWindowIcon(QIcon::fromTheme(widget->icon()));
-    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    QVBoxLayout* dialogLayout = new QVBoxLayout;
     setLayout(dialogLayout);
     m_buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(m_widget);

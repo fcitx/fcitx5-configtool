@@ -103,7 +103,7 @@ void FontButton::selectFont()
     KFontChooser* chooser = new KFontChooser(&dialog);
     chooser->enableColumn(KFontChooser::SizeList, false);
     chooser->setFont(m_font);
-    QHBoxLayout* dialogLayout = new QHBoxLayout;
+    QVBoxLayout* dialogLayout = new QVBoxLayout;
     dialog.setLayout(dialogLayout);
     QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(chooser);
