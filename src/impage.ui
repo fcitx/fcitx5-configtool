@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
+    <width>1062</width>
     <height>648</height>
    </rect>
   </property>
@@ -88,7 +88,26 @@
         <widget class="QLineEdit" name="filterTextEdit"/>
        </item>
        <item>
-        <widget class="KCategorizedView" name="availIMView"/>
+        <widget class="QTreeView" name="availIMView">
+         <property name="indentation">
+          <number>0</number>
+         </property>
+         <property name="rootIsDecorated">
+          <bool>false</bool>
+         </property>
+         <property name="itemsExpandable">
+          <bool>false</bool>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="headerHidden">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="onlyCurrentLanguageCheckBox">
@@ -286,13 +305,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-    <class>KCategorizedView</class>
-    <extends>QListView</extends>
-    <header>kcategorizedview.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

@@ -32,6 +32,7 @@ ki18n_wrap_ui(kcm_SRCS ${kcm_UIS})
 add_library(kcm_fcitx MODULE ${kcm_SRCS})
 
 target_link_libraries(kcm_fcitx
+  Qt5::Widgets
   KF5::CoreAddons
   KF5::WidgetsAddons
   KF5::KCMUtils

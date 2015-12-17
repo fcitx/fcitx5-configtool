@@ -26,8 +26,8 @@ find_package(FcitxQt5DBusAddons REQUIRED)
 find_package(FcitxQt5WidgetsAddons REQUIRED)
 
 set(MAJOR_VERSION "0")
-set(MINOR_VERSION "4")
-set(PATCH_VERSION "0")
+set(MINOR_VERSION "5")
+set(PATCH_VERSION "3")
 set(SUFFIX_VERSION "")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})

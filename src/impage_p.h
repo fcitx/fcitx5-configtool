@@ -27,16 +27,22 @@
 #include <QSortFilterProxyModel>
 #include <QStyledItemDelegate>
 
-// KDE
-#include <KWidgetItemDelegate>
-#include <KCategorizedView>
-#include <KCategorizedSortFilterProxyModel>
-
 // Fcitx
 #include <fcitxqtinputmethoditem.h>
 
 // self
 #include "impage.h"
+
+enum {
+    FcitxRowTypeRole = 0x324da8fc,
+    FcitxLanguageRole,
+    FcitxIMUniqueNameRole
+};
+
+enum {
+    LanguageType,
+    IMType
+};
 
 class QTreeView;
 class QCheckBox;
@@ -69,10 +75,10 @@ public:
     QPushButton* moveDownButton;
     QPushButton* configureButton;
     QListView* currentIMView;
-    KCategorizedView* availIMView;
+    QTreeView* availIMView;
     QLineEdit* filterTextEdit;
 
-    IMModel* availIMModel;
+    AvailIMModel* availIMModel;
     IMProxyModel* availIMProxyModel;
 
     IMModel* currentIMModel;
@@ -105,7 +111,19 @@ private:
     FcitxQtInputMethodItemList m_list;
 };
 
-class IMPage::Private::IMProxyModel : public KCategorizedSortFilterProxyModel
+class IMDelegate : public QStyledItemDelegate
+{
+    Q_OBJECT
+public:
+    explicit IMDelegate(QObject* parent = 0);
+    virtual ~IMDelegate();
+
+    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const Q_DECL_OVERRIDE;
+    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const Q_DECL_OVERRIDE;
+};
+
+
+class IMPage::Private::IMProxyModel : public QSortFilterProxyModel
 {
     Q_OBJECT
 
@@ -118,8 +136,8 @@ public Q_SLOTS:
     void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
 
 protected:
-    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
-    virtual bool subLessThan(const QModelIndex& left, const QModelIndex& right) const;
+    virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const Q_DECL_OVERRIDE;
+    virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const Q_DECL_OVERRIDE;
     int compareCategories(const QModelIndex& left, const QModelIndex& right) const;
 
 private:
@@ -131,12 +149,34 @@ private:
     QSet< QString > m_languageSet;
 };
 
+class IMPage::Private::AvailIMModel : public QAbstractItemModel
+{
+    Q_OBJECT
+    void m_languageSet();
+
+public:
+    AvailIMModel(QObject* parent = 0);
+    virtual ~AvailIMModel();
+    virtual QModelIndex index(int row, int column, const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    virtual QModelIndex parent(const QModelIndex& child) const Q_DECL_OVERRIDE;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    virtual int columnCount(const QModelIndex& parent = QModelIndex()) const Q_DECL_OVERRIDE;
+    virtual QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
+Q_SIGNALS:
+    void select(QModelIndex index);
+    void updateIMListFinished();
+public Q_SLOTS:
+    void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
+private:
+    QList<QPair<QString, FcitxQtInputMethodItemList> > filteredIMEntryList;
+};
+
 class IMPage::Private::IMModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
 
-    IMModel(bool filterEnabled_, QObject* parent = 0);
+    IMModel(QObject* parent = 0);
     virtual ~IMModel();
 
     virtual QModelIndex index(int row, int column = 0, const QModelIndex& parent = QModelIndex()) const;
@@ -148,22 +188,6 @@ public Q_SLOTS:
     void filterIMEntryList(const FcitxQtInputMethodItemList& imEntryList, const QString& selection = QString());
 private:
     FcitxQtInputMethodItemList filteredIMEntryList;
-    bool filterEnabled;
-};
-
-
-class IMPage::Private::IMDelegate
-    : public KWidgetItemDelegate
-{
-public:
-    explicit IMDelegate(Private* impage_d, QObject* parent = 0);
-    virtual ~IMDelegate();
-    virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
-    virtual QList< QWidget* > createItemWidgets(const QModelIndex &index) const;
-    virtual void updateItemWidgets(const QList< QWidget* > widgets, const QStyleOptionViewItem& option, const QPersistentModelIndex& index) const;
-    virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
-private:
-    Private* impage_d;
 };
 
 }
