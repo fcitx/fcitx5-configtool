@@ -25,6 +25,7 @@
 
 // KDE
 #include <KStringHandler>
+#include <KLocalizedString>
 
 #include <fcitxqtinputmethodproxy.h>
 
@@ -53,16 +54,35 @@ static QString languageName(const QString& langCode)
     else {
         QLocale locale(langCode);
         if (locale.language() == QLocale::C) {
-            return i18n("Unknown");
+            // return lang code seems to be a better solution other than indistinguishable "unknown"
+            return langCode;
         }
-        QString result = locale.nativeLanguageName();
-        if (result.isEmpty()) {
-            result = QLocale::languageToString(locale.language());
+        const bool hasCountry = langCode.indexOf("_") != -1 && locale.country() != QLocale::AnyCountry;
+        QString languageName;
+        if (hasCountry) {
+            languageName = locale.nativeLanguageName();
         }
-        if (result.isEmpty()) {
-            return i18n("Other");
+        if (languageName.isEmpty()) {
+            languageName = i18nd("iso_639", QLocale::languageToString(locale.language()).toUtf8());
         }
-        return result;
+        if (languageName.isEmpty()) {
+            languageName = i18n("Other");
+        }
+        QString countryName;
+        // QLocale will always assign a default country for us, check if our lang code
+
+        if (langCode.indexOf("_") != -1 && locale.country() != QLocale::AnyCountry) {
+            countryName = locale.nativeCountryName();
+            if (countryName.isEmpty()) {
+                countryName = QLocale::countryToString(locale.country());
+            }
+        }
+
+        if (countryName.isEmpty()) {
+            return languageName;
+        } else {
+            return i18nc("%1 is language name, %2 is country name", "%1 (%2)", languageName, countryName);
+        }
     }
 }
 
