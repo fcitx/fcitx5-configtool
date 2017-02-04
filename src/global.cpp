@@ -21,7 +21,6 @@
 #include <fcitx-config/fcitx-config.h>
 #include <fcitx-config/xdg.h>
 #include <fcitxqtconnection.h>
-#include <fcitxqtconfiguifactory.h>
 #include <fcitxqtinputmethodproxy.h>
 
 // self
@@ -49,7 +48,6 @@ void Global::deInit()
 
 Global::Global() :
     m_hash(new QHash<QString, FcitxConfigFileDesc*>),
-    m_factory(new FcitxQtConfigUIFactory(this)),
     m_connection(new FcitxQtConnection(this)),
     m_inputmethod(0),
     m_keyboard(0)
@@ -127,6 +125,28 @@ FcitxConfigFileDesc* Global::GetConfigDesc(const QString& name)
         return cfdesc;
     } else
         return (*m_hash) [name];
+}
+
+QString Global::testWrapper(const QString &path) const {
+    char* qtguiwrapper[] = {
+        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt-gui-wrapper"),
+        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt5-gui-wrapper")
+    };
+    QString wrapper;
+    for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
+        if (qtguiwrapper[i]) {
+            QStringList args;
+            args << QLatin1String("--test");
+            args << path;
+            int exit_status =QProcess::execute(QString::fromLocal8Bit(qtguiwrapper[i]), args);
+            if (exit_status == 0) {
+                wrapper = QString::fromLatin1(qtguiwrapper[i]);
+                break;
+            }
+        }
+    }
+
+    return wrapper;
 }
 
 }

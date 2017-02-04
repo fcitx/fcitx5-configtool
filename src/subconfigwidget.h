@@ -44,6 +44,7 @@ private slots:
     void openPlugin();
 
 private:
+    bool launchGuiWrapper(const QString &path);
     SubConfig* m_subConfig;
     ConfigFileItemModel* m_model;
     QListView* m_listView;

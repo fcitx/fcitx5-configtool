@@ -24,7 +24,6 @@
 
 #include <fcitx-utils/utils.h>
 #include <fcitx-config/xdg.h>
-#include <fcitxqtconfiguifactory.h>
 
 // self
 #include "subconfig.h"
@@ -215,7 +214,7 @@ bool SubConfig::isValid() const
     case SC_Program:
         return !m_progam.isEmpty();
     case SC_Plugin:
-        return Global::instance()->factory()->test(m_nativepath);
+        return !Global::instance()->testWrapper(m_nativepath).isEmpty();
     default:
         break;
     }

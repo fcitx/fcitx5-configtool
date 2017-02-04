@@ -30,7 +30,6 @@
 #include <QListView>
 #include <QComboBox>
 #include <QLineEdit>
-#include <QProcess>
 
 // KDE
 #include <KColorButton>

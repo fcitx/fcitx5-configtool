@@ -30,7 +30,6 @@
 
 class FcitxQtKeyboardProxy;
 class FcitxQtInputMethodProxy;
-class FcitxQtConfigUIFactory;
 class FcitxQtConnection;
 namespace Fcitx
 {
@@ -43,10 +42,10 @@ public:
     static void deInit();
     virtual ~Global();
     FcitxConfigFileDesc* GetConfigDesc(const QString& name);
-    FcitxQtConfigUIFactory* factory() { return m_factory; }
     FcitxQtConnection* connection() { return m_connection; }
     FcitxQtInputMethodProxy* inputMethodProxy() { return  (m_inputmethod && m_inputmethod->isValid()) ? m_inputmethod : 0; }
     FcitxQtKeyboardProxy* keyboardProxy() { return  (m_keyboard && m_keyboard->isValid()) ? m_keyboard : 0; }
+    QString testWrapper(const QString &path) const;
 
 signals:
     void connectStatusChanged(bool connected);
@@ -58,7 +57,6 @@ private slots:
 private:
     Global();
     QHash<QString, FcitxConfigFileDesc*>* m_hash;
-    FcitxQtConfigUIFactory* m_factory;
     FcitxQtConnection* m_connection;
     FcitxQtInputMethodProxy* m_inputmethod;
     FcitxQtKeyboardProxy* m_keyboard;

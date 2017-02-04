@@ -19,7 +19,6 @@ set(kcm_SRCS
   verticalscrollarea.cpp
   fontbutton.cpp
   configpage.cpp
-  plugindialog.cpp
   erroroverlay.cpp
 #   ../layout/keyboardlayoutwidget.cpp
   )

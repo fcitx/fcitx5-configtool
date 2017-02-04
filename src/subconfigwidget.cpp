@@ -32,7 +32,6 @@
 
 // Fcitx
 #include <fcitx-config/xdg.h>
-#include <fcitxqtconfiguifactory.h>
 
 // self
 #include "global.h"
@@ -40,7 +39,6 @@
 #include "subconfigparser.h"
 #include "subconfigwidget.h"
 #include "subconfigwidget_p.h"
-#include "plugindialog.h"
 namespace Fcitx
 {
 
@@ -190,28 +188,27 @@ void SubConfigWidget::openSubConfig()
     }
 }
 
+bool SubConfigWidget::launchGuiWrapper(const QString &path) {
+    QString wrapper = Global::instance()->testWrapper(path);
+
+    if (!wrapper.isEmpty()) {
+        QStringList args;
+        args << path;
+        return QProcess::startDetached(wrapper, args);
+    }
+    return false;
+}
+
 void SubConfigWidget::openPlugin()
 {
-    FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
-    if (widget) {
-        QPointer<QDialog> pluginDialog(new PluginDialog(widget, 0));
-
-        pluginDialog->exec();
-        delete pluginDialog;
-        return;
-    }
+    launchGuiWrapper(m_subConfig->nativepath());
 }
 
 void SubConfigWidget::openNativeFile()
 {
     char *newpath = NULL;
 
-    FcitxQtConfigUIWidget* widget = Global::instance()->factory()->create(m_subConfig->nativepath());
-    if (widget) {
-        QPointer<QDialog> pluginDialog(new PluginDialog(widget, 0));
-
-        pluginDialog->exec();
-        delete pluginDialog;
+    if (launchGuiWrapper(m_subConfig->nativepath())) {
         return;
     }
 
