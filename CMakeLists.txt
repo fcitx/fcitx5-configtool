@@ -22,8 +22,8 @@ find_package(KF5 REQUIRED COMPONENTS
     NewStuff
 )
 
-find_package(FcitxQt5DBusAddons REQUIRED)
-find_package(FcitxQt5WidgetsAddons REQUIRED)
+find_package(FcitxQt5DBusAddons 1.1.0 REQUIRED)
+find_package(FcitxQt5WidgetsAddons 1.1.0 REQUIRED)
 
 set(MAJOR_VERSION "0")
 set(MINOR_VERSION "5")
