@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Walter Garcia-Fontes <walter.garcia@upf.edu>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: fcitx\n"
+"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
+"POT-Creation-Date: 2014-08-07 18:03+0200\n"
+"PO-Revision-Date: 2017-01-08 11:50+0000\n"
+"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"Language-Team: Catalan (http://www.transifex.com/fcitx/fcitx/language/ca/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: layout/main.cpp:32 layout/main.cpp:59
+msgid "Keyboard Layout viewer"
+msgstr "Visualitzador de disposició de teclat"
+
+#: layout/main.cpp:34
+msgid "A general keyboard layout viewer"
+msgstr "Un visualitzador general de disposició de teclat"
+
+#: layout/main.cpp:38
+msgid "Keyboard layout group (0-3)"
+msgstr "Grup de disposició de teclat (0-3)"
+
+#: layout/main.cpp:40
+msgid "Keyboard layout"
+msgstr "Disposició de teclat"
+
+#: layout/main.cpp:42
+msgid "Keyboard layout variant"
+msgstr "Variant de disposició de teclat"
+
+#: src/addonselector.cpp:378
+msgid "Search Addons"
+msgstr "Cerca complements"
+
+#: src/addonselector.cpp:385 src/configwidget.cpp:609
+msgid "Show &Advance option"
+msgstr "Mostra l'opció &avançada"
+
+#: src/configwidget.cpp:453
+msgid "<b>Other</b>"
+msgstr "<b>Altre</b>"
+
+#: src/configwidget.cpp:563
+msgid "Other"
+msgstr "Altre"
+
+#: src/erroroverlay.cpp:43
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr "No es pot connectar al fcitx per DBus, s'està executant el fcitx?"
+
+#: src/fontbutton.cpp:106
+msgid "Select Font"
+msgstr "Seleccioneu el tipus de lletra"
+
+#: src/imconfigdialog.cpp:40
+msgid "<b>Keyboard Layout:</b>"
+msgstr "<b>Disposició de teclat:</b>"
+
+#: src/imconfigdialog.cpp:45
+msgid "Default"
+msgstr "Predeterminat"
+
+#: src/imconfigdialog.cpp:47
+msgid "Input Method Default"
+msgstr "Mètode d'entrada predeterminat"
+
+#: src/imconfigdialog.cpp:92
+msgid "<b>Input Method Setting:</b>"
+msgstr "<b>Configuració del mètode d'entrada:</b>"
+
+#: src/impage.cpp:64 src/impage.cpp:71
+msgid "Unknown"
+msgstr "Desconegut"
+
+#: src/impage.cpp:67
+msgid "Multilingual"
+msgstr "Plurilingüe"
+
+#: src/impage.cpp:467
+msgid "Search Input Method"
+msgstr "Cerca el mètode d'entrada"
+
+#: src/module.cpp:85
+msgid "Fcitx Configuration Module"
+msgstr "Mòdul de configuració del fcitx"
+
+#: src/module.cpp:87
+msgid "Configure Fcitx"
+msgstr "Configura el fcitx"
+
+#: src/module.cpp:89
+msgid "Copyright 2012 Xuetian Weng"
+msgstr "Copyright 2012 Xuetian Weng"
+
+#: src/module.cpp:93
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
+msgid "Input Method"
+msgstr "Mètode d'entrada"
+
+#: src/module.cpp:121
+msgid "Global Config"
+msgstr "Configuració global"
+
+#: src/module.cpp:123
+msgid "Global Config for Fcitx"
+msgstr "Configuració global per al fcitx"
+
+#: src/module.cpp:133 src/module.cpp:135
+msgid "Appearance"
+msgstr "Aparença"
+
+#: src/module.cpp:145
+msgid "Addon Config"
+msgstr "Configuració del complement"
+
+#: src/module.cpp:147
+msgid "Configure Fcitx addon"
+msgstr "Configura el complement del fcitx"
+
+#: src/module.cpp:199
+msgid "Manage Skin"
+msgstr "Gestiona l'aparença"
+
+#: src/module.cpp:201
+msgid "Manage Fcitx Skin"
+msgstr "Gestiona l'aparença del fcitx"
+
+#: src/skinpage.cpp:221
+msgid "First candidate"
+msgstr "Primera candidata"
+
+#: src/skinpage.cpp:222
+msgid "Other candidate"
+msgstr "Una altra candidata"
+
+#: src/skinpage.cpp:391
+#, kde-format
+msgid "Skin %1 Cannot be loaded"
+msgstr "No es pot carregar l'aparença %1"
+
+#: src/subconfigwidget.cpp:232
+msgid ""
+"User config doesn't exisits, do you want to open system file or copy system "
+"file to user file?"
+msgstr "No existeix la configuració d'usuari, voleu obrir el fitxer del sistema o copiar el fitxer del sistema al fitxer d'usuari?"
+
+#: src/subconfigwidget.cpp:233
+msgid "What to do"
+msgstr "Què fer"
+
+#: src/subconfigwidget.cpp:234
+msgid "Copy"
+msgstr "Copia"
+
+#: src/subconfigwidget.cpp:235
+msgid "View system"
+msgstr "Visualitza el sistema"
+
+#: src/subconfigwidget.cpp:247
+msgid "Copy failed"
+msgstr "Ha fallat la còpia"
+
+#: src/uipage.cpp:16
+msgid "Cannot load currently used user interface info"
+msgstr "No es pot carregar la informació d'interfície d'usuari usada actualment"
+
+#: src/uipage.cpp:45
+#, kde-format
+msgid "No configuration options for %1."
+msgstr "Cap opció de configuració per a %1."
+
+#: layout/kbd-layout-viewer.desktop.in:6
+msgid "Keyboard layout viewer"
+msgstr "Visualitzador de disposició de teclat"
+
+#: layout/kbd-layout-viewer.desktop.in:7
+msgid "View keyboard layout"
+msgstr "Visualitza la disposició de teclat"
+
+#: layout/kbd-layout-viewer.desktop.in:9
+msgid "keyboard;input;im"
+msgstr "teclat;entrada;mètode d'entrada"
+
+#: src/kcm_fcitx.desktop.in:12
+msgid "Configure Input Method"
+msgstr "Configura el mètode d'entrada"
+
+#: src/kcm_fcitx.desktop.in:14
+msgid "keyboard,input,im,fcitx"
+msgstr "teclat;entrada;mètode d'entrada;fcitx"
+
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+msgid "Form"
+msgstr "Forrma"
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"including candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr "Les opcions que es llisten aquí poden ser anul·lades per mètodes d'entrada específics, generalment incloent-hi el nombre de candidates, la drecera de teclat de pàgina prèvia i pàgina següent. Potser heu d'anar a la configuració del mètode d'entrada corresponent per canviar-les."
+
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+msgid "Select &Font..."
+msgstr "Seleccioneu el &tipus de lletra"
+
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
+msgid "Keyboard layout to use when no input method active"
+msgstr "Disposició de teclat a usar quan no hi ha cap mètode d'entrada actiu"
+
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
+msgid "Select default keyboard layout"
+msgstr "Seleccioneu la disposició de teclat predeterminada"
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid "Available Input Method:"
+msgstr "Mètode d'entrada disponible:"
+
+#. i18n: file: src/impage.ui:133
+#. i18n: ectx: property (text), widget (QCheckBox,
+#. onlyCurrentLanguageCheckBox)
+msgid "Only &Show Current Language"
+msgstr "Mo%stra sols la llengua actual"
+
+#. i18n: file: src/impage.ui:194
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+msgid "Current Input Method:"
+msgstr "Mètode d'entrada actual:"
+
+#. i18n: file: src/impage.ui:295
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr "El primer mètode d'entrada serà l'estat inactiu. Generalment heu de posar <b>Keyboard</b> o <b>Keyboard - <i>nom de disposició</i></b> en el primer lloc."
+
+#. i18n: file: src/impage.ui:310
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>Disposició de teclat predeterminada:</b>"
+
+#. i18n: file: src/impage.ui:320
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>Seleccioneu el mètode d'entrada:</b>"
+
+#. i18n: file: src/skinpage.ui:41
+#. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
+msgid "&Configure Skin"
+msgstr "&Configura l'aparença"
+
+#. i18n: file: src/skinpage.ui:51
+#. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
+msgid "&Delete Skin"
+msgstr "%Elimina l'aparença"
+
+#. i18n: file: src/skinpage.ui:58
+#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
+msgid "Get New &Skin..."
+msgstr "Obté una nova &aparença"
+
+#. i18n: file: src/skinpage.ui:72
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
+msgstr "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">He d'usar la interfície d'usuari clàssica per usar la funció d'aparença.</p></body></html>"
+
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Els vostres noms"
+
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "Els vostres correus electrònics"
