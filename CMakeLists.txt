@@ -10,7 +10,7 @@ include(KDECompilerSettings)
 include(FeatureSummary)
 option(ENABLE_TEST "Enable test" Off)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras)
 
 find_package(KF5 REQUIRED COMPONENTS
     CoreAddons
@@ -27,7 +27,7 @@ find_package(FcitxQt5WidgetsAddons 1.1.0 REQUIRED)
 
 set(MAJOR_VERSION "0")
 set(MINOR_VERSION "5")
-set(PATCH_VERSION "3")
+set(PATCH_VERSION "4")
 set(SUFFIX_VERSION "")
 
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
@@ -43,6 +43,7 @@ find_package(PkgConfig REQUIRED)
 find_package(Gettext REQUIRED)
 find_package(Fcitx 4.2.8 REQUIRED)
 find_package(XkbFile REQUIRED)
+find_package(X11 REQUIRED)
 
 set(CMAKE_C_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_C_FLAGS}")
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wno-sign-compare -Wno-unused-parameter -fvisibility=hidden ${CMAKE_CXX_FLAGS}")
@@ -88,4 +89,4 @@ link_directories(
 
 add_subdirectory(po)
 add_subdirectory(src)
-#add_subdirectory(layout)
+add_subdirectory(layout)

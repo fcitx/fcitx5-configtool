@@ -5,6 +5,7 @@
 
 #include <QWidget>
 #include <QMap>
+#include <QAbstractNativeEventFilter>
 
 class QPainter;
 struct Doodad;
@@ -78,7 +79,9 @@ public:
     void generatePixmap(bool force = false);
 
 protected:
-    virtual void paintEvent(QPaintEvent* event);
+    void keyPressEvent(QKeyEvent * event) override;
+    void keyReleaseEvent(QKeyEvent * event) override;
+    void paintEvent(QPaintEvent* event) override;
     void init();
     void alloc();
     void release();
@@ -93,7 +96,7 @@ protected:
     bool parseXkbColorSpec(char* colorspec, QColor& color);
     void initColors();
 
-    virtual void focusOutEvent(QFocusEvent* event);
+    void focusOutEvent(QFocusEvent* event) override;
 
     void drawKey(QPainter* painter, DrawingKey* item);
     void drawDoodad(QPainter* painter, Doodad* doodad);
@@ -114,10 +117,12 @@ protected:
     void roundedPolygon(QPainter* painter, bool filled, double radius, const QVector< QPointF >& points);
     void drawCurveRectangle(QPainter* painter, bool filled, QColor color, int x, int y, int width, int height, double radius);
     void roundedCorner (QPainterPath& path, QPointF b, QPointF c, double radius);
-    void resizeEvent(QResizeEvent* event);
+    void resizeEvent(QResizeEvent* event) override;
     void setKeyboard(struct _XkbComponentNames* xkbDesc);
 
 private:
+    void keyEvent(QKeyEvent *keyEvent);
+
     QList<DrawingItem*> keyboardItems;
     DrawingKey* keys;
     QList<Doodad*> physicalIndicators;
@@ -126,7 +131,7 @@ private:
     int physicalIndicatorsSize;
     bool xkbOnDisplay;
     QColor* colors;
-    QImage image;
+    QPixmap image;
     double ratio;
     KeyboardDrawingGroupLevel** groupLevels;
     bool trackModifiers;

@@ -20,7 +20,7 @@ set(kcm_SRCS
   fontbutton.cpp
   configpage.cpp
   erroroverlay.cpp
-#   ../layout/keyboardlayoutwidget.cpp
+  ../layout/keyboardlayoutwidget.cpp
   )
 
 set(kcm_UIS module.ui skinpage.ui impage.ui fontbutton.ui configpage.ui)
@@ -32,6 +32,7 @@ add_library(kcm_fcitx MODULE ${kcm_SRCS})
 
 target_link_libraries(kcm_fcitx
   Qt5::Widgets
+  Qt5::X11Extras
   KF5::CoreAddons
   KF5::WidgetsAddons
   KF5::KCMUtils
@@ -46,6 +47,7 @@ target_link_libraries(kcm_fcitx
   ${FCITX4_FCITX_CONFIG_LIBRARIES}
   ${FCITX4_FCITX_LIBRARIES}
   ${LIBINTL_LIBRARY}
+  ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB}
   )
 
 install(TARGETS kcm_fcitx DESTINATION ${CMAKE_INSTALL_PLUGINDIR})

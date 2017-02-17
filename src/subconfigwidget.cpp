@@ -30,6 +30,8 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 
+#include <kio_version.h>
+
 // Fcitx
 #include <fcitx-config/xdg.h>
 
@@ -264,7 +266,11 @@ void SubConfigWidget::openNativeFile()
     }
 
     if (newpath) {
+#if KIO_VERSION < QT_VERSION_CHECK(5, 31, 0)
         KRun::runUrl(QUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL);
+#else
+        KRun::runUrl(QUrl(newpath), m_subConfig->mimetype().isEmpty() ? "text/plain" : m_subConfig->mimetype(), NULL, KRun::RunFlags());
+#endif
         free(newpath);
     }
 }

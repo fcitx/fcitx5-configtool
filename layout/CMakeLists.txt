@@ -12,7 +12,7 @@ fcitx_translate_add_sources(${kbd_layout_viewer_SOURCES}
 
 add_executable(kbd-layout-viewer ${kbd_layout_viewer_SOURCES})
 
-target_link_libraries(kbd-layout-viewer ${FCITX4_FCITX_CONFIG_LIBRARIES} ${KDE4_KDEUI_LIBRARY} ${X11_X11_LIB} ${XKBFILE_LIBRARIES})
+target_link_libraries(kbd-layout-viewer ${FCITX4_FCITX_CONFIG_LIBRARIES} Qt5::Widgets KF5::I18n Qt5::X11Extras ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB})
 
 install(TARGETS kbd-layout-viewer DESTINATION ${BIN_INSTALL_DIR})
 fcitx_translate_add_apply_source(

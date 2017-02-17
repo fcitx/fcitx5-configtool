@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <qmath.h>
 #include <QDir>
+#include <QX11Info>
 
 #include <X11/Xlib.h>
 #include <X11/XKBlib.h>
@@ -12,6 +13,11 @@
 #include <X11/extensions/XKBgeom.h>
 #include <X11/extensions/XKBrules.h>
 #include <X11/extensions/XKBstr.h>
+
+static const int XKeyPress = KeyPress;
+static const int XKeyRelease = KeyRelease;
+#undef KeyPress
+#undef KeyRelease
 
 #include <math.h>
 #include <fcitx-config/hotkey.h>
@@ -293,7 +299,7 @@ void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names)
 {
     release();
     if (xkb)
-        XkbFreeKeyboard(xkb, 0, TRUE);
+        XkbFreeKeyboard(xkb, 0, true);
     if (names) {
         xkb = XkbGetKeyboardByName (QX11Info::display(), XkbUseCoreKbd,
                       names, 0,
@@ -301,8 +307,8 @@ void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names)
                       XkbGBN_KeyNamesMask |
                       XkbGBN_OtherNamesMask |
                       XkbGBN_ClientSymbolsMask |
-                      XkbGBN_IndicatorMapMask, FALSE);
-        xkbOnDisplay = FALSE;
+                      XkbGBN_IndicatorMapMask, false);
+        xkbOnDisplay = false;
     } else {
         xkb = XkbGetKeyboard (QX11Info::display(),
                            XkbGBN_GeometryMask |
@@ -312,7 +318,7 @@ void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names)
                            XkbGBN_IndicatorMapMask,
                            XkbUseCoreKbd);
         XkbGetNames (QX11Info::display(), XkbAllNamesMask, xkb);
-        xkbOnDisplay = TRUE;
+        xkbOnDisplay = true;
     }
 
     if (xkb == NULL)
@@ -703,7 +709,9 @@ void KeyboardLayoutWidget::generatePixmap(bool force)
     if (w == image.width() && h == image.height() && !force)
         return;
 
-    image = QImage(w, h, QImage::Format_ARGB32);
+    image = QPixmap(QSize(w, h) * devicePixelRatio());
+    image.setDevicePixelRatio(devicePixelRatio());
+    image.fill(Qt::transparent);
     QPainter painter(&image);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setCompositionMode(QPainter::CompositionMode_Source);
@@ -874,10 +882,10 @@ void KeyboardLayoutWidget::drawPolygon(QPainter* painter, QColor fill_color, int
     unsigned int i;
 
     if (fill_color.isValid()) {
-        filled = TRUE;
+        filled = true;
     } else {
         fill_color = Qt::gray;
-        filled = FALSE;
+        filled = false;
     }
 
     QBrush brush(fill_color);
@@ -1028,10 +1036,10 @@ void KeyboardLayoutWidget::drawRectangle(QPainter* painter, QColor color, int an
         bool filled;
 
         if (color.isValid()) {
-            filled = TRUE;
+            filled = true;
         } else {
             color = Qt::gray;
-            filled = FALSE;
+            filled = false;
         }
 
         x = xkbToPixmapCoord (xkb_x);
@@ -1408,11 +1416,11 @@ void KeyboardLayoutWidget::paintEvent(QPaintEvent* event)
     QPainter p(this);
     p.setClipRect(event->rect());
     p.setCompositionMode(QPainter::CompositionMode_SourceOver);
-    int dx = (rect().width() - image.rect().width()) / 2;
-    int dy = (rect().height() - image.rect().height()) / 2;
-    QRect r = image.rect();
+    int dx = (rect().width() - image.width() / image.devicePixelRatio()) / 2;
+    int dy = (rect().height() - image.height() / image.devicePixelRatio()) / 2;
+    QRect r(QPoint(dx, dy), image.size() / image.devicePixelRatio());
     r.moveTo(dx, dy);
-    p.drawImage(r, image);
+    p.drawPixmap(r, image, image.rect());
 }
 
 void KeyboardLayoutWidget::resizeEvent(QResizeEvent* event)
@@ -1422,28 +1430,37 @@ void KeyboardLayoutWidget::resizeEvent(QResizeEvent* event)
     QWidget::resizeEvent(event);
 }
 
-bool KeyboardLayoutWidget::x11Event(XEvent* event)
+void KeyboardLayoutWidget::keyPressEvent(QKeyEvent* event)
+{
+    return keyEvent(event);
+}
+
+void KeyboardLayoutWidget::keyReleaseEvent(QKeyEvent* event)
+{
+    return keyEvent(event);
+}
+
+void KeyboardLayoutWidget::keyEvent(QKeyEvent* event)
 {
     do {
         if (!xkb)
             break;
-        if (event->type != KeyPress && event->type != KeyRelease)
+        if (event->type() != QEvent::KeyPress && event->type() != QEvent::KeyRelease)
             break;
-        DrawingKey* key = &keys[event->xkey.keycode];
-        if (event->xkey.keycode > xkb->max_key_code ||
-            event->xkey.keycode < xkb->min_key_code ||
+        DrawingKey* key = &keys[event->nativeScanCode()];
+        if (event->nativeScanCode() > xkb->max_key_code ||
+            event->nativeScanCode() < xkb->min_key_code ||
             key->xkbkey == NULL) {
             break;
         }
-        if (event->type == KeyPress && key->pressed)
+        if (event->type() == QEvent::KeyPress && key->pressed)
             break;
-        if (event->type == KeyRelease && !key->pressed)
+        if (event->type() == QEvent::KeyRelease && !key->pressed)
             break;
-        key->pressed = (event->type == KeyPress);
+        key->pressed = (event->type() == QEvent::KeyPress);
         generatePixmap(true);
         repaint();
     } while(0);
-    return QWidget::x11Event(event);
 }
 
 

@@ -17,42 +17,58 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#include <KApplication>
-#include <KCmdLineArgs>
+#include <QApplication>
+#include <QCommandLineParser>
 #include <QMainWindow>
+#include <QX11Info>
+
+#include <KLocalizedString>
 
 #include "config.h"
 #include "keyboardlayoutwidget.h"
 
 int main(int argc, char* argv[])
 {
-    KCmdLineArgs::init(argc, argv,
-                       "kbd-layout-viewer", "kcm_fcitx",
-                       ki18n("Keyboard Layout viewer"),
-                       VERSION_STRING_FULL,
-                       ki18n("A general keyboard layout viewer")
-                      );
-    KCmdLineOptions options;
-    options.add("g");
-    options.add("group <group>", ki18n("Keyboard layout group (0-3)"));
-    options.add("l");
-    options.add("layout <layout>", ki18n("Keyboard layout"));
-    options.add("v");
-    options.add("variant <variant>", ki18n("Keyboard layout variant"));
-    KCmdLineArgs::addCmdLineOptions(options);
-    KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+    QApplication app(argc, argv);
+    app.setApplicationName(QLatin1String("kbd-layout-viewer"));
+    app.setApplicationVersion(QLatin1String(VERSION_STRING_FULL));
+
+    QCommandLineParser parser;
+    parser.setApplicationDescription(i18n("A general keyboard layout viewer"));
+    parser.addHelpOption();
+    parser.addOptions({
+        {{"g", "group"},
+            i18n("Keyboard layout <group> (0-3)"),
+            i18n("group")},
+        {{"l", "layout"},
+            i18n("Keyboard <layout>"),
+            i18n("layout")},
+        {{"v", "variant"},
+            i18n("Keyboard layout <variant>"),
+            i18n("variant")}
+    });
+
+    parser.process(app);
 
     int group = -1;
     QString variant, layout;
-    if (args->isSet("group")) {
-        group = args->getOption("group").toInt();
+    if (parser.isSet("group")) {
+        group = parser.value("group").toInt();
     }
-    if (args->isSet("layout"))
-        layout = args->getOption("layout");
-    if (args->isSet("variant"))
-        variant = args->getOption("variant");
+    if (parser.isSet("layout")) {
+        layout = parser.value("layout");
+    }
+    if (parser.isSet("variant")) {
+        variant = parser.value("variant");
+    }
 
-    KApplication app;
+    if (!QX11Info::isPlatformX11()) {
+        qFatal("Only X11 is supported");
+        return 1;
+    }
+
+    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+
     QMainWindow mainWindow;
     mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
     mainWindow.setWindowTitle(i18n("Keyboard Layout viewer"));

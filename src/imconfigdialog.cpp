@@ -3,6 +3,7 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 #include <QLabel>
+#include <QX11Info>
 #include <KComboBox>
 #include <KLocalizedString>
 
@@ -18,6 +19,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
     ,m_imName(imName)
     ,m_layoutCombobox(0)
     ,m_configPage(0)
+    ,m_layoutWidget(nullptr)
 {
     QWidget* widget = new QWidget(this);
     QVBoxLayout* l = new QVBoxLayout(this);
@@ -57,33 +59,33 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
             l->addWidget(label);
             l->addWidget(m_layoutCombobox);
             connect(m_layoutCombobox, SIGNAL(currentIndexChanged(int)), this, SLOT(layoutComboBoxChanged()));
-#if 0
-            m_layoutWidget = new KeyboardLayoutWidget(this);
-            m_layoutWidget->setMinimumSize(QSize(400, 200));
-            m_layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-            l->addWidget(m_layoutWidget);
-#endif
+            if (QX11Info::isPlatformX11()) {
+                m_layoutWidget = new KeyboardLayoutWidget(this);
+                m_layoutWidget->setMinimumSize(QSize(400, 200));
+                m_layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+                l->addWidget(m_layoutWidget);
+            }
             layoutComboBoxChanged();
         }
     }
     else {
-#if 0
-        KeyboardLayoutWidget* layoutWidget = new KeyboardLayoutWidget(this);
-        layoutWidget->setMinimumSize(QSize(400, 200));
-        layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        QString layoutstring = imName.mid(strlen("fcitx-keyboard-"));
-        int p = layoutstring.indexOf("-");
-        QString layout, variant;
-        if (p < 0) {
-            layout = layoutstring;
+        if (QX11Info::isPlatformX11()) {
+            KeyboardLayoutWidget* layoutWidget = new KeyboardLayoutWidget(this);
+            layoutWidget->setMinimumSize(QSize(400, 200));
+            layoutWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+            QString layoutstring = imName.mid(strlen("fcitx-keyboard-"));
+            int p = layoutstring.indexOf("-");
+            QString layout, variant;
+            if (p < 0) {
+                layout = layoutstring;
+            }
+            else {
+                layout = layoutstring.mid(0, p);
+                variant = layoutstring.mid(p + 1);
+            }
+            layoutWidget->setKeyboardLayout(layout, variant);
+            l->addWidget(layoutWidget);
         }
-        else {
-            layout = layoutstring.mid(0, p);
-            variant = layoutstring.mid(p + 1);
-        }
-        layoutWidget->setKeyboardLayout(layout, variant);
-        l->addWidget(layoutWidget);
-#endif
     }
 
     FcitxConfigFileDesc* cfdesc = NULL;
@@ -141,17 +143,16 @@ void Fcitx::IMConfigDialog::onButtonClicked(QDialogButtonBox::StandardButton cod
 
 void Fcitx::IMConfigDialog::layoutComboBoxChanged()
 {
-#if 0
-    if (!m_layoutCombobox || !m_layoutWidget)
-#endif
+    if (!m_layoutCombobox || !m_layoutWidget) {
         return;
-#if 0
+    }
+
     int idx = m_layoutCombobox->currentIndex();
     if (idx != 0) {
         m_layoutWidget->setKeyboardLayout(m_layoutList.at(idx - 1).layout(), m_layoutList.at(idx - 1).variant());
         m_layoutWidget->show();
     }
-    else
+    else {
         m_layoutWidget->hide();
-#endif
+    }
 }
