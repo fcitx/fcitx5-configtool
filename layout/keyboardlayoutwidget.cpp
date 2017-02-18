@@ -113,6 +113,12 @@ static QString FcitxXkbFindXkbRulesFile()
     return rulesFile;
 }
 
+static KeySym normalizedKeySym(KeySym sym) {
+    if (sym == XK_ISO_Left_Tab) {
+        return XK_Tab;
+    }
+    return sym;
+}
 
 KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget* parent): QWidget(parent),
     ratio(1.0),
@@ -1120,26 +1126,24 @@ KeyboardLayoutWidget::~KeyboardLayoutWidget()
 
 void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int angle, int xkb_origin_x, int xkb_origin_y, int xkb_width, int xkb_height, bool is_pressed)
 {
-    int x, y, width, height;
-    int padding;
-    int g, l, glp;
-
     if (!xkb)
         return;
 
-    padding = 23 * ratio;   /* 2.3mm */
+    int padding = 23 * ratio;   /* 2.3mm */
 
-    x = xkbToPixmapCoord (xkb_origin_x);
-    y = xkbToPixmapCoord (xkb_origin_y);
-    width = xkbToPixmapCoord (xkb_origin_x + xkb_width) - x;
-    height = xkbToPixmapCoord (xkb_origin_y + xkb_height) - y;
+    int x = xkbToPixmapCoord (xkb_origin_x);
+    int y = xkbToPixmapCoord (xkb_origin_y);
+    int width = xkbToPixmapCoord (xkb_origin_x + xkb_width) - x;
+    int height = xkbToPixmapCoord (xkb_origin_y + xkb_height) - y;
 
-    for (glp = KEYBOARD_DRAWING_POS_TOPLEFT;
+    QString syms[KEYBOARD_DRAWING_POS_TOTAL] = {0,0,0,0};
+
+    for (int glp = KEYBOARD_DRAWING_POS_TOPLEFT;
          glp < KEYBOARD_DRAWING_POS_TOTAL; glp++) {
         if (groupLevels[glp] == NULL)
             continue;
-        g = groupLevels[glp]->group;
-        l = groupLevels[glp]->level;
+        int g = groupLevels[glp]->group;
+        int l = groupLevels[glp]->level;
 
         if (g < 0 || g >= XkbKeyNumGroups (xkb, keycode))
             continue;
@@ -1155,42 +1159,76 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int ang
                 continue;
         }
 
+        KeySym keysym = 0;
         if (trackModifiers) {
             uint mods_rtrn;
-            KeySym keysym;
 
             if (XkbTranslateKeyCode (xkb, keycode,
                          XkbBuildCoreState(mods, g),
                          &mods_rtrn, &keysym)) {
-                drawKeyLabelHelper (painter, keysym, angle, glp,
-                               x, y, width, height,
-                               padding,
-                               is_pressed);
-                /* reverse y order */
+                syms[glp] = keySymToString(keysym);
             }
         } else {
-            KeySym keysym;
+            keysym = XkbKeySymEntry (xkb, keycode, l, g);
+            syms[glp] = keySymToString(keysym);
+        }
+    }
 
-            keysym =
-                XkbKeySymEntry (xkb, keycode, l, g);
+    //  TOPLEFT     TOPRIGHT
+    //  BOTTOMLEFT  BOTTOMRIGHT
+    int end[KEYBOARD_DRAWING_POS_TOTAL];
+    const int TOPLEFT = KEYBOARD_DRAWING_POS_TOPLEFT,
+              TOPRIGHT = KEYBOARD_DRAWING_POS_TOPRIGHT,
+              BOTTOMLEFT = KEYBOARD_DRAWING_POS_BOTTOMLEFT,
+              BOTTOMRIGHT = KEYBOARD_DRAWING_POS_BOTTOMRIGHT;
+    end[TOPLEFT] = TOPLEFT;
+    end[TOPRIGHT] = TOPRIGHT;
+    end[BOTTOMLEFT] = BOTTOMLEFT;
+    end[BOTTOMRIGHT] = BOTTOMRIGHT;
 
-            drawKeyLabelHelper (painter, keysym,
-                           angle, glp, x, y, width,
-                           height, padding,
-                           is_pressed);
+    if (syms[BOTTOMLEFT] == syms[BOTTOMRIGHT] ||
+        syms[BOTTOMRIGHT].isNull()) {
+        syms[BOTTOMRIGHT] = QString::null;
+        end[BOTTOMLEFT] = BOTTOMRIGHT;
+        end[BOTTOMRIGHT] = -1;
+    }
+
+    if (syms[TOPLEFT] == syms[TOPRIGHT] ||
+        syms[TOPRIGHT].isNull()) {
+        syms[TOPRIGHT] = QString::null;
+        end[TOPLEFT] = TOPRIGHT;
+        end[TOPRIGHT] = -1;
+    }
+
+    if ((syms[BOTTOMLEFT] == syms[TOPLEFT] ||
+        syms[TOPLEFT].isNull()) &&
+        ((end[BOTTOMLEFT] == BOTTOMLEFT && end[TOPLEFT] == TOPLEFT) ||
+         (end[BOTTOMLEFT] == BOTTOMRIGHT && end[TOPLEFT] == TOPRIGHT))) {
+        syms[TOPLEFT] = QString::null;
+        end[BOTTOMLEFT] = end[TOPLEFT];
+        end[TOPLEFT] = -1;
+    }
+
+    if (!syms[BOTTOMRIGHT].isNull() && (syms[BOTTOMRIGHT] == syms[TOPRIGHT] || (syms[TOPRIGHT].isNull() && end[TOPRIGHT] != -1))) {
+        syms[TOPRIGHT] = QString::null;
+        end[BOTTOMRIGHT] = TOPRIGHT;
+    }
+
+    for (int glp = KEYBOARD_DRAWING_POS_TOPLEFT;
+         glp < KEYBOARD_DRAWING_POS_TOTAL; glp++) {
+        if (!syms[glp].isEmpty()) {
+            drawKeyLabelHelper (painter, syms[glp],
+                            angle, glp, end[glp], x, y, width,
+                            height, padding,
+                            is_pressed);
             /* reverse y order */
         }
     }
 }
 
-void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, int keysym, int angle, int glp, int x, int y, int width, int height, int padding, bool is_pressed)
+void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &text_, int angle, int glp, int end_glp, int x, int y, int width, int height, int padding, bool is_pressed)
 {
-    if (keysym == 0)
-        return;
-
-    if (keysym == XK_VoidSymbol)
-        return;
-
+    QString text = text_;
     if (padding >= height / 2)
         padding = 0;
     if (padding >= width / 2)
@@ -1199,54 +1237,51 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, int keysym, int
     Qt::Alignment align;
 
     QRectF rect(padding, padding, (width - 2 * padding), (height - 2 * padding));
+    QRectF textRect;
+    QMarginsF margin(0, 0, 0, 0);
+    //  TOPLEFT     TOPRIGHT
+    //  BOTTOMLEFT  BOTTOMRIGHT
     switch (glp) {
     case KEYBOARD_DRAWING_POS_TOPLEFT:
         align = Qt::AlignTop | Qt::AlignLeft;
+        margin.setBottom(rect.height() / 2);
         break;
     case KEYBOARD_DRAWING_POS_BOTTOMLEFT:
         align = Qt::AlignBottom | Qt::AlignLeft;
         break;
     case KEYBOARD_DRAWING_POS_TOPRIGHT:
         align = Qt::AlignTop | Qt::AlignRight;
+        margin.setBottom(rect.height() / 2);
         break;
     case KEYBOARD_DRAWING_POS_BOTTOMRIGHT:
         align = Qt::AlignBottom | Qt::AlignRight;
+        margin.setLeft(rect.width() / 2);
         break;
     default:
         return;
     }
-
-    if (keysym == XK_ISO_Left_Tab)
-        keysym = XK_Tab;
-
-    keysym = (int) FcitxHotkeyPadToMain((FcitxKeySym) keysym);
-    uint32_t unicode = FcitxKeySymToUnicode((FcitxKeySym) keysym);
-
-    if (deadMap.contains(keysym)) {
-        unicode = deadMap[keysym];
+    switch (end_glp) {
+    case KEYBOARD_DRAWING_POS_TOPLEFT:
+        margin.setRight(rect.width() / 2);
+        break;
+    case KEYBOARD_DRAWING_POS_BOTTOMLEFT:
+        margin.setRight(rect.width() / 2);
+        margin.setTop(rect.height() / 2);
+        break;
+    case KEYBOARD_DRAWING_POS_TOPRIGHT:
+        break;
+    case KEYBOARD_DRAWING_POS_BOTTOMRIGHT:
+        margin.setTop(rect.height() / 2);
+        break;
+    default:
+        return;
     }
-    QString text;
-    if (unicode
-        && QChar(unicode).category() != QChar::Other_Control
-        && !QChar(unicode).isSpace())
-        text.append(QChar(unicode));
-    else {
-        if (keysym == XK_Prior) {
-            text = "PgUp";
-        }
-        else if (keysym == XK_Next) {
-            text = "PgDn";
-        }
-        else {
-            text = QString(XKeysymToString(keysym));
-        }
+    textRect = rect.marginsRemoved(margin);
+    // which means we have longer width
+    if (textRect.width() == rect.width() && textRect.height() != rect.height()) {
+        text.replace('\n', ' ');
     }
-    if (text != "_") {
-        if (text.endsWith("_L") || text.endsWith("_R"))
-            text = text.replace('_', ' ');
-        else
-            text = text.replace('_', '\n');
-    }
+
     painter->save();
     QTransform trans;
     trans.translate(x + padding / 2, y + padding / 2);
@@ -1259,16 +1294,36 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, int keysym, int
     trans.translate(x, y);
     trans.rotate(angle / 10);
     QFont font = painter->font();
-    font.setPixelSize(TEXT_SIZE * (height / 2 - padding));
-    QFontMetricsF fm(font);
-    QStringList lines = text.split('\n');
-    foreach(const QString& line, lines) {
-        qreal w = fm.width(line);
-        if (w > (width - padding * 2)  * TEXT_SIZE) {
-            double sz = font.pixelSize() / w * (width - padding * 2) * TEXT_SIZE;
-            if (sz < 1)
-                sz = 1;
-            font.setPixelSize(font.pixelSize() / w * (width - padding * 2) * TEXT_SIZE);
+    // Normalize maximum text size
+    {
+        QFontMetricsF fm(font);
+        qreal h = fm.size(align | Qt::TextSingleLine, text).height();
+        if (h > rect.height() / 2) {
+            qreal scale = rect.height() / 2 / h;
+            if (scale < 1) {
+                font.setPointSizeF(font.pointSizeF() * scale);
+            }
+        }
+    }
+    // fit it in rect
+    {
+        QFontMetricsF fm(font);
+        qreal h = fm.size(align, text).height();
+        if (h > textRect.height()) {
+            qreal scale = textRect.height() / h;
+            if (scale < 1) {
+                font.setPointSizeF(font.pointSizeF() * scale);
+            }
+        }
+    }
+    {
+        QFontMetricsF fm(font);
+        qreal w = fm.size(align, text).width();
+        if (w > textRect.width()) {
+            qreal scale = textRect.width() / w;
+            if (scale < 1) {
+                font.setPointSizeF(font.pointSizeF() * scale);
+            }
         }
     }
 
@@ -1277,11 +1332,19 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, int keysym, int
 #if 0
     painter->save();
     painter->setPen(QPen(Qt::red));
-    painter->drawRect(rect);
+    painter->drawRect(textRect);
     painter->restore();
 #endif
-    painter->drawText(rect, align, text);
+    painter->drawText(textRect, align | Qt::TextDontClip, text);
     painter->restore();
+#if 0
+    QString name[KEYBOARD_DRAWING_POS_TOTAL];
+    name[KEYBOARD_DRAWING_POS_TOPLEFT] = "TOPLEFT";
+    name[KEYBOARD_DRAWING_POS_TOPRIGHT] = "TOPRIGHT";
+    name[KEYBOARD_DRAWING_POS_BOTTOMLEFT] = "BOTTOMLEFT";
+    name[KEYBOARD_DRAWING_POS_BOTTOMRIGHT] = "BOTTOMRIGHT";
+    qDebug() << "KEY" << text << name[glp] << name[end_glp] << rect << textRect;
+#endif
 }
 
 
@@ -1463,4 +1526,41 @@ void KeyboardLayoutWidget::keyEvent(QKeyEvent* event)
     } while(0);
 }
 
+QString KeyboardLayoutWidget::keySymToString(unsigned long keysym) {
+    if (keysym == 0 || keysym == XK_VoidSymbol)
+        return {};
+    keysym = normalizedKeySym(keysym);
+
+    keysym = (KeySym) FcitxHotkeyPadToMain((FcitxKeySym) keysym);
+    uint32_t unicode = FcitxKeySymToUnicode((FcitxKeySym) keysym);
+
+    if (deadMap.contains(keysym)) {
+        unicode = deadMap[keysym];
+    }
+    QString text;
+    if (unicode
+        && QChar::category(unicode) != QChar::Other_Control
+        && !QChar::isSpace(unicode)) {
+        text = QString::fromUcs4(&unicode, 1);
+    }
+    else {
+        if (keysym == XK_Prior) {
+            text = "PgUp";
+        }
+        else if (keysym == XK_Next) {
+            text = "PgDn";
+        }
+        else {
+            text = QString(XKeysymToString(keysym));
+        }
+    }
+    if (text != "_") {
+        if (text.endsWith("_L") || text.endsWith("_R"))
+            text = text.replace('_', ' ');
+        else
+            text = text.replace('_', '\n');
+    }
+
+    return text;
+}
 

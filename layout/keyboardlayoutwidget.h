@@ -101,7 +101,7 @@ protected:
     void drawKey(QPainter* painter, DrawingKey* item);
     void drawDoodad(QPainter* painter, Doodad* doodad);
     void drawKeyLabel(QPainter* painter, uint keycode, int angle, int arg4, int originY, int x2, int y2, bool pressed);
-    void drawKeyLabelHelper(QPainter* painter, int keysym, int angle, int glp, int x, int y, int width, int height, int padding, bool is_pressed);
+    void drawKeyLabelHelper(QPainter* painter, const QString &text, int angle, int glp, int end_glp, int x, int y, int width, int height, int padding, bool is_pressed);
 
     void drawShapeDoodad(QPainter* painter, Doodad* doodad, struct _XkbShapeDoodad* shapeDoodad);
     void drawTextDoodad(QPainter* painter, Doodad* doodad, struct _XkbTextDoodad* textDoodad);
@@ -122,6 +122,7 @@ protected:
 
 private:
     void keyEvent(QKeyEvent *keyEvent);
+    QString keySymToString(unsigned long keysym);
 
     QList<DrawingItem*> keyboardItems;
     DrawingKey* keys;
