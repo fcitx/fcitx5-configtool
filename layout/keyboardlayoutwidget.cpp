@@ -146,27 +146,7 @@ KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget* parent): QWidget(parent),
     l3mod = XkbKeysymToModifiers (QX11Info::display(),
                                   XK_ISO_Level3_Shift);
 
-    XkbSelectEventDetails (QX11Info::display(), XkbUseCoreKbd,
-                   XkbIndicatorStateNotify,
-                   xkb->indicators->phys_indicators,
-                   xkb->indicators->phys_indicators);
-
     xkbOnDisplay = true;
-
-    int mask = (XkbStateNotifyMask | XkbNamesNotifyMask |
-    XkbControlsNotifyMask | XkbIndicatorMapNotifyMask |
-    XkbNewKeyboardNotifyMask);
-    XkbSelectEvents (QX11Info::display(), XkbUseCoreKbd, mask, mask);
-
-
-    mask = XkbGroupStateMask | XkbModifierStateMask;
-    XkbSelectEventDetails (QX11Info::display(), XkbUseCoreKbd,
-                   XkbStateNotify, mask, mask);
-
-    mask = (XkbGroupNamesMask | XkbIndicatorNamesMask);
-    XkbSelectEventDetails (QX11Info::display(), XkbUseCoreKbd,
-                   XkbNamesNotify, mask, mask);
-
 
     alloc ();
     init();
