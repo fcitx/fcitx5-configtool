@@ -72,7 +72,7 @@ int main(int argc, char* argv[])
     QMainWindow mainWindow;
     mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
     mainWindow.setWindowTitle(i18n("Keyboard Layout viewer"));
-    mainWindow.setMinimumSize(QSize(900,400));
+    // mainWindow.setMinimumSize(QSize(900,400));
     KeyboardLayoutWidget widget;
     if (group > 0 || layout.isNull()) {
         if (group < 0)

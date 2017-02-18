@@ -1280,9 +1280,7 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
         qreal h = fm.size(align | Qt::TextSingleLine, text).height();
         if (h > rect.height() / 2) {
             qreal scale = rect.height() / 2 / h;
-            if (scale < 1) {
-                font.setPointSizeF(font.pointSizeF() * scale);
-            }
+            font.setPointSizeF(font.pointSizeF() * scale);
         }
     }
     // fit it in rect
@@ -1291,19 +1289,18 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
         qreal h = fm.size(align, text).height();
         if (h > textRect.height()) {
             qreal scale = textRect.height() / h;
-            if (scale < 1) {
-                font.setPointSizeF(font.pointSizeF() * scale);
-            }
+            font.setPointSizeF(font.pointSizeF() * scale);
         }
     }
-    {
+    int maxTry = 3;
+    while (maxTry--) {
         QFontMetricsF fm(font);
         qreal w = fm.size(align, text).width();
         if (w > textRect.width()) {
             qreal scale = textRect.width() / w;
-            if (scale < 1) {
-                font.setPointSizeF(font.pointSizeF() * scale);
-            }
+            font.setPointSizeF(font.pointSizeF() * scale);
+        } else {
+            break;
         }
     }
 
