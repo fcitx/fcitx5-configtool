@@ -7,7 +7,7 @@
 # csslayer <wengxt@gmail.com>, 2011,2014
 # marguerite su <i@marguerite.su>, 2014
 # Ukyoi <ukyoi@msn.com>, 2011
-# csslayer <wengxt@gmail.com>, 2014
+# csslayer <wengxt@gmail.com>, 2014,2017
 # csslayer <wengxt@gmail.com>, 2011
 # csslayer <wengxt@gmail.com>, 2010-2013
 # wwj402 <wwj402@gmail.com>, 2014
@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 11:02-0700\n"
-"PO-Revision-Date: 2017-06-09 17:49+0000\n"
+"POT-Creation-Date: 2017-06-09 11:13-0700\n"
+"PO-Revision-Date: 2017-06-09 18:04+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/fcitx/fcitx/"
 "language/zh_CN/)\n"
@@ -33,7 +33,7 @@ msgstr ""
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
@@ -119,7 +119,7 @@ msgstr "外观"
 #: src/module.cpp:91
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -210,7 +210,7 @@ msgstr "输入法默认"
 #: layout/main.cpp:44
 #, kde-format
 msgid "Keyboard <layout>"
-msgstr ""
+msgstr "键盘 <布局>"
 
 #: layout/main.cpp:74
 #, kde-format
@@ -220,12 +220,12 @@ msgstr "键盘布局查看器"
 #: layout/main.cpp:41
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "键盘布局<分组号> (0-3)"
 
 #: layout/main.cpp:47
 #, kde-format
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "键盘布局<变体>"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
@@ -357,7 +357,7 @@ msgstr "翁学天"
 #: layout/main.cpp:42
 #, kde-format
 msgid "group"
-msgstr ""
+msgstr "分组"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
@@ -370,9 +370,9 @@ msgstr "keyboard;input;im;输入法;键盘;输入"
 #: layout/main.cpp:45
 #, kde-format
 msgid "layout"
-msgstr ""
+msgstr "布局"
 
 #: layout/main.cpp:48
 #, kde-format
 msgid "variant"
-msgstr ""
+msgstr "变体"
