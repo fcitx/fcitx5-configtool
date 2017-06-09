@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# csslayer <wengxt@gmail.com>, 2014
+# dinhdangkhoi <dinhdangkhoi.fs@gmail.com>, 2014
 # dinhdangkhoi <dinhdangkhoi.fs@gmail.com>, 2014
 # Lê Trường An <truongan@linuxmail.org>, 2013
 # csslayer <wengxt@gmail.com>, 2014
@@ -11,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 09:02-0700\n"
-"PO-Revision-Date: 2017-06-09 15:50+0000\n"
+"POT-Creation-Date: 2017-06-09 11:02-0700\n"
+"PO-Revision-Date: 2017-06-09 17:51+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/fcitx/fcitx/language/"
 "vi/)\n"
@@ -31,12 +33,12 @@ msgstr ""
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
 msgid "&Configure Skin"
-msgstr ""
+msgstr "&Cấu hình vỏ ngoài"
 
 #. i18n: file: src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
 msgid "&Delete Skin"
-msgstr ""
+msgstr "&Xóa vỏ ngoài"
 
 #. i18n: file: src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -165,12 +167,12 @@ msgstr "Ứng cử viên đầu tiên"
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
-msgstr ""
+msgstr "Mẫu"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
 msgid "Get New &Skin..."
-msgstr ""
+msgstr "Thêm mới vỏ &ngoài..."
 
 #: src/module.cpp:113
 #, kde-format
@@ -267,7 +269,7 @@ msgstr ""
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 msgid "Select &Font..."
-msgstr ""
+msgstr "Chọn &Font..."
 
 #. i18n: file: src/impage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)

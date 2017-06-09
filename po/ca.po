@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2017-06-09 08:49-0700\n"
-"PO-Revision-Date: 2017-06-09 15:50+0000\n"
+"PO-Revision-Date: 2017-06-09 17:49+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/fcitx/fcitx/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -251,7 +251,7 @@ msgstr "teclat;entrada;mètode d'entrada;fcitx"
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
 msgid "Form"
-msgstr ""
+msgstr "Forrma"
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -259,70 +259,70 @@ msgid ""
 "Options listed here might be overridden by specific input method, usually "
 "including candidate number, hotkey of previous page and next page. You may "
 "need go to configuration of corresponding input method to change them."
-msgstr ""
+msgstr "Les opcions que es llisten aquí poden ser anul·lades per mètodes d'entrada específics, generalment incloent-hi el nombre de candidates, la drecera de teclat de pàgina prèvia i pàgina següent. Potser heu d'anar a la configuració del mètode d'entrada corresponent per canviar-les."
 
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 msgid "Select &Font..."
-msgstr ""
+msgstr "Seleccioneu el &tipus de lletra"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
 msgid "Keyboard layout to use when no input method active"
-msgstr ""
+msgstr "Disposició de teclat a usar quan no hi ha cap mètode d'entrada actiu"
 
 #. i18n: file: src/impage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 msgid "Select default keyboard layout"
-msgstr ""
+msgstr "Seleccioneu la disposició de teclat predeterminada"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
 msgid "Available Input Method:"
-msgstr ""
+msgstr "Mètode d'entrada disponible:"
 
 #. i18n: file: src/impage.ui:115
 #. i18n: ectx: property (text), widget (QCheckBox,
 #. onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
-msgstr ""
+msgstr "Mo%stra sols la llengua actual"
 
 #. i18n: file: src/impage.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Current Input Method:"
-msgstr ""
+msgstr "Mètode d'entrada actual:"
 
 #. i18n: file: src/impage.ui:277
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr ""
+msgstr "El primer mètode d'entrada serà l'estat inactiu. Generalment heu de posar <b>Keyboard</b> o <b>Keyboard - <i>nom de disposició</i></b> en el primer lloc."
 
 #. i18n: file: src/impage.ui:292
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 msgid "<b>Default keyboard layout:</b>"
-msgstr ""
+msgstr "<b>Disposició de teclat predeterminada:</b>"
 
 #. i18n: file: src/impage.ui:302
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 msgid "<b>Select Input Method:</b>"
-msgstr ""
+msgstr "<b>Seleccioneu el mètode d'entrada:</b>"
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
 msgid "&Configure Skin"
-msgstr ""
+msgstr "&Configura l'aparença"
 
 #. i18n: file: src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
 msgid "&Delete Skin"
-msgstr ""
+msgstr "%Elimina l'aparença"
 
 #. i18n: file: src/skinpage.ui:58
 #. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
 msgid "Get New &Skin..."
-msgstr ""
+msgstr "Obté una nova &aparença"
 
 #. i18n: file: src/skinpage.ui:72
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -333,7 +333,7 @@ msgid ""
 "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
-msgstr ""
+msgstr "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">He d'usar la interfície d'usuari clàssica per usar la funció d'aparença.</p></body></html>"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
