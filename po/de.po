@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 08:49-0700\n"
-"PO-Revision-Date: 2017-06-09 15:46+0000\n"
+"POT-Creation-Date: 2017-06-09 09:02-0700\n"
+"PO-Revision-Date: 2017-06-09 15:50+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/fcitx/fcitx/language/de/)\n"
 "Language: de\n"
@@ -29,9 +29,8 @@ msgstr ""
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
-#, fuzzy
 msgid "&Configure Skin"
-msgstr "Fcitx konfigurieren"
+msgstr ""
 
 #. i18n: file: src/skinpage.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
@@ -58,9 +57,8 @@ msgstr ""
 
 #. i18n: file: src/impage.ui:292
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#, fuzzy
 msgid "<b>Default keyboard layout:</b>"
-msgstr "<b>Tastatur Layout:</b>"
+msgstr ""
 
 #: src/imconfigdialog.cpp:98
 #, kde-format
@@ -79,9 +77,8 @@ msgstr "<b>Weitere</b>"
 
 #. i18n: file: src/impage.ui:302
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#, fuzzy
 msgid "<b>Select Input Method:</b>"
-msgstr "<b>Einstellungen Eingabemethode:</b>"
+msgstr ""
 
 #: layout/main.cpp:37
 #, kde-format
@@ -105,9 +102,8 @@ msgstr ""
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
-#, fuzzy
 msgid "Available Input Method:"
-msgstr "Eingabemethode"
+msgstr ""
 
 #: src/erroroverlay.cpp:43
 #, kde-format
@@ -147,9 +143,8 @@ msgstr "Copyright 2012 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#, fuzzy
 msgid "Current Input Method:"
-msgstr "FCITX konfigurieren"
+msgstr ""
 
 #: src/imconfigdialog.cpp:47
 #, kde-format
@@ -277,9 +272,8 @@ msgstr ""
 
 #. i18n: file: src/impage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#, fuzzy
 msgid "Select default keyboard layout"
-msgstr "Tastaturlayout ansehen"
+msgstr ""
 
 #: src/addonselector.cpp:382 src/configwidget.cpp:606
 #, kde-format
