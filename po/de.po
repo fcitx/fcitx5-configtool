@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 08:45-0700\n"
-"PO-Revision-Date: 2014-12-09 10:05+0000\n"
-"Last-Translator: mar well <m.wellendorf@gmx.de>\n"
+"POT-Creation-Date: 2017-06-09 08:49-0700\n"
+"PO-Revision-Date: 2017-06-09 15:46+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/fcitx/fcitx/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -26,6 +26,41 @@ msgstr ""
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr ""
+
+#. i18n: file: src/skinpage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
+#, fuzzy
+msgid "&Configure Skin"
+msgstr "Fcitx konfigurieren"
+
+#. i18n: file: src/skinpage.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
+msgid "&Delete Skin"
+msgstr ""
+
+#. i18n: file: src/skinpage.ui:72
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Notice:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI "
+"to use skin function.</p></body></html>"
+msgstr ""
+
+#. i18n: file: src/impage.ui:292
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>Tastatur Layout:</b>"
 
 #: src/imconfigdialog.cpp:98
 #, kde-format
@@ -41,6 +76,12 @@ msgstr "<b>Tastatur Layout:</b>"
 #, kde-format
 msgid "<b>Other</b>"
 msgstr "<b>Weitere</b>"
+
+#. i18n: file: src/impage.ui:302
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#, fuzzy
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>Einstellungen Eingabemethode:</b>"
 
 #: layout/main.cpp:37
 #, kde-format
@@ -61,6 +102,12 @@ msgstr "Aussehen"
 #, kde-format
 msgid "Author"
 msgstr ""
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "Available Input Method:"
+msgstr "Eingabemethode"
 
 #: src/erroroverlay.cpp:43
 #, kde-format
@@ -98,6 +145,12 @@ msgstr "Kopieren gescheitert"
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
+#. i18n: file: src/impage.ui:176
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#, fuzzy
+msgid "Current Input Method:"
+msgstr "FCITX konfigurieren"
+
 #: src/imconfigdialog.cpp:47
 #, kde-format
 msgid "Default"
@@ -112,6 +165,18 @@ msgstr "Fcitx Konfigurationsmodul"
 #, kde-format
 msgid "First candidate"
 msgstr "Erster Kandidat"
+
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+msgid "Form"
+msgstr ""
+
+#. i18n: file: src/skinpage.ui:58
+#. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
+msgid "Get New &Skin..."
+msgstr ""
 
 #: src/module.cpp:113
 #, kde-format
@@ -129,9 +194,9 @@ msgid "Input Method Default"
 msgstr "Standard Eingabemethode"
 
 #: layout/main.cpp:44
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard <layout>"
-msgstr "Tastaturlayout"
+msgstr ""
 
 #: layout/main.cpp:74
 #, kde-format
@@ -139,14 +204,19 @@ msgid "Keyboard Layout viewer"
 msgstr "Ansicht Tastaturlayout"
 
 #: layout/main.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr "Tastaturlayout - Gruppe (0-3)"
+msgstr ""
 
 #: layout/main.cpp:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard layout <variant>"
-msgstr "Variante Tastaturlayout"
+msgstr ""
+
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
+msgid "Keyboard layout to use when no input method active"
+msgstr ""
 
 #: layout/kbd-layout-viewer.desktop.in:6
 msgid "Keyboard layout viewer"
@@ -166,6 +236,19 @@ msgstr "Mehrsprachig"
 #, kde-format
 msgid "No configuration options for %1."
 msgstr "Keine Optionen zur Konfiguration für %1"
+
+#. i18n: file: src/impage.ui:115
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+msgid "Only &Show Current Language"
+msgstr ""
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"including candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr ""
 
 #: src/configwidget.cpp:560 src/impage.cpp:69
 #, kde-format
@@ -187,6 +270,17 @@ msgstr "Addons suchen"
 msgid "Search Input Method"
 msgstr "Eingabemethoden filtern"
 
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+msgid "Select &Font..."
+msgstr ""
+
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
+#, fuzzy
+msgid "Select default keyboard layout"
+msgstr "Tastaturlayout ansehen"
+
 #: src/addonselector.cpp:382 src/configwidget.cpp:606
 #, kde-format
 msgid "Show &Advance option"
@@ -196,6 +290,13 @@ msgstr "Erweiterte &Einstellungen anzeigen"
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
 msgstr "Skin %1 kann nicht geladen werden"
+
+#. i18n: file: src/impage.ui:277
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
 
 #: src/impage.cpp:50
 #, kde-format
@@ -261,99 +362,3 @@ msgstr ""
 #, kde-format
 msgid "variant"
 msgstr ""
-
-#~ msgid "&Configure Skin"
-#~ msgstr "&Skin konfigurieren"
-
-#~ msgid "&Delete Skin"
-#~ msgstr "&Skin löschen"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Notice:</span></p>\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic "
-#~ "UI to use skin function.</p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ " <html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ " p, li { white-space: pre-wrap; }\n"
-#~ " </style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ " <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Hinweis:</span></p>\n"
-#~ " <p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">Um die Skins zu nutzen "
-#~ "muss das Classic-UI verwendet werden.</p></body></html>"
-
-#~ msgid "<b>Default keyboard layout:</b>"
-#~ msgstr "<b>Standard Tastaturlayout:</b>"
-
-#~ msgid "<b>Select Input Method:</b>"
-#~ msgstr "<b>Auswahl Eingabemethode:</b>"
-
-#~ msgid "Available Input Method:"
-#~ msgstr "Verfügbare Eingabemethoden"
-
-#~ msgid "Configure Fcitx addon"
-#~ msgstr "Fcitx Addon konfigurieren"
-
-#~ msgid "Current Input Method:"
-#~ msgstr "Aktive Eingabemethoden"
-
-#~ msgid "Form"
-#~ msgstr "Form"
-
-#~ msgid "Get New &Skin..."
-#~ msgstr "&Neue Skins herunterladen"
-
-#~ msgid "Global Config for Fcitx"
-#~ msgstr "Globale Einstellungen für Fcitx"
-
-#~ msgid "Keyboard layout to use when no input method active"
-#~ msgstr "Verwendetes Tastaturlayout wenn keine Eingabemethode Aktiv ist"
-
-#~ msgid "Manage Fcitx Skin"
-#~ msgstr "Fcitx Skins verwalten"
-
-#~ msgid "Only &Show Current Language"
-#~ msgstr "Nur &geganwärtige Sprache anzeigen"
-
-#~ msgid ""
-#~ "Options listed here might be overridden by specific input method, usually "
-#~ "including candidate number, hotkey of previous page and next page. You "
-#~ "may need go to configuration of corresponding input method to change them."
-#~ msgstr ""
-#~ "Die aufgelisteten Optionen werden möglicherweise wegen Einstellungen der "
-#~ "gewählten Eingabemethode außer Kraft gesetzt, wie Anzahl der Kandidaten, "
-#~ "Tasten für vorherige oder nächste Kandidaten. Diese Einstellungen müßsen "
-#~ "möglicherweise in den Einstellungen der Eingabemethode festgelegt werden."
-
-#~ msgid "Select &Font..."
-#~ msgstr "Auswahl &Font"
-
-#~ msgid "Select Font"
-#~ msgstr "Font auswählen"
-
-#~ msgid "Select default keyboard layout"
-#~ msgstr "Standard Tastaturlayout auswählen"
-
-#~ msgid ""
-#~ "The first input method will be inactive state. Usually you need to put "
-#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
-#~ "place."
-#~ msgstr ""
-#~ "Die erste Eingabemethode wird die inaktive sein. Normalerweise sollte "
-#~ "<b>Tastatur</b> or <b>Tastatur - <i>Tastaturlayout</i></b>als Erstes "
-#~ "stehen."

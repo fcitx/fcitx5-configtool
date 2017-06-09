@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 08:45-0700\n"
-"PO-Revision-Date: 2015-09-28 14:15+0000\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
+"POT-Creation-Date: 2017-06-09 08:49-0700\n"
+"PO-Revision-Date: 2017-06-09 15:46+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/fcitx/fcitx/"
 "language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -29,6 +29,41 @@ msgstr ""
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr ""
+
+#. i18n: file: src/skinpage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
+#, fuzzy
+msgid "&Configure Skin"
+msgstr "設定 Fcitx"
+
+#. i18n: file: src/skinpage.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
+msgid "&Delete Skin"
+msgstr ""
+
+#. i18n: file: src/skinpage.ui:72
+#. i18n: ectx: property (text), widget (QLabel, label)
+msgid ""
+"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+"REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css"
+"\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-"
+"weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+"weight:600;\">Notice:</span></p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+"right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI "
+"to use skin function.</p></body></html>"
+msgstr ""
+
+#. i18n: file: src/impage.ui:292
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#, fuzzy
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>鍵盤佈局：</b>"
 
 #: src/imconfigdialog.cpp:98
 #, kde-format
@@ -44,6 +79,12 @@ msgstr "<b>鍵盤佈局：</b>"
 #, kde-format
 msgid "<b>Other</b>"
 msgstr "<b>其他</b>"
+
+#. i18n: file: src/impage.ui:302
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#, fuzzy
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>輸入法設定：</b>"
 
 #: layout/main.cpp:37
 #, kde-format
@@ -64,6 +105,12 @@ msgstr "外觀"
 #, kde-format
 msgid "Author"
 msgstr ""
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+#, fuzzy
+msgid "Available Input Method:"
+msgstr "輸入法"
 
 #: src/erroroverlay.cpp:43
 #, kde-format
@@ -99,6 +146,12 @@ msgstr "拷貝失败"
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "版權所有 2012 Xuetian Weng"
 
+#. i18n: file: src/impage.ui:176
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#, fuzzy
+msgid "Current Input Method:"
+msgstr "設定輸入法"
+
 #: src/imconfigdialog.cpp:47
 #, kde-format
 msgid "Default"
@@ -113,6 +166,18 @@ msgstr "Fcitx 設定模組"
 #, kde-format
 msgid "First candidate"
 msgstr "第一候選詞"
+
+#. i18n: file: src/configpage.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+msgid "Form"
+msgstr ""
+
+#. i18n: file: src/skinpage.ui:58
+#. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
+msgid "Get New &Skin..."
+msgstr ""
 
 #: src/module.cpp:113
 #, kde-format
@@ -130,9 +195,9 @@ msgid "Input Method Default"
 msgstr "輸入法預設"
 
 #: layout/main.cpp:44
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard <layout>"
-msgstr "鍵盤佈局"
+msgstr ""
 
 #: layout/main.cpp:74
 #, kde-format
@@ -140,14 +205,19 @@ msgid "Keyboard Layout viewer"
 msgstr "鍵盤佈局檢視器"
 
 #: layout/main.cpp:41
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr "鍵盤佈局群組（0-3）"
+msgstr ""
 
 #: layout/main.cpp:47
-#, fuzzy, kde-format
+#, kde-format
 msgid "Keyboard layout <variant>"
-msgstr "鍵盤佈局變數"
+msgstr ""
+
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
+msgid "Keyboard layout to use when no input method active"
+msgstr ""
 
 #: layout/kbd-layout-viewer.desktop.in:6
 msgid "Keyboard layout viewer"
@@ -167,6 +237,19 @@ msgstr "多語言"
 #, kde-format
 msgid "No configuration options for %1."
 msgstr "%1 無配置選項"
+
+#. i18n: file: src/impage.ui:115
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+msgid "Only &Show Current Language"
+msgstr ""
+
+#. i18n: file: src/configpage.ui:54
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"Options listed here might be overridden by specific input method, usually "
+"including candidate number, hotkey of previous page and next page. You may "
+"need go to configuration of corresponding input method to change them."
+msgstr ""
 
 #: src/configwidget.cpp:560 src/impage.cpp:69
 #, kde-format
@@ -188,6 +271,17 @@ msgstr "搜尋附加元件"
 msgid "Search Input Method"
 msgstr "搜尋輸入法"
 
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+msgid "Select &Font..."
+msgstr ""
+
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
+#, fuzzy
+msgid "Select default keyboard layout"
+msgstr "檢視鍵盤佈局"
+
 #: src/addonselector.cpp:382 src/configwidget.cpp:606
 #, kde-format
 msgid "Show &Advance option"
@@ -197,6 +291,13 @@ msgstr "顯示高級選項(&A)"
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
 msgstr "無法載入佈景 %1"
+
+#. i18n: file: src/impage.ui:277
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
 
 #: src/impage.cpp:50
 #, kde-format
@@ -260,96 +361,3 @@ msgstr ""
 #, kde-format
 msgid "variant"
 msgstr ""
-
-#~ msgid "&Configure Skin"
-#~ msgstr "設定佈景(&C)"
-
-#~ msgid "&Delete Skin"
-#~ msgstr "刪除佈景(&D)"
-
-#~ msgid ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">Notice:</span></p>\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic "
-#~ "UI to use skin function.</p></body></html>"
-#~ msgstr ""
-#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
-#~ "REC-html40/strict.dtd\">\n"
-#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
-#~ "css\">\n"
-#~ "p, li { white-space: pre-wrap; }\n"
-#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
-#~ "font-weight:400; font-style:normal;\">\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
-#~ "weight:600;\">注意：</span></p>\n"
-#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
-#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">需要經典介面來使用皮膚功"
-#~ "能。</p></body></html>"
-
-#~ msgid "<b>Default keyboard layout:</b>"
-#~ msgstr "<b>預設鍵盤佈局：</b>"
-
-#~ msgid "<b>Select Input Method:</b>"
-#~ msgstr "<b>選擇輸入法：</b>"
-
-#~ msgid "Available Input Method:"
-#~ msgstr "可用輸入法："
-
-#~ msgid "Configure Fcitx addon"
-#~ msgstr "設定 Fcitx 附加元件"
-
-#~ msgid "Current Input Method:"
-#~ msgstr "目前輸入法："
-
-#~ msgid "Form"
-#~ msgstr "Form"
-
-#~ msgid "Get New &Skin..."
-#~ msgstr "取得新佈景(&S)..."
-
-#~ msgid "Global Config for Fcitx"
-#~ msgstr "Fcitx 全域設定"
-
-#~ msgid "Keyboard layout to use when no input method active"
-#~ msgstr "無活動輸入法時使用的鍵盤佈局"
-
-#~ msgid "Manage Fcitx Skin"
-#~ msgstr "管理 Fcitx 佈景"
-
-#~ msgid "Only &Show Current Language"
-#~ msgstr "只顯示目前語言(&S)"
-
-#~ msgid ""
-#~ "Options listed here might be overridden by specific input method, usually "
-#~ "including candidate number, hotkey of previous page and next page. You "
-#~ "may need go to configuration of corresponding input method to change them."
-#~ msgstr ""
-#~ "在此列出的選項可能被特定的輸入法覆寫，通常包括候選字數，上一頁和下一頁翻頁"
-#~ "鍵。您可能需要對對應輸入法進行設定來修改這些選項。"
-
-#~ msgid "Select &Font..."
-#~ msgstr "選擇字體(&F)"
-
-#~ msgid "Select Font"
-#~ msgstr "選擇字體"
-
-#~ msgid "Select default keyboard layout"
-#~ msgstr "選擇預設鍵盤佈局"
-
-#~ msgid ""
-#~ "The first input method will be inactive state. Usually you need to put "
-#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
-#~ "place."
-#~ msgstr ""
-#~ "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局"
-#~ "名稱</i></b>放到第一個。"

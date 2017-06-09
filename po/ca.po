@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2014-08-07 18:03+0200\n"
-"PO-Revision-Date: 2017-01-08 11:50+0000\n"
-"Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
+"POT-Creation-Date: 2017-06-09 08:45-0700\n"
+"PO-Revision-Date: 2017-06-09 15:46+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Catalan (http://www.transifex.com/fcitx/fcitx/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,162 +18,206 @@ msgstr ""
 "Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: layout/main.cpp:32 layout/main.cpp:59
-msgid "Keyboard Layout viewer"
-msgstr "Visualitzador de disposició de teclat"
-
-#: layout/main.cpp:34
+#: layout/main.cpp:37
+#, kde-format
 msgid "A general keyboard layout viewer"
 msgstr "Un visualitzador general de disposició de teclat"
 
-#: layout/main.cpp:38
-msgid "Keyboard layout group (0-3)"
-msgstr "Grup de disposició de teclat (0-3)"
-
-#: layout/main.cpp:40
-msgid "Keyboard layout"
-msgstr "Disposició de teclat"
+#: layout/main.cpp:41
+#, kde-format
+msgid "Keyboard layout <group> (0-3)"
+msgstr ""
 
 #: layout/main.cpp:42
-msgid "Keyboard layout variant"
-msgstr "Variant de disposició de teclat"
+#, kde-format
+msgid "group"
+msgstr ""
 
-#: src/addonselector.cpp:378
+#: layout/main.cpp:44
+#, kde-format
+msgid "Keyboard <layout>"
+msgstr ""
+
+#: layout/main.cpp:45
+#, kde-format
+msgid "layout"
+msgstr ""
+
+#: layout/main.cpp:47
+#, kde-format
+msgid "Keyboard layout <variant>"
+msgstr ""
+
+#: layout/main.cpp:48
+#, kde-format
+msgid "variant"
+msgstr ""
+
+#: layout/main.cpp:74
+#, kde-format
+msgid "Keyboard Layout viewer"
+msgstr "Visualitzador de disposició de teclat"
+
+#: src/addonselector.cpp:375
+#, kde-format
 msgid "Search Addons"
 msgstr "Cerca complements"
 
-#: src/addonselector.cpp:385 src/configwidget.cpp:609
+#: src/addonselector.cpp:382 src/configwidget.cpp:606
+#, kde-format
 msgid "Show &Advance option"
 msgstr "Mostra l'opció &avançada"
 
-#: src/configwidget.cpp:453
+#: src/configwidget.cpp:450
+#, kde-format
 msgid "<b>Other</b>"
 msgstr "<b>Altre</b>"
 
-#: src/configwidget.cpp:563
+#: src/configwidget.cpp:560 src/impage.cpp:69
+#, kde-format
 msgid "Other"
 msgstr "Altre"
 
 #: src/erroroverlay.cpp:43
+#, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "No es pot connectar al fcitx per DBus, s'està executant el fcitx?"
 
-#: src/fontbutton.cpp:106
-msgid "Select Font"
-msgstr "Seleccioneu el tipus de lletra"
-
-#: src/imconfigdialog.cpp:40
+#: src/imconfigdialog.cpp:42
+#, kde-format
 msgid "<b>Keyboard Layout:</b>"
 msgstr "<b>Disposició de teclat:</b>"
 
-#: src/imconfigdialog.cpp:45
+#: src/imconfigdialog.cpp:47
+#, kde-format
 msgid "Default"
 msgstr "Predeterminat"
 
-#: src/imconfigdialog.cpp:47
+#: src/imconfigdialog.cpp:49
+#, kde-format
 msgid "Input Method Default"
 msgstr "Mètode d'entrada predeterminat"
 
-#: src/imconfigdialog.cpp:92
+#: src/imconfigdialog.cpp:98
+#, kde-format
 msgid "<b>Input Method Setting:</b>"
 msgstr "<b>Configuració del mètode d'entrada:</b>"
 
-#: src/impage.cpp:64 src/impage.cpp:71
+#: src/impage.cpp:50
+#, kde-format
 msgid "Unknown"
 msgstr "Desconegut"
 
-#: src/impage.cpp:67
+#: src/impage.cpp:53
+#, kde-format
 msgid "Multilingual"
 msgstr "Plurilingüe"
 
-#: src/impage.cpp:467
+#: src/impage.cpp:84
+#, kde-format
+msgctxt "%1 is language name, %2 is country name"
+msgid "%1 (%2)"
+msgstr ""
+
+#: src/impage.cpp:481
+#, kde-format
 msgid "Search Input Method"
 msgstr "Cerca el mètode d'entrada"
 
-#: src/module.cpp:85
+#: src/module.cpp:83
+#, kde-format
 msgid "Fcitx Configuration Module"
 msgstr "Mòdul de configuració del fcitx"
 
-#: src/module.cpp:87
+#: src/module.cpp:85
+#, kde-format
 msgid "Configure Fcitx"
 msgstr "Configura el fcitx"
 
-#: src/module.cpp:89
+#: src/module.cpp:87
+#, kde-format
 msgid "Copyright 2012 Xuetian Weng"
 msgstr "Copyright 2012 Xuetian Weng"
 
-#: src/module.cpp:93
+#: src/module.cpp:91
+#, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/module.cpp:108 src/module.cpp:110 src/kcm_fcitx.desktop.in:11
+#: src/module.cpp:91
+#, kde-format
+msgid "Author"
+msgstr ""
+
+#: src/module.cpp:104 src/kcm_fcitx.desktop.in:11
+#, kde-format
 msgid "Input Method"
 msgstr "Mètode d'entrada"
 
-#: src/module.cpp:121
+#: src/module.cpp:113
+#, kde-format
 msgid "Global Config"
 msgstr "Configuració global"
 
-#: src/module.cpp:123
-msgid "Global Config for Fcitx"
-msgstr "Configuració global per al fcitx"
-
-#: src/module.cpp:133 src/module.cpp:135
+#: src/module.cpp:121
+#, kde-format
 msgid "Appearance"
 msgstr "Aparença"
 
-#: src/module.cpp:145
+#: src/module.cpp:129
+#, kde-format
 msgid "Addon Config"
 msgstr "Configuració del complement"
 
-#: src/module.cpp:147
-msgid "Configure Fcitx addon"
-msgstr "Configura el complement del fcitx"
-
-#: src/module.cpp:199
+#: src/module.cpp:178
+#, kde-format
 msgid "Manage Skin"
 msgstr "Gestiona l'aparença"
 
-#: src/module.cpp:201
-msgid "Manage Fcitx Skin"
-msgstr "Gestiona l'aparença del fcitx"
-
-#: src/skinpage.cpp:221
+#: src/skinpage.cpp:220
+#, kde-format
 msgid "First candidate"
 msgstr "Primera candidata"
 
-#: src/skinpage.cpp:222
+#: src/skinpage.cpp:221
+#, kde-format
 msgid "Other candidate"
 msgstr "Una altra candidata"
 
-#: src/skinpage.cpp:391
+#: src/skinpage.cpp:390
 #, kde-format
 msgid "Skin %1 Cannot be loaded"
 msgstr "No es pot carregar l'aparença %1"
 
-#: src/subconfigwidget.cpp:232
+#: src/subconfigwidget.cpp:230
+#, kde-format
 msgid ""
 "User config doesn't exisits, do you want to open system file or copy system "
 "file to user file?"
 msgstr "No existeix la configuració d'usuari, voleu obrir el fitxer del sistema o copiar el fitxer del sistema al fitxer d'usuari?"
 
-#: src/subconfigwidget.cpp:233
+#: src/subconfigwidget.cpp:231
+#, kde-format
 msgid "What to do"
 msgstr "Què fer"
 
-#: src/subconfigwidget.cpp:234
+#: src/subconfigwidget.cpp:232
+#, kde-format
 msgid "Copy"
 msgstr "Copia"
 
-#: src/subconfigwidget.cpp:235
+#: src/subconfigwidget.cpp:233
+#, kde-format
 msgid "View system"
 msgstr "Visualitza el sistema"
 
-#: src/subconfigwidget.cpp:247
+#: src/subconfigwidget.cpp:245
+#, kde-format
 msgid "Copy failed"
 msgstr "Ha fallat la còpia"
 
 #: src/uipage.cpp:16
+#, kde-format
 msgid "Cannot load currently used user interface info"
 msgstr "No es pot carregar la informació d'interfície d'usuari usada actualment"
 
@@ -201,95 +245,6 @@ msgstr "Configura el mètode d'entrada"
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
 msgstr "teclat;entrada;mètode d'entrada;fcitx"
-
-#. i18n: file: src/configpage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-msgid "Form"
-msgstr "Forrma"
-
-#. i18n: file: src/configpage.ui:54
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"Options listed here might be overridden by specific input method, usually "
-"including candidate number, hotkey of previous page and next page. You may "
-"need go to configuration of corresponding input method to change them."
-msgstr "Les opcions que es llisten aquí poden ser anul·lades per mètodes d'entrada específics, generalment incloent-hi el nombre de candidates, la drecera de teclat de pàgina prèvia i pàgina següent. Potser heu d'anar a la configuració del mètode d'entrada corresponent per canviar-les."
-
-#. i18n: file: src/fontbutton.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-msgid "Select &Font..."
-msgstr "Seleccioneu el &tipus de lletra"
-
-#. i18n: file: src/impage.ui:38
-#. i18n: ectx: property (toolTip), widget (KPushButton, defaultLayoutButton)
-msgid "Keyboard layout to use when no input method active"
-msgstr "Disposició de teclat a usar quan no hi ha cap mètode d'entrada actiu"
-
-#. i18n: file: src/impage.ui:41
-#. i18n: ectx: property (text), widget (KPushButton, defaultLayoutButton)
-msgid "Select default keyboard layout"
-msgstr "Seleccioneu la disposició de teclat predeterminada"
-
-#. i18n: file: src/impage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Available Input Method:"
-msgstr "Mètode d'entrada disponible:"
-
-#. i18n: file: src/impage.ui:133
-#. i18n: ectx: property (text), widget (QCheckBox,
-#. onlyCurrentLanguageCheckBox)
-msgid "Only &Show Current Language"
-msgstr "Mo%stra sols la llengua actual"
-
-#. i18n: file: src/impage.ui:194
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Current Input Method:"
-msgstr "Mètode d'entrada actual:"
-
-#. i18n: file: src/impage.ui:295
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"The first input method will be inactive state. Usually you need to put "
-"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr "El primer mètode d'entrada serà l'estat inactiu. Generalment heu de posar <b>Keyboard</b> o <b>Keyboard - <i>nom de disposició</i></b> en el primer lloc."
-
-#. i18n: file: src/impage.ui:310
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "<b>Default keyboard layout:</b>"
-msgstr "<b>Disposició de teclat predeterminada:</b>"
-
-#. i18n: file: src/impage.ui:320
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "<b>Select Input Method:</b>"
-msgstr "<b>Seleccioneu el mètode d'entrada:</b>"
-
-#. i18n: file: src/skinpage.ui:41
-#. i18n: ectx: property (text), widget (KPushButton, configureSkinButton)
-msgid "&Configure Skin"
-msgstr "&Configura l'aparença"
-
-#. i18n: file: src/skinpage.ui:51
-#. i18n: ectx: property (text), widget (KPushButton, deleteSkinButton)
-msgid "&Delete Skin"
-msgstr "%Elimina l'aparença"
-
-#. i18n: file: src/skinpage.ui:58
-#. i18n: ectx: property (text), widget (KPushButton, installSkinButton)
-msgid "Get New &Skin..."
-msgstr "Obté una nova &aparença"
-
-#. i18n: file: src/skinpage.ui:72
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
-msgstr "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">He d'usar la interfície d'usuari clàssica per usar la funció d'aparença.</p></body></html>"
 
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
