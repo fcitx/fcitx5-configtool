@@ -6,6 +6,7 @@
 # Alisha <alisha.4m@gmail.com>, 2012
 # Alisha <alisha.4m@gmail.com>, 2011-2012
 # csslayer <wengxt@gmail.com>, 2014
+# PHLin <Cypressyew@gmail.com>, 2017
 # Gerald Du <frozenmouse@gmail.com>, 2015
 # Jeff Huang <s8321414@gmail.com>, 2015
 # csslayer <wengxt@gmail.com>, 2014
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 11:02-0700\n"
-"PO-Revision-Date: 2017-06-09 17:48+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2017-07-12 10:02-0700\n"
+"PO-Revision-Date: 2017-07-12 16:38+0000\n"
+"Last-Translator: PHLin <Cypressyew@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/fcitx/fcitx/"
 "language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -29,7 +30,7 @@ msgstr ""
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
@@ -115,7 +116,7 @@ msgstr "外觀"
 #: src/module.cpp:91
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "作者"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -216,12 +217,12 @@ msgstr "鍵盤佈局檢視器"
 #: layout/main.cpp:41
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "鍵盤配置 <group> (0-3)"
 
 #: layout/main.cpp:47
 #, kde-format
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "鍵盤配置 <variant>"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
@@ -367,7 +368,7 @@ msgstr "keyboard;input;im;輸入法;鍵盤;輸入"
 #: layout/main.cpp:45
 #, kde-format
 msgid "layout"
-msgstr ""
+msgstr "配置"
 
 #: layout/main.cpp:48
 #, kde-format
