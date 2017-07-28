@@ -5,16 +5,16 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2014
 # mar well <m.wellendorf@gmx.de>, 2012-2013
-# mar well <m.wellendorf@gmx.de>, 2014
+# mar well <m.wellendorf@gmx.de>, 2014,2017
 # csslayer <wengxt@gmail.com>, 2014
 # csslayer <wengxt@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 11:02-0700\n"
-"PO-Revision-Date: 2017-06-09 17:48+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>\n"
+"POT-Creation-Date: 2017-07-28 04:02-0700\n"
+"PO-Revision-Date: 2017-07-28 10:58+0000\n"
+"Last-Translator: mar well <m.wellendorf@gmx.de>\n"
 "Language-Team: German (http://www.transifex.com/fcitx/fcitx/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #. i18n: file: src/skinpage.ui:41
 #. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
@@ -112,7 +112,7 @@ msgstr "Aussehen"
 #: src/module.cpp:91
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. i18n: file: src/impage.ui:83
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -158,7 +158,7 @@ msgstr "Copyright 2012 Xuetian Weng"
 #. i18n: file: src/impage.ui:176
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 msgid "Current Input Method:"
-msgstr "Aktive Eingabemethoden"
+msgstr "Aktive Eingabemethode:"
 
 #: src/imconfigdialog.cpp:47
 #, kde-format
@@ -205,7 +205,7 @@ msgstr "Standard Eingabemethode"
 #: layout/main.cpp:44
 #, kde-format
 msgid "Keyboard <layout>"
-msgstr ""
+msgstr "Tastatur <layout>"
 
 #: layout/main.cpp:74
 #, kde-format
@@ -215,12 +215,12 @@ msgstr "Ansicht Tastaturlayout"
 #: layout/main.cpp:41
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "Tastaturlayout <group> (0-3)"
 
 #: layout/main.cpp:47
 #, kde-format
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "Tastaturlayout <variant>"
 
 #. i18n: file: src/impage.ui:38
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
@@ -249,7 +249,7 @@ msgstr "Keine Optionen zur Konfiguration für %1"
 #. i18n: file: src/impage.ui:115
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 msgid "Only &Show Current Language"
-msgstr "Nur &geganwärtige Sprache anzeigen"
+msgstr "Nur &gegenwärtige Sprache anzeigen"
 
 #. i18n: file: src/configpage.ui:54
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -260,7 +260,7 @@ msgid ""
 msgstr ""
 "Die aufgelisteten Optionen werden möglicherweise wegen Einstellungen der "
 "gewählten Eingabemethode außer Kraft gesetzt, wie Anzahl der Kandidaten, "
-"Tasten für vorherige oder nächste Kandidaten. Diese Einstellungen müßsen "
+"Tasten für vorherige oder nächste Kandidaten. Diese Einstellungen müssen "
 "möglicherweise in den Einstellungen der Eingabemethode festgelegt werden."
 
 #: src/configwidget.cpp:560 src/impage.cpp:69
@@ -310,7 +310,8 @@ msgid ""
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 "Die erste Eingabemethode wird die inaktive sein. Normalerweise sollte "
-"<b>Tastatur</b> or <b>Tastatur - <i>Tastaturlayout</i></b>als Erstes stehen."
+"<b>Tastatur</b> oder <b>Tastatur - <i>Tastaturlayout</i></b>als Erstes "
+"stehen."
 
 #: src/impage.cpp:50
 #, kde-format
@@ -357,7 +358,7 @@ msgstr "Marcus Wellendorf"
 #: layout/main.cpp:42
 #, kde-format
 msgid "group"
-msgstr ""
+msgstr "Gruppe"
 
 #: src/kcm_fcitx.desktop.in:14
 msgid "keyboard,input,im,fcitx"
@@ -370,9 +371,9 @@ msgstr "Tastatur;Eingabe;Eingabemethode"
 #: layout/main.cpp:45
 #, kde-format
 msgid "layout"
-msgstr ""
+msgstr "Layout"
 
 #: layout/main.cpp:48
 #, kde-format
 msgid "variant"
-msgstr ""
+msgstr "Variante"
