@@ -4,7 +4,7 @@
 #include <QComboBox>
 #include <QLabel>
 #include <QX11Info>
-#include <KComboBox>
+#include <QComboBox>
 #include <KLocalizedString>
 
 #include <fcitxqtkeyboardproxy.h>
@@ -31,7 +31,7 @@ Fcitx::IMConfigDialog::IMConfigDialog(const QString& imName, const FcitxAddon* a
 
         if (!layoutList.isError()) {
             m_layoutList = layoutList.value();
-            m_layoutCombobox = new KComboBox(this);
+            m_layoutCombobox = new QComboBox(this);
 
             QDBusPendingReply< QString, QString > res = Global::instance()->keyboardProxy()->GetLayoutForIM(imName);
             res.waitForFinished();

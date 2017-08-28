@@ -15,7 +15,7 @@ find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X
 find_package(KF5 REQUIRED COMPONENTS
     CoreAddons
     WidgetsAddons
-    KCMUtils
+    ConfigWidgets
     ItemViews
     I18n
     KIO
@@ -77,14 +77,12 @@ include_directories(
     ${FCITX4_FCITX_INCLUDE_DIRS}
     ${FCITX4_FCITX_UTILS_INCLUDE_DIRS}
     ${FCITX4_FCITX_CONFIG_INCLUDE_DIRS}
-    ${FCITX_QT_INCLUDE_DIRS}
     )
 
 link_directories(
     ${FCITX4_FCITX_LIBRARY_DIRS}
     ${FCITX4_FCITX_UTILS_LIBRARY_DIRS}
     ${FCITX4_FCITX_CONFIG_LIBRARY_DIRS}
-    ${FCITX_QT_LIBRARY_DIRS}
     )
 
 add_subdirectory(po)

@@ -7,7 +7,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <KLocalizedString>
-#include <KLineEdit>
+#include <QLineEdit>
 #include <fcitxqtinputmethodproxy.h>
 
 Fcitx::UIPage::UIPage(Fcitx::Module* parent) : QWidget(parent)
@@ -53,7 +53,7 @@ void Fcitx::UIPage::getUIFinished(QDBusPendingCallWatcher* watcher)
                     break;
 
                 // this should not happen,  but ,we just protect it
-                KLineEdit* lineEdit = static_cast<KLineEdit*>(option->filterArg);
+                QLineEdit* lineEdit = static_cast<QLineEdit*>(option->filterArg);
                 if (!lineEdit)
                     break;
 

@@ -39,8 +39,6 @@ class KCategoryDrawer;
 
 class KCategorizedView;
 
-class KLineEdit;
-
 class QPushButton;
 
 class QCheckBox;

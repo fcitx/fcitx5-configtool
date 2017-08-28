@@ -35,7 +35,7 @@ target_link_libraries(kcm_fcitx
   Qt5::X11Extras
   KF5::CoreAddons
   KF5::WidgetsAddons
-  KF5::KCMUtils
+  KF5::ConfigWidgets
   KF5::ItemViews
   KF5::I18n
   KF5::KIOCore

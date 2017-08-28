@@ -26,7 +26,7 @@
 #include <fcitxqtkeyboardproxy.h>
 
 class KeyboardLayoutWidget;
-class KComboBox;
+class QComboBox;
 namespace Fcitx {
 
 class ConfigWidget;
@@ -42,7 +42,7 @@ private slots:
 
 private:
     QString m_imName;
-    KComboBox* m_layoutCombobox;
+    QComboBox* m_layoutCombobox;
     ConfigWidget* m_configPage;
     FcitxQtKeyboardLayoutList m_layoutList;
     KeyboardLayoutWidget* m_layoutWidget;
