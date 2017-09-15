@@ -129,8 +129,8 @@ FcitxConfigFileDesc* Global::GetConfigDesc(const QString& name)
 
 QString Global::testWrapper(const QString &path) const {
     char* qtguiwrapper[] = {
-        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt-gui-wrapper"),
-        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt5-gui-wrapper")
+        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt5-gui-wrapper"),
+        fcitx_utils_get_fcitx_path_with_filename ("libdir", "fcitx/libexec/fcitx-qt-gui-wrapper")
     };
     QString wrapper;
     for (int i = 0; i < FCITX_ARRAY_SIZE(qtguiwrapper); i++) {
