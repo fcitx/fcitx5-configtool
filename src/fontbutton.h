@@ -23,26 +23,27 @@
 #include <QWidget>
 
 namespace Ui {
-    class FontButton;
+class FontButton;
 };
 
 class FontButton : public QWidget {
     Q_OBJECT
 public:
-    explicit FontButton(QWidget* parent = 0);
+    explicit FontButton(QWidget *parent = 0);
     virtual ~FontButton();
-    const QFont& font();
+    const QFont &font();
     QString fontName();
-    static QFont parseFont(const QString& string);
+    static QFont parseFont(const QString &string);
 
 public slots:
-    void setFont(const QFont& font);
+    void setFont(const QFont &font);
 signals:
-    void fontChanged(const QFont& font);
+    void fontChanged(const QFont &font);
 private slots:
     void selectFont();
+
 private:
-    Ui::FontButton* m_ui;
+    Ui::FontButton *m_ui;
     QFont m_font;
 };
 

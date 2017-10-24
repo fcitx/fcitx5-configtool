@@ -1,18 +1,22 @@
+#include <QApplication>
+#include <QDebug>
+#include <QDir>
 #include <QPaintEvent>
 #include <QPainter>
-#include <QDebug>
 #include <QVector2D>
-#include <QApplication>
-#include <qmath.h>
-#include <QDir>
 #include <QX11Info>
+#include <qmath.h>
 
-#include <X11/Xlib.h>
+#include <fcitx-utils/key.h>
+
 #include <X11/XKBlib.h>
-#include <X11/keysym.h>
+#include <X11/Xlib.h>
 #include <X11/extensions/XKBgeom.h>
 #include <X11/extensions/XKBrules.h>
 #include <X11/extensions/XKBstr.h>
+#include <X11/keysym.h>
+
+#include "config.h"
 
 static const int XKeyPress = KeyPress;
 static const int XKeyRelease = KeyRelease;
@@ -20,11 +24,9 @@ static const int XKeyRelease = KeyRelease;
 #undef KeyRelease
 
 #include <math.h>
-#include <fcitx-config/hotkey.h>
 
-#include "config.h"
-#include "keyboardlayoutwidget.h"
 #include "deadmapdata.h"
+#include "keyboardlayoutwidget.h"
 
 #define INVALID_KEYCODE ((uint)(-1))
 #define TEXT_SIZE (0.8)
@@ -33,78 +35,44 @@ static const int XKeyRelease = KeyRelease;
 #define XKB_RULES_XML_FILE "/usr/share/X11/xkb/rules/evdev.xml"
 #endif
 
+namespace fcitx {
+namespace kcm {
+
 struct DrawingItemCompare {
-    bool operator() (const DrawingItem* a, const DrawingItem* b)
-    {
+    bool operator()(const DrawingItem *a, const DrawingItem *b) {
         return a->priority < b->priority;
     }
 };
 static KeyboardDrawingGroupLevel defaultGroupsLevels[] = {
-  {0, 1},
-  {0, 3},
-  {0, 0},
-  {0, 2}
-};
+    {0, 1}, {0, 3}, {0, 0}, {0, 2}};
 
 static KeyboardDrawingGroupLevel *pGroupsLevels[] = {
-    defaultGroupsLevels,
-    defaultGroupsLevels + 1,
-    defaultGroupsLevels + 2,
-    defaultGroupsLevels + 3
-};
+    defaultGroupsLevels, defaultGroupsLevels + 1, defaultGroupsLevels + 2,
+    defaultGroupsLevels + 3};
 
-static bool
-FcitxXkbInitDefaultLayout (QStringList& layout, QStringList& variant);
+static bool FcitxXkbInitDefaultLayout(QStringList &layout,
+                                      QStringList &variant);
 
-static bool
-FcitxXkbInitDefaultOption (QString& model, QString& option);
+static bool FcitxXkbInitDefaultOption(QString &model, QString &option);
 
-static QString FcitxXkbGetRulesName()
-{
+static QString FcitxXkbGetRulesName() {
     XkbRF_VarDefsRec vd;
     char *tmp = NULL;
 
-    if (XkbRF_GetNamesProp(QX11Info::display(), &tmp, &vd) && tmp != NULL ) {
+    if (XkbRF_GetNamesProp(QX11Info::display(), &tmp, &vd) && tmp != NULL) {
         return tmp;
     }
 
     return QString();
 }
-static QString FcitxXkbFindXkbRulesFile()
-{
+static QString FcitxXkbFindXkbRulesFile() {
     QString rulesFile;
     QString rulesName = FcitxXkbGetRulesName();
 
-    if ( rulesName.isNull() ) {
-        QString xkbParentDir;
-
-        const QString base = XLIBDIR;
-
-        int count = base.count('/');
-
-        if( count >= 3 ) {
-            // .../usr/lib/X11 -> /usr/share/X11/xkb vs .../usr/X11/lib -> /usr/X11/share/X11/xkb
-            const char* delta = base.endsWith("X11") ? "/../../share/X11" : "/../share/X11";
-            QString dirPath = base + delta;
-
-            QDir dir(dirPath);
-            if( dir.exists() ) {
-                xkbParentDir = dir.canonicalPath();
-            }
-            else {
-                dirPath = dirPath + "/X11";
-                dir = QDir(dirPath);
-                if( dir.exists() ) {
-                    xkbParentDir = dir.canonicalPath();
-                }
-            }
-        }
-
-        if( xkbParentDir.isEmpty() ) {
-            xkbParentDir = "/usr/share/X11";
-        }
-
-        rulesFile = QString("%1/xkb/rules/%2.xml").arg(xkbParentDir).arg(rulesName);
+    if (rulesName.isNull()) {
+        rulesFile = QString("%1/rules/%2.xml")
+                        .arg(XKEYBOARDCONFIG_XKBBASE)
+                        .arg(rulesName);
     }
 
     if (rulesFile.isNull())
@@ -113,67 +81,55 @@ static QString FcitxXkbFindXkbRulesFile()
     return rulesFile;
 }
 
-static KeySym normalizedKeySym(KeySym sym) {
-    if (sym == XK_ISO_Left_Tab) {
-        return XK_Tab;
-    }
-    return sym;
-}
-
-KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget* parent): QWidget(parent),
-    ratio(1.0),
-    trackModifiers(false )
-{
+KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget *parent)
+    : QWidget(parent), ratio(1.0), trackModifiers(false) {
     uint i = 0;
-    for (i = 0; i < sizeof(deadMapData) / sizeof(deadMapData[0]); i ++)
+    for (i = 0; i < sizeof(deadMapData) / sizeof(deadMapData[0]); i++)
         deadMap[deadMapData[i].dead] = deadMapData[i].nondead;
 
-    xkb = XkbGetKeyboard (QX11Info::display(),
-                          XkbGBN_GeometryMask |
-                          XkbGBN_KeyNamesMask |
-                          XkbGBN_OtherNamesMask |
-                          XkbGBN_SymbolsMask |
-                          XkbGBN_IndicatorMapMask,
-                          XkbUseCoreKbd);
+    xkb = XkbGetKeyboard(QX11Info::display(),
+                         XkbGBN_GeometryMask | XkbGBN_KeyNamesMask |
+                             XkbGBN_OtherNamesMask | XkbGBN_SymbolsMask |
+                             XkbGBN_IndicatorMapMask,
+                         XkbUseCoreKbd);
 
     if (!xkb)
         return;
 
     groupLevels = pGroupsLevels;
 
-    XkbGetNames (QX11Info::display(), XkbAllNamesMask, xkb);
+    XkbGetNames(QX11Info::display(), XkbAllNamesMask, xkb);
 
-    l3mod = XkbKeysymToModifiers (QX11Info::display(),
-                                  XK_ISO_Level3_Shift);
+    l3mod = XkbKeysymToModifiers(QX11Info::display(), XK_ISO_Level3_Shift);
 
     xkbOnDisplay = true;
 
-    alloc ();
+    alloc();
     init();
     initColors();
 
     setFocusPolicy(Qt::StrongFocus);
 }
 
-void KeyboardLayoutWidget::setGroup(int group)
-{
+void KeyboardLayoutWidget::setGroup(int group) {
     XkbRF_VarDefsRec rdefs;
     XkbComponentNamesRec rnames;
     QString rulesPath = "./rules/evdev";
     char c[] = "C";
-    XkbRF_RulesPtr rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+    XkbRF_RulesPtr rules =
+        XkbRF_Load(rulesPath.toLocal8Bit().data(), c, True, True);
     if (rules == NULL) {
         rulesPath = FcitxXkbFindXkbRulesFile();
         if (rulesPath.endsWith(".xml")) {
             rulesPath.chop(4);
         }
-        rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+        rules = XkbRF_Load(rulesPath.toLocal8Bit().data(), c, True, True);
     }
     if (rules == NULL) {
         return;
     }
-    memset (&rdefs, 0, sizeof (XkbRF_VarDefsRec));
-    memset (&rnames, 0, sizeof (XkbComponentNamesRec));
+    memset(&rdefs, 0, sizeof(XkbRF_VarDefsRec));
+    memset(&rnames, 0, sizeof(XkbComponentNamesRec));
     QString model, option;
     QStringList layouts, variants;
     if (!FcitxXkbInitDefaultOption(model, option))
@@ -183,23 +139,25 @@ void KeyboardLayoutWidget::setGroup(int group)
         return;
 
     rdefs.model = !model.isNull() ? strdup(model.toUtf8().constData()) : NULL;
-    rdefs.layout =  layouts.count() > group ? strdup(layouts[group].toUtf8().constData()) : NULL;
-    rdefs.variant =  variants.count() > group ? strdup(variants[group].toUtf8().constData()) : NULL;
-    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
-    XkbRF_GetComponents (rules, &rdefs, &rnames);
-    free (rdefs.model);
-    free (rdefs.layout);
-    free (rdefs.variant);
-    free (rdefs.options);
+    rdefs.layout = layouts.count() > group
+                       ? strdup(layouts[group].toUtf8().constData())
+                       : NULL;
+    rdefs.variant = variants.count() > group
+                        ? strdup(variants[group].toUtf8().constData())
+                        : NULL;
+    rdefs.options =
+        !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
+    XkbRF_GetComponents(rules, &rdefs, &rnames);
+    free(rdefs.model);
+    free(rdefs.layout);
+    free(rdefs.variant);
+    free(rdefs.options);
 
     setKeyboard(&rnames);
 }
 
-
-static bool
-FcitxXkbInitDefaultOption (QString& model, QString& option)
-{
-    Display* dpy = QX11Info::display();
+static bool FcitxXkbInitDefaultOption(QString &model, QString &option) {
+    Display *dpy = QX11Info::display();
     XkbRF_VarDefsRec vd;
     char *tmp = NULL;
 
@@ -218,11 +176,9 @@ FcitxXkbInitDefaultOption (QString& model, QString& option)
     return true;
 }
 
-
-static bool
-FcitxXkbInitDefaultLayout (QStringList& layout, QStringList& variant)
-{
-    Display* dpy = QX11Info::display();
+static bool FcitxXkbInitDefaultLayout(QStringList &layout,
+                                      QStringList &variant) {
+    Display *dpy = QX11Info::display();
     XkbRF_VarDefsRec vd;
     char *tmp = NULL;
 
@@ -245,80 +201,78 @@ FcitxXkbInitDefaultLayout (QStringList& layout, QStringList& variant)
     return true;
 }
 
-void KeyboardLayoutWidget::setKeyboardLayout(const QString& layout, const QString& variant)
-{
+void KeyboardLayoutWidget::setKeyboardLayout(const QString &layout,
+                                             const QString &variant) {
     XkbRF_VarDefsRec rdefs;
     XkbComponentNamesRec rnames;
     QString rulesPath = "./rules/evdev";
     char c[] = "C";
-    XkbRF_RulesPtr rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+    XkbRF_RulesPtr rules =
+        XkbRF_Load(rulesPath.toLocal8Bit().data(), c, True, True);
     if (rules == NULL) {
         rulesPath = FcitxXkbFindXkbRulesFile();
         if (rulesPath.endsWith(".xml")) {
             rulesPath.chop(4);
         }
-        rules = XkbRF_Load (rulesPath.toLocal8Bit().data(), c, True, True);
+        rules = XkbRF_Load(rulesPath.toLocal8Bit().data(), c, True, True);
     }
     if (rules == NULL) {
         return;
     }
-    memset (&rdefs, 0, sizeof (XkbRF_VarDefsRec));
-    memset (&rnames, 0, sizeof (XkbComponentNamesRec));
+    memset(&rdefs, 0, sizeof(XkbRF_VarDefsRec));
+    memset(&rnames, 0, sizeof(XkbComponentNamesRec));
     QString model, option;
     if (!FcitxXkbInitDefaultOption(model, option))
         return;
 
     rdefs.model = !model.isNull() ? strdup(model.toUtf8().constData()) : NULL;
-    rdefs.layout =  !layout.isNull() ? strdup(layout.toUtf8().constData()) : NULL;
-    rdefs.variant =  !variant.isNull() ? strdup(variant.toUtf8().constData()) : NULL;
-    rdefs.options =  !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
-    XkbRF_GetComponents (rules, &rdefs, &rnames);
-    free (rdefs.model);
-    free (rdefs.layout);
-    free (rdefs.variant);
-    free (rdefs.options);
+    rdefs.layout =
+        !layout.isNull() ? strdup(layout.toUtf8().constData()) : NULL;
+    rdefs.variant =
+        !variant.isNull() ? strdup(variant.toUtf8().constData()) : NULL;
+    rdefs.options =
+        !option.isNull() ? strdup(option.toUtf8().constData()) : NULL;
+    XkbRF_GetComponents(rules, &rdefs, &rnames);
+    free(rdefs.model);
+    free(rdefs.layout);
+    free(rdefs.variant);
+    free(rdefs.options);
 
     setKeyboard(&rnames);
 }
 
-void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names)
-{
+void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names) {
     release();
     if (xkb)
         XkbFreeKeyboard(xkb, 0, true);
     if (names) {
-        xkb = XkbGetKeyboardByName (QX11Info::display(), XkbUseCoreKbd,
-                      names, 0,
-                      XkbGBN_GeometryMask |
-                      XkbGBN_KeyNamesMask |
-                      XkbGBN_OtherNamesMask |
-                      XkbGBN_ClientSymbolsMask |
-                      XkbGBN_IndicatorMapMask, false);
+        xkb = XkbGetKeyboardByName(
+            QX11Info::display(), XkbUseCoreKbd, names, 0,
+            XkbGBN_GeometryMask | XkbGBN_KeyNamesMask | XkbGBN_OtherNamesMask |
+                XkbGBN_ClientSymbolsMask | XkbGBN_IndicatorMapMask,
+            false);
         xkbOnDisplay = false;
     } else {
-        xkb = XkbGetKeyboard (QX11Info::display(),
-                           XkbGBN_GeometryMask |
-                           XkbGBN_KeyNamesMask |
-                           XkbGBN_OtherNamesMask |
-                           XkbGBN_SymbolsMask |
-                           XkbGBN_IndicatorMapMask,
-                           XkbUseCoreKbd);
-        XkbGetNames (QX11Info::display(), XkbAllNamesMask, xkb);
+        xkb = XkbGetKeyboard(QX11Info::display(),
+                             XkbGBN_GeometryMask | XkbGBN_KeyNamesMask |
+                                 XkbGBN_OtherNamesMask | XkbGBN_SymbolsMask |
+                                 XkbGBN_IndicatorMapMask,
+                             XkbUseCoreKbd);
+        XkbGetNames(QX11Info::display(), XkbAllNamesMask, xkb);
         xkbOnDisplay = true;
     }
 
     if (xkb == NULL)
         return;
 
-    alloc ();
+    alloc();
     init();
     initColors();
     generatePixmap(true);
     repaint();
 }
 
-void KeyboardLayoutWidget::alloc()
-{
+void KeyboardLayoutWidget::alloc() {
     physicalIndicators.clear();
     physicalIndicatorsSize = xkb->indicators->phys_indicators + 1;
     physicalIndicators.reserve(physicalIndicatorsSize);
@@ -328,8 +282,7 @@ void KeyboardLayoutWidget::alloc()
     keys = new DrawingKey[xkb->max_key_code + 1];
 }
 
-void KeyboardLayoutWidget::release()
-{
+void KeyboardLayoutWidget::release() {
     physicalIndicators.clear();
     physicalIndicatorsSize = 0;
     if (keys) {
@@ -342,22 +295,21 @@ void KeyboardLayoutWidget::release()
         colors = NULL;
     }
 
-    foreach(DrawingItem* item, keyboardItems) {
+    foreach (DrawingItem *item, keyboardItems) {
         switch (item->type) {
-            case KEYBOARD_DRAWING_ITEM_TYPE_INVALID:
-            case KEYBOARD_DRAWING_ITEM_TYPE_KEY:
-                break;
-            case KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA:
-            case KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
-                delete item;
-                break;
+        case KEYBOARD_DRAWING_ITEM_TYPE_INVALID:
+        case KEYBOARD_DRAWING_ITEM_TYPE_KEY:
+            break;
+        case KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA:
+        case KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
+            delete item;
+            break;
         }
     }
     keyboardItems.clear();
 }
 
-void KeyboardLayoutWidget::init()
-{
+void KeyboardLayoutWidget::init() {
     int i, j, k;
     int x, y;
 
@@ -366,7 +318,7 @@ void KeyboardLayoutWidget::init()
 
     for (i = 0; i < xkb->geom->num_doodads; i++) {
         XkbDoodadRec *xkbdoodad = xkb->geom->doodads + i;
-        Doodad* doodad = new Doodad;
+        Doodad *doodad = new Doodad;
 
         doodad->type = KEYBOARD_DRAWING_ITEM_TYPE_DOODAD;
         doodad->originX = 0;
@@ -375,7 +327,7 @@ void KeyboardLayoutWidget::init()
         doodad->priority = xkbdoodad->any.priority * 256 * 256;
         doodad->doodad = xkbdoodad;
 
-        initInicatorDoodad (xkbdoodad, *doodad);
+        initInicatorDoodad(xkbdoodad, *doodad);
 
         keyboardItems << doodad;
     }
@@ -384,7 +336,8 @@ void KeyboardLayoutWidget::init()
         XkbSectionRec *section = xkb->geom->sections + i;
         uint priority;
 
-        // qDebug() << "initing section " << i << " containing " << section->num_rows << " rows\n";
+        // qDebug() << "initing section " << i << " containing " <<
+        // section->num_rows << " rows\n";
 
         x = section->left;
         y = section->top;
@@ -400,53 +353,43 @@ void KeyboardLayoutWidget::init()
 
             for (k = 0; k < row->num_keys; k++) {
                 XkbKeyRec *xkbkey = row->keys + k;
-                DrawingKey* key;
-                XkbShapeRec *shape =
-                    xkb->geom->shapes +
-                    xkbkey->shape_ndx;
-                uint keycode = findKeycode (xkbkey->name.name);
+                DrawingKey *key;
+                XkbShapeRec *shape = xkb->geom->shapes + xkbkey->shape_ndx;
+                uint keycode = findKeycode(xkbkey->name.name);
 
                 if (keycode == INVALID_KEYCODE)
                     continue;
 
                 // qDebug() << "    initing key " << k << ", shape: "
-                //         << shape << "(" << xkb->geom->shapes <<" + " << xkbkey->shape_ndx << "), code: " << keycode;
+                //         << shape << "(" << xkb->geom->shapes <<" + " <<
+                //         xkbkey->shape_ndx << "), code: " << keycode;
 
                 if (row->vertical)
                     y += xkbkey->gap;
                 else
                     x += xkbkey->gap;
 
-                if (keycode >= xkb->min_key_code
-                    && keycode <=
-                    xkb->max_key_code) {
+                if (keycode >= xkb->min_key_code &&
+                    keycode <= xkb->max_key_code) {
                     key = &keys[keycode];
-                    if (key->type ==
-                        KEYBOARD_DRAWING_ITEM_TYPE_INVALID)
-                    {
-                        key->type =
-                            KEYBOARD_DRAWING_ITEM_TYPE_KEY;
+                    if (key->type == KEYBOARD_DRAWING_ITEM_TYPE_INVALID) {
+                        key->type = KEYBOARD_DRAWING_ITEM_TYPE_KEY;
                     } else {
                         /* duplicate key for the same keycode,
                            already defined as KEYBOARD_DRAWING_ITEM_TYPE_KEY */
                         key = new DrawingKey;
 
-                        key->type =
-                            KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
+                        key->type = KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
                     }
                 } else {
                     key = new DrawingKey;
-                    key->type =
-                        KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
+                    key->type = KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA;
                 }
 
                 key->xkbkey = xkbkey;
                 key->angle = section->angle;
-                rotateRectangle (section->left,
-                           section->top, x, y,
-                           section->angle,
-                           key->originX,
-                           key->originY);
+                rotateRectangle(section->left, section->top, x, y,
+                                section->angle, key->originX, key->originY);
                 key->priority = priority;
                 key->keycode = keycode;
 
@@ -465,16 +408,14 @@ void KeyboardLayoutWidget::init()
             XkbDoodadRec *xkbdoodad = section->doodads + j;
             Doodad *doodad = new Doodad;
 
-            doodad->type =
-                KEYBOARD_DRAWING_ITEM_TYPE_DOODAD;
+            doodad->type = KEYBOARD_DRAWING_ITEM_TYPE_DOODAD;
             doodad->originX = x;
             doodad->originY = y;
             doodad->angle = section->angle;
-            doodad->priority =
-                priority + xkbdoodad->any.priority;
+            doodad->priority = priority + xkbdoodad->any.priority;
             doodad->doodad = xkbdoodad;
 
-            initInicatorDoodad (xkbdoodad, *doodad);
+            initInicatorDoodad(xkbdoodad, *doodad);
 
             keyboardItems << doodad;
         }
@@ -483,8 +424,7 @@ void KeyboardLayoutWidget::init()
     qSort(keyboardItems.begin(), keyboardItems.end(), DrawingItemCompare());
 }
 
-void KeyboardLayoutWidget::initColors()
-{
+void KeyboardLayoutWidget::initColors() {
     bool result;
     int i;
 
@@ -494,23 +434,21 @@ void KeyboardLayoutWidget::initColors()
     colors = new QColor[xkb->geom->num_colors];
 
     for (i = 0; i < xkb->geom->num_colors; i++) {
-        result =
-            parseXkbColorSpec (xkb->geom->colors[i].
-                      spec, colors[i]);
+        result = parseXkbColorSpec(xkb->geom->colors[i].spec, colors[i]);
         if (!result)
-            qWarning() << "init_colors: unable to parse color " << xkb->geom->colors[i].spec;
+            qWarning() << "init_colors: unable to parse color "
+                       << xkb->geom->colors[i].spec;
     }
 }
 
-void KeyboardLayoutWidget::focusOutEvent(QFocusEvent* event)
-{
+void KeyboardLayoutWidget::focusOutEvent(QFocusEvent *event) {
     if (!xkb) {
         QWidget::focusOutEvent(event);
         return;
     }
 
     bool update = false;
-    for (int i = xkb->min_key_code; i <= xkb->max_key_code; i ++) {
+    for (int i = xkb->min_key_code; i <= xkb->max_key_code; i++) {
         if (keys[i].pressed) {
             update = true;
             keys[i].pressed = false;
@@ -524,46 +462,42 @@ void KeyboardLayoutWidget::focusOutEvent(QFocusEvent* event)
     QWidget::focusOutEvent(event);
 }
 
-
-
 /* see PSColorDef in xkbprint */
-bool
-KeyboardLayoutWidget::parseXkbColorSpec (char* colorspec, QColor& color)
-{
+bool KeyboardLayoutWidget::parseXkbColorSpec(char *colorspec, QColor &color) {
     long level;
 
     color.setAlphaF(1);
-    if (strcasecmp (colorspec, "black") == 0) {
+    if (strcasecmp(colorspec, "black") == 0) {
         color = Qt::black;
-    } else if (strcasecmp (colorspec, "white") == 0) {
+    } else if (strcasecmp(colorspec, "white") == 0) {
         color = Qt::white;
-    } else if (strncasecmp (colorspec, "grey", 4) == 0 ||
-           strncasecmp (colorspec, "gray", 4) == 0) {
-        level = strtol (colorspec + 4, NULL, 10);
+    } else if (strncasecmp(colorspec, "grey", 4) == 0 ||
+               strncasecmp(colorspec, "gray", 4) == 0) {
+        level = strtol(colorspec + 4, NULL, 10);
 
         color.setRedF(1.0 - level / 100.0);
         color.setGreenF(1.0 - level / 100.0);
         color.setBlueF(1.0 - level / 100.0);
-    } else if (strcasecmp (colorspec, "red") == 0) {
+    } else if (strcasecmp(colorspec, "red") == 0) {
         color = Qt::red;
-    } else if (strcasecmp (colorspec, "green") == 0) {
+    } else if (strcasecmp(colorspec, "green") == 0) {
         color = Qt::green;
-    } else if (strcasecmp (colorspec, "blue") == 0) {
+    } else if (strcasecmp(colorspec, "blue") == 0) {
         color = Qt::blue;
-    } else if (strncasecmp (colorspec, "red", 3) == 0) {
-        level = strtol (colorspec + 3, NULL, 10);
+    } else if (strncasecmp(colorspec, "red", 3) == 0) {
+        level = strtol(colorspec + 3, NULL, 10);
 
         color.setRedF(level / 100.0);
         color.setGreenF(0);
         color.setBlueF(0);
-    } else if (strncasecmp (colorspec, "green", 5) == 0) {
-        level = strtol (colorspec + 5, NULL, 10);
+    } else if (strncasecmp(colorspec, "green", 5) == 0) {
+        level = strtol(colorspec + 5, NULL, 10);
 
         color.setRedF(0);
         color.setGreenF(level / 100.0);
         color.setBlueF(0);
-    } else if (strncasecmp (colorspec, "blue", 4) == 0) {
-        level = strtol (colorspec + 4, NULL, 10);
+    } else if (strncasecmp(colorspec, "blue", 4) == 0) {
+        level = strtol(colorspec + 4, NULL, 10);
 
         color.setRedF(0);
         color.setGreenF(0);
@@ -574,9 +508,7 @@ KeyboardLayoutWidget::parseXkbColorSpec (char* colorspec, QColor& color)
     return true;
 }
 
-
-uint KeyboardLayoutWidget::findKeycode(const char* keyName)
-{
+uint KeyboardLayoutWidget::findKeycode(const char *keyName) {
 #define KEYSYM_NAME_MAX_LENGTH 4
     uint keycode;
     int i, j;
@@ -589,8 +521,7 @@ uint KeyboardLayoutWidget::findKeycode(const char* keyName)
         return INVALID_KEYCODE;
 
     pkey = xkb->names->keys + xkb->min_key_code;
-    for (keycode = xkb->min_key_code;
-         keycode <= xkb->max_key_code; keycode++) {
+    for (keycode = xkb->min_key_code; keycode <= xkb->max_key_code; keycode++) {
         is_name_matched = 1;
         src = keyName;
         dst = pkey->name;
@@ -623,7 +554,7 @@ uint KeyboardLayoutWidget::findKeycode(const char* keyName)
         }
 
         if (is_name_matched) {
-            keycode = findKeycode (palias->real);
+            keycode = findKeycode(palias->real);
             return keycode;
         }
         palias++;
@@ -632,21 +563,17 @@ uint KeyboardLayoutWidget::findKeycode(const char* keyName)
     return INVALID_KEYCODE;
 }
 
-void KeyboardLayoutWidget::rotateRectangle(int origin_x, int origin_y, int x, int y, int angle, int& rotated_x, int& rotated_y)
-{
-    rotated_x =
-        origin_x + (x - origin_x) * cos (M_PI * angle / 1800.0) - (y -
-                                       origin_y)
-        * sin (M_PI * angle / 1800.0);
-    rotated_y =
-        origin_y + (x - origin_x) * sin (M_PI * angle / 1800.0) + (y -
-                                       origin_y)
-        * cos (M_PI * angle / 1800.0);
+void KeyboardLayoutWidget::rotateRectangle(int origin_x, int origin_y, int x,
+                                           int y, int angle, int &rotated_x,
+                                           int &rotated_y) {
+    rotated_x = origin_x + (x - origin_x) * cos(M_PI * angle / 1800.0) -
+                (y - origin_y) * sin(M_PI * angle / 1800.0);
+    rotated_y = origin_y + (x - origin_x) * sin(M_PI * angle / 1800.0) +
+                (y - origin_y) * cos(M_PI * angle / 1800.0);
 }
 
-
-void KeyboardLayoutWidget::initInicatorDoodad(XkbDoodadRec * xkbdoodad, Doodad& doodad)
-{
+void KeyboardLayoutWidget::initInicatorDoodad(XkbDoodadRec *xkbdoodad,
+                                              Doodad &doodad) {
     if (!xkb)
         return;
 
@@ -654,15 +581,13 @@ void KeyboardLayoutWidget::initInicatorDoodad(XkbDoodadRec * xkbdoodad, Doodad& 
         int index;
         Atom iname = 0;
         Atom sname = xkbdoodad->indicator.name;
-        unsigned long phys_indicators =
-            xkb->indicators->phys_indicators;
+        unsigned long phys_indicators = xkb->indicators->phys_indicators;
         Atom *pind = xkb->names->indicators;
 
         for (index = 0; index < XkbNumIndicators; index++) {
             iname = *pind++;
             /* name matches and it is real */
-            if (iname == sname
-                && (phys_indicators & (1 << index)))
+            if (iname == sname && (phys_indicators & (1 << index)))
                 break;
             if (iname == 0)
                 break;
@@ -672,21 +597,19 @@ void KeyboardLayoutWidget::initInicatorDoodad(XkbDoodadRec * xkbdoodad, Doodad& 
         else {
             physicalIndicators[index] = &doodad;
             /* Trying to obtain the real state, but if fail - just assume OFF */
-            if (!XkbGetNamedIndicator
-                (QX11Info::display(), sname, NULL, &doodad.on,
-                 NULL, NULL))
+            if (!XkbGetNamedIndicator(QX11Info::display(), sname, NULL,
+                                      &doodad.on, NULL, NULL))
                 doodad.on = 0;
         }
     }
 }
 
-void KeyboardLayoutWidget::generatePixmap(bool force)
-{
+void KeyboardLayoutWidget::generatePixmap(bool force) {
     if (!xkb)
         return;
 
-    double ratioX = (double) width() / xkb->geom->width_mm;
-    double ratioY = (double) height() / xkb->geom->height_mm;
+    double ratioX = (double)width() / xkb->geom->width_mm;
+    double ratioY = (double)height() / xkb->geom->height_mm;
 
     ratio = qMin(ratioX, ratioY);
 
@@ -703,7 +626,7 @@ void KeyboardLayoutWidget::generatePixmap(bool force)
     painter.setCompositionMode(QPainter::CompositionMode_Source);
     painter.fillRect(image.rect(), Qt::transparent);
 
-    foreach(DrawingItem* item , keyboardItems) {
+    foreach (DrawingItem *item, keyboardItems) {
         if (!xkb)
             return;
 
@@ -713,11 +636,11 @@ void KeyboardLayoutWidget::generatePixmap(bool force)
 
         case KEYBOARD_DRAWING_ITEM_TYPE_KEY:
         case KEYBOARD_DRAWING_ITEM_TYPE_KEY_EXTRA:
-            drawKey (&painter, (DrawingKey *) item);
+            drawKey(&painter, (DrawingKey *)item);
             break;
 
         case KEYBOARD_DRAWING_ITEM_TYPE_DOODAD:
-            drawDoodad (&painter, (Doodad *) item);
+            drawDoodad(&painter, (Doodad *)item);
             break;
         }
     }
@@ -735,8 +658,7 @@ void KeyboardLayoutWidget::generatePixmap(bool force)
     /*image.save("/tmp/test.png", "png");*/
 }
 
-void KeyboardLayoutWidget::drawKey(QPainter* painter, DrawingKey* key)
-{
+void KeyboardLayoutWidget::drawKey(QPainter *painter, DrawingKey *key) {
     XkbShapeRec *shape;
     QColor color;
     XkbOutlineRec *outline;
@@ -755,7 +677,8 @@ void KeyboardLayoutWidget::drawKey(QPainter* painter, DrawingKey* key)
 
     /* draw the primary outline */
     outline = shape->primary ? shape->primary : shape->outlines;
-    drawOutline (painter, outline, color, key->angle, key->originX, key->originY);
+    drawOutline(painter, outline, color, key->angle, key->originX,
+                key->originY);
 #if 0
     /* don't draw other outlines for now, since
      * the text placement does not take them into account
@@ -768,14 +691,13 @@ void KeyboardLayoutWidget::drawKey(QPainter* painter, DrawingKey* key)
                   key->angle, key->origin_x, key->origin_y);
     }
 #endif
-    origin_offset_x = calcShapeOriginOffsetX (outline);
-    drawKeyLabel (painter, key->keycode, key->angle,
-            key->originX + origin_offset_x, key->originY,
-            shape->bounds.x2, shape->bounds.y2, key->pressed);
+    origin_offset_x = calcShapeOriginOffsetX(outline);
+    drawKeyLabel(painter, key->keycode, key->angle,
+                 key->originX + origin_offset_x, key->originY, shape->bounds.x2,
+                 shape->bounds.y2, key->pressed);
 }
 
-int KeyboardLayoutWidget::calcShapeOriginOffsetX(XkbOutlineRec* outline)
-{
+int KeyboardLayoutWidget::calcShapeOriginOffsetX(XkbOutlineRec *outline) {
     int rv = 0;
     int i;
     XkbPointPtr point = outline->points;
@@ -795,49 +717,44 @@ int KeyboardLayoutWidget::calcShapeOriginOffsetX(XkbOutlineRec* outline)
     return rv;
 }
 
-void KeyboardLayoutWidget::drawOutline(QPainter* painter, XkbOutlinePtr outline, QColor color, int angle, int originX, int originY)
-{
+void KeyboardLayoutWidget::drawOutline(QPainter *painter, XkbOutlinePtr outline,
+                                       QColor color, int angle, int originX,
+                                       int originY) {
     if (outline->num_points == 1) {
         if (color.isValid())
-            drawRectangle (painter, color, angle, originX,
-                    originY, outline->points[0].x,
-                    outline->points[0].y,
-                    outline->corner_radius);
+            drawRectangle(painter, color, angle, originX, originY,
+                          outline->points[0].x, outline->points[0].y,
+                          outline->corner_radius);
 
-        drawRectangle (painter, QColor(), angle, originX,
-                originY, outline->points[0].x,
-                outline->points[0].y,
-                outline->corner_radius);
+        drawRectangle(painter, QColor(), angle, originX, originY,
+                      outline->points[0].x, outline->points[0].y,
+                      outline->corner_radius);
     } else if (outline->num_points == 2) {
         int rotated_x0, rotated_y0;
 
-        //qDebug() << "angle" << angle ;
-        rotateCoordinate (originX, originY,
-                   originX + outline->points[0].x,
-                   originY + outline->points[0].y,
-                   angle, &rotated_x0, &rotated_y0);
+        // qDebug() << "angle" << angle ;
+        rotateCoordinate(originX, originY, originX + outline->points[0].x,
+                         originY + outline->points[0].y, angle, &rotated_x0,
+                         &rotated_y0);
         if (color.isValid())
-            drawRectangle (painter, color, angle, rotated_x0,
-                    rotated_y0, outline->points[1].x,
-                    outline->points[1].y,
-                    outline->corner_radius);
-        drawRectangle (painter, QColor(), angle, rotated_x0,
-                rotated_y0, outline->points[1].x,
-                outline->points[1].y,
-                outline->corner_radius);
+            drawRectangle(painter, color, angle, rotated_x0, rotated_y0,
+                          outline->points[1].x, outline->points[1].y,
+                          outline->corner_radius);
+        drawRectangle(painter, QColor(), angle, rotated_x0, rotated_y0,
+                      outline->points[1].x, outline->points[1].y,
+                      outline->corner_radius);
     } else {
         if (color.isValid())
-            drawPolygon (painter, color, originX, originY,
-                      outline->points, outline->num_points,
-                      outline->corner_radius);
-        drawPolygon (painter, QColor(), originX, originY,
-                  outline->points, outline->num_points,
-                  outline->corner_radius);
+            drawPolygon(painter, color, originX, originY, outline->points,
+                        outline->num_points, outline->corner_radius);
+        drawPolygon(painter, QColor(), originX, originY, outline->points,
+                    outline->num_points, outline->corner_radius);
     }
 }
 
-void KeyboardLayoutWidget::rotateCoordinate(int originX, int originY, int x, int y, int angle, int* rotated_x, int* rotated_y)
-{
+void KeyboardLayoutWidget::rotateCoordinate(int originX, int originY, int x,
+                                            int y, int angle, int *rotated_x,
+                                            int *rotated_y) {
     QTransform translate;
     QTransform rotate;
     QTransform translate2;
@@ -849,20 +766,15 @@ void KeyboardLayoutWidget::rotateCoordinate(int originX, int originY, int x, int
     trans.map(x, y, rotated_x, rotated_y);
 }
 
-int
-KeyboardLayoutWidget::xkbToPixmapCoord (int n)
-{
-    return n * ratio;
-}
+int KeyboardLayoutWidget::xkbToPixmapCoord(int n) { return n * ratio; }
 
-double
-KeyboardLayoutWidget::xkbToPixmapDouble (double d)
-{
-    return d * ratio;
-}
+double KeyboardLayoutWidget::xkbToPixmapDouble(double d) { return d * ratio; }
 
-void KeyboardLayoutWidget::drawPolygon(QPainter* painter, QColor fill_color, int xkb_x, int xkb_y, XkbPointPtr xkb_points, unsigned int num_points, unsigned int radius)
-{
+void KeyboardLayoutWidget::drawPolygon(QPainter *painter, QColor fill_color,
+                                       int xkb_x, int xkb_y,
+                                       XkbPointPtr xkb_points,
+                                       unsigned int num_points,
+                                       unsigned int radius) {
     QVector<QPointF> points;
     bool filled;
     unsigned int i;
@@ -878,69 +790,58 @@ void KeyboardLayoutWidget::drawPolygon(QPainter* painter, QColor fill_color, int
     painter->save();
     painter->setBrush(brush);
 
-
     for (i = 0; i < num_points; i++) {
         QPointF point;
-        point.setX(xkbToPixmapCoord (xkb_x + xkb_points[i].x));
-        point.setY(xkbToPixmapCoord (xkb_y + xkb_points[i].y));
+        point.setX(xkbToPixmapCoord(xkb_x + xkb_points[i].x));
+        point.setY(xkbToPixmapCoord(xkb_y + xkb_points[i].y));
         points << point;
     }
 
-    roundedPolygon (painter, filled,
-             xkbToPixmapDouble (radius),
-             points);
+    roundedPolygon(painter, filled, xkbToPixmapDouble(radius), points);
     painter->restore();
 }
 
-double
-distance(double x, double y)
-{
-    return qSqrt ((x * x) + (y * y));
-}
+double distance(double x, double y) { return qSqrt((x * x) + (y * y)); }
 
-double
-distance(const QPointF& a, const QPointF& b)
-{
+double distance(const QPointF &a, const QPointF &b) {
     QPointF d = a - b;
     return distance(d.x(), d.y());
 }
 
-double
-angle(const QVector2D& norm) {
-     qreal result = qAcos(norm.x());
-     if (norm.y() > 0)
-         result = 2 * M_PI - result;
+double angle(const QVector2D &norm) {
+    qreal result = qAcos(norm.x());
+    if (norm.y() > 0)
+        result = 2 * M_PI - result;
 
-     return result / M_PI * 180.0;
+    return result / M_PI * 180.0;
 }
 
 /* draw an angle from the current point to b and then to c,
  * with a rounded corner of the given radius.
  */
-void
-KeyboardLayoutWidget::roundedCorner (QPainterPath& path,
-        QPointF b, QPointF c, double radius)
-{
+void KeyboardLayoutWidget::roundedCorner(QPainterPath &path, QPointF b,
+                                         QPointF c, double radius) {
     /* we may have 5 point here
      * a is the current point
      * c is the end point
      * and b is the corner
-     * we will have a rounded corner with radious (maybe adjust by a,b,c position)
+     * we will have a rounded corner with radious (maybe adjust by a,b,c
+     * position)
      *
      * a1 is on a-b, and c1 is on b-c
      */
 
     QPointF a = path.currentPosition();
 
-    //qDebug() << "current" << a << b << c;
+    // qDebug() << "current" << a << b << c;
 
     /* make sure radius is not too large */
-    double dist1 = distance (a, b);
-    double dist2 = distance (b, c);
+    double dist1 = distance(a, b);
+    double dist2 = distance(b, c);
 
-    //qDebug() << "dist" << dist1 << dist2 << radius;
+    // qDebug() << "dist" << dist1 << dist2 << radius;
 
-    radius = qMin (radius, qMin (dist1, dist2));
+    radius = qMin(radius, qMin(dist1, dist2));
 
     QPointF ba = a - b;
     QPointF bc = c - b;
@@ -951,7 +852,7 @@ KeyboardLayoutWidget::roundedCorner (QPainterPath& path,
 
     qreal cosine = QVector2D::dotProduct(na, nc);
     qreal halfcosine = qSqrt((1 + cosine) / 2);
-    qreal halfsine = qSqrt( 1- halfcosine * halfcosine);
+    qreal halfsine = qSqrt(1 - halfcosine * halfcosine);
     qreal halftan = halfsine / halfcosine;
     QPointF a1 = b + na.toPointF() * (radius / halftan);
     QPointF c1 = b + nc.toPointF() * (radius / halftan);
@@ -962,7 +863,7 @@ KeyboardLayoutWidget::roundedCorner (QPainterPath& path,
     QRectF arcRect(ctr.x() - radius, ctr.y() - radius, 2 * radius, 2 * radius);
 
     qreal phiA, phiC;
-    //qDebug() << c1 << ctr << a1;
+    // qDebug() << c1 << ctr << a1;
     QVector2D ctra = QVector2D(a1 - ctr);
     QVector2D ctrc = QVector2D(c1 - ctr);
     ctra.normalize();
@@ -977,10 +878,10 @@ KeyboardLayoutWidget::roundedCorner (QPainterPath& path,
     while (delta < -360)
         delta += 360;
 
-    if (delta <- 180)
+    if (delta < -180)
         delta += 360;
 
-    //qDebug() << arcRect << ctra << ctrc << ctr << "degree" << phiA << phiC;
+    // qDebug() << arcRect << ctra << ctrc << ctr << "degree" << phiA << phiC;
 
     path.lineTo(a1);
     path.arcTo(arcRect, phiA, delta);
@@ -988,35 +889,33 @@ KeyboardLayoutWidget::roundedCorner (QPainterPath& path,
     path.lineTo(c);
 }
 
-void
-KeyboardLayoutWidget::roundedPolygon(QPainter* painter, bool filled, double radius, const QVector< QPointF >& points)
-{
+void KeyboardLayoutWidget::roundedPolygon(QPainter *painter, bool filled,
+                                          double radius,
+                                          const QVector<QPointF> &points) {
     int i, j;
 
     QPainterPath path;
 
-    path.moveTo((points[points.size() - 1] +
-                  points[0]) / 2);
+    path.moveTo((points[points.size() - 1] + points[0]) / 2);
 
     for (i = 0; i < points.size(); i++) {
         j = (i + 1) % points.size();
-        roundedCorner (path, points[i],
-                (points[i] + points[j]) / 2,
-                radius);
+        roundedCorner(path, points[i], (points[i] + points[j]) / 2, radius);
         // qDebug() << "corner " << points[i] << points[j];
     };
     path.closeSubpath();
 
     if (filled) {
         painter->fillPath(path, painter->brush());
-    }
-    else {
+    } else {
         painter->drawPath(path);
     }
 }
 
-void KeyboardLayoutWidget::drawRectangle(QPainter* painter, QColor color, int angle, int xkb_x, int xkb_y, int xkb_width, int xkb_height, unsigned int radius)
-{
+void KeyboardLayoutWidget::drawRectangle(QPainter *painter, QColor color,
+                                         int angle, int xkb_x, int xkb_y,
+                                         int xkb_width, int xkb_height,
+                                         unsigned int radius) {
     if (angle == 0) {
         int x, y, width, height;
         bool filled;
@@ -1028,42 +927,40 @@ void KeyboardLayoutWidget::drawRectangle(QPainter* painter, QColor color, int an
             filled = false;
         }
 
-        x = xkbToPixmapCoord (xkb_x);
-        y = xkbToPixmapCoord (xkb_y);
-        width =
-            xkbToPixmapCoord (xkb_x + xkb_width) - x;
-        height =
-            xkbToPixmapCoord (xkb_y + xkb_height) - y;
+        x = xkbToPixmapCoord(xkb_x);
+        y = xkbToPixmapCoord(xkb_y);
+        width = xkbToPixmapCoord(xkb_x + xkb_width) - x;
+        height = xkbToPixmapCoord(xkb_y + xkb_height) - y;
 
-        drawCurveRectangle (painter, filled, color,
-                      x, y, width, height,
-                      xkbToPixmapDouble (radius));
+        drawCurveRectangle(painter, filled, color, x, y, width, height,
+                           xkbToPixmapDouble(radius));
     } else {
         XkbPointRec points[4];
         int x, y;
 
         points[0].x = xkb_x;
         points[0].y = xkb_y;
-        rotateCoordinate (xkb_x, xkb_y, xkb_x + xkb_width, xkb_y,
-                   angle, &x, &y);
+        rotateCoordinate(xkb_x, xkb_y, xkb_x + xkb_width, xkb_y, angle, &x, &y);
         points[1].x = x;
         points[1].y = y;
-        rotateCoordinate (xkb_x, xkb_y, xkb_x + xkb_width,
-                   xkb_y + xkb_height, angle, &x, &y);
+        rotateCoordinate(xkb_x, xkb_y, xkb_x + xkb_width, xkb_y + xkb_height,
+                         angle, &x, &y);
         points[2].x = x;
         points[2].y = y;
-        rotateCoordinate (xkb_x, xkb_y, xkb_x, xkb_y + xkb_height,
-                   angle, &x, &y);
+        rotateCoordinate(xkb_x, xkb_y, xkb_x, xkb_y + xkb_height, angle, &x,
+                         &y);
         points[3].x = x;
         points[3].y = y;
 
         /* the points we've calculated are relative to 0,0 */
-        drawPolygon (painter, color, 0, 0, points, 4, radius);
+        drawPolygon(painter, color, 0, 0, points, 4, radius);
     }
 }
 
-void KeyboardLayoutWidget::drawCurveRectangle(QPainter* painter, bool filled, QColor color, int x, int y, int width, int height, double radius)
-{
+void KeyboardLayoutWidget::drawCurveRectangle(QPainter *painter, bool filled,
+                                              QColor color, int x, int y,
+                                              int width, int height,
+                                              double radius) {
     double x1, y1;
 
     if (!width || !height)
@@ -1072,51 +969,49 @@ void KeyboardLayoutWidget::drawCurveRectangle(QPainter* painter, bool filled, QC
     x1 = x + width;
     y1 = y + height;
 
-    radius = qMin (radius, (double) qMin (width / 2, height / 2));
+    radius = qMin(radius, (double)qMin(width / 2, height / 2));
 
     QPainterPath path;
 
     path.moveTo(x, y + radius);
     path.arcTo(x, y, 2 * radius, 2 * radius, 180, -90);
-    path.lineTo (x1 - radius, y);
-    path.arcTo (x1 - 2 * radius, y, 2 * radius, 2 * radius, 90, - 90);
-    path.lineTo (x1, y1 - radius);
-    path.arcTo (x1 - 2 * radius, y1 - 2 * radius, 2 * radius, 2 * radius, 0, -90);
-    path.lineTo (x + radius, y1);
-    path.arcTo (x , y1 - 2 * radius, 2 * radius, 2 * radius, -90, -90);
+    path.lineTo(x1 - radius, y);
+    path.arcTo(x1 - 2 * radius, y, 2 * radius, 2 * radius, 90, -90);
+    path.lineTo(x1, y1 - radius);
+    path.arcTo(x1 - 2 * radius, y1 - 2 * radius, 2 * radius, 2 * radius, 0,
+               -90);
+    path.lineTo(x + radius, y1);
+    path.arcTo(x, y1 - 2 * radius, 2 * radius, 2 * radius, -90, -90);
     path.closeSubpath();
 
     painter->save();
     if (filled) {
         QBrush brush(color);
-        painter->fillPath (path, brush);
-    }
-    else {
+        painter->fillPath(path, brush);
+    } else {
         painter->setPen(color);
         painter->drawPath(path);
     }
     painter->restore();
 }
 
-KeyboardLayoutWidget::~KeyboardLayoutWidget()
-{
-    release();
-}
+KeyboardLayoutWidget::~KeyboardLayoutWidget() { release(); }
 
-
-void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int angle, int xkb_origin_x, int xkb_origin_y, int xkb_width, int xkb_height, bool is_pressed)
-{
+void KeyboardLayoutWidget::drawKeyLabel(QPainter *painter, uint keycode,
+                                        int angle, int xkb_origin_x,
+                                        int xkb_origin_y, int xkb_width,
+                                        int xkb_height, bool is_pressed) {
     if (!xkb)
         return;
 
-    int padding = 23 * ratio;   /* 2.3mm */
+    int padding = 23 * ratio; /* 2.3mm */
 
-    int x = xkbToPixmapCoord (xkb_origin_x);
-    int y = xkbToPixmapCoord (xkb_origin_y);
-    int width = xkbToPixmapCoord (xkb_origin_x + xkb_width) - x;
-    int height = xkbToPixmapCoord (xkb_origin_y + xkb_height) - y;
+    int x = xkbToPixmapCoord(xkb_origin_x);
+    int y = xkbToPixmapCoord(xkb_origin_y);
+    int width = xkbToPixmapCoord(xkb_origin_x + xkb_width) - x;
+    int height = xkbToPixmapCoord(xkb_origin_y + xkb_height) - y;
 
-    QString syms[KEYBOARD_DRAWING_POS_TOTAL] = {0,0,0,0};
+    QString syms[KEYBOARD_DRAWING_POS_TOTAL] = {0, 0, 0, 0};
 
     for (int glp = KEYBOARD_DRAWING_POS_TOPLEFT;
          glp < KEYBOARD_DRAWING_POS_TOTAL; glp++) {
@@ -1125,31 +1020,28 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int ang
         int g = groupLevels[glp]->group;
         int l = groupLevels[glp]->level;
 
-        if (g < 0 || g >= XkbKeyNumGroups (xkb, keycode))
+        if (g < 0 || g >= XkbKeyNumGroups(xkb, keycode))
             continue;
-        if (l < 0
-            || l >= XkbKeyGroupWidth (xkb, keycode, g))
+        if (l < 0 || l >= XkbKeyGroupWidth(xkb, keycode, g))
             continue;
 
         /* Skip "exotic" levels like the "Ctrl" level in PC_SYSREQ */
         if (l > 0) {
-            uint mods = XkbKeyKeyType (xkb, keycode,
-                            g)->mods.mask;
+            uint mods = XkbKeyKeyType(xkb, keycode, g)->mods.mask;
             if ((mods & (ShiftMask | l3mod)) == 0)
                 continue;
         }
 
-        KeySym keysym = 0;
+        ::KeySym keysym = 0;
         if (trackModifiers) {
             uint mods_rtrn;
 
-            if (XkbTranslateKeyCode (xkb, keycode,
-                         XkbBuildCoreState(mods, g),
-                         &mods_rtrn, &keysym)) {
+            if (XkbTranslateKeyCode(xkb, keycode, XkbBuildCoreState(mods, g),
+                                    &mods_rtrn, &keysym)) {
                 syms[glp] = keySymToString(keysym);
             }
         } else {
-            keysym = XkbKeySymEntry (xkb, keycode, l, g);
+            keysym = XkbKeySymEntry(xkb, keycode, l, g);
             syms[glp] = keySymToString(keysym);
         }
     }
@@ -1166,22 +1058,19 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int ang
     end[BOTTOMLEFT] = BOTTOMLEFT;
     end[BOTTOMRIGHT] = BOTTOMRIGHT;
 
-    if (syms[BOTTOMLEFT] == syms[BOTTOMRIGHT] ||
-        syms[BOTTOMRIGHT].isNull()) {
+    if (syms[BOTTOMLEFT] == syms[BOTTOMRIGHT] || syms[BOTTOMRIGHT].isNull()) {
         syms[BOTTOMRIGHT] = QString::null;
         end[BOTTOMLEFT] = BOTTOMRIGHT;
         end[BOTTOMRIGHT] = -1;
     }
 
-    if (syms[TOPLEFT] == syms[TOPRIGHT] ||
-        syms[TOPRIGHT].isNull()) {
+    if (syms[TOPLEFT] == syms[TOPRIGHT] || syms[TOPRIGHT].isNull()) {
         syms[TOPRIGHT] = QString::null;
         end[TOPLEFT] = TOPRIGHT;
         end[TOPRIGHT] = -1;
     }
 
-    if ((syms[BOTTOMLEFT] == syms[TOPLEFT] ||
-        syms[TOPLEFT].isNull()) &&
+    if ((syms[BOTTOMLEFT] == syms[TOPLEFT] || syms[TOPLEFT].isNull()) &&
         ((end[BOTTOMLEFT] == BOTTOMLEFT && end[TOPLEFT] == TOPLEFT) ||
          (end[BOTTOMLEFT] == BOTTOMRIGHT && end[TOPLEFT] == TOPRIGHT))) {
         syms[TOPLEFT] = QString::null;
@@ -1189,7 +1078,9 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int ang
         end[TOPLEFT] = -1;
     }
 
-    if (!syms[BOTTOMRIGHT].isNull() && (syms[BOTTOMRIGHT] == syms[TOPRIGHT] || (syms[TOPRIGHT].isNull() && end[TOPRIGHT] != -1))) {
+    if (!syms[BOTTOMRIGHT].isNull() &&
+        (syms[BOTTOMRIGHT] == syms[TOPRIGHT] ||
+         (syms[TOPRIGHT].isNull() && end[TOPRIGHT] != -1))) {
         syms[TOPRIGHT] = QString::null;
         end[BOTTOMRIGHT] = TOPRIGHT;
     }
@@ -1197,17 +1088,18 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter* painter, uint keycode, int ang
     for (int glp = KEYBOARD_DRAWING_POS_TOPLEFT;
          glp < KEYBOARD_DRAWING_POS_TOTAL; glp++) {
         if (!syms[glp].isEmpty()) {
-            drawKeyLabelHelper (painter, syms[glp],
-                            angle, glp, end[glp], x, y, width,
-                            height, padding,
-                            is_pressed);
+            drawKeyLabelHelper(painter, syms[glp], angle, glp, end[glp], x, y,
+                               width, height, padding, is_pressed);
             /* reverse y order */
         }
     }
 }
 
-void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &text_, int angle, int glp, int end_glp, int x, int y, int width, int height, int padding, bool is_pressed)
-{
+void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter *painter,
+                                              const QString &text_, int angle,
+                                              int glp, int end_glp, int x,
+                                              int y, int width, int height,
+                                              int padding, bool is_pressed) {
     QString text = text_;
     if (padding >= height / 2)
         padding = 0;
@@ -1216,7 +1108,8 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
 
     Qt::Alignment align;
 
-    QRectF rect(padding, padding, (width - 2 * padding), (height - 2 * padding));
+    QRectF rect(padding, padding, (width - 2 * padding),
+                (height - 2 * padding));
     QRectF textRect;
     QMarginsF margin(0, 0, 0, 0);
     //  TOPLEFT     TOPRIGHT
@@ -1258,7 +1151,8 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
     }
     textRect = rect.marginsRemoved(margin);
     // which means we have longer width
-    if (textRect.width() == rect.width() && textRect.height() != rect.height()) {
+    if (textRect.width() == rect.width() &&
+        textRect.height() != rect.height()) {
         text.replace('\n', ' ');
     }
 
@@ -1267,8 +1161,10 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
     trans.translate(x + padding / 2, y + padding / 2);
     trans.rotate(angle / 10);
     painter->setTransform(trans);
-    //painter->fillRect(QRectF(0, 0, width - padding, height - padding), QBrush(Qt::blue));
-    // painter->setClipRect(QRect(x + padding / 2, y + padding / 2, width - padding, height - padding));
+    // painter->fillRect(QRectF(0, 0, width - padding, height - padding),
+    // QBrush(Qt::blue));
+    // painter->setClipRect(QRect(x + padding / 2, y + padding / 2, width -
+    // padding, height - padding));
 
     trans.reset();
     trans.translate(x, y);
@@ -1324,37 +1220,32 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter* painter, const QString &
 #endif
 }
 
-
-void KeyboardLayoutWidget::drawDoodad(QPainter* painter, Doodad* doodad)
-{
+void KeyboardLayoutWidget::drawDoodad(QPainter *painter, Doodad *doodad) {
     switch (doodad->doodad->any.type) {
     case XkbOutlineDoodad:
     case XkbSolidDoodad:
-        drawShapeDoodad (painter, doodad,
-                   &doodad->doodad->shape);
+        drawShapeDoodad(painter, doodad, &doodad->doodad->shape);
         break;
 
     case XkbTextDoodad:
-        drawTextDoodad (painter, doodad,
-                  &doodad->doodad->text);
+        drawTextDoodad(painter, doodad, &doodad->doodad->text);
         break;
 
     case XkbIndicatorDoodad:
-        drawIndicatorDoodad (painter, doodad,
-                       &doodad->doodad->indicator);
+        drawIndicatorDoodad(painter, doodad, &doodad->doodad->indicator);
         break;
 
     case XkbLogoDoodad:
-        /* g_print ("draw_doodad: logo: %s\n", doodad->doodad->logo.logo_name); */
+        /* g_print ("draw_doodad: logo: %s\n", doodad->doodad->logo.logo_name);
+         */
         /* XkbLogoDoodadRec is essentially a subclass of XkbShapeDoodadRec */
-        drawShapeDoodad (painter, doodad,
-                   &doodad->doodad->shape);
+        drawShapeDoodad(painter, doodad, &doodad->doodad->shape);
         break;
     }
 }
 
-void KeyboardLayoutWidget::drawShapeDoodad(QPainter* painter, Doodad* doodad, XkbShapeDoodadPtr shapeDoodad)
-{
+void KeyboardLayoutWidget::drawShapeDoodad(QPainter *painter, Doodad *doodad,
+                                           XkbShapeDoodadPtr shapeDoodad) {
     XkbShapeRec *shape;
     QColor color;
     int i;
@@ -1366,34 +1257,32 @@ void KeyboardLayoutWidget::drawShapeDoodad(QPainter* painter, Doodad* doodad, Xk
     color = colors[shapeDoodad->color_ndx];
 
     /* draw the primary outline filled */
-    drawOutline (painter,
-              shape->primary ? shape->primary : shape->outlines,
-              color, doodad->angle,
-              doodad->originX + shapeDoodad->left,
-              doodad->originY + shapeDoodad->top);
+    drawOutline(painter, shape->primary ? shape->primary : shape->outlines,
+                color, doodad->angle, doodad->originX + shapeDoodad->left,
+                doodad->originY + shapeDoodad->top);
 
     /* stroke the other outlines */
     for (i = 0; i < shape->num_outlines; i++) {
         if (shape->outlines + i == shape->approx ||
             shape->outlines + i == shape->primary)
             continue;
-        drawOutline (painter, shape->outlines + i, QColor(),
-                  doodad->angle,
-                  doodad->originX + shapeDoodad->left,
-                  doodad->originY + shapeDoodad->top);
+        drawOutline(painter, shape->outlines + i, QColor(), doodad->angle,
+                    doodad->originX + shapeDoodad->left,
+                    doodad->originY + shapeDoodad->top);
     }
 }
 
-void KeyboardLayoutWidget::drawTextDoodad(QPainter* painter, Doodad* doodad, XkbTextDoodadPtr textDoodad)
-{
+void KeyboardLayoutWidget::drawTextDoodad(QPainter *painter, Doodad *doodad,
+                                          XkbTextDoodadPtr textDoodad) {
     int x, y;
     if (!xkb)
         return;
 
-    x = xkbToPixmapCoord (doodad->originX + textDoodad->left);
-    y = xkbToPixmapCoord (doodad->originY + textDoodad->top);
+    x = xkbToPixmapCoord(doodad->originX + textDoodad->left);
+    y = xkbToPixmapCoord(doodad->originY + textDoodad->top);
 
-    QRect rect(0, 0, xkbToPixmapDouble(textDoodad->width), xkbToPixmapDouble(textDoodad->height));
+    QRect rect(0, 0, xkbToPixmapDouble(textDoodad->width),
+               xkbToPixmapDouble(textDoodad->height));
     QTransform trans;
     trans.translate(x, y);
     trans.rotate(textDoodad->angle / 10);
@@ -1424,9 +1313,8 @@ void KeyboardLayoutWidget::drawTextDoodad(QPainter* painter, Doodad* doodad, Xkb
     painter->restore();
 }
 
-
-void KeyboardLayoutWidget::drawIndicatorDoodad(QPainter* painter, Doodad* doodad, XkbIndicatorDoodadPtr indicatorDoodad)
-{
+void KeyboardLayoutWidget::drawIndicatorDoodad(
+    QPainter *painter, Doodad *doodad, XkbIndicatorDoodadPtr indicatorDoodad) {
     QColor color;
     XkbShapeRec *shape;
     int i;
@@ -1438,20 +1326,16 @@ void KeyboardLayoutWidget::drawIndicatorDoodad(QPainter* painter, Doodad* doodad
 
     shape = xkb->geom->shapes + indicatorDoodad->shape_ndx;
 
-    color = colors[(doodad->on ?
-                   indicatorDoodad->on_color_ndx :
-                   indicatorDoodad->off_color_ndx)];
+    color = colors[(doodad->on ? indicatorDoodad->on_color_ndx
+                               : indicatorDoodad->off_color_ndx)];
 
     for (i = 0; i < 1; i++)
-        drawOutline (painter, shape->outlines + i, color,
-                  doodad->angle,
-                  doodad->originX + indicatorDoodad->left,
-                  doodad->originY + indicatorDoodad->top);
+        drawOutline(painter, shape->outlines + i, color, doodad->angle,
+                    doodad->originX + indicatorDoodad->left,
+                    doodad->originY + indicatorDoodad->top);
 }
 
-
-void KeyboardLayoutWidget::paintEvent(QPaintEvent* event)
-{
+void KeyboardLayoutWidget::paintEvent(QPaintEvent *event) {
     QWidget::paintEvent(event);
     QPainter p(this);
     p.setClipRect(event->rect());
@@ -1463,31 +1347,28 @@ void KeyboardLayoutWidget::paintEvent(QPaintEvent* event)
     p.drawPixmap(r, image, image.rect());
 }
 
-void KeyboardLayoutWidget::resizeEvent(QResizeEvent* event)
-{
+void KeyboardLayoutWidget::resizeEvent(QResizeEvent *event) {
     generatePixmap();
     update();
     QWidget::resizeEvent(event);
 }
 
-void KeyboardLayoutWidget::keyPressEvent(QKeyEvent* event)
-{
+void KeyboardLayoutWidget::keyPressEvent(QKeyEvent *event) {
     return keyEvent(event);
 }
 
-void KeyboardLayoutWidget::keyReleaseEvent(QKeyEvent* event)
-{
+void KeyboardLayoutWidget::keyReleaseEvent(QKeyEvent *event) {
     return keyEvent(event);
 }
 
-void KeyboardLayoutWidget::keyEvent(QKeyEvent* event)
-{
+void KeyboardLayoutWidget::keyEvent(QKeyEvent *event) {
     do {
         if (!xkb)
             break;
-        if (event->type() != QEvent::KeyPress && event->type() != QEvent::KeyRelease)
+        if (event->type() != QEvent::KeyPress &&
+            event->type() != QEvent::KeyRelease)
             break;
-        DrawingKey* key = &keys[event->nativeScanCode()];
+        DrawingKey *key = &keys[event->nativeScanCode()];
         if (event->nativeScanCode() > xkb->max_key_code ||
             event->nativeScanCode() < xkb->min_key_code ||
             key->xkbkey == NULL) {
@@ -1500,34 +1381,29 @@ void KeyboardLayoutWidget::keyEvent(QKeyEvent* event)
         key->pressed = (event->type() == QEvent::KeyPress);
         generatePixmap(true);
         repaint();
-    } while(0);
+    } while (0);
 }
 
 QString KeyboardLayoutWidget::keySymToString(unsigned long keysym) {
     if (keysym == 0 || keysym == XK_VoidSymbol)
         return {};
-    keysym = normalizedKeySym(keysym);
 
-    keysym = (KeySym) FcitxHotkeyPadToMain((FcitxKeySym) keysym);
-    uint32_t unicode = FcitxKeySymToUnicode((FcitxKeySym) keysym);
+    auto unicode = fcitx::Key::keySymToUnicode(
+        fcitx::Key(static_cast<fcitx::KeySym>(keysym)).normalize().sym());
 
     if (deadMap.contains(keysym)) {
         unicode = deadMap[keysym];
     }
     QString text;
-    if (unicode
-        && QChar::category(unicode) != QChar::Other_Control
-        && !QChar::isSpace(unicode)) {
+    if (unicode && QChar::category(unicode) != QChar::Other_Control &&
+        !QChar::isSpace(unicode)) {
         text = QString::fromUcs4(&unicode, 1);
-    }
-    else {
+    } else {
         if (keysym == XK_Prior) {
             text = "PgUp";
-        }
-        else if (keysym == XK_Next) {
+        } else if (keysym == XK_Next) {
             text = "PgDn";
-        }
-        else {
+        } else {
             text = QString(XKeysymToString(keysym));
         }
     }
@@ -1541,3 +1417,5 @@ QString KeyboardLayoutWidget::keySymToString(unsigned long keysym) {
     return text;
 }
 
+} // namespace kcm
+} // namespace fcitx

@@ -1,345 +1,363 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2016
 # TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
-"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 08:49-0700\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-20 15:55-0700\n"
 "PO-Revision-Date: 2017-06-09 17:50+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/fcitx/fcitx/language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: layout/main.cpp:37
+#: src/impage.cpp:96
+#, kde-format
+msgctxt "%1 is language name, %2 is country name"
+msgid "%1 (%2)"
+msgstr ""
+
+#. i18n: file: src/impage.ui:292
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:21
+#, kde-format
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>Раскладка клавиатуры по умолчанию:</b>"
+
+#: src/imconfigdialog.cpp:37
+#, kde-format
+msgid "<b>Keyboard Layout:</b>"
+msgstr "<b>Раскладка клавиатуры:</b>"
+
+#: src/configwidget.cpp:486
+#, kde-format
+msgid "<b>Other</b>"
+msgstr "<b>Другое</b>"
+
+#. i18n: file: src/impage.ui:302
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:24
+#, kde-format
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>Выбрать метод ввода:</b>"
+
+#: layout/main.cpp:36
 #, kde-format
 msgid "A general keyboard layout viewer"
 msgstr "Основной просмотрщик раскладки клавиатуры"
 
-#: layout/main.cpp:41
+#: src/module.cpp:40
+#, kde-format
+msgid "Author"
+msgstr ""
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:9
+#, kde-format
+msgid "Available Input Method:"
+msgstr "Доступный метод ввода:"
+
+#. i18n: file: src/erroroverlay.ui:167
+#. i18n: ectx: property (text), widget (QLabel, textLabel)
+#: rc.cpp:30
+#, kde-format
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr "Не удалось соединиться с Fcitx через DBus, запущен ли Fcitx?"
+
+#: src/module.cpp:36
+#, fuzzy, kde-format
+msgid "Configure Fcitx 5"
+msgstr "Настроить Fcitx"
+
+#: src/kcm_fcitx5.desktop.in:13
+msgid "Configure Input Method"
+msgstr "Настроить метод ввода"
+
+#: src/module.cpp:37
+#, fuzzy, kde-format
+msgid "Copyright 2017 Xuetian Weng"
+msgstr "Copyright 2012 Xuetian Weng"
+
+#. i18n: file: src/impage.ui:176
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:15
+#, kde-format
+msgid "Current Input Method:"
+msgstr "Текущий метод ввода:"
+
+#: src/imconfigdialog.cpp:42
+#, kde-format
+msgid "Default"
+msgstr "По умолчанию"
+
+#: src/module.cpp:35
+#, fuzzy, kde-format
+msgid "Fcitx 5 Configuration Module"
+msgstr "Модуль настройки Fcitx"
+
+#. i18n: file: src/erroroverlay.ui:132
+#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+#: rc.cpp:27 rc.cpp:33
+#, kde-format
+msgid "Form"
+msgstr "Форма"
+
+#: src/module.cpp:46 src/kcm_fcitx5.desktop.in:12
+#, kde-format
+msgid "Input Method"
+msgstr "Метод ввода"
+
+#: src/imconfigdialog.cpp:44
+#, kde-format
+msgid "Input Method Default"
+msgstr "Метод ввода по умолчанию"
+
+#: layout/main.cpp:40
+#, kde-format
+msgid "Keyboard <layout>"
+msgstr ""
+
+#: layout/main.cpp:68
+#, kde-format
+msgid "Keyboard Layout viewer"
+msgstr "Просмотрщик раскладки клавиатуры"
+
+#: layout/main.cpp:39
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
 msgstr ""
 
 #: layout/main.cpp:42
 #, kde-format
-msgid "group"
-msgstr ""
-
-#: layout/main.cpp:44
-#, kde-format
-msgid "Keyboard <layout>"
-msgstr ""
-
-#: layout/main.cpp:45
-#, kde-format
-msgid "layout"
-msgstr ""
-
-#: layout/main.cpp:47
-#, kde-format
 msgid "Keyboard layout <variant>"
 msgstr ""
 
-#: layout/main.cpp:48
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
+#: rc.cpp:3
 #, kde-format
-msgid "variant"
-msgstr ""
+msgid "Keyboard layout to use when no input method active"
+msgstr "Раскладка клавиатуры при неактивных методах ввода"
 
-#: layout/main.cpp:74
-#, kde-format
-msgid "Keyboard Layout viewer"
+#: layout/kbd-layout-viewer.desktop.in:7
+msgid "Keyboard layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
-#: src/addonselector.cpp:375
-#, kde-format
-msgid "Search Addons"
-msgstr "Найти дополнения"
-
-#: src/addonselector.cpp:382 src/configwidget.cpp:606
-#, kde-format
-msgid "Show &Advance option"
-msgstr "Показать &дополнительные настройки"
-
-#: src/configwidget.cpp:450
-#, kde-format
-msgid "<b>Other</b>"
-msgstr "<b>Другое</b>"
-
-#: src/configwidget.cpp:560 src/impage.cpp:69
-#, kde-format
-msgid "Other"
-msgstr "Другое"
-
-#: src/erroroverlay.cpp:43
-#, kde-format
-msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "Не удалось соединиться с Fcitx через DBus, запущен ли Fcitx?"
-
-#: src/imconfigdialog.cpp:42
-#, kde-format
-msgid "<b>Keyboard Layout:</b>"
-msgstr "<b>Раскладка клавиатуры:</b>"
-
-#: src/imconfigdialog.cpp:47
-#, kde-format
-msgid "Default"
-msgstr "По умолчанию"
-
-#: src/imconfigdialog.cpp:49
-#, kde-format
-msgid "Input Method Default"
-msgstr "Метод ввода по умолчанию"
-
-#: src/imconfigdialog.cpp:98
-#, kde-format
-msgid "<b>Input Method Setting:</b>"
-msgstr "<b>Настройка метода ввода:</b>"
-
-#: src/impage.cpp:50
-#, kde-format
-msgid "Unknown"
-msgstr "Неизвестно"
-
-#: src/impage.cpp:53
+#: src/impage.cpp:59
 #, kde-format
 msgid "Multilingual"
 msgstr "Многоязычный"
 
-#: src/impage.cpp:84
+#. i18n: file: src/impage.ui:115
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+#: rc.cpp:12
 #, kde-format
-msgctxt "%1 is language name, %2 is country name"
-msgid "%1 (%2)"
-msgstr ""
+msgid "Only &Show Current Language"
+msgstr "&Показывать только текущий язык"
 
-#: src/impage.cpp:481
+#: src/configwidget.cpp:597 src/impage.cpp:79
+#, kde-format
+msgid "Other"
+msgstr "Другое"
+
+#: src/addonselector.cpp:397
+#, kde-format
+msgid "Search Addons"
+msgstr "Найти дополнения"
+
+#: src/impage.cpp:482
 #, kde-format
 msgid "Search Input Method"
 msgstr "Поиск метода ввода"
 
-#: src/module.cpp:83
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+#: rc.cpp:36
 #, kde-format
-msgid "Fcitx Configuration Module"
-msgstr "Модуль настройки Fcitx"
+msgid "Select &Font..."
+msgstr "Выбрать &шрифт..."
 
-#: src/module.cpp:85
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
+#: rc.cpp:6
 #, kde-format
-msgid "Configure Fcitx"
-msgstr "Настроить Fcitx"
+msgid "Select default keyboard layout"
+msgstr "Выбрать раскладку клавиатуры по умолчанию"
 
-#: src/module.cpp:87
+#: src/configwidget.cpp:643 src/addonselector.cpp:404
 #, kde-format
-msgid "Copyright 2012 Xuetian Weng"
-msgstr "Copyright 2012 Xuetian Weng"
+msgid "Show &Advance option"
+msgstr "Показать &дополнительные настройки"
 
-#: src/module.cpp:91
+#. i18n: file: src/impage.ui:277
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#: rc.cpp:18
+#, kde-format
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
+"Первый метод ввода будет неактивным. Обычно вам потребуется установить "
+"<b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на "
+"первое место."
+
+#: src/impage.cpp:57
+#, kde-format
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: layout/kbd-layout-viewer.desktop.in:8
+msgid "View keyboard layout"
+msgstr "Просмотреть раскладку клавиатуры"
+
+#: src/module.cpp:40
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/module.cpp:91
-#, kde-format
-msgid "Author"
+#: src/kcm_fcitx5.desktop.in:4
+msgid "fcitx"
 msgstr ""
 
-#: src/module.cpp:104 src/kcm_fcitx.desktop.in:11
+#: layout/main.cpp:39
 #, kde-format
-msgid "Input Method"
-msgstr "Метод ввода"
+msgid "group"
+msgstr ""
 
-#: src/module.cpp:113
+#: layout/kbd-layout-viewer.desktop.in:4
+msgid "input-keyboard"
+msgstr ""
+
+#: layout/main.cpp:40
 #, kde-format
-msgid "Global Config"
-msgstr "Глобальные настройки"
+msgid "layout"
+msgstr ""
 
-#: src/module.cpp:121
+#: layout/main.cpp:43
 #, kde-format
-msgid "Appearance"
-msgstr "Внешний вид"
+msgid "variant"
+msgstr ""
 
-#: src/module.cpp:129
-#, kde-format
-msgid "Addon Config"
-msgstr "Настройки дополнения"
+#~ msgid "<b>Input Method Setting:</b>"
+#~ msgstr "<b>Настройка метода ввода:</b>"
 
-#: src/module.cpp:178
-#, kde-format
-msgid "Manage Skin"
-msgstr "Выбрать скин"
+#~ msgid "Global Config"
+#~ msgstr "Глобальные настройки"
 
-#: src/skinpage.cpp:220
-#, kde-format
-msgid "First candidate"
-msgstr "Первый кандидат"
+#~ msgid "Appearance"
+#~ msgstr "Внешний вид"
 
-#: src/skinpage.cpp:221
-#, kde-format
-msgid "Other candidate"
-msgstr "Другой кандидат"
+#~ msgid "Addon Config"
+#~ msgstr "Настройки дополнения"
 
-#: src/skinpage.cpp:390
-#, kde-format
-msgid "Skin %1 Cannot be loaded"
-msgstr "Невозможно выбрать скин %1"
+#~ msgid "Manage Skin"
+#~ msgstr "Выбрать скин"
 
-#: src/subconfigwidget.cpp:230
-#, kde-format
-msgid ""
-"User config doesn't exisits, do you want to open system file or copy system "
-"file to user file?"
-msgstr "Файл настроек пользователя не существует, вы хотите открыть системный файл или копировать его на место файла пользователя?"
+#~ msgid "First candidate"
+#~ msgstr "Первый кандидат"
 
-#: src/subconfigwidget.cpp:231
-#, kde-format
-msgid "What to do"
-msgstr "Что сделать"
+#~ msgid "Other candidate"
+#~ msgstr "Другой кандидат"
 
-#: src/subconfigwidget.cpp:232
-#, kde-format
-msgid "Copy"
-msgstr "Копировать"
+#~ msgid "Skin %1 Cannot be loaded"
+#~ msgstr "Невозможно выбрать скин %1"
 
-#: src/subconfigwidget.cpp:233
-#, kde-format
-msgid "View system"
-msgstr "Открыть системный файл"
+#~ msgid ""
+#~ "User config doesn't exisits, do you want to open system file or copy "
+#~ "system file to user file?"
+#~ msgstr ""
+#~ "Файл настроек пользователя не существует, вы хотите открыть системный "
+#~ "файл или копировать его на место файла пользователя?"
 
-#: src/subconfigwidget.cpp:245
-#, kde-format
-msgid "Copy failed"
-msgstr "Не удалось копировать файл"
+#~ msgid "What to do"
+#~ msgstr "Что сделать"
 
-#: src/uipage.cpp:16
-#, kde-format
-msgid "Cannot load currently used user interface info"
-msgstr "Невозможно загрузить информацию о текущем интерфейсе пользователя"
+#~ msgid "Copy"
+#~ msgstr "Копировать"
 
-#: src/uipage.cpp:45
-#, kde-format
-msgid "No configuration options for %1."
-msgstr "Нет настроек для %1."
+#~ msgid "View system"
+#~ msgstr "Открыть системный файл"
 
-#: layout/kbd-layout-viewer.desktop.in:6
-msgid "Keyboard layout viewer"
-msgstr "Просмотрщик раскладки клавиатуры"
+#~ msgid "Copy failed"
+#~ msgstr "Не удалось копировать файл"
 
-#: layout/kbd-layout-viewer.desktop.in:7
-msgid "View keyboard layout"
-msgstr "Просмотреть раскладку клавиатуры"
+#~ msgid "Cannot load currently used user interface info"
+#~ msgstr "Невозможно загрузить информацию о текущем интерфейсе пользователя"
 
-#: layout/kbd-layout-viewer.desktop.in:9
-msgid "keyboard;input;im"
-msgstr "keyboard;input;im"
+#~ msgid "No configuration options for %1."
+#~ msgstr "Нет настроек для %1."
 
-#: src/kcm_fcitx.desktop.in:12
-msgid "Configure Input Method"
-msgstr "Настроить метод ввода"
+#~ msgid "keyboard;input;im"
+#~ msgstr "keyboard;input;im"
 
-#: src/kcm_fcitx.desktop.in:14
-msgid "keyboard,input,im,fcitx"
-msgstr "keyboard,input,im,fcitx"
+#~ msgid "keyboard,input,im,fcitx"
+#~ msgstr "keyboard,input,im,fcitx"
 
-#. i18n: file: src/configpage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-msgid "Form"
-msgstr "Форма"
+#~ msgid ""
+#~ "Options listed here might be overridden by specific input method, usually "
+#~ "including candidate number, hotkey of previous page and next page. You "
+#~ "may need go to configuration of corresponding input method to change them."
+#~ msgstr ""
+#~ "Приведенные здесь настройки могут быть отменены определенным методом "
+#~ "ввода, обычно включающим номер кандидата, горячую клавишу предыдущей и "
+#~ "следующей страницы. Для их изменения вам может потребоваться перейти в "
+#~ "настройки соответствующего метода ввода."
 
-#. i18n: file: src/configpage.ui:54
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"Options listed here might be overridden by specific input method, usually "
-"including candidate number, hotkey of previous page and next page. You may "
-"need go to configuration of corresponding input method to change them."
-msgstr "Приведенные здесь настройки могут быть отменены определенным методом ввода, обычно включающим номер кандидата, горячую клавишу предыдущей и следующей страницы. Для их изменения вам может потребоваться перейти в настройки соответствующего метода ввода."
+#~ msgid "&Configure Skin"
+#~ msgstr "&Настроить скин"
 
-#. i18n: file: src/fontbutton.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-msgid "Select &Font..."
-msgstr "Выбрать &шрифт..."
+#~ msgid "&Delete Skin"
+#~ msgstr "&Удалить скин"
 
-#. i18n: file: src/impage.ui:38
-#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-msgid "Keyboard layout to use when no input method active"
-msgstr "Раскладка клавиатуры при неактивных методах ввода"
+#~ msgid "Get New &Skin..."
+#~ msgstr "Получить &новый скин..."
 
-#. i18n: file: src/impage.ui:41
-#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-msgid "Select default keyboard layout"
-msgstr "Выбрать раскладку клавиатуры по умолчанию"
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Notice:</span></p>\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic "
+#~ "UI to use skin function.</p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Примечание:</span></p>\\n<p style=\" margin-top:0px; margin-"
+#~ "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-"
+#~ "indent:0px;\">Для использования функций скина необходим классический "
+#~ "интерфейс.</p></body></html>"
 
-#. i18n: file: src/impage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Available Input Method:"
-msgstr "Доступный метод ввода:"
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "Ваши имена"
 
-#. i18n: file: src/impage.ui:115
-#. i18n: ectx: property (text), widget (QCheckBox,
-#. onlyCurrentLanguageCheckBox)
-msgid "Only &Show Current Language"
-msgstr "&Показывать только текущий язык"
-
-#. i18n: file: src/impage.ui:176
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Current Input Method:"
-msgstr "Текущий метод ввода:"
-
-#. i18n: file: src/impage.ui:277
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"The first input method will be inactive state. Usually you need to put "
-"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr "Первый метод ввода будет неактивным. Обычно вам потребуется установить <b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на первое место."
-
-#. i18n: file: src/impage.ui:292
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "<b>Default keyboard layout:</b>"
-msgstr "<b>Раскладка клавиатуры по умолчанию:</b>"
-
-#. i18n: file: src/impage.ui:302
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "<b>Select Input Method:</b>"
-msgstr "<b>Выбрать метод ввода:</b>"
-
-#. i18n: file: src/skinpage.ui:41
-#. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
-msgid "&Configure Skin"
-msgstr "&Настроить скин"
-
-#. i18n: file: src/skinpage.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
-msgid "&Delete Skin"
-msgstr "&Удалить скин"
-
-#. i18n: file: src/skinpage.ui:58
-#. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
-msgid "Get New &Skin..."
-msgstr "Получить &новый скин..."
-
-#. i18n: file: src/skinpage.ui:72
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
-msgstr "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Примечание:</span></p>\\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Для использования функций скина необходим классический интерфейс.</p></body></html>"
-
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "Ваши имена"
-
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "Ваши адреса электронной почты"
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "Ваши адреса электронной почты"

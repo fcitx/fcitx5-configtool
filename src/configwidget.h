@@ -24,24 +24,19 @@
 #include <QWidget>
 
 // KDE
+#include <KColorButton>
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <KColorButton>
 
 // Fcitx
-#include <fcitx-config/fcitx-config.h>
-#include <fcitx-config/hotkey.h>
-#include <fcitx/addon.h>
 
 class QCheckBox;
 class QVBoxLayout;
 class QStandardItemModel;
-struct _FcitxConfigFileDesc;
 
 class QTabWidget;
 
-namespace Fcitx
-{
+namespace fcitx {
 
 class DummyConfig;
 
@@ -49,36 +44,35 @@ class Global;
 
 class SubConfigParser;
 
-
 class ColorButton : public KColorButton {
     Q_OBJECT
 public:
-    explicit ColorButton(QWidget* parent = 0) : KColorButton(parent) { }
+    explicit ColorButton(QWidget *parent = 0) : KColorButton(parent) {}
 public slots:
-    void setColor(const QColor& color) {
-        KColorButton::setColor(color);
-    }
+    void setColor(const QColor &color) { KColorButton::setColor(color); }
 };
 
-class ConfigWidget : public QWidget
-{
+class ConfigWidget : public QWidget {
     Q_OBJECT
 
-    enum UIType {
-        CW_Simple = 0x1,
-        CW_Full = 0x2,
-        CW_NoShow = 0x0
-    };
+    enum UIType { CW_Simple = 0x1, CW_Full = 0x2, CW_NoShow = 0x0 };
 
 public:
-    explicit ConfigWidget(struct _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString(), QWidget* parent = NULL);
-    explicit ConfigWidget(FcitxAddon* addonEntry, QWidget* parent = 0);
+    explicit ConfigWidget(struct _FcitxConfigFileDesc *cfdesc,
+                          const QString &prefix, const QString &name,
+                          const QString &subconfig = QString(),
+                          const QString &addonName = QString(),
+                          QWidget *parent = NULL);
+    explicit ConfigWidget(FcitxAddon *addonEntry, QWidget *parent = 0);
     virtual ~ConfigWidget();
 
-    static QDialog* configDialog(QWidget* parent, _FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig = QString(), const QString& addonName = QString());
-    static QDialog* configDialog(QWidget* parent, FcitxAddon* addonEntry);
+    static QDialog *configDialog(QWidget *parent, _FcitxConfigFileDesc *cfdesc,
+                                 const QString &prefix, const QString &name,
+                                 const QString &subconfig = QString(),
+                                 const QString &addonName = QString());
+    static QDialog *configDialog(QWidget *parent, FcitxAddon *addonEntry);
 
-    DummyConfig* config() { return m_config; }
+    DummyConfig *config() { return m_config; }
 
 Q_SIGNALS:
     void changed();
@@ -88,28 +82,31 @@ public Q_SLOTS:
     void load();
 private Q_SLOTS:
     void toggleSimpleFull();
+
 private:
-    QWidget* createFullConfigUi();
-    QWidget* createSimpleConfigUi(bool skinAdvance);
+    QWidget *createFullConfigUi();
+    QWidget *createSimpleConfigUi(bool skinAdvance);
     void setupConfigUi();
-    void createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& label, QString& tooltip, QWidget*& inputWidget, void*& newarg);
+    void createConfigOptionWidget(FcitxConfigGroupDesc *cgdesc,
+                                  FcitxConfigOptionDesc *codesc, QString &label,
+                                  QString &tooltip, QWidget *&inputWidget,
+                                  void *&newarg);
     void checkCanUseSimple();
 
-    struct _FcitxConfigFileDesc* m_cfdesc;
+    struct _FcitxConfigFileDesc *m_cfdesc;
     QString m_prefix;
     QString m_name;
     QString m_addonName;
-    QVBoxLayout* m_switchLayout;
-    QWidget* m_simpleWidget;
-    QWidget* m_fullWidget;
-    QCheckBox* m_advanceCheckBox;
-    DummyConfig* m_config;
-    SubConfigParser* m_parser;
+    QVBoxLayout *m_switchLayout;
+    QWidget *m_simpleWidget;
+    QWidget *m_fullWidget;
+    QCheckBox *m_advanceCheckBox;
+    DummyConfig *m_config;
+    SubConfigParser *m_parser;
     UIType m_simpleUiType;
     UIType m_fullUiType;
-    QMap<QString, void*> m_argMap;
+    QMap<QString, void *> m_argMap;
 };
-
 }
 
 #endif

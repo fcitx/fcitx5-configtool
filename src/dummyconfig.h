@@ -20,31 +20,30 @@
 #ifndef DUMMYCONFIG_H
 #define DUMMYCONFIG_H
 
-#include <fcitx-config/fcitx-config.h>
-#include <stdio.h>
 #include <QMap>
 #include <QString>
+#include <stdio.h>
 
-namespace Fcitx {
+namespace fcitx {
 
-class DummyConfig
-{
+class DummyConfig {
 public:
-    DummyConfig(FcitxConfigFileDesc* cfdesc);
+    DummyConfig(FcitxConfigFileDesc *cfdesc);
     ~DummyConfig();
 
-    FcitxGenericConfig* genericConfig();
-    void load(FILE* fp);
-    void bind(char* group, char* option, FcitxSyncFilter filter = NULL, void* arg = NULL);
+    FcitxGenericConfig *genericConfig();
+    void load(FILE *fp);
+    void bind(char *group, char *option, FcitxSyncFilter filter = NULL,
+              void *arg = NULL);
     bool isValid();
     void sync();
+
 private:
-    QMap<QString, void*> m_dummyValue;
-    FcitxConfigFileDesc* m_cfdesc;
-    FcitxConfigFile* m_cfile;
+    QMap<QString, void *> m_dummyValue;
+    FcitxConfigFileDesc *m_cfdesc;
+    FcitxConfigFile *m_cfile;
     FcitxGenericConfig m_config;
 };
-
 }
 
 #endif // DUMMYCONFIG_H

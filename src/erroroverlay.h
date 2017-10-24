@@ -1,45 +1,49 @@
-/***************************************************************************
- *   Copyright (C) 2011 by Dario Freddi <drf@kde.org>                      *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
- ***************************************************************************/
+/*
+* Copyright (C) 2017~2017 by CSSlayer
+* wengxt@gmail.com
+*
+* This library is free software; you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as
+* published by the Free Software Foundation; either version 2.1 of the
+* License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; see the file COPYING. If not,
+* see <http://www.gnu.org/licenses/>.
+*/
+#ifndef _FCITX_ERROROVERLAY_H_
+#define _FCITX_ERROROVERLAY_H_
 
-#ifndef ERROROVERLAY_H
-#define ERROROVERLAY_H
-
+#include "ui_erroroverlay.h"
+#include <QPointer>
 #include <QWidget>
 
-class ErrorOverlay : public QWidget
-{
+namespace fcitx {
+namespace kcm {
+
+class Module;
+
+class ErrorOverlay : public QWidget, public Ui::ErrorOverlay {
     Q_OBJECT
 public:
-    explicit ErrorOverlay(QWidget *baseWidget, QWidget *parent = 0);
-    virtual ~ErrorOverlay();
-public slots:
-    void onConnectStatusChanged(bool connected);
+    explicit ErrorOverlay(Module *module);
 
-protected:
-    bool eventFilter(QObject *object, QEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event) override;
+private slots:
+    void availabilityChanged(bool avail);
 
 private:
     void reposition();
-
-private:
-    QWidget *m_BaseWidget;
-    bool m_enable;
+    QPointer<QWidget> baseWidget_;
+    bool enabled_ = false;
 };
 
-#endif // ERROROVERLAY_H
+} // kcm
+} // fcitx
+
+#endif // _FCITX_ERROROVERLAY_H_

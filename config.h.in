@@ -1,16 +1,28 @@
-#define VERSION_STRING_FULL "@VERSION_STRING_FULL@"
-#define DATADIR "@datadir@"
-#define LOCALEDIR "@localedir@"
-#define EXEC_PREFIX "@exec_prefix@"
-#define PACKAGE "@package@"
-#cmakedefine XLIBDIR "@XLIBDIR@"
-#define FCITX4_EXEC_PREFIX "@FCITX4_EXEC_PREFIX@"
-#define FCITX4_MAJOR_VERSION @FCITX4_MAJOR_VERSION@
-#define FCITX4_MINOR_VERSION @FCITX4_MINOR_VERSION@
-#define FCITX4_PATCH_VERSION @FCITX4_PATCH_VERSION@
+/*
+ * Copyright (C) 2017~2017 by CSSlayer
+ * wengxt@gmail.com
+ *
+ * This library is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of the
+ * License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; see the file COPYING. If not,
+ * see <http://www.gnu.org/licenses/>.
+ */
+#ifndef _KCM_FCITX5_CONFIG_H_
+#define _KCM_FCITX5_CONFIG_H_
 
-#define FCITX_CHECK_VERSION(major,minor,micro)    \
-    (FCITX4_MAJOR_VERSION > (major) || \
-     (FCITX4_MAJOR_VERSION == (major) && FCITX4_MINOR_VERSION > (minor)) || \
-     (FCITX4_MAJOR_VERSION == (major) && FCITX4_MINOR_VERSION == (minor) && \
-      FCITX4_PATCH_VERSION >= (micro)))
+#cmakedefine PROJECT_VERSION "@PROJECT_VERSION@"
+#cmakedefine XKEYBOARDCONFIG_XKBBASE "@XKEYBOARDCONFIG_XKBBASE@"
+#cmakedefine ISOCODES_ISO639_2_JSON "@ISOCODES_ISO639_2_JSON@"
+#cmakedefine ISOCODES_ISO639_3_JSON "@ISOCODES_ISO639_3_JSON@"
+#cmakedefine ISOCODES_ISO639_5_JSON "@ISOCODES_ISO639_5_JSON@"
+
+#endif // _KCM_FCITX5_CONFIG_H_

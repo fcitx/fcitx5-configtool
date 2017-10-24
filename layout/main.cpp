@@ -17,36 +17,33 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
+#include "config.h"
+#include "keyboardlayoutwidget.h"
+#include <KLocalizedString>
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QMainWindow>
 #include <QX11Info>
+#include <fcitx-utils/standardpath.h>
 
-#include <KLocalizedString>
-
-#include "config.h"
-#include "keyboardlayoutwidget.h"
-
-int main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     app.setApplicationName(QLatin1String("kbd-layout-viewer"));
-    app.setApplicationVersion(QLatin1String(VERSION_STRING_FULL));
+    app.setApplicationVersion(QLatin1String(PROJECT_VERSION));
+
+    KLocalizedString::addDomainLocaleDir(
+        "kcm_fcitx5",
+        QString::fromLocal8Bit(fcitx::StandardPath::fcitxPath("localedir")));
 
     QCommandLineParser parser;
     parser.setApplicationDescription(i18n("A general keyboard layout viewer"));
     parser.addHelpOption();
-    parser.addOptions({
-        {{"g", "group"},
-            i18n("Keyboard layout <group> (0-3)"),
-            i18n("group")},
-        {{"l", "layout"},
-            i18n("Keyboard <layout>"),
-            i18n("layout")},
-        {{"v", "variant"},
-            i18n("Keyboard layout <variant>"),
-            i18n("variant")}
-    });
+    parser.addOptions(
+        {{{"g", "group"}, i18n("Keyboard layout <group> (0-3)"), i18n("group")},
+         {{"l", "layout"}, i18n("Keyboard <layout>"), i18n("layout")},
+         {{"v", "variant"},
+          i18n("Keyboard layout <variant>"),
+          i18n("variant")}});
 
     parser.process(app);
 
@@ -72,14 +69,13 @@ int main(int argc, char* argv[])
     QMainWindow mainWindow;
     mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
     mainWindow.setWindowTitle(i18n("Keyboard Layout viewer"));
-    mainWindow.setMinimumSize(QSize(900,400));
-    KeyboardLayoutWidget widget;
+    mainWindow.setMinimumSize(QSize(900, 400));
+    fcitx::kcm::KeyboardLayoutWidget widget;
     if (group > 0 || layout.isNull()) {
         if (group < 0)
             group = 0;
         widget.setGroup(group);
-    }
-    else if (!layout.isNull()) {
+    } else if (!layout.isNull()) {
         widget.setKeyboardLayout(layout, variant);
     }
 

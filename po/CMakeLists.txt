@@ -1,5 +1,1 @@
-set(PO_LANGS de zh_CN zh_TW ja vi)
-foreach(lang ${PO_LANGS})
-  fcitx_translate_add_po_file("${lang}" "${lang}.po")
-endforeach()
-fcitx_translate_set_pot_target(pot kcm_fcitx kcm_fcitx.pot)
+fcitx5_install_translation(kcm_fcitx5)

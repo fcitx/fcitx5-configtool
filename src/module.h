@@ -1,116 +1,69 @@
-/***************************************************************************
- *   Copyright (C) 2011~2011 by CSSlayer                                   *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
- ***************************************************************************/
-
-#ifndef MODULE_H
-#define MODULE_H
+/*
+* Copyright (C) 2017~2017 by CSSlayer
+* wengxt@gmail.com
+*
+* This library is free software; you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as
+* published by the Free Software Foundation; either version 2.1 of the
+* License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; see the file COPYING. If not,
+* see <http://www.gnu.org/licenses/>.
+*/
+#ifndef _FCITX_MODULE_H_
+#define _FCITX_MODULE_H_
 
 // KDE
+#include "ui_module.h"
 #include <KCModule>
+#include "iso639.h"
 
-// Fcitx
-#include <fcitx-utils/utarray.h>
-#include <fcitx/addon.h>
+namespace fcitx {
 
-class QFile;
+class FcitxQtWatcher;
+class FcitxQtControllerProxy;
 
-namespace Ui
-{
-
-class Module;
-}
-
-namespace Fcitx
-{
-
-class ConfigPage;
-
-class UIPage;
-
+namespace kcm {
 
 class IMPage;
+class ErrorOverlay;
 
-class SkinPage;
-
-class ConfigWidget;
-
-class AddonSelector;
-
-class Module : public KCModule
-{
+class Module : public KCModule, public Ui::Module {
     Q_OBJECT
 
 public:
-    /**
-    * Constructor.
-    *
-    * @param parent Parent widget of the module
-    * @param args Arguments for the module
-    */
     Module(QWidget *parent, const QVariantList &args = QVariantList());
-
-    /**
-    * Destructor.
-    */
     ~Module();
 
-    /**
-    * Overloading the KCModule load() function.
-    */
     void load();
-
-    /**
-    * Overloading the KCModule save() function.
-    */
     void save();
-
-    /**
-    * Overloading the KCModule defaults() function.
-    */
     void defaults();
 
-    FcitxAddon* findAddonByName(const QString& name);
+    bool available() const { return controller_; }
+    FcitxQtControllerProxy *controller() { return controller_; }
+    const Iso639& iso639() { return iso639_; }
 
-    SkinPage* skinPage();
+signals:
+    void availabilityChanged(bool avail);
+
+private slots:
+    void fcitxAvailabilityChanged(bool avail);
 
 private:
-    /**
-    * UI
-    */
-    Ui::Module *ui;
-
-    /**
-    * Addon Selector
-    */
-    AddonSelector* addonSelector;
-
-    /**
-    * addon array
-    */
-    UT_array* m_addons;
-
-    ConfigPage* m_configPage;
-    SkinPage* m_skinPage;
-    IMPage* m_imPage;
-    UIPage* m_uiPage;
-    QString m_arg;
+    FcitxQtWatcher *watcher_;
+    FcitxQtControllerProxy *controller_ = nullptr;
+    ErrorOverlay *errorOverlay_;
+    IMPage *impage_;
+    Iso639 iso639_;
 };
 
-}
+} // namespace kcm
+} // namespace fcitx
 
-#endif // MODULE_H
+#endif // _FCITX_MODULE_H_

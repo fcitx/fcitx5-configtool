@@ -17,51 +17,39 @@
  *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
  ***************************************************************************/
 
-#include <QDebug>
-#include <QDialogButtonBox>
-#include <QDialog>
 #include <KFontChooser>
+#include <QDebug>
+#include <QDialog>
+#include <QDialogButtonBox>
 
 #include "fontbutton.h"
 #include "ui_fontbutton.h"
 
-FontButton::FontButton(QWidget* parent): QWidget(parent)
-    ,m_ui(new Ui::FontButton)
-{
+FontButton::FontButton(QWidget *parent)
+    : QWidget(parent), m_ui(new Ui::FontButton) {
     m_ui->setupUi(this);
-    connect(m_ui->fontSelectButton, SIGNAL(clicked(bool)), this, SLOT(selectFont()));
+    connect(m_ui->fontSelectButton, SIGNAL(clicked(bool)), this,
+            SLOT(selectFont()));
 }
 
-FontButton::~FontButton()
-{
-    delete m_ui;
-}
+FontButton::~FontButton() { delete m_ui; }
 
-const QFont& FontButton::font()
-{
-    return m_font;
-}
+const QFont &FontButton::font() { return m_font; }
 
-QString FontButton::fontName()
-{
-    return m_ui->fontPreviewLabel->text();
-}
+QString FontButton::fontName() { return m_ui->fontPreviewLabel->text(); }
 
-QFont FontButton::parseFont(const QString& string)
-{
+QFont FontButton::parseFont(const QString &string) {
     QStringList list = string.split(" ", QString::SkipEmptyParts);
     bool bold = false;
     bool italic = false;
-    while(!list.empty()) {
+    while (!list.empty()) {
         if (list.last() == "Bold") {
             bold = true;
             list.pop_back();
-        }
-        else if (list.last() == "Italic") {
+        } else if (list.last() == "Italic") {
             italic = true;
             list.pop_back();
-        }
-        else
+        } else
             break;
     }
     QString family = list.join(" ");
@@ -72,15 +60,13 @@ QFont FontButton::parseFont(const QString& string)
     return font;
 }
 
-void FontButton::setFont(const QFont& font)
-{
+void FontButton::setFont(const QFont &font) {
     m_font = font;
     QString style;
 #if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
     if (!font.styleName().isEmpty()) {
         style = font.styleName();
-    }
-    else
+    } else
 #endif
     {
         QStringList styles;
@@ -90,22 +76,24 @@ void FontButton::setFont(const QFont& font)
             styles << "Italic";
         style = styles.join(" ");
     }
-    m_ui->fontPreviewLabel->setText(QString("%1 %2").arg(m_font.family(), style));
+    m_ui->fontPreviewLabel->setText(
+        QString("%1 %2").arg(m_font.family(), style));
     m_ui->fontPreviewLabel->setFont(m_font);
     if (font.family() != m_font.family()) {
         emit fontChanged(m_font);
     }
 }
 
-void FontButton::selectFont()
-{
+void FontButton::selectFont() {
     QDialog dialog(NULL);
-    KFontChooser* chooser = new KFontChooser(&dialog);
+    KFontChooser *chooser = new KFontChooser(&dialog);
     chooser->enableColumn(KFontChooser::SizeList, false);
     chooser->setFont(m_font);
-    QVBoxLayout* dialogLayout = new QVBoxLayout;
+    QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog.setLayout(dialogLayout);
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    QDialogButtonBox *buttonBox =
+        new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
+                             QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(chooser);
     dialogLayout->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);

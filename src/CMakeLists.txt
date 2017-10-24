@@ -1,36 +1,24 @@
 include_directories(${PROJECT_SOURCE_DIR}/layout)
-add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx5\")
 
 set(kcm_SRCS
   main.cpp
   module.cpp
-  addonselector.cpp
-  configwidget.cpp
-  global.cpp
-  subconfigparser.cpp
-  subconfigpattern.cpp
-  subconfig.cpp
-  subconfigwidget.cpp
-  skinpage.cpp
-  impage.cpp
-  uipage.cpp
-  imconfigdialog.cpp
-  dummyconfig.cpp
-  verticalscrollarea.cpp
-  fontbutton.cpp
-  configpage.cpp
   erroroverlay.cpp
+  impage.cpp
+  model.cpp
+  layoutselector.cpp
+  iso639.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 
-set(kcm_UIS module.ui skinpage.ui impage.ui fontbutton.ui configpage.ui)
-fcitx_translate_add_sources(${kcm_SRCS} ${kcm_UIS} kcm_fcitx.desktop.in)
+set(kcm_UIS module.ui impage.ui fontbutton.ui erroroverlay.ui layoutselector.ui)
 
 ki18n_wrap_ui(kcm_SRCS ${kcm_UIS})
 
-add_library(kcm_fcitx MODULE ${kcm_SRCS})
+add_library(kcm_fcitx5 MODULE ${kcm_SRCS})
 
-target_link_libraries(kcm_fcitx
+target_link_libraries(kcm_fcitx5
   Qt5::Widgets
   Qt5::X11Extras
   KF5::CoreAddons
@@ -40,27 +28,14 @@ target_link_libraries(kcm_fcitx
   KF5::I18n
   KF5::KIOCore
   KF5::KIOWidgets
-  KF5::NewStuff
-  FcitxQt5::WidgetsAddons
-  FcitxQt5::DBusAddons
-  ${FCITX4_FCITX_UTILS_LIBRARIES}
-  ${FCITX4_FCITX_CONFIG_LIBRARIES}
-  ${FCITX4_FCITX_LIBRARIES}
-  ${LIBINTL_LIBRARY}
+  Fcitx5::Utils
+  Fcitx5Qt5::DBusAddons
   ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB}
   )
 
-install(TARGETS kcm_fcitx DESTINATION ${CMAKE_INSTALL_PLUGINDIR})
-fcitx_translate_add_apply_source(
-  kcm_fcitx.desktop.in
-  "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx.desktop")
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx.desktop"
-  DESTINATION ${CMAKE_INSTALL_KSERVICES5DIR})
-
-message("GHNS DIR : ${CONFIG_INSTALL_DIR}")
-
-install(FILES fcitx-skin.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
-
-if(ENABLE_TEST)
-  add_subdirectory(test)
-endif(ENABLE_TEST)
+install(TARGETS kcm_fcitx5 DESTINATION ${KDE_INSTALL_PLUGINDIR})
+fcitx5_translate_desktop_file(kcm_fcitx5.desktop.in
+  kcm_fcitx5.desktop)
+kcoreaddons_desktop_to_json(kcm_fcitx5 "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop" SERVICE_TYPES kcmodule.desktop)
+install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop"
+  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})

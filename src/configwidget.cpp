@@ -18,102 +18,86 @@
  ***************************************************************************/
 
 // Qt
-#include <QTabWidget>
-#include <QVBoxLayout>
+#include <QCheckBox>
+#include <QComboBox>
+#include <QDebug>
 #include <QFormLayout>
 #include <QLabel>
-#include <QSpinBox>
-#include <QCheckBox>
-#include <QScrollArea>
-#include <QDebug>
-#include <QStandardItemModel>
-#include <QListView>
-#include <QComboBox>
 #include <QLineEdit>
+#include <QListView>
+#include <QScrollArea>
+#include <QSpinBox>
+#include <QStandardItemModel>
+#include <QTabWidget>
+#include <QVBoxLayout>
 
 // KDE
 #include <KColorButton>
-#include <KMessageBox>
 #include <KLocalizedString>
+#include <KMessageBox>
 #include <KUrlRequester>
 
 // system
 #include <libintl.h>
 
 // Fcitx
-#include <fcitx-config/fcitx-config.h>
-#include <fcitx-config/hotkey.h>
-#include <fcitx-config/xdg.h>
 #include <fcitxqtkeysequencewidget.h>
 
 // self
 #include "config.h"
 #include "configwidget.h"
-#include "subconfigparser.h"
-#include "subconfigwidget.h"
-#include "global.h"
 #include "dummyconfig.h"
-#include "verticalscrollarea.h"
 #include "fontbutton.h"
+#include "global.h"
+#include "verticalscrollarea.h"
 
-#define RoundColor(c) ((c)>=0?((c)<=255?c:255):0)
+#define RoundColor(c) ((c) >= 0 ? ((c) <= 255 ? c : 255) : 0)
 
-namespace Fcitx
-{
+namespace fcitx {
 
-static bool KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxHotkey* hotkey);
-static QKeySequence HotkeyToKeySequence(FcitxHotkey* hotkey);
+static bool KeySequenceToHotkey(const QKeySequence &keyseq,
+                                FcitxQtModifierSide side, FcitxHotkey *hotkey);
+static QKeySequence HotkeyToKeySequence(FcitxHotkey *hotkey);
 
-static
-void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxConfigOption *option, void *value, FcitxConfigSync sync, void *arg);
+static void SyncFilterFunc(FcitxGenericConfig *gconfig, FcitxConfigGroup *group,
+                           FcitxConfigOption *option, void *value,
+                           FcitxConfigSync sync, void *arg);
 
-ConfigWidget::ConfigWidget(FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName, QWidget* parent) : QWidget(parent)
-    , m_cfdesc(cfdesc)
-    , m_prefix(prefix)
-    , m_name(name)
-    , m_addonName(addonName)
-    , m_switchLayout(new QVBoxLayout)
-    , m_simpleWidget(0)
-    , m_fullWidget(0)
-    , m_advanceCheckBox(0)
-    , m_config(0)
-    , m_parser(new SubConfigParser(subconfig, this))
-    , m_simpleUiType(CW_NoShow)
-    , m_fullUiType(CW_NoShow)
-{
+ConfigWidget::ConfigWidget(FcitxConfigFileDesc *cfdesc, const QString &prefix,
+                           const QString &name, const QString &subconfig,
+                           const QString &addonName, QWidget *parent)
+    : QWidget(parent), m_cfdesc(cfdesc), m_prefix(prefix), m_name(name),
+      m_addonName(addonName), m_switchLayout(new QVBoxLayout),
+      m_simpleWidget(0), m_fullWidget(0), m_advanceCheckBox(0), m_config(0),
+      m_parser(new SubConfigParser(subconfig, this)), m_simpleUiType(CW_NoShow),
+      m_fullUiType(CW_NoShow) {
     if (cfdesc)
         m_config = new DummyConfig(cfdesc);
     setupConfigUi();
 }
 
-ConfigWidget::ConfigWidget(FcitxAddon* addonEntry, QWidget* parent): QWidget(parent)
-    , m_cfdesc(Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc")))
-    , m_prefix("conf")
-    , m_name(QString::fromUtf8(addonEntry->name).append(".config"))
-    , m_addonName(addonEntry->name)
-    , m_switchLayout(new QVBoxLayout)
-    , m_simpleWidget(0)
-    , m_fullWidget(0)
-    , m_advanceCheckBox(0)
-    , m_config(0)
-    , m_parser(new SubConfigParser(QString::fromUtf8(addonEntry->subconfig), this))
-    , m_simpleUiType(CW_NoShow)
-    , m_fullUiType(CW_NoShow)
-{
+ConfigWidget::ConfigWidget(FcitxAddon *addonEntry, QWidget *parent)
+    : QWidget(parent),
+      m_cfdesc(Global::instance()->GetConfigDesc(
+          QString::fromUtf8(addonEntry->name).append(".desc"))),
+      m_prefix("conf"),
+      m_name(QString::fromUtf8(addonEntry->name).append(".config")),
+      m_addonName(addonEntry->name), m_switchLayout(new QVBoxLayout),
+      m_simpleWidget(0), m_fullWidget(0), m_advanceCheckBox(0), m_config(0),
+      m_parser(
+          new SubConfigParser(QString::fromUtf8(addonEntry->subconfig), this)),
+      m_simpleUiType(CW_NoShow), m_fullUiType(CW_NoShow) {
     if (m_cfdesc)
         m_config = new DummyConfig(m_cfdesc);
     setupConfigUi();
 }
 
-
-ConfigWidget::~ConfigWidget()
-{
+ConfigWidget::~ConfigWidget() {
     if (m_config)
         delete m_config;
 }
 
-void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton code)
-{
+void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton code) {
     if (!m_cfdesc)
         return;
 
@@ -121,10 +105,13 @@ void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton code)
         FcitxConfigResetConfigToDefaultValue(m_config->genericConfig());
         FcitxConfigBindSync(m_config->genericConfig());
     } else if (code == QDialogButtonBox::Ok) {
-        FILE* fp = FcitxXDGGetFileUserWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "w", NULL);
+        FILE *fp = FcitxXDGGetFileUserWithPrefix(
+            m_prefix.toLocal8Bit().constData(),
+            m_name.toLocal8Bit().constData(), "w", NULL);
 
         if (fp) {
-            FcitxConfigSaveConfigFileFp(fp, m_config->genericConfig(), m_cfdesc);
+            FcitxConfigSaveConfigFileFp(fp, m_config->genericConfig(),
+                                        m_cfdesc);
             fclose(fp);
         }
 
@@ -132,18 +119,19 @@ void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton code)
             if (m_addonName.isEmpty()) {
                 Global::instance()->inputMethodProxy()->ReloadConfig();
             } else {
-                Global::instance()->inputMethodProxy()->ReloadAddonConfig(m_addonName);
+                Global::instance()->inputMethodProxy()->ReloadAddonConfig(
+                    m_addonName);
             }
         }
     }
 }
 
-void ConfigWidget::load()
-{
+void ConfigWidget::load() {
     if (!m_cfdesc)
         return;
     FILE *fp;
-    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "r", NULL);
+    fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(),
+                                   m_name.toLocal8Bit().constData(), "r", NULL);
     if (!fp)
         return;
 
@@ -152,13 +140,17 @@ void ConfigWidget::load()
     fclose(fp);
 }
 
-void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxConfigOptionDesc* codesc, QString& label, QString& tooltip, QWidget*& inputWidget, void*& newarg)
-{
-    FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc *cgdesc,
+                                            FcitxConfigOptionDesc *codesc,
+                                            QString &label, QString &tooltip,
+                                            QWidget *&inputWidget,
+                                            void *&newarg) {
+    FcitxConfigOptionDesc2 *codesc2 = (FcitxConfigOptionDesc2 *)codesc;
 
-    void* oldarg = NULL;
-    void* argument = NULL;
-    QString name(QString("%1/%2").arg(cgdesc->groupName).arg(codesc->optionName));
+    void *oldarg = NULL;
+    void *argument = NULL;
+    QString name(
+        QString("%1/%2").arg(cgdesc->groupName).arg(codesc->optionName));
     if (m_argMap.contains(name)) {
         oldarg = m_argMap[name];
     }
@@ -166,74 +158,83 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     if (codesc->desc && codesc->desc[0])
         label = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->desc));
     else
-        label = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->optionName));
+        label =
+            QString::fromUtf8(dgettext(m_cfdesc->domain, codesc->optionName));
 
     if (codesc2->longDesc && codesc2->longDesc[0]) {
-        tooltip = QString::fromUtf8(dgettext(m_cfdesc->domain, codesc2->longDesc));
+        tooltip =
+            QString::fromUtf8(dgettext(m_cfdesc->domain, codesc2->longDesc));
     }
 
     switch (codesc->type) {
 
     case T_Integer: {
-        QSpinBox* spinbox = new QSpinBox(this);
+        QSpinBox *spinbox = new QSpinBox(this);
         spinbox->setMaximum(codesc2->constrain.integerConstrain.max);
         spinbox->setMinimum(codesc2->constrain.integerConstrain.min);
         inputWidget = spinbox;
         if (!oldarg) {
-            connect(spinbox, SIGNAL(valueChanged(int)), this, SIGNAL(changed()));
+            connect(spinbox, SIGNAL(valueChanged(int)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            QSpinBox* oldspinbox = (QSpinBox*) oldarg;
-            connect(oldspinbox, SIGNAL(valueChanged(int)), spinbox, SLOT(setValue(int)));
-            connect(spinbox, SIGNAL(valueChanged(int)), oldspinbox, SLOT(setValue(int)));
+        } else {
+            QSpinBox *oldspinbox = (QSpinBox *)oldarg;
+            connect(oldspinbox, SIGNAL(valueChanged(int)), spinbox,
+                    SLOT(setValue(int)));
+            connect(spinbox, SIGNAL(valueChanged(int)), oldspinbox,
+                    SLOT(setValue(int)));
         }
         break;
     }
 
     case T_Color: {
-        ColorButton* colorButton = new ColorButton(this);
+        ColorButton *colorButton = new ColorButton(this);
         inputWidget = colorButton;
         if (!oldarg) {
-            connect(colorButton, SIGNAL(changed(QColor)), this, SIGNAL(changed()));
+            connect(colorButton, SIGNAL(changed(QColor)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            ColorButton* oldColorButton = (ColorButton*) oldarg;
-            connect(colorButton, SIGNAL(changed(QColor)), oldColorButton, SLOT(setColor(QColor)));
-            connect(oldColorButton, SIGNAL(changed(QColor)), colorButton, SLOT(setColor(QColor)));
+        } else {
+            ColorButton *oldColorButton = (ColorButton *)oldarg;
+            connect(colorButton, SIGNAL(changed(QColor)), oldColorButton,
+                    SLOT(setColor(QColor)));
+            connect(oldColorButton, SIGNAL(changed(QColor)), colorButton,
+                    SLOT(setColor(QColor)));
         }
     }
 
     break;
 
     case T_Boolean: {
-        QCheckBox* checkBox = new QCheckBox(this);
+        QCheckBox *checkBox = new QCheckBox(this);
         inputWidget = checkBox;
 
         if (!oldarg) {
             connect(checkBox, SIGNAL(toggled(bool)), this, SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            QCheckBox* oldCheckBox = (QCheckBox*) oldarg;
-            connect(checkBox, SIGNAL(toggled(bool)), oldCheckBox, SLOT(setChecked(bool)));
-            connect(oldCheckBox, SIGNAL(toggled(bool)), checkBox, SLOT(setChecked(bool)));
+        } else {
+            QCheckBox *oldCheckBox = (QCheckBox *)oldarg;
+            connect(checkBox, SIGNAL(toggled(bool)), oldCheckBox,
+                    SLOT(setChecked(bool)));
+            connect(oldCheckBox, SIGNAL(toggled(bool)), checkBox,
+                    SLOT(setChecked(bool)));
         }
         break;
     }
 
     case T_Font: {
-        FontButton* fontButton = new FontButton(this);
+        FontButton *fontButton = new FontButton(this);
         inputWidget = fontButton;
         if (!oldarg) {
-            connect(fontButton, SIGNAL(fontChanged(QFont)), this, SIGNAL(changed()));
+            connect(fontButton, SIGNAL(fontChanged(QFont)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            FontButton* oldFontButton = (FontButton*) oldarg;
-            connect(fontButton, SIGNAL(fontChanged(QFont)), oldFontButton, SLOT(setFont(QFont)));
-            connect(oldFontButton, SIGNAL(fontChanged(QFont)), fontButton, SLOT(setFont(QFont)));
+        } else {
+            FontButton *oldFontButton = (FontButton *)oldarg;
+            connect(fontButton, SIGNAL(fontChanged(QFont)), oldFontButton,
+                    SLOT(setFont(QFont)));
+            connect(oldFontButton, SIGNAL(fontChanged(QFont)), fontButton,
+                    SLOT(setFont(QFont)));
         }
     }
 
@@ -242,21 +243,24 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     case T_Enum: {
         int i;
         FcitxConfigEnum *e = &codesc->configEnum;
-        QComboBox* combobox = new QComboBox(this);
+        QComboBox *combobox = new QComboBox(this);
         inputWidget = combobox;
 
-        for (i = 0; i < e->enumCount; i ++) {
-            combobox->addItem(QString::fromUtf8(dgettext(m_cfdesc->domain, e->enumDesc[i])));
+        for (i = 0; i < e->enumCount; i++) {
+            combobox->addItem(
+                QString::fromUtf8(dgettext(m_cfdesc->domain, e->enumDesc[i])));
         }
 
         if (!oldarg) {
-            connect(combobox, SIGNAL(currentIndexChanged(int)), this, SIGNAL(changed()));
+            connect(combobox, SIGNAL(currentIndexChanged(int)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            QComboBox* oldComboBox = (QComboBox*) oldarg;
-            connect(combobox, SIGNAL(currentIndexChanged(int)), oldComboBox, SLOT(setCurrentIndex(int)));
-            connect(oldComboBox, SIGNAL(currentIndexChanged(int)), combobox, SLOT(setCurrentIndex(int)));
+        } else {
+            QComboBox *oldComboBox = (QComboBox *)oldarg;
+            connect(combobox, SIGNAL(currentIndexChanged(int)), oldComboBox,
+                    SLOT(setCurrentIndex(int)));
+            connect(oldComboBox, SIGNAL(currentIndexChanged(int)), combobox,
+                    SLOT(setCurrentIndex(int)));
         }
 
     }
@@ -264,20 +268,26 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     break;
 
     case T_Hotkey: {
-        FcitxQtKeySequenceWidget* keyseq1 = new FcitxQtKeySequenceWidget();
-        FcitxQtKeySequenceWidget* keyseq2 = new FcitxQtKeySequenceWidget();
-        QHBoxLayout* hbox = new QHBoxLayout();
+        FcitxQtKeySequenceWidget *keyseq1 = new FcitxQtKeySequenceWidget();
+        FcitxQtKeySequenceWidget *keyseq2 = new FcitxQtKeySequenceWidget();
+        QHBoxLayout *hbox = new QHBoxLayout();
         hbox->setMargin(0);
-        QWidget* widget = new QWidget(this);
+        QWidget *widget = new QWidget(this);
         keyseq1->setMultiKeyShortcutsAllowed(false);
-        keyseq1->setModifierOnlyAllowed(codesc2->constrain.hotkeyConstrain.allowModifierOnly);
-        keyseq1->setModifierlessAllowed(!codesc2->constrain.hotkeyConstrain.disallowNoModifer);
-        keyseq1->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        keyseq1->setModifierOnlyAllowed(
+            codesc2->constrain.hotkeyConstrain.allowModifierOnly);
+        keyseq1->setModifierlessAllowed(
+            !codesc2->constrain.hotkeyConstrain.disallowNoModifer);
+        keyseq1->setSizePolicy(QSizePolicy::MinimumExpanding,
+                               QSizePolicy::Minimum);
         keyseq2->setMultiKeyShortcutsAllowed(false);
-        keyseq2->setModifierOnlyAllowed(codesc2->constrain.hotkeyConstrain.allowModifierOnly);
-        keyseq1->setModifierlessAllowed(!codesc2->constrain.hotkeyConstrain.disallowNoModifer);
+        keyseq2->setModifierOnlyAllowed(
+            codesc2->constrain.hotkeyConstrain.allowModifierOnly);
+        keyseq1->setModifierlessAllowed(
+            !codesc2->constrain.hotkeyConstrain.disallowNoModifer);
         keyseq2->setModifierlessAllowed(true);
-        keyseq2->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        keyseq2->setSizePolicy(QSizePolicy::MinimumExpanding,
+                               QSizePolicy::Minimum);
         hbox->addWidget(keyseq1);
         hbox->addWidget(keyseq2);
         widget->setLayout(hbox);
@@ -285,65 +295,84 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
         inputWidget = widget;
 
         if (!oldarg) {
-            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence,FcitxQtModifierSide)), this, SIGNAL(changed()));
-            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence,FcitxQtModifierSide)), this, SIGNAL(changed()));
+            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence,
+                                                       FcitxQtModifierSide)),
+                    this, SIGNAL(changed()));
+            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence,
+                                                       FcitxQtModifierSide)),
+                    this, SIGNAL(changed()));
             argument = hbox;
-        }
-        else {
-            QHBoxLayout* hbox = static_cast<QHBoxLayout*>(oldarg);
-            FcitxQtKeySequenceWidget* oldkeyseq1 = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            FcitxQtKeySequenceWidget* oldkeyseq2 = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
-            connect(oldkeyseq1, SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
-                    keyseq1,    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
-            connect(oldkeyseq2, SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
-                    keyseq2,    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
-            connect(keyseq1,    SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
-                    oldkeyseq1, SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
-            connect(keyseq2,    SIGNAL(keySequenceChanged(QKeySequence, FcitxQtModifierSide)),
-                    oldkeyseq2, SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+        } else {
+            QHBoxLayout *hbox = static_cast<QHBoxLayout *>(oldarg);
+            FcitxQtKeySequenceWidget *oldkeyseq1 =
+                static_cast<FcitxQtKeySequenceWidget *>(
+                    hbox->itemAt(0)->widget());
+            FcitxQtKeySequenceWidget *oldkeyseq2 =
+                static_cast<FcitxQtKeySequenceWidget *>(
+                    hbox->itemAt(1)->widget());
+            connect(oldkeyseq1, SIGNAL(keySequenceChanged(QKeySequence,
+                                                          FcitxQtModifierSide)),
+                    keyseq1,
+                    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(oldkeyseq2, SIGNAL(keySequenceChanged(QKeySequence,
+                                                          FcitxQtModifierSide)),
+                    keyseq2,
+                    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(keyseq1, SIGNAL(keySequenceChanged(QKeySequence,
+                                                       FcitxQtModifierSide)),
+                    oldkeyseq1,
+                    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
+            connect(keyseq2, SIGNAL(keySequenceChanged(QKeySequence,
+                                                       FcitxQtModifierSide)),
+                    oldkeyseq2,
+                    SLOT(setKeySequence(QKeySequence, FcitxQtModifierSide)));
         }
     }
 
     break;
 
     case T_File: {
-        KUrlRequester* requester = new KUrlRequester(this);
+        KUrlRequester *requester = new KUrlRequester(this);
         inputWidget = requester;
 
         if (!oldarg) {
-            connect(requester, SIGNAL(urlSelected(KUrl)), this, SIGNAL(changed()));
+            connect(requester, SIGNAL(urlSelected(KUrl)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
+        } else {
+            KUrlRequester *oldrequester = static_cast<KUrlRequester *>(oldarg);
+            connect(requester, SIGNAL(urlSelected(KUrl)), oldrequester,
+                    SLOT(setUrl(KUrl)));
+            connect(oldrequester, SIGNAL(urlSelected(KUrl)), requester,
+                    SLOT(setUrl(KUrl)));
         }
-        else {
-            KUrlRequester* oldrequester = static_cast<KUrlRequester*>(oldarg);
-            connect(requester, SIGNAL(urlSelected(KUrl)), oldrequester, SLOT(setUrl(KUrl)));
-            connect(oldrequester, SIGNAL(urlSelected(KUrl)), requester, SLOT(setUrl(KUrl)));
-        }
-    }
-    break;
+    } break;
 
     case T_Char:
 
     case T_String: {
-        QLineEdit* lineEdit = new QLineEdit(this);
+        QLineEdit *lineEdit = new QLineEdit(this);
         inputWidget = lineEdit;
         argument = inputWidget;
 
         if (codesc->type == T_Char)
             lineEdit->setMaxLength(1);
-        else if (codesc->type == T_String
-            && codesc2->constrain.stringConstrain.maxLength) {
-            lineEdit->setMaxLength(codesc2->constrain.stringConstrain.maxLength);
+        else if (codesc->type == T_String &&
+                 codesc2->constrain.stringConstrain.maxLength) {
+            lineEdit->setMaxLength(
+                codesc2->constrain.stringConstrain.maxLength);
         }
 
         if (!oldarg) {
-            connect(lineEdit, SIGNAL(textChanged(QString)), this, SIGNAL(changed()));
+            connect(lineEdit, SIGNAL(textChanged(QString)), this,
+                    SIGNAL(changed()));
             argument = inputWidget;
-        }
-        else {
-            QLineEdit* oldLineEdit = static_cast<QLineEdit*>(oldarg);
-            connect(lineEdit, SIGNAL(textChanged(QString)), oldLineEdit, SLOT(setText(QString)));
-            connect(oldLineEdit, SIGNAL(textChanged(QString)), lineEdit, SLOT(setText(QString)));
+        } else {
+            QLineEdit *oldLineEdit = static_cast<QLineEdit *>(oldarg);
+            connect(lineEdit, SIGNAL(textChanged(QString)), oldLineEdit,
+                    SLOT(setText(QString)));
+            connect(oldLineEdit, SIGNAL(textChanged(QString)), lineEdit,
+                    SLOT(setText(QString)));
         }
 
     }
@@ -365,15 +394,14 @@ void ConfigWidget::createConfigOptionWidget(FcitxConfigGroupDesc* cgdesc, FcitxC
     }
 }
 
-QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
-{
+QWidget *ConfigWidget::createSimpleConfigUi(bool skipAdvance) {
     int row = 0;
     VerticalScrollArea *scrollarea = new VerticalScrollArea;
     scrollarea->setFrameStyle(QFrame::NoFrame);
     scrollarea->setWidgetResizable(true);
 
-    QWidget* form = new QWidget;
-    QGridLayout* gridLayout = new QGridLayout;
+    QWidget *form = new QWidget;
+    QGridLayout *gridLayout = new QGridLayout;
     scrollarea->setWidget(form);
     form->setLayout(gridLayout);
 
@@ -389,46 +417,55 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
                 continue;
             else {
                 int count = 0;
-                HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-                    FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+                HASH_FOREACH(codesc, cgdesc->optionsDesc,
+                             FcitxConfigOptionDesc) {
+                    FcitxConfigOptionDesc2 *codesc2 =
+                        (FcitxConfigOptionDesc2 *)codesc;
                     if (!skipAdvance || !codesc2->advance)
                         count++;
                 }
                 if (!count)
                     continue;
             }
-            QLabel* grouplabel = new QLabel(QString("<b>%1</b>").arg(QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName))));
+            QLabel *grouplabel =
+                new QLabel(QString("<b>%1</b>")
+                               .arg(QString::fromUtf8(dgettext(
+                                   m_cfdesc->domain, cgdesc->groupName))));
             gridLayout->addWidget(grouplabel, row++, 0, 1, 3);
 
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-                FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+                FcitxConfigOptionDesc2 *codesc2 =
+                    (FcitxConfigOptionDesc2 *)codesc;
                 if (skipAdvance && codesc2->advance)
                     continue;
                 QString s, tooltip;
-                QWidget* inputWidget = NULL;
-                void* argument = NULL;
-                createConfigOptionWidget(cgdesc, codesc, s, tooltip, inputWidget, argument);
+                QWidget *inputWidget = NULL;
+                void *argument = NULL;
+                createConfigOptionWidget(cgdesc, codesc, s, tooltip,
+                                         inputWidget, argument);
 
                 if (inputWidget) {
-                    QLabel* label = new QLabel(s);
+                    QLabel *label = new QLabel(s);
                     if (!tooltip.isEmpty())
                         label->setToolTip(tooltip);
-                    gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
+                    gridLayout->addWidget(label, row, 1,
+                                          Qt::AlignCenter | Qt::AlignRight);
                     gridLayout->addWidget(inputWidget, row, 2);
                     if (argument)
-                        m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
+                        m_config->bind(cgdesc->groupName, codesc->optionName,
+                                       SyncFilterFunc, argument);
                     row++;
                 }
             }
         }
-    } while(0);
+    } while (0);
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length() != 0) {
         int labelrow = row;
-        row ++;
-        Q_FOREACH(const QString & key, keys) {
-            SubConfig* subconfig = m_parser->getSubConfig(key);
+        row++;
+        Q_FOREACH (const QString &key, keys) {
+            SubConfig *subconfig = m_parser->getSubConfig(key);
             if (!subconfig) {
                 continue;
             }
@@ -437,25 +474,26 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
                 continue;
             }
 
-            QLabel* label = new QLabel(QString::fromUtf8(
-                    dgettext(m_parser->domain().toUtf8().constData(),
-                                subconfig->name().toUtf8().constData()
-                            )
-                ));
-            gridLayout->addWidget(label, row, 1, Qt::AlignCenter | Qt::AlignRight);
+            QLabel *label = new QLabel(QString::fromUtf8(
+                dgettext(m_parser->domain().toUtf8().constData(),
+                         subconfig->name().toUtf8().constData())));
+            gridLayout->addWidget(label, row, 1,
+                                  Qt::AlignCenter | Qt::AlignRight);
             gridLayout->addWidget(new SubConfigWidget(subconfig, this), row, 2);
             row++;
         }
         if (row != labelrow + 1) {
-            QLabel* grouplabel = new QLabel(i18n("<b>Other</b>"));
+            QLabel *grouplabel = new QLabel(i18n("<b>Other</b>"));
             gridLayout->addWidget(grouplabel, labelrow, 0, 1, 3);
         }
     }
 
-    QSpacerItem* verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+    QSpacerItem *verticalSpacer =
+        new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
     if (row >= 2) {
-        QSpacerItem* horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        QSpacerItem *horizontalSpacer =
+            new QSpacerItem(20, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
         gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
     }
 
@@ -464,9 +502,8 @@ QWidget* ConfigWidget::createSimpleConfigUi(bool skipAdvance)
     return scrollarea;
 }
 
-QWidget* ConfigWidget::createFullConfigUi()
-{
-    QTabWidget* tabWidget = new QTabWidget(this);
+QWidget *ConfigWidget::createFullConfigUi() {
+    QTabWidget *tabWidget = new QTabWidget(this);
     do {
         if (!m_cfdesc)
             break;
@@ -478,46 +515,49 @@ QWidget* ConfigWidget::createFullConfigUi()
             if (cgdesc->optionsDesc == NULL)
                 continue;
 
-            QWidget* main = new QWidget(this);
-            QVBoxLayout* mainLayout = new QVBoxLayout;
+            QWidget *main = new QWidget(this);
+            QVBoxLayout *mainLayout = new QVBoxLayout;
             main->setLayout(mainLayout);
 
             VerticalScrollArea *scrollarea = new VerticalScrollArea;
             scrollarea->setFrameStyle(QFrame::NoFrame);
             scrollarea->setWidgetResizable(true);
 
-            QWidget* form = new QWidget;
-            QFormLayout* formLayout = new QFormLayout;
+            QWidget *form = new QWidget;
+            QFormLayout *formLayout = new QFormLayout;
             scrollarea->setWidget(form);
             form->setLayout(formLayout);
 
             HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
                 QString s, tooltip;
-                QWidget* inputWidget = NULL;
-                void* argument = NULL;
-                createConfigOptionWidget(cgdesc, codesc, s, tooltip, inputWidget, argument);
+                QWidget *inputWidget = NULL;
+                void *argument = NULL;
+                createConfigOptionWidget(cgdesc, codesc, s, tooltip,
+                                         inputWidget, argument);
 
                 if (inputWidget) {
-                    QLabel* label = new QLabel(s, this);
+                    QLabel *label = new QLabel(s, this);
                     if (!tooltip.isEmpty())
                         label->setToolTip(tooltip);
                     formLayout->addRow(label, inputWidget);
                     if (argument)
-                        m_config->bind(cgdesc->groupName, codesc->optionName, SyncFilterFunc, argument);
+                        m_config->bind(cgdesc->groupName, codesc->optionName,
+                                       SyncFilterFunc, argument);
                 }
             }
 
             mainLayout->addWidget(scrollarea);
 
-            tabWidget->addTab(main, QString::fromUtf8(dgettext(m_cfdesc->domain, cgdesc->groupName)));
+            tabWidget->addTab(main, QString::fromUtf8(dgettext(
+                                        m_cfdesc->domain, cgdesc->groupName)));
         }
-    } while(0);
+    } while (0);
 
     QStringList keys = m_parser->getSubConfigKeys();
     if (keys.length()) {
-        QList<SubConfig*> subConfigs;
-        Q_FOREACH(const QString & key, keys) {
-            SubConfig* subconfig = m_parser->getSubConfig(key);
+        QList<SubConfig *> subConfigs;
+        Q_FOREACH (const QString &key, keys) {
+            SubConfig *subconfig = m_parser->getSubConfig(key);
             if (!subconfig) {
                 continue;
             }
@@ -530,27 +570,24 @@ QWidget* ConfigWidget::createFullConfigUi()
         }
 
         if (subConfigs.length() > 0) {
-            QWidget* main = new QWidget(this);
-            QVBoxLayout* mainLayout = new QVBoxLayout;
+            QWidget *main = new QWidget(this);
+            QVBoxLayout *mainLayout = new QVBoxLayout;
             main->setLayout(mainLayout);
 
             QScrollArea *scrollarea = new QScrollArea;
             scrollarea->setFrameStyle(QFrame::NoFrame);
             scrollarea->setWidgetResizable(true);
 
-            QWidget* form = new QWidget;
-            QFormLayout* formLayout = new QFormLayout;
+            QWidget *form = new QWidget;
+            QFormLayout *formLayout = new QFormLayout;
             scrollarea->setWidget(form);
             form->setLayout(formLayout);
 
-            Q_FOREACH(SubConfig* subconfig, subConfigs) {
-                formLayout->addRow(
-                    QString::fromUtf8(
-                        dgettext(m_parser->domain().toUtf8().constData(),
-                                    subconfig->name().toUtf8().constData()
-                                )
-                    ),
-                    new SubConfigWidget(subconfig, this));
+            Q_FOREACH (SubConfig *subconfig, subConfigs) {
+                formLayout->addRow(QString::fromUtf8(dgettext(
+                                       m_parser->domain().toUtf8().constData(),
+                                       subconfig->name().toUtf8().constData())),
+                                   new SubConfigWidget(subconfig, this));
             }
 
             scrollarea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -564,9 +601,8 @@ QWidget* ConfigWidget::createFullConfigUi()
     return tabWidget;
 }
 
-void ConfigWidget::setupConfigUi()
-{
-    QVBoxLayout* layout = new QVBoxLayout(this);
+void ConfigWidget::setupConfigUi() {
+    QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addLayout(m_switchLayout);
     setLayout(layout);
 
@@ -576,7 +612,9 @@ void ConfigWidget::setupConfigUi()
         bindtextdomain(m_cfdesc->domain, LOCALEDIR);
         bind_textdomain_codeset(m_cfdesc->domain, "UTF-8");
         FILE *fp;
-        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(), m_name.toLocal8Bit().constData(), "r", NULL);
+        fp = FcitxXDGGetFileWithPrefix(m_prefix.toLocal8Bit().constData(),
+                                       m_name.toLocal8Bit().constData(), "r",
+                                       NULL);
         m_config->load(fp);
 
         if (fp)
@@ -598,13 +636,13 @@ void ConfigWidget::setupConfigUi()
         m_switchLayout->addWidget(m_fullWidget);
     }
 
-    if (m_simpleWidget && m_fullWidget)
-    {
+    if (m_simpleWidget && m_fullWidget) {
         m_advanceCheckBox = new QCheckBox(this);
         layout->addWidget(m_advanceCheckBox);
         m_advanceCheckBox->setCheckState(Qt::Unchecked);
         m_advanceCheckBox->setText(i18n("Show &Advance option"));
-        connect(m_advanceCheckBox, SIGNAL(toggled(bool)), this, SLOT(toggleSimpleFull()));
+        connect(m_advanceCheckBox, SIGNAL(toggled(bool)), this,
+                SLOT(toggleSimpleFull()));
         toggleSimpleFull();
     }
 
@@ -612,21 +650,17 @@ void ConfigWidget::setupConfigUi()
         m_config->sync();
 }
 
-void ConfigWidget::toggleSimpleFull()
-{
+void ConfigWidget::toggleSimpleFull() {
     if (m_advanceCheckBox->isChecked()) {
         m_simpleWidget->hide();
         m_fullWidget->show();
-    }
-    else {
+    } else {
         m_simpleWidget->show();
         m_fullWidget->hide();
     }
-
 }
 
-void ConfigWidget::checkCanUseSimple()
-{
+void ConfigWidget::checkCanUseSimple() {
     int count = 0;
     int simpleCount = 0;
     if (m_cfdesc) {
@@ -634,11 +668,13 @@ void ConfigWidget::checkCanUseSimple()
             if (cgdesc->optionsDesc == NULL)
                 continue;
             else {
-                HASH_FOREACH(codesc, cgdesc->optionsDesc, FcitxConfigOptionDesc) {
-                    FcitxConfigOptionDesc2* codesc2 = (FcitxConfigOptionDesc2*) codesc;
+                HASH_FOREACH(codesc, cgdesc->optionsDesc,
+                             FcitxConfigOptionDesc) {
+                    FcitxConfigOptionDesc2 *codesc2 =
+                        (FcitxConfigOptionDesc2 *)codesc;
                     if (!codesc2->advance)
                         simpleCount++;
-                    count ++;
+                    count++;
                 }
             }
         }
@@ -647,74 +683,69 @@ void ConfigWidget::checkCanUseSimple()
     /* if option is quite few */
     if (count + m_parser->getSubConfigKeys().length() <= 10) {
         m_fullUiType = CW_Simple;
-    }
-    else {
+    } else {
         m_fullUiType = CW_Full;
     }
     if (simpleCount + m_parser->getSubConfigKeys().length() <= 10) {
         m_simpleUiType = CW_Simple;
-    }
-    else
+    } else
         m_simpleUiType = CW_Full;
 
     if (count == simpleCount)
         m_simpleUiType = CW_NoShow;
 }
 
-
-QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxConfigFileDesc* cfdesc, const QString& prefix, const QString& name, const QString& subconfig, const QString& addonName)
-{
-    QDialog* dialog;
+QDialog *ConfigWidget::configDialog(QWidget *parent,
+                                    FcitxConfigFileDesc *cfdesc,
+                                    const QString &prefix, const QString &name,
+                                    const QString &subconfig,
+                                    const QString &addonName) {
+    QDialog *dialog;
     dialog = new QDialog(parent);
-    ConfigWidget* configPage = new ConfigWidget(
-        cfdesc,
-        prefix,
-        name,
-        subconfig,
-        addonName,
-        dialog
-    );
+    ConfigWidget *configPage =
+        new ConfigWidget(cfdesc, prefix, name, subconfig, addonName, dialog);
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
-    QVBoxLayout* dialogLayout = new QVBoxLayout;
+    QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog->setLayout(dialogLayout);
-    QDialogButtonBox* buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
+    QDialogButtonBox *buttonBox =
+        new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
+                             QDialogButtonBox::RestoreDefaults);
     dialogLayout->addWidget(configPage);
     dialogLayout->addWidget(buttonBox);
 
-    connect(buttonBox, &QDialogButtonBox::clicked, configPage, [configPage, buttonBox](QAbstractButton* button) {
-        configPage->buttonClicked(buttonBox->standardButton(button));
-    });
+    connect(buttonBox, &QDialogButtonBox::clicked, configPage,
+            [configPage, buttonBox](QAbstractButton *button) {
+                configPage->buttonClicked(buttonBox->standardButton(button));
+            });
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
     return dialog;
 }
 
-QDialog* ConfigWidget::configDialog(QWidget* parent, FcitxAddon* addonEntry)
-{
+QDialog *ConfigWidget::configDialog(QWidget *parent, FcitxAddon *addonEntry) {
     if (!addonEntry)
         return NULL;
 
-    QDialog* dialog;
-    FcitxConfigFileDesc* cfdesc = Global::instance()->GetConfigDesc(QString::fromUtf8(addonEntry->name).append(".desc"));
+    QDialog *dialog;
+    FcitxConfigFileDesc *cfdesc = Global::instance()->GetConfigDesc(
+        QString::fromUtf8(addonEntry->name).append(".desc"));
 
-    if (cfdesc ||  strlen(addonEntry->subconfig) != 0) {
-        dialog = configDialog(
-            parent,
-            cfdesc,
-            QString::fromUtf8("conf"),
-            QString::fromUtf8(addonEntry->name).append(".config") ,
-            QString::fromUtf8(addonEntry->subconfig),
-            QString::fromUtf8(addonEntry->name)
-        );
+    if (cfdesc || strlen(addonEntry->subconfig) != 0) {
+        dialog =
+            configDialog(parent, cfdesc, QString::fromUtf8("conf"),
+                         QString::fromUtf8(addonEntry->name).append(".config"),
+                         QString::fromUtf8(addonEntry->subconfig),
+                         QString::fromUtf8(addonEntry->name));
         return dialog;
     }
 
     return NULL;
 }
 
-void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxConfigOption *option, void *value, FcitxConfigSync sync, void *arg)
-{
+void SyncFilterFunc(FcitxGenericConfig *gconfig, FcitxConfigGroup *group,
+                    FcitxConfigOption *option, void *value,
+                    FcitxConfigSync sync, void *arg) {
     Q_UNUSED(gconfig);
     Q_UNUSED(group);
     Q_UNUSED(value);
@@ -730,26 +761,27 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
             break;
 
         case T_Integer: {
-            int i = *(int*) value;
-            QSpinBox* spinbox = static_cast<QSpinBox*>(arg);
+            int i = *(int *)value;
+            QSpinBox *spinbox = static_cast<QSpinBox *>(arg);
             spinbox->setValue(i);
         }
 
         break;
 
         case T_Color: {
-            FcitxConfigColor* rawcolor = (FcitxConfigColor*) value;
-            QColor color(QColor::fromRgbF(rawcolor->r, rawcolor->g, rawcolor->b));
-            ColorButton* colorButton = static_cast<ColorButton*>(arg);
+            FcitxConfigColor *rawcolor = (FcitxConfigColor *)value;
+            QColor color(
+                QColor::fromRgbF(rawcolor->r, rawcolor->g, rawcolor->b));
+            ColorButton *colorButton = static_cast<ColorButton *>(arg);
             colorButton->setColor(color);
         }
 
         break;
 
         case T_Boolean: {
-            boolean *bl = (boolean*) value;
+            boolean *bl = (boolean *)value;
 
-            QCheckBox* checkBox = static_cast<QCheckBox*>(arg);
+            QCheckBox *checkBox = static_cast<QCheckBox *>(arg);
 
             checkBox->setChecked(*bl);
         }
@@ -757,8 +789,8 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Font: {
-            char** fontname = (char**) value;
-            FontButton *fontButton = static_cast<FontButton*>(arg);
+            char **fontname = (char **)value;
+            FontButton *fontButton = static_cast<FontButton *>(arg);
             QFont font = FontButton::parseFont(QString::fromUtf8(*fontname));
             fontButton->setFont(font);
         }
@@ -766,9 +798,9 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Enum: {
-            int index = *(int*) value;
+            int index = *(int *)value;
 
-            QComboBox* combobox = static_cast<QComboBox*>(arg);
+            QComboBox *combobox = static_cast<QComboBox *>(arg);
 
             combobox->setCurrentIndex(index);
         }
@@ -776,52 +808,53 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_Hotkey: {
-            FcitxHotkey* hotkey = (FcitxHotkey*) value;
+            FcitxHotkey *hotkey = (FcitxHotkey *)value;
 
-            QHBoxLayout* hbox = static_cast<QHBoxLayout*>(arg);
-            FcitxQtKeySequenceWidget* keyseq[2];
-            keyseq[0] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            keyseq[1] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
+            QHBoxLayout *hbox = static_cast<QHBoxLayout *>(arg);
+            FcitxQtKeySequenceWidget *keyseq[2];
+            keyseq[0] = static_cast<FcitxQtKeySequenceWidget *>(
+                hbox->itemAt(0)->widget());
+            keyseq[1] = static_cast<FcitxQtKeySequenceWidget *>(
+                hbox->itemAt(1)->widget());
 
             int j;
-            for (j = 0; j < 2; j ++) {
+            for (j = 0; j < 2; j++) {
                 FcitxQtModifierSide side = MS_Unknown;
-                if (hotkey[j].sym == FcitxKey_Control_L
-                 || hotkey[j].sym == FcitxKey_Alt_L
-                 || hotkey[j].sym == FcitxKey_Shift_L
-                 || hotkey[j].sym == FcitxKey_Super_L) {
+                if (hotkey[j].sym == FcitxKey_Control_L ||
+                    hotkey[j].sym == FcitxKey_Alt_L ||
+                    hotkey[j].sym == FcitxKey_Shift_L ||
+                    hotkey[j].sym == FcitxKey_Super_L) {
                     side = MS_Left;
                 }
-                if (hotkey[j].sym == FcitxKey_Control_R
-                 || hotkey[j].sym == FcitxKey_Alt_R
-                 || hotkey[j].sym == FcitxKey_Shift_R
-                 || hotkey[j].sym == FcitxKey_Super_R) {
+                if (hotkey[j].sym == FcitxKey_Control_R ||
+                    hotkey[j].sym == FcitxKey_Alt_R ||
+                    hotkey[j].sym == FcitxKey_Shift_R ||
+                    hotkey[j].sym == FcitxKey_Super_R) {
                     side = MS_Right;
                 }
-                keyseq[j]->setKeySequence(HotkeyToKeySequence(&hotkey[j]), side);
+                keyseq[j]->setKeySequence(HotkeyToKeySequence(&hotkey[j]),
+                                          side);
             }
         }
 
         break;
 
         case T_File: {
-            char** filename = (char**) value;
-            KUrlRequester* urlrequester = static_cast<KUrlRequester*>(arg);
+            char **filename = (char **)value;
+            KUrlRequester *urlrequester = static_cast<KUrlRequester *>(arg);
             urlrequester->setUrl(QString::fromUtf8(*filename));
-        }
-        break;
+        } break;
 
         case T_Char: {
-            char* string = (char*) value;
-            char temp[2] = { *string, '\0' };
-            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
+            char *string = (char *)value;
+            char temp[2] = {*string, '\0'};
+            QLineEdit *lineEdit = static_cast<QLineEdit *>(arg);
             lineEdit->setText(QString::fromUtf8(temp));
-        }
-        break;
+        } break;
 
         case T_String: {
-            char** string = (char**) value;
-            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
+            char **string = (char **)value;
+            QLineEdit *lineEdit = static_cast<QLineEdit *>(arg);
             lineEdit->setText(QString::fromUtf8(*string));
         }
 
@@ -839,8 +872,8 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
             break;
 
         case T_Integer: {
-            int* i = (int*) value;
-            QSpinBox* spinbox = static_cast<QSpinBox*>(arg);
+            int *i = (int *)value;
+            QSpinBox *spinbox = static_cast<QSpinBox *>(arg);
             *i = spinbox->value();
         }
 
@@ -848,56 +881,59 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
 
         case T_Color: {
             QColor color;
-            ColorButton* colorButton = static_cast<ColorButton*>(arg);
+            ColorButton *colorButton = static_cast<ColorButton *>(arg);
             color = colorButton->color();
-            FcitxConfigColor* rawcolor = (FcitxConfigColor*) value;
+            FcitxConfigColor *rawcolor = (FcitxConfigColor *)value;
             rawcolor->r = color.redF();
             rawcolor->g = color.greenF();
             rawcolor->b = color.blueF();
-        }
-        break;
+        } break;
 
         case T_Boolean: {
-            QCheckBox* checkBox = static_cast<QCheckBox*>(arg);
-            boolean* bl = (boolean*) value;
+            QCheckBox *checkBox = static_cast<QCheckBox *>(arg);
+            boolean *bl = (boolean *)value;
             *bl = checkBox->isChecked();
         }
 
         break;
 
         case T_Font: {
-            FontButton *fontButton = static_cast<FontButton*>(arg);
+            FontButton *fontButton = static_cast<FontButton *>(arg);
             const QString font = fontButton->fontName();
-            char** fontname = (char**) value;
+            char **fontname = (char **)value;
             fcitx_utils_string_swap(fontname, font.toUtf8().constData());
         }
 
         break;
 
         case T_Enum: {
-            QComboBox* combobox = static_cast<QComboBox*>(arg);
-            int* index = (int*) value;
+            QComboBox *combobox = static_cast<QComboBox *>(arg);
+            int *index = (int *)value;
             *index = combobox->currentIndex();
         }
 
         break;
 
         case T_Hotkey: {
-            QHBoxLayout* hbox = static_cast<QHBoxLayout*>(arg);
-            FcitxQtKeySequenceWidget* keyseq[2];
-            keyseq[0] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(0)->widget());
-            keyseq[1] = static_cast<FcitxQtKeySequenceWidget*>(hbox->itemAt(1)->widget());
+            QHBoxLayout *hbox = static_cast<QHBoxLayout *>(arg);
+            FcitxQtKeySequenceWidget *keyseq[2];
+            keyseq[0] = static_cast<FcitxQtKeySequenceWidget *>(
+                hbox->itemAt(0)->widget());
+            keyseq[1] = static_cast<FcitxQtKeySequenceWidget *>(
+                hbox->itemAt(1)->widget());
             int j = 0;
 
-            FcitxHotkey* hotkey = (FcitxHotkey*) value;
+            FcitxHotkey *hotkey = (FcitxHotkey *)value;
 
-            for (j = 0; j < 2 ; j ++) {
-                if (KeySequenceToHotkey(keyseq[j]->keySequence(), keyseq[j]->modifierSide(), &hotkey[j])) {
-                    char* keystring = FcitxHotkeyGetKeyString(hotkey[j].sym, hotkey[j].state);
+            for (j = 0; j < 2; j++) {
+                if (KeySequenceToHotkey(keyseq[j]->keySequence(),
+                                        keyseq[j]->modifierSide(),
+                                        &hotkey[j])) {
+                    char *keystring =
+                        FcitxHotkeyGetKeyString(hotkey[j].sym, hotkey[j].state);
                     fcitx_utils_string_swap(&hotkey[j].desc, keystring);
                     fcitx_utils_free(keystring);
-                }
-                else {
+                } else {
                     fcitx_utils_string_swap(&hotkey[j].desc, NULL);
                 }
             }
@@ -906,50 +942,46 @@ void SyncFilterFunc(FcitxGenericConfig* gconfig, FcitxConfigGroup *group, FcitxC
         break;
 
         case T_File: {
-            KUrlRequester* urlrequester = static_cast<KUrlRequester*>(arg);
-            char** filename = (char**) value;
-            fcitx_utils_string_swap(filename, urlrequester->url().toLocalFile().toUtf8().constData());
-        }
-        break;
+            KUrlRequester *urlrequester = static_cast<KUrlRequester *>(arg);
+            char **filename = (char **)value;
+            fcitx_utils_string_swap(
+                filename,
+                urlrequester->url().toLocalFile().toUtf8().constData());
+        } break;
 
         case T_Char: {
-            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
-            char* c = (char*) value;
+            QLineEdit *lineEdit = static_cast<QLineEdit *>(arg);
+            char *c = (char *)value;
             *c = lineEdit->text()[0].toLatin1();
-        }
-        break;
+        } break;
 
         case T_String: {
-            QLineEdit* lineEdit = static_cast<QLineEdit*>(arg);
-            char** string = (char**) value;
-            fcitx_utils_string_swap(string, lineEdit->text().toUtf8().constData());
-        }
-        break;
+            QLineEdit *lineEdit = static_cast<QLineEdit *>(arg);
+            char **string = (char **)value;
+            fcitx_utils_string_swap(string,
+                                    lineEdit->text().toUtf8().constData());
+        } break;
         }
     }
 }
 
-
-bool
-KeySequenceToHotkey(const QKeySequence& keyseq, FcitxQtModifierSide side, FcitxHotkey* hotkey)
-{
+bool KeySequenceToHotkey(const QKeySequence &keyseq, FcitxQtModifierSide side,
+                         FcitxHotkey *hotkey) {
     if (keyseq.count() != 1)
         return false;
 
     int sym = 0;
     FcitxQtKeySequenceWidget::keyQtToFcitx(keyseq[0], side, sym, hotkey->state);
-    hotkey->sym = (FcitxKeySym) sym;
+    hotkey->sym = (FcitxKeySym)sym;
 
     return true;
 }
 
-QKeySequence
-HotkeyToKeySequence(FcitxHotkey* hotkey)
-{
+QKeySequence HotkeyToKeySequence(FcitxHotkey *hotkey) {
     uint state = hotkey->state;
     FcitxKeySym keyval = hotkey->sym;
 
-    return QKeySequence(FcitxQtKeySequenceWidget::keyFcitxToQt((int) keyval, state));
+    return QKeySequence(
+        FcitxQtKeySequenceWidget::keyFcitxToQt((int)keyval, state));
 }
-
 }

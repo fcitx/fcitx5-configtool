@@ -22,19 +22,16 @@
 
 #include <QDialog>
 #include <QDialogButtonBox>
-#include <fcitx/addon.h>
-#include <fcitxqtkeyboardproxy.h>
 
 class KeyboardLayoutWidget;
 class QComboBox;
-namespace Fcitx {
+namespace fcitx {
 
 class ConfigWidget;
-class IMConfigDialog: public QDialog
-{
+class IMConfigDialog : public QDialog {
     Q_OBJECT
 public:
-    explicit IMConfigDialog(const QString& imName, const FcitxAddon* addon, QWidget* parent = 0);
+    explicit IMConfigDialog(const QString &imName, QWidget *parent = 0);
 
 private slots:
     void onButtonClicked(QDialogButtonBox::StandardButton code);
@@ -42,10 +39,8 @@ private slots:
 
 private:
     QString m_imName;
-    QComboBox* m_layoutCombobox;
-    ConfigWidget* m_configPage;
-    FcitxQtKeyboardLayoutList m_layoutList;
-    KeyboardLayoutWidget* m_layoutWidget;
+    QComboBox *m_layoutCombobox;
+    KeyboardLayoutWidget *m_layoutWidget;
 };
 }
 

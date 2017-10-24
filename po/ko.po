@@ -1,344 +1,357 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx\n"
-"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-06-09 08:49-0700\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-20 15:55-0700\n"
 "PO-Revision-Date: 2017-07-15 12:42+0000\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/fcitx/fcitx/language/ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: layout/main.cpp:37
+#: src/impage.cpp:96
+#, kde-format
+msgctxt "%1 is language name, %2 is country name"
+msgid "%1 (%2)"
+msgstr "%1 (%2)"
+
+#. i18n: file: src/impage.ui:292
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: rc.cpp:21
+#, kde-format
+msgid "<b>Default keyboard layout:</b>"
+msgstr "<b>기본 키보드 배열:</b>"
+
+#: src/imconfigdialog.cpp:37
+#, kde-format
+msgid "<b>Keyboard Layout:</b>"
+msgstr "<b>키보드 배열:</b>"
+
+#: src/configwidget.cpp:486
+#, kde-format
+msgid "<b>Other</b>"
+msgstr "<b>기타</b>"
+
+#. i18n: file: src/impage.ui:302
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: rc.cpp:24
+#, kde-format
+msgid "<b>Select Input Method:</b>"
+msgstr "<b>입력기 선택:</b>"
+
+#: layout/main.cpp:36
 #, kde-format
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 배열 보이기"
 
-#: layout/main.cpp:41
+#: src/module.cpp:40
+#, kde-format
+msgid "Author"
+msgstr "작성자"
+
+#. i18n: file: src/impage.ui:83
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: rc.cpp:9
+#, kde-format
+msgid "Available Input Method:"
+msgstr "사용가능한 입력기:"
+
+#. i18n: file: src/erroroverlay.ui:167
+#. i18n: ectx: property (text), widget (QLabel, textLabel)
+#: rc.cpp:30
+#, kde-format
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
+
+#: src/module.cpp:36
+#, fuzzy, kde-format
+msgid "Configure Fcitx 5"
+msgstr "Fcitx 설정"
+
+#: src/kcm_fcitx5.desktop.in:13
+msgid "Configure Input Method"
+msgstr "입력기 설정"
+
+#: src/module.cpp:37
+#, fuzzy, kde-format
+msgid "Copyright 2017 Xuetian Weng"
+msgstr "저작권자 2012 Xuetian Weng"
+
+#. i18n: file: src/impage.ui:176
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: rc.cpp:15
+#, kde-format
+msgid "Current Input Method:"
+msgstr "현재 입력기:"
+
+#: src/imconfigdialog.cpp:42
+#, kde-format
+msgid "Default"
+msgstr "기본값"
+
+#: src/module.cpp:35
+#, fuzzy, kde-format
+msgid "Fcitx 5 Configuration Module"
+msgstr "Fcitx 설정 모듈"
+
+#. i18n: file: src/erroroverlay.ui:132
+#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
+#. i18n: file: src/fontbutton.ui:20
+#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+#: rc.cpp:27 rc.cpp:33
+#, kde-format
+msgid "Form"
+msgstr "폼"
+
+#: src/module.cpp:46 src/kcm_fcitx5.desktop.in:12
+#, kde-format
+msgid "Input Method"
+msgstr "입력기"
+
+#: src/imconfigdialog.cpp:44
+#, kde-format
+msgid "Input Method Default"
+msgstr "입력기 기본값"
+
+#: layout/main.cpp:40
+#, kde-format
+msgid "Keyboard <layout>"
+msgstr "키보드 <배열>"
+
+#: layout/main.cpp:68
+#, kde-format
+msgid "Keyboard Layout viewer"
+msgstr "키보드 배열 보이기"
+
+#: layout/main.cpp:39
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
 msgstr "키보드 배열 <그룹> (0-3)"
 
 #: layout/main.cpp:42
 #, kde-format
-msgid "group"
-msgstr "그룹"
-
-#: layout/main.cpp:44
-#, kde-format
-msgid "Keyboard <layout>"
-msgstr "키보드 <배열>"
-
-#: layout/main.cpp:45
-#, kde-format
-msgid "layout"
-msgstr "배열"
-
-#: layout/main.cpp:47
-#, kde-format
 msgid "Keyboard layout <variant>"
 msgstr "키보드 배열 <변형>"
 
-#: layout/main.cpp:48
+#. i18n: file: src/impage.ui:38
+#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
+#: rc.cpp:3
 #, kde-format
-msgid "variant"
-msgstr "변형"
+msgid "Keyboard layout to use when no input method active"
+msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
 
-#: layout/main.cpp:74
-#, kde-format
-msgid "Keyboard Layout viewer"
-msgstr "키보드 배열 보이기"
+#: layout/kbd-layout-viewer.desktop.in:7
+msgid "Keyboard layout viewer"
+msgstr "키보드 배열 표시기"
 
-#: src/addonselector.cpp:375
-#, kde-format
-msgid "Search Addons"
-msgstr "부가기능 검색"
-
-#: src/addonselector.cpp:382 src/configwidget.cpp:606
-#, kde-format
-msgid "Show &Advance option"
-msgstr "추가 설정 보이기(&A)"
-
-#: src/configwidget.cpp:450
-#, kde-format
-msgid "<b>Other</b>"
-msgstr "<b>기타</b>"
-
-#: src/configwidget.cpp:560 src/impage.cpp:69
-#, kde-format
-msgid "Other"
-msgstr "기타"
-
-#: src/erroroverlay.cpp:43
-#, kde-format
-msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
-
-#: src/imconfigdialog.cpp:42
-#, kde-format
-msgid "<b>Keyboard Layout:</b>"
-msgstr "<b>키보드 배열:</b>"
-
-#: src/imconfigdialog.cpp:47
-#, kde-format
-msgid "Default"
-msgstr "기본값"
-
-#: src/imconfigdialog.cpp:49
-#, kde-format
-msgid "Input Method Default"
-msgstr "입력기 기본값"
-
-#: src/imconfigdialog.cpp:98
-#, kde-format
-msgid "<b>Input Method Setting:</b>"
-msgstr "<b>입력기 설정:</b>"
-
-#: src/impage.cpp:50
-#, kde-format
-msgid "Unknown"
-msgstr "알 수 없음 "
-
-#: src/impage.cpp:53
+#: src/impage.cpp:59
 #, kde-format
 msgid "Multilingual"
 msgstr "다중언어"
 
-#: src/impage.cpp:84
+#. i18n: file: src/impage.ui:115
+#. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
+#: rc.cpp:12
 #, kde-format
-msgctxt "%1 is language name, %2 is country name"
-msgid "%1 (%2)"
-msgstr "%1 (%2)"
+msgid "Only &Show Current Language"
+msgstr "현재 언어만 보이기(&S)"
 
-#: src/impage.cpp:481
+#: src/configwidget.cpp:597 src/impage.cpp:79
+#, kde-format
+msgid "Other"
+msgstr "기타"
+
+#: src/addonselector.cpp:397
+#, kde-format
+msgid "Search Addons"
+msgstr "부가기능 검색"
+
+#: src/impage.cpp:482
 #, kde-format
 msgid "Search Input Method"
 msgstr "입력기 검색"
 
-#: src/module.cpp:83
+#. i18n: file: src/fontbutton.ui:51
+#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
+#: rc.cpp:36
 #, kde-format
-msgid "Fcitx Configuration Module"
-msgstr "Fcitx 설정 모듈"
+msgid "Select &Font..."
+msgstr "글꼴 선택(&F)"
 
-#: src/module.cpp:85
+#. i18n: file: src/impage.ui:41
+#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
+#: rc.cpp:6
 #, kde-format
-msgid "Configure Fcitx"
-msgstr "Fcitx 설정"
+msgid "Select default keyboard layout"
+msgstr "기본 키보드 배열 선택"
 
-#: src/module.cpp:87
+#: src/configwidget.cpp:643 src/addonselector.cpp:404
 #, kde-format
-msgid "Copyright 2012 Xuetian Weng"
-msgstr "저작권자 2012 Xuetian Weng"
+msgid "Show &Advance option"
+msgstr "추가 설정 보이기(&A)"
 
-#: src/module.cpp:91
+#. i18n: file: src/impage.ui:277
+#. i18n: ectx: property (text), widget (QLabel, infoLabel)
+#: rc.cpp:18
+#, kde-format
+msgid ""
+"The first input method will be inactive state. Usually you need to put "
+"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
+msgstr ""
+"첫 입력 방법이 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
+"<i> 배열명 </i> </b>를 첫 항목으로 하여야 합니다."
+
+#: src/impage.cpp:57
+#, kde-format
+msgid "Unknown"
+msgstr "알 수 없음 "
+
+#: layout/kbd-layout-viewer.desktop.in:8
+msgid "View keyboard layout"
+msgstr "키보드 배열 보이기"
+
+#: src/module.cpp:40
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/module.cpp:91
+#: src/kcm_fcitx5.desktop.in:4
+msgid "fcitx"
+msgstr ""
+
+#: layout/main.cpp:39
 #, kde-format
-msgid "Author"
-msgstr "작성자"
+msgid "group"
+msgstr "그룹"
 
-#: src/module.cpp:104 src/kcm_fcitx.desktop.in:11
+#: layout/kbd-layout-viewer.desktop.in:4
+msgid "input-keyboard"
+msgstr ""
+
+#: layout/main.cpp:40
 #, kde-format
-msgid "Input Method"
-msgstr "입력기"
+msgid "layout"
+msgstr "배열"
 
-#: src/module.cpp:113
+#: layout/main.cpp:43
 #, kde-format
-msgid "Global Config"
-msgstr "전역 설정"
+msgid "variant"
+msgstr "변형"
 
-#: src/module.cpp:121
-#, kde-format
-msgid "Appearance"
-msgstr "모양새"
+#~ msgid "<b>Input Method Setting:</b>"
+#~ msgstr "<b>입력기 설정:</b>"
 
-#: src/module.cpp:129
-#, kde-format
-msgid "Addon Config"
-msgstr "부가기능 설정"
+#~ msgid "Global Config"
+#~ msgstr "전역 설정"
 
-#: src/module.cpp:178
-#, kde-format
-msgid "Manage Skin"
-msgstr "스킨 관리"
+#~ msgid "Appearance"
+#~ msgstr "모양새"
 
-#: src/skinpage.cpp:220
-#, kde-format
-msgid "First candidate"
-msgstr "첫 후보"
+#~ msgid "Addon Config"
+#~ msgstr "부가기능 설정"
 
-#: src/skinpage.cpp:221
-#, kde-format
-msgid "Other candidate"
-msgstr "다른 후보"
+#~ msgid "Manage Skin"
+#~ msgstr "스킨 관리"
 
-#: src/skinpage.cpp:390
-#, kde-format
-msgid "Skin %1 Cannot be loaded"
-msgstr "스킨 %1 을 불러올 수 없음"
+#~ msgid "First candidate"
+#~ msgstr "첫 후보"
 
-#: src/subconfigwidget.cpp:230
-#, kde-format
-msgid ""
-"User config doesn't exisits, do you want to open system file or copy system "
-"file to user file?"
-msgstr "사용자 설정이 없습니다. 시스템 파일을 열거나 사용자 파일로 복사하겠습니까?"
+#~ msgid "Other candidate"
+#~ msgstr "다른 후보"
 
-#: src/subconfigwidget.cpp:231
-#, kde-format
-msgid "What to do"
-msgstr "어떡할까요?"
+#~ msgid "Skin %1 Cannot be loaded"
+#~ msgstr "스킨 %1 을 불러올 수 없음"
 
-#: src/subconfigwidget.cpp:232
-#, kde-format
-msgid "Copy"
-msgstr "복사"
+#~ msgid ""
+#~ "User config doesn't exisits, do you want to open system file or copy "
+#~ "system file to user file?"
+#~ msgstr ""
+#~ "사용자 설정이 없습니다. 시스템 파일을 열거나 사용자 파일로 복사하겠습니까?"
 
-#: src/subconfigwidget.cpp:233
-#, kde-format
-msgid "View system"
-msgstr "시스템 파일 보기"
+#~ msgid "What to do"
+#~ msgstr "어떡할까요?"
 
-#: src/subconfigwidget.cpp:245
-#, kde-format
-msgid "Copy failed"
-msgstr "복사 실패"
+#~ msgid "Copy"
+#~ msgstr "복사"
 
-#: src/uipage.cpp:16
-#, kde-format
-msgid "Cannot load currently used user interface info"
-msgstr "현재 사용자 인터페이스 정보를 불러올 수 없음"
+#~ msgid "View system"
+#~ msgstr "시스템 파일 보기"
 
-#: src/uipage.cpp:45
-#, kde-format
-msgid "No configuration options for %1."
-msgstr "%1 에 대한 설정이 없음"
+#~ msgid "Copy failed"
+#~ msgstr "복사 실패"
 
-#: layout/kbd-layout-viewer.desktop.in:6
-msgid "Keyboard layout viewer"
-msgstr "키보드 배열 표시기"
+#~ msgid "Cannot load currently used user interface info"
+#~ msgstr "현재 사용자 인터페이스 정보를 불러올 수 없음"
 
-#: layout/kbd-layout-viewer.desktop.in:7
-msgid "View keyboard layout"
-msgstr "키보드 배열 보이기"
+#~ msgid "No configuration options for %1."
+#~ msgstr "%1 에 대한 설정이 없음"
 
-#: layout/kbd-layout-viewer.desktop.in:9
-msgid "keyboard;input;im"
-msgstr "keyboard;input;im"
+#~ msgid "keyboard;input;im"
+#~ msgstr "keyboard;input;im"
 
-#: src/kcm_fcitx.desktop.in:12
-msgid "Configure Input Method"
-msgstr "입력기 설정"
+#~ msgid "keyboard,input,im,fcitx"
+#~ msgstr "keyboard,input,im,fcitx"
 
-#: src/kcm_fcitx.desktop.in:14
-msgid "keyboard,input,im,fcitx"
-msgstr "keyboard,input,im,fcitx"
+#~ msgid ""
+#~ "Options listed here might be overridden by specific input method, usually "
+#~ "including candidate number, hotkey of previous page and next page. You "
+#~ "may need go to configuration of corresponding input method to change them."
+#~ msgstr ""
+#~ "표시된 옵션은 입력기에 의해 덮어씌워질 수 있습니다. 대체로 후보 개수, 이"
+#~ "전 혹은 다음 페이지의 단축기 등이 해당됩니다. 그냥 당연한 거 같아요.해당 "
+#~ "입력기의 설정 페이지에서 변경 가능합니다."
 
-#. i18n: file: src/configpage.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ConfigPage)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-msgid "Form"
-msgstr "폼"
+#~ msgid "&Configure Skin"
+#~ msgstr "스킨 설정(&C)"
 
-#. i18n: file: src/configpage.ui:54
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"Options listed here might be overridden by specific input method, usually "
-"including candidate number, hotkey of previous page and next page. You may "
-"need go to configuration of corresponding input method to change them."
-msgstr "표시된 옵션은 입력기에 의해 덮어씌워질 수 있습니다. 대체로 후보 개수, 이전 혹은 다음 페이지의 단축기 등이 해당됩니다. 그냥 당연한 거 같아요.해당 입력기의 설정 페이지에서 변경 가능합니다."
+#~ msgid "&Delete Skin"
+#~ msgstr "스킨 삭제(&D)"
 
-#. i18n: file: src/fontbutton.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-msgid "Select &Font..."
-msgstr "글꼴 선택(&F)"
+#~ msgid "Get New &Skin..."
+#~ msgstr "새 스킨 얻기(&S)"
 
-#. i18n: file: src/impage.ui:38
-#. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-msgid "Keyboard layout to use when no input method active"
-msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
+#~ msgid ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">Notice:</span></p>\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic "
+#~ "UI to use skin function.</p></body></html>"
+#~ msgstr ""
+#~ "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/"
+#~ "REC-html40/strict.dtd\">\n"
+#~ "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/"
+#~ "css\">\n"
+#~ "p, li { white-space: pre-wrap; }\n"
+#~ "</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; "
+#~ "font-weight:400; font-style:normal;\">\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-"
+#~ "weight:600;\">주의:</span></p>\n"
+#~ "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-"
+#~ "right:0px; -qt-block-indent:0; text-indent:0px;\">클래식 UI를 사용해야 스"
+#~ "킨을 사용할 수 있습니다.</p></body></html>"
 
-#. i18n: file: src/impage.ui:41
-#. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-msgid "Select default keyboard layout"
-msgstr "기본 키보드 배열 선택"
+#~ msgctxt "NAME OF TRANSLATORS"
+#~ msgid "Your names"
+#~ msgstr "당신의 이름"
 
-#. i18n: file: src/impage.ui:83
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid "Available Input Method:"
-msgstr "사용가능한 입력기:"
-
-#. i18n: file: src/impage.ui:115
-#. i18n: ectx: property (text), widget (QCheckBox,
-#. onlyCurrentLanguageCheckBox)
-msgid "Only &Show Current Language"
-msgstr "현재 언어만 보이기(&S)"
-
-#. i18n: file: src/impage.ui:176
-#. i18n: ectx: property (text), widget (QLabel, label_2)
-msgid "Current Input Method:"
-msgstr "현재 입력기:"
-
-#. i18n: file: src/impage.ui:277
-#. i18n: ectx: property (text), widget (QLabel, infoLabel)
-msgid ""
-"The first input method will be inactive state. Usually you need to put "
-"<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
-msgstr "첫 입력 방법이 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - <i> 배열명 </i> </b>를 첫 항목으로 하여야 합니다."
-
-#. i18n: file: src/impage.ui:292
-#. i18n: ectx: property (text), widget (QLabel, label_3)
-msgid "<b>Default keyboard layout:</b>"
-msgstr "<b>기본 키보드 배열:</b>"
-
-#. i18n: file: src/impage.ui:302
-#. i18n: ectx: property (text), widget (QLabel, label_4)
-msgid "<b>Select Input Method:</b>"
-msgstr "<b>입력기 선택:</b>"
-
-#. i18n: file: src/skinpage.ui:41
-#. i18n: ectx: property (text), widget (QPushButton, configureSkinButton)
-msgid "&Configure Skin"
-msgstr "스킨 설정(&C)"
-
-#. i18n: file: src/skinpage.ui:51
-#. i18n: ectx: property (text), widget (QPushButton, deleteSkinButton)
-msgid "&Delete Skin"
-msgstr "스킨 삭제(&D)"
-
-#. i18n: file: src/skinpage.ui:58
-#. i18n: ectx: property (text), widget (QPushButton, installSkinButton)
-msgid "Get New &Skin..."
-msgstr "새 스킨 얻기(&S)"
-
-#. i18n: file: src/skinpage.ui:72
-#. i18n: ectx: property (text), widget (QLabel, label)
-msgid ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Notice:</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">You need to use Classic UI to use skin function.</p></body></html>"
-msgstr "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">주의:</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">클래식 UI를 사용해야 스킨을 사용할 수 있습니다.</p></body></html>"
-
-msgctxt "NAME OF TRANSLATORS"
-msgid "Your names"
-msgstr "당신의 이름"
-
-msgctxt "EMAIL OF TRANSLATORS"
-msgid "Your emails"
-msgstr "당신의 이메일"
+#~ msgctxt "EMAIL OF TRANSLATORS"
+#~ msgid "Your emails"
+#~ msgstr "당신의 이메일"

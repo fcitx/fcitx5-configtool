@@ -25,34 +25,29 @@
 
 struct _FcitxAddon;
 
-namespace Fcitx
-{
+namespace fcitx {
 
 class Module;
 
-class AddonSelector : public QWidget
-{
+class AddonSelector : public QWidget {
     Q_OBJECT
 
 public:
-    AddonSelector(Module* parent);
+    AddonSelector(Module *parent);
     virtual ~AddonSelector();
     void load();
     void save();
-    void addAddon(struct _FcitxAddon* fcitxAddon);
+    void addAddon(struct _FcitxAddon *fcitxAddon);
 
 Q_SIGNALS:
     void changed(bool hasChanged);
-    void configCommitted(const QByteArray& componentName);
+    void configCommitted(const QByteArray &componentName);
 
 private:
-
     class Private;
-    Private* d;
-    Module* parent;
+    Private *d;
+    Module *parent;
 };
-
-
 }
 
 #endif
