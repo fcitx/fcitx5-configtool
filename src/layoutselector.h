@@ -19,7 +19,7 @@
 #ifndef _KCM_FCITX_LAYOUTWIDGET_H_
 #define _KCM_FCITX_LAYOUTWIDGET_H_
 
-#include "ui_layoutwidget.h"
+#include "ui_layoutselector.h"
 #include <QSortFilterProxyModel>
 #include <QStringListModel>
 #include <QWidget>
@@ -36,7 +36,7 @@ class LanguageFilterModel;
 class LayoutInfoModel;
 class VariantInfoModel;
 
-class LayoutSelector : public QWidget, public Ui::LayoutWidget {
+class LayoutSelector : public QWidget, public Ui::LayoutSelector {
     Q_OBJECT
 public:
     LayoutSelector(Module *module, QWidget *parent = nullptr);
