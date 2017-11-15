@@ -489,7 +489,6 @@ void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
     }
     QDBusPendingReply<FcitxQtAddonInfoList> reply(*watcher);
     addonModel_->setAddons(reply.value());
-    emit changed();
 }
 
 QFont AddonDelegate::titleFont(const QFont &baseFont) const {

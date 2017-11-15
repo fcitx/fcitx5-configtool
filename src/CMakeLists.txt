@@ -10,6 +10,7 @@ set(kcm_SRCS
   layoutselector.cpp
   iso639.cpp
   addonselector.cpp
+  logging.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 

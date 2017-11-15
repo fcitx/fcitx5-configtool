@@ -22,6 +22,7 @@
 #include "config.h"
 #include "erroroverlay.h"
 #include "impage.h"
+#include "logging.h"
 #include <KAboutData>
 #include <fcitx-utils/standardpath.h>
 #include <fcitxqtcontrollerproxy.h>
@@ -60,24 +61,35 @@ Module::Module(QWidget *parent, const QVariantList &args)
             &Module::fcitxAvailabilityChanged);
     watcher_->watch();
     pageWidget->addTab(impage_, i18n("Input Method"));
-    connect(impage_, &IMPage::changed, this, [this]() { changed(); });
+    connect(impage_, &IMPage::changed, this, [this]() {
+        qCDebug(KCM_FCITX5) << "IMPage changed";
+        changed();
+    });
     pageWidget->addTab(addonPage_, i18n("Addon"));
-    connect(addonPage_, &AddonSelector::changed, this, [this]() { changed(); });
+    connect(addonPage_, &AddonSelector::changed, this, [this]() {
+        qCDebug(KCM_FCITX5) << "AddonSelector changed";
+        changed();
+    });
 }
 
 Module::~Module() { watcher_->unwatch(); }
 
 void Module::load() {
+    qCDebug(KCM_FCITX5) << "kcm_fcitx5 load()";
     impage_->load();
     addonPage_->load();
 }
 
 void Module::save() {
+    qCDebug(KCM_FCITX5) << "kcm_fcitx5 save()";
     impage_->save();
     addonPage_->save();
 }
 
-void Module::defaults() { changed(); }
+void Module::defaults() {
+    qCDebug(KCM_FCITX5) << "kcm_fcitx5 defaults()";
+    changed();
+}
 
 void Module::fcitxAvailabilityChanged(bool avail) {
     delete controller_;
