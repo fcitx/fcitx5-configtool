@@ -9,10 +9,11 @@ set(kcm_SRCS
   model.cpp
   layoutselector.cpp
   iso639.cpp
+  addonselector.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 
-set(kcm_UIS module.ui impage.ui fontbutton.ui erroroverlay.ui layoutselector.ui)
+set(kcm_UIS module.ui impage.ui fontbutton.ui erroroverlay.ui layoutselector.ui addonselector.ui)
 
 ki18n_wrap_ui(kcm_SRCS ${kcm_UIS})
 

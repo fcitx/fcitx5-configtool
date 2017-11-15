@@ -77,10 +77,10 @@ public:
 Q_SIGNALS:
     void changed();
 
-public Q_SLOTS:
+public slots:
     void buttonClicked(QDialogButtonBox::StandardButton);
     void load();
-private Q_SLOTS:
+private slots:
     void toggleSimpleFull();
 
 private:

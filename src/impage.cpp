@@ -18,15 +18,15 @@
 */
 
 #include "impage.h"
+#include "layoutselector.h"
 #include "model.h"
 #include "module.h"
+#include <QDebug>
 #include <QInputDialog>
+#include <QMessageBox>
 #include <QPainter>
 #include <QStyledItemDelegate>
 #include <fcitxqtcontrollerproxy.h>
-#include "layoutselector.h"
-#include <QDebug>
-#include <QMessageBox>
 
 namespace fcitx {
 namespace kcm {
@@ -232,9 +232,12 @@ void IMPage::save() {
     if (!module_->controller()) {
         return;
     }
-    module_->controller()->SetInputMethodGroupInfo(
-        inputMethodGroupComboBox->currentText(), defaultLayout_, imEntries_);
-    changed_ = false;
+    if (changed_) {
+        module_->controller()->SetInputMethodGroupInfo(
+            inputMethodGroupComboBox->currentText(), defaultLayout_,
+            imEntries_);
+        changed_ = false;
+    }
 }
 
 void IMPage::load() { availabilityChanged(); }
@@ -294,7 +297,10 @@ void IMPage::selectedGroupChanged() {
         return;
     }
     if (changed_ && !lastGroup_.isEmpty()) {
-        if (QMessageBox::No == QMessageBox::question(this, i18n("Current group changed"), "Do you want to change group? Changes to current group will be lost!")) {
+        if (QMessageBox::No ==
+            QMessageBox::question(this, i18n("Current group changed"),
+                                  "Do you want to change group? Changes to "
+                                  "current group will be lost!")) {
             inputMethodGroupComboBox->setCurrentText(lastGroup_);
             return;
         }
@@ -372,8 +378,9 @@ void IMPage::selectDefaultLayout() {
     } else {
         layout = defaultLayout_;
     }
-    auto result = LayoutSelector::selectLayout(this, module_, i18n("Select default layout"), layout, variant);
-    if (result.second.isEmpty()){
+    auto result = LayoutSelector::selectLayout(
+        this, module_, i18n("Select default layout"), layout, variant);
+    if (result.second.isEmpty()) {
         defaultLayout_ = result.first;
     } else {
         defaultLayout_ = QString("%0-%1").arg(result.first, result.second);

@@ -20,9 +20,9 @@
 #define _FCITX_MODULE_H_
 
 // KDE
+#include "iso639.h"
 #include "ui_module.h"
 #include <KCModule>
-#include "iso639.h"
 
 namespace fcitx {
 
@@ -33,6 +33,7 @@ namespace kcm {
 
 class IMPage;
 class ErrorOverlay;
+class AddonSelector;
 
 class Module : public KCModule, public Ui::Module {
     Q_OBJECT
@@ -47,7 +48,7 @@ public:
 
     bool available() const { return controller_; }
     FcitxQtControllerProxy *controller() { return controller_; }
-    const Iso639& iso639() { return iso639_; }
+    const Iso639 &iso639() { return iso639_; }
 
 signals:
     void availabilityChanged(bool avail);
@@ -60,6 +61,7 @@ private:
     FcitxQtControllerProxy *controller_ = nullptr;
     ErrorOverlay *errorOverlay_;
     IMPage *impage_;
+    AddonSelector *addonPage_;
     Iso639 iso639_;
 };
 

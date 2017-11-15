@@ -25,217 +25,268 @@
 #include <QVBoxLayout>
 
 // KDE
+#include <KCategorizedSortFilterProxyModel>
 #include <KCategorizedView>
 #include <KCategoryDrawer>
 #include <KLocalizedString>
-
-// system
-#include <libintl.h>
+#include <KWidgetItemDelegate>
 
 // Fcitx
 
 // self
 #include "addonselector.h"
-#include "addonselector_p.h"
-#include "configwidget.h"
-#include "global.h"
 #include "module.h"
+#include <fcitxqtcontrollerproxy.h>
+#include <fcitxqtdbustypes.h>
 
 #define MARGIN 5
 
 namespace fcitx {
+namespace kcm {
 
-AddonSelector::Private::Private(AddonSelector *parent)
-    : QObject(parent), listView(0), categoryDrawer(0), parent(parent) {}
+enum ExtraRoles { CommentRole = 0x19880209, ConfigurableRole = 0x20080331 };
 
-AddonSelector::Private::~Private() {}
+class AddonModel : public QAbstractListModel {
+    Q_OBJECT
 
-int AddonSelector::Private::dependantLayoutValue(int value, int width,
-                                                 int totalWidth) const {
-    if (listView->layoutDirection() == Qt::LeftToRight) {
+public:
+    explicit AddonModel(AddonSelector *parent);
+    virtual ~AddonModel();
+
+    QModelIndex index(int row, int column = 0,
+                      const QModelIndex &parent = QModelIndex()) const override;
+    QVariant data(const QModelIndex &index,
+                  int role = Qt::DisplayRole) const override;
+    bool setData(const QModelIndex &index, const QVariant &value,
+                 int role = Qt::EditRole) override;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+
+    void setAddons(const FcitxQtAddonInfoList &list) {
+        beginResetModel();
+        addonEntryList_ = list;
+        enabledList_.clear();
+        disabledList_.clear();
+        endResetModel();
+    }
+
+    const auto &enabledList() const { return enabledList_; }
+    const auto &disabledList() const { return disabledList_; }
+
+private:
+    QSet<QString> enabledList_;
+    QSet<QString> disabledList_;
+    FcitxQtAddonInfoList addonEntryList_;
+    AddonSelector *parent_;
+};
+
+class ProxyModel : public KCategorizedSortFilterProxyModel {
+    Q_OBJECT
+
+public:
+    explicit ProxyModel(AddonSelector *parent)
+        : KCategorizedSortFilterProxyModel(parent), parent_(parent) {}
+
+    ~ProxyModel() = default;
+
+protected:
+    bool filterAcceptsRow(int source_row,
+                          const QModelIndex &source_parent) const override;
+    bool subSortLessThan(const QModelIndex &left,
+                         const QModelIndex &right) const override;
+
+private:
+    AddonSelector *parent_;
+};
+
+class AddonDelegate : public KWidgetItemDelegate {
+    Q_OBJECT
+
+public:
+    AddonDelegate(QAbstractItemView *listView, AddonSelector *parent);
+    virtual ~AddonDelegate();
+
+    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option,
+                       const QModelIndex &index) const;
+    virtual QSize sizeHint(const QStyleOptionViewItem &option,
+                           const QModelIndex &index) const;
+
+signals:
+    void changed();
+    void configCommitted(const QByteArray &addonName);
+
+protected:
+    virtual QList<QWidget *> createItemWidgets(const QModelIndex &index) const;
+    virtual void updateItemWidgets(const QList<QWidget *> widgets,
+                                   const QStyleOptionViewItem &option,
+                                   const QPersistentModelIndex &index) const;
+
+private slots:
+    void checkBoxClicked(bool state);
+    void configureClicked();
+
+private:
+    QFont titleFont(const QFont &baseFont) const;
+    int dependantLayoutValue(int value, int width, int totalWidth) const;
+
+    QCheckBox *checkBox_;
+    QPushButton *pushButton_;
+    AddonSelector *parent_;
+};
+
+int AddonDelegate::dependantLayoutValue(int value, int width,
+                                        int totalWidth) const {
+    if (itemView()->layoutDirection() == Qt::LeftToRight) {
         return value;
     }
 
     return totalWidth - width - value;
 }
 
-AddonSelector::Private::AddonModel::AddonModel(
-    AddonSelector::Private *addonSelector_d, QObject *parent)
-    : QAbstractListModel(parent), addonSelector_d(addonSelector_d) {}
+AddonModel::AddonModel(AddonSelector *parent)
+    : QAbstractListModel(parent), parent_(parent) {}
 
-AddonSelector::Private::AddonModel::~AddonModel() {}
+AddonModel::~AddonModel() {}
 
-QModelIndex
-AddonSelector::Private::AddonModel::index(int row, int column,
-                                          const QModelIndex &parent) const {
+QModelIndex AddonModel::index(int row, int column,
+                              const QModelIndex &parent) const {
     Q_UNUSED(parent);
 
-    return createIndex(
-        row, column,
-        (row < addonEntryList.count()) ? (void *)addonEntryList.at(row) : 0);
+    return createIndex(row, column);
 }
 
-QVariant AddonSelector::Private::AddonModel::data(const QModelIndex &index,
-                                                  int role) const {
-    if (!index.isValid() || !index.internalPointer()) {
-        return QVariant();
+QString categoryName(int category) {
+    if (category >= 5 || category < 0) {
+        return QString();
     }
 
-    FcitxAddon *addonEntry = static_cast<FcitxAddon *>(index.internalPointer());
+    const char *str[] = {I18N_NOOP("InputMethod"), I18N_NOOP("Frontend"),
+                         I18N_NOOP("Loader"), I18N_NOOP("Module"),
+                         I18N_NOOP("UI")};
+
+    return i18n(str[category]);
+}
+
+QVariant AddonModel::data(const QModelIndex &index, int role) const {
+    if (!index.isValid() || index.row() >= addonEntryList_.size()) {
+        return QVariant();
+    }
+    const auto &addon = addonEntryList_.at(index.row());
 
     switch (role) {
 
     case Qt::DisplayRole:
-        return QString::fromUtf8(addonEntry->generalname);
+        return addon.name();
 
     case CommentRole:
-        return QString::fromUtf8(addonEntry->comment);
+        return addon.comment();
 
-    case ConfigurableRole: {
-        FcitxConfigFileDesc *cfdesc = Global::instance()->GetConfigDesc(
-            QString::fromUtf8(addonEntry->name).append(".desc"));
-        return (bool)(cfdesc != NULL || strlen(addonEntry->subconfig) != 0);
-    }
-
-    case Qt::DecorationRole:
-        return QVariant();
+    case ConfigurableRole:
+        // FIXME
+        return false;
 
     case Qt::CheckStateRole:
-        return addonEntry->bEnabled;
+        if (disabledList_.contains(addon.uniqueName())) {
+            return false;
+        } else if (enabledList_.contains(addon.uniqueName())) {
+            return true;
+        }
+        return addon.enabled();
 
-    case KCategorizedSortFilterProxyModel::CategoryDisplayRole: {
-        const FcitxConfigOptionDesc *codesc = FcitxConfigDescGetOptionDesc(
-            addonEntry->config.configFile->fileDesc, "Addon", "Category");
-        const FcitxConfigEnum *e = &codesc->configEnum;
-        return QString::fromUtf8(
-            dgettext("fcitx", e->enumDesc[addonEntry->category]));
-    }
+    case KCategorizedSortFilterProxyModel::CategoryDisplayRole:
+        return categoryName(addon.category());
     case KCategorizedSortFilterProxyModel::CategorySortRole:
-        return (int)addonEntry->category;
-
-    default:
-        return QVariant();
+        return addon.category();
     }
+    return QVariant();
 }
 
-bool AddonSelector::Private::AddonModel::setData(const QModelIndex &index,
-                                                 const QVariant &value,
-                                                 int role) {
-    if (!index.isValid()) {
+bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
+                         int role) {
+    if (!index.isValid() || index.row() >= addonEntryList_.size()) {
         return false;
     }
 
     bool ret = false;
 
     if (role == Qt::CheckStateRole) {
-        FcitxAddon *addon = static_cast<FcitxAddon *>(index.internalPointer());
-        addon->bEnabled = value.toBool();
-        QString buf = QString("%1.conf").arg(addon->name);
-        FILE *fp = FcitxXDGGetFileUserWithPrefix(
-            "addon", buf.toLocal8Bit().constData(), "w", NULL);
-        if (fp) {
-            fprintf(fp, "[Addon]\nEnabled=%s\n",
-                    addon->bEnabled ? "True" : "False");
-            fclose(fp);
+        auto oldData = data(index, role).toBool();
+        auto &item = addonEntryList_[index.row()];
+        auto enabled = value.toBool();
+        if (item.enabled() == enabled) {
+            enabledList_.remove(item.uniqueName());
+            disabledList_.remove(item.uniqueName());
+        } else if (enabled) {
+            enabledList_.insert(item.uniqueName());
+            disabledList_.remove(item.uniqueName());
+        } else {
+            enabledList_.remove(item.uniqueName());
+            disabledList_.insert(item.uniqueName());
         }
-
-        ret = true;
+        auto newData = data(index, role).toBool();
+        ret = oldData != newData;
     }
 
     if (ret) {
         emit dataChanged(index, index);
+        emit parent_->changed();
     }
 
     return ret;
 }
 
-void AddonSelector::Private::AddonModel::addAddon(FcitxAddon *addon) {
-    beginInsertRows(QModelIndex(), addonEntryList.count(),
-                    addonEntryList.count());
-    addonEntryList << addon;
-    endInsertRows();
-}
-
-int AddonSelector::Private::AddonModel::rowCount(
-    const QModelIndex &parent) const {
+int AddonModel::rowCount(const QModelIndex &parent) const {
     if (parent.isValid()) {
         return 0;
     }
 
-    return addonEntryList.count();
+    return addonEntryList_.count();
 }
 
-AddonSelector::Private::ProxyModel::ProxyModel(
-    AddonSelector::Private *addonSelector_d, QObject *parent)
-    : KCategorizedSortFilterProxyModel(parent),
-      addonSelector_d(addonSelector_d) {
-    sort(0);
-}
-
-AddonSelector::Private::ProxyModel::~ProxyModel() {}
-
-bool AddonSelector::Private::ProxyModel::filterAcceptsRow(
-    int sourceRow, const QModelIndex &sourceParent) const {
+bool ProxyModel::filterAcceptsRow(int sourceRow,
+                                  const QModelIndex &sourceParent) const {
     Q_UNUSED(sourceParent)
     const QModelIndex index = sourceModel()->index(sourceRow, 0);
-    const FcitxAddon *addonInfo =
-        static_cast<FcitxAddon *>(index.internalPointer());
-    if ((!addonInfo->bEnabled || addonInfo->advance) &&
-        !addonSelector_d->advanceCheckbox->isChecked()) {
-        return false;
-    }
-    if (addonInfo->category == AC_FRONTEND &&
-        !addonSelector_d->advanceCheckbox->isChecked()) {
-        return false;
-    }
+    auto name = sourceModel()->data(index, Qt::DisplayRole).toString();
+    auto comment = sourceModel()->data(index, CommentRole).toString();
 
-    if (!addonSelector_d->lineEdit->text().isEmpty()) {
-        return QString(addonInfo->name)
-                   .contains(addonSelector_d->lineEdit->text(),
-                             Qt::CaseInsensitive) ||
-               QString::fromUtf8(addonInfo->generalname)
-                   .contains(addonSelector_d->lineEdit->text(),
-                             Qt::CaseInsensitive) ||
-               QString::fromUtf8(addonInfo->comment)
-                   .contains(addonSelector_d->lineEdit->text(),
-                             Qt::CaseInsensitive);
+    QString searchText = parent_->searchText();
+    if (!searchText.isEmpty()) {
+        return name.contains(searchText, Qt::CaseInsensitive) ||
+               comment.contains(searchText, Qt::CaseInsensitive);
     }
 
     return true;
 }
 
-bool AddonSelector::Private::ProxyModel::subSortLessThan(
-    const QModelIndex &left, const QModelIndex &right) const {
-    FcitxAddon *l = static_cast<FcitxAddon *>(left.internalPointer());
-    FcitxAddon *r = static_cast<FcitxAddon *>(right.internalPointer());
-    return QString::fromUtf8(l->name).compare(QString::fromUtf8(r->name),
-                                              Qt::CaseInsensitive) < 0;
+bool ProxyModel::subSortLessThan(const QModelIndex &left,
+                                 const QModelIndex &right) const {
+    return data(left, Qt::DisplayRole)
+               .toString()
+               .compare(data(right, Qt::DisplayRole).toString(),
+                        Qt::CaseInsensitive) < 0;
 }
 
-AddonSelector::Private::AddonDelegate::AddonDelegate(
-    AddonSelector::Private *addonSelector_d, QObject *parent)
-    : KWidgetItemDelegate(addonSelector_d->listView, parent),
-      checkBox(new QCheckBox), pushButton(new QPushButton),
-      addonSelector_d(addonSelector_d) {
-    pushButton->setIcon(
+AddonDelegate::AddonDelegate(QAbstractItemView *listView, AddonSelector *parent)
+    : KWidgetItemDelegate(listView, parent), checkBox_(new QCheckBox),
+      pushButton_(new QPushButton), parent_(parent) {
+    pushButton_->setIcon(
         QIcon::fromTheme("configure")); // only for getting size matters
 }
 
-AddonSelector::Private::AddonDelegate::~AddonDelegate() {
-    delete checkBox;
-    delete pushButton;
+AddonDelegate::~AddonDelegate() {
+    delete checkBox_;
+    delete pushButton_;
 }
 
-void AddonSelector::Private::AddonDelegate::paint(
-    QPainter *painter, const QStyleOptionViewItem &option,
-    const QModelIndex &index) const {
+void AddonDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
+                          const QModelIndex &index) const {
     if (!index.isValid()) {
         return;
     }
 
     int xOffset = 0;
-    if (addonSelector_d->advanceCheckbox->isChecked())
-        xOffset = checkBox->sizeHint().width();
+    if (parent_->showAdvanced())
+        xOffset = checkBox_->sizeHint().width();
 
     painter->save();
 
@@ -243,20 +294,20 @@ void AddonSelector::Private::AddonDelegate::paint(
                                          painter, 0);
 
     QRect contentsRect(
-        addonSelector_d->dependantLayoutValue(
-            MARGIN * 2 + option.rect.left() + xOffset,
-            option.rect.width() - MARGIN * 2 - xOffset, option.rect.width()),
+        dependantLayoutValue(MARGIN * 2 + option.rect.left() + xOffset,
+                             option.rect.width() - MARGIN * 2 - xOffset,
+                             option.rect.width()),
         MARGIN + option.rect.top(), option.rect.width() - MARGIN * 2 - xOffset,
         option.rect.height() - MARGIN * 2);
 
-    int lessHorizontalSpace = MARGIN * 2 + pushButton->sizeHint().width();
+    int lessHorizontalSpace = MARGIN * 2 + pushButton_->sizeHint().width();
 
     contentsRect.setWidth(contentsRect.width() - lessHorizontalSpace);
 
     if (option.state & QStyle::State_Selected)
         painter->setPen(option.palette.highlightedText().color());
 
-    if (addonSelector_d->listView->layoutDirection() == Qt::RightToLeft)
+    if (itemView()->layoutDirection() == Qt::RightToLeft)
         contentsRect.translate(lessHorizontalSpace, 0);
 
     painter->save();
@@ -278,8 +329,8 @@ void AddonSelector::Private::AddonDelegate::paint(
     painter->restore();
 }
 
-QSize AddonSelector::Private::AddonDelegate::sizeHint(
-    const QStyleOptionViewItem &option, const QModelIndex &index) const {
+QSize AddonDelegate::sizeHint(const QStyleOptionViewItem &option,
+                              const QModelIndex &index) const {
     int i = 4;
     int j = 1;
 
@@ -288,23 +339,21 @@ QSize AddonSelector::Private::AddonDelegate::sizeHint(
 
     return QSize(
         fmTitle.width(index.model()->data(index, Qt::DisplayRole).toString()) +
-            0 + MARGIN * i + pushButton->sizeHint().width() * j,
+            0 + MARGIN * i + pushButton_->sizeHint().width() * j,
         fmTitle.height() + option.fontMetrics.height() + MARGIN * 2);
 }
 
-QList<QWidget *> AddonSelector::Private::AddonDelegate::createItemWidgets(
-    const QModelIndex &index) const {
+QList<QWidget *> AddonDelegate::createItemWidgets(const QModelIndex &) const {
     QList<QWidget *> widgetList;
 
     QCheckBox *enabledCheckBox = new QCheckBox;
-    connect(enabledCheckBox, SIGNAL(clicked(bool)), this,
-            SLOT(slotStateChanged(bool)));
-    connect(enabledCheckBox, SIGNAL(clicked(bool)), this, SLOT(emitChanged()));
+    connect(enabledCheckBox, &QCheckBox::clicked, this,
+            &AddonDelegate::checkBoxClicked);
 
     QPushButton *configurePushButton = new QPushButton;
     configurePushButton->setIcon(QIcon::fromTheme("configure"));
-    connect(configurePushButton, SIGNAL(clicked(bool)), this,
-            SLOT(slotConfigureClicked()));
+    connect(configurePushButton, &QPushButton::clicked, this,
+            &AddonDelegate::configureClicked);
 
     setBlockedEventTypes(enabledCheckBox,
                          QList<QEvent::Type>()
@@ -325,22 +374,22 @@ QList<QWidget *> AddonSelector::Private::AddonDelegate::createItemWidgets(
     return widgetList;
 }
 
-void AddonSelector::Private::AddonDelegate::updateItemWidgets(
+void AddonDelegate::updateItemWidgets(
     const QList<QWidget *> widgets, const QStyleOptionViewItem &option,
     const QPersistentModelIndex &index) const {
     QCheckBox *checkBox = static_cast<QCheckBox *>(widgets[0]);
     checkBox->resize(checkBox->sizeHint());
-    checkBox->move(
-        addonSelector_d->dependantLayoutValue(
-            MARGIN, checkBox->sizeHint().width(), option.rect.width()),
-        option.rect.height() / 2 - checkBox->sizeHint().height() / 2);
-    checkBox->setVisible(addonSelector_d->advanceCheckbox->isChecked());
+    checkBox->move(dependantLayoutValue(MARGIN, checkBox->sizeHint().width(),
+                                        option.rect.width()),
+                   option.rect.height() / 2 -
+                       checkBox->sizeHint().height() / 2);
+    checkBox->setVisible(parent_->showAdvanced());
 
     QPushButton *configurePushButton = static_cast<QPushButton *>(widgets[1]);
     QSize configurePushButtonSizeHint = configurePushButton->sizeHint();
     configurePushButton->resize(configurePushButtonSizeHint);
     configurePushButton->move(
-        addonSelector_d->dependantLayoutValue(
+        dependantLayoutValue(
             option.rect.width() - MARGIN - configurePushButtonSizeHint.width(),
             configurePushButtonSizeHint.width(), option.rect.width()),
         option.rect.height() / 2 - configurePushButtonSizeHint.height() / 2);
@@ -358,7 +407,7 @@ void AddonSelector::Private::AddonDelegate::updateItemWidgets(
     }
 }
 
-void AddonSelector::Private::AddonDelegate::slotStateChanged(bool state) {
+void AddonDelegate::checkBoxClicked(bool state) {
     if (!focusedIndex().isValid())
         return;
     const QModelIndex index = focusedIndex();
@@ -367,87 +416,90 @@ void AddonSelector::Private::AddonDelegate::slotStateChanged(bool state) {
         ->setData(index, state, Qt::CheckStateRole);
 }
 
-void AddonSelector::Private::AddonDelegate::emitChanged() {
-    emit changed(true);
-}
-
-void AddonSelector::Private::AddonDelegate::slotConfigureClicked() {
+void AddonDelegate::configureClicked() {
     const QModelIndex index = focusedIndex();
-
-    FcitxAddon *addonEntry = static_cast<FcitxAddon *>(index.internalPointer());
-    QPointer<QDialog> configDialog(ConfigWidget::configDialog(
-        addonSelector_d->parent->parent, addonEntry));
-    if (configDialog.isNull())
-        return;
-    configDialog->exec();
-    delete configDialog;
+    // FIXME
 }
-
-void AddonSelector::load() {}
-
-void AddonSelector::save() {}
 
 AddonSelector::AddonSelector(Module *parent)
-    : QWidget(parent), d(new Private(this)), parent(parent) {
-    QVBoxLayout *layout = new QVBoxLayout;
-    layout->setMargin(0);
+    : QWidget(parent), module_(parent), proxyModel_(new ProxyModel(this)),
+      addonModel_(new AddonModel(this)) {
+    setupUi(this);
 
-    d->lineEdit = new QLineEdit(this);
-    d->lineEdit->setClearButtonEnabled(true);
-    d->lineEdit->setPlaceholderText(i18n("Search Addons"));
-    d->listView = new KCategorizedView(this);
-    d->listView->setVerticalScrollMode(QListView::ScrollPerPixel);
-    d->listView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    d->categoryDrawer = new KCategoryDrawer(d->listView);
-    d->listView->setCategoryDrawer(d->categoryDrawer);
-    d->advanceCheckbox = new QCheckBox(this);
-    d->advanceCheckbox->setText(i18n("Show &Advance option"));
-    d->advanceCheckbox->setChecked(false);
+    connect(module_, &Module::availabilityChanged, this,
+            &AddonSelector::availabilityChanged);
 
-    d->proxyModel = new Private::ProxyModel(d, this);
-    d->addonModel = new Private::AddonModel(d, this);
-    d->proxyModel->setCategorizedModel(true);
-    d->proxyModel->setSourceModel(d->addonModel);
-    d->listView->setModel(d->proxyModel);
-    d->listView->setAlternatingBlockColors(true);
+    categoryDrawer_ = new KCategoryDrawer(listView);
+    listView->setCategoryDrawer(categoryDrawer_);
+    proxyModel_->setCategorizedModel(true);
+    proxyModel_->setSourceModel(addonModel_);
+    listView->setModel(proxyModel_);
 
-    Private::AddonDelegate *addonDelegate = new Private::AddonDelegate(d, this);
-    d->listView->setItemDelegate(addonDelegate);
+    delegate_ = new AddonDelegate(listView, this);
+    listView->setItemDelegate(delegate_);
+    listView->viewport()->setAttribute(Qt::WA_Hover);
 
-    d->listView->setMouseTracking(true);
-    d->listView->viewport()->setAttribute(Qt::WA_Hover);
-
-    connect(d->lineEdit, SIGNAL(textChanged(QString)), d->proxyModel,
-            SLOT(invalidate()));
-    connect(d->advanceCheckbox, SIGNAL(clicked(bool)), d->proxyModel,
-            SLOT(invalidate()));
-    connect(addonDelegate, SIGNAL(changed(bool)), this, SIGNAL(changed(bool)));
-    connect(addonDelegate, SIGNAL(configCommitted(QByteArray)), this,
-            SIGNAL(configCommitted(QByteArray)));
-
-    layout->addWidget(d->lineEdit);
-    layout->addWidget(d->listView);
-    layout->addWidget(d->advanceCheckbox);
-    this->setLayout(layout);
+    connect(lineEdit, &QLineEdit::textChanged, proxyModel_,
+            &QSortFilterProxyModel::invalidate);
+    connect(advancedCheckbox, &QCheckBox::clicked, proxyModel_,
+            &QSortFilterProxyModel::invalidate);
 }
 
-void AddonSelector::addAddon(FcitxAddon *fcitxAddon) {
-    d->addonModel->addAddon(fcitxAddon);
-    d->proxyModel->sort(0);
+AddonSelector::~AddonSelector() { delete delegate_; }
+
+void AddonSelector::load() { availabilityChanged(); }
+
+void AddonSelector::save() {
+    if (!module_->controller()) {
+        return;
+    }
+    FcitxQtAddonStateList list;
+    for (auto &enabled : addonModel_->enabledList()) {
+        FcitxQtAddonState state;
+        state.setUniqueName(enabled);
+        state.setEnabled(true);
+        list.append(state);
+    }
+    for (auto &disabled : addonModel_->disabledList()) {
+        FcitxQtAddonState state;
+        state.setUniqueName(disabled);
+        state.setEnabled(false);
+        list.append(state);
+    }
+    if (list.size()) {
+        module_->controller()->SetAddonsState(list);
+    }
 }
 
-QFont AddonSelector::Private::AddonDelegate::titleFont(
-    const QFont &baseFont) const {
+void AddonSelector::availabilityChanged() {
+    if (!module_->controller()) {
+        return;
+    }
+
+    auto call = module_->controller()->GetAddons();
+    auto watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            &AddonSelector::fetchAddonFinished);
+}
+
+void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
+    watcher->deleteLater();
+    if (watcher->isError()) {
+        return;
+    }
+    QDBusPendingReply<FcitxQtAddonInfoList> reply(*watcher);
+    addonModel_->setAddons(reply.value());
+    emit changed();
+}
+
+QFont AddonDelegate::titleFont(const QFont &baseFont) const {
     QFont retFont(baseFont);
     retFont.setBold(true);
 
     return retFont;
 }
 
-AddonSelector::~AddonSelector() {
-    delete d->listView->itemDelegate();
-    delete d->listView; // depends on some other things in d, make sure this
-                        // dies first.
-    delete d;
-}
-}
+} // namespace kcm
+} // namespace fcitx
+
+#include "addonselector.moc"

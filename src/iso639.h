@@ -19,9 +19,9 @@
 #ifndef _KCM_FCITX_ISO639_H_
 #define _KCM_FCITX_ISO639_H_
 
+#include <KLocalizedString>
 #include <QMap>
 #include <QString>
-#include <KLocalizedString>
 
 namespace fcitx {
 namespace kcm {
@@ -50,10 +50,9 @@ private:
     QMap<QString, QString> iso639_2data_;
     QMap<QString, QString> iso639_3data_;
     QMap<QString, QString> iso639_5data_;
-
 };
 
-}  // namespace kcm
-}  // namespace fcitx
+} // namespace kcm
+} // namespace fcitx
 
 #endif // _KCM_FCITX_ISO639_H_

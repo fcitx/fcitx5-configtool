@@ -42,7 +42,11 @@ public:
     LayoutSelector(Module *module, QWidget *parent = nullptr);
     void setLayout(const QString &layout, const QString &variant);
 
-    static QPair<QString, QString> selectLayout(QWidget *parent, Module *module, const QString &title, const QString &layout, const QString &variant, bool *ok = nullptr);
+    static QPair<QString, QString> selectLayout(QWidget *parent, Module *module,
+                                                const QString &title,
+                                                const QString &layout,
+                                                const QString &variant,
+                                                bool *ok = nullptr);
 
     QPair<QString, QString> layout() const;
 
@@ -61,7 +65,7 @@ private:
     LanguageFilterModel *layoutFilterModel_;
     LanguageFilterModel *variantFilterModel_;
 
-    int loading = 0;
+    int loadingCounter_ = 0;
     QString preSelectLayout_;
     QString preSelectVariant_;
 };

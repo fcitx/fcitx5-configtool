@@ -17,14 +17,14 @@
 * see <http://www.gnu.org/licenses/>.
 */
 
-#include "config.h"
 #include "iso639.h"
-#include <QJsonDocument>
+#include "config.h"
 #include <QFile>
-#include <QJsonObject>
 #include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
-QMap<QString, QString> readAlpha3ToNameMap(const char* name, const char* base) {
+QMap<QString, QString> readAlpha3ToNameMap(const char *name, const char *base) {
     QMap<QString, QString> map;
     QFile file(name);
     file.open(QIODevice::ReadOnly);
@@ -59,8 +59,7 @@ QMap<QString, QString> readAlpha3ToNameMap(const char* name, const char* base) {
     return map;
 }
 
-fcitx::kcm::Iso639::Iso639()
-{
+fcitx::kcm::Iso639::Iso639() {
     iso639_2data_ = readAlpha3ToNameMap(ISOCODES_ISO639_2_JSON, "639-2");
     iso639_3data_ = readAlpha3ToNameMap(ISOCODES_ISO639_3_JSON, "639-3");
     iso639_5data_ = readAlpha3ToNameMap(ISOCODES_ISO639_5_JSON, "639-5");

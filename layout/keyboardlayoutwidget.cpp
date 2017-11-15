@@ -1099,7 +1099,7 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter *painter,
                                               const QString &text_, int angle,
                                               int glp, int end_glp, int x,
                                               int y, int width, int height,
-                                              int padding, bool is_pressed) {
+                                              int padding, bool) {
     QString text = text_;
     if (padding >= height / 2)
         padding = 0;

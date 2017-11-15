@@ -18,6 +18,7 @@
 */
 
 #include "module.h"
+#include "addonselector.h"
 #include "config.h"
 #include "erroroverlay.h"
 #include "impage.h"
@@ -41,7 +42,8 @@ QWidget *forwardHelper(QWidget *parent) {
 Module::Module(QWidget *parent, const QVariantList &args)
     : KCModule(forwardHelper(parent), args),
       watcher_(new FcitxQtWatcher(QDBusConnection::sessionBus(), this)),
-      errorOverlay_(new ErrorOverlay(this)), impage_(new IMPage(this)) {
+      errorOverlay_(new ErrorOverlay(this)), impage_(new IMPage(this)),
+      addonPage_(new AddonSelector(this)) {
     registerFcitxQtDBusTypes();
 
     KAboutData *about = new KAboutData(
@@ -59,13 +61,21 @@ Module::Module(QWidget *parent, const QVariantList &args)
     watcher_->watch();
     pageWidget->addTab(impage_, i18n("Input Method"));
     connect(impage_, &IMPage::changed, this, [this]() { changed(); });
+    pageWidget->addTab(addonPage_, i18n("Addon"));
+    connect(addonPage_, &AddonSelector::changed, this, [this]() { changed(); });
 }
 
 Module::~Module() { watcher_->unwatch(); }
 
-void Module::load() { impage_->load(); }
+void Module::load() {
+    impage_->load();
+    addonPage_->load();
+}
 
-void Module::save() { impage_->save(); }
+void Module::save() {
+    impage_->save();
+    addonPage_->save();
+}
 
 void Module::defaults() { changed(); }
 
