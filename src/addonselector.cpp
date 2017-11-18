@@ -1,50 +1,44 @@
-/***************************************************************************
- *   Copyright (C) 2011~2011 by CSSlayer                                   *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
- ***************************************************************************/
+//
+// Copyright (C) 2017~2017 by CSSlayer
+// wengxt@gmail.com
+//
+// This library is free software; you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 2.1 of the
+// License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; see the file COPYING. If not,
+// see <http://www.gnu.org/licenses/>.
+//
 
-// Qt
-#include <QApplication>
-#include <QCheckBox>
-#include <QPainter>
-#include <QPushButton>
-#include <QVBoxLayout>
-
-// KDE
+#include "addonselector.h"
+#include "configwidget.h"
+#include "module.h"
 #include <KCategorizedSortFilterProxyModel>
 #include <KCategorizedView>
 #include <KCategoryDrawer>
 #include <KLocalizedString>
 #include <KWidgetItemDelegate>
-
-// Fcitx
-
-// self
-#include "addonselector.h"
-#include "module.h"
+#include <QApplication>
+#include <QCheckBox>
+#include <QPainter>
+#include <QPushButton>
+#include <QVBoxLayout>
 #include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtdbustypes.h>
 
-#define MARGIN 5
+constexpr int MARGIN = 5;
 
 namespace fcitx {
 namespace kcm {
 
-enum ExtraRoles { CommentRole = 0x19880209, ConfigurableRole = 0x20080331 };
+enum ExtraRoles { CommentRole = 0x19880209, ConfigurableRole, AddonNameRole };
 
 class AddonModel : public QAbstractListModel {
     Q_OBJECT
@@ -181,8 +175,10 @@ QVariant AddonModel::data(const QModelIndex &index, int role) const {
         return addon.comment();
 
     case ConfigurableRole:
-        // FIXME
-        return false;
+        return addon.configurable();
+
+    case AddonNameRole:
+        return addon.uniqueName();
 
     case Qt::CheckStateRole:
         if (disabledList_.contains(addon.uniqueName())) {
@@ -418,7 +414,15 @@ void AddonDelegate::checkBoxClicked(bool state) {
 
 void AddonDelegate::configureClicked() {
     const QModelIndex index = focusedIndex();
-    // FIXME
+    auto name = index.model()->data(index, AddonNameRole).toString();
+    if (name.isEmpty()) {
+        return;
+    }
+    QPointer<QDialog> dialog = ConfigWidget::configDialog(
+        parent_, parent_->module(),
+        QString("fcitx://config/addon/%1").arg(name));
+    dialog->exec();
+    delete dialog;
 }
 
 AddonSelector::AddonSelector(Module *parent)

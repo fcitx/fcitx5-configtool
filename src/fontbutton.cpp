@@ -1,21 +1,21 @@
-/***************************************************************************
- *   Copyright (C) 2012~2012 by CSSlayer                                   *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
- ***************************************************************************/
+/*
+* Copyright (C) 2012~2017 by CSSlayer
+* wengxt@gmail.com
+*
+* This library is free software; you can redistribute it and/or modify
+* it under the terms of the GNU Lesser General Public License as
+* published by the Free Software Foundation; either version 2.1 of the
+* License, or (at your option) any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; see the file COPYING. If not,
+* see <http://www.gnu.org/licenses/>.
+*/
 
 #include <KFontChooser>
 #include <QDebug>
@@ -23,20 +23,21 @@
 #include <QDialogButtonBox>
 
 #include "fontbutton.h"
-#include "ui_fontbutton.h"
 
-FontButton::FontButton(QWidget *parent)
-    : QWidget(parent), m_ui(new Ui::FontButton) {
-    m_ui->setupUi(this);
-    connect(m_ui->fontSelectButton, SIGNAL(clicked(bool)), this,
-            SLOT(selectFont()));
+namespace fcitx {
+namespace kcm {
+
+FontButton::FontButton(QWidget *parent) : QWidget(parent) {
+    setupUi(this);
+    connect(fontSelectButton, &QPushButton::clicked, this,
+            &FontButton::selectFont);
 }
 
-FontButton::~FontButton() { delete m_ui; }
+FontButton::~FontButton() {}
 
-const QFont &FontButton::font() { return m_font; }
+const QFont &FontButton::font() { return font_; }
 
-QString FontButton::fontName() { return m_ui->fontPreviewLabel->text(); }
+QString FontButton::fontName() { return fontPreviewLabel->text(); }
 
 QFont FontButton::parseFont(const QString &string) {
     QStringList list = string.split(" ", QString::SkipEmptyParts);
@@ -61,14 +62,11 @@ QFont FontButton::parseFont(const QString &string) {
 }
 
 void FontButton::setFont(const QFont &font) {
-    m_font = font;
+    font_ = font;
     QString style;
-#if QT_VERSION >= QT_VERSION_CHECK(4, 8, 0)
     if (!font.styleName().isEmpty()) {
         style = font.styleName();
-    } else
-#endif
-    {
+    } else {
         QStringList styles;
         if (font.bold())
             styles << "Bold";
@@ -76,11 +74,10 @@ void FontButton::setFont(const QFont &font) {
             styles << "Italic";
         style = styles.join(" ");
     }
-    m_ui->fontPreviewLabel->setText(
-        QString("%1 %2").arg(m_font.family(), style));
-    m_ui->fontPreviewLabel->setFont(m_font);
-    if (font.family() != m_font.family()) {
-        emit fontChanged(m_font);
+    fontPreviewLabel->setText(QString("%1 %2").arg(font_.family(), style));
+    fontPreviewLabel->setFont(font_);
+    if (font.family() != font_.family()) {
+        emit fontChanged(font_);
     }
 }
 
@@ -88,7 +85,7 @@ void FontButton::selectFont() {
     QDialog dialog(NULL);
     KFontChooser *chooser = new KFontChooser(&dialog);
     chooser->enableColumn(KFontChooser::SizeList, false);
-    chooser->setFont(m_font);
+    chooser->setFont(font_);
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog.setLayout(dialogLayout);
     QDialogButtonBox *buttonBox =
@@ -103,3 +100,6 @@ void FontButton::selectFont() {
         setFont(chooser->font());
     }
 }
+
+} // namespace kcm
+} // namespace fcitx

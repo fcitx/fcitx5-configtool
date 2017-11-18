@@ -391,6 +391,9 @@ QVariant fcitx::kcm::CurrentIMModel::data(const QModelIndex &index,
     case FcitxLanguageRole:
         return imEntry.languageCode();
 
+    case FcitxIMConfigurableRole:
+        return imEntry.configurable();
+
     default:
         return QVariant();
     }

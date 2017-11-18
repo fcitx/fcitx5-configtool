@@ -34,6 +34,7 @@ namespace kcm {
 class IMPage;
 class ErrorOverlay;
 class AddonSelector;
+class ConfigWidget;
 
 class Module : public KCModule, public Ui::Module {
     Q_OBJECT
@@ -62,6 +63,7 @@ private:
     ErrorOverlay *errorOverlay_;
     IMPage *impage_;
     AddonSelector *addonPage_;
+    ConfigWidget *configPage_;
     Iso639 iso639_;
 };
 

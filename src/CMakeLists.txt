@@ -11,6 +11,10 @@ set(kcm_SRCS
   iso639.cpp
   addonselector.cpp
   logging.cpp
+  fontbutton.cpp
+  configwidget.cpp
+  keylistwidget.cpp
+  optionwidget.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 
@@ -32,6 +36,7 @@ target_link_libraries(kcm_fcitx5
   KF5::KIOWidgets
   Fcitx5::Utils
   Fcitx5Qt5::DBusAddons
+  Fcitx5Qt5::WidgetsAddons
   ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB}
   )
 

@@ -1,48 +1,37 @@
-/***************************************************************************
- *   Copyright (C) 2011~2011 by CSSlayer                                   *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.              *
- ***************************************************************************/
+//
+// Copyright (C) 2017~2017 by CSSlayer
+// wengxt@gmail.com
+//
+// This library is free software; you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 2.1 of the
+// License, or (at your option) any later version.
+//
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this library; see the file COPYING. If not,
+// see <http://www.gnu.org/licenses/>.
+//
+#ifndef _KCM_FCITX_CONFIGWIDGET_H_
+#define _KCM_FCITX_CONFIGWIDGET_H_
 
-#ifndef FCITXCONFIGPAGE_H
-#define FCITXCONFIGPAGE_H
-
-// Qt
-#include <QWidget>
-
-// KDE
 #include <KColorButton>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QWidget>
+#include <fcitxqtdbustypes.h>
 
-// Fcitx
-
-class QCheckBox;
-class QVBoxLayout;
-class QStandardItemModel;
-
-class QTabWidget;
+class QDBusPendingCallWatcher;
+class QFormLayout;
 
 namespace fcitx {
+namespace kcm {
 
-class DummyConfig;
-
-class Global;
-
-class SubConfigParser;
+class Module;
 
 class ColorButton : public KColorButton {
     Q_OBJECT
@@ -55,58 +44,41 @@ public slots:
 class ConfigWidget : public QWidget {
     Q_OBJECT
 
-    enum UIType { CW_Simple = 0x1, CW_Full = 0x2, CW_NoShow = 0x0 };
-
 public:
-    explicit ConfigWidget(struct _FcitxConfigFileDesc *cfdesc,
-                          const QString &prefix, const QString &name,
-                          const QString &subconfig = QString(),
-                          const QString &addonName = QString(),
-                          QWidget *parent = NULL);
-    explicit ConfigWidget(FcitxAddon *addonEntry, QWidget *parent = 0);
+    explicit ConfigWidget(const QString &uri, Module *module,
+                          QWidget *parent = 0);
     virtual ~ConfigWidget();
 
-    static QDialog *configDialog(QWidget *parent, _FcitxConfigFileDesc *cfdesc,
-                                 const QString &prefix, const QString &name,
-                                 const QString &subconfig = QString(),
-                                 const QString &addonName = QString());
-    static QDialog *configDialog(QWidget *parent, FcitxAddon *addonEntry);
-
-    DummyConfig *config() { return m_config; }
-
-Q_SIGNALS:
+    static QDialog *configDialog(QWidget *parent, Module *module,
+                                 const QString &uri);
+signals:
     void changed();
 
 public slots:
-    void buttonClicked(QDialogButtonBox::StandardButton);
     void load();
+    void save();
+    void buttonClicked(QDialogButtonBox::StandardButton);
+
 private slots:
-    void toggleSimpleFull();
+    void requestConfigFinished(QDBusPendingCallWatcher *watcher);
+    void doChanged();
 
 private:
-    QWidget *createFullConfigUi();
-    QWidget *createSimpleConfigUi(bool skinAdvance);
-    void setupConfigUi();
-    void createConfigOptionWidget(FcitxConfigGroupDesc *cgdesc,
-                                  FcitxConfigOptionDesc *codesc, QString &label,
-                                  QString &tooltip, QWidget *&inputWidget,
-                                  void *&newarg);
-    void checkCanUseSimple();
+    void requestConfig(bool sync = false);
+    void setupWidget(QWidget *widget, const QString &type, const QString &path);
+    void addOptionWidget(QFormLayout *layout, const FcitxQtConfigOption &option,
+                         const QString &path);
 
-    struct _FcitxConfigFileDesc *m_cfdesc;
-    QString m_prefix;
-    QString m_name;
-    QString m_addonName;
-    QVBoxLayout *m_switchLayout;
-    QWidget *m_simpleWidget;
-    QWidget *m_fullWidget;
-    QCheckBox *m_advanceCheckBox;
-    DummyConfig *m_config;
-    SubConfigParser *m_parser;
-    UIType m_simpleUiType;
-    UIType m_fullUiType;
-    QMap<QString, void *> m_argMap;
+    bool initialized_ = false;
+    QString uri_;
+    QMap<QString, FcitxQtConfigOptionList> desc_;
+    QString mainType_;
+    Module *parent_;
+
+    bool dontEmitChanged_ = false;
 };
-}
 
-#endif
+} // namespace kcm
+} // namespace fcitx
+
+#endif // _KCM_FCITX_CONFIGWIDGET_H_

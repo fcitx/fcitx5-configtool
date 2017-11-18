@@ -20,10 +20,12 @@
 #include "module.h"
 #include "addonselector.h"
 #include "config.h"
+#include "configwidget.h"
 #include "erroroverlay.h"
 #include "impage.h"
 #include "logging.h"
 #include <KAboutData>
+#include <QScrollArea>
 #include <fcitx-utils/standardpath.h>
 #include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtwatcher.h>
@@ -44,7 +46,8 @@ Module::Module(QWidget *parent, const QVariantList &args)
     : KCModule(forwardHelper(parent), args),
       watcher_(new FcitxQtWatcher(QDBusConnection::sessionBus(), this)),
       errorOverlay_(new ErrorOverlay(this)), impage_(new IMPage(this)),
-      addonPage_(new AddonSelector(this)) {
+      addonPage_(new AddonSelector(this)),
+      configPage_(new ConfigWidget("fcitx://config/global", this)) {
     registerFcitxQtDBusTypes();
 
     KAboutData *about = new KAboutData(
@@ -70,6 +73,15 @@ Module::Module(QWidget *parent, const QVariantList &args)
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
         changed();
     });
+    auto configPageWrapper = new QScrollArea;
+    configPageWrapper->setFrameStyle(QFrame::NoFrame);
+    configPageWrapper->setWidgetResizable(true);
+    configPageWrapper->setWidget(configPage_);
+    pageWidget->addTab(configPageWrapper, i18n("Global Config"));
+    connect(configPage_, &ConfigWidget::changed, this, [this]() {
+        qCDebug(KCM_FCITX5) << "GlobalConfig changed";
+        changed();
+    });
 }
 
 Module::~Module() { watcher_->unwatch(); }
@@ -78,12 +90,14 @@ void Module::load() {
     qCDebug(KCM_FCITX5) << "kcm_fcitx5 load()";
     impage_->load();
     addonPage_->load();
+    configPage_->load();
 }
 
 void Module::save() {
     qCDebug(KCM_FCITX5) << "kcm_fcitx5 save()";
     impage_->save();
     addonPage_->save();
+    configPage_->save();
 }
 
 void Module::defaults() {

@@ -50,7 +50,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="list-add"/>
+            <iconset theme="list-add">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -60,7 +61,8 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="delete"/>
+            <iconset theme="delete">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -88,12 +90,6 @@
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
         </spacer>
        </item>
        <item>
@@ -102,7 +98,8 @@
           <bool>false</bool>
          </property>
          <property name="icon">
-          <iconset theme="go-previous"/>
+          <iconset theme="go-previous">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -112,7 +109,8 @@
           <bool>false</bool>
          </property>
          <property name="icon">
-          <iconset theme="go-next"/>
+          <iconset theme="go-next">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -122,7 +120,8 @@
           <bool>false</bool>
          </property>
          <property name="icon">
-          <iconset theme="go-up"/>
+          <iconset theme="go-up">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -132,7 +131,8 @@
           <bool>false</bool>
          </property>
          <property name="icon">
-          <iconset theme="go-down"/>
+          <iconset theme="go-down">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -148,12 +148,6 @@
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
          </property>
         </spacer>
        </item>

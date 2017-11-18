@@ -29,7 +29,8 @@ namespace kcm {
 enum {
     FcitxRowTypeRole = 0x324da8fc,
     FcitxLanguageRole,
-    FcitxIMUniqueNameRole
+    FcitxIMUniqueNameRole,
+    FcitxIMConfigurableRole,
 };
 
 enum { LanguageType, IMType };

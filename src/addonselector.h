@@ -47,6 +47,8 @@ public:
 
     bool showAdvanced() const { return advancedCheckbox->isChecked(); }
 
+    auto module() { return module_; }
+
 signals:
     void changed();
     void configCommitted(const QByteArray &componentName);
