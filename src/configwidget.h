@@ -47,10 +47,10 @@ class ConfigWidget : public QWidget {
 public:
     explicit ConfigWidget(const QString &uri, Module *module,
                           QWidget *parent = 0);
-    virtual ~ConfigWidget();
 
     static QDialog *configDialog(QWidget *parent, Module *module,
-                                 const QString &uri);
+                                 const QString &uri,
+                                 const QString &title = QString());
 signals:
     void changed();
 
@@ -59,12 +59,12 @@ public slots:
     void save();
     void buttonClicked(QDialogButtonBox::StandardButton);
 
+    void requestConfig(bool sync = false);
 private slots:
     void requestConfigFinished(QDBusPendingCallWatcher *watcher);
     void doChanged();
 
 private:
-    void requestConfig(bool sync = false);
     void setupWidget(QWidget *widget, const QString &type, const QString &path);
     void addOptionWidget(QFormLayout *layout, const FcitxQtConfigOption &option,
                          const QString &path);
@@ -74,6 +74,7 @@ private:
     QMap<QString, FcitxQtConfigOptionList> desc_;
     QString mainType_;
     Module *parent_;
+    QWidget *mainWidget_;
 
     bool dontEmitChanged_ = false;
 };

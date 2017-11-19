@@ -414,13 +414,14 @@ void AddonDelegate::checkBoxClicked(bool state) {
 
 void AddonDelegate::configureClicked() {
     const QModelIndex index = focusedIndex();
-    auto name = index.model()->data(index, AddonNameRole).toString();
+    auto name = index.data(AddonNameRole).toString();
     if (name.isEmpty()) {
         return;
     }
+    auto addonName = index.data(Qt::DisplayRole).toString();
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
         parent_, parent_->module(),
-        QString("fcitx://config/addon/%1").arg(name));
+        QString("fcitx://config/addon/%1").arg(name), addonName);
     dialog->exec();
     delete dialog;
 }

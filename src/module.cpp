@@ -24,6 +24,7 @@
 #include "erroroverlay.h"
 #include "impage.h"
 #include "logging.h"
+#include "verticalscrollarea.h"
 #include <KAboutData>
 #include <QScrollArea>
 #include <fcitx-utils/standardpath.h>
@@ -73,9 +74,7 @@ Module::Module(QWidget *parent, const QVariantList &args)
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
         changed();
     });
-    auto configPageWrapper = new QScrollArea;
-    configPageWrapper->setFrameStyle(QFrame::NoFrame);
-    configPageWrapper->setWidgetResizable(true);
+    auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
     pageWidget->addTab(configPageWrapper, i18n("Global Config"));
     connect(configPage_, &ConfigWidget::changed, this, [this]() {

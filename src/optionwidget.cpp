@@ -27,6 +27,7 @@
 #include <QLineEdit>
 #include <QSpinBox>
 #include <QVBoxLayout>
+#include <fcitxqtkeysequencewidget.h>
 
 namespace fcitx {
 namespace kcm {
@@ -249,6 +250,43 @@ private:
     KeyListWidget *keyListWidget_;
 };
 
+class KeyOptionWidget : public OptionWidget {
+    Q_OBJECT
+public:
+    KeyOptionWidget(const FcitxQtConfigOption &option, const QString &path,
+                    QWidget *parent)
+        : OptionWidget(path, parent),
+          keyWidget_(new FcitxQtKeySequenceWidget(this)) {
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->setMargin(0);
+
+        connect(keyWidget_, &FcitxQtKeySequenceWidget::keySequenceChanged, this,
+                &OptionWidget::valueChanged);
+        layout->addWidget(keyWidget_);
+        setLayout(layout);
+    }
+
+    void readValueFrom(const QVariantMap &map) override {
+        Key key;
+        auto value = valueFromVariantMap(map, path());
+        key = Key(value.toUtf8().constData());
+        keyWidget_->setKeySequence({key});
+    }
+
+    void writeValueTo(QVariantMap &map) override {
+        auto keys = keyWidget_->keySequence();
+        Key key;
+        if (keys.size()) {
+            key = keys[0];
+        }
+        auto value = QString::fromUtf8(key.toString().data());
+        valueToVariantMap(map, path(), value);
+    }
+
+private:
+    FcitxQtKeySequenceWidget *keyWidget_;
+};
+
 class EnumOptionWidget : public OptionWidget {
     Q_OBJECT
 public:
@@ -319,6 +357,9 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
     } else if (option.type() == "Boolean") {
         widget = new BooleanOptionWidget(option, path, parent);
         layout->addRow(widget);
+    } else if (option.type() == "Key") {
+        widget = new KeyOptionWidget(option, path, parent);
+        layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     } else if (option.type() == "List|Key") {
         widget = new KeyListOptionWidget(option, path, parent);
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);

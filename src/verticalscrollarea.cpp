@@ -16,42 +16,34 @@
 // License along with this library; see the file COPYING. If not,
 // see <http://www.gnu.org/licenses/>.
 //
-#ifndef _KCM_FCITX_KEYLISTWIDGET_H_
-#define _KCM_FCITX_KEYLISTWIDGET_H_
+#include <QEvent>
+#include <QScrollBar>
+#include <QVBoxLayout>
 
-#include <QWidget>
-#include <fcitx-utils/key.h>
-
-class QToolButton;
-class QBoxLayout;
+#include "verticalscrollarea.h"
 
 namespace fcitx {
 namespace kcm {
 
-class KeyListWidget : public QWidget {
-    Q_OBJECT
-public:
-    explicit KeyListWidget(QWidget *parent = 0);
+VerticalScrollArea::VerticalScrollArea(QWidget *parent) : QScrollArea(parent) {
+    setFrameStyle(QFrame::NoFrame);
+    setWidgetResizable(true);
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+}
 
-    QList<Key> keys() const;
-    void setKeys(const QList<Key> &keys);
+void VerticalScrollArea::setWidget(QWidget *widget) {
+    QScrollArea::setWidget(widget);
+    widget->installEventFilter(this);
+}
 
-signals:
-    void keyChanged();
+bool VerticalScrollArea::eventFilter(QObject *o, QEvent *e) {
+    if (o == widget() && e->type() == QEvent::Resize)
+        setMinimumWidth(widget()->minimumSizeHint().width() +
+                        verticalScrollBar()->width());
 
-protected:
-    void resizeEvent(QResizeEvent *) override;
-
-private:
-    void addKey(Key key = Key());
-    bool removeKeyAt(int idx);
-    bool showRemoveButton() const;
-
-    QToolButton *addButton_;
-    QBoxLayout *keysLayout_;
-};
+    return false;
+}
 
 } // namespace kcm
 } // namespace fcitx
-
-#endif // _KCM_FCITX_KEYLISTWIDGET_H_

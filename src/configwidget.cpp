@@ -21,6 +21,8 @@
 #include "logging.h"
 #include "module.h"
 #include "optionwidget.h"
+#include "verticalscrollarea.h"
+#include <KTitleWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFormLayout>
@@ -44,11 +46,13 @@ QString joinPath(const QString &path, const QString &option) {
 }
 
 ConfigWidget::ConfigWidget(const QString &uri, Module *module, QWidget *parent)
-    : QWidget(parent), uri_(uri), parent_(module) {
+    : QWidget(parent), uri_(uri), parent_(module),
+      mainWidget_(new QWidget(this)) {
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(mainWidget_);
+    setLayout(layout);
 }
-
-ConfigWidget::~ConfigWidget() {}
 
 void ConfigWidget::requestConfig(bool sync) {
     if (!parent_->controller()) {
@@ -83,7 +87,7 @@ void ConfigWidget::requestConfigFinished(QDBusPendingCallWatcher *watcher) {
             desc_[type.name()] = type.options();
         }
         mainType_ = desc[0].name();
-        setupWidget(this, mainType_, QString());
+        setupWidget(mainWidget_, mainType_, QString());
         initialized_ = true;
     }
 
@@ -165,7 +169,7 @@ void ConfigWidget::addOptionWidget(QFormLayout *layout,
 }
 
 QDialog *ConfigWidget::configDialog(QWidget *parent, Module *module,
-                                    const QString &uri) {
+                                    const QString &uri, const QString &title) {
     QDialog *dialog;
     dialog = new QDialog(parent);
     auto configPage = new ConfigWidget(uri, module, dialog);
@@ -176,13 +180,16 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, Module *module,
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
                              QDialogButtonBox::RestoreDefaults);
 
-    auto configPageWrapper = new QScrollArea;
-    configPageWrapper->setFrameStyle(QFrame::NoFrame);
-    configPageWrapper->setWidgetResizable(true);
+    configPage->requestConfig(true);
+    auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage);
+    if (!title.isEmpty()) {
+        auto titleWidget = new KTitleWidget;
+        titleWidget->setText(title);
+        dialogLayout->addWidget(titleWidget);
+    }
     dialogLayout->addWidget(configPageWrapper);
     dialogLayout->addWidget(buttonBox);
-    configPage->requestConfig(true);
 
     connect(buttonBox, &QDialogButtonBox::clicked, configPage,
             [configPage, buttonBox](QAbstractButton *button) {

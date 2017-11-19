@@ -27,22 +27,22 @@
 fcitx::kcm::KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
     auto layout = new QHBoxLayout;
     layout->setMargin(0);
-    keysLayout_ = new QHBoxLayout;
+    keysLayout_ = new QVBoxLayout;
     keysLayout_->setMargin(0);
     auto subLayout = new QVBoxLayout;
 
-    auto addButton = new QToolButton;
-    addButton->setAutoRaise(true);
-    addButton->setIcon(QIcon::fromTheme("list-add"));
-    addButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    connect(addButton, &QToolButton::clicked, this, [this]() {
+    addButton_ = new QToolButton;
+    addButton_->setAutoRaise(true);
+    addButton_->setIcon(QIcon::fromTheme("list-add"));
+    addButton_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    connect(addButton_, &QToolButton::clicked, this, [this]() {
         addKey(Key());
         emit keyChanged();
     });
 
     layout->addLayout(keysLayout_);
-    subLayout->addWidget(addButton);
-    subLayout->addStretch(1);
+    subLayout->addWidget(addButton_, 0, Qt::AlignTop);
+    // subLayout->addStretch(1);
     layout->addLayout(subLayout);
 
     setLayout(layout);
@@ -59,7 +59,7 @@ void fcitx::kcm::KeyListWidget::addKey(fcitx::Key key) {
     auto layout = new QHBoxLayout;
     layout->setMargin(0);
     layout->addWidget(keyWidget);
-    auto removeButton = new QPushButton;
+    auto removeButton = new QToolButton;
     removeButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     removeButton->setIcon(QIcon::fromTheme("dialog-close"));
     removeButton->setVisible(showRemoveButton());
@@ -144,4 +144,17 @@ bool fcitx::kcm::KeyListWidget::showRemoveButton() const {
                 ->findChild<FcitxQtKeySequenceWidget *>()
                 ->keySequence()
                 .size());
+}
+
+void fcitx::kcm::KeyListWidget::resizeEvent(QResizeEvent *event) {
+    if (keysLayout_->count() > 0) {
+        addButton_->setMinimumHeight(
+            keysLayout_->itemAt(0)
+                ->widget()
+                ->findChild<FcitxQtKeySequenceWidget *>()
+                ->height());
+        addButton_->setMaximumHeight(addButton_->minimumHeight());
+    }
+
+    QWidget::resizeEvent(event);
 }

@@ -15,6 +15,7 @@ set(kcm_SRCS
   configwidget.cpp
   keylistwidget.cpp
   optionwidget.cpp
+  verticalscrollarea.cpp
   ../layout/keyboardlayoutwidget.cpp
   )
 

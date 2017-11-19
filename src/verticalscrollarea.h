@@ -16,42 +16,23 @@
 // License along with this library; see the file COPYING. If not,
 // see <http://www.gnu.org/licenses/>.
 //
-#ifndef _KCM_FCITX_KEYLISTWIDGET_H_
-#define _KCM_FCITX_KEYLISTWIDGET_H_
+#ifndef _KCM_FCITX_VERTICALSCROLLAREA_H_
+#define _KCM_FCITX_VERTICALSCROLLAREA_H_
 
-#include <QWidget>
-#include <fcitx-utils/key.h>
-
-class QToolButton;
-class QBoxLayout;
-
+#include <QScrollArea>
 namespace fcitx {
 namespace kcm {
-
-class KeyListWidget : public QWidget {
+class VerticalScrollArea : public QScrollArea {
     Q_OBJECT
 public:
-    explicit KeyListWidget(QWidget *parent = 0);
-
-    QList<Key> keys() const;
-    void setKeys(const QList<Key> &keys);
-
-signals:
-    void keyChanged();
+    explicit VerticalScrollArea(QWidget *parent = 0);
+    void setWidget(QWidget *widget);
 
 protected:
-    void resizeEvent(QResizeEvent *) override;
-
-private:
-    void addKey(Key key = Key());
-    bool removeKeyAt(int idx);
-    bool showRemoveButton() const;
-
-    QToolButton *addButton_;
-    QBoxLayout *keysLayout_;
+    virtual bool eventFilter(QObject *o, QEvent *e);
 };
 
 } // namespace kcm
 } // namespace fcitx
 
-#endif // _KCM_FCITX_KEYLISTWIDGET_H_
+#endif // _KCM_FCITX_VERTICALSCROLLAREA_H_

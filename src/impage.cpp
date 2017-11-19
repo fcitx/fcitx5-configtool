@@ -18,6 +18,7 @@
 //
 
 #include "impage.h"
+#include "configwidget.h"
 #include "layoutselector.h"
 #include "model.h"
 #include "module.h"
@@ -449,7 +450,12 @@ void IMPage::configureIM() {
     if (!curIndex.isValid()) {
         return;
     }
-    // FIXME
+    const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
+    QPointer<QDialog> dialog = ConfigWidget::configDialog(
+        this, module_, QString("fcitx://config/inputmethod/%1").arg(uniqueName),
+        curIndex.data(Qt::DisplayRole).toString());
+    dialog->exec();
+    delete dialog;
 }
 
 void IMPage::moveUpIM() {
