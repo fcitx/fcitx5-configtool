@@ -4,13 +4,14 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
+# Bon Keun Seo <scobyseo@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-22 21:57-0800\n"
+"POT-Creation-Date: 2017-11-24 10:15-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
+"Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: src/layoutselector.cpp:345
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/model.cpp:66
 #, kde-format
@@ -33,7 +34,7 @@ msgstr "%1 (%2)"
 #: src/optionwidget.cpp:365 src/optionwidget.cpp:368
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: layout/main.cpp:39
 #, kde-format
@@ -43,12 +44,12 @@ msgstr "일반 키보드 배열 보이기"
 #: src/module.cpp:72
 #, kde-format
 msgid "Addon"
-msgstr ""
+msgstr "부가기능"
 
 #: src/layoutselector.cpp:339
 #, kde-format
 msgid "Any language"
-msgstr ""
+msgstr "모든 언어"
 
 #: src/module.cpp:60
 #, kde-format
@@ -72,7 +73,7 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 #: src/module.cpp:56
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5 설정"
 
 #: src/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
@@ -81,7 +82,7 @@ msgstr "입력기 설정"
 #: src/module.cpp:57
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
-msgstr ""
+msgstr "저작권자 2017 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -93,7 +94,7 @@ msgstr "현재 입력기:"
 #: src/impage.cpp:302
 #, kde-format
 msgid "Current group changed"
-msgstr ""
+msgstr "현재 그룹이 변경됨"
 
 #: src/layoutselector.cpp:134
 #, kde-format
@@ -103,7 +104,7 @@ msgstr "기본값"
 #: src/module.cpp:55
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr ""
+msgstr "Fcitx 5 설정 모듈"
 
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
@@ -121,7 +122,7 @@ msgstr "폼"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "Frontend"
-msgstr ""
+msgstr "전처리기"
 
 #: src/module.cpp:79
 #, kde-format
@@ -131,14 +132,14 @@ msgstr "전역 설정"
 #: src/impage.cpp:480
 #, kde-format
 msgid "Group Name:"
-msgstr ""
+msgstr "그룹 이름:"
 
 #. i18n: file: src/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:24
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "그룹:"
 
 #: src/module.cpp:67 src/kcm_fcitx5.desktop.in:12
 #, kde-format
@@ -148,7 +149,7 @@ msgstr "입력기"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "InputMethod"
-msgstr ""
+msgstr "입력기"
 
 #: layout/main.cpp:43
 #, kde-format
@@ -186,24 +187,24 @@ msgstr "키보드 배열 표시기"
 #: rc.cpp:6
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "언어:"
 
 #. i18n: file: src/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:9
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "배열:"
 
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Loader"
-msgstr ""
+msgstr "적재기"
 
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Module"
-msgstr ""
+msgstr "모듈"
 
 #: src/model.cpp:29
 #, kde-format
@@ -213,7 +214,7 @@ msgstr "다중언어"
 #: src/impage.cpp:480
 #, kde-format
 msgid "New Group"
-msgstr ""
+msgstr "새 그룹"
 
 #. i18n: file: src/impage.ui:200
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -258,14 +259,14 @@ msgstr "기본 키보드 배열 선택"
 #: src/impage.cpp:386
 #, kde-format
 msgid "Select default layout"
-msgstr ""
+msgstr "기본 배열 선택"
 
 #. i18n: file: src/addonselector.ui:58
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:57
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "추가 설정 보이기(&A)"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -281,7 +282,7 @@ msgstr ""
 #: src/addonselector.cpp:158
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "사용자 인터페이스"
 
 #: src/model.cpp:27
 #, kde-format
@@ -293,7 +294,7 @@ msgstr "알 수 없음 "
 #: rc.cpp:12
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "변형:"
 
 #: layout/kbd-layout-viewer.desktop.in:8
 msgid "View keyboard layout"
@@ -306,7 +307,7 @@ msgstr "Xuetian Weng"
 
 #: src/kcm_fcitx5.desktop.in:4
 msgid "fcitx"
-msgstr ""
+msgstr "fcitx"
 
 #: layout/main.cpp:42
 #, kde-format
@@ -315,7 +316,7 @@ msgstr "그룹"
 
 #: layout/kbd-layout-viewer.desktop.in:4
 msgid "input-keyboard"
-msgstr ""
+msgstr "input-keyboard"
 
 #: layout/main.cpp:43
 #, kde-format
