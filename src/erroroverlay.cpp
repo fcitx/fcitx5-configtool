@@ -24,7 +24,7 @@ namespace fcitx {
 namespace kcm {
 
 ErrorOverlay::ErrorOverlay(Module *module)
-    : QWidget(module->window()), baseWidget_(module) {
+    : QWidget(module), baseWidget_(module) {
     setupUi(this);
     setVisible(false);
 
@@ -53,12 +53,6 @@ void ErrorOverlay::reposition() {
         return;
     }
 
-    // reparent to the current top level widget of the base widget if needed
-    // needed eg. in dock widgets
-    if (parentWidget() != baseWidget_->window()) {
-        setParent(baseWidget_->window());
-    }
-
     // follow base widget visibility
     // needed eg. in tab widgets
     if (!baseWidget_->isVisible()) {
@@ -76,6 +70,7 @@ void ErrorOverlay::reposition() {
     // follow size changes
     // TODO: hide/scale icon if we don't have enough space
     resize(baseWidget_->size());
+    raise();
 }
 
 bool ErrorOverlay::eventFilter(QObject *object, QEvent *event) {
