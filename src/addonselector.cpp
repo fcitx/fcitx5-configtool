@@ -473,6 +473,7 @@ void AddonSelector::save() {
     }
     if (list.size()) {
         module_->controller()->SetAddonsState(list);
+        load();
     }
 }
 
