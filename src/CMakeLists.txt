@@ -16,7 +16,6 @@ set(kcm_SRCS
   keylistwidget.cpp
   optionwidget.cpp
   verticalscrollarea.cpp
-  ../layout/keyboardlayoutwidget.cpp
   )
 
 set(kcm_UIS module.ui impage.ui fontbutton.ui erroroverlay.ui layoutselector.ui addonselector.ui)
@@ -38,7 +37,7 @@ target_link_libraries(kcm_fcitx5
   Fcitx5::Utils
   Fcitx5Qt5::DBusAddons
   Fcitx5Qt5::WidgetsAddons
-  ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB}
+  layoutlib
   )
 
 install(TARGETS kcm_fcitx5 DESTINATION ${KDE_INSTALL_PLUGINDIR})
