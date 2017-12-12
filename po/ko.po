@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-24 10:15-0800\n"
+"POT-Creation-Date: 2017-12-12 09:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -178,7 +178,7 @@ msgstr "키보드 배열 <변형>"
 msgid "Keyboard layout to use when no input method active"
 msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
 
-#: layout/kbd-layout-viewer.desktop.in:7
+#: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
 msgstr "키보드 배열 표시기"
 
@@ -296,7 +296,7 @@ msgstr "알 수 없음 "
 msgid "Variant:"
 msgstr "변형:"
 
-#: layout/kbd-layout-viewer.desktop.in:8
+#: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
 msgstr "키보드 배열 보이기"
 
@@ -314,7 +314,7 @@ msgstr "fcitx"
 msgid "group"
 msgstr "그룹"
 
-#: layout/kbd-layout-viewer.desktop.in:4
+#: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
 msgstr "input-keyboard"
 

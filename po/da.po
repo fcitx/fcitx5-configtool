@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-24 10:15-0800\n"
+"POT-Creation-Date: 2017-12-12 09:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>, 2017\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -49,7 +49,7 @@ msgstr "Tilføjelse"
 #: src/layoutselector.cpp:339
 #, kde-format
 msgid "Any language"
-msgstr ""
+msgstr "Vilkårligt sprog"
 
 #: src/module.cpp:60
 #, kde-format
@@ -94,7 +94,7 @@ msgstr "Nuværende inputmetode:"
 #: src/impage.cpp:302
 #, kde-format
 msgid "Current group changed"
-msgstr ""
+msgstr "Nuværende gruppe ændret"
 
 #: src/layoutselector.cpp:134
 #, kde-format
@@ -104,7 +104,7 @@ msgstr "Standard"
 #: src/module.cpp:55
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr ""
+msgstr "Fcitx 5-konfigurationsmodul"
 
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
@@ -122,7 +122,7 @@ msgstr "Formular"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "Frontend"
-msgstr ""
+msgstr "Frontend"
 
 #: src/module.cpp:79
 #, kde-format
@@ -178,7 +178,7 @@ msgstr "Tastaturlayout <variant>"
 msgid "Keyboard layout to use when no input method active"
 msgstr "Tastaturlayout som skal bruges når der ikke er nogen aktiv inputmetode"
 
-#: layout/kbd-layout-viewer.desktop.in:7
+#: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
 msgstr "Tastaturlayout-fremviser"
 
@@ -199,7 +199,7 @@ msgstr "Layout:"
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Loader"
-msgstr ""
+msgstr "Indlæser"
 
 #: src/addonselector.cpp:157
 #, kde-format
@@ -266,7 +266,7 @@ msgstr "Vælg standardlayout"
 #: rc.cpp:57
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "Vis &avancerede valgmuligheder"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -282,7 +282,7 @@ msgstr ""
 #: src/addonselector.cpp:158
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "Brugerflade"
 
 #: src/model.cpp:27
 #, kde-format
@@ -296,7 +296,7 @@ msgstr "Ukendt"
 msgid "Variant:"
 msgstr "Variant:"
 
-#: layout/kbd-layout-viewer.desktop.in:8
+#: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
 msgstr "Vis tastaturlayout"
 
@@ -314,7 +314,7 @@ msgstr "fcitx"
 msgid "group"
 msgstr "gruppe"
 
-#: layout/kbd-layout-viewer.desktop.in:4
+#: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
 msgstr "input-keyboard"
 

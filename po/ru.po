@@ -4,13 +4,14 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
+# TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-24 10:15-0800\n"
+"POT-Creation-Date: 2017-12-12 09:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
+"Last-Translator: TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -23,19 +24,19 @@ msgstr ""
 #: src/layoutselector.cpp:345
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/model.cpp:66
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/optionwidget.cpp:353 src/optionwidget.cpp:356 src/optionwidget.cpp:362
 #: src/optionwidget.cpp:365 src/optionwidget.cpp:368
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: layout/main.cpp:39
 #, kde-format
@@ -45,17 +46,17 @@ msgstr "Основной просмотрщик раскладки клавиа�
 #: src/module.cpp:72
 #, kde-format
 msgid "Addon"
-msgstr ""
+msgstr "Дополнение"
 
 #: src/layoutselector.cpp:339
 #, kde-format
 msgid "Any language"
-msgstr ""
+msgstr "Любой язык"
 
 #: src/module.cpp:60
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #. i18n: file: src/impage.ui:161
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -74,7 +75,7 @@ msgstr "Не удалось соединиться с Fcitx через DBus, з�
 #: src/module.cpp:56
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "Настроить Fcitx 5"
 
 #: src/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
@@ -83,7 +84,7 @@ msgstr "Настроить метод ввода"
 #: src/module.cpp:57
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
-msgstr ""
+msgstr "Copyright 2017 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -95,7 +96,7 @@ msgstr "Текущий метод ввода:"
 #: src/impage.cpp:302
 #, kde-format
 msgid "Current group changed"
-msgstr ""
+msgstr "Текущая группа изменена"
 
 #: src/layoutselector.cpp:134
 #, kde-format
@@ -105,7 +106,7 @@ msgstr "По умолчанию"
 #: src/module.cpp:55
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr ""
+msgstr "Модуль настройки Fcitx 5"
 
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
@@ -123,7 +124,7 @@ msgstr "Форма"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "Frontend"
-msgstr ""
+msgstr "Интерфейс"
 
 #: src/module.cpp:79
 #, kde-format
@@ -133,14 +134,14 @@ msgstr "Глобальные настройки"
 #: src/impage.cpp:480
 #, kde-format
 msgid "Group Name:"
-msgstr ""
+msgstr "Название группы:"
 
 #. i18n: file: src/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:24
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "Группа:"
 
 #: src/module.cpp:67 src/kcm_fcitx5.desktop.in:12
 #, kde-format
@@ -150,12 +151,12 @@ msgstr "Метод ввода"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "InputMethod"
-msgstr ""
+msgstr "InputMethod"
 
 #: layout/main.cpp:43
 #, kde-format
 msgid "Keyboard <layout>"
-msgstr ""
+msgstr "Клавиатура <layout>"
 
 #: layout/main.cpp:71
 #, kde-format
@@ -165,12 +166,12 @@ msgstr "Просмотрщик раскладки клавиатуры"
 #: layout/main.cpp:42
 #, kde-format
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "Раскладка клавиатуры <group> (0-3)"
 
 #: layout/main.cpp:45
 #, kde-format
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "Раскладка клавиатуры <variant>"
 
 #. i18n: file: src/impage.ui:77
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
@@ -179,7 +180,7 @@ msgstr ""
 msgid "Keyboard layout to use when no input method active"
 msgstr "Раскладка клавиатуры при неактивных методах ввода"
 
-#: layout/kbd-layout-viewer.desktop.in:7
+#: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
@@ -188,24 +189,24 @@ msgstr "Просмотрщик раскладки клавиатуры"
 #: rc.cpp:6
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "Язык:"
 
 #. i18n: file: src/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:9
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "Раскладка:"
 
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Loader"
-msgstr ""
+msgstr "Загрузчик"
 
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Module"
-msgstr ""
+msgstr "Модуль"
 
 #: src/model.cpp:29
 #, kde-format
@@ -215,7 +216,7 @@ msgstr "Многоязычный"
 #: src/impage.cpp:480
 #, kde-format
 msgid "New Group"
-msgstr ""
+msgstr "Новая группа"
 
 #. i18n: file: src/impage.ui:200
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -260,14 +261,14 @@ msgstr "Выбрать раскладку клавиатуры по умолча
 #: src/impage.cpp:386
 #, kde-format
 msgid "Select default layout"
-msgstr ""
+msgstr "Выберите раскладку по умолчанию"
 
 #. i18n: file: src/addonselector.ui:58
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:57
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "Показать &дополнительные настройки"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -284,7 +285,7 @@ msgstr ""
 #: src/addonselector.cpp:158
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "Графический интерфейс"
 
 #: src/model.cpp:27
 #, kde-format
@@ -296,9 +297,9 @@ msgstr "Неизвестно"
 #: rc.cpp:12
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "Вариант:"
 
-#: layout/kbd-layout-viewer.desktop.in:8
+#: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
 msgstr "Просмотреть раскладку клавиатуры"
 
@@ -309,23 +310,23 @@ msgstr "Xuetian Weng"
 
 #: src/kcm_fcitx5.desktop.in:4
 msgid "fcitx"
-msgstr ""
+msgstr "fcitx"
 
 #: layout/main.cpp:42
 #, kde-format
 msgid "group"
-msgstr ""
+msgstr "group"
 
-#: layout/kbd-layout-viewer.desktop.in:4
+#: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
-msgstr ""
+msgstr "input-keyboard"
 
 #: layout/main.cpp:43
 #, kde-format
 msgid "layout"
-msgstr ""
+msgstr "layout"
 
 #: layout/main.cpp:46
 #, kde-format
 msgid "variant"
-msgstr ""
+msgstr "variant"

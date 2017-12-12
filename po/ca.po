@@ -4,13 +4,14 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
+# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-24 10:15-0800\n"
+"POT-Creation-Date: 2017-12-12 09:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
+"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: src/layoutselector.cpp:345
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/model.cpp:66
 #, kde-format
@@ -33,7 +34,7 @@ msgstr "%1 (%2)"
 #: src/optionwidget.cpp:365 src/optionwidget.cpp:368
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: layout/main.cpp:39
 #, kde-format
@@ -43,12 +44,12 @@ msgstr "Un visualitzador general de disposició de teclat"
 #: src/module.cpp:72
 #, kde-format
 msgid "Addon"
-msgstr ""
+msgstr "Complement"
 
 #: src/layoutselector.cpp:339
 #, kde-format
 msgid "Any language"
-msgstr ""
+msgstr "Qualsevol llengua"
 
 #: src/module.cpp:60
 #, kde-format
@@ -67,12 +68,12 @@ msgstr "Mètode d'entrada disponible:"
 #: rc.cpp:48
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "No es pot connectar al fcitx per DBus, s'està executant el fcitx?"
+msgstr "No es pot connectar a fcitx amb DBus, està fcitx en execució?"
 
 #: src/module.cpp:56
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "Configura fcitx 5"
 
 #: src/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
@@ -81,7 +82,7 @@ msgstr "Configura el mètode d'entrada"
 #: src/module.cpp:57
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
-msgstr ""
+msgstr "Drets d'autor (c) 2017 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -103,7 +104,7 @@ msgstr "Predeterminat"
 #: src/module.cpp:55
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr ""
+msgstr "Mòdul de configuració de fcitx 5"
 
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
@@ -131,14 +132,14 @@ msgstr "Configuració global"
 #: src/impage.cpp:480
 #, kde-format
 msgid "Group Name:"
-msgstr ""
+msgstr "Nom del grup:"
 
 #. i18n: file: src/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:24
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "Grup:"
 
 #: src/module.cpp:67 src/kcm_fcitx5.desktop.in:12
 #, kde-format
@@ -148,7 +149,7 @@ msgstr "Mètode d'entrada"
 #: src/addonselector.cpp:156
 #, kde-format
 msgid "InputMethod"
-msgstr ""
+msgstr "Mètode d'entrada"
 
 #: layout/main.cpp:43
 #, kde-format
@@ -175,9 +176,11 @@ msgstr "Disposició del teclat <variant>"
 #: rc.cpp:27
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr "Disposició de teclat a usar quan no hi ha cap mètode d'entrada actiu"
+msgstr ""
+"Disposició de teclat que s'ha d'utilitzar quan no hi ha cap mètode d'entrada "
+"actiu"
 
-#: layout/kbd-layout-viewer.desktop.in:7
+#: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
 msgstr "Visualitzador de disposició de teclat"
 
@@ -186,14 +189,14 @@ msgstr "Visualitzador de disposició de teclat"
 #: rc.cpp:6
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "Llengua:"
 
 #. i18n: file: src/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:9
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "Disposició:"
 
 #: src/addonselector.cpp:157
 #, kde-format
@@ -203,7 +206,7 @@ msgstr ""
 #: src/addonselector.cpp:157
 #, kde-format
 msgid "Module"
-msgstr ""
+msgstr "Mòdul"
 
 #: src/model.cpp:29
 #, kde-format
@@ -213,7 +216,7 @@ msgstr "Plurilingüe"
 #: src/impage.cpp:480
 #, kde-format
 msgid "New Group"
-msgstr ""
+msgstr "Grup nou"
 
 #. i18n: file: src/impage.ui:200
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -258,14 +261,14 @@ msgstr "Seleccioneu la disposició de teclat predeterminada"
 #: src/impage.cpp:386
 #, kde-format
 msgid "Select default layout"
-msgstr ""
+msgstr "Selecciona la disposició predeterminada"
 
 #. i18n: file: src/addonselector.ui:58
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:57
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "Mostra les opcions &avançades"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -282,7 +285,7 @@ msgstr ""
 #: src/addonselector.cpp:158
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "Interfície d'usuari"
 
 #: src/model.cpp:27
 #, kde-format
@@ -294,9 +297,9 @@ msgstr "Desconegut"
 #: rc.cpp:12
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "Variant:"
 
-#: layout/kbd-layout-viewer.desktop.in:8
+#: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
 msgstr "Visualitza la disposició de teclat"
 
@@ -307,14 +310,14 @@ msgstr "Xuetian Weng"
 
 #: src/kcm_fcitx5.desktop.in:4
 msgid "fcitx"
-msgstr ""
+msgstr "fcitx"
 
 #: layout/main.cpp:42
 #, kde-format
 msgid "group"
 msgstr "grup"
 
-#: layout/kbd-layout-viewer.desktop.in:4
+#: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
 msgstr ""
 

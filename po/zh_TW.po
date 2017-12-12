@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-11-24 10:15-0800\n"
+"POT-Creation-Date: 2017-12-12 09:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>, 2017\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -179,7 +179,7 @@ msgstr "鍵盤配置 <variant>"
 msgid "Keyboard layout to use when no input method active"
 msgstr "無活動輸入法時使用的鍵盤佈局"
 
-#: layout/kbd-layout-viewer.desktop.in:7
+#: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
 msgstr "鍵盤佈局檢視器"
 
@@ -297,7 +297,7 @@ msgstr "未知"
 msgid "Variant:"
 msgstr "變體"
 
-#: layout/kbd-layout-viewer.desktop.in:8
+#: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
 msgstr "檢視鍵盤佈局"
 
@@ -315,7 +315,7 @@ msgstr "fcitx"
 msgid "group"
 msgstr "群組"
 
-#: layout/kbd-layout-viewer.desktop.in:4
+#: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
 msgstr "輸入鍵盤"
 
