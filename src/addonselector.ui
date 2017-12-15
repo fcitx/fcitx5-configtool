@@ -37,19 +37,31 @@
     </widget>
    </item>
    <item>
-    <widget class="KCategorizedView" name="listView">
+    <widget class="QTreeView" name="listView">
      <property name="mouseTracking">
       <bool>true</bool>
-     </property>
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
-     <property name="verticalScrollMode">
-      <enum>QAbstractItemView::ScrollPerPixel</enum>
+     <property name="indentation">
+      <number>0</number>
      </property>
+     <property name="rootIsDecorated">
+      <bool>false</bool>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="headerHidden">
+      <bool>true</bool>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
     </widget>
    </item>
    <item>
@@ -61,13 +73,6 @@
    </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>KCategorizedView</class>
-   <extends>QListView</extends>
-   <header>kcategorizedview.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

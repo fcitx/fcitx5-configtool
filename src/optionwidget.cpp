@@ -19,12 +19,17 @@
 
 #include "optionwidget.h"
 #include "keylistwidget.h"
+#include "listoptionwidget.h"
 #include "logging.h"
+#include "varianthelper.h"
 #include <KLocalizedString>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QDialog>
+#include <QDialogButtonBox>
 #include <QFormLayout>
 #include <QLineEdit>
+#include <QPointer>
 #include <QSpinBox>
 #include <QVBoxLayout>
 #include <fcitxqtkeysequencewidget.h>
@@ -33,71 +38,6 @@ namespace fcitx {
 namespace kcm {
 
 namespace {
-
-QString valueFromVariantMapByPath(const QVariantMap &map,
-                                  const QStringList &path, int depth) {
-    auto iter = map.find(path[depth]);
-    if (iter == map.end()) {
-        return QString();
-    }
-    if (depth + 1 == path.size()) {
-        if (iter->canConvert<QString>()) {
-            return iter->toString();
-        }
-    } else {
-        QVariantMap map;
-        QVariant variant = *iter;
-        if (variant.canConvert<QDBusArgument>()) {
-            auto argument = qvariant_cast<QDBusArgument>(variant);
-            argument >> map;
-        }
-        if (variant.canConvert<QVariantMap>()) {
-            map = iter->toMap();
-        }
-
-        if (!map.isEmpty()) {
-            return valueFromVariantMapByPath(map, path, depth + 1);
-        }
-    }
-    return QString();
-}
-
-QString valueFromVariantMap(const QVariantMap &map, const QString &path) {
-    auto pathList = path.split("/");
-    if (pathList.empty()) {
-        return QString();
-    }
-    return valueFromVariantMapByPath(map, pathList, 0);
-}
-
-void valueToVariantMapByPath(QVariantMap &map, const QStringList &path,
-                             const QVariant &value, int depth) {
-    if (depth + 1 == path.size()) {
-        map[path[depth]] = value;
-    } else {
-        auto iter = map.find(path[depth]);
-        if (iter == map.end()) {
-            iter = map.insert(path[depth], QVariantMap());
-        }
-
-        if (iter->type() != QVariant::Map) {
-            auto oldValue = *iter;
-            *iter = QVariantMap({{"", oldValue}});
-        }
-
-        auto &nextMap = *static_cast<QVariantMap *>(iter->data());
-        valueToVariantMapByPath(nextMap, path, value, depth + 1);
-    }
-}
-
-void valueToVariantMap(QVariantMap &map, const QString &path,
-                       const QVariant &value) {
-    auto pathList = path.split("/");
-    if (pathList.empty()) {
-        return;
-    }
-    valueToVariantMapByPath(map, pathList, value, 0);
-}
 
 class IntegerOptionWidget : public OptionWidget {
     Q_OBJECT
@@ -215,6 +155,13 @@ public:
         layout->setMargin(0);
 
         keyListWidget_ = new KeyListWidget(this);
+
+        keyListWidget_->setAllowModifierLess(
+            valueFromVariantMap(option.properties(),
+                                "ListConstrain/AllowModifierLess") == "True");
+        keyListWidget_->setAllowModifierOnly(
+            valueFromVariantMap(option.properties(),
+                                "ListConstrain/AllowModifierOnly") == "True");
         connect(keyListWidget_, &KeyListWidget::keyChanged, this,
                 &OptionWidget::valueChanged);
         layout->addWidget(keyListWidget_);
@@ -259,6 +206,13 @@ public:
           keyWidget_(new FcitxQtKeySequenceWidget(this)) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
+
+        keyWidget_->setModifierlessAllowed(
+            valueFromVariantMap(option.properties(), "AllowModifierLess") ==
+            "True");
+        keyWidget_->setModifierOnlyAllowed(
+            valueFromVariantMap(option.properties(), "AllowModifierOnly") ==
+            "True");
 
         connect(keyWidget_, &FcitxQtKeySequenceWidget::keySequenceChanged, this,
                 &OptionWidget::valueChanged);
@@ -366,8 +320,89 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
     } else if (option.type() == "Enum") {
         widget = new EnumOptionWidget(option, path, parent);
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
+    } else if (option.type().startsWith("List|")) {
+        widget = new ListOptionWidget(option, path, parent);
+        layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     }
     return widget;
+}
+
+bool fcitx::kcm::OptionWidget::execOptionDialog(
+    const fcitx::FcitxQtConfigOption &option, QVariant &result) {
+    QPointer<QDialog> dialog = new QDialog;
+    dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
+    QVBoxLayout *dialogLayout = new QVBoxLayout;
+    QFormLayout *subLayout = new QFormLayout;
+    dialogLayout->addLayout(subLayout);
+    dialog->setLayout(dialogLayout);
+    QDialogButtonBox *buttonBox =
+        new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+
+    dialogLayout->addWidget(buttonBox);
+
+    auto optionWidget =
+        addWidget(subLayout, option, QString("Value"), dialog.data());
+    QVariantMap origin;
+    origin["Value"] = result;
+    optionWidget->readValueFrom(origin);
+
+    connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
+
+    auto ret = dialog->exec();
+    if (ret && dialog && optionWidget->isValid()) {
+        QVariantMap map;
+        optionWidget->writeValueTo(map);
+        result = map.value("Value");
+        return true;
+    }
+    return false;
+}
+
+QString
+fcitx::kcm::OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
+                                   const QVariant &value) {
+    if (option.type() == "Integer") {
+        return value.toString();
+    } else if (option.type() == "String") {
+        return value.toString();
+    } else if (option.type() == "Boolean") {
+        return value.toString() == "True" ? i18n("Yes") : i18n("No");
+    } else if (option.type() == "Key") {
+        return value.toString() == "True" ? i18n("Yes") : i18n("No");
+    } else if (option.type() == "Enum") {
+        QMap<QString, QString> enumMap;
+        int i = 0;
+        while (true) {
+            auto value = valueFromVariantMap(option.properties(),
+                                             QString("Enum/%1").arg(i));
+            if (value.isNull()) {
+                break;
+            }
+            auto text = valueFromVariantMap(option.properties(),
+                                            QString("EnumI18n/%1").arg(i));
+            if (text.isEmpty()) {
+                text = value;
+            }
+            enumMap[value] = text;
+            i++;
+        }
+        return enumMap.value(value.toString());
+    } else if (option.type().startsWith("List|")) {
+
+        int i = 0;
+        QStringList strs;
+        strs.clear();
+        auto subOption = option;
+        subOption.setType(option.type().mid(5)); // Remove List|
+        while (true) {
+            auto subValue = valueFromVariant(value, QString(i));
+            strs << prettify(subOption, subValue);
+            i++;
+        }
+        return i18n("[%1]").arg(strs.join(" "));
+    }
+    return QString();
 }
 
 #include "optionwidget.moc"

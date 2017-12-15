@@ -170,8 +170,7 @@ void ConfigWidget::addOptionWidget(QFormLayout *layout,
 
 QDialog *ConfigWidget::configDialog(QWidget *parent, Module *module,
                                     const QString &uri, const QString &title) {
-    QDialog *dialog;
-    dialog = new QDialog(parent);
+    QDialog *dialog = new QDialog(parent);
     auto configPage = new ConfigWidget(uri, module, dialog);
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
     QVBoxLayout *dialogLayout = new QVBoxLayout;

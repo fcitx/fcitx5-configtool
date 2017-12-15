@@ -16,46 +16,21 @@
 // License along with this library; see the file COPYING. If not,
 // see <http://www.gnu.org/licenses/>.
 //
-#ifndef _KCM_FCITX_KEYLISTWIDGET_H_
-#define _KCM_FCITX_KEYLISTWIDGET_H_
+#ifndef _KCM_FCITX5_CATEGORYHELPER_H_
+#define _KCM_FCITX5_CATEGORYHELPER_H_
 
-#include <QWidget>
-#include <fcitx-utils/key.h>
-
-class QToolButton;
-class QBoxLayout;
+#include <QPainter>
+#include <QStyleOptionViewItem>
 
 namespace fcitx {
 namespace kcm {
 
-class KeyListWidget : public QWidget {
-    Q_OBJECT
-public:
-    explicit KeyListWidget(QWidget *parent = 0);
+void paintCategoryHeader(QPainter *painter, const QStyleOptionViewItem &option,
+                         const QModelIndex &index);
 
-    QList<Key> keys() const;
-    void setKeys(const QList<Key> &keys);
-    void setAllowModifierLess(bool);
-    void setAllowModifierOnly(bool);
-
-signals:
-    void keyChanged();
-
-protected:
-    void resizeEvent(QResizeEvent *) override;
-
-private:
-    void addKey(Key key = Key());
-    bool removeKeyAt(int idx);
-    bool showRemoveButton() const;
-
-    QToolButton *addButton_;
-    QBoxLayout *keysLayout_;
-    bool modifierLess_ = false;
-    bool modifierOnly_ = false;
-};
+QSize categoryHeaderSizeHint();
 
 } // namespace kcm
 } // namespace fcitx
 
-#endif // _KCM_FCITX_KEYLISTWIDGET_H_
+#endif // _KCM_FCITX5_CATEGORYHELPER_H_

@@ -59,7 +59,6 @@ private slots:
 
 private:
     Module *module_;
-    KCategoryDrawer *categoryDrawer_;
     ProxyModel *proxyModel_;
     AddonModel *addonModel_;
     AddonDelegate *delegate_;

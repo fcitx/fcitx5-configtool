@@ -55,6 +55,8 @@ void fcitx::kcm::KeyListWidget::addKey(fcitx::Key key) {
     auto keyWidget = new FcitxQtKeySequenceWidget;
     keyWidget->setClearButtonShown(false);
     keyWidget->setKeySequence({key});
+    keyWidget->setModifierlessAllowed(modifierLess_);
+    keyWidget->setModifierOnlyAllowed(modifierOnly_);
     auto widget = new QWidget;
     auto layout = new QHBoxLayout;
     layout->setMargin(0);
@@ -117,6 +119,38 @@ QList<fcitx::Key> fcitx::kcm::KeyListWidget::keys() const {
         }
     }
     return result;
+}
+
+void fcitx::kcm::KeyListWidget::setAllowModifierLess(bool value) {
+    if (value == modifierLess_) {
+        return;
+    }
+
+    modifierLess_ = value;
+
+    for (int i = 0; i < keysLayout_->count(); i++) {
+        if (auto keyWidget = keysLayout_->itemAt(i)
+                                 ->widget()
+                                 ->findChild<FcitxQtKeySequenceWidget *>()) {
+            keyWidget->setModifierlessAllowed(modifierLess_);
+        }
+    }
+}
+
+void fcitx::kcm::KeyListWidget::setAllowModifierOnly(bool value) {
+    if (value == modifierOnly_) {
+        return;
+    }
+
+    modifierOnly_ = value;
+
+    for (int i = 0; i < keysLayout_->count(); i++) {
+        if (auto keyWidget = keysLayout_->itemAt(i)
+                                 ->widget()
+                                 ->findChild<FcitxQtKeySequenceWidget *>()) {
+            keyWidget->setModifierOnlyAllowed(modifierOnly_);
+        }
+    }
 }
 
 bool fcitx::kcm::KeyListWidget::removeKeyAt(int idx) {

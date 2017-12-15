@@ -35,10 +35,10 @@ enum {
 
 enum { LanguageType, IMType };
 
-class AvailIMModel : public QAbstractItemModel {
+class CategorizedItemModel : public QAbstractItemModel {
     Q_OBJECT
 public:
-    AvailIMModel(QObject *parent = 0);
+    CategorizedItemModel(QObject *parent = 0);
     QModelIndex index(int row, int column,
                       const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
@@ -46,6 +46,19 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override;
+
+protected:
+    virtual int listSize() const = 0;
+    virtual int subListSize(int idx) const = 0;
+    virtual QVariant dataForItem(const QModelIndex &index, int role) const = 0;
+    virtual QVariant dataForCategory(const QModelIndex &index,
+                                     int role) const = 0;
+};
+
+class AvailIMModel : public CategorizedItemModel {
+    Q_OBJECT
+public:
+    AvailIMModel(QObject *parent = 0);
 signals:
     void select(QModelIndex index);
     void updateIMListFinished();
@@ -53,6 +66,14 @@ public slots:
     void filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
                            const FcitxQtStringKeyValueList &enabledIMs,
                            const QString &selection = QString());
+
+protected:
+    int listSize() const override { return filteredIMEntryList.size(); }
+    int subListSize(int idx) const override {
+        return filteredIMEntryList[idx].second.size();
+    }
+    QVariant dataForItem(const QModelIndex &index, int role) const override;
+    QVariant dataForCategory(const QModelIndex &index, int role) const override;
 
 private:
     QList<QPair<QString, FcitxQtInputMethodEntryList>> filteredIMEntryList;

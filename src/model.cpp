@@ -22,6 +22,91 @@
 #include <QCollator>
 #include <QLocale>
 
+fcitx::kcm::CategorizedItemModel::CategorizedItemModel(QObject *parent)
+    : QAbstractItemModel(parent) {}
+
+int fcitx::kcm::CategorizedItemModel::rowCount(
+    const QModelIndex &parent) const {
+    if (!parent.isValid()) {
+        return listSize();
+    }
+
+    if (parent.internalId() > 0) {
+        return 0;
+    }
+
+    if (parent.column() > 0 || parent.row() >= listSize()) {
+        return 0;
+    }
+
+    return subListSize(parent.row());
+}
+
+int fcitx::kcm::CategorizedItemModel::columnCount(
+    const QModelIndex &parent) const {
+    return 1;
+}
+
+QModelIndex
+fcitx::kcm::CategorizedItemModel::parent(const QModelIndex &child) const {
+    if (!child.isValid()) {
+        return QModelIndex();
+    }
+
+    int row = child.internalId();
+    if (row && row - 1 >= listSize()) {
+        return QModelIndex();
+    }
+
+    return createIndex(row - 1, 0, -1);
+}
+
+QModelIndex
+fcitx::kcm::CategorizedItemModel::index(int row, int column,
+                                        const QModelIndex &parent) const {
+    // return language index
+    if (!parent.isValid()) {
+        if (column > 0 || row >= listSize()) {
+            return QModelIndex();
+        } else {
+            return createIndex(row, column, static_cast<quintptr>(0));
+        }
+    }
+
+    // return im index
+    if (parent.column() > 0 || parent.row() >= listSize() ||
+        row >= subListSize(parent.row())) {
+        return QModelIndex();
+    }
+
+    return createIndex(row, column, parent.row() + 1);
+}
+
+QVariant fcitx::kcm::CategorizedItemModel::data(const QModelIndex &index,
+                                                int role) const {
+    if (!index.isValid()) {
+        return QVariant();
+    }
+
+    if (!index.parent().isValid()) {
+        if (index.column() > 0 || index.row() >= listSize()) {
+            return QVariant();
+        }
+
+        return dataForCategory(index, role);
+    }
+
+    if (index.column() > 0 || index.parent().column() > 0 ||
+        index.parent().row() >= listSize()) {
+        return QVariant();
+    }
+
+    if (index.row() >= subListSize(index.parent().row())) {
+        return QVariant();
+    }
+    return dataForItem(index, role);
+}
+
 static QString languageName(const QString &langCode) {
     if (langCode.isEmpty()) {
         return i18n("Unknown");
@@ -70,52 +155,33 @@ static QString languageName(const QString &langCode) {
 }
 
 fcitx::kcm::AvailIMModel::AvailIMModel(QObject *parent)
-    : QAbstractItemModel(parent) {}
+    : fcitx::kcm::CategorizedItemModel(parent) {}
 
-int fcitx::kcm::AvailIMModel::columnCount(const QModelIndex &) const {
-    return 1;
+QVariant fcitx::kcm::AvailIMModel::dataForCategory(const QModelIndex &index,
+                                                   int role) const {
+    switch (role) {
+
+    case Qt::DisplayRole:
+        return languageName(filteredIMEntryList[index.row()].first);
+
+    case FcitxLanguageRole:
+        return filteredIMEntryList[index.row()].first;
+
+    case FcitxIMUniqueNameRole:
+        return QString();
+
+    case FcitxRowTypeRole:
+        return LanguageType;
+
+    default:
+        return QVariant();
+    }
 }
 
-QVariant fcitx::kcm::AvailIMModel::data(const QModelIndex &index,
-                                        int role) const {
-    if (!index.isValid()) {
-        return QVariant();
-    }
-
-    if (!index.parent().isValid()) {
-        if (index.column() > 0 || index.row() >= filteredIMEntryList.count()) {
-            return QVariant();
-        }
-        switch (role) {
-
-        case Qt::DisplayRole:
-            return languageName(filteredIMEntryList[index.row()].first);
-
-        case FcitxLanguageRole:
-            return filteredIMEntryList[index.row()].first;
-
-        case FcitxIMUniqueNameRole:
-            return QString();
-
-        case FcitxRowTypeRole:
-            return LanguageType;
-
-        default:
-            return QVariant();
-        }
-    }
-
-    if (index.column() > 0 || index.parent().column() > 0 ||
-        index.parent().row() >= filteredIMEntryList.count()) {
-        return QVariant();
-    }
-
+QVariant fcitx::kcm::AvailIMModel::dataForItem(const QModelIndex &index,
+                                               int role) const {
     const FcitxQtInputMethodEntryList &imEntryList =
         filteredIMEntryList[index.parent().row()].second;
-
-    if (index.row() >= imEntryList.count()) {
-        return QVariant();
-    }
 
     const FcitxQtInputMethodEntry &imEntry = imEntryList[index.row()];
 
@@ -176,55 +242,6 @@ void fcitx::kcm::AvailIMModel::filterIMEntryList(
     if (imRow >= 0) {
         emit select(index(imRow, 0, index(langRow, 0)));
     }
-}
-
-QModelIndex fcitx::kcm::AvailIMModel::index(int row, int column,
-                                            const QModelIndex &parent) const {
-    // return language index
-    if (!parent.isValid()) {
-        if (column > 0 || row >= filteredIMEntryList.count()) {
-            return QModelIndex();
-        } else {
-            return createIndex(row, column, static_cast<quintptr>(0));
-        }
-    }
-
-    // return im index
-    if (parent.column() > 0 || parent.row() >= filteredIMEntryList.count() ||
-        row >= filteredIMEntryList[parent.row()].second.size()) {
-        return QModelIndex();
-    }
-
-    return createIndex(row, column, parent.row() + 1);
-}
-
-QModelIndex fcitx::kcm::AvailIMModel::parent(const QModelIndex &child) const {
-    if (!child.isValid()) {
-        return QModelIndex();
-    }
-
-    int row = child.internalId();
-    if (row && row - 1 >= filteredIMEntryList.count()) {
-        return QModelIndex();
-    }
-
-    return createIndex(row - 1, 0, -1);
-}
-
-int fcitx::kcm::AvailIMModel::rowCount(const QModelIndex &parent) const {
-    if (!parent.isValid()) {
-        return filteredIMEntryList.count();
-    }
-
-    if (parent.internalId() > 0) {
-        return 0;
-    }
-
-    if (parent.column() > 0 || parent.row() >= filteredIMEntryList.count()) {
-        return 0;
-    }
-
-    return filteredIMEntryList[parent.row()].second.count();
 }
 
 fcitx::kcm::IMProxyModel::IMProxyModel(QObject *parent)
