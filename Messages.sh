@@ -6,7 +6,7 @@ XGETTEXT="xgettext --package-name=$DOMAIN --add-comments --sort-output --msgid-b
 source_files=$(find . -name \*.cpp -o -name \*.h)
 $XGETTEXT --keyword=_ --kde --language=C++ -o ${POT_FILE} $source_files
 desktop_files=$(find . -name \*.conf.in -o -name \*.conf.in.in -o -name \*.desktop.in)
-$XGETTEXT --language=Desktop $desktop_files -j -o ${POT_FILE}
+$XGETTEXT --language=Desktop -k --keyword=Name --keyword=GenericName --keyword=Comment --keyword=Keywords $desktop_files -j -o ${POT_FILE}
 ui_files=$(find . -name \*.ui)
 extractrc $ui_files > rc.cpp
 $XGETTEXT --kde --language=C++ --add-comments --sort-output -j -o ${POT_FILE} rc.cpp
