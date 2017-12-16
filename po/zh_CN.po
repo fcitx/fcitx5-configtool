@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-15 00:00-0800\n"
+"POT-Creation-Date: 2017-12-16 00:00-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -22,7 +22,7 @@ msgstr ""
 #: src/layoutselector.cpp:345
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/model.cpp:151
 #, kde-format
@@ -34,7 +34,7 @@ msgstr "%1 (%2)"
 #: src/optionwidget.cpp:319 src/optionwidget.cpp:322 src/optionwidget.cpp:325
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1："
 
 #: layout/main.cpp:39
 #, kde-format
@@ -44,12 +44,12 @@ msgstr "通用键盘布局查看器"
 #: src/module.cpp:72
 #, kde-format
 msgid "Addon"
-msgstr ""
+msgstr "附加组件"
 
 #: src/layoutselector.cpp:339
 #, kde-format
 msgid "Any language"
-msgstr ""
+msgstr "任意语言"
 
 #: src/module.cpp:60
 #, kde-format
@@ -73,7 +73,7 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 #: src/module.cpp:56
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "配置 Fcitx 5"
 
 #: src/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
@@ -82,7 +82,7 @@ msgstr "配置输入法"
 #: src/module.cpp:57
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
-msgstr ""
+msgstr "Copyright 2017 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -94,7 +94,7 @@ msgstr "当前输入法："
 #: src/impage.cpp:197
 #, kde-format
 msgid "Current group changed"
-msgstr ""
+msgstr "当前分组已修改"
 
 #: src/layoutselector.cpp:134
 #, kde-format
@@ -104,7 +104,7 @@ msgstr "默认"
 #: src/module.cpp:55
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr ""
+msgstr "Fcitx 5 配置模块"
 
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
@@ -124,7 +124,7 @@ msgstr "表格"
 #: src/addonselector.cpp:178
 #, kde-format
 msgid "Frontend"
-msgstr ""
+msgstr "前端"
 
 #: src/module.cpp:79
 #, kde-format
@@ -134,14 +134,14 @@ msgstr "全局配置"
 #: src/impage.cpp:375
 #, kde-format
 msgid "Group Name:"
-msgstr ""
+msgstr "分组名称："
 
 #. i18n: file: src/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:27
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "分组："
 
 #: src/module.cpp:67 src/addonselector.cpp:178 src/kcm_fcitx5.desktop.in:12
 #, kde-format
@@ -184,24 +184,24 @@ msgstr "键盘布局查看器"
 #: rc.cpp:6
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "语言："
 
 #. i18n: file: src/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:9
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "布局："
 
 #: src/addonselector.cpp:179
 #, kde-format
 msgid "Loader"
-msgstr ""
+msgstr "启动器"
 
 #: src/addonselector.cpp:179
 #, kde-format
 msgid "Module"
-msgstr ""
+msgstr "模块"
 
 #: src/model.cpp:114
 #, kde-format
@@ -211,12 +211,12 @@ msgstr "多语言"
 #: src/impage.cpp:375
 #, kde-format
 msgid "New Group"
-msgstr ""
+msgstr "新建分组"
 
 #: src/optionwidget.cpp:370 src/optionwidget.cpp:372
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "否"
 
 #. i18n: file: src/impage.ui:200
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -261,14 +261,14 @@ msgstr "选择默认键盘布局"
 #: src/impage.cpp:281
 #, kde-format
 msgid "Select default layout"
-msgstr ""
+msgstr "选择默认布局"
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:60
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "显示高级选项(&A)"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -284,7 +284,7 @@ msgstr ""
 #: src/addonselector.cpp:180
 #, kde-format
 msgid "UI"
-msgstr ""
+msgstr "界面"
 
 #: src/model.cpp:112
 #, kde-format
@@ -296,7 +296,7 @@ msgstr "未知"
 #: rc.cpp:12
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "变体："
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
@@ -310,16 +310,16 @@ msgstr "翁学天"
 #: src/optionwidget.cpp:370 src/optionwidget.cpp:372
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: src/optionwidget.cpp:403
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: src/kcm_fcitx5.desktop.in:4
 msgid "fcitx"
-msgstr ""
+msgstr "fcitx"
 
 #: layout/main.cpp:42
 #, kde-format
@@ -328,7 +328,7 @@ msgstr "分组"
 
 #: layout/kbd-layout-viewer5.desktop.in:4
 msgid "input-keyboard"
-msgstr ""
+msgstr "input-keyboard"
 
 #: layout/main.cpp:43
 #, kde-format
