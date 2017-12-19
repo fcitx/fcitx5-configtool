@@ -30,8 +30,10 @@
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QPointer>
+#include <QProcess>
 #include <QSpinBox>
 #include <QVBoxLayout>
+#include <fcitx-utils/standardpath.h>
 #include <fcitxqtkeysequencewidget.h>
 
 namespace fcitx {
@@ -292,6 +294,51 @@ private:
     QComboBox *comboBox_;
     QString defaultValue_;
 };
+
+class ExternalOptionWidget : public OptionWidget {
+    Q_OBJECT
+public:
+    ExternalOptionWidget(const FcitxQtConfigOption &option, const QString &path,
+                         QWidget *parent)
+        : OptionWidget(path, parent) {
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->setMargin(0);
+
+        button_ = new QToolButton(this);
+        button_->setIcon(QIcon::fromTheme("configure"));
+        layout->addWidget(button_);
+        setLayout(layout);
+
+        uri_ = valueFromVariantMap(option.properties(), "External");
+
+        connect(button_, &QPushButton::clicked, this, [this, parent]() {
+            if (uri_.startsWith("gui://")) {
+                auto path = uri_.mid(6);
+                auto wrapperPath = stringutils::joinPath(
+                    StandardPath::global().fcitxPath("libdir"),
+                    "fcitx5/libexec/fcitx5-qt5-gui-wrapper");
+                QStringList args;
+                if (QGuiApplication::platformName() == "xcb") {
+                    auto wid = parent->winId();
+                    if (wid) {
+                        args << "-w";
+                        args << QString::number(wid);
+                    }
+                }
+                args << path;
+                qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath.data() << args;
+                QProcess::startDetached(wrapperPath.data(), args);
+            }
+        });
+    }
+
+    void readValueFrom(const QVariantMap &) override {}
+    void writeValueTo(QVariantMap &) override {}
+
+private:
+    QToolButton *button_;
+    QString uri_;
+};
 }
 
 } // namespace kcm
@@ -322,6 +369,9 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     } else if (option.type().startsWith("List|")) {
         widget = new ListOptionWidget(option, path, parent);
+        layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
+    } else if (option.type() == "External") {
+        widget = new ExternalOptionWidget(option, path, parent);
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     }
     return widget;
