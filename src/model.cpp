@@ -42,8 +42,7 @@ int fcitx::kcm::CategorizedItemModel::rowCount(
     return subListSize(parent.row());
 }
 
-int fcitx::kcm::CategorizedItemModel::columnCount(
-    const QModelIndex &parent) const {
+int fcitx::kcm::CategorizedItemModel::columnCount(const QModelIndex &) const {
     return 1;
 }
 

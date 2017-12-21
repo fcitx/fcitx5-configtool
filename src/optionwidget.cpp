@@ -90,7 +90,7 @@ private:
 class StringOptionWidget : public OptionWidget {
     Q_OBJECT
 public:
-    StringOptionWidget(const FcitxQtConfigOption &option, const QString &path,
+    StringOptionWidget(const FcitxQtConfigOption &, const QString &path,
                        QWidget *parent)
         : OptionWidget(path, parent) {
         QVBoxLayout *layout = new QVBoxLayout;
