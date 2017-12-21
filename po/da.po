@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-16 10:32-0800\n"
+"POT-Creation-Date: 2017-12-21 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>, 2017\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -30,8 +30,9 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/optionwidget.cpp:307 src/optionwidget.cpp:310 src/optionwidget.cpp:316
-#: src/optionwidget.cpp:319 src/optionwidget.cpp:322 src/optionwidget.cpp:325
+#: src/optionwidget.cpp:354 src/optionwidget.cpp:357 src/optionwidget.cpp:363
+#: src/optionwidget.cpp:366 src/optionwidget.cpp:369 src/optionwidget.cpp:372
+#: src/optionwidget.cpp:375
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -58,14 +59,14 @@ msgstr "Forfatter"
 
 #. i18n: file: src/impage.ui:161
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:15
+#: rc.cpp:36
 #, kde-format
 msgid "Available Input Method:"
 msgstr "Tilgængelig inputmetode:"
 
 #. i18n: file: src/erroroverlay.ui:167
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
-#: rc.cpp:30
+#: rc.cpp:51
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Kan ikke oprette forbindelse til Fcitx med DBus. Kører Fcitx?"
@@ -86,7 +87,7 @@ msgstr "Ophavsret 2017 Xuetian Weng"
 
 #. i18n: file: src/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:3
+#: rc.cpp:24
 #, kde-format
 msgid "Current Input Method:"
 msgstr "Nuværende inputmetode:"
@@ -106,17 +107,17 @@ msgstr "Standard"
 msgid "Fcitx 5 Configuration Module"
 msgstr "Fcitx 5-konfigurationsmodul"
 
-#. i18n: file: src/erroroverlay.ui:132
-#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
-#. i18n: file: src/listoptionwidget.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ListOptionWidget)
 #. i18n: file: src/layoutselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
+#. i18n: file: src/listoptionwidget.ui:14
+#. i18n: ectx: property (windowTitle), widget (QWidget, ListOptionWidget)
 #. i18n: file: src/fontbutton.ui:20
 #. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
+#. i18n: file: src/erroroverlay.ui:132
+#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
 #. i18n: file: src/addonselector.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWidget, AddonSelector)
-#: rc.cpp:27 rc.cpp:33 rc.cpp:36 rc.cpp:48 rc.cpp:54
+#: rc.cpp:3 rc.cpp:15 rc.cpp:18 rc.cpp:48 rc.cpp:54
 #, kde-format
 msgid "Form"
 msgstr "Formular"
@@ -138,12 +139,12 @@ msgstr "Gruppenavn:"
 
 #. i18n: file: src/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:6
+#: rc.cpp:27
 #, kde-format
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: src/addonselector.cpp:178 src/module.cpp:67 src/kcm_fcitx5.desktop.in:12
+#: src/module.cpp:67 src/addonselector.cpp:178 src/kcm_fcitx5.desktop.in:12
 #, kde-format
 msgid "Input Method"
 msgstr "Inputmetode"
@@ -170,7 +171,7 @@ msgstr "Tastaturlayout <variant>"
 
 #. i18n: file: src/impage.ui:77
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:9
+#: rc.cpp:30
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "Tastaturlayout som skal bruges når der ikke er nogen aktiv inputmetode"
@@ -181,14 +182,14 @@ msgstr "Tastaturlayout-fremviser"
 
 #. i18n: file: src/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:39
+#: rc.cpp:6
 #, kde-format
 msgid "Language:"
 msgstr "Sprog:"
 
 #. i18n: file: src/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:42
+#: rc.cpp:9
 #, kde-format
 msgid "Layout:"
 msgstr "Layout:"
@@ -213,14 +214,14 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/optionwidget.cpp:370 src/optionwidget.cpp:372
+#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "Nej"
 
 #. i18n: file: src/impage.ui:200
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:21
+#: rc.cpp:42
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "&Vis kun nuværende sprog"
@@ -239,21 +240,21 @@ msgstr "Søg efter tilføjelser"
 
 #. i18n: file: src/impage.ui:168
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:18
+#: rc.cpp:39
 #, kde-format
 msgid "Search Input Method"
 msgstr "Søg efter inputmetode"
 
 #. i18n: file: src/fontbutton.ui:51
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-#: rc.cpp:51
+#: rc.cpp:21
 #, kde-format
 msgid "Select &Font..."
 msgstr "Vælg &skrifttype..."
 
 #. i18n: file: src/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:12
+#: rc.cpp:33
 #, kde-format
 msgid "Select default keyboard layout"
 msgstr "Vælg standardtastaturlayout"
@@ -272,7 +273,7 @@ msgstr "Vis &avancerede valgmuligheder"
 
 #. i18n: file: src/impage.ui:257
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:24
+#: rc.cpp:45
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -293,7 +294,7 @@ msgstr "Ukendt"
 
 #. i18n: file: src/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:45
+#: rc.cpp:12
 #, kde-format
 msgid "Variant:"
 msgstr "Variant:"
@@ -307,15 +308,15 @@ msgstr "Vis tastaturlayout"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/optionwidget.cpp:370 src/optionwidget.cpp:372
+#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
-#: src/optionwidget.cpp:403
+#: src/optionwidget.cpp:453
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: layout/main.cpp:42
 #, kde-format
