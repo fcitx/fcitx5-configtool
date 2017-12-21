@@ -77,7 +77,7 @@
           <string>Keyboard layout to use when no input method active</string>
          </property>
          <property name="text">
-          <string>Select default keyboard layout</string>
+          <string>Select system keyboard layout</string>
          </property>
         </widget>
        </item>
@@ -89,6 +89,12 @@
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
         </spacer>
        </item>
@@ -148,6 +154,12 @@
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
         </spacer>
        </item>

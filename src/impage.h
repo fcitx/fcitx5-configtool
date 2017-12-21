@@ -74,6 +74,7 @@ private slots:
 private:
     void addIM(const QModelIndex &index);
     void removeIM(const QModelIndex &index);
+    void checkDefaultLayout();
     void emitChanged();
 
     Module *module_;

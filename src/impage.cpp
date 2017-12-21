@@ -277,13 +277,45 @@ void IMPage::selectDefaultLayout() {
     } else {
         layout = defaultLayout_;
     }
+    bool ok = false;
     auto result = LayoutSelector::selectLayout(
-        this, module_, i18n("Select default layout"), layout, variant);
+        this, module_, i18n("Select default layout"), layout, variant, &ok);
+    if (!ok) {
+        return;
+    }
     if (result.second.isEmpty()) {
         defaultLayout_ = result.first;
     } else {
         defaultLayout_ = QString("%0-%1").arg(result.first, result.second);
     }
+
+    auto imname = QString("keyboard-%0").arg(defaultLayout_);
+    if (imEntries_.size() == 0 || imEntries_[0].key() != imname) {
+        auto result = QMessageBox::question(
+            this, i18n("Change Input method to match layout selection."),
+            i18n("Your currently configured input method does not match your "
+                 "selected layout, do you want to add the corresponding input "
+                 "method for the layout?"),
+            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No),
+            QMessageBox::Yes);
+        if (result == QMessageBox::Yes) {
+            FcitxQtStringKeyValue imEntry;
+            int i = 0;
+            for (; i < imEntries_.size(); i++) {
+                if (imEntries_[i].key() == imname) {
+                    imEntry = imEntries_[i];
+                    imEntries_.removeAt(i);
+                    break;
+                }
+            }
+            if (i == imEntries_.size()) {
+                imEntry.setKey(imname);
+            }
+            imEntries_.push_front(imEntry);
+            emit updateIMList(allIMs_, imEntries_, imname);
+        }
+    }
+
     emitChanged();
 }
 
@@ -302,6 +334,24 @@ void IMPage::clickAddIM() { addIM(availIMView->currentIndex()); }
 
 void IMPage::clickRemoveIM() { removeIM(currentIMView->currentIndex()); }
 
+void IMPage::checkDefaultLayout() {
+    if (imEntries_.size() > 0 &&
+        imEntries_[0].key() != QString("keyboard-%0").arg(defaultLayout_) &&
+        imEntries_[0].key().startsWith("keyboard-")) {
+        // Remove "keyboard-".
+        auto layoutString = imEntries_[0].key().mid(9);
+        auto result = QMessageBox::question(
+            this, i18n("Change System layout to match input method selection."),
+            i18n("Your currently configured input method does not match your "
+                 "layout, do you want to change the layout setting?"),
+            QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No),
+            QMessageBox::Yes);
+        if (result == QMessageBox::Yes) {
+            defaultLayout_ = layoutString;
+        }
+    }
+}
+
 void IMPage::addIM(const QModelIndex &index) {
     if (!index.isValid()) {
         return;
@@ -310,6 +360,9 @@ void IMPage::addIM(const QModelIndex &index) {
     FcitxQtStringKeyValue imEntry;
     imEntry.setKey(uniqueName);
     imEntries_.push_back(imEntry);
+    if (imEntries_.size() == 1) {
+        checkDefaultLayout();
+    }
     emit updateIMList(allIMs_, imEntries_, uniqueName);
     emitChanged();
 }
@@ -320,6 +373,10 @@ void IMPage::removeIM(const QModelIndex &index) {
     }
     const QString uniqueName = index.data(FcitxIMUniqueNameRole).toString();
     imEntries_.removeAt(index.row());
+    if (index.row() == 0) {
+        checkDefaultLayout();
+    }
+
     emit updateIMList(allIMs_, imEntries_, uniqueName);
     emitChanged();
 }
@@ -336,6 +393,9 @@ void IMPage::moveDownIM() {
 
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
     imEntries_.swap(curIndex.row(), curIndex.row() + 1);
+    if (curIndex.row() == 0) {
+        checkDefaultLayout();
+    }
     emit updateIMList(allIMs_, imEntries_, uniqueName);
     emitChanged();
 }
@@ -365,6 +425,9 @@ void IMPage::moveUpIM() {
 
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
     imEntries_.swap(curIndex.row(), curIndex.row() - 1);
+    if (curIndex.row() == 1) {
+        checkDefaultLayout();
+    }
     emit updateIMList(allIMs_, imEntries_, uniqueName);
     emitChanged();
 }

@@ -248,15 +248,15 @@ fcitx::kcm::IMProxyModel::IMProxyModel(QObject *parent)
     : QSortFilterProxyModel(parent) {}
 
 void fcitx::kcm::IMProxyModel::setFilterText(const QString &text) {
-    if (m_filterText != text) {
-        m_filterText = text;
+    if (filterText_ != text) {
+        filterText_ = text;
         invalidate();
     }
 }
 
 void fcitx::kcm::IMProxyModel::setShowOnlyCurrentLanguage(bool show) {
-    if (m_showOnlyCurrentLanguage != show) {
-        m_showOnlyCurrentLanguage = show;
+    if (showOnlyCurrentLanguage_ != show) {
+        showOnlyCurrentLanguage_ = show;
         invalidate();
     }
 }
@@ -264,7 +264,7 @@ void fcitx::kcm::IMProxyModel::setShowOnlyCurrentLanguage(bool show) {
 void fcitx::kcm::IMProxyModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
     const FcitxQtStringKeyValueList &enabledIMList) {
-    m_languageSet.clear();
+    languageSet_.clear();
 
     QSet<QString> enabledIMs;
     for (const auto &item : enabledIMList) {
@@ -272,7 +272,7 @@ void fcitx::kcm::IMProxyModel::filterIMEntryList(
     }
     for (const FcitxQtInputMethodEntry &im : imEntryList) {
         if (enabledIMs.contains(im.uniqueName())) {
-            m_languageSet.insert(im.languageCode().left(2));
+            languageSet_.insert(im.languageCode().left(2));
         }
     }
     invalidate();
@@ -320,17 +320,16 @@ bool fcitx::kcm::IMProxyModel::filterIM(const QModelIndex &index) const {
     QString lang = langCode.left(2);
 
     flag =
-        flag && (m_showOnlyCurrentLanguage
+        flag && (showOnlyCurrentLanguage_
                      ? !lang.isEmpty() && (QLocale().name().startsWith(lang) ||
-                                           m_languageSet.contains(lang))
+                                           languageSet_.contains(lang))
                      : true);
-    if (!m_filterText.isEmpty()) {
-        flag =
-            flag && (name.contains(m_filterText, Qt::CaseInsensitive) ||
-                     uniqueName.contains(m_filterText, Qt::CaseInsensitive) ||
-                     langCode.contains(m_filterText, Qt::CaseInsensitive) ||
-                     languageName(langCode).contains(m_filterText,
-                                                     Qt::CaseInsensitive));
+    if (!filterText_.isEmpty()) {
+        flag = flag && (name.contains(filterText_, Qt::CaseInsensitive) ||
+                        uniqueName.contains(filterText_, Qt::CaseInsensitive) ||
+                        langCode.contains(filterText_, Qt::CaseInsensitive) ||
+                        languageName(langCode).contains(filterText_,
+                                                        Qt::CaseInsensitive));
     }
     return flag;
 }
@@ -380,19 +379,19 @@ QModelIndex fcitx::kcm::CurrentIMModel::index(int row, int column,
     Q_UNUSED(parent);
 
     return createIndex(row, column,
-                       (row < filteredIMEntryList.count())
-                           ? (void *)&filteredIMEntryList.at(row)
+                       (row < filteredIMEntryList_.count())
+                           ? (void *)&filteredIMEntryList_.at(row)
                            : 0);
 }
 
 QVariant fcitx::kcm::CurrentIMModel::data(const QModelIndex &index,
                                           int role) const {
-    if (!index.isValid() || index.row() >= filteredIMEntryList.size()) {
+    if (!index.isValid() || index.row() >= filteredIMEntryList_.size()) {
         return QVariant();
     }
 
     const FcitxQtInputMethodEntry &imEntry =
-        filteredIMEntryList.at(index.row());
+        filteredIMEntryList_.at(index.row());
 
     switch (role) {
 
@@ -421,7 +420,7 @@ int fcitx::kcm::CurrentIMModel::rowCount(const QModelIndex &parent) const {
         return 0;
     }
 
-    return filteredIMEntryList.count();
+    return filteredIMEntryList_.count();
 }
 
 void fcitx::kcm::CurrentIMModel::filterIMEntryList(
@@ -430,7 +429,7 @@ void fcitx::kcm::CurrentIMModel::filterIMEntryList(
     beginResetModel();
 
     FcitxQtStringKeyValueList languageSet;
-    filteredIMEntryList.clear();
+    filteredIMEntryList_.clear();
     int row = 0, selectionRow = -1;
     QMap<QString, const FcitxQtInputMethodEntry *> nameMap;
     for (auto &imEntry : imEntryList) {
@@ -439,7 +438,7 @@ void fcitx::kcm::CurrentIMModel::filterIMEntryList(
 
     for (const auto &im : enabledIMs) {
         if (auto value = nameMap.value(im.key(), nullptr)) {
-            filteredIMEntryList.append(*value);
+            filteredIMEntryList_.append(*value);
             if (im.key() == selection)
                 selectionRow = row;
             row++;

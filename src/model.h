@@ -101,9 +101,9 @@ private:
     bool filterLanguage(const QModelIndex &index) const;
     bool filterIM(const QModelIndex &index) const;
 
-    bool m_showOnlyCurrentLanguage = true;
-    QString m_filterText;
-    QSet<QString> m_languageSet;
+    bool showOnlyCurrentLanguage_ = true;
+    QString filterText_;
+    QSet<QString> languageSet_;
 };
 
 class CurrentIMModel : public QAbstractListModel {
@@ -123,7 +123,7 @@ public slots:
                            const QString &selection = QString());
 
 private:
-    FcitxQtInputMethodEntryList filteredIMEntryList;
+    FcitxQtInputMethodEntryList filteredIMEntryList_;
 };
 
 } // namespace kcm
