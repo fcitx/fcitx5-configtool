@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-20 00:01-0800\n"
+"POT-Creation-Date: 2017-12-22 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/model.cpp:151
+#: src/model.cpp:150
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -57,7 +57,7 @@ msgstr "Qualsevol llengua"
 msgid "Author"
 msgstr "Autor"
 
-#. i18n: file: src/impage.ui:161
+#. i18n: file: src/impage.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:36
 #, kde-format
@@ -70,6 +70,16 @@ msgstr "Mètode d'entrada disponible:"
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "No es pot connectar a fcitx amb DBus, està fcitx en execució?"
+
+#: src/impage.cpp:295
+#, kde-format
+msgid "Change Input method to match layout selection."
+msgstr ""
+
+#: src/impage.cpp:344
+#, kde-format
+msgid "Change System layout to match input method selection."
+msgstr ""
 
 #: src/module.cpp:56
 #, kde-format
@@ -132,7 +142,7 @@ msgstr "Frontal"
 msgid "Global Config"
 msgstr "Configuració global"
 
-#: src/impage.cpp:375
+#: src/impage.cpp:438
 #, kde-format
 msgid "Group Name:"
 msgstr "Nom del grup:"
@@ -206,12 +216,12 @@ msgstr ""
 msgid "Module"
 msgstr "Mòdul"
 
-#: src/model.cpp:114
+#: src/model.cpp:113
 #, kde-format
 msgid "Multilingual"
 msgstr "Plurilingüe"
 
-#: src/impage.cpp:375
+#: src/impage.cpp:438
 #, kde-format
 msgid "New Group"
 msgstr "Grup nou"
@@ -221,14 +231,14 @@ msgstr "Grup nou"
 msgid "No"
 msgstr "No"
 
-#. i18n: file: src/impage.ui:200
+#. i18n: file: src/impage.ui:212
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:42
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "Mo%stra sols la llengua actual"
 
-#: src/model.cpp:134
+#: src/model.cpp:133
 #, kde-format
 msgid "Other"
 msgstr "Altres"
@@ -240,7 +250,7 @@ msgstr "Altres"
 msgid "Search Addons"
 msgstr "Cerca complements"
 
-#. i18n: file: src/impage.ui:168
+#. i18n: file: src/impage.ui:180
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
 #: rc.cpp:39
 #, kde-format
@@ -254,17 +264,17 @@ msgstr "Cerca el mètode d'entrada"
 msgid "Select &Font..."
 msgstr "Selecciona la &lletra..."
 
+#: src/impage.cpp:282
+#, kde-format
+msgid "Select default layout"
+msgstr "Selecciona la disposició predeterminada"
+
 #. i18n: file: src/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:33
 #, kde-format
-msgid "Select default keyboard layout"
-msgstr "Seleccioneu la disposició de teclat predeterminada"
-
-#: src/impage.cpp:281
-#, kde-format
-msgid "Select default layout"
-msgstr "Selecciona la disposició predeterminada"
+msgid "Select system keyboard layout"
+msgstr ""
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -273,7 +283,7 @@ msgstr "Selecciona la disposició predeterminada"
 msgid "Show &Advanced options"
 msgstr "Mostra les opcions &avançades"
 
-#. i18n: file: src/impage.ui:257
+#. i18n: file: src/impage.ui:269
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 #: rc.cpp:45
 #, kde-format
@@ -290,7 +300,7 @@ msgstr ""
 msgid "UI"
 msgstr "Interfície d'usuari"
 
-#: src/model.cpp:112
+#: src/model.cpp:111
 #, kde-format
 msgid "Unknown"
 msgstr "Desconegut"
@@ -315,6 +325,20 @@ msgstr "Xuetian Weng"
 #, kde-format
 msgid "Yes"
 msgstr "Sí"
+
+#: src/impage.cpp:345
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your layout, do you "
+"want to change the layout setting?"
+msgstr ""
+
+#: src/impage.cpp:296
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your selected layout, "
+"do you want to add the corresponding input method for the layout?"
+msgstr ""
 
 #: src/optionwidget.cpp:453
 #, kde-format

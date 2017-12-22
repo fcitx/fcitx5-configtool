@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-21 00:01-0800\n"
+"POT-Creation-Date: 2017-12-22 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/model.cpp:151
+#: src/model.cpp:150
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -57,7 +57,7 @@ msgstr "모든 언어"
 msgid "Author"
 msgstr "작성자"
 
-#. i18n: file: src/impage.ui:161
+#. i18n: file: src/impage.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:36
 #, kde-format
@@ -70,6 +70,16 @@ msgstr "사용가능한 입력기:"
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
+
+#: src/impage.cpp:295
+#, kde-format
+msgid "Change Input method to match layout selection."
+msgstr ""
+
+#: src/impage.cpp:344
+#, kde-format
+msgid "Change System layout to match input method selection."
+msgstr ""
 
 #: src/module.cpp:56
 #, kde-format
@@ -132,7 +142,7 @@ msgstr "전처리기"
 msgid "Global Config"
 msgstr "전역 설정"
 
-#: src/impage.cpp:375
+#: src/impage.cpp:438
 #, kde-format
 msgid "Group Name:"
 msgstr "그룹 이름:"
@@ -204,12 +214,12 @@ msgstr "적재기"
 msgid "Module"
 msgstr "모듈"
 
-#: src/model.cpp:114
+#: src/model.cpp:113
 #, kde-format
 msgid "Multilingual"
 msgstr "다중언어"
 
-#: src/impage.cpp:375
+#: src/impage.cpp:438
 #, kde-format
 msgid "New Group"
 msgstr "새 그룹"
@@ -219,14 +229,14 @@ msgstr "새 그룹"
 msgid "No"
 msgstr "아니오"
 
-#. i18n: file: src/impage.ui:200
+#. i18n: file: src/impage.ui:212
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:42
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "현재 언어만 보이기(&S)"
 
-#: src/model.cpp:134
+#: src/model.cpp:133
 #, kde-format
 msgid "Other"
 msgstr "기타"
@@ -238,7 +248,7 @@ msgstr "기타"
 msgid "Search Addons"
 msgstr "부가기능 검색"
 
-#. i18n: file: src/impage.ui:168
+#. i18n: file: src/impage.ui:180
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
 #: rc.cpp:39
 #, kde-format
@@ -252,17 +262,17 @@ msgstr "입력기 검색"
 msgid "Select &Font..."
 msgstr "글꼴 선택(&F)"
 
+#: src/impage.cpp:282
+#, kde-format
+msgid "Select default layout"
+msgstr "기본 배열 선택"
+
 #. i18n: file: src/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:33
 #, kde-format
-msgid "Select default keyboard layout"
-msgstr "기본 키보드 배열 선택"
-
-#: src/impage.cpp:281
-#, kde-format
-msgid "Select default layout"
-msgstr "기본 배열 선택"
+msgid "Select system keyboard layout"
+msgstr ""
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -271,7 +281,7 @@ msgstr "기본 배열 선택"
 msgid "Show &Advanced options"
 msgstr "추가 설정 보이기(&A)"
 
-#. i18n: file: src/impage.ui:257
+#. i18n: file: src/impage.ui:269
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
 #: rc.cpp:45
 #, kde-format
@@ -287,7 +297,7 @@ msgstr ""
 msgid "UI"
 msgstr "사용자 인터페이스"
 
-#: src/model.cpp:112
+#: src/model.cpp:111
 #, kde-format
 msgid "Unknown"
 msgstr "알 수 없음 "
@@ -312,6 +322,20 @@ msgstr "Xuetian Weng"
 #, kde-format
 msgid "Yes"
 msgstr "예"
+
+#: src/impage.cpp:345
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your layout, do you "
+"want to change the layout setting?"
+msgstr ""
+
+#: src/impage.cpp:296
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your selected layout, "
+"do you want to add the corresponding input method for the layout?"
+msgstr ""
 
 #: src/optionwidget.cpp:453
 #, kde-format
