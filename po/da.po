@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-22 00:01-0800\n"
+"POT-Creation-Date: 2017-12-24 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>, 2017\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -74,12 +74,12 @@ msgstr "Kan ikke oprette forbindelse til Fcitx med DBus. Kører Fcitx?"
 #: src/impage.cpp:295
 #, kde-format
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "Skift inputmetode til at matche valget af layout."
 
 #: src/impage.cpp:344
 #, kde-format
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "Skift systemets layout til at matche valget af inputmetode."
 
 #: src/module.cpp:56
 #, kde-format
@@ -272,7 +272,7 @@ msgstr "Vælg standardlayout"
 #: rc.cpp:33
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "Vælg systemets tastaturlayout"
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -329,6 +329,8 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
+"skifte layoutindstillingen?"
 
 #: src/impage.cpp:296
 #, kde-format
@@ -336,6 +338,8 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
+"tilføje layoutets tilhørende inputmetode?"
 
 #: src/optionwidget.cpp:453
 #, kde-format
