@@ -4,13 +4,14 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
+# wwj402 <wwj402@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-22 00:01-0800\n"
+"POT-Creation-Date: 2017-12-25 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
+"Last-Translator: wwj402 <wwj402@gmail.com>, 2017\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -74,12 +75,12 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 #: src/impage.cpp:295
 #, kde-format
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "更改输入方式以匹配布局选择。"
 
 #: src/impage.cpp:344
 #, kde-format
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "更改系统布局以匹配输入方式选择。"
 
 #: src/module.cpp:56
 #, kde-format
@@ -272,7 +273,7 @@ msgstr "选择默认布局"
 #: rc.cpp:33
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "选择系统键盘布局"
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -328,7 +329,7 @@ msgstr "是"
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
-msgstr ""
+msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
 
 #: src/impage.cpp:296
 #, kde-format
@@ -336,6 +337,7 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
 #: src/optionwidget.cpp:453
 #, kde-format
