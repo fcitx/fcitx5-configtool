@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-22 00:01-0800\n"
+"POT-Creation-Date: 2017-12-27 00:01-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -74,12 +74,12 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 #: src/impage.cpp:295
 #, kde-format
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "선택된 배열에 맞게 입력기 변경"
 
 #: src/impage.cpp:344
 #, kde-format
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "선택된 입력기에 맞게 자판 배열 변경"
 
 #: src/module.cpp:56
 #, kde-format
@@ -272,7 +272,7 @@ msgstr "기본 배열 선택"
 #: rc.cpp:33
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "시스템 키보드 배열 선택"
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -329,6 +329,7 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"현재 설정된 입력기가 키보드 배열에 맞지 않습니다. 배열 설정을 변경할까요?"
 
 #: src/impage.cpp:296
 #, kde-format
@@ -336,6 +337,8 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"현재 설정된 입력기가 선택한 키보드 배열과 맞지 않습니다. 배열에 적합한 입력기"
+"를 추가하시겠습니까?"
 
 #: src/optionwidget.cpp:453
 #, kde-format
