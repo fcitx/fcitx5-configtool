@@ -43,6 +43,18 @@ QFont FontButton::parseFont(const QString &string) {
     QStringList list = string.split(" ", QString::SkipEmptyParts);
     bool bold = false;
     bool italic = false;
+    int size = 9; // Default size.
+    if (!list.empty()) {
+        bool ok = false;
+        auto fontSize = list.back().toInt(&ok);
+        if (ok) {
+            if (fontSize > 0) {
+                size = fontSize;
+            }
+            list.pop_back();
+        }
+    }
+
     while (!list.empty()) {
         if (list.last() == "Bold") {
             bold = true;
@@ -58,6 +70,7 @@ QFont FontButton::parseFont(const QString &string) {
     font.setFamily(family);
     font.setBold(bold);
     font.setItalic(italic);
+    font.setPointSize(size);
     return font;
 }
 
@@ -74,7 +87,9 @@ void FontButton::setFont(const QFont &font) {
             styles << "Italic";
         style = styles.join(" ");
     }
-    fontPreviewLabel->setText(QString("%1 %2").arg(font_.family(), style));
+    fontPreviewLabel->setText(
+        QString("%1 %2 %3")
+            .arg(font_.family(), style, QString::number(font.pointSize())));
     fontPreviewLabel->setFont(font_);
     if (font.family() != font_.family()) {
         emit fontChanged(font_);
@@ -84,7 +99,6 @@ void FontButton::setFont(const QFont &font) {
 void FontButton::selectFont() {
     QDialog dialog(NULL);
     KFontChooser *chooser = new KFontChooser(&dialog);
-    chooser->enableColumn(KFontChooser::SizeList, false);
     chooser->setFont(font_);
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog.setLayout(dialogLayout);

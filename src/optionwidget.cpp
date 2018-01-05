@@ -18,6 +18,7 @@
 //
 
 #include "optionwidget.h"
+#include "fontbutton.h"
 #include "keylistwidget.h"
 #include "listoptionwidget.h"
 #include "logging.h"
@@ -114,6 +115,35 @@ public:
 
 private:
     QLineEdit *lineEdit_;
+};
+
+class FontOptionWidget : public OptionWidget {
+    Q_OBJECT
+public:
+    FontOptionWidget(const FcitxQtConfigOption &, const QString &path,
+                     QWidget *parent)
+        : OptionWidget(path, parent) {
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->setMargin(0);
+
+        fontButton_ = new FontButton;
+        connect(fontButton_, &FontButton::fontChanged, this,
+                &OptionWidget::valueChanged);
+        layout->addWidget(fontButton_);
+        setLayout(layout);
+    }
+
+    void readValueFrom(const QVariantMap &map) override {
+        auto value = valueFromVariantMap(map, path());
+        fontButton_->setFont(FontButton::parseFont(value));
+    }
+
+    void writeValueTo(QVariantMap &map) override {
+        valueToVariantMap(map, path(), fontButton_->fontName());
+    }
+
+private:
+    FontButton *fontButton_;
 };
 
 class BooleanOptionWidget : public OptionWidget {
@@ -353,7 +383,12 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
         widget = new IntegerOptionWidget(option, path, parent);
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     } else if (option.type() == "String") {
-        widget = new StringOptionWidget(option, path, parent);
+        auto font = valueFromVariantMap(option.properties(), "Font");
+        if (font == "True") {
+            widget = new FontOptionWidget(option, path, parent);
+        } else {
+            widget = new StringOptionWidget(option, path, parent);
+        }
         layout->addRow(QString(i18n("%1:")).arg(option.description()), widget);
     } else if (option.type() == "Boolean") {
         widget = new BooleanOptionWidget(option, path, parent);
