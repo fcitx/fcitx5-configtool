@@ -28,6 +28,7 @@ ki18n_wrap_ui(kcm_SRCS ${kcm_UIS})
 add_library(kcm_fcitx5 MODULE ${kcm_SRCS})
 
 target_link_libraries(kcm_fcitx5
+  Fcitx5::Utils
   Qt5::Widgets
   Qt5::X11Extras
   KF5::CoreAddons
@@ -37,7 +38,6 @@ target_link_libraries(kcm_fcitx5
   KF5::I18n
   KF5::KIOCore
   KF5::KIOWidgets
-  Fcitx5::Utils
   Fcitx5Qt5::DBusAddons
   Fcitx5Qt5::WidgetsAddons
   layoutlib

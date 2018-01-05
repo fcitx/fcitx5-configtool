@@ -31,9 +31,9 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
 
 find_package(PkgConfig REQUIRED)
 find_package(Gettext REQUIRED)
-find_package(XkbFile REQUIRED)
 find_package(X11 REQUIRED)
 find_package(XKeyboardConfig REQUIRED)
+pkg_check_modules(XkbFile "xkbfile" REQUIRED IMPORTED_TARGET)
 
 configure_file(config.h.in config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})

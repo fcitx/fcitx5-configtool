@@ -1,11 +1,15 @@
+add_library(X11Import UNKNOWN IMPORTED)
+set_target_properties(X11Import PROPERTIES
+    IMPORTED_LOCATION "${X11_X11_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${X11_X11_INCLUDE_PATH}")
+
+add_library(X11XkblibImport INTERFACE IMPORTED)
+set_target_properties(X11XkblibImport PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${X11_Xkblib_INCLUDE_PATH}")
+
 add_library(layoutlib STATIC keyboardlayoutwidget.cpp)
 set_target_properties(layoutlib PROPERTIES COMPILE_FLAGS "-fPIC")
-target_link_libraries(layoutlib PUBLIC Qt5::Widgets PRIVATE Qt5::X11Extras Fcitx5::Utils ${X11_X11_LIB} ${XKBFILE_LIBRARIES} ${X11_Xkblib_LIB})
-
-target_include_directories(layoutlib PRIVATE
-  ${X11_Xkb_INCLUDE_PATH}
-  ${X11_Xkblib_INCLUDE_PATH}
-  )
+target_link_libraries(layoutlib PUBLIC Fcitx5::Utils Qt5::Widgets PRIVATE Qt5::X11Extras X11Import X11XkblibImport PkgConfig::XkbFile)
 
 set(kbd_layout_viewer_SOURCES
   main.cpp
