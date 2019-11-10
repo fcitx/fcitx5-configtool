@@ -342,8 +342,7 @@ public:
         uri_ = valueFromVariantMap(option.properties(), "External");
 
         connect(button_, &QPushButton::clicked, this, [this, parent]() {
-            if (uri_.startsWith("gui://")) {
-                auto path = uri_.mid(6);
+            if (uri_.startsWith("fcitx://gui/")) {
                 auto wrapperPath = stringutils::joinPath(
                     StandardPath::global().fcitxPath("libdir"),
                     "fcitx5/libexec/fcitx5-qt5-gui-wrapper");
@@ -355,7 +354,7 @@ public:
                         args << QString::number(wid);
                     }
                 }
-                args << path;
+                args << uri_;
                 qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath.data() << args;
                 QProcess::startDetached(wrapperPath.data(), args);
             }
