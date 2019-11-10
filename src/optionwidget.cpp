@@ -342,7 +342,7 @@ public:
         uri_ = valueFromVariantMap(option.properties(), "External");
 
         connect(button_, &QPushButton::clicked, this, [this, parent]() {
-            if (uri_.startsWith("fcitx://gui/")) {
+            if (uri_.startsWith("fcitx://config/addon/")) {
                 auto wrapperPath = stringutils::joinPath(
                     StandardPath::global().fcitxPath("libdir"),
                     "fcitx5/libexec/fcitx5-qt5-gui-wrapper");
