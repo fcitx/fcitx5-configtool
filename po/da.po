@@ -4,14 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
-# scootergrisen <scootergrisen@gmail.com>, 2017
+# scootergrisen, 2019
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-24 00:01-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: scootergrisen <scootergrisen@gmail.com>, 2017\n"
+"POT-Creation-Date: 2019-11-20 00:01-0800\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"Last-Translator: scootergrisen, 2019\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -30,9 +31,9 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/optionwidget.cpp:354 src/optionwidget.cpp:357 src/optionwidget.cpp:363
-#: src/optionwidget.cpp:366 src/optionwidget.cpp:369 src/optionwidget.cpp:372
-#: src/optionwidget.cpp:375
+#: src/optionwidget.cpp:383 src/optionwidget.cpp:391 src/optionwidget.cpp:397
+#: src/optionwidget.cpp:400 src/optionwidget.cpp:403 src/optionwidget.cpp:406
+#: src/optionwidget.cpp:409
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -224,7 +225,7 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
+#: src/optionwidget.cpp:454 src/optionwidget.cpp:456
 #, kde-format
 msgid "No"
 msgstr "Nej"
@@ -260,7 +261,7 @@ msgstr "Søg efter inputmetode"
 #: rc.cpp:21
 #, kde-format
 msgid "Select &Font..."
-msgstr "Vælg &skrifttype..."
+msgstr "Vælg &skrifttype ..."
 
 #: src/impage.cpp:282
 #, kde-format
@@ -318,7 +319,7 @@ msgstr "Vis tastaturlayout"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
+#: src/optionwidget.cpp:454 src/optionwidget.cpp:456
 #, kde-format
 msgid "Yes"
 msgstr "Ja"
@@ -341,7 +342,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/optionwidget.cpp:453
+#: src/optionwidget.cpp:487
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
