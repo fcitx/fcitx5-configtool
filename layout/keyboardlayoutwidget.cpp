@@ -421,7 +421,7 @@ void KeyboardLayoutWidget::init() {
         }
     }
 
-    qSort(keyboardItems.begin(), keyboardItems.end(), DrawingItemCompare());
+    std::sort(keyboardItems.begin(), keyboardItems.end(), DrawingItemCompare());
 }
 
 void KeyboardLayoutWidget::initColors() {
@@ -1059,13 +1059,13 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter *painter, uint keycode,
     end[BOTTOMRIGHT] = BOTTOMRIGHT;
 
     if (syms[BOTTOMLEFT] == syms[BOTTOMRIGHT] || syms[BOTTOMRIGHT].isNull()) {
-        syms[BOTTOMRIGHT] = QString::null;
+        syms[BOTTOMRIGHT] = QString();
         end[BOTTOMLEFT] = BOTTOMRIGHT;
         end[BOTTOMRIGHT] = -1;
     }
 
     if (syms[TOPLEFT] == syms[TOPRIGHT] || syms[TOPRIGHT].isNull()) {
-        syms[TOPRIGHT] = QString::null;
+        syms[TOPRIGHT] = QString();
         end[TOPLEFT] = TOPRIGHT;
         end[TOPRIGHT] = -1;
     }
@@ -1073,7 +1073,7 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter *painter, uint keycode,
     if ((syms[BOTTOMLEFT] == syms[TOPLEFT] || syms[TOPLEFT].isNull()) &&
         ((end[BOTTOMLEFT] == BOTTOMLEFT && end[TOPLEFT] == TOPLEFT) ||
          (end[BOTTOMLEFT] == BOTTOMRIGHT && end[TOPLEFT] == TOPRIGHT))) {
-        syms[TOPLEFT] = QString::null;
+        syms[TOPLEFT] = QString();
         end[BOTTOMLEFT] = end[TOPLEFT];
         end[TOPLEFT] = -1;
     }
@@ -1081,7 +1081,7 @@ void KeyboardLayoutWidget::drawKeyLabel(QPainter *painter, uint keycode,
     if (!syms[BOTTOMRIGHT].isNull() &&
         (syms[BOTTOMRIGHT] == syms[TOPRIGHT] ||
          (syms[TOPRIGHT].isNull() && end[TOPRIGHT] != -1))) {
-        syms[TOPRIGHT] = QString::null;
+        syms[TOPRIGHT] = QString();
         end[BOTTOMRIGHT] = TOPRIGHT;
     }
 

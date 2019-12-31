@@ -128,20 +128,20 @@ public:
     AddonDelegate(QAbstractItemView *listView, AddonSelector *parent);
     virtual ~AddonDelegate();
 
-    virtual void paint(QPainter *painter, const QStyleOptionViewItem &option,
-                       const QModelIndex &index) const;
-    virtual QSize sizeHint(const QStyleOptionViewItem &option,
-                           const QModelIndex &index) const;
+    void paint(QPainter *painter, const QStyleOptionViewItem &option,
+               const QModelIndex &index) const override;
+    QSize sizeHint(const QStyleOptionViewItem &option,
+                   const QModelIndex &index) const override;
 
 signals:
     void changed();
     void configCommitted(const QByteArray &addonName);
 
 protected:
-    virtual QList<QWidget *> createItemWidgets(const QModelIndex &index) const;
-    virtual void updateItemWidgets(const QList<QWidget *> widgets,
-                                   const QStyleOptionViewItem &option,
-                                   const QPersistentModelIndex &index) const;
+    QList<QWidget *> createItemWidgets(const QModelIndex &index) const override;
+    void updateItemWidgets(const QList<QWidget *> widgets,
+                           const QStyleOptionViewItem &option,
+                           const QPersistentModelIndex &index) const override;
 
 private slots:
     void checkBoxClicked(bool state);
@@ -409,7 +409,9 @@ QSize AddonDelegate::sizeHint(const QStyleOptionViewItem &option,
     QFontMetrics fmTitle(font);
 
     return QSize(
-        fmTitle.width(index.model()->data(index, Qt::DisplayRole).toString()) +
+        fmTitle.boundingRect(
+                   index.model()->data(index, Qt::DisplayRole).toString())
+                .width() +
             0 + MARGIN * i + pushButton_->sizeHint().width() * j,
         fmTitle.height() + option.fontMetrics.height() + MARGIN * 2);
 }
@@ -430,19 +432,19 @@ AddonDelegate::createItemWidgets(const QModelIndex &index) const {
     connect(configurePushButton, &QPushButton::clicked, this,
             &AddonDelegate::configureClicked);
 
-    setBlockedEventTypes(enabledCheckBox,
-                         QList<QEvent::Type>()
-                             << QEvent::MouseButtonPress
-                             << QEvent::MouseButtonRelease
-                             << QEvent::MouseButtonDblClick << QEvent::KeyPress
-                             << QEvent::KeyRelease);
+    setBlockedEventTypes(enabledCheckBox, QList<QEvent::Type>()
+                                              << QEvent::MouseButtonPress
+                                              << QEvent::MouseButtonRelease
+                                              << QEvent::MouseButtonDblClick
+                                              << QEvent::KeyPress
+                                              << QEvent::KeyRelease);
 
-    setBlockedEventTypes(configurePushButton,
-                         QList<QEvent::Type>()
-                             << QEvent::MouseButtonPress
-                             << QEvent::MouseButtonRelease
-                             << QEvent::MouseButtonDblClick << QEvent::KeyPress
-                             << QEvent::KeyRelease);
+    setBlockedEventTypes(configurePushButton, QList<QEvent::Type>()
+                                                  << QEvent::MouseButtonPress
+                                                  << QEvent::MouseButtonRelease
+                                                  << QEvent::MouseButtonDblClick
+                                                  << QEvent::KeyPress
+                                                  << QEvent::KeyRelease);
 
     widgetList << enabledCheckBox << configurePushButton;
 

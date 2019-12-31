@@ -111,11 +111,11 @@ class CurrentIMModel : public QAbstractListModel {
     Q_OBJECT
 public:
     CurrentIMModel(QObject *parent = nullptr);
-    virtual QModelIndex index(int row, int column = 0,
-                              const QModelIndex &parent = QModelIndex()) const;
-    virtual QVariant data(const QModelIndex &index,
-                          int role = Qt::DisplayRole) const;
-    virtual int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QModelIndex index(int row, int column = 0,
+                      const QModelIndex &parent = QModelIndex()) const override;
+    QVariant data(const QModelIndex &index,
+                  int role = Qt::DisplayRole) const override;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const override;
 signals:
     void select(QModelIndex index);
 public slots:

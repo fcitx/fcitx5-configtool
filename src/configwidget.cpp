@@ -43,7 +43,7 @@ QString joinPath(const QString &path, const QString &option) {
     }
     return QString("%1/%2").arg(path, option);
 }
-}
+} // namespace
 
 ConfigWidget::ConfigWidget(const QString &uri, Module *module, QWidget *parent)
     : QWidget(parent), uri_(uri), parent_(module),

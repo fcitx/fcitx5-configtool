@@ -368,7 +368,7 @@ private:
     QToolButton *button_;
     QString uri_;
 };
-}
+} // namespace
 
 } // namespace kcm
 } // namespace fcitx

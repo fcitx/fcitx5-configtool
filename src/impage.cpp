@@ -465,7 +465,7 @@ void IMPage::deleteGroup() {
     }
 }
 
-} // kcm
-}
+} // namespace kcm
+} // namespace fcitx
 
 #include "impage.moc"

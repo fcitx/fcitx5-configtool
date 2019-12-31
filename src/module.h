@@ -43,9 +43,9 @@ public:
     Module(QWidget *parent, const QVariantList &args = QVariantList());
     ~Module();
 
-    void load();
-    void save();
-    void defaults();
+    void load() override;
+    void save() override;
+    void defaults() override;
 
     bool available() const { return controller_; }
     FcitxQtControllerProxy *controller() { return controller_; }
