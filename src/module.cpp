@@ -67,19 +67,19 @@ Module::Module(QWidget *parent, const QVariantList &args)
     pageWidget->addTab(impage_, i18n("Input Method"));
     connect(impage_, &IMPage::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "IMPage changed";
-        changed();
+        emit changed(true);
     });
     pageWidget->addTab(addonPage_, i18n("Addon"));
     connect(addonPage_, &AddonSelector::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
-        changed();
+        emit changed(true);
     });
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
     pageWidget->addTab(configPageWrapper, i18n("Global Config"));
     connect(configPage_, &ConfigWidget::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "GlobalConfig changed";
-        changed();
+        emit changed(true);
     });
 }
 
