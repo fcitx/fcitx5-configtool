@@ -4,14 +4,16 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
-# Jeff Huang <s8321414@gmail.com>, 2017
+# 黃柏諺 <s8321414@gmail.com>, 2017
+# byStarTW (pan93412) <pan93412@gmail.com>, 2019
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-22 00:01-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Jeff Huang <s8321414@gmail.com>, 2017\n"
+"POT-Creation-Date: 2020-03-07 16:19-0800\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -31,9 +33,9 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/optionwidget.cpp:354 src/optionwidget.cpp:357 src/optionwidget.cpp:363
-#: src/optionwidget.cpp:366 src/optionwidget.cpp:369 src/optionwidget.cpp:372
-#: src/optionwidget.cpp:375
+#: src/optionwidget.cpp:383 src/optionwidget.cpp:391 src/optionwidget.cpp:397
+#: src/optionwidget.cpp:400 src/optionwidget.cpp:403 src/optionwidget.cpp:406
+#: src/optionwidget.cpp:409
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -75,12 +77,12 @@ msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
 #: src/impage.cpp:295
 #, kde-format
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "變更輸入法以符合選擇的配置。"
 
 #: src/impage.cpp:344
 #, kde-format
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "變更系統配置以符合選擇的輸入法。"
 
 #: src/module.cpp:56
 #, kde-format
@@ -225,10 +227,10 @@ msgstr "多語言"
 msgid "New Group"
 msgstr "新群組"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
+#: src/optionwidget.cpp:454 src/optionwidget.cpp:456
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "取消"
 
 #. i18n: file: src/impage.ui:212
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -273,7 +275,7 @@ msgstr "選取預設佈局"
 #: rc.cpp:33
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "請選擇系統鍵盤配置"
 
 #. i18n: file: src/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -319,29 +321,29 @@ msgstr "檢視鍵盤佈局"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
+#: src/optionwidget.cpp:454 src/optionwidget.cpp:456
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "確定"
 
 #: src/impage.cpp:345
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
-msgstr ""
+msgstr "您目前設定的輸入法與配置不符，是否變更配置設定？"
 
 #: src/impage.cpp:296
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
-msgstr ""
+msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
 
-#: src/optionwidget.cpp:453
+#: src/optionwidget.cpp:487
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: layout/main.cpp:42
 #, kde-format
