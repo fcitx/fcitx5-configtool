@@ -223,6 +223,9 @@ public:
             valueToVariantMap(map, QString("%1/%2").arg(path()).arg(i), value);
             i++;
         }
+        if (keys.empty()) {
+            valueToVariantMap(map, path(), QVariantMap());
+        }
     }
 
 private:
