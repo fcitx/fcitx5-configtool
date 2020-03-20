@@ -19,9 +19,9 @@
 #ifndef _KCM_FCITX_ISO639_H_
 #define _KCM_FCITX_ISO639_H_
 
-#include <KLocalizedString>
 #include <QMap>
 #include <QString>
+#include <fcitx-utils/i18n.h>
 
 namespace fcitx {
 namespace kcm {
@@ -33,15 +33,15 @@ public:
     QString query(const QString &code) const {
         auto value = iso639_2data_.value(code);
         if (!value.isEmpty()) {
-            return i18nd("iso_639-2", value.toUtf8().constData());
+            return translateDomain("iso_639-2", value.toUtf8().constData());
         }
         value = iso639_3data_.value(code);
         if (!value.isEmpty()) {
-            return i18nd("iso_639-3", value.toUtf8().constData());
+            return translateDomain("iso_639-3", value.toUtf8().constData());
         }
         value = iso639_5data_.value(code);
         if (!value.isEmpty()) {
-            return i18nd("iso_639-5", value.toUtf8().constData());
+            return translateDomain("iso_639-5", value.toUtf8().constData());
         }
         return value;
     }

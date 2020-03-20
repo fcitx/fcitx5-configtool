@@ -16,7 +16,41 @@
  * License along with this library; see the file COPYING. If not,
  * see <http://www.gnu.org/licenses/>.
  */
+#ifndef _FCITX_ERROROVERLAY_H_
+#define _FCITX_ERROROVERLAY_H_
 
-#include "logging.h"
+#include <QPointer>
+#include <QWidget>
+#include <memory>
 
-Q_LOGGING_CATEGORY(KCM_FCITX5, "kcm_fcitx5")
+namespace Ui {
+class ErrorOverlay;
+}
+
+namespace fcitx {
+namespace kcm {
+
+class DBusProvider;
+
+class ErrorOverlay : public QWidget {
+    Q_OBJECT
+public:
+    explicit ErrorOverlay(DBusProvider *dbus, QWidget *parent);
+    ~ErrorOverlay();
+
+    bool eventFilter(QObject *watched, QEvent *event) override;
+private slots:
+    void availabilityChanged(bool avail);
+
+private:
+    void reposition();
+    std::unique_ptr<Ui::ErrorOverlay> ui_;
+    DBusProvider *dbus;
+    QPointer<QWidget> baseWidget_;
+    bool enabled_ = false;
+};
+
+} // namespace kcm
+} // namespace fcitx
+
+#endif // _FCITX_ERROROVERLAY_H_

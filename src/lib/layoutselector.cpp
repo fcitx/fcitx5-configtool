@@ -18,13 +18,15 @@
  */
 
 #include "layoutselector.h"
-#include "../layout/keyboardlayoutwidget.h"
-#include "module.h"
+#include "dbusprovider.h"
+#include "keyboardlayoutwidget.h"
+#include "ui_layoutselector.h"
 #include <QDBusPendingCallWatcher>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QStringListModel>
 #include <QX11Info>
+#include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtdbustypes.h>
 
@@ -131,7 +133,7 @@ public:
         variantInfo_.clear();
         FcitxQtVariantInfo defaultVariant;
         defaultVariant.setVariant("");
-        defaultVariant.setDescription(i18n("Default"));
+        defaultVariant.setDescription(_("Default"));
         defaultVariant.setLanguages(info.languages());
         variantInfo_ << defaultVariant;
         variantInfo_ << info.variants();
@@ -179,46 +181,52 @@ private:
     FcitxQtVariantInfoList variantInfo_;
 };
 
-LayoutSelector::LayoutSelector(Module *module, QWidget *parent)
-    : QWidget(parent), module_(module), layoutModel_(new LayoutInfoModel(this)),
+LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
+    : QWidget(parent), ui_(std::make_unique<Ui::LayoutSelector>()), dbus_(dbus),
+      layoutModel_(new LayoutInfoModel(this)),
       variantModel_(new VariantInfoModel(this)),
       layoutFilterModel_(new LanguageFilterModel(this)),
       variantFilterModel_(new LanguageFilterModel(this)) {
-    setupUi(this);
+    ui_->setupUi(this);
     layoutFilterModel_->setSourceModel(layoutModel_);
     variantFilterModel_->setSourceModel(variantModel_);
 
-    layoutComboBox->setModel(layoutFilterModel_);
-    variantComboBox->setModel(variantFilterModel_);
+    ui_->layoutComboBox->setModel(layoutFilterModel_);
+    ui_->variantComboBox->setModel(variantFilterModel_);
 
-    connect(module_, &Module::availabilityChanged, this,
+    connect(dbus, &DBusProvider::availabilityChanged, this,
             &LayoutSelector::availabilityChanged);
 
-    connect(languageComboBox, qOverload<int>(&QComboBox::currentIndexChanged),
-            this, &LayoutSelector::languageComboBoxChanged);
-    connect(layoutComboBox, qOverload<int>(&QComboBox::currentIndexChanged),
-            this, &LayoutSelector::layoutComboBoxChanged);
-    connect(variantComboBox, qOverload<int>(&QComboBox::currentIndexChanged),
-            this, &LayoutSelector::variantComboBoxChanged);
+    connect(ui_->languageComboBox,
+            qOverload<int>(&QComboBox::currentIndexChanged), this,
+            &LayoutSelector::languageComboBoxChanged);
+    connect(ui_->layoutComboBox,
+            qOverload<int>(&QComboBox::currentIndexChanged), this,
+            &LayoutSelector::layoutComboBoxChanged);
+    connect(ui_->variantComboBox,
+            qOverload<int>(&QComboBox::currentIndexChanged), this,
+            &LayoutSelector::variantComboBoxChanged);
     if (QX11Info::isPlatformX11()) {
         keyboardLayoutWidget_ = new KeyboardLayoutWidget(this);
         keyboardLayoutWidget_->setMinimumSize(QSize(400, 200));
         keyboardLayoutWidget_->setSizePolicy(QSizePolicy::Expanding,
                                              QSizePolicy::Expanding);
-        verticalLayout->addWidget(keyboardLayoutWidget_);
+        ui_->verticalLayout->addWidget(keyboardLayoutWidget_);
     }
     availabilityChanged();
 }
 
+LayoutSelector::~LayoutSelector() {}
+
 QPair<QString, QString>
-LayoutSelector::selectLayout(QWidget *parent, Module *module,
+LayoutSelector::selectLayout(QWidget *parent, DBusProvider *dbus,
                              const QString &title, const QString &layout,
                              const QString &variant, bool *ok) {
     QPointer<QDialog> dialog(new QDialog(parent));
     auto mainLayout = new QVBoxLayout(dialog);
     dialog->setLayout(mainLayout);
     dialog->setWindowTitle(title);
-    auto layoutSelector = new LayoutSelector(module, dialog);
+    auto layoutSelector = new LayoutSelector(dbus, dialog);
     mainLayout->addWidget(layoutSelector);
     layoutSelector->setLayout(layout, variant);
 
@@ -245,7 +253,7 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
         preSelectLayout_ = layout;
         preSelectVariant_ = variant;
     } else {
-        languageComboBox->setCurrentIndex(0);
+        ui_->languageComboBox->setCurrentIndex(0);
         auto &info = layoutModel_->layoutInfo();
         auto iter = std::find_if(info.begin(), info.end(),
                                  [&layout](const FcitxQtLayoutInfo &info) {
@@ -253,12 +261,12 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
                                  });
         if (iter != info.end()) {
             auto row = std::distance(info.begin(), iter);
-            layoutComboBox->setCurrentIndex(
+            ui_->layoutComboBox->setCurrentIndex(
                 layoutFilterModel_->mapFromSource(layoutModel_->index(row))
                     .row());
         }
         if (variant.isEmpty()) {
-            variantComboBox->setCurrentIndex(0);
+            ui_->variantComboBox->setCurrentIndex(0);
         } else {
             auto &vinfo = variantModel_->variantInfo();
             auto iter =
@@ -268,7 +276,7 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
                              });
             if (iter != vinfo.end()) {
                 auto row = std::distance(vinfo.begin(), iter);
-                variantComboBox->setCurrentIndex(
+                ui_->variantComboBox->setCurrentIndex(
                     variantFilterModel_
                         ->mapFromSource(variantModel_->index(row))
                         .row());
@@ -280,16 +288,16 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
 }
 
 QPair<QString, QString> LayoutSelector::layout() const {
-    return {layoutComboBox->currentData().toString(),
-            variantComboBox->currentData().toString()};
+    return {ui_->layoutComboBox->currentData().toString(),
+            ui_->variantComboBox->currentData().toString()};
 }
 
 void LayoutSelector::availabilityChanged() {
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
 
-    auto call = module_->controller()->AvailableKeyboardLayouts();
+    auto call = dbus_->controller()->AvailableKeyboardLayouts();
     loadingCounter_ += 1;
     auto watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
@@ -297,18 +305,20 @@ void LayoutSelector::availabilityChanged() {
 }
 
 void LayoutSelector::languageComboBoxChanged() {
-    layoutFilterModel_->setLanguage(languageComboBox->currentData().toString());
+    layoutFilterModel_->setLanguage(
+        ui_->languageComboBox->currentData().toString());
 }
 
 void LayoutSelector::layoutComboBoxChanged() {
-    variantComboBox->clear();
-    if (layoutComboBox->currentIndex() < 0) {
+    ui_->variantComboBox->clear();
+    if (ui_->layoutComboBox->currentIndex() < 0) {
         return;
     }
 
     variantModel_->setVariantInfo(
-        layoutComboBox->currentData(LayoutInfoRole).value<FcitxQtLayoutInfo>());
-    variantComboBox->setCurrentIndex(0);
+        ui_->layoutComboBox->currentData(LayoutInfoRole)
+            .value<FcitxQtLayoutInfo>());
+    ui_->variantComboBox->setCurrentIndex(0);
 }
 
 void LayoutSelector::fetchLayoutFinished(QDBusPendingCallWatcher *watcher) {
@@ -335,18 +345,18 @@ void LayoutSelector::fetchLayoutFinished(QDBusPendingCallWatcher *watcher) {
         languageList << language;
     }
     languageList.sort();
-    languageComboBox->clear();
-    languageComboBox->addItem(i18n("Any language"), "");
+    ui_->languageComboBox->clear();
+    ui_->languageComboBox->addItem(_("Any language"), "");
     for (const auto &language : languageList) {
-        QString languageName = module_->iso639().query(language);
+        QString languageName = iso639_.query(language);
         if (languageName.isEmpty()) {
             languageName = language;
         } else {
-            languageName = i18n("%1 (%2)", languageName, language);
+            languageName = QString(_("%1 (%2)")).arg(languageName, language);
         }
-        languageComboBox->addItem(languageName, language);
+        ui_->languageComboBox->addItem(languageName, language);
     }
-    languageComboBox->setCurrentIndex(0);
+    ui_->languageComboBox->setCurrentIndex(0);
     layoutModel_->setLayoutInfo(std::move(layoutInfo));
     if (!loadingCounter_ && !preSelectLayout_.isEmpty()) {
         setLayout(preSelectLayout_, preSelectVariant_);
@@ -354,8 +364,8 @@ void LayoutSelector::fetchLayoutFinished(QDBusPendingCallWatcher *watcher) {
 }
 
 void LayoutSelector::variantComboBoxChanged() {
-    auto layout = layoutComboBox->currentData().toString();
-    auto variant = variantComboBox->currentData().toString();
+    auto layout = ui_->layoutComboBox->currentData().toString();
+    auto variant = ui_->variantComboBox->currentData().toString();
     if (layout.isEmpty()) {
         keyboardLayoutWidget_->setVisible(false);
     } else {

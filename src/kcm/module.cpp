@@ -26,6 +26,7 @@
 #include "logging.h"
 #include "verticalscrollarea.h"
 #include <KAboutData>
+#include <KLocalizedString>
 #include <QScrollArea>
 #include <fcitx-utils/standardpath.h>
 #include <fcitxqtcontrollerproxy.h>
@@ -44,11 +45,11 @@ QWidget *forwardHelper(QWidget *parent) {
 } // namespace
 
 Module::Module(QWidget *parent, const QVariantList &args)
-    : KCModule(forwardHelper(parent), args),
-      watcher_(new FcitxQtWatcher(QDBusConnection::sessionBus(), this)),
-      errorOverlay_(new ErrorOverlay(this)), impage_(new IMPage(this)),
-      addonPage_(new AddonSelector(this)),
-      configPage_(new ConfigWidget("fcitx://config/global", this)) {
+    : KCModule(forwardHelper(parent), args), dbus_(new DBusProvider(this)),
+      errorOverlay_(new ErrorOverlay(dbus_, this)),
+      impage_(new IMPage(dbus_, this)),
+      addonPage_(new AddonSelector(this, dbus_)),
+      configPage_(new ConfigWidget("fcitx://config/global", dbus_, this)) {
     registerFcitxQtDBusTypes();
 
     KAboutData *about = new KAboutData(
@@ -61,9 +62,6 @@ Module::Module(QWidget *parent, const QVariantList &args)
     setAboutData(about);
     setupUi(this);
 
-    connect(watcher_, &FcitxQtWatcher::availabilityChanged, this,
-            &Module::fcitxAvailabilityChanged);
-    watcher_->watch();
     pageWidget->addTab(impage_, i18n("Input Method"));
     connect(impage_, &IMPage::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "IMPage changed";
@@ -81,7 +79,7 @@ Module::Module(QWidget *parent, const QVariantList &args)
             [this]() { emit changed(true); });
 }
 
-Module::~Module() { watcher_->unwatch(); }
+Module::~Module() {}
 
 void Module::load() {
     qCDebug(KCM_FCITX5) << "kcm_fcitx5 load()";
@@ -101,20 +99,6 @@ void Module::defaults() {
     qCDebug(KCM_FCITX5) << "kcm_fcitx5 defaults()";
     configPage_->buttonClicked(QDialogButtonBox::RestoreDefaults);
     emit changed(true);
-}
-
-void Module::fcitxAvailabilityChanged(bool avail) {
-    delete controller_;
-    controller_ = nullptr;
-
-    if (avail) {
-        controller_ =
-            new FcitxQtControllerProxy(watcher_->serviceName(), "/controller",
-                                       watcher_->connection(), this);
-        controller_->setTimeout(3000);
-    }
-
-    emit availabilityChanged(controller_);
 }
 
 } // namespace kcm

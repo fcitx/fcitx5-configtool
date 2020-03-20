@@ -20,15 +20,16 @@
 #include "addonselector.h"
 #include "categoryhelper.h"
 #include "configwidget.h"
+#include "dbusprovider.h"
 #include "model.h"
-#include "module.h"
-#include <KLocalizedString>
+#include "ui_addonselector.h"
 #include <KWidgetItemDelegate>
 #include <QApplication>
 #include <QCheckBox>
 #include <QPainter>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtdbustypes.h>
 
@@ -165,6 +166,13 @@ int AddonDelegate::dependantLayoutValue(int value, int width,
     return totalWidth - width - value;
 }
 
+QFont AddonDelegate::titleFont(const QFont &baseFont) const {
+    QFont retFont(baseFont);
+    retFont.setBold(true);
+
+    return retFont;
+}
+
 AddonModel::AddonModel(AddonSelector *parent)
     : fcitx::kcm::CategorizedItemModel(parent), parent_(parent) {}
 
@@ -175,11 +183,10 @@ QString categoryName(int category) {
         return QString();
     }
 
-    const char *str[] = {I18N_NOOP("Input Method"), I18N_NOOP("Frontend"),
-                         I18N_NOOP("Loader"), I18N_NOOP("Module"),
-                         I18N_NOOP("UI")};
+    const char *str[] = {N_("Input Method"), N_("Frontend"), N_("Loader"),
+                         N_("Module"), N_("UI")};
 
-    return i18n(str[category]);
+    return _(str[category]);
 }
 QVariant AddonModel::dataForCategory(const QModelIndex &index, int role) const {
     switch (role) {
@@ -504,32 +511,33 @@ void AddonDelegate::configureClicked() {
     }
     auto addonName = index.data(Qt::DisplayRole).toString();
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
-        parent_, parent_->module(),
-        QString("fcitx://config/addon/%1").arg(name), addonName);
+        parent_, parent_->dbus(), QString("fcitx://config/addon/%1").arg(name),
+        addonName);
     dialog->exec();
     delete dialog;
 }
 
-AddonSelector::AddonSelector(Module *parent)
-    : QWidget(parent), module_(parent), proxyModel_(new ProxyModel(this)),
-      addonModel_(new AddonModel(this)) {
-    setupUi(this);
+AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
+    : QWidget(parent), dbus_(dbus), proxyModel_(new ProxyModel(this)),
+      addonModel_(new AddonModel(this)),
+      ui_(std::make_unique<Ui::AddonSelector>()) {
+    ui_->setupUi(this);
 
-    connect(module_, &Module::availabilityChanged, this,
+    connect(dbus_, &DBusProvider::availabilityChanged, this,
             &AddonSelector::availabilityChanged);
 
     proxyModel_->setSourceModel(addonModel_);
-    listView->setModel(proxyModel_);
-    connect(proxyModel_, &QAbstractItemModel::layoutChanged, listView,
+    ui_->listView->setModel(proxyModel_);
+    connect(proxyModel_, &QAbstractItemModel::layoutChanged, ui_->listView,
             &QTreeView::expandAll);
 
-    delegate_ = new AddonDelegate(listView, this);
-    listView->setItemDelegate(delegate_);
-    listView->viewport()->setAttribute(Qt::WA_Hover);
+    delegate_ = new AddonDelegate(ui_->listView, this);
+    ui_->listView->setItemDelegate(delegate_);
+    ui_->listView->viewport()->setAttribute(Qt::WA_Hover);
 
-    connect(lineEdit, &QLineEdit::textChanged, proxyModel_,
+    connect(ui_->lineEdit, &QLineEdit::textChanged, proxyModel_,
             &QSortFilterProxyModel::invalidate);
-    connect(advancedCheckbox, &QCheckBox::clicked, proxyModel_,
+    connect(ui_->advancedCheckbox, &QCheckBox::clicked, proxyModel_,
             &QSortFilterProxyModel::invalidate);
 }
 
@@ -538,7 +546,7 @@ AddonSelector::~AddonSelector() { delete delegate_; }
 void AddonSelector::load() { availabilityChanged(); }
 
 void AddonSelector::save() {
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
     FcitxQtAddonStateList list;
@@ -555,17 +563,17 @@ void AddonSelector::save() {
         list.append(state);
     }
     if (list.size()) {
-        module_->controller()->SetAddonsState(list);
+        dbus_->controller()->SetAddonsState(list);
         load();
     }
 }
 
 void AddonSelector::availabilityChanged() {
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
 
-    auto call = module_->controller()->GetAddons();
+    auto call = dbus_->controller()->GetAddons();
     auto watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             &AddonSelector::fetchAddonFinished);
@@ -579,14 +587,13 @@ void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
     QDBusPendingReply<FcitxQtAddonInfoList> reply(*watcher);
     addonModel_->setAddons(reply.value());
 
-    listView->expandAll();
+    ui_->listView->expandAll();
 }
 
-QFont AddonDelegate::titleFont(const QFont &baseFont) const {
-    QFont retFont(baseFont);
-    retFont.setBold(true);
+QString AddonSelector::searchText() const { return ui_->lineEdit->text(); }
 
-    return retFont;
+bool AddonSelector::showAdvanced() const {
+    return ui_->advancedCheckbox->isChecked();
 }
 
 } // namespace kcm

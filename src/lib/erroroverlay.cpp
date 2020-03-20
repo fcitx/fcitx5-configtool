@@ -18,24 +18,29 @@
  */
 
 #include "erroroverlay.h"
-#include "module.h"
+#include "dbusprovider.h"
+#include "ui_erroroverlay.h"
+#include <QIcon>
 
 namespace fcitx {
 namespace kcm {
 
-ErrorOverlay::ErrorOverlay(Module *module)
-    : QWidget(module), baseWidget_(module) {
-    setupUi(this);
+ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
+    : QWidget(parent), ui_(std::make_unique<Ui::ErrorOverlay>()),
+      baseWidget_(parent) {
+    ui_->setupUi(this);
     setVisible(false);
 
     baseWidget_->installEventFilter(this);
-    pixmapLabel->setPixmap(QIcon::fromTheme("dialog-error").pixmap(64));
+    ui_->pixmapLabel->setPixmap(QIcon::fromTheme("dialog-error").pixmap(64));
 
     connect(baseWidget_, &QObject::destroyed, this, &QObject::deleteLater);
-    connect(module, &Module::availabilityChanged, this,
+    connect(dbus, &DBusProvider::availabilityChanged, this,
             &ErrorOverlay::availabilityChanged);
-    availabilityChanged(module->available());
+    availabilityChanged(dbus->available());
 }
+
+ErrorOverlay::~ErrorOverlay() {}
 
 void ErrorOverlay::availabilityChanged(bool avail) {
     const bool newEnabled = !avail;

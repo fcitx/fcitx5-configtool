@@ -16,34 +16,56 @@
  * License along with this library; see the file COPYING. If not,
  * see <http://www.gnu.org/licenses/>.
  */
-#ifndef _FCITX_ERROROVERLAY_H_
-#define _FCITX_ERROROVERLAY_H_
+#ifndef _KCM_FCITX_ADDONSELECTOR_H_
+#define _KCM_FCITX_ADDONSELECTOR_H_
 
-#include "ui_erroroverlay.h"
-#include <QPointer>
 #include <QWidget>
+#include <memory>
+
+class QDBusPendingCallWatcher;
+
+namespace Ui {
+class AddonSelector;
+}
 
 namespace fcitx {
 namespace kcm {
 
-class Module;
+class AddonModel;
+class ProxyModel;
+class AddonDelegate;
+class DBusProvider;
 
-class ErrorOverlay : public QWidget, public Ui::ErrorOverlay {
+class AddonSelector : public QWidget {
     Q_OBJECT
-public:
-    explicit ErrorOverlay(Module *module);
 
-    bool eventFilter(QObject *watched, QEvent *event) override;
+public:
+    AddonSelector(QWidget *parent, DBusProvider *dbus);
+    virtual ~AddonSelector();
+    void load();
+    void save();
+
+    QString searchText() const;
+    auto dbus() const { return dbus_; }
+
+    bool showAdvanced() const;
+
+signals:
+    void changed();
+    void configCommitted(const QByteArray &componentName);
+
 private slots:
-    void availabilityChanged(bool avail);
+    void fetchAddonFinished(QDBusPendingCallWatcher *);
+    void availabilityChanged();
 
 private:
-    void reposition();
-    QPointer<QWidget> baseWidget_;
-    bool enabled_ = false;
+    DBusProvider *dbus_;
+    ProxyModel *proxyModel_;
+    AddonModel *addonModel_;
+    AddonDelegate *delegate_;
+    std::unique_ptr<Ui::AddonSelector> ui_;
 };
-
 } // namespace kcm
 } // namespace fcitx
 
-#endif // _FCITX_ERROROVERLAY_H_
+#endif // _KCM_FCITX_ADDONSELECTOR_H_

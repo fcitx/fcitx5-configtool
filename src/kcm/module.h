@@ -20,6 +20,7 @@
 #define _FCITX_MODULE_H_
 
 // KDE
+#include "dbusprovider.h"
 #include "iso639.h"
 #include "ui_module.h"
 #include <KCModule>
@@ -47,19 +48,10 @@ public:
     void save() override;
     void defaults() override;
 
-    bool available() const { return controller_; }
-    FcitxQtControllerProxy *controller() { return controller_; }
     const Iso639 &iso639() { return iso639_; }
 
-signals:
-    void availabilityChanged(bool avail);
-
-private slots:
-    void fcitxAvailabilityChanged(bool avail);
-
 private:
-    FcitxQtWatcher *watcher_;
-    FcitxQtControllerProxy *controller_ = nullptr;
+    DBusProvider *dbus_;
     ErrorOverlay *errorOverlay_;
     IMPage *impage_;
     AddonSelector *addonPage_;

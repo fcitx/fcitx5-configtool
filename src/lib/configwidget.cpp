@@ -17,9 +17,9 @@
 // see <http://www.gnu.org/licenses/>.
 //
 #include "configwidget.h"
+#include "dbusprovider.h"
 #include "keylistwidget.h"
 #include "logging.h"
-#include "module.h"
 #include "optionwidget.h"
 #include "verticalscrollarea.h"
 #include <KTitleWidget>
@@ -45,9 +45,9 @@ QString joinPath(const QString &path, const QString &option) {
 }
 } // namespace
 
-ConfigWidget::ConfigWidget(const QString &uri, Module *module, QWidget *parent)
-    : QWidget(parent), uri_(uri), parent_(module),
-      mainWidget_(new QWidget(this)) {
+ConfigWidget::ConfigWidget(const QString &uri, DBusProvider *dbus,
+                           QWidget *parent)
+    : QWidget(parent), uri_(uri), dbus_(dbus), mainWidget_(new QWidget(this)) {
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(mainWidget_);
@@ -55,10 +55,10 @@ ConfigWidget::ConfigWidget(const QString &uri, Module *module, QWidget *parent)
 }
 
 void ConfigWidget::requestConfig(bool sync) {
-    if (!parent_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
-    auto call = parent_->controller()->GetConfig(uri_);
+    auto call = dbus_->controller()->GetConfig(uri_);
     auto watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             &ConfigWidget::requestConfigFinished);
@@ -112,7 +112,7 @@ void ConfigWidget::requestConfigFinished(QDBusPendingCallWatcher *watcher) {
 void ConfigWidget::load() { requestConfig(); }
 
 void ConfigWidget::save() {
-    if (!parent_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
     QVariantMap map;
@@ -121,7 +121,7 @@ void ConfigWidget::save() {
         optionWidget->writeValueTo(map);
     }
     QDBusVariant var(QVariant::fromValue(map));
-    parent_->controller()->SetConfig(uri_, var);
+    dbus_->controller()->SetConfig(uri_, var);
 }
 
 void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton button) {
@@ -171,11 +171,12 @@ void ConfigWidget::addOptionWidget(QFormLayout *layout,
     }
 }
 
-QDialog *ConfigWidget::configDialog(QWidget *parent, Module *module,
+QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
                                     const QString &uri, const QString &title) {
     QDialog *dialog = new QDialog(parent);
-    auto configPage = new ConfigWidget(uri, module, dialog);
+    auto configPage = new ConfigWidget(uri, dbus, dialog);
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
+    dialog->setWindowTitle(title);
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog->setLayout(dialogLayout);
     QDialogButtonBox *buttonBox =

@@ -23,7 +23,6 @@
 #include "listoptionwidget.h"
 #include "logging.h"
 #include "varianthelper.h"
-#include <KLocalizedString>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDialog>
@@ -34,6 +33,7 @@
 #include <QProcess>
 #include <QSpinBox>
 #include <QVBoxLayout>
+#include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
 #include <fcitxqtkeysequencewidget.h>
 
@@ -426,7 +426,7 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
     OptionWidget *widget = nullptr;
     if (option.type() == "Integer") {
         widget = new IntegerOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "String") {
         auto font = valueFromVariantMap(option.properties(), "Font");
         if (font == "True") {
@@ -434,25 +434,25 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
         } else {
             widget = new StringOptionWidget(option, path, parent);
         }
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "Boolean") {
         widget = new BooleanOptionWidget(option, path, parent);
         layout->addRow(widget);
     } else if (option.type() == "Key") {
         widget = new KeyOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "List|Key") {
         widget = new KeyListOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "Enum") {
         widget = new EnumOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type().startsWith("List|")) {
         widget = new ListOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "External") {
         widget = new ExternalOptionWidget(option, path, parent);
-        layout->addRow(i18n("%1:", option.description()), widget);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     }
     return widget;
 }
@@ -497,9 +497,9 @@ fcitx::kcm::OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
     } else if (option.type() == "String") {
         return value.toString();
     } else if (option.type() == "Boolean") {
-        return value.toString() == "True" ? i18n("Yes") : i18n("No");
+        return value.toString() == "True" ? _("Yes") : _("No");
     } else if (option.type() == "Key") {
-        return value.toString() == "True" ? i18n("Yes") : i18n("No");
+        return value.toString();
     } else if (option.type() == "Enum") {
         QMap<QString, QString> enumMap;
         int i = 0;
@@ -530,7 +530,7 @@ fcitx::kcm::OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
             strs << prettify(subOption, subValue);
             i++;
         }
-        return i18n("[%1]", strs.join(" "));
+        return QString(_("[%1]")).arg(strs.join(" "));
     }
     return QString();
 }

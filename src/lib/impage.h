@@ -19,10 +19,14 @@
 #ifndef _FCITX_IMPAGE_H_
 #define _FCITX_IMPAGE_H_
 
-#include "ui_impage.h"
 #include <QDBusPendingCallWatcher>
 #include <QWidget>
 #include <fcitxqtdbustypes.h>
+#include <memory>
+
+namespace Ui {
+class IMPage;
+}
 
 namespace fcitx {
 namespace kcm {
@@ -30,12 +34,13 @@ namespace kcm {
 class AvailIMModel;
 class IMProxyModel;
 class CurrentIMModel;
-class Module;
+class DBusProvider;
 
-class IMPage : public QWidget, public Ui::IMPage {
+class IMPage : public QWidget {
     Q_OBJECT
 public:
-    IMPage(Module *parent);
+    IMPage(DBusProvider *dbus, QWidget *parent);
+    ~IMPage();
 signals:
     void changed();
     void updateIMList(const FcitxQtInputMethodEntryList &list,
@@ -77,7 +82,8 @@ private:
     void checkDefaultLayout();
     void emitChanged();
 
-    Module *module_;
+    std::unique_ptr<Ui::IMPage> ui_;
+    DBusProvider *dbus_;
     AvailIMModel *availIMModel_;
     IMProxyModel *availIMProxyModel_;
     CurrentIMModel *currentIMModel_;

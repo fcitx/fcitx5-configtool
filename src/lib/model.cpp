@@ -18,9 +18,9 @@
  */
 
 #include "model.h"
-#include <KLocalizedString>
 #include <QCollator>
 #include <QLocale>
+#include <fcitx-utils/i18n.h>
 
 fcitx::kcm::CategorizedItemModel::CategorizedItemModel(QObject *parent)
     : QAbstractItemModel(parent) {}
@@ -108,9 +108,9 @@ QVariant fcitx::kcm::CategorizedItemModel::data(const QModelIndex &index,
 
 static QString languageName(const QString &langCode) {
     if (langCode.isEmpty()) {
-        return i18n("Unknown");
+        return _("Unknown");
     } else if (langCode == "*")
-        return i18n("Multilingual");
+        return _("Multilingual");
     else {
         QLocale locale(langCode);
         if (locale.language() == QLocale::C) {
@@ -126,11 +126,11 @@ static QString languageName(const QString &langCode) {
         }
         if (languageName.isEmpty()) {
             languageName =
-                i18nd("iso_639",
-                      QLocale::languageToString(locale.language()).toUtf8());
+                D_("iso_639",
+                   QLocale::languageToString(locale.language()).toUtf8());
         }
         if (languageName.isEmpty()) {
-            languageName = i18n("Other");
+            languageName = _("Other");
         }
         QString countryName;
         // QLocale will always assign a default country for us, check if our
@@ -147,8 +147,9 @@ static QString languageName(const QString &langCode) {
         if (countryName.isEmpty()) {
             return languageName;
         } else {
-            return i18nc("%1 is language name, %2 is country name", "%1 (%2)",
-                         languageName, countryName);
+            return QString(
+                       C_("%1 is language name, %2 is country name", "%1 (%2)"))
+                .arg(languageName, countryName);
         }
     }
 }

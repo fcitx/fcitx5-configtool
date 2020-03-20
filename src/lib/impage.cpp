@@ -20,9 +20,10 @@
 #include "impage.h"
 #include "categoryhelper.h"
 #include "configwidget.h"
+#include "dbusprovider.h"
 #include "layoutselector.h"
 #include "model.h"
-#include "module.h"
+#include "ui_impage.h"
 #include <QDebug>
 #include <QInputDialog>
 #include <QMessageBox>
@@ -68,15 +69,16 @@ QSize IMDelegate::sizeHint(const QStyleOptionViewItem &option,
     }
 }
 
-IMPage::IMPage(Module *module)
-    : QWidget(module), module_(module), availIMModel_(new AvailIMModel(this)),
+IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
+    : QWidget(parent), ui_(std::make_unique<Ui::IMPage>()), dbus_(dbus),
+      availIMModel_(new AvailIMModel(this)),
       availIMProxyModel_(new IMProxyModel(availIMModel_)),
       currentIMModel_(new CurrentIMModel(this)) {
-    setupUi(this);
+    ui_->setupUi(this);
 
-    connect(module, &Module::availabilityChanged, this,
+    connect(dbus, &DBusProvider::availabilityChanged, this,
             &IMPage::availabilityChanged);
-    connect(inputMethodGroupComboBox, &QComboBox::currentTextChanged, this,
+    connect(ui_->inputMethodGroupComboBox, &QComboBox::currentTextChanged, this,
             &IMPage::selectedGroupChanged);
     availabilityChanged();
 
@@ -87,50 +89,56 @@ IMPage::IMPage(Module *module)
             &IMProxyModel::filterIMEntryList);
     connect(this, &IMPage::updateIMList, currentIMModel_,
             &CurrentIMModel::filterIMEntryList);
-    availIMView->setItemDelegate(new IMDelegate);
-    availIMView->setModel(availIMProxyModel_);
-    connect(availIMProxyModel_, &QAbstractItemModel::layoutChanged, availIMView,
-            &QTreeView::expandAll);
-    currentIMView->setModel(currentIMModel_);
+    ui_->availIMView->setItemDelegate(new IMDelegate);
+    ui_->availIMView->setModel(availIMProxyModel_);
+    connect(availIMProxyModel_, &QAbstractItemModel::layoutChanged,
+            ui_->availIMView, &QTreeView::expandAll);
+    ui_->currentIMView->setModel(currentIMModel_);
 
-    connect(filterTextEdit, &QLineEdit::textChanged, availIMProxyModel_,
+    connect(ui_->filterTextEdit, &QLineEdit::textChanged, availIMProxyModel_,
             &IMProxyModel::setFilterText);
-    connect(onlyCurrentLanguageCheckBox, &QCheckBox::toggled,
+    connect(ui_->onlyCurrentLanguageCheckBox, &QCheckBox::toggled,
             availIMProxyModel_, &IMProxyModel::setShowOnlyCurrentLanguage);
 
-    connect(availIMView->selectionModel(), &QItemSelectionModel::currentChanged,
-            this, &IMPage::availIMSelectionChanged);
-    connect(currentIMView->selectionModel(),
+    connect(ui_->availIMView->selectionModel(),
+            &QItemSelectionModel::currentChanged, this,
+            &IMPage::availIMSelectionChanged);
+    connect(ui_->currentIMView->selectionModel(),
             &QItemSelectionModel::currentChanged, this,
             &IMPage::currentIMCurrentChanged);
-    connect(addIMButton, &QPushButton::clicked, this, &IMPage::clickAddIM);
-    connect(removeIMButton, &QPushButton::clicked, this,
+    connect(ui_->addIMButton, &QPushButton::clicked, this, &IMPage::clickAddIM);
+    connect(ui_->removeIMButton, &QPushButton::clicked, this,
             &IMPage::clickRemoveIM);
-    connect(moveUpButton, &QPushButton::clicked, this, &IMPage::moveUpIM);
-    connect(moveDownButton, &QPushButton::clicked, this, &IMPage::moveDownIM);
-    connect(configureButton, &QPushButton::clicked, this, &IMPage::configureIM);
-    connect(addGroupButton, &QPushButton::clicked, this, &IMPage::addGroup);
-    connect(deleteGroupButton, &QPushButton::clicked, this,
+    connect(ui_->moveUpButton, &QPushButton::clicked, this, &IMPage::moveUpIM);
+    connect(ui_->moveDownButton, &QPushButton::clicked, this,
+            &IMPage::moveDownIM);
+    connect(ui_->configureButton, &QPushButton::clicked, this,
+            &IMPage::configureIM);
+    connect(ui_->addGroupButton, &QPushButton::clicked, this,
+            &IMPage::addGroup);
+    connect(ui_->deleteGroupButton, &QPushButton::clicked, this,
             &IMPage::deleteGroup);
     // connect(d, SIGNAL(changed()), this, SIGNAL(changed()));
     connect(availIMModel_, &AvailIMModel::select, this, &IMPage::selectAvailIM);
     connect(currentIMModel_, &CurrentIMModel::select, this,
             &IMPage::selectCurrentIM);
-    connect(defaultLayoutButton, &QPushButton::clicked, this,
+    connect(ui_->defaultLayoutButton, &QPushButton::clicked, this,
             &IMPage::selectDefaultLayout);
-    connect(availIMView, &QTreeView::doubleClicked, this,
+    connect(ui_->availIMView, &QTreeView::doubleClicked, this,
             &IMPage::doubleClickAvailIM);
-    connect(currentIMView, &QListView::doubleClicked, this,
+    connect(ui_->currentIMView, &QListView::doubleClicked, this,
             &IMPage::doubleClickCurrentIM);
 }
 
+IMPage::~IMPage() {}
+
 void IMPage::save() {
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
     if (changed_) {
-        module_->controller()->SetInputMethodGroupInfo(
-            inputMethodGroupComboBox->currentText(), defaultLayout_,
+        dbus_->controller()->SetInputMethodGroupInfo(
+            ui_->inputMethodGroupComboBox->currentText(), defaultLayout_,
             imEntries_);
         changed_ = false;
     }
@@ -141,10 +149,10 @@ void IMPage::load() { availabilityChanged(); }
 void IMPage::defaults() {}
 
 void IMPage::reloadGroup(const QString &focusName) {
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
-    auto call = module_->controller()->InputMethodGroups();
+    auto call = dbus_->controller()->InputMethodGroups();
     auto watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [this, focusName](QDBusPendingCallWatcher *watcher) {
@@ -154,11 +162,11 @@ void IMPage::reloadGroup(const QString &focusName) {
 
 void IMPage::availabilityChanged() {
     lastGroup_.clear();
-    if (!module_->controller()) {
+    if (!dbus_->controller()) {
         return;
     }
     reloadGroup();
-    auto imcall = module_->controller()->AvailableInputMethods();
+    auto imcall = dbus_->controller()->AvailableInputMethods();
     auto imcallwatcher = new QDBusPendingCallWatcher(imcall, this);
     connect(imcallwatcher, &QDBusPendingCallWatcher::finished, this,
             &IMPage::fetchInputMethodsFinished);
@@ -179,34 +187,34 @@ void IMPage::fetchGroupsFinished(QDBusPendingCallWatcher *watcher,
     QDBusPendingReply<QStringList> groups = *watcher;
     watcher->deleteLater();
 
-    inputMethodGroupComboBox->clear();
+    ui_->inputMethodGroupComboBox->clear();
     if (!groups.isError()) {
-        inputMethodGroupComboBox->addItems(groups.value());
+        ui_->inputMethodGroupComboBox->addItems(groups.value());
     }
     if (!focusName.isEmpty()) {
-        inputMethodGroupComboBox->setCurrentText(focusName);
+        ui_->inputMethodGroupComboBox->setCurrentText(focusName);
     }
 }
 
 void IMPage::selectedGroupChanged() {
-    if (lastGroup_ == inputMethodGroupComboBox->currentText()) {
+    if (lastGroup_ == ui_->inputMethodGroupComboBox->currentText()) {
         return;
     }
     if (changed_ && !lastGroup_.isEmpty()) {
         if (QMessageBox::No ==
-            QMessageBox::question(this, i18n("Current group changed"),
-                                  "Do you want to change group? Changes to "
-                                  "current group will be lost!")) {
-            inputMethodGroupComboBox->setCurrentText(lastGroup_);
+            QMessageBox::question(this, _("Current group changed"),
+                                  _("Do you want to change group? Changes to "
+                                    "current group will be lost!"))) {
+            ui_->inputMethodGroupComboBox->setCurrentText(lastGroup_);
             return;
         }
     }
 
-    if (module_->available() &&
-        !inputMethodGroupComboBox->currentText().isEmpty()) {
-        auto call = module_->controller()->InputMethodGroupInfo(
-            inputMethodGroupComboBox->currentText());
-        lastGroup_ = inputMethodGroupComboBox->currentText();
+    if (dbus_->available() &&
+        !ui_->inputMethodGroupComboBox->currentText().isEmpty()) {
+        auto call = dbus_->controller()->InputMethodGroupInfo(
+            ui_->inputMethodGroupComboBox->currentText());
+        lastGroup_ = ui_->inputMethodGroupComboBox->currentText();
         auto watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 &IMPage::fetchGroupInfoFinished);
@@ -229,38 +237,40 @@ void IMPage::fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher) {
 }
 
 void IMPage::availIMSelectionChanged() {
-    if (!availIMView->currentIndex().isValid())
-        addIMButton->setEnabled(false);
+    if (!ui_->availIMView->currentIndex().isValid())
+        ui_->addIMButton->setEnabled(false);
     else
-        addIMButton->setEnabled(true);
+        ui_->addIMButton->setEnabled(true);
 }
 
 void IMPage::currentIMCurrentChanged() {
-    if (!currentIMView->currentIndex().isValid()) {
-        removeIMButton->setEnabled(false);
-        moveUpButton->setEnabled(false);
-        moveDownButton->setEnabled(false);
-        configureButton->setEnabled(false);
+    if (!ui_->currentIMView->currentIndex().isValid()) {
+        ui_->removeIMButton->setEnabled(false);
+        ui_->moveUpButton->setEnabled(false);
+        ui_->moveDownButton->setEnabled(false);
+        ui_->configureButton->setEnabled(false);
     } else {
-        if (currentIMView->currentIndex().row() == 0)
-            moveUpButton->setEnabled(false);
+        if (ui_->currentIMView->currentIndex().row() == 0)
+            ui_->moveUpButton->setEnabled(false);
         else
-            moveUpButton->setEnabled(true);
-        if (currentIMView->currentIndex().row() ==
-            currentIMModel_->rowCount() - 1)
-            moveDownButton->setEnabled(false);
-        else
-            moveDownButton->setEnabled(true);
-        removeIMButton->setEnabled(true);
-        configureButton->setEnabled(
+            ui_->moveUpButton->setEnabled(true);
+        if (ui_->currentIMView->currentIndex().row() ==
+            currentIMModel_->rowCount() - 1) {
+            ui_->moveDownButton->setEnabled(false);
+        } else {
+            ui_->moveDownButton->setEnabled(true);
+        }
+        ui_->removeIMButton->setEnabled(true);
+        ui_->configureButton->setEnabled(
             currentIMModel_
-                ->data(currentIMView->currentIndex(), FcitxIMConfigurableRole)
+                ->data(ui_->currentIMView->currentIndex(),
+                       FcitxIMConfigurableRole)
                 .toBool());
     }
 }
 
 void IMPage::selectCurrentIM(const QModelIndex &index) {
-    currentIMView->selectionModel()->setCurrentIndex(
+    ui_->currentIMView->selectionModel()->setCurrentIndex(
         index, QItemSelectionModel::ClearAndSelect);
 }
 
@@ -279,7 +289,7 @@ void IMPage::selectDefaultLayout() {
     }
     bool ok = false;
     auto result = LayoutSelector::selectLayout(
-        this, module_, i18n("Select default layout"), layout, variant, &ok);
+        this, dbus_, _("Select default layout"), layout, variant, &ok);
     if (!ok) {
         return;
     }
@@ -292,10 +302,10 @@ void IMPage::selectDefaultLayout() {
     auto imname = QString("keyboard-%0").arg(defaultLayout_);
     if (imEntries_.size() == 0 || imEntries_[0].key() != imname) {
         auto result = QMessageBox::question(
-            this, i18n("Change Input method to match layout selection."),
-            i18n("Your currently configured input method does not match your "
-                 "selected layout, do you want to add the corresponding input "
-                 "method for the layout?"),
+            this, _("Change Input method to match layout selection."),
+            _("Your currently configured input method does not match your "
+              "selected layout, do you want to add the corresponding input "
+              "method for the layout?"),
             QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No),
             QMessageBox::Yes);
         if (result == QMessageBox::Yes) {
@@ -325,14 +335,14 @@ void IMPage::emitChanged() {
 }
 
 void IMPage::selectAvailIM(const QModelIndex &index) {
-    availIMView->selectionModel()->setCurrentIndex(
+    ui_->availIMView->selectionModel()->setCurrentIndex(
         availIMProxyModel_->mapFromSource(index),
         QItemSelectionModel::ClearAndSelect);
 }
 
-void IMPage::clickAddIM() { addIM(availIMView->currentIndex()); }
+void IMPage::clickAddIM() { addIM(ui_->availIMView->currentIndex()); }
 
-void IMPage::clickRemoveIM() { removeIM(currentIMView->currentIndex()); }
+void IMPage::clickRemoveIM() { removeIM(ui_->currentIMView->currentIndex()); }
 
 void IMPage::checkDefaultLayout() {
     if (imEntries_.size() > 0 &&
@@ -341,9 +351,9 @@ void IMPage::checkDefaultLayout() {
         // Remove "keyboard-".
         auto layoutString = imEntries_[0].key().mid(9);
         auto result = QMessageBox::question(
-            this, i18n("Change System layout to match input method selection."),
-            i18n("Your currently configured input method does not match your "
-                 "layout, do you want to change the layout setting?"),
+            this, _("Change System layout to match input method selection."),
+            _("Your currently configured input method does not match your "
+              "layout, do you want to change the layout setting?"),
             QMessageBox::StandardButtons(QMessageBox::Yes | QMessageBox::No),
             QMessageBox::Yes);
         if (result == QMessageBox::Yes) {
@@ -382,7 +392,7 @@ void IMPage::removeIM(const QModelIndex &index) {
 }
 
 void IMPage::moveDownIM() {
-    QModelIndex curIndex = currentIMView->currentIndex();
+    QModelIndex curIndex = ui_->currentIMView->currentIndex();
     if (!curIndex.isValid()) {
         return;
     }
@@ -392,7 +402,7 @@ void IMPage::moveDownIM() {
     }
 
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
-    imEntries_.swap(curIndex.row(), curIndex.row() + 1);
+    imEntries_.swapItemsAt(curIndex.row(), curIndex.row() + 1);
     if (curIndex.row() == 0) {
         checkDefaultLayout();
     }
@@ -401,20 +411,20 @@ void IMPage::moveDownIM() {
 }
 
 void IMPage::configureIM() {
-    QModelIndex curIndex = currentIMView->currentIndex();
+    QModelIndex curIndex = ui_->currentIMView->currentIndex();
     if (!curIndex.isValid()) {
         return;
     }
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
-        this, module_, QString("fcitx://config/inputmethod/%1").arg(uniqueName),
+        this, dbus_, QString("fcitx://config/inputmethod/%1").arg(uniqueName),
         curIndex.data(Qt::DisplayRole).toString());
     dialog->exec();
     delete dialog;
 }
 
 void IMPage::moveUpIM() {
-    QModelIndex curIndex = currentIMView->currentIndex();
+    QModelIndex curIndex = ui_->currentIMView->currentIndex();
     if (!curIndex.isValid() || curIndex.row() == 0) {
         return;
     }
@@ -424,7 +434,7 @@ void IMPage::moveUpIM() {
     }
 
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
-    imEntries_.swap(curIndex.row(), curIndex.row() - 1);
+    imEntries_.swapItemsAt(curIndex.row(), curIndex.row() - 1);
     if (curIndex.row() == 1) {
         checkDefaultLayout();
     }
@@ -434,11 +444,10 @@ void IMPage::moveUpIM() {
 
 void IMPage::addGroup() {
     bool ok;
-    QString name =
-        QInputDialog::getText(this, i18n("New Group"), i18n("Group Name:"),
-                              QLineEdit::Normal, "", &ok);
-    if (ok && !name.isEmpty() && module_->controller()) {
-        auto call = module_->controller()->AddInputMethodGroup(name);
+    QString name = QInputDialog::getText(this, _("New Group"), _("Group Name:"),
+                                         QLineEdit::Normal, "", &ok);
+    if (ok && !name.isEmpty() && dbus_->controller()) {
+        auto call = dbus_->controller()->AddInputMethodGroup(name);
         auto watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 [this, name](QDBusPendingCallWatcher *watcher) {
@@ -451,9 +460,9 @@ void IMPage::addGroup() {
 }
 
 void IMPage::deleteGroup() {
-    if (module_->controller()) {
-        auto call = module_->controller()->RemoveInputMethodGroup(
-            inputMethodGroupComboBox->currentText());
+    if (dbus_->controller()) {
+        auto call = dbus_->controller()->RemoveInputMethodGroup(
+            ui_->inputMethodGroupComboBox->currentText());
         auto watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 [this](QDBusPendingCallWatcher *watcher) {

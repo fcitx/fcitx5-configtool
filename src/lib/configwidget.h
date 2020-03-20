@@ -31,7 +31,7 @@ class QFormLayout;
 namespace fcitx {
 namespace kcm {
 
-class Module;
+class DBusProvider;
 
 class ColorButton : public KColorButton {
     Q_OBJECT
@@ -45,10 +45,10 @@ class ConfigWidget : public QWidget {
     Q_OBJECT
 
 public:
-    explicit ConfigWidget(const QString &uri, Module *module,
+    explicit ConfigWidget(const QString &uri, DBusProvider *module,
                           QWidget *parent = 0);
 
-    static QDialog *configDialog(QWidget *parent, Module *module,
+    static QDialog *configDialog(QWidget *parent, DBusProvider *module,
                                  const QString &uri,
                                  const QString &title = QString());
 signals:
@@ -73,7 +73,7 @@ private:
     QString uri_;
     QMap<QString, FcitxQtConfigOptionList> desc_;
     QString mainType_;
-    Module *parent_;
+    DBusProvider *dbus_;
     QWidget *mainWidget_;
 
     bool dontEmitChanged_ = false;
