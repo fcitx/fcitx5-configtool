@@ -5,12 +5,13 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-27 00:01-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2020-03-21 00:01-0700\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
@@ -19,169 +20,155 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/layoutselector.cpp:345
+#: src/lib/layoutselector.cpp:355
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/model.cpp:150
+#: src/lib/model.cpp:151
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/optionwidget.cpp:354 src/optionwidget.cpp:357 src/optionwidget.cpp:363
-#: src/optionwidget.cpp:366 src/optionwidget.cpp:369 src/optionwidget.cpp:372
-#: src/optionwidget.cpp:375
+#: src/lib/optionwidget.cpp:429 src/lib/optionwidget.cpp:437
+#: src/lib/optionwidget.cpp:443 src/lib/optionwidget.cpp:446
+#: src/lib/optionwidget.cpp:449 src/lib/optionwidget.cpp:452
+#: src/lib/optionwidget.cpp:455
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
-#: layout/main.cpp:39
-#, kde-format
+#: layout/main.cpp:35
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 배열 보이기"
 
-#: src/module.cpp:72
+#: src/kcm/module.cpp:70 src/configtool/mainwindow.cpp:40
 #, kde-format
 msgid "Addon"
 msgstr "부가기능"
 
-#: src/layoutselector.cpp:339
-#, kde-format
+#: src/lib/layoutselector.cpp:349
 msgid "Any language"
 msgstr "모든 언어"
 
-#: src/module.cpp:60
+#: src/kcm/module.cpp:61
 #, kde-format
 msgid "Author"
 msgstr "작성자"
 
-#. i18n: file: src/impage.ui:173
+#. i18n: file: src/lib/impage.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:36
+#: rc.cpp:27
 #, kde-format
 msgid "Available Input Method:"
 msgstr "사용가능한 입력기:"
 
-#. i18n: file: src/erroroverlay.ui:167
+#. i18n: file: src/lib/erroroverlay.ui:194
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
-#: rc.cpp:51
+#: rc.cpp:39
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
 
-#: src/impage.cpp:295
-#, kde-format
+#: src/lib/impage.cpp:305
 msgid "Change Input method to match layout selection."
 msgstr "선택된 배열에 맞게 입력기 변경"
 
-#: src/impage.cpp:344
-#, kde-format
+#: src/lib/impage.cpp:354
 msgid "Change System layout to match input method selection."
 msgstr "선택된 입력기에 맞게 자판 배열 변경"
 
-#: src/module.cpp:56
+#: src/kcm/module.cpp:57
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "Fcitx 5 설정"
 
-#: src/kcm_fcitx5.desktop.in:13
+#: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
 msgstr "입력기 설정"
 
-#: src/module.cpp:57
+#: src/kcm/module.cpp:58
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "저작권자 2017 Xuetian Weng"
 
-#. i18n: file: src/impage.ui:24
+#. i18n: file: src/lib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:24
+#: rc.cpp:15
 #, kde-format
 msgid "Current Input Method:"
 msgstr "현재 입력기:"
 
-#: src/impage.cpp:197
-#, kde-format
+#: src/lib/impage.cpp:205
 msgid "Current group changed"
 msgstr "현재 그룹이 변경됨"
 
-#: src/layoutselector.cpp:134
-#, kde-format
+#: src/lib/layoutselector.cpp:136
 msgid "Default"
 msgstr "기본값"
 
-#: src/module.cpp:55
+#: src/lib/impage.cpp:206
+msgid "Do you want to change group? Changes to current group will be lost!"
+msgstr ""
+
+#: src/kcm/module.cpp:56
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
 msgstr "Fcitx 5 설정 모듈"
 
-#. i18n: file: src/layoutselector.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
-#. i18n: file: src/listoptionwidget.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ListOptionWidget)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-#. i18n: file: src/erroroverlay.ui:132
-#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
-#. i18n: file: src/addonselector.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, AddonSelector)
-#: rc.cpp:3 rc.cpp:15 rc.cpp:18 rc.cpp:48 rc.cpp:54
+#. i18n: file: src/configtool/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: rc.cpp:48
 #, kde-format
-msgid "Form"
-msgstr "폼"
+msgid "Fcitx Configuration"
+msgstr ""
 
-#: src/addonselector.cpp:178
-#, kde-format
+#: src/lib/addonselector.cpp:186
 msgid "Frontend"
 msgstr "전처리기"
 
-#: src/module.cpp:79
+#: src/kcm/module.cpp:77 src/configtool/mainwindow.cpp:47
 #, kde-format
 msgid "Global Config"
 msgstr "전역 설정"
 
-#: src/impage.cpp:438
-#, kde-format
+#: src/lib/impage.cpp:447
 msgid "Group Name:"
 msgstr "그룹 이름:"
 
-#. i18n: file: src/impage.ui:33
+#. i18n: file: src/lib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:27
+#: rc.cpp:18
 #, kde-format
 msgid "Group:"
 msgstr "그룹:"
 
-#: src/module.cpp:67 src/addonselector.cpp:178 src/kcm_fcitx5.desktop.in:12
+#: src/kcm/module.cpp:65 src/lib/addonselector.cpp:186
+#: src/configtool/mainwindow.cpp:35 src/kcm/kcm_fcitx5.desktop.in:12
 #, kde-format
 msgid "Input Method"
 msgstr "입력기"
 
-#: layout/main.cpp:43
-#, kde-format
+#: layout/main.cpp:39
 msgid "Keyboard <layout>"
 msgstr "키보드 <배열>"
 
-#: layout/main.cpp:71
-#, kde-format
+#: layout/main.cpp:65
 msgid "Keyboard Layout viewer"
 msgstr "키보드 배열 보이기"
 
-#: layout/main.cpp:42
-#, kde-format
+#: layout/main.cpp:38
 msgid "Keyboard layout <group> (0-3)"
 msgstr "키보드 배열 <그룹> (0-3)"
 
-#: layout/main.cpp:45
-#, kde-format
+#: layout/main.cpp:40
 msgid "Keyboard layout <variant>"
 msgstr "키보드 배열 <변형>"
 
-#. i18n: file: src/impage.ui:77
+#. i18n: file: src/lib/impage.ui:77
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:30
+#: rc.cpp:21
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
@@ -190,100 +177,93 @@ msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
 msgid "Keyboard layout viewer"
 msgstr "키보드 배열 표시기"
 
-#. i18n: file: src/layoutselector.ui:22
+#. i18n: file: src/lib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:6
+#: rc.cpp:3
 #, kde-format
 msgid "Language:"
 msgstr "언어:"
 
-#. i18n: file: src/layoutselector.ui:39
+#. i18n: file: src/lib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:9
+#: rc.cpp:6
 #, kde-format
 msgid "Layout:"
 msgstr "배열:"
 
-#: src/addonselector.cpp:179
-#, kde-format
+#: src/lib/addonselector.cpp:186
 msgid "Loader"
 msgstr "적재기"
 
-#: src/addonselector.cpp:179
-#, kde-format
+#: src/lib/addonselector.cpp:187
 msgid "Module"
 msgstr "모듈"
 
-#: src/model.cpp:113
-#, kde-format
+#: src/lib/model.cpp:113
 msgid "Multilingual"
 msgstr "다중언어"
 
-#: src/impage.cpp:438
-#, kde-format
+#: src/lib/impage.cpp:447
 msgid "New Group"
 msgstr "새 그룹"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
-#, kde-format
+#: src/lib/optionwidget.cpp:500
 msgid "No"
 msgstr "아니오"
 
-#. i18n: file: src/impage.ui:212
+#. i18n: file: src/lib/impage.ui:212
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:42
+#: rc.cpp:33
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "현재 언어만 보이기(&S)"
 
-#: src/model.cpp:133
-#, kde-format
+#: src/lib/model.cpp:133
 msgid "Other"
 msgstr "기타"
 
-#. i18n: file: src/addonselector.ui:32
+#. i18n: file: src/lib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:57
+#: rc.cpp:42
 #, kde-format
 msgid "Search Addons"
 msgstr "부가기능 검색"
 
-#. i18n: file: src/impage.ui:180
+#. i18n: file: src/lib/impage.ui:180
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:39
+#: rc.cpp:30
 #, kde-format
 msgid "Search Input Method"
 msgstr "입력기 검색"
 
-#. i18n: file: src/fontbutton.ui:51
+#. i18n: file: src/lib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-#: rc.cpp:21
+#: rc.cpp:12
 #, kde-format
 msgid "Select &Font..."
 msgstr "글꼴 선택(&F)"
 
-#: src/impage.cpp:282
-#, kde-format
+#: src/lib/impage.cpp:292
 msgid "Select default layout"
 msgstr "기본 배열 선택"
 
-#. i18n: file: src/impage.ui:80
+#. i18n: file: src/lib/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:33
+#: rc.cpp:24
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr "시스템 키보드 배열 선택"
 
-#. i18n: file: src/addonselector.ui:70
+#. i18n: file: src/lib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:60
+#: rc.cpp:45
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "추가 설정 보이기(&A)"
 
-#. i18n: file: src/impage.ui:269
+#. i18n: file: src/lib/impage.ui:269
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:45
+#: rc.cpp:36
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -292,19 +272,17 @@ msgstr ""
 "첫 입력 방법이 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 배열명 </i> </b>를 첫 항목으로 하여야 합니다."
 
-#: src/addonselector.cpp:180
-#, kde-format
+#: src/lib/addonselector.cpp:187
 msgid "UI"
 msgstr "사용자 인터페이스"
 
-#: src/model.cpp:111
-#, kde-format
+#: src/lib/model.cpp:111
 msgid "Unknown"
 msgstr "알 수 없음 "
 
-#. i18n: file: src/layoutselector.ui:56
+#. i18n: file: src/lib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:12
+#: rc.cpp:9
 #, kde-format
 msgid "Variant:"
 msgstr "변형:"
@@ -313,26 +291,23 @@ msgstr "변형:"
 msgid "View keyboard layout"
 msgstr "키보드 배열 보이기"
 
-#: src/module.cpp:60
+#: src/kcm/module.cpp:61
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
-#, kde-format
+#: src/lib/optionwidget.cpp:500
 msgid "Yes"
 msgstr "예"
 
-#: src/impage.cpp:345
-#, kde-format
+#: src/lib/impage.cpp:355
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 "현재 설정된 입력기가 키보드 배열에 맞지 않습니다. 배열 설정을 변경할까요?"
 
-#: src/impage.cpp:296
-#, kde-format
+#: src/lib/impage.cpp:306
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
@@ -340,22 +315,19 @@ msgstr ""
 "현재 설정된 입력기가 선택한 키보드 배열과 맞지 않습니다. 배열에 적합한 입력기"
 "를 추가하시겠습니까?"
 
-#: src/optionwidget.cpp:453
+#: src/lib/optionwidget.cpp:533
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:42
-#, kde-format
+#: layout/main.cpp:38
 msgid "group"
 msgstr "그룹"
 
-#: layout/main.cpp:43
-#, kde-format
+#: layout/main.cpp:39
 msgid "layout"
 msgstr "배열"
 
-#: layout/main.cpp:46
-#, kde-format
+#: layout/main.cpp:40
 msgid "variant"
 msgstr "변형"

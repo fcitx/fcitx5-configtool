@@ -5,12 +5,13 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2017-12-22 00:01-0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2020-03-21 00:01-0700\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
@@ -21,169 +22,155 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: src/layoutselector.cpp:345
+#: src/lib/layoutselector.cpp:355
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/model.cpp:150
+#: src/lib/model.cpp:151
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/optionwidget.cpp:354 src/optionwidget.cpp:357 src/optionwidget.cpp:363
-#: src/optionwidget.cpp:366 src/optionwidget.cpp:369 src/optionwidget.cpp:372
-#: src/optionwidget.cpp:375
+#: src/lib/optionwidget.cpp:429 src/lib/optionwidget.cpp:437
+#: src/lib/optionwidget.cpp:443 src/lib/optionwidget.cpp:446
+#: src/lib/optionwidget.cpp:449 src/lib/optionwidget.cpp:452
+#: src/lib/optionwidget.cpp:455
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
-#: layout/main.cpp:39
-#, kde-format
+#: layout/main.cpp:35
 msgid "A general keyboard layout viewer"
 msgstr "Основной просмотрщик раскладки клавиатуры"
 
-#: src/module.cpp:72
+#: src/kcm/module.cpp:70 src/configtool/mainwindow.cpp:40
 #, kde-format
 msgid "Addon"
 msgstr "Дополнение"
 
-#: src/layoutselector.cpp:339
-#, kde-format
+#: src/lib/layoutselector.cpp:349
 msgid "Any language"
 msgstr "Любой язык"
 
-#: src/module.cpp:60
+#: src/kcm/module.cpp:61
 #, kde-format
 msgid "Author"
 msgstr "Автор"
 
-#. i18n: file: src/impage.ui:173
+#. i18n: file: src/lib/impage.ui:173
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:36
+#: rc.cpp:27
 #, kde-format
 msgid "Available Input Method:"
 msgstr "Доступный метод ввода:"
 
-#. i18n: file: src/erroroverlay.ui:167
+#. i18n: file: src/lib/erroroverlay.ui:194
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
-#: rc.cpp:51
+#: rc.cpp:39
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Не удалось соединиться с Fcitx через DBus, запущен ли Fcitx?"
 
-#: src/impage.cpp:295
-#, kde-format
+#: src/lib/impage.cpp:305
 msgid "Change Input method to match layout selection."
 msgstr ""
 
-#: src/impage.cpp:344
-#, kde-format
+#: src/lib/impage.cpp:354
 msgid "Change System layout to match input method selection."
 msgstr ""
 
-#: src/module.cpp:56
+#: src/kcm/module.cpp:57
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "Настроить Fcitx 5"
 
-#: src/kcm_fcitx5.desktop.in:13
+#: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
 msgstr "Настроить метод ввода"
 
-#: src/module.cpp:57
+#: src/kcm/module.cpp:58
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Copyright 2017 Xuetian Weng"
 
-#. i18n: file: src/impage.ui:24
+#. i18n: file: src/lib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:24
+#: rc.cpp:15
 #, kde-format
 msgid "Current Input Method:"
 msgstr "Текущий метод ввода:"
 
-#: src/impage.cpp:197
-#, kde-format
+#: src/lib/impage.cpp:205
 msgid "Current group changed"
 msgstr "Текущая группа изменена"
 
-#: src/layoutselector.cpp:134
-#, kde-format
+#: src/lib/layoutselector.cpp:136
 msgid "Default"
 msgstr "По умолчанию"
 
-#: src/module.cpp:55
+#: src/lib/impage.cpp:206
+msgid "Do you want to change group? Changes to current group will be lost!"
+msgstr ""
+
+#: src/kcm/module.cpp:56
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
 msgstr "Модуль настройки Fcitx 5"
 
-#. i18n: file: src/layoutselector.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, LayoutSelector)
-#. i18n: file: src/listoptionwidget.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, ListOptionWidget)
-#. i18n: file: src/fontbutton.ui:20
-#. i18n: ectx: property (windowTitle), widget (QWidget, FontButton)
-#. i18n: file: src/erroroverlay.ui:132
-#. i18n: ectx: property (windowTitle), widget (QWidget, ErrorOverlay)
-#. i18n: file: src/addonselector.ui:14
-#. i18n: ectx: property (windowTitle), widget (QWidget, AddonSelector)
-#: rc.cpp:3 rc.cpp:15 rc.cpp:18 rc.cpp:48 rc.cpp:54
+#. i18n: file: src/configtool/mainwindow.ui:14
+#. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
+#: rc.cpp:48
 #, kde-format
-msgid "Form"
-msgstr "Форма"
+msgid "Fcitx Configuration"
+msgstr ""
 
-#: src/addonselector.cpp:178
-#, kde-format
+#: src/lib/addonselector.cpp:186
 msgid "Frontend"
 msgstr "Интерфейс"
 
-#: src/module.cpp:79
+#: src/kcm/module.cpp:77 src/configtool/mainwindow.cpp:47
 #, kde-format
 msgid "Global Config"
 msgstr "Глобальные настройки"
 
-#: src/impage.cpp:438
-#, kde-format
+#: src/lib/impage.cpp:447
 msgid "Group Name:"
 msgstr "Название группы:"
 
-#. i18n: file: src/impage.ui:33
+#. i18n: file: src/lib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:27
+#: rc.cpp:18
 #, kde-format
 msgid "Group:"
 msgstr "Группа:"
 
-#: src/module.cpp:67 src/addonselector.cpp:178 src/kcm_fcitx5.desktop.in:12
+#: src/kcm/module.cpp:65 src/lib/addonselector.cpp:186
+#: src/configtool/mainwindow.cpp:35 src/kcm/kcm_fcitx5.desktop.in:12
 #, kde-format
 msgid "Input Method"
 msgstr "Метод ввода"
 
-#: layout/main.cpp:43
-#, kde-format
+#: layout/main.cpp:39
 msgid "Keyboard <layout>"
 msgstr "Клавиатура <layout>"
 
-#: layout/main.cpp:71
-#, kde-format
+#: layout/main.cpp:65
 msgid "Keyboard Layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
-#: layout/main.cpp:42
-#, kde-format
+#: layout/main.cpp:38
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Раскладка клавиатуры <group> (0-3)"
 
-#: layout/main.cpp:45
-#, kde-format
+#: layout/main.cpp:40
 msgid "Keyboard layout <variant>"
 msgstr "Раскладка клавиатуры <variant>"
 
-#. i18n: file: src/impage.ui:77
+#. i18n: file: src/lib/impage.ui:77
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:30
+#: rc.cpp:21
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "Раскладка клавиатуры при неактивных методах ввода"
@@ -192,100 +179,93 @@ msgstr "Раскладка клавиатуры при неактивных ме
 msgid "Keyboard layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
-#. i18n: file: src/layoutselector.ui:22
+#. i18n: file: src/lib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:6
+#: rc.cpp:3
 #, kde-format
 msgid "Language:"
 msgstr "Язык:"
 
-#. i18n: file: src/layoutselector.ui:39
+#. i18n: file: src/lib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:9
+#: rc.cpp:6
 #, kde-format
 msgid "Layout:"
 msgstr "Раскладка:"
 
-#: src/addonselector.cpp:179
-#, kde-format
+#: src/lib/addonselector.cpp:186
 msgid "Loader"
 msgstr "Загрузчик"
 
-#: src/addonselector.cpp:179
-#, kde-format
+#: src/lib/addonselector.cpp:187
 msgid "Module"
 msgstr "Модуль"
 
-#: src/model.cpp:113
-#, kde-format
+#: src/lib/model.cpp:113
 msgid "Multilingual"
 msgstr "Многоязычный"
 
-#: src/impage.cpp:438
-#, kde-format
+#: src/lib/impage.cpp:447
 msgid "New Group"
 msgstr "Новая группа"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
-#, kde-format
+#: src/lib/optionwidget.cpp:500
 msgid "No"
 msgstr ""
 
-#. i18n: file: src/impage.ui:212
+#. i18n: file: src/lib/impage.ui:212
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:42
+#: rc.cpp:33
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "&Показывать только текущий язык"
 
-#: src/model.cpp:133
-#, kde-format
+#: src/lib/model.cpp:133
 msgid "Other"
 msgstr "Другое"
 
-#. i18n: file: src/addonselector.ui:32
+#. i18n: file: src/lib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:57
+#: rc.cpp:42
 #, kde-format
 msgid "Search Addons"
 msgstr "Найти дополнения"
 
-#. i18n: file: src/impage.ui:180
+#. i18n: file: src/lib/impage.ui:180
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:39
+#: rc.cpp:30
 #, kde-format
 msgid "Search Input Method"
 msgstr "Поиск метода ввода"
 
-#. i18n: file: src/fontbutton.ui:51
+#. i18n: file: src/lib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-#: rc.cpp:21
+#: rc.cpp:12
 #, kde-format
 msgid "Select &Font..."
 msgstr "Выбрать &шрифт..."
 
-#: src/impage.cpp:282
-#, kde-format
+#: src/lib/impage.cpp:292
 msgid "Select default layout"
 msgstr "Выберите раскладку по умолчанию"
 
-#. i18n: file: src/impage.ui:80
+#. i18n: file: src/lib/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:33
+#: rc.cpp:24
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr ""
 
-#. i18n: file: src/addonselector.ui:70
+#. i18n: file: src/lib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:60
+#: rc.cpp:45
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "Показать &дополнительные настройки"
 
-#. i18n: file: src/impage.ui:269
+#. i18n: file: src/lib/impage.ui:269
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:45
+#: rc.cpp:36
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -295,19 +275,17 @@ msgstr ""
 "<b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на "
 "первое место."
 
-#: src/addonselector.cpp:180
-#, kde-format
+#: src/lib/addonselector.cpp:187
 msgid "UI"
 msgstr "Графический интерфейс"
 
-#: src/model.cpp:111
-#, kde-format
+#: src/lib/model.cpp:111
 msgid "Unknown"
 msgstr "Неизвестно"
 
-#. i18n: file: src/layoutselector.ui:56
+#. i18n: file: src/lib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:12
+#: rc.cpp:9
 #, kde-format
 msgid "Variant:"
 msgstr "Вариант:"
@@ -316,46 +294,40 @@ msgstr "Вариант:"
 msgid "View keyboard layout"
 msgstr "Просмотреть раскладку клавиатуры"
 
-#: src/module.cpp:60
+#: src/kcm/module.cpp:61
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/optionwidget.cpp:420 src/optionwidget.cpp:422
-#, kde-format
+#: src/lib/optionwidget.cpp:500
 msgid "Yes"
 msgstr ""
 
-#: src/impage.cpp:345
-#, kde-format
+#: src/lib/impage.cpp:355
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/impage.cpp:296
-#, kde-format
+#: src/lib/impage.cpp:306
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/optionwidget.cpp:453
+#: src/lib/optionwidget.cpp:533
 #, kde-format
 msgid "[%1]"
 msgstr ""
 
-#: layout/main.cpp:42
-#, kde-format
+#: layout/main.cpp:38
 msgid "group"
 msgstr "group"
 
-#: layout/main.cpp:43
-#, kde-format
+#: layout/main.cpp:39
 msgid "layout"
 msgstr "layout"
 
-#: layout/main.cpp:46
-#, kde-format
+#: layout/main.cpp:40
 msgid "variant"
 msgstr "variant"
