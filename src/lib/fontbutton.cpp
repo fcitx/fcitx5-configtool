@@ -18,7 +18,6 @@
  */
 
 #include <KFontChooser>
-#include <QDebug>
 #include <QDialog>
 #include <QDialogButtonBox>
 
@@ -41,8 +40,6 @@ QString FontButton::fontName() { return fontPreviewLabel->text(); }
 
 QFont FontButton::parseFont(const QString &string) {
     QStringList list = string.split(" ", QString::SkipEmptyParts);
-    bool bold = false;
-    bool italic = false;
     int size = 9; // Default size.
     if (!list.empty()) {
         bool ok = false;
@@ -55,45 +52,89 @@ QFont FontButton::parseFont(const QString &string) {
         }
     }
 
+    QFont::Style style = QFont::StyleNormal;
+    int weight = QFont::Normal;
+    const QMap<QString, int> strToWeight = {
+        {"Thin", QFont::Thin},
+        {"Ultra-Light", QFont::Thin},
+        {"Extra-Light", QFont::ExtraLight},
+        {"Light", QFont::Light},
+        {"Semi-Light", QFont::Light},
+        {"Demi-Light", QFont::Light},
+        {"Book", QFont::Light},
+        {"Regular", QFont::Normal},
+        {"Medium", QFont::Medium},
+        {"Semi-Bold", QFont::Medium},
+        {"Demi-Bold", QFont::DemiBold},
+        {"Bold", QFont::Bold},
+        {"Ultra-Bold", QFont::Bold},
+        {"Extra-Bold", QFont::ExtraBold},
+        {"Black", QFont::Black},
+        {"Ultra-Black", QFont::Black},
+        {"Extra-Black", QFont::Black},
+    };
+    const QMap<QString, QFont::Style> strToStyle = {
+        {"Italic", QFont::StyleItalic}, {"Oblique", QFont::StyleOblique}};
     while (!list.empty()) {
-        if (list.last() == "Bold") {
-            bold = true;
+        if (strToWeight.contains(list.back())) {
+            weight = strToWeight.value(list.back(), QFont::Normal);
             list.pop_back();
-        } else if (list.last() == "Italic") {
-            italic = true;
+        } else if (strToStyle.contains(list.back())) {
+            style = strToStyle.value(list.back(), QFont::StyleNormal);
             list.pop_back();
-        } else
+        } else {
             break;
+        }
     }
     QString family = list.join(" ");
     QFont font;
     font.setFamily(family);
-    font.setBold(bold);
-    font.setItalic(italic);
+    font.setWeight(weight);
+    font.setStyle(style);
     font.setPointSize(size);
     return font;
 }
 
 void FontButton::setFont(const QFont &font) {
     font_ = font;
-    QString style;
-    if (!font.styleName().isEmpty()) {
-        style = font.styleName();
-    } else {
-        QStringList styles;
-        if (font.bold())
-            styles << "Bold";
-        if (font.italic())
-            styles << "Italic";
-        style = styles.join(" ");
-    }
-    fontPreviewLabel->setText(
-        QString("%1 %2 %3")
-            .arg(font_.family(), style, QString::number(font.pointSize())));
-    fontPreviewLabel->setFont(font_);
     if (font.family() != font_.family()) {
         emit fontChanged(font_);
     }
+    QString style;
+    QStringList styles;
+    switch (font_.style()) {
+    case QFont::StyleItalic:
+        styles << "Italic";
+        break;
+    case QFont::StyleOblique:
+        styles << "Oblique";
+        break;
+    default:
+        break;
+    }
+#define CASE_WEIGHT(WEIGHT, WEIGHT_STR)                                        \
+    case QFont::WEIGHT:                                                        \
+        styles << WEIGHT_STR;                                                  \
+        break;
+    // Use the string accepted by pango.
+    switch (font_.weight()) {
+        CASE_WEIGHT(Thin, "Thin")
+        CASE_WEIGHT(ExtraLight, "Extra-Light")
+        CASE_WEIGHT(Light, "Light")
+        CASE_WEIGHT(Medium, "Medium")
+        CASE_WEIGHT(DemiBold, "Demi-Bold")
+        CASE_WEIGHT(Bold, "Bold")
+        CASE_WEIGHT(ExtraBold, "Extra-Bold")
+        CASE_WEIGHT(Black, "Black")
+    default:
+        break;
+    }
+    style = styles.join(" ");
+    fontPreviewLabel->setText(QString("%1%2%3 %4")
+                                  .arg(font_.family(),
+                                       (!style.isEmpty() ? " " : ""), style,
+                                       QString::number(font_.pointSize())));
+    fontPreviewLabel->setFont(font_);
 }
 
 void FontButton::selectFont() {
