@@ -24,6 +24,7 @@
 #include <QStringListModel>
 #include <QWidget>
 #include <fcitxqtdbustypes.h>
+#include <memory>
 
 class QDBusPendingCallWatcher;
 
