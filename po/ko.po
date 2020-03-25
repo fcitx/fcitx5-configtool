@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
+# MarongHappy <daemul72@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-03-21 00:01-0700\n"
+"POT-Creation-Date: 2020-03-25 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2017\n"
+"Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +42,7 @@ msgstr "%1:"
 
 #: layout/main.cpp:35
 msgid "A general keyboard layout viewer"
-msgstr "일반 키보드 배열 보이기"
+msgstr "일반 키보드 자판 보기도구"
 
 #: src/kcm/module.cpp:70 src/configtool/mainwindow.cpp:40
 #, kde-format
@@ -73,11 +74,11 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 
 #: src/lib/impage.cpp:305
 msgid "Change Input method to match layout selection."
-msgstr "선택된 배열에 맞게 입력기 변경"
+msgstr "선택된 자판에 맞게 입력기 변경"
 
 #: src/lib/impage.cpp:354
 msgid "Change System layout to match input method selection."
-msgstr "선택된 입력기에 맞게 자판 배열 변경"
+msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
 
 #: src/kcm/module.cpp:57
 #, kde-format
@@ -110,19 +111,19 @@ msgstr "기본값"
 
 #: src/lib/impage.cpp:206
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
 #: src/kcm/module.cpp:56
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
-msgstr "Fcitx 5 설정 모듈"
+msgstr "Fcitx 5 환경설정 모듈"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: rc.cpp:48
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx 환경설정"
 
 #: src/lib/addonselector.cpp:186
 msgid "Frontend"
@@ -152,30 +153,30 @@ msgstr "입력기"
 
 #: layout/main.cpp:39
 msgid "Keyboard <layout>"
-msgstr "키보드 <배열>"
+msgstr "키보드 <자판>"
 
 #: layout/main.cpp:65
 msgid "Keyboard Layout viewer"
-msgstr "키보드 배열 보이기"
+msgstr "키보드 자판 보기도구"
 
 #: layout/main.cpp:38
 msgid "Keyboard layout <group> (0-3)"
-msgstr "키보드 배열 <그룹> (0-3)"
+msgstr "키보드 자판 <그룹> (0-3)"
 
 #: layout/main.cpp:40
 msgid "Keyboard layout <variant>"
-msgstr "키보드 배열 <변형>"
+msgstr "키보드 자판 <변형>"
 
 #. i18n: file: src/lib/impage.ui:77
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:21
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr "활성 입력기가 없을 때 사용할 키보드 배열"
+msgstr "활성 입력기가 없을 때 사용할 키보드 자판"
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
-msgstr "키보드 배열 표시기"
+msgstr "키보드 자판 보기도구"
 
 #. i18n: file: src/lib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -189,7 +190,7 @@ msgstr "언어:"
 #: rc.cpp:6
 #, kde-format
 msgid "Layout:"
-msgstr "배열:"
+msgstr "자판:"
 
 #: src/lib/addonselector.cpp:186
 msgid "Loader"
@@ -216,7 +217,7 @@ msgstr "아니오"
 #: rc.cpp:33
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr "현재 언어만 보이기(&S)"
+msgstr "현재 언어만 표시(&S)"
 
 #: src/lib/model.cpp:133
 msgid "Other"
@@ -245,21 +246,21 @@ msgstr "글꼴 선택(&F)"
 
 #: src/lib/impage.cpp:292
 msgid "Select default layout"
-msgstr "기본 배열 선택"
+msgstr "기본 자판 선택"
 
 #. i18n: file: src/lib/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:24
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr "시스템 키보드 배열 선택"
+msgstr "시스템 키보드 자판 선택"
 
 #. i18n: file: src/lib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:45
 #, kde-format
 msgid "Show &Advanced options"
-msgstr "추가 설정 보이기(&A)"
+msgstr "고급 옵션 표시(&A)"
 
 #. i18n: file: src/lib/impage.ui:269
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -269,8 +270,8 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"첫 입력 방법이 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
-"<i> 배열명 </i> </b>를 첫 항목으로 하여야 합니다."
+"첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
+"<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
 #: src/lib/addonselector.cpp:187
 msgid "UI"
@@ -289,7 +290,7 @@ msgstr "변형:"
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
-msgstr "키보드 배열 보이기"
+msgstr "키보드 자판 보기"
 
 #: src/kcm/module.cpp:61
 #, kde-format
@@ -305,15 +306,15 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"현재 설정된 입력기가 키보드 배열에 맞지 않습니다. 배열 설정을 변경할까요?"
+"현재 설정된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
 
 #: src/lib/impage.cpp:306
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
-"현재 설정된 입력기가 선택한 키보드 배열과 맞지 않습니다. 배열에 적합한 입력기"
-"를 추가하시겠습니까?"
+"현재 설정된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
+"하시겠습니까?"
 
 #: src/lib/optionwidget.cpp:533
 #, kde-format
@@ -326,7 +327,7 @@ msgstr "그룹"
 
 #: layout/main.cpp:39
 msgid "layout"
-msgstr "배열"
+msgstr "자판"
 
 #: layout/main.cpp:40
 msgid "variant"
