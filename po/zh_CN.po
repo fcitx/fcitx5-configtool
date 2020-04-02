@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the kcm_fcitx5 package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
 # wwj402 <wwj402@gmail.com>, 2017
+# csslayer <wengxt@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-03-21 00:01-0700\n"
+"POT-Creation-Date: 2020-04-02 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: wwj402 <wwj402@gmail.com>, 2017\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -111,7 +111,7 @@ msgstr "默认"
 
 #: src/lib/impage.cpp:206
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
 #: src/kcm/module.cpp:56
 #, kde-format
@@ -123,7 +123,7 @@ msgstr "Fcitx 5 配置模块"
 #: rc.cpp:48
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx 配置"
 
 #: src/lib/addonselector.cpp:186
 msgid "Frontend"
