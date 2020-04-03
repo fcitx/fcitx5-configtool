@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-03-25 00:01-0700\n"
+"POT-Creation-Date: 2020-04-03 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -44,7 +44,7 @@ msgstr "%1:"
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 자판 보기도구"
 
-#: src/kcm/module.cpp:70 src/configtool/mainwindow.cpp:40
+#: src/kcm/module.cpp:68 src/configtool/mainwindow.cpp:40
 #, kde-format
 msgid "Addon"
 msgstr "부가기능"
@@ -53,7 +53,7 @@ msgstr "부가기능"
 msgid "Any language"
 msgstr "모든 언어"
 
-#: src/kcm/module.cpp:61
+#: src/kcm/module.cpp:59
 #, kde-format
 msgid "Author"
 msgstr "작성자"
@@ -80,7 +80,7 @@ msgstr "선택된 자판에 맞게 입력기 변경"
 msgid "Change System layout to match input method selection."
 msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
 
-#: src/kcm/module.cpp:57
+#: src/kcm/module.cpp:55
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "Fcitx 5 설정"
@@ -89,7 +89,7 @@ msgstr "Fcitx 5 설정"
 msgid "Configure Input Method"
 msgstr "입력기 설정"
 
-#: src/kcm/module.cpp:58
+#: src/kcm/module.cpp:56
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "저작권자 2017 Xuetian Weng"
@@ -113,7 +113,7 @@ msgstr "기본값"
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
-#: src/kcm/module.cpp:56
+#: src/kcm/module.cpp:54
 #, kde-format
 msgid "Fcitx 5 Configuration Module"
 msgstr "Fcitx 5 환경설정 모듈"
@@ -129,7 +129,7 @@ msgstr "Fcitx 환경설정"
 msgid "Frontend"
 msgstr "전처리기"
 
-#: src/kcm/module.cpp:77 src/configtool/mainwindow.cpp:47
+#: src/kcm/module.cpp:75 src/configtool/mainwindow.cpp:47
 #, kde-format
 msgid "Global Config"
 msgstr "전역 설정"
@@ -145,7 +145,7 @@ msgstr "그룹 이름:"
 msgid "Group:"
 msgstr "그룹:"
 
-#: src/kcm/module.cpp:65 src/lib/addonselector.cpp:186
+#: src/kcm/module.cpp:63 src/lib/addonselector.cpp:186
 #: src/configtool/mainwindow.cpp:35 src/kcm/kcm_fcitx5.desktop.in:12
 #, kde-format
 msgid "Input Method"
@@ -194,7 +194,7 @@ msgstr "자판:"
 
 #: src/lib/addonselector.cpp:186
 msgid "Loader"
-msgstr "적재기"
+msgstr "불러오기 도구"
 
 #: src/lib/addonselector.cpp:187
 msgid "Module"
@@ -292,7 +292,7 @@ msgstr "변형:"
 msgid "View keyboard layout"
 msgstr "키보드 자판 보기"
 
-#: src/kcm/module.cpp:61
+#: src/kcm/module.cpp:59
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
