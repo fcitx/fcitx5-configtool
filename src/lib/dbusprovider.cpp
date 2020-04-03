@@ -24,6 +24,7 @@ namespace kcm {
 fcitx::kcm::DBusProvider::DBusProvider(QObject *parent)
     : QObject(parent),
       watcher_(new FcitxQtWatcher(QDBusConnection::sessionBus(), this)) {
+    registerFcitxQtDBusTypes();
     connect(watcher_, &FcitxQtWatcher::availabilityChanged, this,
             &DBusProvider::fcitxAvailabilityChanged);
     watcher_->watch();

@@ -50,8 +50,6 @@ Module::Module(QWidget *parent, const QVariantList &args)
       impage_(new IMPage(dbus_, this)),
       addonPage_(new AddonSelector(this, dbus_)),
       configPage_(new ConfigWidget("fcitx://config/global", dbus_, this)) {
-    registerFcitxQtDBusTypes();
-
     KAboutData *about = new KAboutData(
         "kcm_fcitx5", i18n("Fcitx 5 Configuration Module"), PROJECT_VERSION,
         i18n("Configure Fcitx 5"), KAboutLicense::LGPL_V2,
