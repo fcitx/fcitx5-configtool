@@ -19,7 +19,6 @@
 #include "listoptionwidget.h"
 #include "varianthelper.h"
 #include <QAbstractListModel>
-#include <QDebug>
 
 namespace fcitx {
 namespace kcm {

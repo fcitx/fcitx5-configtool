@@ -151,6 +151,19 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="layoutButton">
+         <property name="toolTip">
+          <string>Select Layout</string>
+         </property>
+         <property name="text">
+          <string notr="true"/>
+         </property>
+         <property name="icon">
+          <iconset theme="input-keyboard"/>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

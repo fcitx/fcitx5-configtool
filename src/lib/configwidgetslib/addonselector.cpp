@@ -18,6 +18,7 @@
 //
 
 #include "addonselector.h"
+#include "addonmodel.h"
 #include "categoryhelper.h"
 #include "configwidget.h"
 #include "dbusprovider.h"
@@ -37,90 +38,6 @@ constexpr int MARGIN = 5;
 
 namespace fcitx {
 namespace kcm {
-
-enum ExtraRoles {
-    CommentRole = 0x19880209,
-    ConfigurableRole,
-    AddonNameRole,
-    RowTypeRole,
-    CategoryRole
-};
-
-enum RowType {
-    CategoryType,
-    AddonType,
-};
-
-class AddonModel : public CategorizedItemModel {
-    Q_OBJECT
-
-public:
-    explicit AddonModel(AddonSelector *parent);
-    virtual ~AddonModel();
-    bool setData(const QModelIndex &index, const QVariant &value,
-                 int role = Qt::EditRole) override;
-
-    void setAddons(const FcitxQtAddonInfoList &list) {
-        beginResetModel();
-
-        addonEntryList_.clear();
-        QMap<int, int> addonCategoryMap;
-        for (const FcitxQtAddonInfo &addon : list) {
-            int idx;
-            if (!addonCategoryMap.contains(addon.category())) {
-                idx = addonEntryList_.count();
-                addonCategoryMap[addon.category()] = idx;
-                addonEntryList_.append(QPair<int, FcitxQtAddonInfoList>(
-                    addon.category(), FcitxQtAddonInfoList()));
-            } else {
-                idx = addonCategoryMap[addon.category()];
-            }
-            addonEntryList_[idx].second.append(addon);
-        }
-        enabledList_.clear();
-        disabledList_.clear();
-        endResetModel();
-    }
-
-    const auto &enabledList() const { return enabledList_; }
-    const auto &disabledList() const { return disabledList_; }
-
-protected:
-    int listSize() const override { return addonEntryList_.size(); }
-    int subListSize(int idx) const override {
-        return addonEntryList_[idx].second.size();
-    }
-    QVariant dataForItem(const QModelIndex &index, int role) const override;
-    QVariant dataForCategory(const QModelIndex &index, int role) const override;
-
-private:
-    QSet<QString> enabledList_;
-    QSet<QString> disabledList_;
-    QList<QPair<int, FcitxQtAddonInfoList>> addonEntryList_;
-    AddonSelector *parent_;
-};
-
-class ProxyModel : public QSortFilterProxyModel {
-    Q_OBJECT
-
-public:
-    explicit ProxyModel(AddonSelector *parent)
-        : QSortFilterProxyModel(parent), parent_(parent) {}
-
-    ~ProxyModel() = default;
-
-protected:
-    bool filterAcceptsRow(int source_row,
-                          const QModelIndex &source_parent) const override;
-    bool lessThan(const QModelIndex &left,
-                  const QModelIndex &right) const override;
-
-private:
-    bool filterCategory(const QModelIndex &index) const;
-    bool filterAddon(const QModelIndex &index) const;
-
-    AddonSelector *parent_;
-};
 
 class AddonDelegate : public KWidgetItemDelegate {
     Q_OBJECT
@@ -171,168 +88,6 @@ QFont AddonDelegate::titleFont(const QFont &baseFont) const {
     retFont.setBold(true);
 
     return retFont;
-}
-
-AddonModel::AddonModel(AddonSelector *parent)
-    : fcitx::kcm::CategorizedItemModel(parent), parent_(parent) {}
-
-AddonModel::~AddonModel() {}
-
-QString categoryName(int category) {
-    if (category >= 5 || category < 0) {
-        return QString();
-    }
-
-    const char *str[] = {N_("Input Method"), N_("Frontend"), N_("Loader"),
-                         N_("Module"), N_("UI")};
-
-    return _(str[category]);
-}
-QVariant AddonModel::dataForCategory(const QModelIndex &index, int role) const {
-    switch (role) {
-
-    case Qt::DisplayRole:
-        return categoryName(addonEntryList_[index.row()].first);
-
-    case CategoryRole:
-        return addonEntryList_[index.row()].first;
-
-    case RowTypeRole:
-        return CategoryType;
-
-    default:
-        return QVariant();
-    }
-}
-
-QVariant AddonModel::dataForItem(const QModelIndex &index, int role) const {
-    const auto &addonList = addonEntryList_[index.parent().row()].second;
-    const auto &addon = addonList[index.row()];
-
-    switch (role) {
-
-    case Qt::DisplayRole:
-        return addon.name();
-
-    case CommentRole:
-        return addon.comment();
-
-    case ConfigurableRole:
-        return addon.configurable();
-
-    case AddonNameRole:
-        return addon.uniqueName();
-
-    case CategoryRole:
-        return addon.category();
-
-    case Qt::CheckStateRole:
-        if (disabledList_.contains(addon.uniqueName())) {
-            return false;
-        } else if (enabledList_.contains(addon.uniqueName())) {
-            return true;
-        }
-        return addon.enabled();
-
-    case RowTypeRole:
-        return AddonType;
-    }
-    return QVariant();
-}
-
-bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
-                         int role) {
-    if (!index.isValid() || !index.parent().isValid() ||
-        index.parent().row() >= addonEntryList_.size() ||
-        index.parent().column() > 0 || index.column() > 0) {
-        return false;
-    }
-
-    const auto &addonList = addonEntryList_[index.parent().row()].second;
-
-    if (index.row() >= addonList.size()) {
-        return false;
-    }
-
-    bool ret = false;
-
-    if (role == Qt::CheckStateRole) {
-        auto oldData = data(index, role).toBool();
-        auto &item = addonList[index.row()];
-        auto enabled = value.toBool();
-        if (item.enabled() == enabled) {
-            enabledList_.remove(item.uniqueName());
-            disabledList_.remove(item.uniqueName());
-        } else if (enabled) {
-            enabledList_.insert(item.uniqueName());
-            disabledList_.remove(item.uniqueName());
-        } else {
-            enabledList_.remove(item.uniqueName());
-            disabledList_.insert(item.uniqueName());
-        }
-        auto newData = data(index, role).toBool();
-        ret = oldData != newData;
-    }
-
-    if (ret) {
-        emit dataChanged(index, index);
-        emit parent_->changed();
-    }
-
-    return ret;
-}
-
-bool ProxyModel::filterAcceptsRow(int sourceRow,
-                                  const QModelIndex &sourceParent) const {
-    Q_UNUSED(sourceParent)
-    const QModelIndex index = sourceModel()->index(sourceRow, 0, sourceParent);
-
-    if (index.data(RowTypeRole) == CategoryType) {
-        return filterCategory(index);
-    }
-
-    return filterAddon(index);
-}
-
-bool ProxyModel::filterCategory(const QModelIndex &index) const {
-    int childCount = index.model()->rowCount(index);
-    if (childCount == 0)
-        return false;
-
-    for (int i = 0; i < childCount; ++i) {
-        if (filterAddon(index.model()->index(i, 0, index))) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool ProxyModel::filterAddon(const QModelIndex &index) const {
-    auto name = index.data(Qt::DisplayRole).toString();
-    auto comment = index.data(CommentRole).toString();
-
-    QString searchText = parent_->searchText();
-    if (!searchText.isEmpty()) {
-        return name.contains(searchText, Qt::CaseInsensitive) ||
-               comment.contains(searchText, Qt::CaseInsensitive);
-    }
-
-    return true;
-}
-
-bool ProxyModel::lessThan(const QModelIndex &left,
-                          const QModelIndex &right) const {
-    int result =
-        left.data(CategoryRole).toInt() - right.data(CategoryRole).toInt();
-    if (result < 0) {
-        return true;
-    } else if (result > 0) {
-        return false;
-    }
-
-    QString l = left.data(Qt::DisplayRole).toString();
-    QString r = right.data(Qt::DisplayRole).toString();
-    return QCollator().compare(l, r) < 0;
 }
 
 AddonDelegate::AddonDelegate(QAbstractItemView *listView, AddonSelector *parent)
@@ -518,8 +273,9 @@ void AddonDelegate::configureClicked() {
 }
 
 AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
-    : QWidget(parent), dbus_(dbus), proxyModel_(new ProxyModel(this)),
-      addonModel_(new AddonModel(this)),
+    : QWidget(parent), dbus_(dbus), addonModel_(new AddonModel(this)),
+      proxyModel_(new AddonProxyModel(this)),
+
       ui_(std::make_unique<Ui::AddonSelector>()) {
     ui_->setupUi(this);
 
@@ -530,15 +286,14 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
     ui_->listView->setModel(proxyModel_);
     connect(proxyModel_, &QAbstractItemModel::layoutChanged, ui_->listView,
             &QTreeView::expandAll);
+    connect(addonModel_, &AddonModel::changed, this, &AddonSelector::changed);
 
     delegate_ = new AddonDelegate(ui_->listView, this);
     ui_->listView->setItemDelegate(delegate_);
     ui_->listView->viewport()->setAttribute(Qt::WA_Hover);
 
     connect(ui_->lineEdit, &QLineEdit::textChanged, proxyModel_,
-            &QSortFilterProxyModel::invalidate);
-    connect(ui_->advancedCheckbox, &QCheckBox::clicked, proxyModel_,
-            &QSortFilterProxyModel::invalidate);
+            &AddonProxyModel::setFilterText);
 }
 
 AddonSelector::~AddonSelector() { delete delegate_; }

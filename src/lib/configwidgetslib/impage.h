@@ -19,6 +19,7 @@
 #ifndef _FCITX_IMPAGE_H_
 #define _FCITX_IMPAGE_H_
 
+#include "imconfig.h"
 #include <QDBusPendingCallWatcher>
 #include <QWidget>
 #include <fcitxqtdbustypes.h>
@@ -43,22 +44,13 @@ public:
     ~IMPage();
 signals:
     void changed();
-    void updateIMList(const FcitxQtInputMethodEntryList &list,
-                      const FcitxQtStringKeyValueList &enabled,
-                      const QString &selection);
 public slots:
     void save();
     void load();
     void defaults();
 
 private slots:
-    void availabilityChanged();
-    void reloadGroup(const QString &name = QString());
     void selectedGroupChanged();
-    void fetchGroupsFinished(QDBusPendingCallWatcher *watcher,
-                             const QString &focusGroup);
-    void fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher);
-    void fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher);
 
     void availIMSelectionChanged();
     void currentIMCurrentChanged();
@@ -66,6 +58,7 @@ private slots:
     void doubleClickCurrentIM(const QModelIndex &index);
     void doubleClickAvailIM(const QModelIndex &index);
     void selectDefaultLayout();
+    void selectLayout();
 
     void selectAvailIM(const QModelIndex &index);
     void clickAddIM();
@@ -84,14 +77,7 @@ private:
 
     std::unique_ptr<Ui::IMPage> ui_;
     DBusProvider *dbus_;
-    AvailIMModel *availIMModel_;
-    IMProxyModel *availIMProxyModel_;
-    CurrentIMModel *currentIMModel_;
-    QString defaultLayout_;
-    FcitxQtStringKeyValueList imEntries_;
-    FcitxQtInputMethodEntryList allIMs_;
-    QString lastGroup_;
-    bool changed_ = false;
+    IMConfig *config_;
 };
 } // namespace kcm
 } // namespace fcitx

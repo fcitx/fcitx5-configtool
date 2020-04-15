@@ -32,7 +32,7 @@ namespace fcitx {
 namespace kcm {
 
 class AddonModel;
-class ProxyModel;
+class AddonProxyModel;
 class AddonDelegate;
 class DBusProvider;
 
@@ -60,8 +60,8 @@ private slots:
 
 private:
     DBusProvider *dbus_;
-    ProxyModel *proxyModel_;
     AddonModel *addonModel_;
+    AddonProxyModel *proxyModel_;
     AddonDelegate *delegate_;
     std::unique_ptr<Ui::AddonSelector> ui_;
 };

@@ -20,6 +20,8 @@
 #define _KCM_FCITX_LAYOUTWIDGET_H_
 
 #include "iso639.h"
+#include "layoutmodel.h"
+#include "layoutprovider.h"
 #include <QSortFilterProxyModel>
 #include <QStringListModel>
 #include <QWidget>
@@ -56,23 +58,17 @@ public:
     QPair<QString, QString> layout() const;
 
 private slots:
-    void availabilityChanged();
     void languageComboBoxChanged();
     void layoutComboBoxChanged();
     void variantComboBoxChanged();
-    void fetchLayoutFinished(QDBusPendingCallWatcher *watcher);
 
 private:
     std::unique_ptr<Ui::LayoutSelector> ui_;
     DBusProvider *dbus_;
+    LayoutProvider *layoutProvider_;
     KeyboardLayoutWidget *keyboardLayoutWidget_;
-    LayoutInfoModel *layoutModel_;
-    VariantInfoModel *variantModel_;
-    LanguageFilterModel *layoutFilterModel_;
-    LanguageFilterModel *variantFilterModel_;
     Iso639 iso639_;
 
-    int loadingCounter_ = 0;
     QString preSelectLayout_;
     QString preSelectVariant_;
 };

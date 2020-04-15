@@ -30,11 +30,21 @@ namespace kcm {
 enum {
     FcitxRowTypeRole = 0x324da8fc,
     FcitxLanguageRole,
+    FcitxLanguageNameRole,
     FcitxIMUniqueNameRole,
     FcitxIMConfigurableRole,
+    FcitxIMLayoutRole,
 };
 
 enum { LanguageType, IMType };
+
+class IMConfigModelInterface {
+public:
+    virtual ~IMConfigModelInterface() = default;
+    virtual void
+    filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
+                      const FcitxQtStringKeyValueList &enabledIMs) = 0;
+};
 
 class CategorizedItemModel : public QAbstractItemModel {
     Q_OBJECT
@@ -56,17 +66,14 @@ protected:
                                      int role) const = 0;
 };
 
-class AvailIMModel : public CategorizedItemModel {
+class AvailIMModel : public CategorizedItemModel,
+                     public IMConfigModelInterface {
     Q_OBJECT
 public:
     AvailIMModel(QObject *parent = 0);
-signals:
-    void select(QModelIndex index);
-    void updateIMListFinished();
-public slots:
-    void filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
-                           const FcitxQtStringKeyValueList &enabledIMs,
-                           const QString &selection = QString());
+    void
+    filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
+                      const FcitxQtStringKeyValueList &enabledIMs) override;
 
 protected:
     int listSize() const override { return filteredIMEntryList.size(); }
@@ -80,15 +87,32 @@ private:
     QList<QPair<QString, FcitxQtInputMethodEntryList>> filteredIMEntryList;
 };
 
-class IMProxyModel : public QSortFilterProxyModel {
+class IMProxyModel : public QSortFilterProxyModel,
+                     public IMConfigModelInterface {
     Q_OBJECT
+    Q_PROPERTY(QString filterText READ filterText WRITE setFilterText);
+    Q_PROPERTY(bool showOnlyCurrentLanguage READ showOnlyCurrentLanguage WRITE
+                   setShowOnlyCurrentLanguage);
+
 public:
     IMProxyModel(QObject *parent = nullptr);
-public slots:
+
+    // Forward role names.
+    QHash<int, QByteArray> roleNames() const override {
+        if (sourceModel()) {
+            return sourceModel()->roleNames();
+        }
+        return QSortFilterProxyModel::roleNames();
+    }
+
+    const QString &filterText() const { return filterText_; }
     void setFilterText(const QString &text);
+    bool showOnlyCurrentLanguage() const { return showOnlyCurrentLanguage_; }
     void setShowOnlyCurrentLanguage(bool checked);
-    void filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
-                           const FcitxQtStringKeyValueList &enabledIMs);
+
+    void
+    filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
+                      const FcitxQtStringKeyValueList &enabledIMs) override;
 
 protected:
     bool filterAcceptsRow(int source_row,
@@ -107,24 +131,34 @@ private:
     QSet<QString> languageSet_;
 };
 
-class CurrentIMModel : public QAbstractListModel {
+class FilteredIMModel : public QAbstractListModel,
+                        public IMConfigModelInterface {
     Q_OBJECT
 public:
-    CurrentIMModel(QObject *parent = nullptr);
+    enum Mode { CurrentIM, AvailIM };
+
+    FilteredIMModel(Mode mode, QObject *parent = nullptr);
     QModelIndex index(int row, int column = 0,
                       const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-signals:
-    void select(QModelIndex index);
+
+    virtual QHash<int, QByteArray> roleNames() const override;
+    void
+    filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
+                      const FcitxQtStringKeyValueList &enabledIMs) override;
 public slots:
-    void filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
-                           const FcitxQtStringKeyValueList &enabledIMs,
-                           const QString &selection = QString());
+    void move(int from, int to);
+    void remove(int index);
+
+signals:
+    void imListChanged(FcitxQtInputMethodEntryList list);
 
 private:
+    Mode mode_;
     FcitxQtInputMethodEntryList filteredIMEntryList_;
+    FcitxQtStringKeyValueList enabledIMList_;
 };
 
 } // namespace kcm

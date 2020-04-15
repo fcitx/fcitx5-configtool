@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017~2017 by CSSlayer
+ * Copyright (C) 2012~2017 by CSSlayer
  * wengxt@gmail.com
  *
  * This library is free software; you can redistribute it and/or modify
@@ -16,50 +16,34 @@
  * License along with this library; see the file COPYING. If not,
  * see <http://www.gnu.org/licenses/>.
  */
-#ifndef _FCITX_MODULE_H_
-#define _FCITX_MODULE_H_
+#ifndef _KCM_FCITX_FONTBUTTON_H_
+#define _KCM_FCITX_FONTBUTTON_H_
 
-// KDE
-#include "dbusprovider.h"
-#include "iso639.h"
-#include "ui_module.h"
-#include <KCModule>
+#include "ui_fontbutton.h"
 
 namespace fcitx {
-
-class FcitxQtWatcher;
-class FcitxQtControllerProxy;
-
 namespace kcm {
 
-class IMPage;
-class ErrorOverlay;
-class AddonSelector;
-class ConfigWidget;
-
-class Module : public KCModule, public Ui::Module {
+class FontButton : public QWidget, public Ui::FontButton {
     Q_OBJECT
-
 public:
-    Module(QWidget *parent, const QVariantList &args = QVariantList());
-    ~Module();
+    explicit FontButton(QWidget *parent = 0);
+    virtual ~FontButton();
+    const QFont &font();
+    QString fontName();
 
-    void load() override;
-    void save() override;
-    void defaults() override;
-
-    const Iso639 &iso639() { return iso639_; }
+public slots:
+    void setFont(const QFont &font);
+signals:
+    void fontChanged(const QFont &font);
+private slots:
+    void selectFont();
 
 private:
-    DBusProvider *dbus_;
-    ErrorOverlay *errorOverlay_;
-    IMPage *impage_;
-    AddonSelector *addonPage_;
-    ConfigWidget *configPage_;
-    Iso639 iso639_;
+    QFont font_;
 };
 
 } // namespace kcm
 } // namespace fcitx
 
-#endif // _FCITX_MODULE_H_
+#endif // _KCM_FCITX_FONTBUTTON_H_

@@ -18,6 +18,7 @@
 //
 
 #include "optionwidget.h"
+#include "font.h"
 #include "fontbutton.h"
 #include "keylistwidget.h"
 #include "listoptionwidget.h"
@@ -141,7 +142,7 @@ public:
 
     void readValueFrom(const QVariantMap &map) override {
         auto value = valueFromVariantMap(map, path());
-        fontButton_->setFont(FontButton::parseFont(value));
+        fontButton_->setFont(parseFont(value));
     }
 
     void writeValueTo(QVariantMap &map) override {
@@ -149,7 +150,7 @@ public:
     }
 
     void restoreToDefault() override {
-        fontButton_->setFont(FontButton::parseFont(defaultValue_));
+        fontButton_->setFont(parseFont(defaultValue_));
     }
 
 private:

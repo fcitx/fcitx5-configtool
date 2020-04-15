@@ -1,0 +1,125 @@
+//
+// Copyright (C) 2020~2020 by CSSlayer
+// wengxt@gmail.com
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+#ifndef _CONFIGLIB_ABSTRACTIMPAGE_H_
+#define _CONFIGLIB_ABSTRACTIMPAGE_H_
+
+#include <QDBusPendingCallWatcher>
+#include <QObject>
+#include <fcitxqtdbustypes.h>
+
+namespace fcitx {
+namespace kcm {
+
+class IMConfigModelInterface;
+class IMProxyModel;
+class FilteredIMModel;
+class DBusProvider;
+
+class IMConfig : public QObject {
+    Q_OBJECT
+    Q_PROPERTY(fcitx::kcm::FilteredIMModel *currentIMModel READ currentIMModel
+                   CONSTANT)
+    Q_PROPERTY(
+        fcitx::kcm::IMProxyModel *availIMModel READ availIMModel CONSTANT)
+    Q_PROPERTY(QString defaultLayout READ defaultLayout WRITE setDefaultLayout)
+    Q_PROPERTY(QStringList groups READ groups NOTIFY groupsChanged)
+    Q_PROPERTY(QString currentGroup READ currentGroup WRITE setCurrentGroup)
+    Q_PROPERTY(bool needSave READ needSave)
+public:
+    enum ModelMode { Tree, Flatten };
+
+    IMConfig(DBusProvider *dbus, ModelMode mode, QObject *parent);
+    ~IMConfig();
+
+    FilteredIMModel *currentIMModel() const { return currentIMModel_; }
+    IMProxyModel *availIMModel() const { return availIMModel_; }
+    const QStringList &groups() const { return groups_; }
+    const QString &currentGroup() const { return lastGroup_; }
+    void setCurrentGroup(const QString &name);
+    bool needSave() const { return needSave_; }
+
+    void addIM(const QModelIndex &index);
+    void removeIM(const QModelIndex &index);
+
+    const auto &imEntries() const { return imEntries_; }
+    void setIMEntries(const FcitxQtStringKeyValueList &imEntires) {
+        imEntries_ = imEntires;
+        updateIMList();
+    }
+
+    const QString &defaultLayout() const { return defaultLayout_; }
+    void setDefaultLayout(const QString &l) {
+        if (defaultLayout_ != l) {
+            defaultLayout_ = l;
+            emitChanged();
+        }
+    }
+
+    Q_INVOKABLE void setLayout(const QString &im, const QString &layout) {
+        for (auto &imEntry : imEntries_) {
+            if (imEntry.key() == im) {
+                imEntry.setValue(layout);
+                emitChanged();
+                updateIMList();
+                return;
+            }
+        }
+    }
+
+public slots:
+    void addGroup(const QString &name);
+    void deleteGroup(const QString &name);
+    void save();
+    void load();
+    void defaults();
+    void addIM(int index);
+    void removeIM(int index);
+    void move(int from, int to);
+
+signals:
+    void changed();
+    void currentGroupChanged(const QString &group);
+    void groupsChanged(const QStringList &groups);
+    void imListChanged();
+
+private slots:
+    void availabilityChanged();
+    void fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher);
+    void fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher);
+    void fetchGroupsFinished(QDBusPendingCallWatcher *watcher);
+
+private:
+    void reloadGroup();
+    void emitChanged();
+    void updateIMList(bool excludeCurrent = false);
+
+    DBusProvider *dbus_;
+    IMProxyModel *availIMModel_;
+    IMConfigModelInterface *internalAvailIMModel_ = nullptr;
+    FilteredIMModel *currentIMModel_;
+    QString defaultLayout_;
+    FcitxQtStringKeyValueList imEntries_;
+    FcitxQtInputMethodEntryList allIMs_;
+    QStringList groups_;
+    QString lastGroup_;
+    bool needSave_ = false;
+};
+} // namespace kcm
+} // namespace fcitx
+
+#endif // _CONFIGLIB_ABSTRACTIMPAGE_H_

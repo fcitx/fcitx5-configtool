@@ -18,7 +18,6 @@
 //
 
 #include "keylistwidget.h"
-#include <QDebug>
 #include <QHBoxLayout>
 #include <QToolButton>
 #include <QVBoxLayout>

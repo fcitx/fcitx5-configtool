@@ -204,13 +204,11 @@ QVariant fcitx::kcm::AvailIMModel::dataForItem(const QModelIndex &index,
 
 void fcitx::kcm::AvailIMModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
-    const FcitxQtStringKeyValueList &enabledIMList, const QString &selection) {
+    const FcitxQtStringKeyValueList &enabledIMList) {
     beginResetModel();
 
     QMap<QString, int> languageMap;
     filteredIMEntryList.clear();
-    int langRow = -1;
-    int imRow = -1;
 
     QSet<QString> enabledIMs;
     for (const auto &item : enabledIMList) {
@@ -232,20 +230,15 @@ void fcitx::kcm::AvailIMModel::filterIMEntryList(
             idx = languageMap[im.languageCode()];
         }
         filteredIMEntryList[idx].second.append(im);
-        if (im.uniqueName() == selection) {
-            langRow = idx;
-            imRow = filteredIMEntryList[idx].second.count() - 1;
-        }
     }
     endResetModel();
-
-    if (imRow >= 0) {
-        emit select(index(imRow, 0, index(langRow, 0)));
-    }
 }
 
 fcitx::kcm::IMProxyModel::IMProxyModel(QObject *parent)
-    : QSortFilterProxyModel(parent) {}
+    : QSortFilterProxyModel(parent) {
+    setDynamicSortFilter(true);
+    sort(0);
+}
 
 void fcitx::kcm::IMProxyModel::setFilterText(const QString &text) {
     if (filterText_ != text) {
@@ -313,8 +306,9 @@ bool fcitx::kcm::IMProxyModel::filterIM(const QModelIndex &index) const {
     QString name = index.data(Qt::DisplayRole).toString();
     QString langCode = index.data(FcitxLanguageRole).toString();
 
-    if (uniqueName == "keyboard-us")
+    if (uniqueName == "keyboard-us") {
         return true;
+    }
 
     bool flag = true;
     QString lang = langCode.left(2);
@@ -371,11 +365,12 @@ int fcitx::kcm::IMProxyModel::compareCategories(
     return fl ? -1 : 1;
 }
 
-fcitx::kcm::CurrentIMModel::CurrentIMModel(QObject *parent)
-    : QAbstractListModel(parent) {}
+fcitx::kcm::FilteredIMModel::FilteredIMModel(Mode mode, QObject *parent)
+    : QAbstractListModel(parent), mode_(mode) {}
 
-QModelIndex fcitx::kcm::CurrentIMModel::index(int row, int column,
-                                              const QModelIndex &parent) const {
+QModelIndex
+fcitx::kcm::FilteredIMModel::index(int row, int column,
+                                   const QModelIndex &parent) const {
     Q_UNUSED(parent);
 
     return createIndex(row, column,
@@ -384,8 +379,8 @@ QModelIndex fcitx::kcm::CurrentIMModel::index(int row, int column,
                            : 0);
 }
 
-QVariant fcitx::kcm::CurrentIMModel::data(const QModelIndex &index,
-                                          int role) const {
+QVariant fcitx::kcm::FilteredIMModel::data(const QModelIndex &index,
+                                           int role) const {
     if (!index.isValid() || index.row() >= filteredIMEntryList_.size()) {
         return QVariant();
     }
@@ -410,12 +405,26 @@ QVariant fcitx::kcm::CurrentIMModel::data(const QModelIndex &index,
     case FcitxIMConfigurableRole:
         return imEntry.configurable();
 
+    case FcitxLanguageNameRole:
+        return languageName(imEntry.languageCode());
+
+    case FcitxIMLayoutRole: {
+        auto iter = std::find_if(enabledIMList_.begin(), enabledIMList_.end(),
+                                 [&imEntry](const FcitxQtStringKeyValue &item) {
+                                     return item.key() == imEntry.uniqueName();
+                                 });
+        if (iter != enabledIMList_.end()) {
+            return iter->value();
+        }
+        return QString();
+    }
+
     default:
         return QVariant();
     }
 }
 
-int fcitx::kcm::CurrentIMModel::rowCount(const QModelIndex &parent) const {
+int fcitx::kcm::FilteredIMModel::rowCount(const QModelIndex &parent) const {
     if (parent.isValid()) {
         return 0;
     }
@@ -423,32 +432,73 @@ int fcitx::kcm::CurrentIMModel::rowCount(const QModelIndex &parent) const {
     return filteredIMEntryList_.count();
 }
 
-void fcitx::kcm::CurrentIMModel::filterIMEntryList(
+QHash<int, QByteArray> fcitx::kcm::FilteredIMModel::roleNames() const {
+    return {{Qt::DisplayRole, "name"},
+            {FcitxIMUniqueNameRole, "uniqueName"},
+            {FcitxLanguageRole, "languageCode"},
+            {FcitxLanguageNameRole, "language"},
+            {FcitxIMConfigurableRole, "configurable"},
+            {FcitxIMLayoutRole, "layout"}};
+}
+
+void fcitx::kcm::FilteredIMModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
-    const FcitxQtStringKeyValueList &enabledIMs, const QString &selection) {
+    const FcitxQtStringKeyValueList &enabledIMList) {
     beginResetModel();
 
-    FcitxQtStringKeyValueList languageSet;
     filteredIMEntryList_.clear();
-    int row = 0, selectionRow = -1;
-    QMap<QString, const FcitxQtInputMethodEntry *> nameMap;
-    for (auto &imEntry : imEntryList) {
-        nameMap.insert(imEntry.uniqueName(), &imEntry);
-    }
+    enabledIMList_ = enabledIMList;
 
-    for (const auto &im : enabledIMs) {
-        if (auto value = nameMap.value(im.key(), nullptr)) {
-            filteredIMEntryList_.append(*value);
-            if (im.key() == selection)
-                selectionRow = row;
-            row++;
+    // We implement this twice for following reasons:
+    // 1. "enabledIMs" is usually very small.
+    // 2. CurrentIM mode need to keep order by enabledIMs.
+    if (mode_ == CurrentIM) {
+        int row = 0;
+        QMap<QString, const FcitxQtInputMethodEntry *> nameMap;
+        for (auto &imEntry : imEntryList) {
+            nameMap.insert(imEntry.uniqueName(), &imEntry);
+        }
+
+        for (const auto &im : enabledIMList) {
+            if (auto value = nameMap.value(im.key(), nullptr)) {
+                filteredIMEntryList_.append(*value);
+                row++;
+            }
+        }
+    } else if (mode_ == AvailIM) {
+        QSet<QString> enabledIMs;
+        for (const auto &item : enabledIMList) {
+            enabledIMs.insert(item.key());
+        }
+
+        for (const FcitxQtInputMethodEntry &im : imEntryList) {
+            if (enabledIMs.contains(im.uniqueName())) {
+                continue;
+            }
+            filteredIMEntryList_.append(im);
         }
     }
     endResetModel();
+}
 
-    if (selectionRow >= 0) {
-        emit select(index(selectionRow, 0));
-    } else if (row > 0) {
-        emit select(index(row - 1, 0));
+void fcitx::kcm::FilteredIMModel::move(int from, int to) {
+    if (from < 0 || from >= filteredIMEntryList_.size() || to < 0 ||
+        to >= filteredIMEntryList_.size()) {
+        return;
     }
+    beginMoveRows(QModelIndex(), from, from, QModelIndex(),
+                  to > from ? to + 1 : to);
+    filteredIMEntryList_.move(from, to);
+    endMoveRows();
+    emit imListChanged(filteredIMEntryList_);
+}
+
+void fcitx::kcm::FilteredIMModel::remove(int idx) {
+    if (idx < 0 || idx >= filteredIMEntryList_.size()) {
+        return;
+    }
+    beginRemoveRows(QModelIndex(), idx, idx);
+    filteredIMEntryList_.removeAt(idx);
+    endRemoveRows();
+    emit imListChanged(filteredIMEntryList_);
 }

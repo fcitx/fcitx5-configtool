@@ -4,7 +4,7 @@
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation; either version 2.1 of the
+ * published by the Free Software Foundation; either version 2 of the
  * License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
@@ -16,35 +16,18 @@
  * License along with this library; see the file COPYING. If not,
  * see <http://www.gnu.org/licenses/>.
  */
-#ifndef _KCM_FCITX_FONTBUTTON_H_
-#define _KCM_FCITX_FONTBUTTON_H_
+#ifndef _WIDGETSADDONS_QTKEYTRANS_H_
+#define _WIDGETSADDONS_QTKEYTRANS_H_
 
-#include "ui_fontbutton.h"
+#include <qnamespace.h>
 
 namespace fcitx {
-namespace kcm {
 
-class FontButton : public QWidget, public Ui::FontButton {
-    Q_OBJECT
-public:
-    explicit FontButton(QWidget *parent = 0);
-    virtual ~FontButton();
-    const QFont &font();
-    QString fontName();
-    static QFont parseFont(const QString &string);
+bool keyQtToSym(int qtcode, Qt::KeyboardModifiers mod, int &sym,
+                unsigned int &state);
 
-public slots:
-    void setFont(const QFont &font);
-signals:
-    void fontChanged(const QFont &font);
-private slots:
-    void selectFont();
-
-private:
-    QFont font_;
-};
-
-} // namespace kcm
+bool symToKeyQt(int sym, unsigned int state, int &qtcode,
+                Qt::KeyboardModifiers &mod);
 } // namespace fcitx
 
-#endif // _KCM_FCITX_FONTBUTTON_H_
+#endif // _WIDGETSADDONS_QTKEYTRANS_H_

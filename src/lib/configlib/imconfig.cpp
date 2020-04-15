@@ -1,0 +1,223 @@
+//
+// Copyright (C) 2020~2020 by CSSlayer
+// wengxt@gmail.com
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2, or (at your option)
+// any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+#include "imconfig.h"
+#include "dbusprovider.h"
+#include "model.h"
+
+namespace fcitx {
+namespace kcm {
+
+IMConfig::IMConfig(DBusProvider *dbus, ModelMode mode, QObject *parent)
+    : QObject(parent), dbus_(dbus), availIMModel_(new IMProxyModel(this)),
+      currentIMModel_(new FilteredIMModel(FilteredIMModel::CurrentIM, this)) {
+    connect(dbus, &DBusProvider::availabilityChanged, this,
+            &IMConfig::availabilityChanged);
+    availabilityChanged();
+
+    if (mode == Flatten) {
+        auto flattenAvailIMModel =
+            new FilteredIMModel(FilteredIMModel::AvailIM, this);
+        availIMModel_->setSourceModel(flattenAvailIMModel);
+        internalAvailIMModel_ = flattenAvailIMModel;
+    } else {
+        auto availIMModel = new AvailIMModel(this);
+        availIMModel_->setSourceModel(availIMModel);
+        internalAvailIMModel_ = availIMModel;
+    }
+
+    connect(currentIMModel_, &FilteredIMModel::imListChanged, this,
+            [this](const FcitxQtInputMethodEntryList &list) {
+                auto old = imEntries_;
+                FcitxQtStringKeyValueList newEntries;
+                for (const auto &item : list) {
+                    auto iter = std::find_if(
+                        old.begin(), old.end(),
+                        [&item](const FcitxQtStringKeyValue &entry) {
+                            return entry.key() == item.uniqueName();
+                        });
+                    if (iter != old.end()) {
+                        newEntries.push_back(*iter);
+                    }
+                }
+                imEntries_ = newEntries;
+                updateIMList(true);
+                emitChanged();
+            });
+}
+
+IMConfig::~IMConfig() {}
+
+void IMConfig::save() {
+    if (!dbus_->controller()) {
+        return;
+    }
+    if (needSave_) {
+        dbus_->controller()->SetInputMethodGroupInfo(lastGroup_, defaultLayout_,
+                                                     imEntries_);
+        needSave_ = false;
+    }
+}
+
+void IMConfig::load() { availabilityChanged(); }
+
+void IMConfig::defaults() {}
+
+void IMConfig::addIM(int idx) {
+    auto index = availIMModel_->index(idx, 0);
+    addIM(index);
+}
+
+void IMConfig::addIM(const QModelIndex &index) {
+    if (!index.isValid()) {
+        return;
+    }
+    auto uniqueName = index.data(FcitxIMUniqueNameRole).toString();
+    FcitxQtStringKeyValue imEntry;
+    imEntry.setKey(uniqueName);
+    imEntries_.push_back(imEntry);
+    updateIMList();
+    emitChanged();
+}
+
+void IMConfig::removeIM(int idx) { currentIMModel_->remove(idx); }
+
+void IMConfig::removeIM(const QModelIndex &index) {
+    currentIMModel_->remove(index.row());
+}
+
+void IMConfig::move(int from, int to) { currentIMModel_->move(from, to); }
+
+void IMConfig::reloadGroup() {
+    if (!dbus_->controller()) {
+        return;
+    }
+    auto call = dbus_->controller()->InputMethodGroups();
+    auto watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            [this](QDBusPendingCallWatcher *watcher) {
+                fetchGroupsFinished(watcher);
+            });
+}
+
+void IMConfig::fetchGroupsFinished(QDBusPendingCallWatcher *watcher) {
+    QDBusPendingReply<QStringList> groups = *watcher;
+    watcher->deleteLater();
+
+    if (groups.isValid()) {
+        groups_ = groups.value();
+        emit groupsChanged(groups_);
+    }
+
+    if (!groups_.empty()) {
+        setCurrentGroup(groups_.front());
+    }
+}
+
+void IMConfig::availabilityChanged() {
+    lastGroup_.clear();
+    if (!dbus_->controller()) {
+        return;
+    }
+    reloadGroup();
+    auto imcall = dbus_->controller()->AvailableInputMethods();
+    auto imcallwatcher = new QDBusPendingCallWatcher(imcall, this);
+    connect(imcallwatcher, &QDBusPendingCallWatcher::finished, this,
+            &IMConfig::fetchInputMethodsFinished);
+}
+
+void IMConfig::fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher) {
+    QDBusPendingReply<FcitxQtInputMethodEntryList> ims = *watcher;
+    watcher->deleteLater();
+    if (!ims.isError()) {
+        allIMs_ = ims.value();
+        updateIMList();
+    }
+    return;
+}
+
+void IMConfig::setCurrentGroup(const QString &name) {
+    if (dbus_->available() && !name.isEmpty()) {
+        auto call = dbus_->controller()->InputMethodGroupInfo(name);
+        lastGroup_ = name;
+        emit currentGroupChanged(lastGroup_);
+        auto watcher = new QDBusPendingCallWatcher(call, this);
+        connect(watcher, &QDBusPendingCallWatcher::finished, this,
+                &IMConfig::fetchGroupInfoFinished);
+    }
+}
+
+void IMConfig::fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher) {
+    watcher->deleteLater();
+    needSave_ = false;
+    QDBusPendingReply<QString, FcitxQtStringKeyValueList> reply = *watcher;
+    if (!reply.isError()) {
+        defaultLayout_ = reply.argumentAt<0>();
+        imEntries_ = reply.argumentAt<1>();
+    } else {
+        defaultLayout_.clear();
+        imEntries_.clear();
+    }
+
+    updateIMList();
+}
+
+void IMConfig::emitChanged() {
+    needSave_ = true;
+    emit changed();
+}
+
+void IMConfig::updateIMList(bool excludeCurrent) {
+    if (!excludeCurrent) {
+        currentIMModel_->filterIMEntryList(allIMs_, imEntries_);
+    }
+    internalAvailIMModel_->filterIMEntryList(allIMs_, imEntries_);
+    availIMModel_->filterIMEntryList(allIMs_, imEntries_);
+
+    emit imListChanged();
+}
+
+void IMConfig::addGroup(const QString &name) {
+    if (!name.isEmpty() && dbus_->controller()) {
+        auto call = dbus_->controller()->AddInputMethodGroup(name);
+        auto watcher = new QDBusPendingCallWatcher(call, this);
+        connect(watcher, &QDBusPendingCallWatcher::finished, this,
+                [this](QDBusPendingCallWatcher *watcher) {
+                    watcher->deleteLater();
+                    if (!watcher->isError()) {
+                        reloadGroup();
+                    }
+                });
+    }
+}
+
+void IMConfig::deleteGroup(const QString &name) {
+    if (dbus_->controller()) {
+        auto call = dbus_->controller()->RemoveInputMethodGroup(name);
+        auto watcher = new QDBusPendingCallWatcher(call, this);
+        connect(watcher, &QDBusPendingCallWatcher::finished, this,
+                [this](QDBusPendingCallWatcher *watcher) {
+                    watcher->deleteLater();
+                    if (!watcher->isError()) {
+                        reloadGroup();
+                    }
+                });
+    }
+}
+
+} // namespace kcm
+} // namespace fcitx
