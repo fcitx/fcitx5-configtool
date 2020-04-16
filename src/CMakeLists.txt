@@ -2,4 +2,7 @@ if (ENABLE_KCM)
     add_subdirectory(kcm)
 endif()
 add_subdirectory(lib)
-add_subdirectory(configtool)
+
+if (ENABLE_CONFIG_QT)
+    add_subdirectory(configtool)
+endif()
