@@ -28,16 +28,6 @@ public:
     ListOptionWidgetModel(ListOptionWidget *parent)
         : QAbstractListModel(parent), parent_(parent) {}
 
-    QModelIndex
-    index(int row, int column = 0,
-          const QModelIndex &parent = QModelIndex()) const override {
-        Q_UNUSED(parent);
-        if (parent.isValid() || row >= values_.size() || column != 0) {
-            return QModelIndex();
-        }
-        return createIndex(row, column);
-    }
-
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override {
         if (!index.isValid() || index.row() >= values_.size()) {

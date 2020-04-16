@@ -23,7 +23,10 @@
 #include <QVBoxLayout>
 #include <fcitxqtkeysequencewidget.h>
 
-fcitx::kcm::KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
+namespace fcitx {
+namespace kcm {
+
+KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
     auto layout = new QHBoxLayout;
     layout->setMargin(0);
     keysLayout_ = new QVBoxLayout;
@@ -50,7 +53,7 @@ fcitx::kcm::KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
     addKey();
 }
 
-void fcitx::kcm::KeyListWidget::addKey(fcitx::Key key) {
+void KeyListWidget::addKey(fcitx::Key key) {
     auto keyWidget = new FcitxQtKeySequenceWidget;
     keyWidget->setClearButtonShown(false);
     keyWidget->setKeySequence({key});
@@ -81,7 +84,7 @@ void fcitx::kcm::KeyListWidget::addKey(fcitx::Key key) {
     keysLayout_->addWidget(widget);
 }
 
-void fcitx::kcm::KeyListWidget::setKeys(const QList<fcitx::Key> &keys) {
+void KeyListWidget::setKeys(const QList<fcitx::Key> &keys) {
     while (keysLayout_->count() > 1) {
         removeKeyAt(0);
     }
@@ -102,7 +105,7 @@ void fcitx::kcm::KeyListWidget::setKeys(const QList<fcitx::Key> &keys) {
     emit keyChanged();
 }
 
-QList<fcitx::Key> fcitx::kcm::KeyListWidget::keys() const {
+QList<fcitx::Key> KeyListWidget::keys() const {
     QList<fcitx::Key> result;
     for (int i = 0; i < keysLayout_->count(); i++) {
         if (auto keyWidget = keysLayout_->itemAt(i)
@@ -120,7 +123,7 @@ QList<fcitx::Key> fcitx::kcm::KeyListWidget::keys() const {
     return result;
 }
 
-void fcitx::kcm::KeyListWidget::setAllowModifierLess(bool value) {
+void KeyListWidget::setAllowModifierLess(bool value) {
     if (value == modifierLess_) {
         return;
     }
@@ -136,7 +139,7 @@ void fcitx::kcm::KeyListWidget::setAllowModifierLess(bool value) {
     }
 }
 
-void fcitx::kcm::KeyListWidget::setAllowModifierOnly(bool value) {
+void KeyListWidget::setAllowModifierOnly(bool value) {
     if (value == modifierOnly_) {
         return;
     }
@@ -152,7 +155,7 @@ void fcitx::kcm::KeyListWidget::setAllowModifierOnly(bool value) {
     }
 }
 
-bool fcitx::kcm::KeyListWidget::removeKeyAt(int idx) {
+bool KeyListWidget::removeKeyAt(int idx) {
     if (idx < 0 || idx > keysLayout_->count()) {
         return false;
     }
@@ -169,7 +172,7 @@ bool fcitx::kcm::KeyListWidget::removeKeyAt(int idx) {
     return true;
 }
 
-bool fcitx::kcm::KeyListWidget::showRemoveButton() const {
+bool KeyListWidget::showRemoveButton() const {
     return keysLayout_->count() > 1 ||
            (keysLayout_->count() == 1 &&
             keysLayout_->itemAt(0)
@@ -179,7 +182,7 @@ bool fcitx::kcm::KeyListWidget::showRemoveButton() const {
                 .size());
 }
 
-void fcitx::kcm::KeyListWidget::resizeEvent(QResizeEvent *event) {
+void KeyListWidget::resizeEvent(QResizeEvent *event) {
     if (keysLayout_->count() > 0) {
         addButton_->setMinimumHeight(
             keysLayout_->itemAt(0)
@@ -191,3 +194,6 @@ void fcitx::kcm::KeyListWidget::resizeEvent(QResizeEvent *event) {
 
     QWidget::resizeEvent(event);
 }
+
+} // namespace kcm
+} // namespace fcitx

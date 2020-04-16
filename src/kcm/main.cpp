@@ -194,17 +194,14 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
     push("ConfigPage.qml", map);
 }
 
-} // namespace kcm
-} // namespace fcitx
-
-void fcitx::kcm::FcitxModule::handleAvailabilityChanged(bool avail) {
+void FcitxModule::handleAvailabilityChanged(bool avail) {
     if (avail) {
         loadAddon();
     }
     emit availabilityChanged(avail);
 }
 
-void fcitx::kcm::FcitxModule::loadAddon() {
+void FcitxModule::loadAddon() {
     auto call = dbus_->controller()->GetAddons();
     auto callwatcher = new QDBusPendingCallWatcher(call, this);
     connect(callwatcher, &QDBusPendingCallWatcher::finished, this,
@@ -217,7 +214,7 @@ void fcitx::kcm::FcitxModule::loadAddon() {
             });
 }
 
-void fcitx::kcm::FcitxModule::saveAddon() {
+void FcitxModule::saveAddon() {
     if (!dbus_->controller()) {
         return;
     }
@@ -240,7 +237,7 @@ void fcitx::kcm::FcitxModule::saveAddon() {
     }
 }
 
-void fcitx::kcm::FcitxModule::launchExternal(const QString &uri) {
+void FcitxModule::launchExternal(const QString &uri) {
     if (uri.startsWith("fcitx://config/addon/")) {
         auto wrapperPath =
             stringutils::joinPath(StandardPath::global().fcitxPath("libdir"),
@@ -271,17 +268,16 @@ void fcitx::kcm::FcitxModule::launchExternal(const QString &uri) {
     }
 }
 
-void fcitx::kcm::FcitxModule::grabKeyboard(QQuickItem *item) {
+void FcitxModule::grabKeyboard(QQuickItem *item) {
     item->window()->setKeyboardGrabEnabled(true);
 }
 
-void fcitx::kcm::FcitxModule::ungrabKeyboard(QQuickItem *item) {
+void FcitxModule::ungrabKeyboard(QQuickItem *item) {
     item->window()->setKeyboardGrabEnabled(false);
 }
 
-QString fcitx::kcm::FcitxModule::eventToString(int keyQt, int modifiers,
-                                               quint32 nativeScanCode,
-                                               bool keyCode) {
+QString FcitxModule::eventToString(int keyQt, int modifiers,
+                                   quint32 nativeScanCode, bool keyCode) {
     int sym;
     unsigned int states;
 
@@ -328,20 +324,19 @@ QString fcitx::kcm::FcitxModule::eventToString(int keyQt, int modifiers,
     return QString();
 }
 
-QString fcitx::kcm::FcitxModule::localizedKeyString(const QString &str) {
+QString FcitxModule::localizedKeyString(const QString &str) {
     Key key(str.toStdString());
     return QString::fromStdString(key.toString(KeyStringFormat::Localized));
 }
 
-void fcitx::kcm::FcitxModule::saveConfig(const QString &uri,
-                                         const QVariant &value) {
+void FcitxModule::saveConfig(const QString &uri, const QVariant &value) {
     auto map = value.value<QVariantMap>();
     QDBusVariant var(QVariant::fromValue(map));
     auto call = dbus_->controller()->SetConfig(uri, var);
     call.waitForFinished();
 }
 
-QQuickItem *fcitx::kcm::FcitxModule::pageNeedsSave(int idx) {
+QQuickItem *FcitxModule::pageNeedsSave(int idx) {
     if (auto page = pages_.value(idx)) {
         auto value = page->property("needsSave");
         if (value.isValid() && value.toBool()) {
@@ -351,13 +346,16 @@ QQuickItem *fcitx::kcm::FcitxModule::pageNeedsSave(int idx) {
     return nullptr;
 }
 
-void fcitx::kcm::FcitxModule::defaults() {
+void FcitxModule::defaults() {
     for (const auto &page : pages_) {
         if (page) {
             QMetaObject::invokeMethod(page, "defaults", Qt::DirectConnection);
         }
     }
 }
+
+} // namespace kcm
+} // namespace fcitx
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMFcitxFactory, "kcm_fcitx5.json",
                            registerPlugin<fcitx::kcm::FcitxModule>();)

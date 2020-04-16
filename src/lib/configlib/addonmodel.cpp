@@ -21,9 +21,7 @@
 
 namespace fcitx {
 namespace kcm {
-
-AddonModel::AddonModel(QObject *parent)
-    : fcitx::kcm::CategorizedItemModel(parent) {}
+namespace {
 
 QString categoryName(int category) {
     if (category >= 5 || category < 0) {
@@ -35,6 +33,11 @@ QString categoryName(int category) {
 
     return _(str[category]);
 }
+
+} // namespace
+
+AddonModel::AddonModel(QObject *parent) : CategorizedItemModel(parent) {}
+
 QVariant AddonModel::dataForCategory(const QModelIndex &index, int role) const {
     switch (role) {
 
@@ -129,6 +132,108 @@ bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
     return ret;
 }
 
+FlatAddonModel::FlatAddonModel(QObject *parent) : QAbstractListModel(parent) {}
+
+bool FlatAddonModel::setData(const QModelIndex &index, const QVariant &value,
+                             int role) {
+    if (!index.isValid() || index.row() >= addonEntryList_.size() ||
+        index.column() > 0) {
+        return false;
+    }
+
+    bool ret = false;
+
+    if (role == Qt::CheckStateRole) {
+        auto oldData = data(index, role).toBool();
+        auto &item = addonEntryList_[index.row()];
+        auto enabled = value.toBool();
+        if (item.enabled() == enabled) {
+            enabledList_.remove(item.uniqueName());
+            disabledList_.remove(item.uniqueName());
+        } else if (enabled) {
+            enabledList_.insert(item.uniqueName());
+            disabledList_.remove(item.uniqueName());
+        } else {
+            enabledList_.remove(item.uniqueName());
+            disabledList_.insert(item.uniqueName());
+        }
+        auto newData = data(index, role).toBool();
+        ret = oldData != newData;
+    }
+
+    if (ret) {
+        emit dataChanged(index, index);
+        emit changed();
+    }
+
+    return ret;
+}
+
+QVariant FlatAddonModel::data(const QModelIndex &index, int role) const {
+    if (!index.isValid() || index.row() >= addonEntryList_.size()) {
+        return QVariant();
+    }
+
+    const FcitxQtAddonInfo &addon = addonEntryList_.at(index.row());
+
+    switch (role) {
+
+    case Qt::DisplayRole:
+        return addon.name();
+
+    case CommentRole:
+        return addon.comment();
+
+    case ConfigurableRole:
+        return addon.configurable();
+
+    case AddonNameRole:
+        return addon.uniqueName();
+
+    case CategoryRole:
+        return addon.category();
+
+    case CategoryNameRole:
+        return categoryName(addon.category());
+
+    case Qt::CheckStateRole:
+        if (disabledList_.contains(addon.uniqueName())) {
+            return false;
+        } else if (enabledList_.contains(addon.uniqueName())) {
+            return true;
+        }
+        return addon.enabled();
+
+    case RowTypeRole:
+        return AddonType;
+    }
+    return QVariant();
+}
+
+int FlatAddonModel::rowCount(const QModelIndex &parent) const {
+    if (parent.isValid()) {
+        return 0;
+    }
+
+    return addonEntryList_.count();
+}
+
+QHash<int, QByteArray> FlatAddonModel::roleNames() const {
+    return {
+        {Qt::DisplayRole, "name"},          {CommentRole, "comment"},
+        {ConfigurableRole, "configurable"}, {AddonNameRole, "uniqueName"},
+        {CategoryRole, "category"},         {CategoryNameRole, "categoryName"},
+        {Qt::CheckStateRole, "enabled"}};
+}
+
+void FlatAddonModel::setAddons(const fcitx::FcitxQtAddonInfoList &list) {
+    beginResetModel();
+    addonEntryList_ = list;
+    enabledList_.clear();
+    disabledList_.clear();
+    endResetModel();
+}
+
 bool AddonProxyModel::filterAcceptsRow(int sourceRow,
                                        const QModelIndex &sourceParent) const {
     Q_UNUSED(sourceParent)
@@ -192,114 +297,3 @@ void AddonProxyModel::setFilterText(const QString &text) {
 
 } // namespace kcm
 } // namespace fcitx
-
-fcitx::kcm::FlatAddonModel::FlatAddonModel(QObject *parent)
-    : QAbstractListModel(parent) {}
-
-bool fcitx::kcm::FlatAddonModel::setData(const QModelIndex &index,
-                                         const QVariant &value, int role) {
-    if (!index.isValid() || index.row() >= addonEntryList_.size() ||
-        index.column() > 0) {
-        return false;
-    }
-
-    bool ret = false;
-
-    if (role == Qt::CheckStateRole) {
-        auto oldData = data(index, role).toBool();
-        auto &item = addonEntryList_[index.row()];
-        auto enabled = value.toBool();
-        if (item.enabled() == enabled) {
-            enabledList_.remove(item.uniqueName());
-            disabledList_.remove(item.uniqueName());
-        } else if (enabled) {
-            enabledList_.insert(item.uniqueName());
-            disabledList_.remove(item.uniqueName());
-        } else {
-            enabledList_.remove(item.uniqueName());
-            disabledList_.insert(item.uniqueName());
-        }
-        auto newData = data(index, role).toBool();
-        ret = oldData != newData;
-    }
-
-    if (ret) {
-        emit dataChanged(index, index);
-        emit changed();
-    }
-
-    return ret;
-}
-
-QVariant fcitx::kcm::FlatAddonModel::data(const QModelIndex &index,
-                                          int role) const {
-    if (!index.isValid() || index.row() >= addonEntryList_.size()) {
-        return QVariant();
-    }
-
-    const FcitxQtAddonInfo &addon = addonEntryList_.at(index.row());
-
-    switch (role) {
-
-    case Qt::DisplayRole:
-        return addon.name();
-
-    case CommentRole:
-        return addon.comment();
-
-    case ConfigurableRole:
-        return addon.configurable();
-
-    case AddonNameRole:
-        return addon.uniqueName();
-
-    case CategoryRole:
-        return addon.category();
-
-    case CategoryNameRole:
-        return categoryName(addon.category());
-
-    case Qt::CheckStateRole:
-        if (disabledList_.contains(addon.uniqueName())) {
-            return false;
-        } else if (enabledList_.contains(addon.uniqueName())) {
-            return true;
-        }
-        return addon.enabled();
-
-    case RowTypeRole:
-        return AddonType;
-    }
-    return QVariant();
-}
-
-QModelIndex fcitx::kcm::FlatAddonModel::index(int row, int column,
-                                              const QModelIndex &) const {
-    return createIndex(
-        row, column,
-        (row < addonEntryList_.count()) ? (void *)&addonEntryList_.at(row) : 0);
-}
-int fcitx::kcm::FlatAddonModel::rowCount(const QModelIndex &parent) const {
-    if (parent.isValid()) {
-        return 0;
-    }
-
-    return addonEntryList_.count();
-}
-
-QHash<int, QByteArray> fcitx::kcm::FlatAddonModel::roleNames() const {
-    return {
-        {Qt::DisplayRole, "name"},          {CommentRole, "comment"},
-        {ConfigurableRole, "configurable"}, {AddonNameRole, "uniqueName"},
-        {CategoryRole, "category"},         {CategoryNameRole, "categoryName"},
-        {Qt::CheckStateRole, "enabled"}};
-}
-
-void fcitx::kcm::FlatAddonModel::setAddons(
-    const fcitx::FcitxQtAddonInfoList &list) {
-    beginResetModel();
-    addonEntryList_ = list;
-    enabledList_.clear();
-    disabledList_.clear();
-    endResetModel();
-}

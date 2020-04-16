@@ -91,10 +91,7 @@ void LayoutProvider::fetchLayoutFinished(QDBusPendingCallWatcher *watcher) {
     setLoaded(true);
 }
 
-} // namespace kcm
-} // namespace fcitx
-
-int fcitx::kcm::LayoutProvider::layoutIndex(const QString &layoutString) {
+int LayoutProvider::layoutIndex(const QString &layoutString) {
     auto dashPos = layoutString.indexOf("-");
     QString layout;
     if (dashPos >= 0) {
@@ -115,7 +112,7 @@ int fcitx::kcm::LayoutProvider::layoutIndex(const QString &layoutString) {
     return 0;
 }
 
-int fcitx::kcm::LayoutProvider::variantIndex(const QString &layoutString) {
+int LayoutProvider::variantIndex(const QString &layoutString) {
     auto dashPos = layoutString.indexOf("-");
     QString variant;
     if (dashPos >= 0) {
@@ -133,3 +130,6 @@ int fcitx::kcm::LayoutProvider::variantIndex(const QString &layoutString) {
     }
     return 0;
 }
+
+} // namespace kcm
+} // namespace fcitx

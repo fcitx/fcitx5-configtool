@@ -417,13 +417,9 @@ private:
 };
 } // namespace
 
-} // namespace kcm
-} // namespace fcitx
-
-fcitx::kcm::OptionWidget *
-fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
-                                    const fcitx::FcitxQtConfigOption &option,
-                                    const QString &path, QWidget *parent) {
+OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
+                                      const fcitx::FcitxQtConfigOption &option,
+                                      const QString &path, QWidget *parent) {
     OptionWidget *widget = nullptr;
     if (option.type() == "Integer") {
         widget = new IntegerOptionWidget(option, path, parent);
@@ -458,8 +454,8 @@ fcitx::kcm::OptionWidget::addWidget(QFormLayout *layout,
     return widget;
 }
 
-bool fcitx::kcm::OptionWidget::execOptionDialog(
-    const fcitx::FcitxQtConfigOption &option, QVariant &result) {
+bool OptionWidget::execOptionDialog(const fcitx::FcitxQtConfigOption &option,
+                                    QVariant &result) {
     QPointer<QDialog> dialog = new QDialog;
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
     QVBoxLayout *dialogLayout = new QVBoxLayout;
@@ -490,9 +486,8 @@ bool fcitx::kcm::OptionWidget::execOptionDialog(
     return false;
 }
 
-QString
-fcitx::kcm::OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
-                                   const QVariant &value) {
+QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
+                               const QVariant &value) {
     if (option.type() == "Integer") {
         return value.toString();
     } else if (option.type() == "String") {
@@ -535,5 +530,8 @@ fcitx::kcm::OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
     }
     return QString();
 }
+
+} // namespace kcm
+} // namespace fcitx
 
 #include "optionwidget.moc"

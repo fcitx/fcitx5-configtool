@@ -24,6 +24,10 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+namespace fcitx {
+namespace kcm {
+namespace {
+
 QMap<QString, QString> readAlpha3ToNameMap(const char *name, const char *base) {
     QMap<QString, QString> map;
     QFile file(name);
@@ -58,9 +62,13 @@ QMap<QString, QString> readAlpha3ToNameMap(const char *name, const char *base) {
     }
     return map;
 }
+} // namespace
 
-fcitx::kcm::Iso639::Iso639() {
+Iso639::Iso639() {
     iso639_2data_ = readAlpha3ToNameMap(ISOCODES_ISO639_2_JSON, "639-2");
     iso639_3data_ = readAlpha3ToNameMap(ISOCODES_ISO639_3_JSON, "639-3");
     iso639_5data_ = readAlpha3ToNameMap(ISOCODES_ISO639_5_JSON, "639-5");
 }
+
+} // namespace kcm
+} // namespace fcitx

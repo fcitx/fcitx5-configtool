@@ -138,8 +138,6 @@ public:
     enum Mode { CurrentIM, AvailIM };
 
     FilteredIMModel(Mode mode, QObject *parent = nullptr);
-    QModelIndex index(int row, int column = 0,
-                      const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;

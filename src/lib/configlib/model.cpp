@@ -22,11 +22,13 @@
 #include <QLocale>
 #include <fcitx-utils/i18n.h>
 
-fcitx::kcm::CategorizedItemModel::CategorizedItemModel(QObject *parent)
+namespace fcitx {
+namespace kcm {
+
+CategorizedItemModel::CategorizedItemModel(QObject *parent)
     : QAbstractItemModel(parent) {}
 
-int fcitx::kcm::CategorizedItemModel::rowCount(
-    const QModelIndex &parent) const {
+int CategorizedItemModel::rowCount(const QModelIndex &parent) const {
     if (!parent.isValid()) {
         return listSize();
     }
@@ -42,12 +44,9 @@ int fcitx::kcm::CategorizedItemModel::rowCount(
     return subListSize(parent.row());
 }
 
-int fcitx::kcm::CategorizedItemModel::columnCount(const QModelIndex &) const {
-    return 1;
-}
+int CategorizedItemModel::columnCount(const QModelIndex &) const { return 1; }
 
-QModelIndex
-fcitx::kcm::CategorizedItemModel::parent(const QModelIndex &child) const {
+QModelIndex CategorizedItemModel::parent(const QModelIndex &child) const {
     if (!child.isValid()) {
         return QModelIndex();
     }
@@ -60,8 +59,7 @@ fcitx::kcm::CategorizedItemModel::parent(const QModelIndex &child) const {
     return createIndex(row - 1, 0, -1);
 }
 
-QModelIndex
-fcitx::kcm::CategorizedItemModel::index(int row, int column,
+QModelIndex CategorizedItemModel::index(int row, int column,
                                         const QModelIndex &parent) const {
     // return language index
     if (!parent.isValid()) {
@@ -81,8 +79,7 @@ fcitx::kcm::CategorizedItemModel::index(int row, int column,
     return createIndex(row, column, parent.row() + 1);
 }
 
-QVariant fcitx::kcm::CategorizedItemModel::data(const QModelIndex &index,
-                                                int role) const {
+QVariant CategorizedItemModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid()) {
         return QVariant();
     }
@@ -154,11 +151,10 @@ static QString languageName(const QString &langCode) {
     }
 }
 
-fcitx::kcm::AvailIMModel::AvailIMModel(QObject *parent)
-    : fcitx::kcm::CategorizedItemModel(parent) {}
+AvailIMModel::AvailIMModel(QObject *parent) : CategorizedItemModel(parent) {}
 
-QVariant fcitx::kcm::AvailIMModel::dataForCategory(const QModelIndex &index,
-                                                   int role) const {
+QVariant AvailIMModel::dataForCategory(const QModelIndex &index,
+                                       int role) const {
     switch (role) {
 
     case Qt::DisplayRole:
@@ -178,8 +174,7 @@ QVariant fcitx::kcm::AvailIMModel::dataForCategory(const QModelIndex &index,
     }
 }
 
-QVariant fcitx::kcm::AvailIMModel::dataForItem(const QModelIndex &index,
-                                               int role) const {
+QVariant AvailIMModel::dataForItem(const QModelIndex &index, int role) const {
     const FcitxQtInputMethodEntryList &imEntryList =
         filteredIMEntryList[index.parent().row()].second;
 
@@ -202,7 +197,7 @@ QVariant fcitx::kcm::AvailIMModel::dataForItem(const QModelIndex &index,
     return QVariant();
 }
 
-void fcitx::kcm::AvailIMModel::filterIMEntryList(
+void AvailIMModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
     const FcitxQtStringKeyValueList &enabledIMList) {
     beginResetModel();
@@ -234,27 +229,26 @@ void fcitx::kcm::AvailIMModel::filterIMEntryList(
     endResetModel();
 }
 
-fcitx::kcm::IMProxyModel::IMProxyModel(QObject *parent)
-    : QSortFilterProxyModel(parent) {
+IMProxyModel::IMProxyModel(QObject *parent) : QSortFilterProxyModel(parent) {
     setDynamicSortFilter(true);
     sort(0);
 }
 
-void fcitx::kcm::IMProxyModel::setFilterText(const QString &text) {
+void IMProxyModel::setFilterText(const QString &text) {
     if (filterText_ != text) {
         filterText_ = text;
         invalidate();
     }
 }
 
-void fcitx::kcm::IMProxyModel::setShowOnlyCurrentLanguage(bool show) {
+void IMProxyModel::setShowOnlyCurrentLanguage(bool show) {
     if (showOnlyCurrentLanguage_ != show) {
         showOnlyCurrentLanguage_ = show;
         invalidate();
     }
 }
 
-void fcitx::kcm::IMProxyModel::filterIMEntryList(
+void IMProxyModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
     const FcitxQtStringKeyValueList &enabledIMList) {
     languageSet_.clear();
@@ -271,8 +265,8 @@ void fcitx::kcm::IMProxyModel::filterIMEntryList(
     invalidate();
 }
 
-bool fcitx::kcm::IMProxyModel::filterAcceptsRow(
-    int source_row, const QModelIndex &source_parent) const {
+bool IMProxyModel::filterAcceptsRow(int source_row,
+                                    const QModelIndex &source_parent) const {
     const QModelIndex index =
         sourceModel()->index(source_row, 0, source_parent);
 
@@ -283,7 +277,7 @@ bool fcitx::kcm::IMProxyModel::filterAcceptsRow(
     return filterIM(index);
 }
 
-bool fcitx::kcm::IMProxyModel::filterLanguage(const QModelIndex &index) const {
+bool IMProxyModel::filterLanguage(const QModelIndex &index) const {
     if (!index.isValid()) {
         return false;
     }
@@ -301,7 +295,7 @@ bool fcitx::kcm::IMProxyModel::filterLanguage(const QModelIndex &index) const {
     return false;
 }
 
-bool fcitx::kcm::IMProxyModel::filterIM(const QModelIndex &index) const {
+bool IMProxyModel::filterIM(const QModelIndex &index) const {
     QString uniqueName = index.data(FcitxIMUniqueNameRole).toString();
     QString name = index.data(Qt::DisplayRole).toString();
     QString langCode = index.data(FcitxLanguageRole).toString();
@@ -328,8 +322,8 @@ bool fcitx::kcm::IMProxyModel::filterIM(const QModelIndex &index) const {
     return flag;
 }
 
-bool fcitx::kcm::IMProxyModel::lessThan(const QModelIndex &left,
-                                        const QModelIndex &right) const {
+bool IMProxyModel::lessThan(const QModelIndex &left,
+                            const QModelIndex &right) const {
     int result = compareCategories(left, right);
     if (result < 0) {
         return true;
@@ -342,8 +336,8 @@ bool fcitx::kcm::IMProxyModel::lessThan(const QModelIndex &left,
     return QCollator().compare(l, r) < 0;
 }
 
-int fcitx::kcm::IMProxyModel::compareCategories(
-    const QModelIndex &left, const QModelIndex &right) const {
+int IMProxyModel::compareCategories(const QModelIndex &left,
+                                    const QModelIndex &right) const {
     QString l = left.data(FcitxLanguageRole).toString();
     QString r = right.data(FcitxLanguageRole).toString();
 
@@ -365,22 +359,10 @@ int fcitx::kcm::IMProxyModel::compareCategories(
     return fl ? -1 : 1;
 }
 
-fcitx::kcm::FilteredIMModel::FilteredIMModel(Mode mode, QObject *parent)
+FilteredIMModel::FilteredIMModel(Mode mode, QObject *parent)
     : QAbstractListModel(parent), mode_(mode) {}
 
-QModelIndex
-fcitx::kcm::FilteredIMModel::index(int row, int column,
-                                   const QModelIndex &parent) const {
-    Q_UNUSED(parent);
-
-    return createIndex(row, column,
-                       (row < filteredIMEntryList_.count())
-                           ? (void *)&filteredIMEntryList_.at(row)
-                           : 0);
-}
-
-QVariant fcitx::kcm::FilteredIMModel::data(const QModelIndex &index,
-                                           int role) const {
+QVariant FilteredIMModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid() || index.row() >= filteredIMEntryList_.size()) {
         return QVariant();
     }
@@ -424,7 +406,7 @@ QVariant fcitx::kcm::FilteredIMModel::data(const QModelIndex &index,
     }
 }
 
-int fcitx::kcm::FilteredIMModel::rowCount(const QModelIndex &parent) const {
+int FilteredIMModel::rowCount(const QModelIndex &parent) const {
     if (parent.isValid()) {
         return 0;
     }
@@ -432,7 +414,7 @@ int fcitx::kcm::FilteredIMModel::rowCount(const QModelIndex &parent) const {
     return filteredIMEntryList_.count();
 }
 
-QHash<int, QByteArray> fcitx::kcm::FilteredIMModel::roleNames() const {
+QHash<int, QByteArray> FilteredIMModel::roleNames() const {
     return {{Qt::DisplayRole, "name"},
             {FcitxIMUniqueNameRole, "uniqueName"},
             {FcitxLanguageRole, "languageCode"},
@@ -441,7 +423,7 @@ QHash<int, QByteArray> fcitx::kcm::FilteredIMModel::roleNames() const {
             {FcitxIMLayoutRole, "layout"}};
 }
 
-void fcitx::kcm::FilteredIMModel::filterIMEntryList(
+void FilteredIMModel::filterIMEntryList(
     const FcitxQtInputMethodEntryList &imEntryList,
     const FcitxQtStringKeyValueList &enabledIMList) {
     beginResetModel();
@@ -481,7 +463,7 @@ void fcitx::kcm::FilteredIMModel::filterIMEntryList(
     endResetModel();
 }
 
-void fcitx::kcm::FilteredIMModel::move(int from, int to) {
+void FilteredIMModel::move(int from, int to) {
     if (from < 0 || from >= filteredIMEntryList_.size() || to < 0 ||
         to >= filteredIMEntryList_.size()) {
         return;
@@ -493,7 +475,7 @@ void fcitx::kcm::FilteredIMModel::move(int from, int to) {
     emit imListChanged(filteredIMEntryList_);
 }
 
-void fcitx::kcm::FilteredIMModel::remove(int idx) {
+void FilteredIMModel::remove(int idx) {
     if (idx < 0 || idx >= filteredIMEntryList_.size()) {
         return;
     }
@@ -502,3 +484,6 @@ void fcitx::kcm::FilteredIMModel::remove(int idx) {
     endRemoveRows();
     emit imListChanged(filteredIMEntryList_);
 }
+
+} // namespace kcm
+} // namespace fcitx

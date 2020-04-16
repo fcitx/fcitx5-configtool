@@ -21,7 +21,7 @@
 namespace fcitx {
 namespace kcm {
 
-fcitx::kcm::DBusProvider::DBusProvider(QObject *parent)
+DBusProvider::DBusProvider(QObject *parent)
     : QObject(parent),
       watcher_(new FcitxQtWatcher(QDBusConnection::sessionBus(), this)) {
     registerFcitxQtDBusTypes();
@@ -32,7 +32,7 @@ fcitx::kcm::DBusProvider::DBusProvider(QObject *parent)
 
 DBusProvider::~DBusProvider() { watcher_->unwatch(); }
 
-void fcitx::kcm::DBusProvider::fcitxAvailabilityChanged(bool avail) {
+void DBusProvider::fcitxAvailabilityChanged(bool avail) {
     delete controller_;
     controller_ = nullptr;
 

@@ -62,14 +62,12 @@ Kirigami.OverlaySheet {
             textRole: "name"
             onCurrentIndexChanged: {
                 kcm.layoutProvider.layoutModel.language = model.language(
-                            currentIndex)
-                kcm.layoutProvider.variantModel.language = model.language(
-                            currentIndex)
-                layoutComboBox.currentIndex = 0
+                            currentIndex);
+                layoutComboBox.currentIndex = 0;
                 kcm.layoutProvider.setVariantInfo(
                             kcm.layoutProvider.layoutModel.layoutInfo(
-                                layoutComboBox.currentIndex))
-                variantComboBox.currentIndex = 0
+                                layoutComboBox.currentIndex));
+                variantComboBox.currentIndex = 0;
             }
         }
         ComboBox {

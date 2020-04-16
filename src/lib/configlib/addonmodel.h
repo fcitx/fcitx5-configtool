@@ -92,8 +92,6 @@ class FlatAddonModel : public QAbstractListModel {
 
 public:
     explicit FlatAddonModel(QObject *parent);
-    QModelIndex index(int row, int column = 0,
-                      const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index,
                   int role = Qt::DisplayRole) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -110,7 +108,6 @@ public:
 signals:
     void changed();
 
-protected:
 private:
     QSet<QString> enabledList_;
     QSet<QString> disabledList_;
