@@ -7,7 +7,7 @@ import org.kde.kcm 1.2 as KCM
 KCM.ScrollViewKCM {
     id: root
 
-    implicitWidth: Kirigami.Units.gridUnit * 40
+    implicitWidth: Kirigami.Units.gridUnit * 35
     implicitHeight: Kirigami.Units.gridUnit * 25
 
     Component {

@@ -38,9 +38,7 @@ RowLayout {
                 break
             }
             var value = rawValue[i.toString()]
-            listModel.append({
-                                 "key": value
-                             })
+            listModel.append({"key": value})
             i++
         }
     }

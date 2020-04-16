@@ -16,7 +16,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 import QtQuick 2.14
-import QtQuick.Layouts 1.144
+import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.14
 import org.kde.kirigami 2.10 as Kirigami
 

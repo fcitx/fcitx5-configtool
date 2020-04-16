@@ -17,6 +17,7 @@
 //
 import QtQuick 2.14
 import QtQuick.Controls 2.14
+import org.kde.kirigami 2.10 as Kirigami
 
 ComboBox {
     // properties {{{
@@ -45,6 +46,7 @@ ComboBox {
     }
     /// }}}
 
+    implicitWidth: Kirigami.Units.gridUnit * 8
     textRole: "text"
     model: ListModel {
         id: listModel
