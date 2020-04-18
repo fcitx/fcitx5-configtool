@@ -18,8 +18,6 @@
 
 #include "config.h"
 
-static const int XKeyPress = KeyPress;
-static const int XKeyRelease = KeyRelease;
 #undef KeyPress
 #undef KeyRelease
 
