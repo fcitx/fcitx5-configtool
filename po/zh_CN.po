@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-04-17 22:44-0700\n"
+"POT-Creation-Date: 2020-04-18 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -46,7 +46,7 @@ msgstr "%1："
 #: src/kcm/package/contents/ui/KeyOption.qml:60
 #, kde-format
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: layout/main.cpp:35
 msgid "A general keyboard layout viewer"
@@ -56,23 +56,23 @@ msgstr "通用键盘布局查看器"
 #: src/kcm/package/contents/ui/AddIMPage.qml:65
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: src/kcm/package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "添加分组"
 
 #. object properties {{{
 #: src/kcm/package/contents/ui/AddIMPage.qml:26
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "添加输入法"
 
 #: src/kcm/package/contents/ui/main.qml:166
 #, kde-format
 msgid "Add..."
-msgstr ""
+msgstr "添加..."
 
 #: src/configtool/mainwindow.cpp:40
 msgid "Addon"
@@ -81,7 +81,7 @@ msgstr "附加组件"
 #: src/kcm/package/contents/ui/AddonPage.qml:27
 #, kde-format
 msgid "Addons"
-msgstr ""
+msgstr "附加组件"
 
 #: src/lib/configlib/layoutprovider.cpp:78
 #: src/lib/configlib/layoutprovider.cpp:80
@@ -118,22 +118,22 @@ msgstr "更改系统布局以匹配输入方式选择。"
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:30
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "清空"
 
 #: src/kcm/package/contents/ui/main.qml:160
 #, kde-format
 msgid "Config addons..."
-msgstr ""
+msgstr "配置附加组件..."
 
 #: src/kcm/package/contents/ui/main.qml:153
 #, kde-format
 msgid "Config global options..."
-msgstr ""
+msgstr "配置全局选项..."
 
 #: src/kcm/package/contents/ui/main.qml:22
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "配置"
 
 #: src/kcm/main.cpp:49
 #, kde-format
@@ -165,7 +165,7 @@ msgstr "当前分组已修改"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:19
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr ""
+msgstr "当前页未保存。请先保存配置。"
 
 #: src/lib/configlib/layoutmodel.cpp:134
 msgid "Default"
@@ -180,7 +180,7 @@ msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！
 #: src/kcm/package/contents/ui/KeyOption.qml:62
 #, kde-format
 msgid "Empty"
-msgstr ""
+msgstr "空"
 
 #: src/kcm/main.cpp:48
 #, kde-format
@@ -206,7 +206,7 @@ msgstr "全局配置"
 #: src/kcm/package/contents/ui/main.qml:205
 #, kde-format
 msgid "Group Name"
-msgstr ""
+msgstr "分组名称"
 
 #: src/lib/configwidgetslib/impage.cpp:381
 msgid "Group Name:"
@@ -227,7 +227,7 @@ msgstr "输入法"
 #: src/kcm/package/contents/ui/KeyOption.qml:160
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "扫描码模式"
 
 #: layout/main.cpp:39
 msgid "Keyboard <layout>"
@@ -285,7 +285,7 @@ msgstr "多语言"
 #: src/kcm/package/contents/ui/main.qml:204
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "名称："
 
 #: src/lib/configwidgetslib/impage.cpp:381
 msgid "New Group"
@@ -301,7 +301,7 @@ msgstr "否"
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
 msgid "Ok"
-msgstr ""
+msgstr "确定"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:225
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -318,7 +318,7 @@ msgstr "其它"
 #: src/kcm/package/contents/ui/ListOption.qml:133
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -338,7 +338,7 @@ msgstr "搜索输入法"
 #: src/kcm/package/contents/ui/AddIMPage.qml:49
 #, kde-format
 msgid "Search..."
-msgstr ""
+msgstr "搜索..."
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -351,12 +351,12 @@ msgstr "选择字体(&F)..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "选择字体"
 
 #: src/kcm/package/contents/ui/FontOption.qml:33
 #, kde-format
 msgid "Select Font..."
-msgstr ""
+msgstr "选择字体..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:156
 #. i18n: ectx: property (toolTip), widget (QPushButton, layoutButton)
@@ -373,7 +373,7 @@ msgstr "选择默认布局"
 #: src/kcm/package/contents/ui/main.qml:141
 #, kde-format
 msgid "Select keyboard layout..."
-msgstr ""
+msgstr "选择键盘布局..."
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:22
 #, kde-format
@@ -397,7 +397,7 @@ msgstr "显示高级选项(&A)"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:7
 #, kde-format
 msgid "Some config is not saved"
-msgstr ""
+msgstr "一些配置未保存"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:282
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -462,7 +462,7 @@ msgstr "[%1]"
 #: src/kcm/package/contents/ui/ListOption.qml:126
 #, kde-format
 msgid "edit"
-msgstr ""
+msgstr "编辑"
 
 #: layout/main.cpp:38
 msgid "group"
