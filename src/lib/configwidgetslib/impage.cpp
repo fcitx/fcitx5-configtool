@@ -287,7 +287,7 @@ void IMPage::selectLayout() {
         layout = layoutString;
     }
     bool ok = false;
-    auto result = LayoutSelector::selectLayout(this, dbus_, _("Select layout"),
+    auto result = LayoutSelector::selectLayout(this, dbus_, _("Select Layout"),
                                                layout, variant, &ok);
     if (!ok) {
         config_->setLayout(imName, "");
