@@ -169,29 +169,40 @@ QVariantList configTypeToVariant(const FcitxQtConfigType &type,
 }
 
 void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
+    if (!dbus_->controller()) {
+        return;
+    }
     auto call = dbus_->controller()->GetConfig(uri);
-    call.waitForFinished();
-    if (!call.isValid()) {
-        return;
-    }
-    auto configTypes = call.argumentAt<1>();
-    if (configTypes.empty()) {
-        return;
-    }
-    QVariantMap map;
-    QVariantMap typeMap;
-    map["uri"] = uri;
-    map["rawValue"] = decompsoeDBusVariant(call.argumentAt<0>().variant());
-    map["typeName"] = configTypes[0].name();
+    auto watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            [this, uri, title](QDBusPendingCallWatcher *watcher) {
+                watcher->deleteLater();
+                QDBusPendingReply<QDBusVariant, FcitxQtConfigTypeList> reply =
+                    *watcher;
+                if (!reply.isValid()) {
+                    return;
+                }
+                auto configTypes = reply.argumentAt<1>();
+                if (configTypes.empty()) {
+                    return;
+                }
+                QVariantMap map;
+                QVariantMap typeMap;
+                map["uri"] = uri;
+                map["rawValue"] =
+                    decompsoeDBusVariant(reply.argumentAt<0>().variant());
+                map["typeName"] = configTypes[0].name();
 
-    // We do a revsere order.
-    for (const auto &configType :
-         MakeIterRange(configTypes.rbegin(), configTypes.rend())) {
-        typeMap[configType.name()] = configTypeToVariant(configType, typeMap);
-    }
-    map["typeMap"] = typeMap;
-    map["title"] = title;
-    push("ConfigPage.qml", map);
+                // We do a revsere order.
+                for (const auto &configType :
+                     MakeIterRange(configTypes.rbegin(), configTypes.rend())) {
+                    typeMap[configType.name()] =
+                        configTypeToVariant(configType, typeMap);
+                }
+                map["typeMap"] = typeMap;
+                map["title"] = title;
+                push("ConfigPage.qml", map);
+            });
 }
 
 void FcitxModule::handleAvailabilityChanged(bool avail) {
@@ -202,6 +213,9 @@ void FcitxModule::handleAvailabilityChanged(bool avail) {
 }
 
 void FcitxModule::loadAddon() {
+    if (!dbus_->controller()) {
+        return;
+    }
     auto call = dbus_->controller()->GetAddons();
     auto callwatcher = new QDBusPendingCallWatcher(call, this);
     connect(callwatcher, &QDBusPendingCallWatcher::finished, this,
@@ -330,6 +344,9 @@ QString FcitxModule::localizedKeyString(const QString &str) {
 }
 
 void FcitxModule::saveConfig(const QString &uri, const QVariant &value) {
+    if (!dbus_->controller()) {
+        return;
+    }
     auto map = value.value<QVariantMap>();
     QDBusVariant var(QVariant::fromValue(map));
     auto call = dbus_->controller()->SetConfig(uri, var);

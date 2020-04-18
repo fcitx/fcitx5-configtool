@@ -65,6 +65,7 @@ KCM.ScrollViewKCM {
     view: ListView {
         id: imList
 
+        enabled: kcm.availability
         model: kcm.imConfig.currentIMModel
         moveDisplaced: Transition {
             YAnimator {
@@ -85,19 +86,12 @@ KCM.ScrollViewKCM {
             Layout.fillWidth: true
             type: Kirigami.MessageType.Warning
             showCloseButton: true
-            visible: false
-
-            Connections {
-                target: kcm
-                onAvailabilityChanged: {
-                    fcitxNotAvailableWarning.text = i18n(
-                                "Cannot connect to Fcitx by DBus, is Fcitx running?")
-                    fcitxNotAvailableWarning.visible = !avail
-                }
-            }
+            visible: !kcm.availability
+            text: i18n("Cannot connect to Fcitx by DBus, is Fcitx running?")
         }
 
         RowLayout {
+            enabled: kcm.availability
             ComboBox {
                 id: groupComboBox
 
@@ -145,6 +139,7 @@ KCM.ScrollViewKCM {
     }
 
     footer: RowLayout {
+        enabled: kcm.availability
         Item {
             Layout.fillWidth: true
         }

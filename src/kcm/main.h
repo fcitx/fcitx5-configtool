@@ -40,6 +40,7 @@ class FcitxModule : public KQuickAddons::ConfigModule {
     Q_PROPERTY(IMConfig *imConfig READ imConfig CONSTANT)
     Q_PROPERTY(LayoutProvider *layoutProvider READ layoutProvider CONSTANT)
     Q_PROPERTY(AddonProxyModel *addonModel READ addonModel CONSTANT)
+    Q_PROPERTY(bool availability READ availability NOTIFY availabilityChanged)
 public:
     FcitxModule(QObject *parent, const QVariantList &args);
     virtual ~FcitxModule() override;
@@ -47,6 +48,7 @@ public:
     auto imConfig() const { return imConfig_; }
     auto layoutProvider() const { return layoutProvider_; }
     auto addonModel() const { return addonProxyModel_; }
+    bool availability() const { return dbus_->available(); }
 
 public slots:
     void load() override;
