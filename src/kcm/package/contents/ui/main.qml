@@ -253,7 +253,6 @@ KCM.ScrollViewKCM {
         }
         onRejected: {
             var groups = kcm.imConfig.groups
-            console.log(prevGroup)
             for (var i = 0; i < groups.length; i++) {
                 if (groups[i] == prevGroup) {
                     groupComboBox.currentIndex = i

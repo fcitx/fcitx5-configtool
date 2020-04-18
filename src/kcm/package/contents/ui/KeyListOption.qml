@@ -47,7 +47,6 @@ RowLayout {
         var newRawValue = {}
         var j = 0
         for (var i = 0; i < listModel.count; i++) {
-            console.log(listModel.get(i).key)
             if (listModel.get(i).key !== "") {
                 newRawValue[j.toString()] = listModel.get(i).key
                 j++

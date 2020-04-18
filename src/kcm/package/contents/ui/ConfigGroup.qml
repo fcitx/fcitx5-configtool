@@ -54,8 +54,10 @@ Kirigami.FormLayout {
             var loader = repeater.itemAt(i)
             if (loader.status == Loader.Ready) {
                 loader.item.save()
-                Utils.setRawValue(rawValue, loader.option.name,
-                                  loader.item.rawValue)
+                if (loader.item.hasOwnProperty("rawValue")) {
+                    Utils.setRawValue(rawValue, loader.option.name,
+                                      loader.item.rawValue)
+                }
             }
         }
         configGroup.rawValue = rawValue

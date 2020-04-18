@@ -116,7 +116,6 @@ Button {
             return
         }
         var done = false
-        console.log(allowModifierOnly)
         if (allowModifierOnly
                 && (event.key == Qt.Key_Shift || event.key == Qt.Key_Control
                     || event.key == Qt.Key_Meta || event.key == Qt.Key_Super_L
