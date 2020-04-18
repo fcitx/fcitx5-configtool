@@ -349,8 +349,7 @@ void FcitxModule::saveConfig(const QString &uri, const QVariant &value) {
     }
     auto map = value.value<QVariantMap>();
     QDBusVariant var(QVariant::fromValue(map));
-    auto call = dbus_->controller()->SetConfig(uri, var);
-    call.waitForFinished();
+    dbus_->controller()->SetConfig(uri, var);
 }
 
 QQuickItem *FcitxModule::pageNeedsSave(int idx) {
