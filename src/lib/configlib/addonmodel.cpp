@@ -18,6 +18,7 @@
 #include "addonmodel.h"
 #include <QCollator>
 #include <fcitx-utils/i18n.h>
+#include <fcitx/addoninfo.h>
 
 namespace fcitx {
 namespace kcm {
@@ -275,8 +276,24 @@ bool AddonProxyModel::filterAddon(const QModelIndex &index) const {
 
 bool AddonProxyModel::lessThan(const QModelIndex &left,
                                const QModelIndex &right) const {
-    int result =
-        left.data(CategoryRole).toInt() - right.data(CategoryRole).toInt();
+
+    int lhs = left.data(CategoryRole).toInt();
+    int rhs = right.data(CategoryRole).toInt();
+    // Reorder the addon category.
+    // UI and module are more common, because input method config is accessible
+    // in the main page.
+    static const QMap<int, int> category = {
+        {static_cast<int>(AddonCategory::UI), 0},
+        {static_cast<int>(AddonCategory::Module), 1},
+        {static_cast<int>(AddonCategory::InputMethod), 2},
+        {static_cast<int>(AddonCategory::Frontend), 3},
+        {static_cast<int>(AddonCategory::Loader), 4},
+    };
+
+    int lvalue = category.value(lhs, category.size());
+    int rvalue = category.value(rhs, category.size());
+    int result = lvalue - rvalue;
+
     if (result < 0) {
         return true;
     } else if (result > 0) {

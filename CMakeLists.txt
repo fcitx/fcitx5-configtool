@@ -33,6 +33,7 @@ if (ENABLE_KCM)
     find_package(XKBCommon REQUIRED COMPONENTS XKBCommon)
 endif()
 
+find_package(Fcitx5Core REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)
 find_package(IsoCodes REQUIRED)
