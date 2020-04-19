@@ -20,6 +20,9 @@ Loader {
             if (data.properties.hasOwnProperty("Font")
                     && data.properties.Font == "True") {
                 return "FontOption.qml"
+            } else if (data.properties.hasOwnProperty("IsEnum")
+                    && data.properties.IsEnum == "True") {
+                return "EnumOption.qml"
             } else {
                 return "StringOption.qml"
             }

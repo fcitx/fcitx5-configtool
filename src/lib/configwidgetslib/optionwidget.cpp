@@ -426,8 +426,11 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "String") {
         auto font = valueFromVariantMap(option.properties(), "Font");
+        auto isEnum = valueFromVariantMap(option.properties(), "IsEnum");
         if (font == "True") {
             widget = new FontOptionWidget(option, path, parent);
+        } else if (isEnum == "True") {
+            widget = new EnumOptionWidget(option, path, parent);
         } else {
             widget = new StringOptionWidget(option, path, parent);
         }

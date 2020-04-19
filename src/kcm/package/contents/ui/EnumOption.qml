@@ -24,7 +24,7 @@ ComboBox {
     property variant properties
     property variant rawValue
     property int value: computeValue(rawValue)
-    property bool needSave: value != currentIndex
+    property bool needsSave: value != currentIndex
     // }}}
 
     // functions {{{

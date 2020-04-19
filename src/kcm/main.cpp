@@ -224,6 +224,7 @@ void FcitxModule::loadAddon() {
                 watcher->deleteLater();
                 if (addons.isValid()) {
                     addonModel_->setAddons(addons.value());
+                    addonProxyModel_->sort(0);
                 }
             });
 }

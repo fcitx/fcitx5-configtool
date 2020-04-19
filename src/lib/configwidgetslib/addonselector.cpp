@@ -283,6 +283,7 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
             &AddonSelector::availabilityChanged);
 
     proxyModel_->setSourceModel(addonModel_);
+    proxyModel_->sort(0);
     ui_->listView->setModel(proxyModel_);
     connect(proxyModel_, &QAbstractItemModel::layoutChanged, ui_->listView,
             &QTreeView::expandAll);
@@ -341,6 +342,7 @@ void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
     }
     QDBusPendingReply<FcitxQtAddonInfoList> reply(*watcher);
     addonModel_->setAddons(reply.value());
+    proxyModel_->sort(0);
 
     ui_->listView->expandAll();
 }
