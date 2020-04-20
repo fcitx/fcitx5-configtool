@@ -300,15 +300,18 @@ bool IMProxyModel::filterIM(const QModelIndex &index) const {
     QString name = index.data(Qt::DisplayRole).toString();
     QString langCode = index.data(FcitxLanguageRole).toString();
 
-    if (uniqueName == "keyboard-us") {
+    // Always show keyboard us if we are not searching.
+    if (uniqueName == "keyboard-us" && filterText_.isEmpty()) {
         return true;
     }
 
     bool flag = true;
     QString lang = langCode.left(2);
+    bool showOnlyCurrentLanguage =
+        filterText_.isEmpty() && showOnlyCurrentLanguage_;
 
     flag =
-        flag && (showOnlyCurrentLanguage_
+        flag && (showOnlyCurrentLanguage
                      ? !lang.isEmpty() && (QLocale().name().startsWith(lang) ||
                                            languageSet_.contains(lang))
                      : true);

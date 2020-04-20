@@ -43,6 +43,11 @@ Kirigami.OverlaySheet {
                                 variantComboBox.currentIndex)
                     if (im.length === 0) {
                         kcm.imConfig.defaultLayout = layout
+                        if (kcm.imConfig.currentIMModel.count > 0 &&
+                            "keyboard-%0".arg(layout) != kcm.imConfig.currentIMModel.imAt(0)) {
+                            layoutNotMatchWarning.visible = false;
+                            inputMethodNotMatchWarning.visible = true;
+                        }
                     } else {
                         kcm.imConfig.setLayout(im, layout)
                     }

@@ -54,6 +54,7 @@ KCM.ScrollViewKCM {
         CheckBox {
             text: i18n("Only &Show Current Language")
             checked: true
+            visible: search.text.length === 0
             onClicked: {
                 kcm.imConfig.availIMModel.showOnlyCurrentLanguage = checked
             }
@@ -69,6 +70,9 @@ KCM.ScrollViewKCM {
                     return
                 }
                 kcm.imConfig.addIM(availIMView.currentIndex)
+                if (kcm.imConfig.currentIMModel.count === 1) {
+                    kcm.mainUi.checkInputMethod();
+                }
                 kcm.pop()
             }
         }

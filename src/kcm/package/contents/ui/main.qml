@@ -7,60 +7,18 @@ import org.kde.kcm 1.2 as KCM
 KCM.ScrollViewKCM {
     id: root
 
-    implicitWidth: Kirigami.Units.gridUnit * 35
-    implicitHeight: Kirigami.Units.gridUnit * 25
-
-    Component {
-        id: delegateComponent
-
-        Kirigami.SwipeListItem {
-            id: listItem
-
-            actions: [
-                Kirigami.Action {
-                    iconName: "configure"
-                    text: i18n("Configure")
-                    visible: model !== null ? model.configurable : false
-                    onTriggered: kcm.pushConfigPage(
-                                     model.name,
-                                     "fcitx://config/inputmethod/" + model.uniqueName)
-                },
-                Kirigami.Action {
-                    iconName: "input-keyboard"
-                    text: i18n("Select Layout")
-                    visible: model !== null ? !model.uniqueName.startsWith(
-                                                  "keyboard-") : false
-                    onTriggered: selectLayoutSheet.selectLayout(
-                                     model.uniqueName,
-                                     (model.layout
-                                      !== "" ? model.layout : kcm.imConfig.defaultLayout))
-                },
-                Kirigami.Action {
-                    iconName: "list-remove"
-                    text: i18n("Remove")
-                    onTriggered: imList.model.remove(model.index)
-                }
-            ]
-
-            RowLayout {
-                Kirigami.ListItemDragHandle {
-                    listItem: listItem
-                    listView: imList
-                    onMoveRequested: imList.model.move(oldIndex, newIndex, 1)
-                }
-
-                Label {
-                    Layout.fillWidth: true
-                    height: Math.max(implicitHeight,
-                                     Kirigami.Units.iconSizes.smallMedium)
-                    text: model !== null ? model.name : ""
-                    color: listItem.checked
-                           || (listItem.pressed && !listItem.checked
-                               && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
-                }
-            }
+    function checkInputMethod() {
+        var firstIM = imList.model.imAt(0);
+        inputMethodNotMatchWarning.visible = false;
+        if (firstIM.startsWith("keyboard-")) {
+            layoutNotMatchWarning.visible = (firstIM.substr(9) != kcm.imConfig.defaultLayout);
+        } else {
+            layoutNotMatchWarning.visible = false;
         }
     }
+
+    implicitWidth: Kirigami.Units.gridUnit * 35
+    implicitHeight: Kirigami.Units.gridUnit * 25
 
     view: ListView {
         id: imList
@@ -85,9 +43,55 @@ KCM.ScrollViewKCM {
 
             Layout.fillWidth: true
             type: Kirigami.MessageType.Warning
-            showCloseButton: true
             visible: !kcm.availability
             text: i18n("Cannot connect to Fcitx by DBus, is Fcitx running?")
+            actions: [
+                Kirigami.Action {
+                    iconName: "system-run"
+                    text: i18n("Run Fcitx")
+                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
+                    onTriggered: {
+                        kcm.runFcitx();
+                    }
+                }
+            ]
+        }
+
+        Kirigami.InlineMessage {
+            id: layoutNotMatchWarning
+
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Warning
+            showCloseButton: true
+            visible: false
+            text: i18n("Your currently configured input method does not match your layout, do you want to change the layout setting?")
+            actions: [
+                Kirigami.Action {
+                    text: i18n("Fix")
+                    onTriggered: {
+                        kcm.fixLayout();
+                        layoutNotMatchWarning.visible = false;
+                    }
+                }
+            ]
+        }
+
+        Kirigami.InlineMessage {
+            id: inputMethodNotMatchWarning
+
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Warning
+            showCloseButton: true
+            visible: false
+            text: i18n("Your currently configured input method does not match your selected layout, do you want to add the corresponding input method for the layout?")
+            actions: [
+                Kirigami.Action {
+                    text: i18n("Fix")
+                    onTriggered: {
+                        kcm.fixInputMethod();
+                    }
+                }
+            ]
         }
 
         RowLayout {
@@ -170,6 +174,64 @@ KCM.ScrollViewKCM {
         parent: root
     }
 
+    Component {
+        id: delegateComponent
+
+        Kirigami.SwipeListItem {
+            id: listItem
+
+            actions: [
+                Kirigami.Action {
+                    iconName: "configure"
+                    text: i18n("Configure")
+                    visible: model !== null ? model.configurable : false
+                    onTriggered: kcm.pushConfigPage(
+                                     model.name,
+                                     "fcitx://config/inputmethod/" + model.uniqueName)
+                },
+                Kirigami.Action {
+                    iconName: "input-keyboard"
+                    text: i18n("Select Layout")
+                    visible: model !== null ? !model.uniqueName.startsWith(
+                                                  "keyboard-") : false
+                    onTriggered: selectLayoutSheet.selectLayout(
+                                     model.uniqueName,
+                                     (model.layout
+                                      !== "" ? model.layout : kcm.imConfig.defaultLayout))
+                },
+                Kirigami.Action {
+                    iconName: "list-remove"
+                    text: i18n("Remove")
+                    onTriggered: {
+                        imList.model.remove(model.index)
+                        checkInputMethod();
+                    }
+                }
+            ]
+
+            RowLayout {
+                Kirigami.ListItemDragHandle {
+                    listItem: listItem
+                    listView: imList
+                    onMoveRequested: {
+                        imList.model.move(oldIndex, newIndex, 1);
+                        checkInputMethod();
+                    }
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    height: Math.max(implicitHeight,
+                                     Kirigami.Units.iconSizes.smallMedium)
+                    text: model !== null ? model.name : ""
+                    color: listItem.checked
+                           || (listItem.pressed && !listItem.checked
+                               && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
+                }
+            }
+        }
+    }
+
     Kirigami.OverlaySheet {
         id: addGroupSheet
 
@@ -210,20 +272,20 @@ KCM.ScrollViewKCM {
         function onCurrentIndexChanged(idx) {
             if (idx < oldIndex) {
                 while (kcm.depth > idx + 1) {
-                    var page = kcm.pageNeedsSave(kcm.depth - 1)
+                    var page = kcm.pageNeedsSave(kcm.depth - 1);
                     if (page === null) {
-                        kcm.pop()
+                        kcm.pop();
                     } else {
-                        kcm.currentIndex = kcm.depth - 1
-                        page.showWarning()
-                        break
+                        kcm.currentIndex = kcm.depth - 1;
+                        page.showWarning();
+                        break;
                     }
                 }
             }
         }
 
         function onPagePushed() {
-            oldIndex = kcm.depth
+            oldIndex = kcm.depth;
         }
     }
 

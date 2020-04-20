@@ -81,6 +81,8 @@ public:
         }
     }
 
+    void emitChanged();
+
 public slots:
     void addGroup(const QString &name);
     void deleteGroup(const QString &name);
@@ -105,7 +107,6 @@ private slots:
 
 private:
     void reloadGroup();
-    void emitChanged();
     void updateIMList(bool excludeCurrent = false);
 
     DBusProvider *dbus_;

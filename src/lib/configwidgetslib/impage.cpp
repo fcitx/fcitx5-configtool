@@ -96,8 +96,11 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
             &QTreeView::expandAll);
     ui_->currentIMView->setModel(config_->currentIMModel());
 
-    connect(ui_->filterTextEdit, &QLineEdit::textChanged,
-            config_->availIMModel(), &IMProxyModel::setFilterText);
+    connect(ui_->filterTextEdit, &QLineEdit::textChanged, this,
+            [this](const QString &text) {
+                config_->availIMModel()->setFilterText(text);
+                ui_->onlyCurrentLanguageCheckBox->setVisible(text.isEmpty());
+            });
     connect(ui_->onlyCurrentLanguageCheckBox, &QCheckBox::toggled,
             config_->availIMModel(), &IMProxyModel::setShowOnlyCurrentLanguage);
 

@@ -134,6 +134,8 @@ private:
 class FilteredIMModel : public QAbstractListModel,
                         public IMConfigModelInterface {
     Q_OBJECT
+    Q_PROPERTY(int count READ count);
+
 public:
     enum Mode { CurrentIM, AvailIM };
 
@@ -146,6 +148,11 @@ public:
     void
     filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
                       const FcitxQtStringKeyValueList &enabledIMs) override;
+
+    int count() const { return rowCount(); }
+    Q_INVOKABLE QString imAt(int idx) const {
+        return index(idx).data(FcitxIMUniqueNameRole).toString();
+    }
 public slots:
     void move(int from, int to);
     void remove(int index);

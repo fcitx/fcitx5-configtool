@@ -89,7 +89,7 @@ void FcitxModule::pageNeedsSaveChanged() { setNeedsSave(true); }
 void FcitxModule::load() {
     imConfig_->load();
     for (const auto &page : pages_) {
-        if (page) {
+        if (page && page->property("needsSave").isValid()) {
             QMetaObject::invokeMethod(page, "load", Qt::DirectConnection);
         }
     }
@@ -99,7 +99,7 @@ void FcitxModule::load() {
 void FcitxModule::save() {
     imConfig_->save();
     for (const auto &page : pages_) {
-        if (page) {
+        if (page && page->property("needsSave").isValid()) {
             QMetaObject::invokeMethod(page, "save", Qt::DirectConnection);
         }
     }
@@ -369,6 +369,42 @@ void FcitxModule::defaults() {
             QMetaObject::invokeMethod(page, "defaults", Qt::DirectConnection);
         }
     }
+}
+
+void FcitxModule::runFcitx() {
+    QProcess::startDetached(
+        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")));
+}
+
+void FcitxModule::fixLayout() {
+    const auto &imEntries = imConfig_->imEntries();
+    if (imEntries.size() > 0 &&
+        imEntries[0].key() !=
+            QString("keyboard-%0").arg(imConfig_->defaultLayout()) &&
+        imEntries[0].key().startsWith("keyboard-")) {
+        auto layoutString = imEntries[0].key().mid(9);
+        imConfig_->setDefaultLayout(layoutString);
+    }
+}
+
+void FcitxModule::fixInputMethod() {
+    auto imname = QString("keyboard-%0").arg(imConfig_->defaultLayout());
+    FcitxQtStringKeyValue imEntry;
+    int i = 0;
+    auto imEntries = imConfig_->imEntries();
+    for (; i < imEntries.size(); i++) {
+        if (imEntries[i].key() == imname) {
+            imEntry = imEntries[i];
+            imEntries.removeAt(i);
+            break;
+        }
+    }
+    if (i == imEntries.size()) {
+        imEntry.setKey(imname);
+    }
+    imEntries.push_front(imEntry);
+    imConfig_->setIMEntries(imEntries);
+    imConfig_->emitChanged();
 }
 
 } // namespace kcm

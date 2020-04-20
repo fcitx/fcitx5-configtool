@@ -76,6 +76,10 @@ public slots:
                           bool keyCode);
     QString localizedKeyString(const QString &key);
 
+    void runFcitx();
+    void fixLayout();
+    void fixInputMethod();
+
 signals:
     void availabilityChanged(bool avail);
 
