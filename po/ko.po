@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-04-21 00:01-0700\n"
+"POT-Creation-Date: 2020-04-24 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -198,7 +198,7 @@ msgstr "Fcitx 환경설정"
 #: src/kcm/package/contents/ui/main.qml:89
 #, kde-format
 msgid "Fix"
-msgstr ""
+msgstr "수정"
 
 #: src/lib/configlib/addonmodel.cpp:32
 msgid "Frontend"
@@ -329,7 +329,7 @@ msgstr "제거"
 #: src/kcm/package/contents/ui/main.qml:51
 #, kde-format
 msgid "Run Fcitx"
-msgstr ""
+msgstr "Fcitx 실행"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
