@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-04-21 00:01-0700\n"
+"POT-Creation-Date: 2020-04-28 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -45,7 +45,7 @@ msgstr "%1:"
 #: src/kcm/package/contents/ui/KeyOption.qml:60
 #, kde-format
 msgid "..."
-msgstr ""
+msgstr " ..."
 
 #: layout/main.cpp:35
 msgid "A general keyboard layout viewer"
@@ -55,23 +55,23 @@ msgstr "En generel tastaturlayout-fremviser"
 #: src/kcm/package/contents/ui/AddIMPage.qml:66
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Tilføj"
 
 #: src/kcm/package/contents/ui/main.qml:240
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "Tilføj gruppe"
 
 #. object properties {{{
 #: src/kcm/package/contents/ui/AddIMPage.qml:26
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "Tilføj inputmetode"
 
 #: src/kcm/package/contents/ui/main.qml:165
 #, kde-format
 msgid "Add..."
-msgstr ""
+msgstr "Tilføj ..."
 
 #: src/configtool/mainwindow.cpp:40
 msgid "Addon"
@@ -80,7 +80,7 @@ msgstr "Tilføjelse"
 #: src/kcm/package/contents/ui/AddonPage.qml:27
 #, kde-format
 msgid "Addons"
-msgstr ""
+msgstr "Tilføjelser"
 
 #: src/lib/configlib/layoutprovider.cpp:78
 #: src/lib/configlib/layoutprovider.cpp:80
@@ -117,22 +117,22 @@ msgstr "Skift systemets layout til at matche valget af inputmetode."
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:30
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "Ryd"
 
 #: src/kcm/package/contents/ui/main.qml:159
 #, kde-format
 msgid "Config addons..."
-msgstr ""
+msgstr "Konfigurer tilføjelser ..."
 
 #: src/kcm/package/contents/ui/main.qml:152
 #, kde-format
 msgid "Config global options..."
-msgstr ""
+msgstr "Konfigurer globale valgmuligheder ..."
 
 #: src/kcm/package/contents/ui/main.qml:186
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Konfigurer"
 
 #: src/kcm/main.cpp:49
 #, kde-format
@@ -165,6 +165,7 @@ msgstr "Nuværende gruppe ændret"
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
 msgstr ""
+"Den nuværende side er ikke gemt endnu. Gem venligst konfigurationen først."
 
 #: src/lib/configlib/layoutmodel.cpp:134
 msgid "Default"
@@ -179,7 +180,7 @@ msgstr "Vil du ændre gruppe? Ændringerne til den nuværende vil gå tabt!"
 #: src/kcm/package/contents/ui/KeyOption.qml:62
 #, kde-format
 msgid "Empty"
-msgstr ""
+msgstr "Tøm"
 
 #: src/kcm/main.cpp:48
 #, kde-format
@@ -197,7 +198,7 @@ msgstr "Fcitx-konfiguration"
 #: src/kcm/package/contents/ui/main.qml:89
 #, kde-format
 msgid "Fix"
-msgstr ""
+msgstr "Ret"
 
 #: src/lib/configlib/addonmodel.cpp:32
 msgid "Frontend"
@@ -211,7 +212,7 @@ msgstr "Global konfiguration"
 #: src/kcm/package/contents/ui/main.qml:262
 #, kde-format
 msgid "Group Name"
-msgstr ""
+msgstr "Gruppenavn"
 
 #: src/lib/configwidgetslib/impage.cpp:384
 msgid "Group Name:"
@@ -232,7 +233,7 @@ msgstr "Inputmetode"
 #: src/kcm/package/contents/ui/KeyOption.qml:159
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "Tastekode-tilstand"
 
 #: layout/main.cpp:39
 msgid "Keyboard <layout>"
@@ -290,7 +291,7 @@ msgstr "Flersproget"
 #: src/kcm/package/contents/ui/main.qml:261
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Navn:"
 
 #: src/lib/configwidgetslib/impage.cpp:384
 msgid "New Group"
@@ -306,7 +307,7 @@ msgstr "Nej"
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:225
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -323,12 +324,12 @@ msgstr "Andre"
 #: src/kcm/package/contents/ui/ListOption.qml:133
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: src/kcm/package/contents/ui/main.qml:51
 #, kde-format
 msgid "Run Fcitx"
-msgstr ""
+msgstr "Kør Fcitx"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -348,7 +349,7 @@ msgstr "Søg efter inputmetode"
 #: src/kcm/package/contents/ui/AddIMPage.qml:49
 #, kde-format
 msgid "Search..."
-msgstr ""
+msgstr "Søg ..."
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -361,12 +362,12 @@ msgstr "Vælg &skrifttype ..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "Vælg skrifttype"
 
 #: src/kcm/package/contents/ui/FontOption.qml:33
 #, kde-format
 msgid "Select Font..."
-msgstr ""
+msgstr "Vælg skrifttype ..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:156
 #. i18n: ectx: property (toolTip), widget (QPushButton, layoutButton)
@@ -374,7 +375,7 @@ msgstr ""
 #: src/lib/configwidgetslib/impage.cpp:293 rc.cpp:27
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "Vælg layout"
 
 #: src/lib/configwidgetslib/impage.cpp:233
 msgid "Select default layout"
@@ -383,12 +384,12 @@ msgstr "Vælg standardlayout"
 #: src/kcm/package/contents/ui/main.qml:139
 #, kde-format
 msgid "Select keyboard layout..."
-msgstr ""
+msgstr "Vælg tastaturlayout ..."
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:22
 #, kde-format
 msgid "Select layout"
-msgstr ""
+msgstr "Vælg layout"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:80
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
@@ -407,7 +408,7 @@ msgstr "Vis &avancerede valgmuligheder"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:7
 #, kde-format
 msgid "Some config is not saved"
-msgstr ""
+msgstr "Noget af konfigurationen er ikke blevet gemt"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:282
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -479,7 +480,7 @@ msgstr "[%1]"
 #: src/kcm/package/contents/ui/ListOption.qml:126
 #, kde-format
 msgid "edit"
-msgstr ""
+msgstr "rediger"
 
 #: layout/main.cpp:38
 msgid "group"
