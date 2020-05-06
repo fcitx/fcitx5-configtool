@@ -34,11 +34,17 @@ SpinBox {
 
     Component.onCompleted: {
         if (properties.hasOwnProperty("IntMin")) {
-            from = parseInt(properties.IntMin)
+            validator.bottom = parseInt(properties.IntMin)
         }
         if (properties.hasOwnProperty("IntMax")) {
-            to = parseInt(properties.IntMax)
+            validator.top = parseInt(properties.IntMax)
         }
         load(rawValue)
+    }
+
+    from: validator.bottom
+    to: validator.top
+    validator: IntValidator {
+        id: validator
     }
 }
