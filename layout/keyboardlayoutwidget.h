@@ -1,3 +1,10 @@
+/*
+ * SPDX-FileCopyrightText: 2011~2011 CSSlayer <wengxt@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ */
+
 /* this file is based on from libgnomekbd/libgnomekbd/gkbd-keyboard-drawing.c */
 
 #ifndef KEYBOARDLAYOUTWIDGET_H

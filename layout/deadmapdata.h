@@ -1,3 +1,12 @@
+/*
+ * SPDX-FileCopyrightText: 2011~2011 CSSlayer <wengxt@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ */
+#ifndef _LAYOUT_DEADMAPDATA_H_
+#define _LAYOUT_DEADMAPDATA_H_
+
 struct DeadMap {
     uint dead;
     uint nondead;
@@ -50,3 +59,5 @@ struct DeadMap {
     {XK_dead_small_schwa, 0x0259},
     {XK_dead_capital_schwa, 0x018F},
 };
+
+#endif // _LAYOUT_DEADMAPDATA_H_

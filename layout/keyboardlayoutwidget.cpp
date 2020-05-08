@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2011~2011 CSSlayer <wengxt@gmail.com>
+ *
+ * SPDX-License-Identifier: GPL-2.0-or-later
+ *
+ */
 #include <QApplication>
 #include <QDebug>
 #include <QDir>
