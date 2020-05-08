@@ -403,6 +403,9 @@ public:
                 args << uri_;
                 qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath.data() << args;
                 QProcess::startDetached(wrapperPath.data(), args);
+            } else {
+                // Assume this is a program path.
+                QProcess::startDetached(uri_);
             }
         });
     }
