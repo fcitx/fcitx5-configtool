@@ -36,7 +36,10 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     KAboutData *about = new KAboutData(
         "kcm_fcitx5", i18n("Fcitx 5 Configuration Module"), PROJECT_VERSION,
         i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
-        i18n("SPDX-FileCopyrightText: 2017 Xuetian Weng "), QString(), QString(),
+        i18n("Copyright 2017 Xuetian Weng"), QString(), QString(),
+        "wengxt@gmail.com");
+
+    about->addAuthor(i18n("Xuetian Weng"), i18n("Author"), "wengxt@gmail.com");
 
     setAboutData(about);
     addonProxyModel_->setSourceModel(addonModel_);
@@ -46,11 +49,9 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
             &FcitxModule::handleAvailabilityChanged);
 
     connect(imConfig_, &IMConfig::changed, this,
-            [this]() {
-        setNeedsSave(true); });
+            [this]() { setNeedsSave(true); });
     connect(addonModel_, &FlatAddonModel::changed, this,
-            [this]() {
-        setNeedsSave(true); });
+            [this]() { setNeedsSave(true); });
 
     handleAvailabilityChanged(dbus_->available());
 
