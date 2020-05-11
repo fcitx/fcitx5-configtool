@@ -56,7 +56,7 @@
             <string>Add</string>
            </property>
            <property name="icon">
-            <iconset theme="list-add"/>
+            <iconset theme="list-add-symbolic"/>
            </property>
           </widget>
          </item>
@@ -72,7 +72,7 @@
             <string>Remove</string>
            </property>
            <property name="icon">
-            <iconset theme="list-remove"/>
+            <iconset theme="list-remove-symbolic"/>
            </property>
           </widget>
          </item>
@@ -129,7 +129,7 @@
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset theme="go-previous"/>
+          <iconset theme="go-previous-symbolic"/>
          </property>
         </widget>
        </item>
@@ -154,7 +154,7 @@
           <string>Remove</string>
          </property>
          <property name="icon">
-          <iconset theme="go-next"/>
+          <iconset theme="go-next-symbolic"/>
          </property>
         </widget>
        </item>
@@ -179,7 +179,7 @@
           <string>Up</string>
          </property>
          <property name="icon">
-          <iconset theme="go-up"/>
+          <iconset theme="go-up-symbolic"/>
          </property>
         </widget>
        </item>
@@ -204,7 +204,7 @@
           <string>Down</string>
          </property>
          <property name="icon">
-          <iconset theme="go-down"/>
+          <iconset theme="go-down-symbolic"/>
          </property>
         </widget>
        </item>
@@ -226,7 +226,7 @@
           <string>Configure</string>
          </property>
          <property name="icon">
-          <iconset theme="preferences-system"/>
+          <iconset theme="preferences-system-symbolic"/>
          </property>
         </widget>
        </item>
@@ -251,7 +251,7 @@
           <string notr="true">Layout</string>
          </property>
          <property name="icon">
-          <iconset theme="input-keyboard"/>
+          <iconset theme="input-keyboard-symbolic"/>
          </property>
         </widget>
        </item>

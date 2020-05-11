@@ -118,7 +118,7 @@ ColumnLayout {
                     }
                 },
                 Kirigami.Action {
-                    iconName: "list-remove"
+                    iconName: "list-remove-symbolic"
                     text: i18n("Remove")
                     onTriggered: {
                         needsSave = true;
@@ -174,7 +174,7 @@ ColumnLayout {
 
     RowLayout {
         ToolButton {
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
             text: i18n("Add")
             onClicked: {
                 sheet.edit(listModel.count)

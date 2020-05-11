@@ -82,7 +82,7 @@ AddonDelegate::AddonDelegate(QAbstractItemView *listView, AddonSelector *parent)
     : KWidgetItemDelegate(listView, parent), checkBox_(new QCheckBox),
       pushButton_(new QToolButton), parent_(parent) {
     pushButton_->setIcon(QIcon::fromTheme(
-        "preferences-system")); // only for getting size matters
+        "preferences-system-symbolic")); // only for getting size matters
 }
 
 AddonDelegate::~AddonDelegate() {
@@ -178,7 +178,8 @@ AddonDelegate::createItemWidgets(const QModelIndex &index) const {
             &AddonDelegate::checkBoxClicked);
 
     QToolButton *configurePushButton = new QToolButton;
-    configurePushButton->setIcon(QIcon::fromTheme("preferences-system"));
+    configurePushButton->setIcon(
+        QIcon::fromTheme("preferences-system-symbolic"));
     configurePushButton->setText(_("Configure"));
     connect(configurePushButton, &QToolButton::clicked, this,
             &AddonDelegate::configureClicked);

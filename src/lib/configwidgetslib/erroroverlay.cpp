@@ -19,7 +19,8 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     setVisible(false);
 
     baseWidget_->installEventFilter(this);
-    ui_->pixmapLabel->setPixmap(QIcon::fromTheme("dialog-error").pixmap(64));
+    ui_->pixmapLabel->setPixmap(
+        QIcon::fromTheme("dialog-error-symbolic").pixmap(64));
 
     connect(baseWidget_, &QObject::destroyed, this, &QObject::deleteLater);
     connect(dbus, &DBusProvider::availabilityChanged, this,

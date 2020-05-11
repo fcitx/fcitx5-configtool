@@ -24,7 +24,7 @@ KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
 
     addButton_ = new QToolButton;
     addButton_->setAutoRaise(true);
-    addButton_->setIcon(QIcon::fromTheme("list-add"));
+    addButton_->setIcon(QIcon::fromTheme("list-add-symbolic"));
     addButton_->setText(_("Add"));
     addButton_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(addButton_, &QToolButton::clicked, this, [this]() {
@@ -55,7 +55,7 @@ void KeyListWidget::addKey(fcitx::Key key) {
     layout->addWidget(keyWidget);
     auto removeButton = new QToolButton;
     removeButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    removeButton->setIcon(QIcon::fromTheme("list-remove"));
+    removeButton->setIcon(QIcon::fromTheme("list-remove-symbolic"));
     removeButton->setText(_("Remove"));
     removeButton->setVisible(showRemoveButton());
     layout->addWidget(removeButton);

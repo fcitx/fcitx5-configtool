@@ -21,56 +21,81 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QToolButton" name="addButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string/>
+        <string>Add</string>
        </property>
        <property name="icon">
-        <iconset theme="list-add">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-add-symbolic"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="editButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string/>
+        <string>Edit</string>
        </property>
        <property name="icon">
-        <iconset theme="document-edit">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="document-edit-symbolic"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="moveUpButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string/>
+        <string>Up</string>
        </property>
        <property name="icon">
-        <iconset theme="go-up">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="go-up-symbolic"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="moveDownButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string/>
+        <string>Down</string>
        </property>
        <property name="icon">
-        <iconset theme="go-down">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="go-down-symbolic"/>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="removeButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string/>
+        <string>Remove</string>
        </property>
        <property name="icon">
-        <iconset theme="list-remove">
-         <normaloff>.</normaloff>.</iconset>
+        <iconset theme="list-remove-symbolic"/>
        </property>
       </widget>
      </item>

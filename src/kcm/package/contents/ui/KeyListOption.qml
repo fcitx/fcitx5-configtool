@@ -66,7 +66,7 @@ RowLayout {
                     }
                 }
                 ToolButton {
-                    icon.name: "list-remove"
+                    icon.name: "list-remove-symbolic"
                     onClicked: {
                         // Need to happen before real remove.
                         keyList.needsSave = true;
@@ -79,7 +79,7 @@ RowLayout {
 
     ToolButton {
         Layout.alignment: Qt.AlignVCenter
-        icon.name: "list-add"
+        icon.name: "list-add-symbolic"
         onClicked: {
             keyList.needsSave = true;
             listModel.append({"key": ""});

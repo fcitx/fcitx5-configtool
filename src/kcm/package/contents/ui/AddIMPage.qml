@@ -53,7 +53,7 @@ KCM.ScrollViewKCM {
         }
         Button {
             text: i18n("Add")
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
             onClicked: {
                 if (availIMView.currentIndex === -1) {
                     return

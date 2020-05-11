@@ -120,14 +120,14 @@ KCM.ScrollViewKCM {
                 }
             }
             Button {
-                icon.name: "list-add"
+                icon.name: "list-add-symbolic"
                 onClicked: {
                     groupName.text = ""
                     addGroupSheet.open()
                 }
             }
             Button {
-                icon.name: "list-remove"
+                icon.name: "list-remove-symbolic"
                 visible: kcm.imConfig.groups && kcm.imConfig.groups.length > 1
                 onClicked: {
                     kcm.imConfig.deleteGroup(groupComboBox.currentText)
@@ -169,7 +169,7 @@ KCM.ScrollViewKCM {
         Button {
             Layout.alignment: Qt.AlignRight
             text: i18n("Add...")
-            icon.name: "list-add"
+            icon.name: "list-add-symbolic"
             onClicked: kcm.push("AddIMPage.qml")
         }
     }
@@ -206,7 +206,7 @@ KCM.ScrollViewKCM {
                                       !== "" ? model.layout : kcm.imConfig.defaultLayout))
                 },
                 Kirigami.Action {
-                    iconName: "list-remove"
+                    iconName: "list-remove-symbolic"
                     text: i18n("Remove")
                     onTriggered: {
                         imList.model.remove(model.index)
