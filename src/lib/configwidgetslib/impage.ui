@@ -61,7 +61,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset theme="delete">
+            <iconset theme="list-remove">
              <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
@@ -145,7 +145,7 @@
        <item>
         <widget class="QPushButton" name="configureButton">
          <property name="icon">
-          <iconset theme="configure">
+          <iconset theme="preferences-system">
            <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
@@ -159,7 +159,8 @@
           <string notr="true"/>
          </property>
          <property name="icon">
-          <iconset theme="input-keyboard"/>
+          <iconset theme="input-keyboard">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>

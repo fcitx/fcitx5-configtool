@@ -81,8 +81,8 @@ QFont AddonDelegate::titleFont(const QFont &baseFont) const {
 AddonDelegate::AddonDelegate(QAbstractItemView *listView, AddonSelector *parent)
     : KWidgetItemDelegate(listView, parent), checkBox_(new QCheckBox),
       pushButton_(new QPushButton), parent_(parent) {
-    pushButton_->setIcon(
-        QIcon::fromTheme("configure")); // only for getting size matters
+    pushButton_->setIcon(QIcon::fromTheme(
+        "preferences-system")); // only for getting size matters
 }
 
 AddonDelegate::~AddonDelegate() {
@@ -178,7 +178,7 @@ AddonDelegate::createItemWidgets(const QModelIndex &index) const {
             &AddonDelegate::checkBoxClicked);
 
     QPushButton *configurePushButton = new QPushButton;
-    configurePushButton->setIcon(QIcon::fromTheme("configure"));
+    configurePushButton->setIcon(QIcon::fromTheme("preferences-system"));
     connect(configurePushButton, &QPushButton::clicked, this,
             &AddonDelegate::configureClicked);
 

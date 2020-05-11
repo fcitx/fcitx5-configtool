@@ -53,7 +53,7 @@ void KeyListWidget::addKey(fcitx::Key key) {
     layout->addWidget(keyWidget);
     auto removeButton = new QToolButton;
     removeButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    removeButton->setIcon(QIcon::fromTheme("dialog-close"));
+    removeButton->setIcon(QIcon::fromTheme("list-remove"));
     removeButton->setVisible(showRemoveButton());
     layout->addWidget(removeButton);
     widget->setLayout(layout);
