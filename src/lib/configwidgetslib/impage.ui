@@ -45,24 +45,34 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="addGroupButton">
+          <widget class="QToolButton" name="addGroupButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
-            <string/>
+            <string>Add</string>
            </property>
            <property name="icon">
-            <iconset theme="list-add">
-             <normaloff>.</normaloff>.</iconset>
+            <iconset theme="list-add"/>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="deleteGroupButton">
+          <widget class="QToolButton" name="deleteGroupButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="text">
-            <string/>
+            <string>Remove</string>
            </property>
            <property name="icon">
-            <iconset theme="list-remove">
-             <normaloff>.</normaloff>.</iconset>
+            <iconset theme="list-remove"/>
            </property>
           </widget>
          </item>
@@ -99,68 +109,149 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="addIMButton">
+        <widget class="QToolButton" name="addIMButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Add</string>
+         </property>
          <property name="icon">
-          <iconset theme="go-previous">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="go-previous"/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="removeIMButton">
+        <widget class="QToolButton" name="removeIMButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Remove</string>
+         </property>
          <property name="icon">
-          <iconset theme="go-next">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="go-next"/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="moveUpButton">
+        <widget class="QToolButton" name="moveUpButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Up</string>
+         </property>
          <property name="icon">
-          <iconset theme="go-up">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="go-up"/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="moveDownButton">
+        <widget class="QToolButton" name="moveDownButton">
          <property name="enabled">
           <bool>false</bool>
          </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Down</string>
+         </property>
          <property name="icon">
-          <iconset theme="go-down">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="go-down"/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="configureButton">
+        <widget class="QToolButton" name="configureButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Configure</string>
+         </property>
          <property name="icon">
-          <iconset theme="preferences-system">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="preferences-system"/>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="layoutButton">
+        <widget class="QToolButton" name="layoutButton">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="toolTip">
           <string>Select Layout</string>
          </property>
          <property name="text">
-          <string notr="true"/>
+          <string notr="true">Layout</string>
          </property>
          <property name="icon">
-          <iconset theme="input-keyboard">
-           <normaloff>.</normaloff>.</iconset>
+          <iconset theme="input-keyboard"/>
          </property>
         </widget>
        </item>

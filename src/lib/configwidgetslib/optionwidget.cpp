@@ -370,6 +370,7 @@ public:
 
         button_ = new QToolButton(this);
         button_->setIcon(QIcon::fromTheme("preferences-system"));
+        button_->setText(_("Configure"));
         layout->addWidget(button_);
         setLayout(layout);
 

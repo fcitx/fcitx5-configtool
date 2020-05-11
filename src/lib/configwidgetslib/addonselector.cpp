@@ -16,7 +16,7 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QPainter>
-#include <QPushButton>
+#include <QToolButton>
 #include <QVBoxLayout>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
@@ -58,7 +58,7 @@ private:
     int dependantLayoutValue(int value, int width, int totalWidth) const;
 
     QCheckBox *checkBox_;
-    QPushButton *pushButton_;
+    QToolButton *pushButton_;
     AddonSelector *parent_;
 };
 
@@ -80,7 +80,7 @@ QFont AddonDelegate::titleFont(const QFont &baseFont) const {
 
 AddonDelegate::AddonDelegate(QAbstractItemView *listView, AddonSelector *parent)
     : KWidgetItemDelegate(listView, parent), checkBox_(new QCheckBox),
-      pushButton_(new QPushButton), parent_(parent) {
+      pushButton_(new QToolButton), parent_(parent) {
     pushButton_->setIcon(QIcon::fromTheme(
         "preferences-system")); // only for getting size matters
 }
@@ -177,9 +177,10 @@ AddonDelegate::createItemWidgets(const QModelIndex &index) const {
     connect(enabledCheckBox, &QCheckBox::clicked, this,
             &AddonDelegate::checkBoxClicked);
 
-    QPushButton *configurePushButton = new QPushButton;
+    QToolButton *configurePushButton = new QToolButton;
     configurePushButton->setIcon(QIcon::fromTheme("preferences-system"));
-    connect(configurePushButton, &QPushButton::clicked, this,
+    configurePushButton->setText(_("Configure"));
+    connect(configurePushButton, &QToolButton::clicked, this,
             &AddonDelegate::configureClicked);
 
     setBlockedEventTypes(enabledCheckBox, QList<QEvent::Type>()
