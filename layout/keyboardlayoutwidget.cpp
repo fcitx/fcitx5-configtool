@@ -9,6 +9,7 @@
 #include <QDir>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QPainterPath>
 #include <QVector2D>
 #include <QX11Info>
 #include <qmath.h>
