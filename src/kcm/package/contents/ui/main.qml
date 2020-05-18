@@ -150,24 +150,21 @@ KCM.ScrollViewKCM {
 
     footer: RowLayout {
         enabled: kcm.availability
+        Button {
+            text: i18n("Configure global options...")
+            icon.name: "configure"
+            onClicked: kcm.pushConfigPage(i18n("Global Options"),
+                                          "fcitx://config/global")
+        }
+        Button {
+            text: i18n("Configure addons...")
+            icon.name: "configure"
+            onClicked: kcm.push("AddonPage.qml")
+        }
         Item {
             Layout.fillWidth: true
         }
         Button {
-            Layout.alignment: Qt.AlignRight
-            text: i18n("Config global options...")
-            icon.name: "configure"
-            onClicked: kcm.pushConfigPage(i18n("Global Config"),
-                                          "fcitx://config/global")
-        }
-        Button {
-            Layout.alignment: Qt.AlignRight
-            text: i18n("Config addons...")
-            icon.name: "configure"
-            onClicked: kcm.push("AddonPage.qml")
-        }
-        Button {
-            Layout.alignment: Qt.AlignRight
             text: i18n("Add...")
             icon.name: "list-add-symbolic"
             onClicked: kcm.push("AddIMPage.qml")

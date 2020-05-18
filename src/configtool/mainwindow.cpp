@@ -25,14 +25,14 @@ MainWindow::MainWindow(QWidget *parent)
         qCDebug(KCM_FCITX5) << "IMPage changed";
         emit changed(true);
     });
-    pageWidget->addTab(addonPage_, _("Addon"));
+    pageWidget->addTab(addonPage_, _("Addons"));
     connect(addonPage_, &AddonSelector::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
         emit changed(true);
     });
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
-    pageWidget->addTab(configPageWrapper, _("Global Config"));
+    pageWidget->addTab(configPageWrapper, _("Global Options"));
     connect(configPage_, &ConfigWidget::changed, this,
             [this]() { emit changed(true); });
 
