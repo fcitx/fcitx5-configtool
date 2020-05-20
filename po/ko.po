@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-12 00:01-0700\n"
+"POT-Creation-Date: 2020-05-20 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -195,14 +195,14 @@ msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사�
 #: rc.cpp:21 rc.cpp:57
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "아래쪽"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:15
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "편집"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:51
 #, kde-format
@@ -470,7 +470,7 @@ msgstr "알 수 없음 "
 #: rc.cpp:18 rc.cpp:54
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "위쪽"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
