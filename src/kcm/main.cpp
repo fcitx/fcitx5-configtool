@@ -34,7 +34,7 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     qmlRegisterAnonymousType<LanguageModel>("", 1);
 
     KAboutData *about = new KAboutData(
-        "kcm_fcitx5", i18n("Fcitx 5 Configuration Module"), PROJECT_VERSION,
+        "kcm_fcitx5", i18n("Fcitx 5"), PROJECT_VERSION,
         i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
         i18n("Copyright 2017 Xuetian Weng"), QString(), QString(),
         "wengxt@gmail.com");
