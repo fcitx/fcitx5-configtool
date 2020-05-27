@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-12 00:01-0700\n"
+"POT-Creation-Date: 2020-05-27 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: ABE Tsunehiko, 2017\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -64,7 +64,7 @@ msgstr "一般的なキーボドレイアウトビューアー"
 msgid "Add"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:246
+#: src/kcm/package/contents/ui/main.qml:243
 #, kde-format
 msgid "Add Group"
 msgstr ""
@@ -75,16 +75,13 @@ msgstr ""
 msgid "Add Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:171
+#: src/kcm/package/contents/ui/main.qml:168
 #, kde-format
 msgid "Add..."
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:28
-msgid "Addon"
-msgstr "アドオン"
-
 #: src/kcm/package/contents/ui/AddonPage.qml:16
+#: src/configtool/mainwindow.cpp:28
 #, kde-format
 msgid "Addons"
 msgstr ""
@@ -126,19 +123,9 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:165
-#, kde-format
-msgid "Config addons..."
-msgstr ""
-
-#: src/kcm/package/contents/ui/main.qml:158
-#, kde-format
-msgid "Config global options..."
-msgstr ""
-
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/kcm/package/contents/ui/main.qml:192
+#: src/kcm/package/contents/ui/main.qml:189
 #: src/lib/configwidgetslib/optionwidget.cpp:373
 #: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:60
 #, kde-format
@@ -154,6 +141,16 @@ msgstr "Fcitx 5 の設定"
 msgid "Configure Input Method"
 msgstr "入力メソッドの設定"
 
+#: src/kcm/package/contents/ui/main.qml:160
+#, kde-format
+msgid "Configure addons..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:154
+#, kde-format
+msgid "Configure global options..."
+msgstr ""
+
 #: src/kcm/main.cpp:39
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
@@ -166,7 +163,7 @@ msgstr "Copyright 2017 Xuetian Weng"
 msgid "Current Input Method:"
 msgstr "現在の入力メソッド:"
 
-#: src/kcm/package/contents/ui/main.qml:304
+#: src/kcm/package/contents/ui/main.qml:301
 #: src/lib/configwidgetslib/impage.cpp:148
 #, kde-format
 msgid "Current group changed"
@@ -181,7 +178,7 @@ msgstr ""
 msgid "Default"
 msgstr "既定"
 
-#: src/kcm/package/contents/ui/main.qml:328
+#: src/kcm/package/contents/ui/main.qml:325
 #: src/lib/configwidgetslib/impage.cpp:149
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -210,8 +207,8 @@ msgstr ""
 
 #: src/kcm/main.cpp:37
 #, kde-format
-msgid "Fcitx 5 Configuration Module"
-msgstr "Fcitx 5 設定モジュール"
+msgid "Fcitx 5"
+msgstr ""
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -230,12 +227,12 @@ msgstr ""
 msgid "Frontend"
 msgstr "フロントエンド"
 
-#: src/kcm/package/contents/ui/main.qml:160 src/configtool/mainwindow.cpp:35
+#: src/kcm/package/contents/ui/main.qml:156 src/configtool/mainwindow.cpp:35
 #, kde-format
-msgid "Global Config"
-msgstr "全般の設定"
+msgid "Global Options"
+msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:268
+#: src/kcm/package/contents/ui/main.qml:265
 #, kde-format
 msgid "Group Name"
 msgstr ""
@@ -314,7 +311,7 @@ msgstr "モジュール"
 msgid "Multilingual"
 msgstr "多言語"
 
-#: src/kcm/package/contents/ui/main.qml:267
+#: src/kcm/package/contents/ui/main.qml:264
 #, kde-format
 msgid "Name:"
 msgstr ""
@@ -329,7 +326,7 @@ msgstr "新しいグループ"
 msgid "No"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:253
+#: src/kcm/package/contents/ui/main.qml:250
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #, kde-format
 msgid "Ok"
@@ -352,7 +349,7 @@ msgstr "その他"
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:154
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/kcm/package/contents/ui/main.qml:210
+#: src/kcm/package/contents/ui/main.qml:207
 #: src/kcm/package/contents/ui/ListOption.qml:122
 #: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:24 rc.cpp:39 rc.cpp:51
 #, kde-format
@@ -404,7 +401,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/kcm/package/contents/ui/main.qml:200
+#: src/kcm/package/contents/ui/main.qml:197
 #: src/lib/configwidgetslib/impage.cpp:281 rc.cpp:63
 #, kde-format
 msgid "Select Layout"
