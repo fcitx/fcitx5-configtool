@@ -33,11 +33,11 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     qmlRegisterAnonymousType<IMProxyModel>("", 1);
     qmlRegisterAnonymousType<LanguageModel>("", 1);
 
-    KAboutData *about = new KAboutData(
-        "kcm_fcitx5", i18n("Fcitx 5"), PROJECT_VERSION,
-        i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
-        i18n("Copyright 2017 Xuetian Weng"), QString(), QString(),
-        "wengxt@gmail.com");
+    KAboutData *about =
+        new KAboutData("kcm_fcitx5", i18n("Fcitx 5"), PROJECT_VERSION,
+                       i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
+                       i18n("Copyright 2017 Xuetian Weng"), QString(),
+                       QString(), "wengxt@gmail.com");
 
     about->addAuthor(i18n("Xuetian Weng"), i18n("Author"), "wengxt@gmail.com");
 

@@ -42,6 +42,8 @@ public:
         layout->setMargin(0);
 
         spinBox_ = new QSpinBox;
+        spinBox_->setMaximum(INT_MAX);
+        spinBox_->setMinimum(INT_MIN);
         if (option.properties().contains("IntMax")) {
             auto max = option.properties().value("IntMax");
             if (max.type() == QVariant::String) {
