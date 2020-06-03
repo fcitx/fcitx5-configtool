@@ -9,12 +9,11 @@
 #include <qnamespace.h>
 
 namespace fcitx {
+namespace kcm {
 
-bool keyQtToSym(int qtcode, Qt::KeyboardModifiers mod, int &sym,
-                unsigned int &state);
-
-bool symToKeyQt(int sym, unsigned int state, int &qtcode,
-                Qt::KeyboardModifiers &mod);
+bool qEventToSym(int key, Qt::KeyboardModifiers mod, const QString &text,
+                 int &outsym, unsigned int &outstate);
+}
 } // namespace fcitx
 
 #endif // _WIDGETSADDONS_QTKEYTRANS_H_

@@ -11,7 +11,7 @@ set_target_properties(fcitx5-config-qt
     AUTOUIC_OPTIONS "-tr=fcitx::tr2fcitx;--include=fcitxqti18nhelper.h")
 
 target_link_libraries(fcitx5-config-qt
-    Qt5::Widgets configwigetslib
+    Qt5::Widgets configwidgetslib
 )
 
 install(TARGETS fcitx5-config-qt DESTINATION ${CMAKE_INSTALL_BINDIR})

@@ -78,7 +78,7 @@ Button {
         }
         var done = true
         keyString = kcm.eventToString(event.key, event.modifiers,
-                                      event.nativeScanCode,
+                                      event.nativeScanCode, event.text,
                                       keyCodeAction.checked)
         if (text === "") {
             done = false
@@ -113,7 +113,7 @@ Button {
             done = true
         }
         var keyStr = kcm.eventToString(event.key, event.modifiers,
-                                       event.nativeScanCode,
+                                       event.nativeScanCode, event.text,
                                        keyCodeAction.checked)
         if (keyStr === "") {
             done = false

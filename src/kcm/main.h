@@ -62,7 +62,7 @@ public slots:
     void ungrabKeyboard(QQuickItem *item);
 
     QString eventToString(int key, int modifiers, quint32 nativeScanCode,
-                          bool keyCode);
+                          const QString &text, bool keyCode);
     QString localizedKeyString(const QString &key);
 
     void runFcitx();

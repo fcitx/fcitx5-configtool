@@ -285,7 +285,8 @@ void FcitxModule::ungrabKeyboard(QQuickItem *item) {
 }
 
 QString FcitxModule::eventToString(int keyQt, int modifiers,
-                                   quint32 nativeScanCode, bool keyCode) {
+                                   quint32 nativeScanCode, const QString &text,
+                                   bool keyCode) {
     int sym;
     unsigned int states;
 
@@ -298,8 +299,8 @@ QString FcitxModule::eventToString(int keyQt, int modifiers,
         return QString();
     }
 
-    if (fcitx::keyQtToSym(keyQt, Qt::KeyboardModifiers(modifiers), sym,
-                          states)) {
+    if (qEventToSym(keyQt, Qt::KeyboardModifiers(modifiers), text, sym,
+                    states)) {
         Key key;
         if (keyCode) {
             key = Key::fromKeyCode(nativeScanCode, KeyStates(states));

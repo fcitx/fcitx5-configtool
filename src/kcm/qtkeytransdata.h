@@ -7,6 +7,7 @@
 #define _WIDGETSADDONS_QTKEYTRANSDATA_H_
 
 namespace fcitx {
+namespace kcm {
 
 int unicodeHasKey[] = {
     300,   301,   372,   373,   374,   375,   399,   415,   416,   417,   431,
@@ -1457,6 +1458,8 @@ QtCode2Key qtCodeToKey[] = {
     {16781916, 65116}, {16781917, 65117}, {16781918, 65118}, {16781919, 65119},
     {16781920, 65120}, {16781921, 65121}, {16781922, 65122},
 };
+
+} // namespace kcm
 } // namespace fcitx
 
 #endif // _WIDGETSADDONS_QTKEYTRANSDATA_H_
