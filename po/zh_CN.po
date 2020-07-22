@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-05-27 00:02-0700\n"
+"POT-Creation-Date: 2020-07-22 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -32,13 +32,13 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:418
-#: src/lib/configwidgetslib/optionwidget.cpp:429
-#: src/lib/configwidgetslib/optionwidget.cpp:435
-#: src/lib/configwidgetslib/optionwidget.cpp:438
-#: src/lib/configwidgetslib/optionwidget.cpp:441
-#: src/lib/configwidgetslib/optionwidget.cpp:444
-#: src/lib/configwidgetslib/optionwidget.cpp:447
+#: src/lib/configwidgetslib/optionwidget.cpp:420
+#: src/lib/configwidgetslib/optionwidget.cpp:431
+#: src/lib/configwidgetslib/optionwidget.cpp:437
+#: src/lib/configwidgetslib/optionwidget.cpp:440
+#: src/lib/configwidgetslib/optionwidget.cpp:443
+#: src/lib/configwidgetslib/optionwidget.cpp:446
+#: src/lib/configwidgetslib/optionwidget.cpp:449
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -127,7 +127,7 @@ msgstr "清空"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/kcm/package/contents/ui/main.qml:189
-#: src/lib/configwidgetslib/optionwidget.cpp:373
+#: src/lib/configwidgetslib/optionwidget.cpp:375
 #: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:60
 #, kde-format
 msgid "Configure"
@@ -145,12 +145,12 @@ msgstr "配置输入法"
 #: src/kcm/package/contents/ui/main.qml:160
 #, kde-format
 msgid "Configure addons..."
-msgstr ""
+msgstr "配置附加组件..."
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
 msgid "Configure global options..."
-msgstr ""
+msgstr "配置全局选项..."
 
 #: src/kcm/main.cpp:39
 #, kde-format
@@ -209,7 +209,7 @@ msgstr "空"
 #: src/kcm/main.cpp:37
 #, kde-format
 msgid "Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -231,7 +231,7 @@ msgstr "前端"
 #: src/kcm/package/contents/ui/main.qml:156 src/configtool/mainwindow.cpp:35
 #, kde-format
 msgid "Global Options"
-msgstr ""
+msgstr "全局选项"
 
 #: src/kcm/package/contents/ui/main.qml:265
 #, kde-format
@@ -322,7 +322,7 @@ msgid "New Group"
 msgstr "新建分组"
 
 #: src/kcm/package/contents/ui/ListOption.qml:37
-#: src/lib/configwidgetslib/optionwidget.cpp:491
+#: src/lib/configwidgetslib/optionwidget.cpp:493
 #, kde-format
 msgid "No"
 msgstr "否"
@@ -486,7 +486,7 @@ msgid "Xuetian Weng"
 msgstr "翁学天"
 
 #: src/kcm/package/contents/ui/ListOption.qml:37
-#: src/lib/configwidgetslib/optionwidget.cpp:491
+#: src/lib/configwidgetslib/optionwidget.cpp:493
 #, kde-format
 msgid "Yes"
 msgstr "是"
@@ -509,7 +509,7 @@ msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
 #: src/kcm/package/contents/ui/ListOption.qml:71
-#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:526
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
