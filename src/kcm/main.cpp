@@ -272,7 +272,13 @@ void FcitxModule::launchExternal(const QString &uri) {
         QProcess::startDetached(wrapperPath.data(), args);
     } else {
         // Assume this is a program path.
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+        QStringList args = QProcess::splitCommand(uri);
+        QString program = args.takeFirst();
+        QProcess::startDetached(program, args);
+#else
         QProcess::startDetached(uri);
+#endif
     }
 }
 
@@ -367,7 +373,8 @@ void FcitxModule::defaults() {
 
 void FcitxModule::runFcitx() {
     QProcess::startDetached(
-        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")));
+        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")),
+        QStringList());
 }
 
 void FcitxModule::fixLayout() {
