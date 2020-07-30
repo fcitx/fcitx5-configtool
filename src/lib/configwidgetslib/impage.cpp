@@ -74,6 +74,7 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
                 for (const QString &group : groups) {
                     ui_->inputMethodGroupComboBox->addItem(group);
                 }
+                ui_->deleteGroupButton->setEnabled(groups.size() > 1);
             });
 
     ui_->availIMView->setItemDelegate(new IMDelegate);
