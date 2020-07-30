@@ -66,6 +66,11 @@ KCM.ScrollViewKCM {
             }
         }
     }
+
+    Component.onCompleted: {
+        search.forceActiveFocus();
+    }
+
     // }}}
 
     Binding {
