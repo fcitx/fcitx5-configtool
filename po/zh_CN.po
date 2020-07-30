@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-22 00:01-0700\n"
+"POT-Creation-Date: 2020-07-30 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -32,18 +32,18 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:420
-#: src/lib/configwidgetslib/optionwidget.cpp:431
+#: src/lib/configwidgetslib/optionwidget.cpp:426
 #: src/lib/configwidgetslib/optionwidget.cpp:437
-#: src/lib/configwidgetslib/optionwidget.cpp:440
 #: src/lib/configwidgetslib/optionwidget.cpp:443
 #: src/lib/configwidgetslib/optionwidget.cpp:446
 #: src/lib/configwidgetslib/optionwidget.cpp:449
+#: src/lib/configwidgetslib/optionwidget.cpp:452
+#: src/lib/configwidgetslib/optionwidget.cpp:455
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
-#: src/kcm/package/contents/ui/KeyOption.qml:49
+#: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
 msgid "..."
 msgstr "..."
@@ -75,6 +75,11 @@ msgstr "添加分组"
 #, kde-format
 msgid "Add Input Method"
 msgstr "添加输入法"
+
+#: src/kcm/package/contents/ui/KeyListOption.qml:84
+#, kde-format
+msgid "Add shortcut"
+msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:168
 #, kde-format
@@ -111,11 +116,11 @@ msgstr "可用输入法："
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 
-#: src/lib/configwidgetslib/impage.cpp:236
+#: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
 msgstr "更改输入方式以匹配布局选择。"
 
-#: src/lib/configwidgetslib/impage.cpp:314
+#: src/lib/configwidgetslib/impage.cpp:315
 msgid "Change System layout to match input method selection."
 msgstr "更改系统布局以匹配输入方式选择。"
 
@@ -165,7 +170,7 @@ msgid "Current Input Method:"
 msgstr "当前输入法："
 
 #: src/kcm/package/contents/ui/main.qml:301
-#: src/lib/configwidgetslib/impage.cpp:148
+#: src/lib/configwidgetslib/impage.cpp:149
 #, kde-format
 msgid "Current group changed"
 msgstr "当前分组已修改"
@@ -180,7 +185,7 @@ msgid "Default"
 msgstr "默认"
 
 #: src/kcm/package/contents/ui/main.qml:325
-#: src/lib/configwidgetslib/impage.cpp:149
+#: src/lib/configwidgetslib/impage.cpp:150
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
@@ -201,7 +206,7 @@ msgstr "向下"
 msgid "Edit"
 msgstr "编辑"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:51
+#: src/kcm/package/contents/ui/KeyOption.qml:52
 #, kde-format
 msgid "Empty"
 msgstr "空"
@@ -238,7 +243,7 @@ msgstr "全局选项"
 msgid "Group Name"
 msgstr "分组名称"
 
-#: src/lib/configwidgetslib/impage.cpp:372
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid "Group Name:"
 msgstr "分组名称："
 
@@ -254,7 +259,7 @@ msgstr "分组："
 msgid "Input Method"
 msgstr "输入法"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:148
+#: src/kcm/package/contents/ui/KeyOption.qml:150
 #, kde-format
 msgid "Key code mode"
 msgstr "扫描码模式"
@@ -317,12 +322,12 @@ msgstr "多语言"
 msgid "Name:"
 msgstr "名称："
 
-#: src/lib/configwidgetslib/impage.cpp:372
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid "New Group"
 msgstr "新建分组"
 
 #: src/kcm/package/contents/ui/ListOption.qml:37
-#: src/lib/configwidgetslib/optionwidget.cpp:493
+#: src/lib/configwidgetslib/optionwidget.cpp:499
 #, kde-format
 msgid "No"
 msgstr "否"
@@ -403,12 +408,12 @@ msgstr "选择字体..."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
 #: src/kcm/package/contents/ui/main.qml:197
-#: src/lib/configwidgetslib/impage.cpp:281 rc.cpp:63
+#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:63
 #, kde-format
 msgid "Select Layout"
 msgstr "选择布局"
 
-#: src/lib/configwidgetslib/impage.cpp:221
+#: src/lib/configwidgetslib/impage.cpp:222
 msgid "Select default layout"
 msgstr "选择默认布局"
 
@@ -486,13 +491,13 @@ msgid "Xuetian Weng"
 msgstr "翁学天"
 
 #: src/kcm/package/contents/ui/ListOption.qml:37
-#: src/lib/configwidgetslib/optionwidget.cpp:493
+#: src/lib/configwidgetslib/optionwidget.cpp:499
 #, kde-format
 msgid "Yes"
 msgstr "是"
 
 #: src/kcm/package/contents/ui/main.qml:73
-#: src/lib/configwidgetslib/impage.cpp:315
+#: src/lib/configwidgetslib/impage.cpp:316
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
@@ -500,7 +505,7 @@ msgid ""
 msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
 
 #: src/kcm/package/contents/ui/main.qml:92
-#: src/lib/configwidgetslib/impage.cpp:237
+#: src/lib/configwidgetslib/impage.cpp:238
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
@@ -509,7 +514,7 @@ msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
 #: src/kcm/package/contents/ui/ListOption.qml:71
-#: src/lib/configwidgetslib/optionwidget.cpp:526
+#: src/lib/configwidgetslib/optionwidget.cpp:532
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
