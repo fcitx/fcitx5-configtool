@@ -19,6 +19,7 @@ Button {
     property bool allowModifierLess: false
     property bool allowModifierOnly: false
     property string keyString: ""
+    property string currentKeyString: ""
     // }}}
 
     function load(rawValue) {
@@ -57,14 +58,14 @@ Button {
     flat: false
     down: grab
     focus: grab
-    text: prettyKeyString(keyString)
+    text: prettyKeyString(grab ? currentKeyString : keyString)
     onClicked: {
         if (down) {
             kcm.ungrabKeyboard(root)
             grab = false
         } else {
             grab = true
-            keyString = ""
+            currentKeyString = ""
             kcm.grabKeyboard(root)
         }
     }
@@ -77,9 +78,9 @@ Button {
             return
         }
         var done = true
-        keyString = kcm.eventToString(event.key, event.modifiers,
-                                      event.nativeScanCode, event.text,
-                                      keyCodeAction.checked)
+        currentKeyString = kcm.eventToString(event.key, event.modifiers,
+                                             event.nativeScanCode, event.text,
+                                             keyCodeAction.checked)
         if (text === "") {
             done = false
         }
@@ -96,6 +97,7 @@ Button {
             done = false
         }
         if (done) {
+            keyString = currentKeyString;
             onClicked()
         }
     }
@@ -124,9 +126,9 @@ Button {
             onClicked()
         } else {
             if (event.modifiers == 0) {
-                keyString = ""
+                currentKeyString = ""
             } else {
-                keyString = keyStr
+                currentKeyString = keyStr
             }
         }
     }
