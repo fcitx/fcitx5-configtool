@@ -19,4 +19,4 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop"
   DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 install(TARGETS kcm_fcitx5 DESTINATION ${KDE_INSTALL_PLUGINDIR}/kcms)
 
-kpackage_install_package(package kcm_fcitx5 kcms)
+kpackage_install_package(package org.fcitx.fcitx5.kcm kcms)

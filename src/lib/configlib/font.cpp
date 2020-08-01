@@ -8,7 +8,7 @@
 #include <QMap>
 
 QFont fcitx::kcm::parseFont(const QString &string) {
-    QStringList list = string.split(" ", QString::SkipEmptyParts);
+    QStringList list = string.split(" ", Qt::SkipEmptyParts);
     int size = 9; // Default size.
     if (!list.empty()) {
         bool ok = false;

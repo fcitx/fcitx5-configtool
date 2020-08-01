@@ -1,1 +1,2 @@
-fcitx5_install_translation(kcm_fcitx5)
+add_subdirectory(fcitx5-configtool)
+add_subdirectory(org.fcitx.fcitx5.kcm)

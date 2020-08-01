@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the kcm_fcitx5 package.
 #
 # Translators:
-# wwj402 <wwj402@gmail.com>, 2017
-# csslayer <wengxt@gmail.com>, 2020
+# csslayer <wengxt@gmail.com>, 2017
+# Bon Keun Seo <scobyseo@gmail.com>, 2017
+# MarongHappy <daemul72@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kcm_fcitx5\n"
+"Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-30 00:01-0700\n"
+"POT-Creation-Date: 2020-07-31 22:32-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
-"zh_CN/)\n"
-"Language: zh_CN\n"
+"Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,16 +41,11 @@ msgstr "%1 (%2)"
 #: src/lib/configwidgetslib/optionwidget.cpp:455
 #, kde-format
 msgid "%1:"
-msgstr "%1："
-
-#: src/kcm/package/contents/ui/KeyOption.qml:50
-#, kde-format
-msgid "..."
-msgstr "..."
+msgstr "%1:"
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
-msgstr "通用键盘布局查看器"
+msgstr "일반 키보드 자판 보기도구"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
@@ -58,296 +53,186 @@ msgstr "通用键盘布局查看器"
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:129
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/kcm/package/contents/ui/ListOption.qml:178
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:12 rc.cpp:36 rc.cpp:48
+#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:27 rc.cpp:48 rc.cpp:60
 #, kde-format
 msgid "Add"
-msgstr "添加"
+msgstr "추가"
 
-#: src/kcm/package/contents/ui/main.qml:243
-#, kde-format
-msgid "Add Group"
-msgstr "添加分组"
-
-#. object properties {{{
-#: src/kcm/package/contents/ui/AddIMPage.qml:15
-#, kde-format
-msgid "Add Input Method"
-msgstr "添加输入法"
-
-#: src/kcm/package/contents/ui/KeyListOption.qml:84
-#, kde-format
-msgid "Add shortcut"
-msgstr ""
-
-#: src/kcm/package/contents/ui/main.qml:168
-#, kde-format
-msgid "Add..."
-msgstr "添加..."
-
-#: src/kcm/package/contents/ui/AddonPage.qml:16
 #: src/configtool/mainwindow.cpp:28
-#, kde-format
 msgid "Addons"
-msgstr "附加组件"
+msgstr "애드온"
 
 #: src/lib/configlib/layoutprovider.cpp:67
 #: src/lib/configlib/layoutprovider.cpp:69
 msgid "Any language"
-msgstr "任意语言"
-
-#: src/kcm/main.cpp:42
-#, kde-format
-msgid "Author"
-msgstr "作者"
+msgstr "모든 언어"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:278
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:66
+#: rc.cpp:78
 #, kde-format
 msgid "Available Input Method:"
-msgstr "可用输入法："
+msgstr "사용가능한 입력기:"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:194
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
-#: src/kcm/package/contents/ui/main.qml:53 rc.cpp:78
+#: rc.cpp:6
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
+msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
 
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
-msgstr "更改输入方式以匹配布局选择。"
+msgstr "선택된 자판에 맞게 입력기 변경"
 
 #: src/lib/configwidgetslib/impage.cpp:315
 msgid "Change System layout to match input method selection."
-msgstr "更改系统布局以匹配输入方式选择。"
-
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:36
-#, kde-format
-msgid "Clear"
-msgstr "清空"
+msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/kcm/package/contents/ui/main.qml:189
-#: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:60
+#: src/lib/configwidgetslib/addonselector.cpp:183
+#: src/lib/configwidgetslib/optionwidget.cpp:375 rc.cpp:72
 #, kde-format
 msgid "Configure"
-msgstr "配置"
-
-#: src/kcm/main.cpp:38
-#, kde-format
-msgid "Configure Fcitx 5"
-msgstr "配置 Fcitx 5"
-
-#: src/kcm/kcm_fcitx5.desktop.in:14
-msgid "Configure Input Method"
-msgstr "配置输入法"
-
-#: src/kcm/package/contents/ui/main.qml:160
-#, kde-format
-msgid "Configure addons..."
-msgstr "配置附加组件..."
-
-#: src/kcm/package/contents/ui/main.qml:154
-#, kde-format
-msgid "Configure global options..."
-msgstr "配置全局选项..."
-
-#: src/kcm/main.cpp:39
-#, kde-format
-msgid "Copyright 2017 Xuetian Weng"
-msgstr "Copyright 2017 Xuetian Weng"
+msgstr "설정"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:30
+#: rc.cpp:42
 #, kde-format
 msgid "Current Input Method:"
-msgstr "当前输入法："
+msgstr "현재 입력기:"
 
-#: src/kcm/package/contents/ui/main.qml:301
 #: src/lib/configwidgetslib/impage.cpp:149
-#, kde-format
 msgid "Current group changed"
-msgstr "当前分组已修改"
-
-#: src/kcm/package/contents/ui/SaveWarningDialog.qml:25
-#, kde-format
-msgid "Current page is not yet saved. Please save the config first."
-msgstr "当前页未保存。请先保存配置。"
+msgstr "현재 그룹이 변경됨"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
-msgstr "默认"
+msgstr "기본값"
 
-#: src/kcm/package/contents/ui/main.qml:325
 #: src/lib/configwidgetslib/impage.cpp:150
-#, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
+msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:204
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:21 rc.cpp:57
+#: rc.cpp:36 rc.cpp:69
 #, kde-format
 msgid "Down"
-msgstr "向下"
+msgstr "아래쪽"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
-#: rc.cpp:15
+#: rc.cpp:30
 #, kde-format
 msgid "Edit"
-msgstr "编辑"
-
-#: src/kcm/package/contents/ui/KeyOption.qml:52
-#, kde-format
-msgid "Empty"
-msgstr "空"
-
-#: src/kcm/main.cpp:37
-#, kde-format
-msgid "Fcitx 5"
-msgstr "Fcitx 5"
+msgstr "편집"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: rc.cpp:87
+#: rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr "Fcitx 配置"
-
-#: src/kcm/package/contents/ui/main.qml:76
-#: src/kcm/package/contents/ui/main.qml:95
-#, kde-format
-msgid "Fix"
-msgstr "修复"
+msgstr "Fcitx 환경설정"
 
 #: src/lib/configlib/addonmodel.cpp:21
 msgid "Frontend"
-msgstr "前端"
+msgstr "전처리기"
 
-#: src/kcm/package/contents/ui/main.qml:156 src/configtool/mainwindow.cpp:35
-#, kde-format
+#: src/configtool/mainwindow.cpp:35
 msgid "Global Options"
-msgstr "全局选项"
-
-#: src/kcm/package/contents/ui/main.qml:265
-#, kde-format
-msgid "Group Name"
-msgstr "分组名称"
+msgstr "전역 옵션"
 
 #: src/lib/configwidgetslib/impage.cpp:373
 msgid "Group Name:"
-msgstr "分组名称："
+msgstr "그룹 이름:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:33
+#: rc.cpp:45
 #, kde-format
 msgid "Group:"
-msgstr "分组："
+msgstr "그룹:"
 
-#: src/lib/configlib/addonmodel.cpp:21 src/configtool/mainwindow.cpp:23
-#: src/kcm/kcm_fcitx5.desktop.in:13
+#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
 msgid "Input Method"
-msgstr "输入法"
-
-#: src/kcm/package/contents/ui/KeyOption.qml:150
-#, kde-format
-msgid "Key code mode"
-msgstr "扫描码模式"
+msgstr "입력기"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
-msgstr "键盘 <布局>"
+msgstr "키보드 <자판>"
 
 #: layout/main.cpp:53
 msgid "Keyboard Layout viewer"
-msgstr "键盘布局查看器"
+msgstr "키보드 자판 보기도구"
 
 #: layout/main.cpp:26
 msgid "Keyboard layout <group> (0-3)"
-msgstr "键盘布局<分组号> (0-3)"
+msgstr "키보드 자판 <그룹> (0-3)"
 
 #: layout/main.cpp:28
 msgid "Keyboard layout <variant>"
-msgstr "键盘布局<变体>"
+msgstr "키보드 자판 <변형>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:87
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:42
+#: rc.cpp:54
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr "无活动输入法时使用的键盘布局"
+msgstr "활성 입력기가 없을 때 사용할 키보드 자판"
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
-msgstr "键盘布局查看器"
+msgstr "키보드 자판 보기도구"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:70 rc.cpp:3
+#: rc.cpp:18
 #, kde-format
 msgid "Language:"
-msgstr "语言："
+msgstr "언어:"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:87 rc.cpp:6
+#: rc.cpp:21
 #, kde-format
 msgid "Layout:"
-msgstr "布局："
+msgstr "자판:"
 
 #: src/lib/configlib/addonmodel.cpp:21
 msgid "Loader"
-msgstr "启动器"
+msgstr "불러오기 도구"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Module"
-msgstr "模块"
+msgstr "모듈"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
-msgstr "多语言"
-
-#: src/kcm/package/contents/ui/main.qml:264
-#, kde-format
-msgid "Name:"
-msgstr "名称："
+msgstr "다중언어"
 
 #: src/lib/configwidgetslib/impage.cpp:373
 msgid "New Group"
-msgstr "新建分组"
+msgstr "새 그룹"
 
-#: src/kcm/package/contents/ui/ListOption.qml:37
 #: src/lib/configwidgetslib/optionwidget.cpp:499
-#, kde-format
 msgid "No"
-msgstr "否"
-
-#: src/kcm/package/contents/ui/main.qml:250
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
-#, kde-format
-msgid "Ok"
-msgstr "确定"
+msgstr "아니오"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:317
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: src/kcm/package/contents/ui/AddIMPage.qml:44 rc.cpp:72
+#: rc.cpp:84
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr "仅显示当前语言(&S)"
+msgstr "현재 언어만 표시(&S)"
 
 #: src/lib/configlib/model.cpp:117
 msgid "Other"
-msgstr "其它"
+msgstr "기타"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -355,183 +240,240 @@ msgstr "其它"
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:154
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/kcm/package/contents/ui/main.qml:207
-#: src/kcm/package/contents/ui/ListOption.qml:122
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:24 rc.cpp:39 rc.cpp:51
+#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:39 rc.cpp:51 rc.cpp:63
 #, kde-format
 msgid "Remove"
-msgstr "移除"
-
-#: src/kcm/package/contents/ui/main.qml:57
-#, kde-format
-msgid "Run Fcitx"
-msgstr "运行 Fcitx"
+msgstr "제거"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:81
+#: rc.cpp:12
 #, kde-format
 msgid "Search Addons"
-msgstr "搜索附加组件"
+msgstr "부가기능 검색"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:69
+#: rc.cpp:81
 #, kde-format
 msgid "Search Input Method"
-msgstr "搜索输入法"
-
-#: src/kcm/package/contents/ui/AddonPage.qml:71
-#: src/kcm/package/contents/ui/AddIMPage.qml:38
-#, kde-format
-msgid "Search..."
-msgstr "搜索..."
+msgstr "입력기 검색"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-#: rc.cpp:27
+#: rc.cpp:9
 #, kde-format
 msgid "Select &Font..."
-msgstr "选择字体(&F)..."
-
-#: src/kcm/package/contents/ui/FontOption.qml:27
-#, kde-format
-msgctxt "@title:window"
-msgid "Select Font"
-msgstr "选择字体"
-
-#: src/kcm/package/contents/ui/FontOption.qml:22
-#, kde-format
-msgid "Select Font..."
-msgstr "选择字体..."
+msgstr "글꼴 선택(&F)"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/kcm/package/contents/ui/main.qml:197
-#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:63
+#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:75
 #, kde-format
 msgid "Select Layout"
-msgstr "选择布局"
+msgstr "자판 선택"
 
 #: src/lib/configwidgetslib/impage.cpp:222
 msgid "Select default layout"
-msgstr "选择默认布局"
-
-#: src/kcm/package/contents/ui/main.qml:145
-#, kde-format
-msgid "Select keyboard layout..."
-msgstr "选择键盘布局..."
-
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:28
-#, kde-format
-msgid "Select layout"
-msgstr "选择布局"
+msgstr "기본 자판 선택"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:45
+#: rc.cpp:57
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr "选择系统键盘布局"
+msgstr "시스템 키보드 자판 선택"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:84
+#: rc.cpp:15
 #, kde-format
 msgid "Show &Advanced options"
-msgstr "显示高级选项(&A)"
-
-#: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
-#, kde-format
-msgid "Some config is not saved"
-msgstr "一些配置未保存"
+msgstr "고급 옵션 표시(&A)"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:374
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:75
+#: rc.cpp:87
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"第一个输入法将为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称</"
-"i></b>放在第一位。"
+"첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
+"<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "UI"
-msgstr "界面"
+msgstr "사용자 인터페이스"
 
 #: src/lib/configlib/model.cpp:95
 msgid "Unknown"
-msgstr "未知"
+msgstr "알 수 없음 "
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:179
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:18 rc.cpp:54
+#: rc.cpp:33 rc.cpp:66
 #, kde-format
 msgid "Up"
-msgstr "向上"
+msgstr "위쪽"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:103 rc.cpp:9
+#: rc.cpp:24
 #, kde-format
 msgid "Variant:"
-msgstr "变体："
+msgstr "변형:"
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
-msgstr "查看键盘布局"
+msgstr "키보드 자판 보기"
 
-#: src/kcm/main.cpp:42
-#, kde-format
-msgid "Xuetian Weng"
-msgstr "翁学天"
-
-#: src/kcm/package/contents/ui/ListOption.qml:37
 #: src/lib/configwidgetslib/optionwidget.cpp:499
-#, kde-format
 msgid "Yes"
-msgstr "是"
+msgstr "예"
 
-#: src/kcm/package/contents/ui/main.qml:73
 #: src/lib/configwidgetslib/impage.cpp:316
-#, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
-msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
+msgstr ""
+"현재 설정된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
 
-#: src/kcm/package/contents/ui/main.qml:92
 #: src/lib/configwidgetslib/impage.cpp:238
-#, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
-"您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
+"현재 설정된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
+"하시겠습니까?"
 
-#: src/kcm/package/contents/ui/ListOption.qml:71
 #: src/lib/configwidgetslib/optionwidget.cpp:532
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:115
-#, kde-format
-msgid "edit"
-msgstr "编辑"
-
 #: layout/main.cpp:26
 msgid "group"
-msgstr "分组"
+msgstr "그룹"
 
 #: layout/main.cpp:27
 msgid "layout"
-msgstr "布局"
+msgstr "자판"
 
 #: layout/main.cpp:28
 msgid "variant"
-msgstr "变体"
+msgstr "변형"
+
+#, kde-format
+#~ msgid "..."
+#~ msgstr "..."
+
+#, kde-format
+#~ msgid "Add Group"
+#~ msgstr "그룹 추가"
+
+#, kde-format
+#~ msgid "Add Input Method"
+#~ msgstr "입력기 추가"
+
+#, kde-format
+#~ msgid "Add..."
+#~ msgstr "추가..."
+
+#, kde-format
+#~ msgid "Author"
+#~ msgstr "작성자"
+
+#, kde-format
+#~ msgid "Clear"
+#~ msgstr "지우기"
+
+#, kde-format
+#~ msgid "Configure Fcitx 5"
+#~ msgstr "Fcitx 5 설정"
+
+#~ msgid "Configure Input Method"
+#~ msgstr "입력기 설정"
+
+#, kde-format
+#~ msgid "Configure addons..."
+#~ msgstr "애드온 구성하기..."
+
+#, kde-format
+#~ msgid "Configure global options..."
+#~ msgstr "전역 옵션 구성하기..."
+
+#, kde-format
+#~ msgid "Copyright 2017 Xuetian Weng"
+#~ msgstr "저작권자 2017 Xuetian Weng"
+
+#, kde-format
+#~ msgid "Current page is not yet saved. Please save the config first."
+#~ msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 설정을 저장하십시오."
+
+#, kde-format
+#~ msgid "Empty"
+#~ msgstr "비어있음"
+
+#, kde-format
+#~ msgid "Fcitx 5"
+#~ msgstr "Fcitx 5"
+
+#, kde-format
+#~ msgid "Fix"
+#~ msgstr "수정"
+
+#, kde-format
+#~ msgid "Group Name"
+#~ msgstr "그룹 이름"
+
+#, kde-format
+#~ msgid "Key code mode"
+#~ msgstr "키 코드 모드"
+
+#, kde-format
+#~ msgid "Name:"
+#~ msgstr "이름:"
+
+#, kde-format
+#~ msgid "Ok"
+#~ msgstr "확인"
+
+#, kde-format
+#~ msgid "Run Fcitx"
+#~ msgstr "Fcitx 실행"
+
+#, kde-format
+#~ msgid "Search..."
+#~ msgstr "검색..."
+
+#, kde-format
+#~ msgctxt "@title:window"
+#~ msgid "Select Font"
+#~ msgstr "글꼴 선택"
+
+#, kde-format
+#~ msgid "Select Font..."
+#~ msgstr "글꼴 선택..."
+
+#, kde-format
+#~ msgid "Select keyboard layout..."
+#~ msgstr "키보드 자판 선택..."
+
+#, kde-format
+#~ msgid "Select layout"
+#~ msgstr "자판 선택"
+
+#, kde-format
+#~ msgid "Some config is not saved"
+#~ msgstr "일부 설정이 저장되지 않음"
+
+#, kde-format
+#~ msgid "Xuetian Weng"
+#~ msgstr "Xuetian Weng"
+
+#, kde-format
+#~ msgid "edit"
+#~ msgstr "편집"

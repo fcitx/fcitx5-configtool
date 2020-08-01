@@ -1,0 +1,420 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kcm_fcitx5 package.
+#
+# Translators:
+# csslayer <wengxt@gmail.com>, 2017
+# Bon Keun Seo <scobyseo@gmail.com>, 2017
+# MarongHappy <daemul72@gmail.com>, 2020
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: org.fcitx.fcitx5.kcm\n"
+"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
+"POT-Creation-Date: 2020-07-31 22:12-0700\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"Last-Translator: MarongHappy <daemul72@gmail.com>, 2020\n"
+"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/kcm/package/contents/ui/KeyOption.qml:50
+#, kde-format
+msgid "..."
+msgstr "..."
+
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:178
+#, kde-format
+msgid "Add"
+msgstr "추가"
+
+#: src/kcm/package/contents/ui/main.qml:243
+#, kde-format
+msgid "Add Group"
+msgstr "그룹 추가"
+
+#. object properties {{{
+#: src/kcm/package/contents/ui/AddIMPage.qml:15
+#, kde-format
+msgid "Add Input Method"
+msgstr "입력기 추가"
+
+#: src/kcm/package/contents/ui/KeyListOption.qml:84
+#, kde-format
+msgid "Add shortcut"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:168
+#, kde-format
+msgid "Add..."
+msgstr "추가..."
+
+#: src/kcm/package/contents/ui/AddonPage.qml:16
+#, kde-format
+msgid "Addons"
+msgstr "애드온"
+
+#: src/kcm/main.cpp:42
+#, kde-format
+msgid "Author"
+msgstr "작성자"
+
+#: src/kcm/package/contents/ui/main.qml:53
+#, kde-format
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:36
+#, kde-format
+msgid "Clear"
+msgstr "지우기"
+
+#: src/kcm/package/contents/ui/main.qml:189
+#, kde-format
+msgid "Configure"
+msgstr "설정"
+
+#: src/kcm/main.cpp:38
+#, kde-format
+msgid "Configure Fcitx 5"
+msgstr "Fcitx 5 설정"
+
+#: src/kcm/kcm_fcitx5.desktop.in:14
+msgid "Configure Input Method"
+msgstr "입력기 설정"
+
+#: src/kcm/package/contents/ui/main.qml:160
+#, kde-format
+msgid "Configure addons..."
+msgstr "애드온 구성하기..."
+
+#: src/kcm/package/contents/ui/main.qml:154
+#, kde-format
+msgid "Configure global options..."
+msgstr "전역 옵션 구성하기..."
+
+#: src/kcm/main.cpp:39
+#, kde-format
+msgid "Copyright 2017 Xuetian Weng"
+msgstr "저작권자 2017 Xuetian Weng"
+
+#: src/kcm/package/contents/ui/main.qml:301
+#, kde-format
+msgid "Current group changed"
+msgstr "현재 그룹이 변경됨"
+
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:25
+#, kde-format
+msgid "Current page is not yet saved. Please save the config first."
+msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 설정을 저장하십시오."
+
+#: src/kcm/package/contents/ui/main.qml:325
+#, kde-format
+msgid "Do you want to change group? Changes to current group will be lost!"
+msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
+
+#: src/kcm/package/contents/ui/KeyOption.qml:52
+#, kde-format
+msgid "Empty"
+msgstr "비어있음"
+
+#: src/kcm/main.cpp:37
+#, kde-format
+msgid "Fcitx 5"
+msgstr "Fcitx 5"
+
+#: src/kcm/package/contents/ui/main.qml:76
+#: src/kcm/package/contents/ui/main.qml:95
+#, kde-format
+msgid "Fix"
+msgstr "수정"
+
+#: src/kcm/package/contents/ui/main.qml:156
+#, kde-format
+msgid "Global Options"
+msgstr "전역 옵션"
+
+#: src/kcm/package/contents/ui/main.qml:265
+#, kde-format
+msgid "Group Name"
+msgstr "그룹 이름"
+
+#: src/kcm/kcm_fcitx5.desktop.in:13
+msgid "Input Method"
+msgstr "입력기"
+
+#: src/kcm/package/contents/ui/KeyOption.qml:150
+#, kde-format
+msgid "Key code mode"
+msgstr "키 코드 모드"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:70
+#, kde-format
+msgid "Language:"
+msgstr "언어:"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:87
+#, kde-format
+msgid "Layout:"
+msgstr "자판:"
+
+#: src/kcm/package/contents/ui/main.qml:264
+#, kde-format
+msgid "Name:"
+msgstr "이름:"
+
+#: src/kcm/package/contents/ui/ListOption.qml:37
+#, kde-format
+msgid "No"
+msgstr "아니오"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
+#: src/kcm/package/contents/ui/main.qml:250
+#, kde-format
+msgid "Ok"
+msgstr "확인"
+
+#: src/kcm/package/contents/ui/AddIMPage.qml:44
+#, kde-format
+msgid "Only &Show Current Language"
+msgstr "현재 언어만 표시(&S)"
+
+#: src/kcm/package/contents/ui/ListOption.qml:122
+#: src/kcm/package/contents/ui/main.qml:207
+#, kde-format
+msgid "Remove"
+msgstr "제거"
+
+#: src/kcm/package/contents/ui/main.qml:57
+#, kde-format
+msgid "Run Fcitx"
+msgstr "Fcitx 실행"
+
+#: src/kcm/package/contents/ui/AddonPage.qml:71
+#: src/kcm/package/contents/ui/AddIMPage.qml:38
+#, kde-format
+msgid "Search..."
+msgstr "검색..."
+
+#: src/kcm/package/contents/ui/FontOption.qml:27
+#, kde-format
+msgctxt "@title:window"
+msgid "Select Font"
+msgstr "글꼴 선택"
+
+#: src/kcm/package/contents/ui/FontOption.qml:22
+#, kde-format
+msgid "Select Font..."
+msgstr "글꼴 선택..."
+
+#: src/kcm/package/contents/ui/main.qml:197
+#, kde-format
+msgid "Select Layout"
+msgstr "자판 선택"
+
+#: src/kcm/package/contents/ui/main.qml:145
+#, kde-format
+msgid "Select keyboard layout..."
+msgstr "키보드 자판 선택..."
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:28
+#, kde-format
+msgid "Select layout"
+msgstr "자판 선택"
+
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
+#, kde-format
+msgid "Some config is not saved"
+msgstr "일부 설정이 저장되지 않음"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:103
+#, kde-format
+msgid "Variant:"
+msgstr "변형:"
+
+#: src/kcm/main.cpp:42
+#, kde-format
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: src/kcm/package/contents/ui/ListOption.qml:37
+#, kde-format
+msgid "Yes"
+msgstr "예"
+
+#: src/kcm/package/contents/ui/main.qml:73
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your layout, do you "
+"want to change the layout setting?"
+msgstr ""
+"현재 설정된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
+
+#: src/kcm/package/contents/ui/main.qml:92
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your selected layout, "
+"do you want to add the corresponding input method for the layout?"
+msgstr ""
+"현재 설정된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
+"하시겠습니까?"
+
+#: src/kcm/package/contents/ui/ListOption.qml:71
+#, kde-format
+msgid "[%1]"
+msgstr "[%1]"
+
+#: src/kcm/package/contents/ui/ListOption.qml:115
+#, kde-format
+msgid "edit"
+msgstr "편집"
+
+#, kde-format
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, kde-format
+#~ msgctxt "%1 is language name, %2 is country name"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, kde-format
+#~ msgid "%1:"
+#~ msgstr "%1:"
+
+#~ msgid "A general keyboard layout viewer"
+#~ msgstr "일반 키보드 자판 보기도구"
+
+#~ msgid "Any language"
+#~ msgstr "모든 언어"
+
+#, kde-format
+#~ msgid "Available Input Method:"
+#~ msgstr "사용가능한 입력기:"
+
+#~ msgid "Change Input method to match layout selection."
+#~ msgstr "선택된 자판에 맞게 입력기 변경"
+
+#~ msgid "Change System layout to match input method selection."
+#~ msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
+
+#, kde-format
+#~ msgid "Current Input Method:"
+#~ msgstr "현재 입력기:"
+
+#~ msgid "Default"
+#~ msgstr "기본값"
+
+#, kde-format
+#~ msgid "Down"
+#~ msgstr "아래쪽"
+
+#, kde-format
+#~ msgid "Edit"
+#~ msgstr "편집"
+
+#, kde-format
+#~ msgid "Fcitx Configuration"
+#~ msgstr "Fcitx 환경설정"
+
+#~ msgid "Frontend"
+#~ msgstr "전처리기"
+
+#~ msgid "Group Name:"
+#~ msgstr "그룹 이름:"
+
+#, kde-format
+#~ msgid "Group:"
+#~ msgstr "그룹:"
+
+#~ msgid "Keyboard <layout>"
+#~ msgstr "키보드 <자판>"
+
+#~ msgid "Keyboard Layout viewer"
+#~ msgstr "키보드 자판 보기도구"
+
+#~ msgid "Keyboard layout <group> (0-3)"
+#~ msgstr "키보드 자판 <그룹> (0-3)"
+
+#~ msgid "Keyboard layout <variant>"
+#~ msgstr "키보드 자판 <변형>"
+
+#, kde-format
+#~ msgid "Keyboard layout to use when no input method active"
+#~ msgstr "활성 입력기가 없을 때 사용할 키보드 자판"
+
+#~ msgid "Keyboard layout viewer"
+#~ msgstr "키보드 자판 보기도구"
+
+#~ msgid "Loader"
+#~ msgstr "불러오기 도구"
+
+#~ msgid "Module"
+#~ msgstr "모듈"
+
+#~ msgid "Multilingual"
+#~ msgstr "다중언어"
+
+#~ msgid "New Group"
+#~ msgstr "새 그룹"
+
+#~ msgid "Other"
+#~ msgstr "기타"
+
+#, kde-format
+#~ msgid "Search Addons"
+#~ msgstr "부가기능 검색"
+
+#, kde-format
+#~ msgid "Search Input Method"
+#~ msgstr "입력기 검색"
+
+#, kde-format
+#~ msgid "Select &Font..."
+#~ msgstr "글꼴 선택(&F)"
+
+#~ msgid "Select default layout"
+#~ msgstr "기본 자판 선택"
+
+#, kde-format
+#~ msgid "Select system keyboard layout"
+#~ msgstr "시스템 키보드 자판 선택"
+
+#, kde-format
+#~ msgid "Show &Advanced options"
+#~ msgstr "고급 옵션 표시(&A)"
+
+#, kde-format
+#~ msgid ""
+#~ "The first input method will be inactive state. Usually you need to put "
+#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
+#~ "place."
+#~ msgstr ""
+#~ "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 "
+#~ "- <i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
+
+#~ msgid "UI"
+#~ msgstr "사용자 인터페이스"
+
+#~ msgid "Unknown"
+#~ msgstr "알 수 없음 "
+
+#, kde-format
+#~ msgid "Up"
+#~ msgstr "위쪽"
+
+#~ msgid "View keyboard layout"
+#~ msgstr "키보드 자판 보기"
+
+#~ msgid "group"
+#~ msgstr "그룹"
+
+#~ msgid "layout"
+#~ msgstr "자판"
+
+#~ msgid "variant"
+#~ msgstr "변형"

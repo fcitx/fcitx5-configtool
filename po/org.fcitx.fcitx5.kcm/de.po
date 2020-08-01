@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kcm_fcitx5 package.
+#
+# Translators:
+# csslayer <wengxt@gmail.com>, 2017
+# mar well <m.wellendorf@gmx.de>, 2018
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: org.fcitx.fcitx5.kcm\n"
+"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
+"POT-Creation-Date: 2020-07-31 22:12-0700\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"Last-Translator: mar well <m.wellendorf@gmx.de>, 2018\n"
+"Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/kcm/package/contents/ui/KeyOption.qml:50
+#, kde-format
+msgid "..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:178
+#, kde-format
+msgid "Add"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:243
+#, kde-format
+msgid "Add Group"
+msgstr ""
+
+#. object properties {{{
+#: src/kcm/package/contents/ui/AddIMPage.qml:15
+#, kde-format
+msgid "Add Input Method"
+msgstr ""
+
+#: src/kcm/package/contents/ui/KeyListOption.qml:84
+#, kde-format
+msgid "Add shortcut"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:168
+#, kde-format
+msgid "Add..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:16
+#, kde-format
+msgid "Addons"
+msgstr ""
+
+#: src/kcm/main.cpp:42
+#, kde-format
+msgid "Author"
+msgstr "Autor"
+
+#: src/kcm/package/contents/ui/main.qml:53
+#, kde-format
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr "DBus kann sich nicht mit FCITX verbinden. Läuft FCITX?"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:36
+#, kde-format
+msgid "Clear"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:189
+#, kde-format
+msgid "Configure"
+msgstr ""
+
+#: src/kcm/main.cpp:38
+#, kde-format
+msgid "Configure Fcitx 5"
+msgstr "Fcitx 5 konfigurieren"
+
+#: src/kcm/kcm_fcitx5.desktop.in:14
+msgid "Configure Input Method"
+msgstr "Eingabemethode konfigurieren"
+
+#: src/kcm/package/contents/ui/main.qml:160
+#, kde-format
+msgid "Configure addons..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:154
+#, kde-format
+msgid "Configure global options..."
+msgstr ""
+
+#: src/kcm/main.cpp:39
+#, kde-format
+msgid "Copyright 2017 Xuetian Weng"
+msgstr "Copyright 2017 Xuetian Weng"
+
+#: src/kcm/package/contents/ui/main.qml:301
+#, kde-format
+msgid "Current group changed"
+msgstr "Gegenwärtige Gruppe geändert"
+
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:25
+#, kde-format
+msgid "Current page is not yet saved. Please save the config first."
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:325
+#, kde-format
+msgid "Do you want to change group? Changes to current group will be lost!"
+msgstr ""
+
+#: src/kcm/package/contents/ui/KeyOption.qml:52
+#, kde-format
+msgid "Empty"
+msgstr ""
+
+#: src/kcm/main.cpp:37
+#, kde-format
+msgid "Fcitx 5"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:76
+#: src/kcm/package/contents/ui/main.qml:95
+#, kde-format
+msgid "Fix"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:156
+#, kde-format
+msgid "Global Options"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:265
+#, kde-format
+msgid "Group Name"
+msgstr ""
+
+#: src/kcm/kcm_fcitx5.desktop.in:13
+msgid "Input Method"
+msgstr "Eingabemethode"
+
+#: src/kcm/package/contents/ui/KeyOption.qml:150
+#, kde-format
+msgid "Key code mode"
+msgstr ""
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:70
+#, kde-format
+msgid "Language:"
+msgstr "Sprache:"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:87
+#, kde-format
+msgid "Layout:"
+msgstr "Layout:"
+
+#: src/kcm/package/contents/ui/main.qml:264
+#, kde-format
+msgid "Name:"
+msgstr ""
+
+#: src/kcm/package/contents/ui/ListOption.qml:37
+#, kde-format
+msgid "No"
+msgstr "Nein"
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
+#: src/kcm/package/contents/ui/main.qml:250
+#, kde-format
+msgid "Ok"
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddIMPage.qml:44
+#, kde-format
+msgid "Only &Show Current Language"
+msgstr "Nur &gegenwärtige Sprache anzeigen"
+
+#: src/kcm/package/contents/ui/ListOption.qml:122
+#: src/kcm/package/contents/ui/main.qml:207
+#, kde-format
+msgid "Remove"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:57
+#, kde-format
+msgid "Run Fcitx"
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:71
+#: src/kcm/package/contents/ui/AddIMPage.qml:38
+#, kde-format
+msgid "Search..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/FontOption.qml:27
+#, kde-format
+msgctxt "@title:window"
+msgid "Select Font"
+msgstr ""
+
+#: src/kcm/package/contents/ui/FontOption.qml:22
+#, kde-format
+msgid "Select Font..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:197
+#, kde-format
+msgid "Select Layout"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:145
+#, kde-format
+msgid "Select keyboard layout..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:28
+#, kde-format
+msgid "Select layout"
+msgstr ""
+
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
+#, kde-format
+msgid "Some config is not saved"
+msgstr ""
+
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:103
+#, kde-format
+msgid "Variant:"
+msgstr "Variante:"
+
+#: src/kcm/main.cpp:42
+#, kde-format
+msgid "Xuetian Weng"
+msgstr "Xuetian Weng"
+
+#: src/kcm/package/contents/ui/ListOption.qml:37
+#, kde-format
+msgid "Yes"
+msgstr "Ja"
+
+#: src/kcm/package/contents/ui/main.qml:73
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your layout, do you "
+"want to change the layout setting?"
+msgstr ""
+"Ihre gegenwärtig ausgewählte Eingabemethode passt nicht zu Ihrem Layout, "
+"wollen sie die Layouteinstellungen ändern?"
+
+#: src/kcm/package/contents/ui/main.qml:92
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your selected layout, "
+"do you want to add the corresponding input method for the layout?"
+msgstr ""
+"Ihre gegenwärtig ausgewählte Eingabemethode passt nicht zu Ihrem Layout, "
+"wollen sie passenden Layouteinstellungen hinzufügen?"
+
+#: src/kcm/package/contents/ui/ListOption.qml:71
+#, kde-format
+msgid "[%1]"
+msgstr "[%1]"
+
+#: src/kcm/package/contents/ui/ListOption.qml:115
+#, kde-format
+msgid "edit"
+msgstr ""
+
+#, kde-format
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, kde-format
+#~ msgctxt "%1 is language name, %2 is country name"
+#~ msgid "%1 (%2)"
+#~ msgstr "%1 (%2)"
+
+#, kde-format
+#~ msgid "%1:"
+#~ msgstr "%1:"
+
+#~ msgid "A general keyboard layout viewer"
+#~ msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
+
+#~ msgid "Any language"
+#~ msgstr "Jede Sprache"
+
+#, kde-format
+#~ msgid "Available Input Method:"
+#~ msgstr "Verfügbare Eingabemethoden"
+
+#~ msgid "Change Input method to match layout selection."
+#~ msgstr "Eingabemethode wechseln, um mit der Layoutauswahl übereinzustimmen."
+
+#~ msgid "Change System layout to match input method selection."
+#~ msgstr ""
+#~ "Systemlayout ändern, um mit der Eingabemethodenauswahl übereinzustimmen"
+
+#, kde-format
+#~ msgid "Current Input Method:"
+#~ msgstr "Aktive Eingabemethode:"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "Frontend"
+#~ msgstr "Frontend"
+
+#~ msgid "Group Name:"
+#~ msgstr "Gruppenname:"
+
+#, kde-format
+#~ msgid "Group:"
+#~ msgstr "Gruppe:"
+
+#~ msgid "Keyboard <layout>"
+#~ msgstr "Tastatur <layout>"
+
+#~ msgid "Keyboard Layout viewer"
+#~ msgstr "Ansicht Tastaturlayout"
+
+#~ msgid "Keyboard layout <group> (0-3)"
+#~ msgstr "Tastaturlayout <group> (0-3)"
+
+#~ msgid "Keyboard layout <variant>"
+#~ msgstr "Tastaturlayout <variant>"
+
+#, kde-format
+#~ msgid "Keyboard layout to use when no input method active"
+#~ msgstr "Verwendetes Tastaturlayout wenn keine Eingabemethode Aktiv ist"
+
+#~ msgid "Keyboard layout viewer"
+#~ msgstr "Tastaturlayout-Betrachter"
+
+#~ msgid "Loader"
+#~ msgstr "Starter"
+
+#~ msgid "Module"
+#~ msgstr "Modul"
+
+#~ msgid "Multilingual"
+#~ msgstr "Mehrsprachig"
+
+#~ msgid "New Group"
+#~ msgstr "Neue Gruppe"
+
+#~ msgid "Other"
+#~ msgstr "Andere"
+
+#, kde-format
+#~ msgid "Search Addons"
+#~ msgstr "Addons suchen"
+
+#, kde-format
+#~ msgid "Search Input Method"
+#~ msgstr "Eingabemethoden filtern"
+
+#, kde-format
+#~ msgid "Select &Font..."
+#~ msgstr "Auswahl &Font"
+
+#~ msgid "Select default layout"
+#~ msgstr "Standardlayout auswählen"
+
+#, kde-format
+#~ msgid "Select system keyboard layout"
+#~ msgstr "Systemtastatur auswählen"
+
+#, kde-format
+#~ msgid "Show &Advanced options"
+#~ msgstr "&Fortgeschrittene Optionen anzeigen"
+
+#, kde-format
+#~ msgid ""
+#~ "The first input method will be inactive state. Usually you need to put "
+#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
+#~ "place."
+#~ msgstr ""
+#~ "Die erste Eingabemethode wird die inaktive sein. Normalerweise sollte "
+#~ "<b>Tastatur</b> oder <b>Tastatur - <i>Tastaturlayout</i></b> als Erstes "
+#~ "stehen."
+
+#~ msgid "UI"
+#~ msgstr "Benutzeroberfläche"
+
+#~ msgid "Unknown"
+#~ msgstr "Unbekannt"
+
+#~ msgid "View keyboard layout"
+#~ msgstr "Tastaturlayout ansehen"
+
+#~ msgid "group"
+#~ msgstr "Gruppe"
+
+#~ msgid "layout"
+#~ msgstr "Layout"
+
+#~ msgid "variant"
+#~ msgstr "Variante"
