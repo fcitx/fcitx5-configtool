@@ -12,7 +12,7 @@ target_link_libraries(kcm_fcitx5
 )
 
 fcitx5_translate_desktop_file(kcm_fcitx5.desktop.in
-  kcm_fcitx5.desktop)
+  kcm_fcitx5.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/org.fcitx.fcitx5.kcm)
 kcoreaddons_desktop_to_json(kcm_fcitx5 "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop" DEFAULT_SERVICE_TYPE)
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop"

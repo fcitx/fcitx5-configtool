@@ -23,6 +23,6 @@ target_link_libraries(kbd-layout-viewer5 Fcitx5::Utils Qt5::Widgets Qt5::X11Extr
 install(TARGETS kbd-layout-viewer5 DESTINATION ${KDE_INSTALL_BINDIR})
 fcitx5_translate_desktop_file(
   kbd-layout-viewer5.desktop.in
-  kbd-layout-viewer5.desktop)
+  kbd-layout-viewer5.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/fcitx5-configtool)
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kbd-layout-viewer5.desktop"
   DESTINATION ${KDE_INSTALL_APPDIR})
