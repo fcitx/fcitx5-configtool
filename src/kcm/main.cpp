@@ -95,7 +95,7 @@ void FcitxModule::save() {
     }
 }
 
-QVariant decompsoeDBusVariant(const QVariant &v) {
+QVariant decomposeDBusVariant(const QVariant &v) {
     QVariantMap map;
     if (v.canConvert<QDBusArgument>()) {
         auto argument = qvariant_cast<QDBusArgument>(v);
@@ -104,7 +104,7 @@ QVariant decompsoeDBusVariant(const QVariant &v) {
         return v;
     }
     for (auto &item : map) {
-        item = decompsoeDBusVariant(item);
+        item = decomposeDBusVariant(item);
     }
     return map;
 }
@@ -137,12 +137,12 @@ void configOptionToVariant(QVariantList &options,
         map["description"] = option.description();
         map["type"] = option.type();
         map["defaultValue"] =
-            decompsoeDBusVariant(option.defaultValue().variant());
+            decomposeDBusVariant(option.defaultValue().variant());
         map["isSection"] = false;
         QVariantMap propertiesMap;
         for (auto p : fcitx::MakeIterRange(option.properties().keyValueBegin(),
                                            option.properties().keyValueEnd())) {
-            propertiesMap[p.first] = decompsoeDBusVariant(p.second);
+            propertiesMap[p.first] = decomposeDBusVariant(p.second);
         }
         map["properties"] = propertiesMap;
         options.append(map);
@@ -180,7 +180,7 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
                 QVariantMap typeMap;
                 map["uri"] = uri;
                 map["rawValue"] =
-                    decompsoeDBusVariant(reply.argumentAt<0>().variant());
+                    decomposeDBusVariant(reply.argumentAt<0>().variant());
                 map["typeName"] = configTypes[0].name();
 
                 // We do a revsere order.
