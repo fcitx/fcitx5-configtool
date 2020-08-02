@@ -14,10 +14,10 @@ ColumnLayout {
 
     property variant properties
     property variant rawValue
-    property bool needsSave: false
+    property bool needsSave
 
     function load(rawValue) {
-        needsSave = (rawValue !== keyList.rawValue)
+        var diff = false;
         if (listModel.count !== 0) {
             listModel.remove(0, listModel.count)
         }
@@ -28,8 +28,20 @@ ColumnLayout {
             }
             var value = rawValue[i.toString()]
             listModel.append({"key": value})
+
+            if (!keyList.rawValue.hasOwnProperty(i.toString()) ||
+                rawValue[i.toString()] !== keyList.rawValue[i.toString()]) {
+                diff = true;
+            }
+
             i++
         }
+
+        if (keyList.rawValue.hasOwnProperty(i.toString())) {
+            diff = true;
+        }
+
+        needsSave = diff;
     }
 
     function save() {
