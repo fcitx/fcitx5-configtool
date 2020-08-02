@@ -55,18 +55,23 @@ Button {
         return kcm.localizedKeyString(keyString)
     }
 
+    function accept() {
+        kcm.ungrabKeyboard(root)
+        grab = false
+    }
+
     flat: false
     down: grab
     focus: grab
     text: prettyKeyString(grab ? currentKeyString : keyString)
     onClicked: {
         if (down) {
-            kcm.ungrabKeyboard(root)
-            grab = false
+            keyString = "";
+            accept();
         } else {
-            grab = true
-            currentKeyString = ""
-            kcm.grabKeyboard(root)
+            grab = true;
+            currentKeyString = "";
+            kcm.grabKeyboard(root);
         }
     }
     onPressAndHold: {
@@ -98,7 +103,7 @@ Button {
         }
         if (done) {
             keyString = currentKeyString;
-            onClicked()
+            accept();
         }
     }
     Keys.onReleased: {
@@ -122,8 +127,8 @@ Button {
         }
 
         if (done) {
-            keyString = keyStr
-            onClicked()
+            keyString = keyStr;
+            accept();
         } else {
             if (event.modifiers == 0) {
                 currentKeyString = ""
