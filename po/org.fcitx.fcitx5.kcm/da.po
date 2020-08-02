@@ -1,17 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the kcm_fcitx5 package.
+# This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
+# csslayer <wengxt@gmail.com>, 2020
 # scootergrisen, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-31 22:12-0700\n"
-"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"POT-Creation-Date: 2020-08-02 00:01-0700\n"
+"PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
 "Language: da\n"
@@ -25,8 +25,8 @@ msgstr ""
 msgid "..."
 msgstr " ..."
 
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
 msgstr "Tilføj"
@@ -45,7 +45,7 @@ msgstr "Tilføj inputmetode"
 #: src/kcm/package/contents/ui/KeyListOption.qml:84
 #, kde-format
 msgid "Add shortcut"
-msgstr ""
+msgstr "Tilføj genvej"
 
 #: src/kcm/package/contents/ui/main.qml:168
 #, kde-format
@@ -172,8 +172,8 @@ msgstr "Navn:"
 msgid "No"
 msgstr "Nej"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #: src/kcm/package/contents/ui/main.qml:250
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #, kde-format
 msgid "Ok"
 msgstr "OK"
@@ -183,8 +183,8 @@ msgstr "OK"
 msgid "Only &Show Current Language"
 msgstr "&Vis kun nuværende sprog"
 
-#: src/kcm/package/contents/ui/ListOption.qml:122
 #: src/kcm/package/contents/ui/main.qml:207
+#: src/kcm/package/contents/ui/ListOption.qml:122
 #, kde-format
 msgid "Remove"
 msgstr "Fjern"
@@ -273,150 +273,3 @@ msgstr "[%1]"
 #, kde-format
 msgid "edit"
 msgstr "rediger"
-
-#, kde-format
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgctxt "%1 is language name, %2 is country name"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgid "%1:"
-#~ msgstr "%1:"
-
-#~ msgid "A general keyboard layout viewer"
-#~ msgstr "En generel tastaturlayout-fremviser"
-
-#~ msgid "Any language"
-#~ msgstr "Vilkårligt sprog"
-
-#, kde-format
-#~ msgid "Available Input Method:"
-#~ msgstr "Tilgængelig inputmetode:"
-
-#~ msgid "Change Input method to match layout selection."
-#~ msgstr "Skift inputmetode til at matche valget af layout."
-
-#~ msgid "Change System layout to match input method selection."
-#~ msgstr "Skift systemets layout til at matche valget af inputmetode."
-
-#, kde-format
-#~ msgid "Current Input Method:"
-#~ msgstr "Nuværende inputmetode:"
-
-#~ msgid "Default"
-#~ msgstr "Standard"
-
-#, kde-format
-#~ msgid "Down"
-#~ msgstr "Ned"
-
-#, kde-format
-#~ msgid "Edit"
-#~ msgstr "Rediger"
-
-#, kde-format
-#~ msgid "Fcitx Configuration"
-#~ msgstr "Fcitx-konfiguration"
-
-#~ msgid "Frontend"
-#~ msgstr "Frontend"
-
-#~ msgid "Group Name:"
-#~ msgstr "Gruppenavn:"
-
-#, kde-format
-#~ msgid "Group:"
-#~ msgstr "Gruppe:"
-
-#~ msgid "Keyboard <layout>"
-#~ msgstr "Tastatur <layout>"
-
-#~ msgid "Keyboard Layout viewer"
-#~ msgstr "Tastaturlayout-fremviser"
-
-#~ msgid "Keyboard layout <group> (0-3)"
-#~ msgstr "Tastaturlayout <gruppe> (0-3)"
-
-#~ msgid "Keyboard layout <variant>"
-#~ msgstr "Tastaturlayout <variant>"
-
-#, kde-format
-#~ msgid "Keyboard layout to use when no input method active"
-#~ msgstr ""
-#~ "Tastaturlayout som skal bruges når der ikke er nogen aktiv inputmetode"
-
-#~ msgid "Keyboard layout viewer"
-#~ msgstr "Tastaturlayout-fremviser"
-
-#~ msgid "Loader"
-#~ msgstr "Indlæser"
-
-#~ msgid "Module"
-#~ msgstr "Modul"
-
-#~ msgid "Multilingual"
-#~ msgstr "Flersproget"
-
-#~ msgid "New Group"
-#~ msgstr "Ny gruppe"
-
-#~ msgid "Other"
-#~ msgstr "Andre"
-
-#, kde-format
-#~ msgid "Search Addons"
-#~ msgstr "Søg efter tilføjelser"
-
-#, kde-format
-#~ msgid "Search Input Method"
-#~ msgstr "Søg efter inputmetode"
-
-#, kde-format
-#~ msgid "Select &Font..."
-#~ msgstr "Vælg &skrifttype ..."
-
-#~ msgid "Select default layout"
-#~ msgstr "Vælg standardlayout"
-
-#, kde-format
-#~ msgid "Select system keyboard layout"
-#~ msgstr "Vælg systemets tastaturlayout"
-
-#, kde-format
-#~ msgid "Show &Advanced options"
-#~ msgstr "Vis &avancerede valgmuligheder"
-
-#, kde-format
-#~ msgid ""
-#~ "The first input method will be inactive state. Usually you need to put "
-#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
-#~ "place."
-#~ msgstr ""
-#~ "Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
-#~ "stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
-
-#~ msgid "UI"
-#~ msgstr "Brugerflade"
-
-#~ msgid "Unknown"
-#~ msgstr "Ukendt"
-
-#, kde-format
-#~ msgid "Up"
-#~ msgstr "Op"
-
-#~ msgid "View keyboard layout"
-#~ msgstr "Vis tastaturlayout"
-
-#~ msgid "group"
-#~ msgstr "gruppe"
-
-#~ msgid "layout"
-#~ msgstr "layout"
-
-#~ msgid "variant"
-#~ msgstr "variant"

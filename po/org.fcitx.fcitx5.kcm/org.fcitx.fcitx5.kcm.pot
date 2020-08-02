@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-31 22:32-0700\n"
+"POT-Creation-Date: 2020-08-02 00:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
 msgstr ""
@@ -166,8 +166,8 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #: src/kcm/package/contents/ui/main.qml:250
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #, kde-format
 msgid "Ok"
 msgstr ""
@@ -177,8 +177,8 @@ msgstr ""
 msgid "Only &Show Current Language"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:122
 #: src/kcm/package/contents/ui/main.qml:207
+#: src/kcm/package/contents/ui/ListOption.qml:122
 #, kde-format
 msgid "Remove"
 msgstr ""

@@ -1,19 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the kcm_fcitx5 package.
+# This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
-# 黃柏諺 <s8321414@gmail.com>, 2017
-# byStarTW (pan93412) <pan93412@gmail.com>, 2019
+# csslayer <wengxt@gmail.com>, 2020
+# 黃柏諺 <s8321414@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-31 22:12-0700\n"
-"PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
+"POT-Creation-Date: 2020-08-02 00:01-0700\n"
+"PO-Revision-Date: 2020-08-01 05:15+0000\n"
+"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -25,39 +24,39 @@ msgstr ""
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
 msgid "..."
-msgstr ""
+msgstr "……"
 
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "新增"
 
 #: src/kcm/package/contents/ui/main.qml:243
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "新增群組"
 
 #. object properties {{{
 #: src/kcm/package/contents/ui/AddIMPage.qml:15
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "新增輸入法"
 
 #: src/kcm/package/contents/ui/KeyListOption.qml:84
 #, kde-format
 msgid "Add shortcut"
-msgstr ""
+msgstr "新增快捷鍵"
 
 #: src/kcm/package/contents/ui/main.qml:168
 #, kde-format
 msgid "Add..."
-msgstr ""
+msgstr "新增……"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:16
 #, kde-format
 msgid "Addons"
-msgstr ""
+msgstr "附加元件"
 
 #: src/kcm/main.cpp:42
 #, kde-format
@@ -67,17 +66,17 @@ msgstr "作者"
 #: src/kcm/package/contents/ui/main.qml:53
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
+msgstr "無法透過 DBus 連線至 Fcitx，Fcitx 有在執行嗎？"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:36
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "清除"
 
 #: src/kcm/package/contents/ui/main.qml:189
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "設定"
 
 #: src/kcm/main.cpp:38
 #, kde-format
@@ -91,12 +90,12 @@ msgstr "設定輸入法"
 #: src/kcm/package/contents/ui/main.qml:160
 #, kde-format
 msgid "Configure addons..."
-msgstr ""
+msgstr "設定附加元件……"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
 msgid "Configure global options..."
-msgstr ""
+msgstr "設定全域選項……"
 
 #: src/kcm/main.cpp:39
 #, kde-format
@@ -111,38 +110,38 @@ msgstr "目前的群組已變更"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:25
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr ""
+msgstr "目前的頁面尚未儲存。請先儲存設定。"
 
 #: src/kcm/package/contents/ui/main.qml:325
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:52
 #, kde-format
 msgid "Empty"
-msgstr ""
+msgstr "空"
 
 #: src/kcm/main.cpp:37
 #, kde-format
 msgid "Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5"
 
 #: src/kcm/package/contents/ui/main.qml:76
 #: src/kcm/package/contents/ui/main.qml:95
 #, kde-format
 msgid "Fix"
-msgstr ""
+msgstr "修復"
 
 #: src/kcm/package/contents/ui/main.qml:156
 #, kde-format
 msgid "Global Options"
-msgstr ""
+msgstr "全域選項"
 
 #: src/kcm/package/contents/ui/main.qml:265
 #, kde-format
 msgid "Group Name"
-msgstr ""
+msgstr "群組名稱"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
@@ -151,7 +150,7 @@ msgstr "輸入法"
 #: src/kcm/package/contents/ui/KeyOption.qml:150
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "關鍵代碼模式"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:70
 #, kde-format
@@ -166,76 +165,76 @@ msgstr "佈局："
 #: src/kcm/package/contents/ui/main.qml:264
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "名稱："
 
 #: src/kcm/package/contents/ui/ListOption.qml:37
 #, kde-format
 msgid "No"
-msgstr "取消"
+msgstr "否"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #: src/kcm/package/contents/ui/main.qml:250
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
 #, kde-format
 msgid "Ok"
-msgstr ""
+msgstr "是"
 
 #: src/kcm/package/contents/ui/AddIMPage.qml:44
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
 
-#: src/kcm/package/contents/ui/ListOption.qml:122
 #: src/kcm/package/contents/ui/main.qml:207
+#: src/kcm/package/contents/ui/ListOption.qml:122
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: src/kcm/package/contents/ui/main.qml:57
 #, kde-format
 msgid "Run Fcitx"
-msgstr ""
+msgstr "執行 Fcitx"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:71
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."
-msgstr ""
+msgstr "搜尋……"
 
 #: src/kcm/package/contents/ui/FontOption.qml:27
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "選取字型"
 
 #: src/kcm/package/contents/ui/FontOption.qml:22
 #, kde-format
 msgid "Select Font..."
-msgstr ""
+msgstr "選取字型……"
 
 #: src/kcm/package/contents/ui/main.qml:197
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "選取佈局"
 
 #: src/kcm/package/contents/ui/main.qml:145
 #, kde-format
 msgid "Select keyboard layout..."
-msgstr ""
+msgstr "選取鍵盤佈局……"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:28
 #, kde-format
 msgid "Select layout"
-msgstr ""
+msgstr "選取佈局"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format
 msgid "Some config is not saved"
-msgstr ""
+msgstr "某些設定尚未儲存"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:103
 #, kde-format
 msgid "Variant:"
-msgstr "變體"
+msgstr "變體："
 
 #: src/kcm/main.cpp:42
 #, kde-format
@@ -252,14 +251,14 @@ msgstr "確定"
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
-msgstr "您目前設定的輸入法與配置不符，是否變更配置設定？"
+msgstr "您目前設定的輸入法與佈局不符，是否變更佈局設定？"
 
 #: src/kcm/package/contents/ui/main.qml:92
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
-msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
+msgstr "您目前設定的輸入法與選取佈局不符，是否要對佈局新增對應輸入法？"
 
 #: src/kcm/package/contents/ui/ListOption.qml:71
 #, kde-format
@@ -269,134 +268,4 @@ msgstr "[%1]"
 #: src/kcm/package/contents/ui/ListOption.qml:115
 #, kde-format
 msgid "edit"
-msgstr ""
-
-#, kde-format
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgctxt "%1 is language name, %2 is country name"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgid "%1:"
-#~ msgstr "%1："
-
-#~ msgid "A general keyboard layout viewer"
-#~ msgstr "一般鍵盤佈局檢視器"
-
-#~ msgid "Any language"
-#~ msgstr "任何語言"
-
-#, kde-format
-#~ msgid "Available Input Method:"
-#~ msgstr "可用輸入法："
-
-#~ msgid "Change Input method to match layout selection."
-#~ msgstr "變更輸入法以符合選擇的配置。"
-
-#~ msgid "Change System layout to match input method selection."
-#~ msgstr "變更系統配置以符合選擇的輸入法。"
-
-#, kde-format
-#~ msgid "Current Input Method:"
-#~ msgstr "目前輸入法："
-
-#~ msgid "Default"
-#~ msgstr "預設"
-
-#~ msgid "Frontend"
-#~ msgstr "前端"
-
-#~ msgid "Group Name:"
-#~ msgstr "群組名稱："
-
-#, kde-format
-#~ msgid "Group:"
-#~ msgstr "群組："
-
-#~ msgid "Keyboard <layout>"
-#~ msgstr "鍵盤 <layout>"
-
-#~ msgid "Keyboard Layout viewer"
-#~ msgstr "鍵盤佈局檢視器"
-
-#~ msgid "Keyboard layout <group> (0-3)"
-#~ msgstr "鍵盤配置 <group> (0-3)"
-
-#~ msgid "Keyboard layout <variant>"
-#~ msgstr "鍵盤配置 <variant>"
-
-#, kde-format
-#~ msgid "Keyboard layout to use when no input method active"
-#~ msgstr "無活動輸入法時使用的鍵盤佈局"
-
-#~ msgid "Keyboard layout viewer"
-#~ msgstr "鍵盤佈局檢視器"
-
-#~ msgid "Loader"
-#~ msgstr "載入器"
-
-#~ msgid "Module"
-#~ msgstr "模組"
-
-#~ msgid "Multilingual"
-#~ msgstr "多語言"
-
-#~ msgid "New Group"
-#~ msgstr "新群組"
-
-#~ msgid "Other"
-#~ msgstr "其他"
-
-#, kde-format
-#~ msgid "Search Addons"
-#~ msgstr "搜尋附加元件"
-
-#, kde-format
-#~ msgid "Search Input Method"
-#~ msgstr "搜尋輸入法"
-
-#, kde-format
-#~ msgid "Select &Font..."
-#~ msgstr "選擇字體(&F)"
-
-#~ msgid "Select default layout"
-#~ msgstr "選取預設佈局"
-
-#, kde-format
-#~ msgid "Select system keyboard layout"
-#~ msgstr "請選擇系統鍵盤配置"
-
-#, kde-format
-#~ msgid "Show &Advanced options"
-#~ msgstr "顯示進階選項(&A)"
-
-#, kde-format
-#~ msgid ""
-#~ "The first input method will be inactive state. Usually you need to put "
-#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
-#~ "place."
-#~ msgstr ""
-#~ "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局"
-#~ "名稱</i></b>放到第一個。"
-
-#~ msgid "UI"
-#~ msgstr "使用者介面"
-
-#~ msgid "Unknown"
-#~ msgstr "未知"
-
-#~ msgid "View keyboard layout"
-#~ msgstr "檢視鍵盤佈局"
-
-#~ msgid "group"
-#~ msgstr "群組"
-
-#~ msgid "layout"
-#~ msgstr "配置"
-
-#~ msgid "variant"
-#~ msgstr "變體"
+msgstr "編輯"
