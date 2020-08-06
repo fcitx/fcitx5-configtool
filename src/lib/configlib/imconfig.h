@@ -25,7 +25,8 @@ class IMConfig : public QObject {
                    CONSTANT)
     Q_PROPERTY(
         fcitx::kcm::IMProxyModel *availIMModel READ availIMModel CONSTANT)
-    Q_PROPERTY(QString defaultLayout READ defaultLayout WRITE setDefaultLayout)
+    Q_PROPERTY(QString defaultLayout READ defaultLayout WRITE setDefaultLayout
+                   NOTIFY defaultLayoutChanged)
     Q_PROPERTY(QStringList groups READ groups NOTIFY groupsChanged)
     Q_PROPERTY(QString currentGroup READ currentGroup WRITE setCurrentGroup)
     Q_PROPERTY(bool needSave READ needSave)
@@ -56,6 +57,7 @@ public:
         if (defaultLayout_ != l) {
             defaultLayout_ = l;
             emitChanged();
+            emit defaultLayoutChanged();
         }
     }
 
@@ -87,6 +89,7 @@ signals:
     void currentGroupChanged(const QString &group);
     void groupsChanged(const QStringList &groups);
     void imListChanged();
+    void defaultLayoutChanged();
 
 private slots:
     void availabilityChanged();

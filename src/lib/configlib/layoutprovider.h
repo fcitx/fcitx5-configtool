@@ -40,6 +40,7 @@ public:
 
     Q_INVOKABLE int layoutIndex(const QString &layoutString);
     Q_INVOKABLE int variantIndex(const QString &layoutString);
+    Q_INVOKABLE QString layoutDescription(const QString &layoutString);
 
     Q_INVOKABLE void setVariantInfo(const FcitxQtLayoutInfo &info) const {
         variantModel_->setVariantInfo(info);

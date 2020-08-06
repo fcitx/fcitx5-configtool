@@ -102,6 +102,9 @@ KCM.ScrollViewKCM {
 
         RowLayout {
             enabled: kcm.availability
+            Label {
+                text: i18n("Group:")
+            }
             ComboBox {
                 id: groupComboBox
 
@@ -133,41 +136,49 @@ KCM.ScrollViewKCM {
                     kcm.imConfig.deleteGroup(groupComboBox.currentText)
                 }
             }
+        }
+    }
+
+    footer: ColumnLayout {
+        RowLayout {
             Button {
+                text: i18n("Select system layout...")
                 icon.name: "input-keyboard"
                 onClicked: {
-                    selectLayoutSheet.selectLayout("",
-                                                   kcm.imConfig.defaultLayout)
+                    selectLayoutSheet.selectLayout(i18n("Select system layout for group %1", groupComboBox.currentText), "",
+                                                    kcm.imConfig.defaultLayout)
                 }
 
                 ToolTip {
                     visible: parent.hovered
-                    text: i18n("Select keyboard layout...")
+                    text: i18n("Select system keyboard layout...")
                 }
             }
+            Label {
+                text: kcm.layoutProvider.layoutDescription(kcm.imConfig.defaultLayout)
+            }
         }
-    }
-
-    footer: RowLayout {
-        enabled: kcm.availability
-        Button {
-            text: i18n("Configure global options...")
-            icon.name: "configure"
-            onClicked: kcm.pushConfigPage(i18n("Global Options"),
-                                          "fcitx://config/global")
-        }
-        Button {
-            text: i18n("Configure addons...")
-            icon.name: "configure"
-            onClicked: kcm.push("AddonPage.qml")
-        }
-        Item {
-            Layout.fillWidth: true
-        }
-        Button {
-            text: i18n("Add...")
-            icon.name: "list-add-symbolic"
-            onClicked: kcm.push("AddIMPage.qml")
+        RowLayout {
+            enabled: kcm.availability
+            Button {
+                text: i18n("Configure global options...")
+                icon.name: "configure"
+                onClicked: kcm.pushConfigPage(i18n("Global Options"),
+                                            "fcitx://config/global")
+            }
+            Button {
+                text: i18n("Configure addons...")
+                icon.name: "configure"
+                onClicked: kcm.push("AddonPage.qml")
+            }
+            Item {
+                Layout.fillWidth: true
+            }
+            Button {
+                text: i18n("Add Input Method...")
+                icon.name: "list-add-symbolic"
+                onClicked: kcm.push("AddIMPage.qml")
+            }
         }
     }
 
@@ -198,6 +209,7 @@ KCM.ScrollViewKCM {
                     visible: model !== null ? !model.uniqueName.startsWith(
                                                   "keyboard-") : false
                     onTriggered: selectLayoutSheet.selectLayout(
+                                     i18n("Select layout for %1", model.name),
                                      model.uniqueName,
                                      (model.layout
                                       !== "" ? model.layout : kcm.imConfig.defaultLayout))

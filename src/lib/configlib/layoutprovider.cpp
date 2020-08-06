@@ -120,5 +120,40 @@ int LayoutProvider::variantIndex(const QString &layoutString) {
     return 0;
 }
 
+QString LayoutProvider::layoutDescription(const QString &layoutString) {
+    auto dashPos = layoutString.indexOf("-");
+    QString layout;
+    QString variant;
+    if (dashPos >= 0) {
+        layout = layoutString.left(dashPos);
+        variant = layoutString.mid(dashPos + 1);
+    } else {
+        layout = layoutString;
+    }
+    auto &info = layoutModel_->layoutInfo();
+    auto iter = std::find_if(info.begin(), info.end(),
+                             [&layout](const FcitxQtLayoutInfo &info) {
+                                 return info.layout() == layout;
+                             });
+    if (iter == info.end()) {
+        return QString();
+    }
+
+    if (variant.isEmpty()) {
+        return iter->description();
+    }
+
+    auto variantIter =
+        std::find_if(iter->variants().begin(), iter->variants().end(),
+                     [&variant](const FcitxQtVariantInfo &info) {
+                         return info.variant() == variant;
+                     });
+    if (variantIter == iter->variants().end()) {
+        return iter->description();
+    }
+    return QString(_("%1 - %2"))
+        .arg(iter->description(), variantIter->description());
+}
+
 } // namespace kcm
 } // namespace fcitx

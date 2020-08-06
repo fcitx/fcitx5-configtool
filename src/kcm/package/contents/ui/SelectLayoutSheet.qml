@@ -14,7 +14,8 @@ Kirigami.OverlaySheet {
 
     property string im: ""
 
-    function selectLayout(im, layout) {
+    function selectLayout(title, im, layout) {
+        heading.text = title
         languageComboBox.currentIndex = 0
         selectLayoutSheet.im = im
         var layoutIndex = kcm.layoutProvider.layoutIndex(layout)
@@ -25,7 +26,7 @@ Kirigami.OverlaySheet {
     }
 
     header: Kirigami.Heading {
-        text: i18n("Select layout")
+        id: heading
     }
     footer: RowLayout {
         Item {

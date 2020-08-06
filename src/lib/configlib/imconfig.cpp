@@ -161,6 +161,7 @@ void IMConfig::fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher) {
         defaultLayout_.clear();
         imEntries_.clear();
     }
+    emit defaultLayoutChanged();
 
     updateIMList();
 }
