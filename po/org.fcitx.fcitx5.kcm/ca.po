@@ -1,18 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the kcm_fcitx5 package.
+# This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
-# Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017
+# csslayer <wengxt@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-31 22:12-0700\n"
-"PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>, 2017\n"
+"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"PO-Revision-Date: 2020-08-01 05:15+0000\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -25,13 +24,13 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:243
+#: src/kcm/package/contents/ui/main.qml:255
 #, kde-format
 msgid "Add Group"
 msgstr ""
@@ -42,14 +41,14 @@ msgstr ""
 msgid "Add Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/KeyListOption.qml:84
+#: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
-msgid "Add shortcut"
+msgid "Add Input Method..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:168
+#: src/kcm/package/contents/ui/KeyListOption.qml:96
 #, kde-format
-msgid "Add..."
+msgid "Add shortcut"
 msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:16
@@ -67,12 +66,12 @@ msgstr "Autor"
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "No es pot connectar a fcitx amb DBus, està fcitx en execució?"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:36
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
 msgid "Clear"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:189
+#: src/kcm/package/contents/ui/main.qml:200
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -86,12 +85,12 @@ msgstr "Configura fcitx 5"
 msgid "Configure Input Method"
 msgstr "Configura el mètode d'entrada"
 
-#: src/kcm/package/contents/ui/main.qml:160
+#: src/kcm/package/contents/ui/main.qml:170
 #, kde-format
 msgid "Configure addons..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:154
+#: src/kcm/package/contents/ui/main.qml:164
 #, kde-format
 msgid "Configure global options..."
 msgstr ""
@@ -101,7 +100,7 @@ msgstr ""
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Drets d'autor (c) 2017 Xuetian Weng"
 
-#: src/kcm/package/contents/ui/main.qml:301
+#: src/kcm/package/contents/ui/main.qml:313
 #, kde-format
 msgid "Current group changed"
 msgstr ""
@@ -111,7 +110,7 @@ msgstr ""
 msgid "Current page is not yet saved. Please save the config first."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:325
+#: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
@@ -132,36 +131,41 @@ msgstr ""
 msgid "Fix"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:156
+#: src/kcm/package/contents/ui/main.qml:166
 #, kde-format
 msgid "Global Options"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:265
+#: src/kcm/package/contents/ui/main.qml:277
 #, kde-format
 msgid "Group Name"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:106
+#, kde-format
+msgid "Group:"
 msgstr ""
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
 msgstr "Mètode d'entrada"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:150
+#: src/kcm/package/contents/ui/KeyOption.qml:155
 #, kde-format
 msgid "Key code mode"
 msgstr ""
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:70
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:71
 #, kde-format
 msgid "Language:"
 msgstr "Llengua:"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:87
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:88
 #, kde-format
 msgid "Layout:"
 msgstr "Disposició:"
 
-#: src/kcm/package/contents/ui/main.qml:264
+#: src/kcm/package/contents/ui/main.qml:276
 #, kde-format
 msgid "Name:"
 msgstr ""
@@ -171,8 +175,8 @@ msgstr ""
 msgid "No"
 msgstr "No"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:43
-#: src/kcm/package/contents/ui/main.qml:250
+#: src/kcm/package/contents/ui/main.qml:262
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
 msgstr ""
@@ -182,8 +186,8 @@ msgstr ""
 msgid "Only &Show Current Language"
 msgstr "Mo%stra sols la llengua actual"
 
+#: src/kcm/package/contents/ui/main.qml:219
 #: src/kcm/package/contents/ui/ListOption.qml:122
-#: src/kcm/package/contents/ui/main.qml:207
 #, kde-format
 msgid "Remove"
 msgstr ""
@@ -210,19 +214,29 @@ msgstr ""
 msgid "Select Font..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:197
+#: src/kcm/package/contents/ui/main.qml:208
 #, kde-format
 msgid "Select Layout"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:145
+#: src/kcm/package/contents/ui/main.qml:212
 #, kde-format
-msgid "Select keyboard layout..."
+msgid "Select layout for %1"
 msgstr ""
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:28
+#: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
-msgid "Select layout"
+msgid "Select system keyboard layout..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:148
+#, kde-format
+msgid "Select system layout for group %1"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:145
+#, kde-format
+msgid "Select system layout..."
 msgstr ""
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
@@ -230,7 +244,7 @@ msgstr ""
 msgid "Some config is not saved"
 msgstr ""
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:103
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
 msgid "Variant:"
 msgstr "Variant:"
@@ -268,123 +282,3 @@ msgstr "[%1]"
 #, kde-format
 msgid "edit"
 msgstr ""
-
-#, kde-format
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgctxt "%1 is language name, %2 is country name"
-#~ msgid "%1 (%2)"
-#~ msgstr "%1 (%2)"
-
-#, kde-format
-#~ msgid "%1:"
-#~ msgstr "%1:"
-
-#~ msgid "A general keyboard layout viewer"
-#~ msgstr "Un visualitzador general de disposició de teclat"
-
-#~ msgid "Any language"
-#~ msgstr "Qualsevol llengua"
-
-#, kde-format
-#~ msgid "Available Input Method:"
-#~ msgstr "Mètode d'entrada disponible:"
-
-#, kde-format
-#~ msgid "Current Input Method:"
-#~ msgstr "Mètode d'entrada actual:"
-
-#~ msgid "Default"
-#~ msgstr "Predeterminat"
-
-#~ msgid "Frontend"
-#~ msgstr "Frontal"
-
-#~ msgid "Group Name:"
-#~ msgstr "Nom del grup:"
-
-#, kde-format
-#~ msgid "Group:"
-#~ msgstr "Grup:"
-
-#~ msgid "Keyboard <layout>"
-#~ msgstr "Teclat <layout>"
-
-#~ msgid "Keyboard Layout viewer"
-#~ msgstr "Visualitzador de disposició de teclat"
-
-#~ msgid "Keyboard layout <group> (0-3)"
-#~ msgstr "Disposició del teclat <group> (0-3)"
-
-#~ msgid "Keyboard layout <variant>"
-#~ msgstr "Disposició del teclat <variant>"
-
-#, kde-format
-#~ msgid "Keyboard layout to use when no input method active"
-#~ msgstr ""
-#~ "Disposició de teclat que s'ha d'utilitzar quan no hi ha cap mètode "
-#~ "d'entrada actiu"
-
-#~ msgid "Keyboard layout viewer"
-#~ msgstr "Visualitzador de disposició de teclat"
-
-#~ msgid "Module"
-#~ msgstr "Mòdul"
-
-#~ msgid "Multilingual"
-#~ msgstr "Plurilingüe"
-
-#~ msgid "New Group"
-#~ msgstr "Grup nou"
-
-#~ msgid "Other"
-#~ msgstr "Altres"
-
-#, kde-format
-#~ msgid "Search Addons"
-#~ msgstr "Cerca complements"
-
-#, kde-format
-#~ msgid "Search Input Method"
-#~ msgstr "Cerca el mètode d'entrada"
-
-#, kde-format
-#~ msgid "Select &Font..."
-#~ msgstr "Selecciona la &lletra..."
-
-#~ msgid "Select default layout"
-#~ msgstr "Selecciona la disposició predeterminada"
-
-#, kde-format
-#~ msgid "Show &Advanced options"
-#~ msgstr "Mostra les opcions &avançades"
-
-#, kde-format
-#~ msgid ""
-#~ "The first input method will be inactive state. Usually you need to put "
-#~ "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first "
-#~ "place."
-#~ msgstr ""
-#~ "El primer mètode d'entrada serà l'estat inactiu. Generalment heu de posar "
-#~ "<b>Keyboard</b> o <b>Keyboard - <i>nom de disposició</i></b> en el primer "
-#~ "lloc."
-
-#~ msgid "UI"
-#~ msgstr "Interfície d'usuari"
-
-#~ msgid "Unknown"
-#~ msgstr "Desconegut"
-
-#~ msgid "View keyboard layout"
-#~ msgstr "Visualitza la disposició de teclat"
-
-#~ msgid "group"
-#~ msgstr "grup"
-
-#~ msgid "layout"
-#~ msgstr "disposició"
-
-#~ msgid "variant"
-#~ msgstr "variant"

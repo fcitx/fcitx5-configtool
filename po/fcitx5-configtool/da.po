@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the kcm_fcitx5 package.
+# This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-07-31 22:32-0700\n"
+"POT-Creation-Date: 2020-08-07 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -30,6 +30,11 @@ msgstr "%1 (%2)"
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
+
+#: src/lib/configlib/layoutprovider.cpp:154
+#, kde-format
+msgid "%1 - %2"
+msgstr ""
 
 #: src/lib/configwidgetslib/optionwidget.cpp:426
 #: src/lib/configwidgetslib/optionwidget.cpp:437
@@ -52,7 +57,7 @@ msgstr "En generel tastaturlayout-fremviser"
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:129
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:27 rc.cpp:48 rc.cpp:60
+#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:15 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Add"
 msgstr "Tilføj"
@@ -68,14 +73,14 @@ msgstr "Vilkårligt sprog"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:278
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:78
+#: rc.cpp:69
 #, kde-format
 msgid "Available Input Method:"
 msgstr "Tilgængelig inputmetode:"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:194
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
-#: rc.cpp:6
+#: rc.cpp:81
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Kan ikke oprette forbindelse til Fcitx med DBus. Kører Fcitx?"
@@ -90,15 +95,15 @@ msgstr "Skift systemets layout til at matche valget af inputmetode."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:183
-#: src/lib/configwidgetslib/optionwidget.cpp:375 rc.cpp:72
+#: src/lib/configwidgetslib/optionwidget.cpp:375
+#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:42
+#: rc.cpp:33
 #, kde-format
 msgid "Current Input Method:"
 msgstr "Nuværende inputmetode:"
@@ -119,14 +124,14 @@ msgstr "Vil du ændre gruppe? Ændringerne til den nuværende vil gå tabt!"
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:204
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:36 rc.cpp:69
+#: rc.cpp:24 rc.cpp:60
 #, kde-format
 msgid "Down"
 msgstr "Ned"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
-#: rc.cpp:30
+#: rc.cpp:18
 #, kde-format
 msgid "Edit"
 msgstr "Rediger"
@@ -152,7 +157,7 @@ msgstr "Gruppenavn:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:45
+#: rc.cpp:36
 #, kde-format
 msgid "Group:"
 msgstr "Gruppe:"
@@ -179,7 +184,7 @@ msgstr "Tastaturlayout <variant>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:87
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:54
+#: rc.cpp:45
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "Tastaturlayout som skal bruges når der ikke er nogen aktiv inputmetode"
@@ -190,14 +195,14 @@ msgstr "Tastaturlayout-fremviser"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:18
+#: rc.cpp:6
 #, kde-format
 msgid "Language:"
 msgstr "Sprog:"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:21
+#: rc.cpp:9
 #, kde-format
 msgid "Layout:"
 msgstr "Layout:"
@@ -224,7 +229,7 @@ msgstr "Nej"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:317
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:84
+#: rc.cpp:75
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "&Vis kun nuværende sprog"
@@ -239,35 +244,35 @@ msgstr "Andre"
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:154
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:39 rc.cpp:51 rc.cpp:63
+#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:27 rc.cpp:42 rc.cpp:54
 #, kde-format
 msgid "Remove"
 msgstr "Fjern"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:12
+#: rc.cpp:84
 #, kde-format
 msgid "Search Addons"
 msgstr "Søg efter tilføjelser"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:81
+#: rc.cpp:72
 #, kde-format
 msgid "Search Input Method"
 msgstr "Søg efter inputmetode"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
-#: rc.cpp:9
+#: rc.cpp:30
 #, kde-format
 msgid "Select &Font..."
 msgstr "Vælg &skrifttype ..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:75
+#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:66
 #, kde-format
 msgid "Select Layout"
 msgstr "Vælg layout"
@@ -278,21 +283,21 @@ msgstr "Vælg standardlayout"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:57
+#: rc.cpp:48
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr "Vælg systemets tastaturlayout"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:15
+#: rc.cpp:87
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "Vis &avancerede valgmuligheder"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:374
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:87
+#: rc.cpp:78
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -313,14 +318,14 @@ msgstr "Ukendt"
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:179
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:33 rc.cpp:66
+#: rc.cpp:21 rc.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "Op"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:24
+#: rc.cpp:12
 #, kde-format
 msgid "Variant:"
 msgstr "Variant:"
@@ -365,116 +370,3 @@ msgstr "layout"
 #: layout/main.cpp:28
 msgid "variant"
 msgstr "variant"
-
-#, kde-format
-#~ msgid "..."
-#~ msgstr " ..."
-
-#, kde-format
-#~ msgid "Add Group"
-#~ msgstr "Tilføj gruppe"
-
-#, kde-format
-#~ msgid "Add Input Method"
-#~ msgstr "Tilføj inputmetode"
-
-#, kde-format
-#~ msgid "Add..."
-#~ msgstr "Tilføj ..."
-
-#, kde-format
-#~ msgid "Author"
-#~ msgstr "Forfatter"
-
-#, kde-format
-#~ msgid "Clear"
-#~ msgstr "Ryd"
-
-#, kde-format
-#~ msgid "Configure Fcitx 5"
-#~ msgstr "Konfigurer Fcitx 5"
-
-#~ msgid "Configure Input Method"
-#~ msgstr "Konfigurer inputmetode"
-
-#, kde-format
-#~ msgid "Configure addons..."
-#~ msgstr "Konfigurer tilføjelser ..."
-
-#, kde-format
-#~ msgid "Configure global options..."
-#~ msgstr "Konfigurer globale valgmuligheder ..."
-
-#, kde-format
-#~ msgid "Copyright 2017 Xuetian Weng"
-#~ msgstr "Ophavsret 2017 Xuetian Weng"
-
-#, kde-format
-#~ msgid "Current page is not yet saved. Please save the config first."
-#~ msgstr ""
-#~ "Den nuværende side er ikke gemt endnu. Gem venligst konfigurationen først."
-
-#, kde-format
-#~ msgid "Empty"
-#~ msgstr "Tøm"
-
-#, kde-format
-#~ msgid "Fcitx 5"
-#~ msgstr "Fcitx 5"
-
-#, kde-format
-#~ msgid "Fix"
-#~ msgstr "Ret"
-
-#, kde-format
-#~ msgid "Group Name"
-#~ msgstr "Gruppenavn"
-
-#, kde-format
-#~ msgid "Key code mode"
-#~ msgstr "Tastekode-tilstand"
-
-#, kde-format
-#~ msgid "Name:"
-#~ msgstr "Navn:"
-
-#, kde-format
-#~ msgid "Ok"
-#~ msgstr "OK"
-
-#, kde-format
-#~ msgid "Run Fcitx"
-#~ msgstr "Kør Fcitx"
-
-#, kde-format
-#~ msgid "Search..."
-#~ msgstr "Søg ..."
-
-#, kde-format
-#~ msgctxt "@title:window"
-#~ msgid "Select Font"
-#~ msgstr "Vælg skrifttype"
-
-#, kde-format
-#~ msgid "Select Font..."
-#~ msgstr "Vælg skrifttype ..."
-
-#, kde-format
-#~ msgid "Select keyboard layout..."
-#~ msgstr "Vælg tastaturlayout ..."
-
-#, kde-format
-#~ msgid "Select layout"
-#~ msgstr "Vælg layout"
-
-#, kde-format
-#~ msgid "Some config is not saved"
-#~ msgstr "Noget af konfigurationen er ikke blevet gemt"
-
-#, kde-format
-#~ msgid "Xuetian Weng"
-#~ msgstr "Xuetian Weng"
-
-#, kde-format
-#~ msgid "edit"
-#~ msgstr "rediger"
