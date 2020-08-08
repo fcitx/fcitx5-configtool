@@ -20,19 +20,19 @@ MainWindow::MainWindow(QWidget *parent)
       configPage_(new ConfigWidget("fcitx://config/global", dbus_, this)) {
     setupUi(this);
 
-    pageWidget->addTab(impage_, _("Input Method"));
     connect(impage_, &IMPage::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "IMPage changed";
         emit changed(true);
     });
-    pageWidget->addTab(addonPage_, _("Addons"));
     connect(addonPage_, &AddonSelector::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
         emit changed(true);
     });
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
+    pageWidget->addTab(impage_, _("Input Method"));
     pageWidget->addTab(configPageWrapper, _("Global Options"));
+    pageWidget->addTab(addonPage_, _("Addons"));
     connect(configPage_, &ConfigWidget::changed, this,
             [this]() { emit changed(true); });
 

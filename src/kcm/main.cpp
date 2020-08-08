@@ -284,10 +284,23 @@ void FcitxModule::launchExternal(const QString &uri) {
 
 void FcitxModule::grabKeyboard(QQuickItem *item) {
     item->window()->setKeyboardGrabEnabled(true);
+    item->installEventFilter(this);
 }
 
 void FcitxModule::ungrabKeyboard(QQuickItem *item) {
     item->window()->setKeyboardGrabEnabled(false);
+    item->removeEventFilter(this);
+}
+
+bool FcitxModule::eventFilter(QObject *, QEvent *event) {
+    if (event->type() == QEvent::KeyPress ||
+        event->type() == QEvent::KeyRelease) {
+        auto keyEvent = static_cast<QKeyEvent *>(event);
+        key_ = Key(static_cast<KeySym>(keyEvent->nativeVirtualKey()),
+                   KeyStates(keyEvent->nativeModifiers()),
+                   keyEvent->nativeScanCode());
+    }
+    return false;
 }
 
 QString FcitxModule::eventToString(int keyQt, int modifiers,
@@ -305,9 +318,15 @@ QString FcitxModule::eventToString(int keyQt, int modifiers,
         return QString();
     }
 
-    if (qEventToSym(keyQt, Qt::KeyboardModifiers(modifiers), text, sym,
-                    states)) {
-        Key key;
+    Key key;
+    if (qApp->platformName() == "xcb" || qApp->platformName() == "wayland") {
+        if (keyCode) {
+            key = Key::fromKeyCode(key_.code(), key_.states());
+        } else {
+            key = key_.normalize();
+        }
+    } else if (qEventToSym(keyQt, Qt::KeyboardModifiers(modifiers), text, sym,
+                           states)) {
         if (keyCode) {
             key = Key::fromKeyCode(nativeScanCode, KeyStates(states));
         } else {
@@ -333,6 +352,9 @@ QString FcitxModule::eventToString(int keyQt, int modifiers,
                           Key::keySymToStates(static_cast<KeySym>(sym)),
                       nativeScanCode);
         }
+    }
+
+    if (key.isValid()) {
         return QString::fromStdString(key.toString());
     }
 

@@ -15,6 +15,7 @@
 #include <KQuickAddons/ConfigModule>
 #include <QFont>
 #include <QMap>
+#include <fcitx-utils/key.h>
 #include <layoutprovider.h>
 #include <xkbcommon/xkbcommon.h>
 
@@ -61,6 +62,8 @@ public slots:
     void grabKeyboard(QQuickItem *item);
     void ungrabKeyboard(QQuickItem *item);
 
+    bool eventFilter(QObject *watched, QEvent *event) override;
+
     QString eventToString(int key, int modifiers, quint32 nativeScanCode,
                           const QString &text, bool keyCode);
     QString localizedKeyString(const QString &key);
@@ -106,6 +109,7 @@ private:
     ScopedXKBState xkbState_;
     ScopedXKBKeymap xkbKeymap_;
     ScopedXKBContext xkbContext_;
+    Key key_;
 };
 
 } // namespace kcm

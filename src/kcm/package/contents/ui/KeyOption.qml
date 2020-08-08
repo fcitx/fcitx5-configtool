@@ -98,7 +98,8 @@ Button {
         }
         if ((event.key == Qt.Key_Shift || event.key == Qt.Key_Control
              || event.key == Qt.Key_Meta || event.key == Qt.Key_Super_L
-             || event.key == Qt.Key_Super_R || event.key == Qt.Key_Alt)) {
+             || event.key == Qt.Key_Super_R || event.key == Qt.Key_Hyper_L
+             || event.key == Qt.Key_Hyper_R || event.key == Qt.Key_Alt)) {
             done = false
         }
         if (done) {
@@ -115,8 +116,8 @@ Button {
         if (allowModifierOnly
                 && (event.key == Qt.Key_Shift || event.key == Qt.Key_Control
                     || event.key == Qt.Key_Meta || event.key == Qt.Key_Super_L
-                    || event.key == Qt.Key_Super_R
-                    || event.key == Qt.Key_Alt)) {
+                    || event.key == Qt.Key_Super_R || event.key == Qt.Key_Hyper_L
+                    || event.key == Qt.Key_Hyper_R || event.key == Qt.Key_Alt)) {
             done = true
         }
         var keyStr = kcm.eventToString(event.key, event.modifiers,
