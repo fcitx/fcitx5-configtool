@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-13 00:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:28
+#: src/configtool/mainwindow.cpp:35
 msgid "Addons"
 msgstr ""
 
@@ -142,7 +142,7 @@ msgstr ""
 msgid "Frontend"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:34
 msgid "Global Options"
 msgstr ""
 
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
 msgid "Input Method"
 msgstr ""
 

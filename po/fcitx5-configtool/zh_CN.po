@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-13 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -35,7 +35,7 @@ msgstr "%1 (%2)"
 #: src/lib/configlib/layoutprovider.cpp:154
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:426
 #: src/lib/configwidgetslib/optionwidget.cpp:437
@@ -63,7 +63,7 @@ msgstr "通用键盘布局查看器"
 msgid "Add"
 msgstr "添加"
 
-#: src/configtool/mainwindow.cpp:28
+#: src/configtool/mainwindow.cpp:35
 msgid "Addons"
 msgstr "附加组件"
 
@@ -148,7 +148,7 @@ msgstr "Fcitx 配置"
 msgid "Frontend"
 msgstr "前端"
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:34
 msgid "Global Options"
 msgstr "全局选项"
 
@@ -163,7 +163,7 @@ msgstr "分组名称："
 msgid "Group:"
 msgstr "分组："
 
-#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
 msgid "Input Method"
 msgstr "输入法"
 
