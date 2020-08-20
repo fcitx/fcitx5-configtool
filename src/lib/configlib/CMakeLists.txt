@@ -10,7 +10,7 @@ add_library(configlib STATIC
     layoutprovider.cpp
 )
 set_target_properties(configlib PROPERTIES
-    COMPILE_FLAGS "-fPIC"
+    POSITION_INDEPENDENT_CODE TRUE
     AUTOMOC TRUE
     AUTOUIC TRUE
     AUTOUIC_OPTIONS "-tr=fcitx::tr2fcitx;--include=fcitxqti18nhelper.h"

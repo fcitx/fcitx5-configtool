@@ -319,7 +319,7 @@ void AddonSelector::availabilityChanged() {
         return;
     }
 
-    auto call = dbus_->controller()->GetAddons();
+    auto call = dbus_->controller()->GetAddonsV2();
     auto watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             &AddonSelector::fetchAddonFinished);
@@ -330,7 +330,7 @@ void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
     if (watcher->isError()) {
         return;
     }
-    QDBusPendingReply<FcitxQtAddonInfoList> reply(*watcher);
+    QDBusPendingReply<FcitxQtAddonInfoV2List> reply(*watcher);
     addonModel_->setAddons(reply.value());
     proxyModel_->sort(0);
 

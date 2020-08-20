@@ -164,7 +164,7 @@ QVariant FlatAddonModel::data(const QModelIndex &index, int role) const {
         return QVariant();
     }
 
-    const FcitxQtAddonInfo &addon = addonEntryList_.at(index.row());
+    const auto &addon = addonEntryList_.at(index.row());
 
     switch (role) {
 
@@ -216,7 +216,7 @@ QHash<int, QByteArray> FlatAddonModel::roleNames() const {
         {Qt::CheckStateRole, "enabled"}};
 }
 
-void FlatAddonModel::setAddons(const fcitx::FcitxQtAddonInfoList &list) {
+void FlatAddonModel::setAddons(const fcitx::FcitxQtAddonInfoV2List &list) {
     beginResetModel();
     addonEntryList_ = list;
     enabledList_.clear();

@@ -34,18 +34,18 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
-    void setAddons(const FcitxQtAddonInfoList &list) {
+    void setAddons(const FcitxQtAddonInfoV2List &list) {
         beginResetModel();
 
         addonEntryList_.clear();
         QMap<int, int> addonCategoryMap;
-        for (const FcitxQtAddonInfo &addon : list) {
+        for (const FcitxQtAddonInfoV2 &addon : list) {
             int idx;
             if (!addonCategoryMap.contains(addon.category())) {
                 idx = addonEntryList_.count();
                 addonCategoryMap[addon.category()] = idx;
-                addonEntryList_.append(QPair<int, FcitxQtAddonInfoList>(
-                    addon.category(), FcitxQtAddonInfoList()));
+                addonEntryList_.append(QPair<int, FcitxQtAddonInfoV2List>(
+                    addon.category(), FcitxQtAddonInfoV2List()));
             } else {
                 idx = addonCategoryMap[addon.category()];
             }
@@ -73,7 +73,7 @@ protected:
 private:
     QSet<QString> enabledList_;
     QSet<QString> disabledList_;
-    QList<QPair<int, FcitxQtAddonInfoList>> addonEntryList_;
+    QList<QPair<int, FcitxQtAddonInfoV2List>> addonEntryList_;
 };
 
 class FlatAddonModel : public QAbstractListModel {
@@ -89,7 +89,7 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
 
-    void setAddons(const FcitxQtAddonInfoList &list);
+    void setAddons(const FcitxQtAddonInfoV2List &list);
 
     const auto &enabledList() const { return enabledList_; }
     const auto &disabledList() const { return disabledList_; }
@@ -100,7 +100,7 @@ signals:
 private:
     QSet<QString> enabledList_;
     QSet<QString> disabledList_;
-    FcitxQtAddonInfoList addonEntryList_;
+    FcitxQtAddonInfoV2List addonEntryList_;
 };
 
 class AddonProxyModel : public QSortFilterProxyModel {

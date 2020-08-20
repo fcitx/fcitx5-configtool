@@ -13,7 +13,7 @@ add_library(configwidgetslib STATIC
     impage.cpp
 )
 set_target_properties(configwidgetslib PROPERTIES
-    COMPILE_FLAGS "-fPIC"
+    POSITION_INDEPENDENT_CODE TRUE
     AUTOMOC TRUE
     AUTOUIC TRUE
     AUTOUIC_OPTIONS "-tr=fcitx::tr2fcitx;--include=fcitxqti18nhelper.h"

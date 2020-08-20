@@ -206,11 +206,11 @@ void FcitxModule::loadAddon() {
     if (!dbus_->controller()) {
         return;
     }
-    auto call = dbus_->controller()->GetAddons();
+    auto call = dbus_->controller()->GetAddonsV2();
     auto callwatcher = new QDBusPendingCallWatcher(call, this);
     connect(callwatcher, &QDBusPendingCallWatcher::finished, this,
             [this](QDBusPendingCallWatcher *watcher) {
-                QDBusPendingReply<FcitxQtAddonInfoList> addons = *watcher;
+                QDBusPendingReply<FcitxQtAddonInfoV2List> addons = *watcher;
                 watcher->deleteLater();
                 if (addons.isValid()) {
                     addonModel_->setAddons(addons.value());

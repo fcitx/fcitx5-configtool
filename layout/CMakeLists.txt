@@ -8,7 +8,7 @@ set_target_properties(X11XkblibImport PROPERTIES
     INTERFACE_INCLUDE_DIRECTORIES "${X11_Xkblib_INCLUDE_PATH}")
 
 add_library(layoutlib STATIC keyboardlayoutwidget.cpp)
-set_target_properties(layoutlib PROPERTIES COMPILE_FLAGS "-fPIC")
+set_target_properties(layoutlib PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 target_link_libraries(layoutlib PUBLIC Fcitx5::Utils Qt5::Widgets PRIVATE Qt5::X11Extras X11Import X11XkblibImport PkgConfig::XkbFile)
 target_include_directories(layoutlib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
