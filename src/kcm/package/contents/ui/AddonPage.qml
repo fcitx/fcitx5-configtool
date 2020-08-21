@@ -11,7 +11,9 @@ import org.kde.kirigami 2.10 as Kirigami
 import org.kde.kcm 1.2 as KCM
 
 KCM.ScrollViewKCM {
+    id: addonPage
     property bool needsSave: false
+    property string reenableAddon
 
     title: i18n("Addons")
 
@@ -42,6 +44,38 @@ KCM.ScrollViewKCM {
                     checked: model.enabled
                     onClicked: {
                         model.enabled = !model.enabled
+                        if (!model.enabled) {
+                            var dependencies = model.dependencies;
+                            var optionalDependencies = model.optionalDependencies;
+                            if (dependencies.length > 0 || optionalDependencies.length > 0) {
+                                reenableAddon = model.uniqueName
+
+                                var sep = i18nc("Separator of a comma list", ", ");
+                                var depWarning = "";
+                                if (dependencies.length > 0) {
+                                    var addonNames = [];
+                                    for (var i = 0; i < dependencies.length; i++) {
+                                        var name = kcm.addonModel.sourceModel.addonName(dependencies[i]);
+                                        if (name) {
+                                            addonNames.push(name);
+                                        }
+                                    }
+                                    depWarning = depWarning.concat(i18n("- Disable %1:\n", addonNames.join(sep)));
+                                }
+                                if (optionalDependencies.length > 0) {
+                                    var addonNames = [];
+                                    for (var i = 0; i < optionalDependencies.length; i++) {
+                                        var name = kcm.addonModel.sourceModel.addonName(optionalDependencies[i]);
+                                        if (name) {
+                                            addonNames.push(name);
+                                        }
+                                    }
+                                    depWarning = depWarning.concat(i18n("- Disable some features in: %1\n", addonNames.join(sep)));
+                                }
+                                disableAddonWarning.text = i18n("Disabling %1 will also:\n%2Are you sure you want to disable it?", model.name, depWarning);
+                                disableAddonWarning.visible = true;
+                            }
+                        }
                         needsSave = true
                     }
                 }
@@ -64,11 +98,31 @@ KCM.ScrollViewKCM {
         }
     }
 
-    header: RowLayout {
-        TextField {
+    header: ColumnLayout {
+        Kirigami.InlineMessage {
+            id: disableAddonWarning
+
             Layout.fillWidth: true
-            id: search
-            placeholderText: i18n("Search...")
+            type: Kirigami.MessageType.Warning
+            showCloseButton: true
+            actions: [
+                Kirigami.Action {
+                    iconName: "edit-undo"
+                    text: i18n("Re-Enable")
+                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
+                    onTriggered: {
+                        kcm.addonModel.sourceModel.enable(reenableAddon);
+                        disableAddonWarning.visible = false;
+                    }
+                }
+            ]
+        }
+        RowLayout {
+            TextField {
+                Layout.fillWidth: true
+                id: search
+                placeholderText: i18n("Search...")
+            }
         }
     }
 

@@ -18,7 +18,9 @@ enum ExtraRoles {
     AddonNameRole,
     RowTypeRole,
     CategoryRole,
-    CategoryNameRole
+    CategoryNameRole,
+    DependenciesRole,
+    OptDependenciesRole,
 };
 
 enum RowType {
@@ -33,6 +35,7 @@ public:
     explicit AddonModel(QObject *parent);
     bool setData(const QModelIndex &index, const QVariant &value,
                  int role = Qt::EditRole) override;
+    QModelIndex findAddon(const QString &addon) const;
 
     void setAddons(const FcitxQtAddonInfoV2List &list) {
         beginResetModel();
@@ -60,7 +63,7 @@ public:
     const auto &disabledList() const { return disabledList_; }
 
 signals:
-    void changed();
+    void changed(const QString &addon, bool enabled);
 
 protected:
     int listSize() const override { return addonEntryList_.size(); }
@@ -94,6 +97,16 @@ public:
     const auto &enabledList() const { return enabledList_; }
     const auto &disabledList() const { return disabledList_; }
 
+    Q_INVOKABLE QString addonName(const QString &uniqueName) {
+        if (auto iter = nameToAddonMap_.find(uniqueName);
+            iter != nameToAddonMap_.end()) {
+            return iter->name();
+        }
+        return {};
+    }
+
+    Q_INVOKABLE void enable(const QString &addon);
+
 signals:
     void changed();
 
@@ -101,6 +114,9 @@ private:
     QSet<QString> enabledList_;
     QSet<QString> disabledList_;
     FcitxQtAddonInfoV2List addonEntryList_;
+    QMap<QString, FcitxQtAddonInfoV2> nameToAddonMap_;
+    QMap<QString, QStringList> reverseDependencies_;
+    QMap<QString, QStringList> reverseOptionalDependencies_;
 };
 
 class AddonProxyModel : public QSortFilterProxyModel {
@@ -108,7 +124,11 @@ class AddonProxyModel : public QSortFilterProxyModel {
     Q_PROPERTY(QString filterText READ filterText WRITE setFilterText);
 
 public:
-    explicit AddonProxyModel(QObject *parent) : QSortFilterProxyModel(parent) {}
+    explicit AddonProxyModel(QObject *parent) : QSortFilterProxyModel(parent) {
+        setDynamicSortFilter(true);
+        setRecursiveFilteringEnabled(true);
+        sort(0);
+    }
 
     // Forward role names.
     QHash<int, QByteArray> roleNames() const override {

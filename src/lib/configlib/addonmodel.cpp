@@ -6,6 +6,7 @@
  */
 #include "addonmodel.h"
 #include <QCollator>
+#include <QDebug>
 #include <fcitx-utils/i18n.h>
 #include <fcitx/addoninfo.h>
 
@@ -96,9 +97,9 @@ bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
 
     bool ret = false;
 
+    auto &item = addonList[index.row()];
     if (role == Qt::CheckStateRole) {
         auto oldData = data(index, role).toBool();
-        auto &item = addonList[index.row()];
         auto enabled = value.toBool();
         if (item.enabled() == enabled) {
             enabledList_.remove(item.uniqueName());
@@ -112,14 +113,25 @@ bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
         }
         auto newData = data(index, role).toBool();
         ret = oldData != newData;
-    }
 
-    if (ret) {
-        emit dataChanged(index, index);
-        emit changed();
+        if (ret) {
+            emit dataChanged(index, index);
+            emit changed(item.uniqueName(), newData);
+        }
     }
 
     return ret;
+}
+QModelIndex AddonModel::findAddon(const QString &addon) const {
+    for (int i = 0; i < addonEntryList_.size(); i++) {
+        for (int j = 0; j < addonEntryList_[i].second.size(); j++) {
+            const auto &addonList = addonEntryList_[i].second;
+            if (addonList[j].uniqueName() == addon) {
+                return index(j, 0, index(i, 0));
+            }
+        }
+    }
+    return QModelIndex();
 }
 
 FlatAddonModel::FlatAddonModel(QObject *parent) : QAbstractListModel(parent) {}
@@ -186,6 +198,13 @@ QVariant FlatAddonModel::data(const QModelIndex &index, int role) const {
     case CategoryNameRole:
         return categoryName(addon.category());
 
+    case DependenciesRole:
+        return reverseDependencies_.value(addon.uniqueName());
+        ;
+
+    case OptDependenciesRole:
+        return reverseOptionalDependencies_.value(addon.uniqueName());
+
     case Qt::CheckStateRole:
         if (disabledList_.contains(addon.uniqueName())) {
             return false;
@@ -209,19 +228,53 @@ int FlatAddonModel::rowCount(const QModelIndex &parent) const {
 }
 
 QHash<int, QByteArray> FlatAddonModel::roleNames() const {
-    return {
-        {Qt::DisplayRole, "name"},          {CommentRole, "comment"},
-        {ConfigurableRole, "configurable"}, {AddonNameRole, "uniqueName"},
-        {CategoryRole, "category"},         {CategoryNameRole, "categoryName"},
-        {Qt::CheckStateRole, "enabled"}};
+    return {{Qt::DisplayRole, "name"},
+            {CommentRole, "comment"},
+            {ConfigurableRole, "configurable"},
+            {AddonNameRole, "uniqueName"},
+            {CategoryRole, "category"},
+            {CategoryNameRole, "categoryName"},
+            {Qt::CheckStateRole, "enabled"},
+            {DependenciesRole, "dependencies"},
+            {OptDependenciesRole, "optionalDependencies"}};
 }
 
 void FlatAddonModel::setAddons(const fcitx::FcitxQtAddonInfoV2List &list) {
     beginResetModel();
     addonEntryList_ = list;
+    nameToAddonMap_.clear();
+    reverseDependencies_.clear();
+    reverseOptionalDependencies_.clear();
+    for (const auto &addon : list) {
+        nameToAddonMap_[addon.uniqueName()] = addon;
+    }
+    for (const auto &addon : list) {
+        for (const auto &dep : addon.dependencies()) {
+            if (!nameToAddonMap_.contains(dep)) {
+                continue;
+            }
+            reverseDependencies_[dep].append(addon.uniqueName());
+        }
+        for (const auto &dep : addon.optionalDependencies()) {
+            if (!nameToAddonMap_.contains(dep)) {
+                continue;
+            }
+            reverseOptionalDependencies_[dep].append(addon.uniqueName());
+        }
+    }
+    qDebug() << reverseDependencies_ << reverseOptionalDependencies_;
     enabledList_.clear();
     disabledList_.clear();
     endResetModel();
+}
+
+void FlatAddonModel::enable(const QString &addon) {
+    for (int i = 0; i < addonEntryList_.size(); i++) {
+        if (addonEntryList_[i].uniqueName() == addon) {
+            setData(index(i, 0), true, Qt::CheckStateRole);
+            return;
+        }
+    }
 }
 
 bool AddonProxyModel::filterAcceptsRow(int sourceRow,

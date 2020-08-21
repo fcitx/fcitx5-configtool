@@ -15,6 +15,7 @@
 #include <KWidgetItemDelegate>
 #include <QApplication>
 #include <QCheckBox>
+#include <QMessageBox>
 #include <QPainter>
 #include <QToolButton>
 #include <QVBoxLayout>
@@ -273,11 +274,21 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
             &AddonSelector::availabilityChanged);
 
     proxyModel_->setSourceModel(addonModel_);
-    proxyModel_->sort(0);
     ui_->listView->setModel(proxyModel_);
     connect(proxyModel_, &QAbstractItemModel::layoutChanged, ui_->listView,
             &QTreeView::expandAll);
-    connect(addonModel_, &AddonModel::changed, this, &AddonSelector::changed);
+    connect(addonModel_, &AddonModel::changed, this,
+            [this](const QString &addon, bool enabled) {
+                if (!enabled) {
+                    if (!reverseDependencies_.value(addon).empty() ||
+                        !reverseOptionalDependencies_.value(addon).empty()) {
+                        QMetaObject::invokeMethod(
+                            this, [this, addon]() { warnAddonDisable(addon); },
+                            Qt::QueuedConnection);
+                    }
+                }
+                emit changed();
+            });
 
     delegate_ = new AddonDelegate(ui_->listView, this);
     ui_->listView->setItemDelegate(delegate_);
@@ -285,6 +296,10 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
 
     connect(ui_->lineEdit, &QLineEdit::textChanged, proxyModel_,
             &AddonProxyModel::setFilterText);
+    connect(ui_->advancedCheckbox, &QCheckBox::toggled, this,
+            [this]() { proxyModel_->invalidate(); });
+    connect(addonModel_, &AddonProxyModel::dataChanged, this,
+            [this]() { proxyModel_->invalidate(); });
 }
 
 AddonSelector::~AddonSelector() { delete delegate_; }
@@ -331,10 +346,73 @@ void AddonSelector::fetchAddonFinished(QDBusPendingCallWatcher *watcher) {
         return;
     }
     QDBusPendingReply<FcitxQtAddonInfoV2List> reply(*watcher);
+    nameToAddonMap_.clear();
+    reverseDependencies_.clear();
+    reverseOptionalDependencies_.clear();
+    auto list = reply.value();
+    for (const auto &addon : list) {
+        nameToAddonMap_[addon.uniqueName()] = addon;
+    }
+    for (const auto &addon : list) {
+        for (const auto &dep : addon.dependencies()) {
+            if (!nameToAddonMap_.contains(dep)) {
+                continue;
+            }
+            reverseDependencies_[dep].append(addon.uniqueName());
+        }
+        for (const auto &dep : addon.optionalDependencies()) {
+            if (!nameToAddonMap_.contains(dep)) {
+                continue;
+            }
+            reverseOptionalDependencies_[dep].append(addon.uniqueName());
+        }
+    }
     addonModel_->setAddons(reply.value());
     proxyModel_->sort(0);
 
     ui_->listView->expandAll();
+}
+
+void AddonSelector::warnAddonDisable(const QString &addon) {
+    if (!nameToAddonMap_.contains(addon)) {
+        return;
+    }
+
+    const auto &addonInfo = nameToAddonMap_[addon];
+    QString depWarning, optDepWarning;
+    QString sep{C_("Separator of a comma list", ", ")};
+    if (auto deps = reverseDependencies_.value(addon); !deps.empty()) {
+        QStringList addonNames;
+        for (const auto &dep : deps) {
+            auto iter = nameToAddonMap_.find(dep);
+            if (iter == nameToAddonMap_.end()) {
+                continue;
+            }
+            addonNames << iter->name();
+        }
+        depWarning = QString(_("- Disable %1:\n")).arg(addonNames.join(sep));
+    }
+    if (auto deps = reverseOptionalDependencies_.value(addon); !deps.empty()) {
+        QStringList addonNames;
+        for (const auto &dep : deps) {
+            auto iter = nameToAddonMap_.find(dep);
+            if (iter == nameToAddonMap_.end()) {
+                continue;
+            }
+            addonNames << iter->name();
+        }
+        optDepWarning = QString(_("- Disable some features in: %1\n"))
+                            .arg(addonNames.join(sep));
+    }
+    auto warning = QString(_("Disabling %1 will also:\n%2%3\nAre you sure you "
+                             "want to disable it?"))
+                       .arg(addonInfo.name(), depWarning, optDepWarning);
+    if (QMessageBox::No ==
+        QMessageBox::question(
+            this, QString(_("Disable %1")).arg(addonInfo.name()), warning)) {
+        addonModel_->setData(addonModel_->findAddon(addonInfo.uniqueName()),
+                             true, Qt::CheckStateRole);
+    }
 }
 
 QString AddonSelector::searchText() const { return ui_->lineEdit->text(); }

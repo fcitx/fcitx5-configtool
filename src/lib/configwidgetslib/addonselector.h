@@ -6,7 +6,9 @@
 #ifndef _KCM_FCITX_ADDONSELECTOR_H_
 #define _KCM_FCITX_ADDONSELECTOR_H_
 
+#include <QMap>
 #include <QWidget>
+#include <fcitxqtdbustypes.h>
 #include <memory>
 
 class QDBusPendingCallWatcher;
@@ -44,9 +46,14 @@ signals:
 private slots:
     void fetchAddonFinished(QDBusPendingCallWatcher *);
     void availabilityChanged();
+    void warnAddonDisable(const QString &addon);
 
 private:
     DBusProvider *dbus_;
+    QMap<QString, FcitxQtAddonInfoV2> nameToAddonMap_;
+    QMap<QString, QStringList> reverseDependencies_;
+    QMap<QString, QStringList> reverseOptionalDependencies_;
+
     AddonModel *addonModel_;
     AddonProxyModel *proxyModel_;
     AddonDelegate *delegate_;
