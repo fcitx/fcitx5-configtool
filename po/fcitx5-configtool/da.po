@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-21 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -34,7 +34,7 @@ msgstr "%1 (%2)"
 #: src/lib/configlib/layoutprovider.cpp:154
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:426
 #: src/lib/configwidgetslib/optionwidget.cpp:437
@@ -62,7 +62,7 @@ msgstr "En generel tastaturlayout-fremviser"
 msgid "Add"
 msgstr "Tilføj"
 
-#: src/configtool/mainwindow.cpp:28
+#: src/configtool/mainwindow.cpp:35
 msgid "Addons"
 msgstr "Tilføjelser"
 
@@ -147,7 +147,7 @@ msgstr "Fcitx-konfiguration"
 msgid "Frontend"
 msgstr "Frontend"
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:34
 msgid "Global Options"
 msgstr "Globale valgmuligheder"
 
@@ -162,7 +162,7 @@ msgstr "Gruppenavn:"
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
 msgid "Input Method"
 msgstr "Inputmetode"
 

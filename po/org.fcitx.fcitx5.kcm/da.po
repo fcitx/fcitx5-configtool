@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-21 00:02-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -45,7 +45,7 @@ msgstr "Tilføj inputmetode"
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "Tilføj inputmetode ..."
 
 #: src/kcm/package/contents/ui/KeyListOption.qml:96
 #, kde-format
@@ -146,13 +146,13 @@ msgstr "Gruppenavn"
 #: src/kcm/package/contents/ui/main.qml:106
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "Gruppe:"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
 msgstr "Inputmetode"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:155
+#: src/kcm/package/contents/ui/KeyOption.qml:156
 #, kde-format
 msgid "Key code mode"
 msgstr "Tastekode-tilstand"
@@ -224,22 +224,22 @@ msgstr "Vælg layout"
 #: src/kcm/package/contents/ui/main.qml:212
 #, kde-format
 msgid "Select layout for %1"
-msgstr ""
+msgstr "Vælg layout til %1"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr ""
+msgstr "Vælg systemets tastaturlayout ..."
 
 #: src/kcm/package/contents/ui/main.qml:148
 #, kde-format
 msgid "Select system layout for group %1"
-msgstr ""
+msgstr "Vælg systemets layout til gruppen %1"
 
 #: src/kcm/package/contents/ui/main.qml:145
 #, kde-format
 msgid "Select system layout..."
-msgstr ""
+msgstr "Vælg systemets layout ..."
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format
