@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-21 00:02-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,21 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:455
 #, kde-format
 msgid "%1:"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:383
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:393
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:404
+#, kde-format
+msgid "- Disable some features in: %1\n"
 msgstr ""
 
 #: layout/main.cpp:23
@@ -91,7 +106,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
+#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -109,6 +124,19 @@ msgstr ""
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:412
+#, kde-format
+msgid "Disable %1"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:407
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2%3\n"
+"Are you sure you want to disable it?"
 msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:150
@@ -138,7 +166,7 @@ msgstr ""
 msgid "Fcitx Configuration"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr ""
 
@@ -157,7 +185,7 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr ""
 
@@ -202,11 +230,11 @@ msgstr ""
 msgid "Layout:"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
 msgstr ""
 
@@ -299,7 +327,7 @@ msgid ""
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
 msgstr ""
 

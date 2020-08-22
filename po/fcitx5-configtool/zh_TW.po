@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -49,6 +49,21 @@ msgstr ""
 msgid "%1:"
 msgstr "%1："
 
+#: src/lib/configwidgetslib/addonselector.cpp:383
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:393
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:404
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
+
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
 msgstr "一般鍵盤佈局檢視器"
@@ -64,7 +79,7 @@ msgstr "一般鍵盤佈局檢視器"
 msgid "Add"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:28
+#: src/configtool/mainwindow.cpp:35
 msgid "Addons"
 msgstr ""
 
@@ -98,7 +113,7 @@ msgstr "變更系統配置以符合選擇的輸入法。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
+#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -117,6 +132,19 @@ msgstr "目前的群組已變更"
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "預設"
+
+#: src/lib/configwidgetslib/addonselector.cpp:412
+#, kde-format
+msgid "Disable %1"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:407
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2%3\n"
+"Are you sure you want to disable it?"
+msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -145,11 +173,11 @@ msgstr ""
 msgid "Fcitx Configuration"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "前端"
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:34
 msgid "Global Options"
 msgstr ""
 
@@ -164,7 +192,7 @@ msgstr "群組名稱："
 msgid "Group:"
 msgstr "群組："
 
-#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "輸入法"
 
@@ -209,11 +237,11 @@ msgstr "語言："
 msgid "Layout:"
 msgstr "佈局："
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
 msgstr "載入器"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
 msgstr "模組"
 
@@ -308,7 +336,7 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
 msgstr "使用者介面"
 

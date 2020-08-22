@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -48,6 +48,21 @@ msgstr ""
 msgid "%1:"
 msgstr "%1:"
 
+#: src/lib/configwidgetslib/addonselector.cpp:383
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:393
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:404
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
+
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 자판 보기도구"
@@ -63,7 +78,7 @@ msgstr "일반 키보드 자판 보기도구"
 msgid "Add"
 msgstr "추가"
 
-#: src/configtool/mainwindow.cpp:28
+#: src/configtool/mainwindow.cpp:35
 msgid "Addons"
 msgstr "애드온"
 
@@ -97,7 +112,7 @@ msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다.
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
+#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -116,6 +131,19 @@ msgstr "현재 그룹이 변경됨"
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "기본값"
+
+#: src/lib/configwidgetslib/addonselector.cpp:412
+#, kde-format
+msgid "Disable %1"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:407
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2%3\n"
+"Are you sure you want to disable it?"
+msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -144,11 +172,11 @@ msgstr "편집"
 msgid "Fcitx Configuration"
 msgstr "Fcitx 환경설정"
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "전처리기"
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:34
 msgid "Global Options"
 msgstr "전역 옵션"
 
@@ -163,7 +191,7 @@ msgstr "그룹 이름:"
 msgid "Group:"
 msgstr "그룹:"
 
-#: src/configtool/mainwindow.cpp:23 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "입력기"
 
@@ -208,11 +236,11 @@ msgstr "언어:"
 msgid "Layout:"
 msgstr "자판:"
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
 msgstr "불러오기 도구"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
 msgstr "모듈"
 
@@ -307,7 +335,7 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
 msgstr "사용자 인터페이스"
 

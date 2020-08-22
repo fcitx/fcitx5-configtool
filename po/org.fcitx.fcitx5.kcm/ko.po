@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -19,6 +19,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/kcm/package/contents/ui/AddonPage.qml:53
+#, kde-format
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:63
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:73
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
@@ -52,7 +68,7 @@ msgstr ""
 msgid "Add shortcut"
 msgstr "단축키 추가"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:16
+#: src/kcm/package/contents/ui/AddonPage.qml:18
 #, kde-format
 msgid "Addons"
 msgstr "애드온"
@@ -111,6 +127,13 @@ msgstr "현재 그룹이 변경됨"
 msgid "Current page is not yet saved. Please save the config first."
 msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 설정을 저장하십시오."
 
+#: src/kcm/package/contents/ui/AddonPage.qml:75
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2Are you sure you want to disable it?"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -151,7 +174,7 @@ msgstr ""
 msgid "Input Method"
 msgstr "입력기"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:155
+#: src/kcm/package/contents/ui/KeyOption.qml:156
 #, kde-format
 msgid "Key code mode"
 msgstr "키 코드 모드"
@@ -187,6 +210,11 @@ msgstr "확인"
 msgid "Only &Show Current Language"
 msgstr "현재 언어만 표시(&S)"
 
+#: src/kcm/package/contents/ui/AddonPage.qml:111
+#, kde-format
+msgid "Re-Enable"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:219
 #: src/kcm/package/contents/ui/ListOption.qml:122
 #, kde-format
@@ -198,7 +226,7 @@ msgstr "제거"
 msgid "Run Fcitx"
 msgstr "Fcitx 실행"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:71
+#: src/kcm/package/contents/ui/AddonPage.qml:124
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."

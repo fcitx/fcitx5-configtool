@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-13 00:01-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -47,6 +47,21 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "%1:"
 msgstr "%1："
+
+#: src/lib/configwidgetslib/addonselector.cpp:383
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:393
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:404
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
@@ -97,7 +112,7 @@ msgstr "更改系统布局以匹配输入方式选择。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
+#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -116,6 +131,19 @@ msgstr "当前分组已修改"
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "默认"
+
+#: src/lib/configwidgetslib/addonselector.cpp:412
+#, kde-format
+msgid "Disable %1"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:407
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2%3\n"
+"Are you sure you want to disable it?"
+msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -144,7 +172,7 @@ msgstr "编辑"
 msgid "Fcitx Configuration"
 msgstr "Fcitx 配置"
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "前端"
 
@@ -163,7 +191,7 @@ msgstr "分组名称："
 msgid "Group:"
 msgstr "分组："
 
-#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "输入法"
 
@@ -208,11 +236,11 @@ msgstr "语言："
 msgid "Layout:"
 msgstr "布局："
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
 msgstr "启动器"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
 msgstr "模块"
 
@@ -307,7 +335,7 @@ msgstr ""
 "第一个输入法将为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称</"
 "i></b>放在第一位。"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
 msgstr "界面"
 

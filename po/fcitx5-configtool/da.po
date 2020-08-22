@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-21 00:02-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -46,6 +46,21 @@ msgstr "%1 - %2"
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
+
+#: src/lib/configwidgetslib/addonselector.cpp:383
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:393
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:404
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
@@ -96,7 +111,7 @@ msgstr "Skift systemets layout til at matche valget af inputmetode."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:183 rc.cpp:63
+#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
@@ -115,6 +130,19 @@ msgstr "Nuværende gruppe ændret"
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "Standard"
+
+#: src/lib/configwidgetslib/addonselector.cpp:412
+#, kde-format
+msgid "Disable %1"
+msgstr ""
+
+#: src/lib/configwidgetslib/addonselector.cpp:407
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2%3\n"
+"Are you sure you want to disable it?"
+msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -143,7 +171,7 @@ msgstr "Rediger"
 msgid "Fcitx Configuration"
 msgstr "Fcitx-konfiguration"
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "Frontend"
 
@@ -162,7 +190,7 @@ msgstr "Gruppenavn:"
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:21
+#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "Inputmetode"
 
@@ -207,11 +235,11 @@ msgstr "Sprog:"
 msgid "Layout:"
 msgstr "Layout:"
 
-#: src/lib/configlib/addonmodel.cpp:21
+#: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
 msgstr "Indlæser"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
 msgstr "Modul"
 
@@ -306,7 +334,7 @@ msgstr ""
 "Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
 "stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
 msgstr "Brugerflade"
 

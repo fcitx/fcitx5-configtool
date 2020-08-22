@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-07 00:01-0700\n"
+"POT-Creation-Date: 2020-08-22 00:01-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: src/kcm/package/contents/ui/AddonPage.qml:53
+#, kde-format
+msgctxt "Separator of a comma list"
+msgid ", "
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:63
+#, kde-format
+msgid "- Disable %1:\n"
+msgstr ""
+
+#: src/kcm/package/contents/ui/AddonPage.qml:73
+#, kde-format
+msgid "- Disable some features in: %1\n"
+msgstr ""
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
@@ -53,7 +69,7 @@ msgstr ""
 msgid "Add shortcut"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:16
+#: src/kcm/package/contents/ui/AddonPage.qml:18
 #, kde-format
 msgid "Addons"
 msgstr ""
@@ -112,6 +128,13 @@ msgstr "Текущая группа изменена"
 msgid "Current page is not yet saved. Please save the config first."
 msgstr ""
 
+#: src/kcm/package/contents/ui/AddonPage.qml:75
+#, kde-format
+msgid ""
+"Disabling %1 will also:\n"
+"%2Are you sure you want to disable it?"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -152,7 +175,7 @@ msgstr ""
 msgid "Input Method"
 msgstr "Метод ввода"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:155
+#: src/kcm/package/contents/ui/KeyOption.qml:156
 #, kde-format
 msgid "Key code mode"
 msgstr ""
@@ -188,6 +211,11 @@ msgstr ""
 msgid "Only &Show Current Language"
 msgstr "&Показывать только текущий язык"
 
+#: src/kcm/package/contents/ui/AddonPage.qml:111
+#, kde-format
+msgid "Re-Enable"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:219
 #: src/kcm/package/contents/ui/ListOption.qml:122
 #, kde-format
@@ -199,7 +227,7 @@ msgstr ""
 msgid "Run Fcitx"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:71
+#: src/kcm/package/contents/ui/AddonPage.qml:124
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."
