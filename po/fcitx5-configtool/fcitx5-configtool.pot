@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-29 00:01-0700\n"
+"POT-Creation-Date: 2020-09-01 00:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -246,7 +246,7 @@ msgstr ""
 msgid "New Group"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "No"
 msgstr ""
 
@@ -355,7 +355,7 @@ msgstr ""
 msgid "View keyboard layout"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
 msgstr ""
 
@@ -371,7 +371,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:532
+#: src/lib/configwidgetslib/optionwidget.cpp:537
 #, kde-format
 msgid "[%1]"
 msgstr ""

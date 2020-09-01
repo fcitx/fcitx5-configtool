@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-22 00:01-0700\n"
+"POT-Creation-Date: 2020-09-01 00:01-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/ListOption.qml:180
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
@@ -62,7 +62,7 @@ msgstr ""
 msgid "Add Input Method..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/KeyListOption.qml:96
+#: src/kcm/package/contents/ui/KeyListOption.qml:98
 #, kde-format
 msgid "Add shortcut"
 msgstr ""
@@ -193,7 +193,7 @@ msgstr "Disposició:"
 msgid "Name:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:37
+#: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "No"
 msgstr "No"
@@ -215,7 +215,7 @@ msgid "Re-Enable"
 msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:219
-#: src/kcm/package/contents/ui/ListOption.qml:122
+#: src/kcm/package/contents/ui/ListOption.qml:123
 #, kde-format
 msgid "Remove"
 msgstr ""
@@ -231,15 +231,10 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/FontOption.qml:27
+#: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
-
-#: src/kcm/package/contents/ui/FontOption.qml:22
-#, kde-format
-msgid "Select Font..."
 msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:208
@@ -282,7 +277,7 @@ msgstr "Variant:"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/kcm/package/contents/ui/ListOption.qml:37
+#: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "Yes"
 msgstr "Sí"
@@ -301,12 +296,12 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:71
+#: src/kcm/package/contents/ui/ListOption.qml:72
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:115
+#: src/kcm/package/contents/ui/ListOption.qml:116
 #, kde-format
 msgid "edit"
 msgstr ""

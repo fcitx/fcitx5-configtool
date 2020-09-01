@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-29 00:01-0700\n"
+"POT-Creation-Date: 2020-09-01 00:01-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -41,7 +41,7 @@ msgstr "- Deaktivér nogle funktionaliteter i: %1\n"
 msgid "..."
 msgstr " ..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/ListOption.qml:180
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
@@ -63,7 +63,7 @@ msgstr "Tilføj inputmetode"
 msgid "Add Input Method..."
 msgstr "Tilføj inputmetode ..."
 
-#: src/kcm/package/contents/ui/KeyListOption.qml:96
+#: src/kcm/package/contents/ui/KeyListOption.qml:98
 #, kde-format
 msgid "Add shortcut"
 msgstr "Tilføj genvej"
@@ -197,7 +197,7 @@ msgstr "Layout:"
 msgid "Name:"
 msgstr "Navn:"
 
-#: src/kcm/package/contents/ui/ListOption.qml:37
+#: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "No"
 msgstr "Nej"
@@ -219,7 +219,7 @@ msgid "Re-Enable"
 msgstr "Genaktivér"
 
 #: src/kcm/package/contents/ui/main.qml:219
-#: src/kcm/package/contents/ui/ListOption.qml:122
+#: src/kcm/package/contents/ui/ListOption.qml:123
 #, kde-format
 msgid "Remove"
 msgstr "Fjern"
@@ -235,16 +235,11 @@ msgstr "Kør Fcitx"
 msgid "Search..."
 msgstr "Søg ..."
 
-#: src/kcm/package/contents/ui/FontOption.qml:27
+#: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
 msgstr "Vælg skrifttype"
-
-#: src/kcm/package/contents/ui/FontOption.qml:22
-#, kde-format
-msgid "Select Font..."
-msgstr "Vælg skrifttype ..."
 
 #: src/kcm/package/contents/ui/main.qml:208
 #, kde-format
@@ -286,7 +281,7 @@ msgstr "Variant:"
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/kcm/package/contents/ui/ListOption.qml:37
+#: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "Yes"
 msgstr "Ja"
@@ -309,12 +304,12 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/kcm/package/contents/ui/ListOption.qml:71
+#: src/kcm/package/contents/ui/ListOption.qml:72
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:115
+#: src/kcm/package/contents/ui/ListOption.qml:116
 #, kde-format
 msgid "edit"
 msgstr "rediger"
