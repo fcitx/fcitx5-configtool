@@ -46,6 +46,9 @@ Loader {
         }
     }
 
+    ToolTip.visible: option.properties && option.properties.hasOwnProperty("Tooltip") && loader.item ? loader.item.hovered : false
+    ToolTip.delay: Kirigami.Units.toolTipDelay
+    ToolTip.text: option.properties && option.properties.hasOwnProperty("Tooltip") ? option.properties["Tooltip"] : ""
     Component.onCompleted: {
         if (!option.isSection) {
             var prop = {

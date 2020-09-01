@@ -16,6 +16,7 @@ ColumnLayout {
     property variant rawValue
     property string typeName
     property bool needsSave: false
+    property alias hovered: addButton.hovered
 
     // functions {{{
     function getOption() {
@@ -174,6 +175,7 @@ ColumnLayout {
 
     RowLayout {
         ToolButton {
+            id: addButton
             icon.name: "list-add-symbolic"
             text: i18n("Add")
             onClicked: {

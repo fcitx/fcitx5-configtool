@@ -437,7 +437,7 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "Boolean") {
         widget = new BooleanOptionWidget(option, path, parent);
-        layout->addRow(widget);
+        layout->addRow("", widget);
     } else if (option.type() == "Key") {
         widget = new KeyOptionWidget(option, path, parent);
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
@@ -453,6 +453,11 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
     } else if (option.type() == "External") {
         widget = new ExternalOptionWidget(option, path, parent);
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+    }
+    if (widget) {
+        if (option.properties().contains("Tooltip")) {
+            widget->setToolTip(option.properties().value("Tooltip").toString());
+        }
     }
     return widget;
 }

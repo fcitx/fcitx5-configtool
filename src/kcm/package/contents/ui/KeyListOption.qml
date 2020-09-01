@@ -15,6 +15,7 @@ ColumnLayout {
     property variant properties
     property variant rawValue
     property bool needsSave
+    property alias hovered: addButton.hovered
 
     function load(rawValue) {
         var diff = false;
@@ -91,6 +92,7 @@ ColumnLayout {
     }
 
     Button {
+        id: addButton
         Layout.alignment: Qt.AlignVCenter
         icon.name: "list-add-symbolic"
         text: i18n("Add shortcut")

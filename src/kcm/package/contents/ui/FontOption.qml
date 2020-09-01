@@ -13,29 +13,24 @@ Button {
     property variant rawValue
     property bool needsSave: text != rawValue
 
-    icon.name: "document-edit"
-    text: kcm.fontToString(fontDialog.font)
-    onClicked: fontDialog.open()
-
-    ToolTip {
-        visible: parent.hovered
-        text: i18n("Select Font...")
-    }
-
-    QtDialogs.FontDialog {
-        id: fontDialog
-        title: i18nc("@title:window", "Select Font")
-    }
-
-    Component.onCompleted: {
-        load(rawValue)
-    }
-
     function load(rawValue) {
         fontDialog.font = kcm.parseFont(rawValue)
     }
 
     function save() {
         rawValue = text
+    }
+
+    icon.name: "document-edit"
+    text: kcm.fontToString(fontDialog.font)
+    onClicked: fontDialog.open()
+
+    Component.onCompleted: {
+        load(rawValue)
+    }
+
+    QtDialogs.FontDialog {
+        id: fontDialog
+        title: i18nc("@title:window", "Select Font")
     }
 }
