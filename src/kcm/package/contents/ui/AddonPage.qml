@@ -60,7 +60,7 @@ KCM.ScrollViewKCM {
                                             addonNames.push(name);
                                         }
                                     }
-                                    depWarning = depWarning.concat(i18n("- Disable %1:\n", addonNames.join(sep)));
+                                    depWarning = depWarning.concat(i18n("- Disable %1\n", addonNames.join(sep)));
                                 }
                                 if (optionalDependencies.length > 0) {
                                     var addonNames = [];
@@ -70,9 +70,9 @@ KCM.ScrollViewKCM {
                                             addonNames.push(name);
                                         }
                                     }
-                                    depWarning = depWarning.concat(i18n("- Disable some features in: %1\n", addonNames.join(sep)));
+                                    depWarning = depWarning.concat(i18n("- Disable some features in %1\n", addonNames.join(sep)));
                                 }
-                                disableAddonWarning.text = i18n("Disabling %1 will also:\n%2Are you sure you want to disable it?", model.name, depWarning);
+                                disableAddonWarning.text = i18n("Disabling %1 will also:\n%2\nAre you sure you want to disable it?", model.name, depWarning);
                                 disableAddonWarning.visible = true;
                             }
                         }

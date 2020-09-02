@@ -390,7 +390,7 @@ void AddonSelector::warnAddonDisable(const QString &addon) {
             }
             addonNames << iter->name();
         }
-        depWarning = QString(_("- Disable %1:\n")).arg(addonNames.join(sep));
+        depWarning = QString(_("- Disable %1\n")).arg(addonNames.join(sep));
     }
     if (auto deps = reverseOptionalDependencies_.value(addon); !deps.empty()) {
         QStringList addonNames;
@@ -401,7 +401,7 @@ void AddonSelector::warnAddonDisable(const QString &addon) {
             }
             addonNames << iter->name();
         }
-        optDepWarning = QString(_("- Disable some features in: %1\n"))
+        optDepWarning = QString(_("- Disable some features in %1\n"))
                             .arg(addonNames.join(sep));
     }
     auto warning = QString(_("Disabling %1 will also:\n%2%3\nAre you sure you "
