@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-22 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: byStarTW (pan93412) <pan93412@gmail.com>, 2019\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -56,12 +56,12 @@ msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
-msgid "- Disable %1:\n"
+msgid "- Disable %1\n"
 msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
-msgid "- Disable some features in: %1\n"
+msgid "- Disable some features in %1\n"
 msgstr ""
 
 #: layout/main.cpp:23
@@ -253,7 +253,7 @@ msgstr "多語言"
 msgid "New Group"
 msgstr "新群組"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "No"
 msgstr "取消"
 
@@ -364,7 +364,7 @@ msgstr "變體"
 msgid "View keyboard layout"
 msgstr "檢視鍵盤佈局"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
 msgstr "確定"
 
@@ -380,7 +380,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:532
+#: src/lib/configwidgetslib/optionwidget.cpp:537
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

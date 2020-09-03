@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-22 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -51,16 +51,16 @@ msgstr "%1："
 #: src/lib/configwidgetslib/addonselector.cpp:383
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr "，"
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
-msgid "- Disable %1:\n"
+msgid "- Disable %1\n"
 msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
-msgid "- Disable some features in: %1\n"
+msgid "- Disable some features in %1\n"
 msgstr ""
 
 #: layout/main.cpp:23
@@ -135,7 +135,7 @@ msgstr "默认"
 #: src/lib/configwidgetslib/addonselector.cpp:412
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "禁用 %1"
 
 #: src/lib/configwidgetslib/addonselector.cpp:407
 #, kde-format
@@ -144,6 +144,9 @@ msgid ""
 "%2%3\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"禁用 %1 将同时：\n"
+"%2%3\n"
+"确认要禁用它吗？"
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
@@ -252,7 +255,7 @@ msgstr "多语言"
 msgid "New Group"
 msgstr "新建分组"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "No"
 msgstr "否"
 
@@ -363,7 +366,7 @@ msgstr "变体："
 msgid "View keyboard layout"
 msgstr "查看键盘布局"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
 msgstr "是"
 
@@ -380,7 +383,7 @@ msgid ""
 msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:532
+#: src/lib/configwidgetslib/optionwidget.cpp:537
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

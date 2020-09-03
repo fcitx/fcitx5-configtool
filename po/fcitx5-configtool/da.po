@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-27 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -54,13 +54,13 @@ msgstr ", "
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
-msgid "- Disable %1:\n"
-msgstr "- Deaktivér %1:\n"
+msgid "- Disable %1\n"
+msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
-msgid "- Disable some features in: %1\n"
-msgstr "- Deaktivér nogle funktionaliteter i: %1\n"
+msgid "- Disable some features in %1\n"
+msgstr ""
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
@@ -254,7 +254,7 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "No"
 msgstr "Nej"
 
@@ -365,7 +365,7 @@ msgstr "Variant:"
 msgid "View keyboard layout"
 msgstr "Vis tastaturlayout"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
 msgstr "Ja"
 
@@ -385,7 +385,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:532
+#: src/lib/configwidgetslib/optionwidget.cpp:537
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

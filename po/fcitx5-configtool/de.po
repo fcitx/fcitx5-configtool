@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-08-22 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: mar well <m.wellendorf@gmx.de>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -54,12 +54,12 @@ msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
-msgid "- Disable %1:\n"
+msgid "- Disable %1\n"
 msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
-msgid "- Disable some features in: %1\n"
+msgid "- Disable some features in %1\n"
 msgstr ""
 
 #: layout/main.cpp:23
@@ -252,7 +252,7 @@ msgstr "Mehrsprachig"
 msgid "New Group"
 msgstr "Neue Gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "No"
 msgstr "Nein"
 
@@ -364,7 +364,7 @@ msgstr "Variante:"
 msgid "View keyboard layout"
 msgstr "Tastaturlayout ansehen"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:499
+#: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
 msgstr "Ja"
 
@@ -384,7 +384,7 @@ msgstr ""
 "Ihre gegenwärtig ausgewählte Eingabemethode passt nicht zu Ihrem Layout, "
 "wollen sie passenden Layouteinstellungen hinzufügen?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:532
+#: src/lib/configwidgetslib/optionwidget.cpp:537
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

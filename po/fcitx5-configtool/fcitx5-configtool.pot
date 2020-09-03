@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-01 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,12 @@ msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
-msgid "- Disable %1:\n"
+msgid "- Disable %1\n"
 msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
-msgid "- Disable some features in: %1\n"
+msgid "- Disable some features in %1\n"
 msgstr ""
 
 #: layout/main.cpp:23

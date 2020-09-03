@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-01 00:01-0700\n"
+"POT-Creation-Date: 2020-09-03 00:02-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -27,12 +27,12 @@ msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:63
 #, kde-format
-msgid "- Disable %1:\n"
+msgid "- Disable %1\n"
 msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:73
 #, kde-format
-msgid "- Disable some features in: %1\n"
+msgid "- Disable some features in %1\n"
 msgstr ""
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
@@ -130,7 +130,8 @@ msgstr ""
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
-"%2Are you sure you want to disable it?"
+"%2\n"
+"Are you sure you want to disable it?"
 msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:337
