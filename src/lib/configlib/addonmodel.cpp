@@ -262,7 +262,6 @@ void FlatAddonModel::setAddons(const fcitx::FcitxQtAddonInfoV2List &list) {
             reverseOptionalDependencies_[dep].append(addon.uniqueName());
         }
     }
-    qDebug() << reverseDependencies_ << reverseOptionalDependencies_;
     enabledList_.clear();
     disabledList_.clear();
     endResetModel();
