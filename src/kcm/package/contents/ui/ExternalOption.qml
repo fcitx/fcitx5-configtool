@@ -16,9 +16,6 @@ Button {
     function defaults() {}
 
     icon.name: "configure"
-    ToolTip.visible: option.properties.hasOwnProperty("Tooltip") ? hovered : hovered
-    ToolTip.delay: Kirigami.Units.toolTipDelay
-    ToolTip.text: option.properties.hasOwnProperty("Tooltip") ? option.properties["Tooltip"] : ""
     onClicked: {
         kcm.launchExternal(properties.External)
     }
