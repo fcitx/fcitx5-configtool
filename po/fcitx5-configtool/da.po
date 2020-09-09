@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-03 00:02-0700\n"
+"POT-Creation-Date: 2020-09-09 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -55,12 +55,12 @@ msgstr ", "
 #: src/lib/configwidgetslib/addonselector.cpp:393
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- Deaktivér %1\n"
 
 #: src/lib/configwidgetslib/addonselector.cpp:404
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- Deaktivér nogle funktionaliteter i %1\n"
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
