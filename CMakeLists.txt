@@ -8,13 +8,15 @@ include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings)
 include(FeatureSummary)
+include(ECMSetupVersion)
+include(GenerateExportHeader)
 option(ENABLE_KCM "Enable KDE Config Module" On)
 option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
 option(ENABLE_TEST "Enable test" Off)
 add_definitions(-DTRANSLATION_DOMAIN=\"org.fcitx.fcitx5.kcm\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent)
 
 if (ENABLE_CONFIG_QT)
     find_package(KF5 REQUIRED COMPONENTS
@@ -34,9 +36,11 @@ if (ENABLE_KCM)
 endif()
 
 find_package(Fcitx5Core REQUIRED)
+find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)
 find_package(IsoCodes REQUIRED)
+kde_enable_exceptions()
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
 

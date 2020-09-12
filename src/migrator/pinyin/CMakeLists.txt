@@ -1,0 +1,4 @@
+add_library(pinyinmigrator STATIC pinyinmigrator.cpp)
+target_link_libraries(pinyinmigrator migrator)
+target_compile_definitions(pinyinmigrator PRIVATE "-DQT_STATICPLUGIN")
+set_target_properties(pinyinmigrator PROPERTIES POSITION_INDEPENDENT_CODE TRUE)

@@ -1,0 +1,33 @@
+/*
+ * SPDX-FileCopyrightText: 2018-2018 CSSlayer <wengxt@gmail.com>
+ *
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ *
+ */
+#ifndef _PINYINDICTMANAGER_RENAMEFILE_H_
+#define _PINYINDICTMANAGER_RENAMEFILE_H_
+
+#include "pipelinejob.h"
+#include <QObject>
+
+namespace fcitx {
+
+class FCITX5MIGRATOR_EXPORT RenameFile : public PipelineJob {
+    Q_OBJECT
+public:
+    explicit RenameFile(const QString &from, const QString &to,
+                        QObject *parent = nullptr);
+    void start() override;
+    void abort() override;
+    void cleanUp() override;
+
+private slots:
+    void emitFinished(bool result);
+
+private:
+    QString from_, to_;
+};
+
+} // namespace fcitx
+
+#endif // _PINYINDICTMANAGER_RENAMEFILE_H_

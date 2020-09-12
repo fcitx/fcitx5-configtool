@@ -1,0 +1,8 @@
+add_subdirectory(app)
+add_subdirectory(lib)
+add_subdirectory(pinyin)
+add_subdirectory(skk)
+add_subdirectory(kkc)
+add_subdirectory(rime)
+add_subdirectory(global)
+add_subdirectory(table)
