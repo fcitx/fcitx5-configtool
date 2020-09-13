@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-03 00:02-0700\n"
+"POT-Creation-Date: 2020-09-13 00:02-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -29,12 +29,12 @@ msgstr "，"
 #: src/kcm/package/contents/ui/AddonPage.qml:63
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- 禁用 %1\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:73
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- 禁用 %1 中的某些功能\n"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
@@ -134,6 +134,9 @@ msgid ""
 "%2\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"禁用 %1 将同时：\n"
+"%2\n"
+"确认要禁用它吗？"
 
 #: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
