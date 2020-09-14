@@ -36,5 +36,5 @@ done
 
 }
 
-gen_pot fcitx5-configtool layout/ src/configtool/ src/lib/
+gen_pot fcitx5-configtool layout/ src/configtool/ src/lib/ src/migrator/
 gen_pot org.fcitx.fcitx5.kcm src/kcm/
