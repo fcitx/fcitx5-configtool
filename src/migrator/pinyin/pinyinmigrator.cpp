@@ -16,7 +16,7 @@ namespace fcitx {
 QString PinyinMigrator::name() const { return _("Pinyin"); }
 
 QString PinyinMigrator::description() const {
-    return _("Migrate Pinyin dictionary from Fcitx 4");
+    return _("Import Pinyin dictionary from Fcitx 4");
 }
 
 bool PinyinMigrator::check() const {

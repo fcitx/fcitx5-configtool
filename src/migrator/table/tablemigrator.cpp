@@ -41,7 +41,7 @@ QString fcitx4Path() {
 QString TableMigrator::name() const { return _("Table"); }
 
 QString TableMigrator::description() const {
-    return _("Migrate table data for installed table from Fcitx 4");
+    return _("Import table data for installed table from Fcitx 4");
 }
 
 bool TableMigrator::check() const {
