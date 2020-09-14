@@ -1,9 +1,9 @@
-ecm_setup_version(PROJECT VARIABLE_PREFIX FCITX5QT4DBUSADDONS
+ecm_setup_version(PROJECT VARIABLE_PREFIX Fcitx5Migrator
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/migrator_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/Fcitx5MigratorVersion.cmake"
-                        SOVERSION 1)
+                        SOVERSION 0)
 
-add_library(migrator SHARED
+add_library(Fcitx5Migrator SHARED
     migratorfactoryplugin.cpp
     migrator.cpp
     migratorfactory.cpp
@@ -18,8 +18,15 @@ add_library(migrator SHARED
     log.cpp
     configmigrator.cpp
     )
-target_link_libraries(migrator Qt5::Core Qt5::Concurrent Qt5::DBus Fcitx5::Config Fcitx5::Utils Fcitx5Qt5::DBusAddons )
+target_link_libraries(Fcitx5Migrator Qt5::Core Qt5::Concurrent Qt5::DBus Fcitx5::Config Fcitx5::Utils Fcitx5Qt5::DBusAddons )
+set_target_properties(Fcitx5Migrator PROPERTIES
+    VERSION ${Fcitx5Migrator_VERSION}
+    SOVERSION ${Fcitx5Migrator_SOVERSION}
+    EXPORT_NAME Migrator
+)
 
-target_include_directories(migrator PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}>")
+target_include_directories(Fcitx5Migrator PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}>")
 
-generate_export_header(migrator BASE_NAME Fcitx5Migrator)
+generate_export_header(Fcitx5Migrator BASE_NAME Fcitx5Migrator)
+
+install(TARGETS Fcitx5Migrator LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")

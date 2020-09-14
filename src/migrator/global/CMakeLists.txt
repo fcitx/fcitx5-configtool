@@ -1,5 +1,5 @@
 add_library(globalconfigmigrator STATIC globalconfigmigrator.cpp)
-target_link_libraries(globalconfigmigrator migrator)
+target_link_libraries(globalconfigmigrator Fcitx5Migrator)
 target_compile_definitions(globalconfigmigrator PRIVATE "-DQT_STATICPLUGIN")
 set_target_properties(globalconfigmigrator PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 
