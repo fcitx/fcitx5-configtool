@@ -23,6 +23,8 @@ set_target_properties(Fcitx5Migrator PROPERTIES
     VERSION ${Fcitx5Migrator_VERSION}
     SOVERSION ${Fcitx5Migrator_SOVERSION}
     EXPORT_NAME Migrator
+    AUTOMOC TRUE
+    AUTOUIC TRUE
 )
 
 target_include_directories(Fcitx5Migrator PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_CURRENT_SOURCE_DIR}>")
