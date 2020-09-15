@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-14 00:02-0700\n"
+"POT-Creation-Date: 2020-09-15 00:02-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -283,6 +283,14 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
+#: src/migrator/pinyin/pinyinmigrator.cpp:19
+msgid "Import Pinyin dictionary from Fcitx 4"
+msgstr ""
+
+#: src/migrator/table/tablemigrator.cpp:44
+msgid "Import table data for installed table from Fcitx 4"
+msgstr ""
+
 #: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr ""
@@ -348,10 +356,6 @@ msgstr ""
 msgid "Migrate Kkc dictionary from Fcitx 4"
 msgstr ""
 
-#: src/migrator/pinyin/pinyinmigrator.cpp:19
-msgid "Migrate Pinyin dictionary from Fcitx 4"
-msgstr ""
-
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
@@ -364,10 +368,6 @@ msgstr ""
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr ""
-
-#: src/migrator/table/tablemigrator.cpp:44
-msgid "Migrate table data for installed table from Fcitx 4"
 msgstr ""
 
 #: src/migrator/kkc/kkcmigrator.cpp:74

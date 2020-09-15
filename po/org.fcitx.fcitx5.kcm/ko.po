@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-03 00:02-0700\n"
+"POT-Creation-Date: 2020-09-15 00:02-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -24,12 +24,12 @@ msgstr ""
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/kcm/package/contents/ui/AddonPage.qml:63
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "-  %1 비활성화\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:73
 #, kde-format
@@ -61,7 +61,7 @@ msgstr "입력기 추가"
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "입력기 추가..."
 
 #: src/kcm/package/contents/ui/KeyListOption.qml:98
 #, kde-format
@@ -169,7 +169,7 @@ msgstr "그룹 이름"
 #: src/kcm/package/contents/ui/main.qml:106
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "그룹:"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
@@ -247,22 +247,22 @@ msgstr "자판 선택"
 #: src/kcm/package/contents/ui/main.qml:212
 #, kde-format
 msgid "Select layout for %1"
-msgstr ""
+msgstr "%1용 자판 선택"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr ""
+msgstr "시스템 키보드 자판 선택..."
 
 #: src/kcm/package/contents/ui/main.qml:148
 #, kde-format
 msgid "Select system layout for group %1"
-msgstr ""
+msgstr "%1 그룹용 시스템자판 선택"
 
 #: src/kcm/package/contents/ui/main.qml:145
 #, kde-format
 msgid "Select system layout..."
-msgstr ""
+msgstr "시스템 자판 선택..."
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-14 00:02-0700\n"
+"POT-Creation-Date: 2020-09-15 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -292,6 +292,14 @@ msgstr "分组名称："
 msgid "Group:"
 msgstr "分组："
 
+#: src/migrator/pinyin/pinyinmigrator.cpp:19
+msgid "Import Pinyin dictionary from Fcitx 4"
+msgstr ""
+
+#: src/migrator/table/tablemigrator.cpp:44
+msgid "Import table data for installed table from Fcitx 4"
+msgstr ""
+
 #: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "输入法"
@@ -357,10 +365,6 @@ msgstr "从 Fcitx  4 迁移数据"
 msgid "Migrate Kkc dictionary from Fcitx 4"
 msgstr ""
 
-#: src/migrator/pinyin/pinyinmigrator.cpp:19
-msgid "Migrate Pinyin dictionary from Fcitx 4"
-msgstr "从 Fcitx 4 迁移拼音词典"
-
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
@@ -374,10 +378,6 @@ msgstr "从 Fcitx 4 迁移 Skk 词典"
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
 msgstr "从 Fcitx 4 迁移全局按键选项"
-
-#: src/migrator/table/tablemigrator.cpp:44
-msgid "Migrate table data for installed table from Fcitx 4"
-msgstr "从 Fcitx 4 迁移码表数据到已安装的码表"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
