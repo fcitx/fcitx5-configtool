@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-15 00:02-0700\n"
+"POT-Creation-Date: 2020-09-21 00:02-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -39,12 +39,12 @@ msgstr "%1 - %2"
 #: src/migrator/lib/processrunner.cpp:69
 #, kde-format
 msgid "%1 crashed."
-msgstr ""
+msgstr "%1 holdt op med at virke."
 
 #: src/migrator/lib/processrunner.cpp:76
 #, kde-format
 msgid "%1 failed to start."
-msgstr ""
+msgstr "%1 kunne ikke starte."
 
 #: src/lib/configwidgetslib/optionwidget.cpp:426
 #: src/lib/configwidgetslib/optionwidget.cpp:437
@@ -59,7 +59,7 @@ msgstr "%1:"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr ""
+msgstr "&Næste >"
 
 #: src/lib/configwidgetslib/addonselector.cpp:383
 msgctxt "Separator of a comma list"
@@ -106,7 +106,7 @@ msgstr "Vilkårligt sprog"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
-msgstr ""
+msgstr "Spørger Fcitx om at afslutte ..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:278
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -132,11 +132,11 @@ msgstr "Skift systemets layout til at matche valget af inputmetode."
 
 #: src/migrator/app/taskpage.cpp:249
 msgid "Checking if Fcitx is running..."
-msgstr ""
+msgstr "Tjekker om Fcitx kører ..."
 
 #: src/migrator/app/taskpage.cpp:237
 msgid "Checking if Fcitx is still running..."
-msgstr ""
+msgstr "Tjekker om Fcitx stadigvæk kører ..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
@@ -431,7 +431,7 @@ msgstr "Andre"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
