@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-25 00:02-0700\n"
+"POT-Creation-Date: 2020-09-27 00:01-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -377,11 +377,11 @@ msgstr "Overfør Skk-ordbog fra Fcitx 4"
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr ""
+msgstr "Overfør global tastvalgmulighed fra Fcitx 4"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
-msgstr ""
+msgstr "Overfør valgmulighed for Kkc-regel ..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
@@ -389,11 +389,11 @@ msgstr "Overfører Pinyin-data ..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
-msgstr ""
+msgstr "Overfør valgmulighed for Skk-regel ..."
 
 #: src/migrator/global/globalconfigmigrator.cpp:89
 msgid "Migrating global hotkey key option..."
-msgstr ""
+msgstr "Overfør tastvalgmulighed for global hottast ..."
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
@@ -594,7 +594,7 @@ msgstr "Vis tastaturlayout"
 #: rc.cpp:99
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "WelcomePage"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
