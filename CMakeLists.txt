@@ -19,11 +19,7 @@ add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent)
 
 if (ENABLE_CONFIG_QT)
-    find_package(KF5 REQUIRED COMPONENTS
-        WidgetsAddons
-        ItemViews
-    )
-    find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
+    find_package(KF5ItemViews REQUIRED)
 endif()
 
 if (ENABLE_KCM)
@@ -39,6 +35,8 @@ find_package(Fcitx5Core REQUIRED)
 find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)
+find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
+find_package(KF5WidgetsAddons REQUIRED)
 find_package(IsoCodes REQUIRED)
 kde_enable_exceptions()
 
