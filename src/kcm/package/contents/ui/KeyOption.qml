@@ -147,6 +147,10 @@ Button {
         }
         load(rawValue)
     }
+    Keys.onShortcutOverride: {
+        event.accepted = true;
+        Keys.onPressed(event);
+    }
 
     Menu {
         id: contextMenu

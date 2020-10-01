@@ -294,7 +294,8 @@ void FcitxModule::ungrabKeyboard(QQuickItem *item) {
 
 bool FcitxModule::eventFilter(QObject *, QEvent *event) {
     if (event->type() == QEvent::KeyPress ||
-        event->type() == QEvent::KeyRelease) {
+        event->type() == QEvent::KeyRelease ||
+        event->type() == QEvent::ShortcutOverride) {
         auto keyEvent = static_cast<QKeyEvent *>(event);
         key_ = Key(static_cast<KeySym>(keyEvent->nativeVirtualKey()),
                    KeyStates(keyEvent->nativeModifiers()),
