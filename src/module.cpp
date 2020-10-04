@@ -77,10 +77,8 @@ Module::Module(QWidget *parent, const QVariantList &args)
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
     pageWidget->addTab(configPageWrapper, i18n("Global Config"));
-    connect(configPage_, &ConfigWidget::changed, this, [this]() {
-        qCDebug(KCM_FCITX5) << "GlobalConfig changed";
-        emit changed(true);
-    });
+    connect(configPage_, &ConfigWidget::changed, this,
+            [this]() { emit changed(true); });
 }
 
 Module::~Module() { watcher_->unwatch(); }
@@ -101,6 +99,7 @@ void Module::save() {
 
 void Module::defaults() {
     qCDebug(KCM_FCITX5) << "kcm_fcitx5 defaults()";
+    configPage_->buttonClicked(QDialogButtonBox::RestoreDefaults);
     emit changed(true);
 }
 
