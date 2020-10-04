@@ -126,7 +126,10 @@ void ConfigWidget::save() {
 
 void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton button) {
     if (button == QDialogButtonBox::RestoreDefaults) {
-        // TODO
+        auto optionWidgets = findChildren<OptionWidget *>();
+        for (auto optionWidget : optionWidgets) {
+            optionWidget->restoreToDefault();
+        }
     } else if (button == QDialogButtonBox::Ok) {
         save();
     }

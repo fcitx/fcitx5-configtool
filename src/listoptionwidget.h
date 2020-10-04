@@ -35,6 +35,7 @@ public:
 
     void readValueFrom(const QVariantMap &map) override;
     void writeValueTo(QVariantMap &map) override;
+    void restoreToDefault() override;
 
     const auto &subOption() { return subOption_; }
 
@@ -42,6 +43,7 @@ private:
     void updateButton();
     ListOptionWidgetModel *model_;
     FcitxQtConfigOption subOption_;
+    QVariantMap defaultValue_;
 };
 
 } // namespace kcm

@@ -47,7 +47,8 @@ class IntegerOptionWidget : public OptionWidget {
 public:
     IntegerOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                         QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), spinBox_(new QSpinBox),
+          defaultValue_(option.defaultValue().variant().toString().toInt()) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
@@ -64,7 +65,6 @@ public:
                 spinBox_->setMinimum(min.toInt());
             }
         }
-        defaultValue_ = option.defaultValue().variant().toString().toInt();
         connect(spinBox_, qOverload<int>(&QSpinBox::valueChanged), this,
                 &OptionWidget::valueChanged);
         layout->addWidget(spinBox_);
@@ -83,6 +83,8 @@ public:
         valueToVariantMap(map, path(), QString::number(spinBox_->value()));
     }
 
+    void restoreToDefault() override { spinBox_->setValue(defaultValue_); }
+
 private:
     QSpinBox *spinBox_;
     int defaultValue_;
@@ -91,9 +93,10 @@ private:
 class StringOptionWidget : public OptionWidget {
     Q_OBJECT
 public:
-    StringOptionWidget(const FcitxQtConfigOption &, const QString &path,
+    StringOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                        QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), lineEdit_(new QLineEdit),
+          defaultValue_(option.defaultValue().variant().toString()) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
@@ -113,20 +116,23 @@ public:
         valueToVariantMap(map, path(), lineEdit_->text());
     }
 
+    void restoreToDefault() override { lineEdit_->setText(defaultValue_); }
+
 private:
     QLineEdit *lineEdit_;
+    QString defaultValue_;
 };
 
 class FontOptionWidget : public OptionWidget {
     Q_OBJECT
 public:
-    FontOptionWidget(const FcitxQtConfigOption &, const QString &path,
+    FontOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                      QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), fontButton_(new FontButton),
+          defaultValue_(option.defaultValue().variant().toString()) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
-        fontButton_ = new FontButton;
         connect(fontButton_, &FontButton::fontChanged, this,
                 &OptionWidget::valueChanged);
         layout->addWidget(fontButton_);
@@ -142,8 +148,13 @@ public:
         valueToVariantMap(map, path(), fontButton_->fontName());
     }
 
+    void restoreToDefault() override {
+        fontButton_->setFont(FontButton::parseFont(defaultValue_));
+    }
+
 private:
     FontButton *fontButton_;
+    QString defaultValue_;
 };
 
 class BooleanOptionWidget : public OptionWidget {
@@ -151,11 +162,11 @@ class BooleanOptionWidget : public OptionWidget {
 public:
     BooleanOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                         QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), checkBox_(new QCheckBox),
+          defaultValue_(option.defaultValue().variant().toString() == "True") {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
-        checkBox_ = new QCheckBox(this);
         connect(checkBox_, &QCheckBox::clicked, this,
                 &OptionWidget::valueChanged);
         checkBox_->setText(option.description());
@@ -173,8 +184,11 @@ public:
         valueToVariantMap(map, path(), value);
     }
 
+    void restoreToDefault() override { checkBox_->setChecked(defaultValue_); }
+
 private:
     QCheckBox *checkBox_;
+    bool defaultValue_;
 };
 
 class KeyListOptionWidget : public OptionWidget {
@@ -182,7 +196,7 @@ class KeyListOptionWidget : public OptionWidget {
 public:
     KeyListOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                         QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), keyListWidget_(new KeyListWidget) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
@@ -197,22 +211,19 @@ public:
         connect(keyListWidget_, &KeyListWidget::keyChanged, this,
                 &OptionWidget::valueChanged);
         layout->addWidget(keyListWidget_);
+
+        auto variant = option.defaultValue().variant();
+        QVariantMap map;
+        if (variant.canConvert<QDBusArgument>()) {
+            auto argument = qvariant_cast<QDBusArgument>(variant);
+            argument >> map;
+        }
+        defaultValue_ = readValue(map, "");
         setLayout(layout);
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        int i = 0;
-        QList<Key> keys;
-        while (true) {
-            auto value =
-                valueFromVariantMap(map, QString("%1/%2").arg(path()).arg(i));
-            if (value.isNull()) {
-                break;
-            }
-            keys << Key(value.toUtf8().constData());
-            i++;
-        }
-        keyListWidget_->setKeys(keys);
+        keyListWidget_->setKeys(readValue(map, path()));
     }
 
     void writeValueTo(QVariantMap &map) override {
@@ -228,8 +239,29 @@ public:
         }
     }
 
+    void restoreToDefault() override { keyListWidget_->setKeys(defaultValue_); }
+
 private:
+    QList<fcitx::Key> readValue(const QVariantMap &map, const QString &path) {
+        int i = 0;
+        QList<Key> keys;
+        while (true) {
+            auto value =
+                valueFromVariantMap(map, QString("%1%2%3")
+                                             .arg(path)
+                                             .arg(path.isEmpty() ? "" : "/")
+                                             .arg(i));
+            if (value.isNull()) {
+                break;
+            }
+            keys << Key(value.toUtf8().constData());
+            i++;
+        }
+        return keys;
+    }
+
     KeyListWidget *keyListWidget_;
+    QList<fcitx::Key> defaultValue_;
 };
 
 class KeyOptionWidget : public OptionWidget {
@@ -238,7 +270,9 @@ public:
     KeyOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                     QWidget *parent)
         : OptionWidget(path, parent),
-          keyWidget_(new FcitxQtKeySequenceWidget(this)) {
+          keyWidget_(new FcitxQtKeySequenceWidget(this)),
+          defaultValue_(
+              option.defaultValue().variant().toString().toUtf8().constData()) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
 
@@ -272,8 +306,13 @@ public:
         valueToVariantMap(map, path(), value);
     }
 
+    void restoreToDefault() override {
+        keyWidget_->setKeySequence({defaultValue_});
+    }
+
 private:
     FcitxQtKeySequenceWidget *keyWidget_;
+    fcitx::Key defaultValue_;
 };
 
 class EnumOptionWidget : public OptionWidget {
@@ -281,11 +320,9 @@ class EnumOptionWidget : public OptionWidget {
 public:
     EnumOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                      QWidget *parent)
-        : OptionWidget(path, parent) {
+        : OptionWidget(path, parent), comboBox_(new QComboBox) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
-
-        comboBox_ = new QComboBox(this);
         int i = 0;
         while (true) {
             auto value = valueFromVariantMap(option.properties(),
@@ -307,7 +344,7 @@ public:
         connect(comboBox_, qOverload<int>(&QComboBox::currentIndexChanged),
                 this, &OptionWidget::valueChanged);
 
-        defaultValue_ = option.defaultValue().variant().toString().toInt();
+        defaultValue_ = option.defaultValue().variant().toString();
     }
 
     void readValueFrom(const QVariantMap &map) override {
@@ -321,6 +358,11 @@ public:
 
     void writeValueTo(QVariantMap &map) override {
         valueToVariantMap(map, path(), comboBox_->currentData().toString());
+    }
+
+    void restoreToDefault() override {
+        auto idx = comboBox_->findData(defaultValue_);
+        comboBox_->setCurrentIndex(idx);
     }
 
 private:
@@ -366,6 +408,7 @@ public:
 
     void readValueFrom(const QVariantMap &) override {}
     void writeValueTo(QVariantMap &) override {}
+    void restoreToDefault() override {}
 
 private:
     QToolButton *button_;

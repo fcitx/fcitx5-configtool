@@ -67,7 +67,10 @@ public:
         values_.clear();
         while (true) {
             auto value =
-                valueFromVariantMap(map, QString("%1/%2").arg(path).arg(i));
+                valueFromVariantMap(map, QString("%1%2%3")
+                                             .arg(path)
+                                             .arg(path.isEmpty() ? "" : "/")
+                                             .arg(i));
             if (value.isNull()) {
                 break;
             }
@@ -122,7 +125,7 @@ public:
                            index.parent(), index.row() - 1)) {
             return;
         }
-        values_.swap(index.row() - 1, index.row());
+        values_.swapItemsAt(index.row() - 1, index.row());
         endMoveRows();
     }
 
@@ -135,7 +138,7 @@ public:
                            index.parent(), index.row() + 2)) {
             return;
         }
-        values_.swap(index.row(), index.row() + 1);
+        values_.swapItemsAt(index.row(), index.row() + 1);
         endMoveRows();
     }
 
@@ -189,6 +192,12 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
             [this]() { model_->moveUpItem(listView->currentIndex()); });
     connect(moveDownButton, &QAbstractButton::clicked, this,
             [this]() { model_->moveDownItem(listView->currentIndex()); });
+
+    auto variant = option.defaultValue().variant();
+    if (variant.canConvert<QDBusArgument>()) {
+        auto argument = qvariant_cast<QDBusArgument>(variant);
+        argument >> defaultValue_;
+    }
 }
 
 void ListOptionWidget::updateButton() {
@@ -205,6 +214,10 @@ void ListOptionWidget::readValueFrom(const QVariantMap &map) {
 
 void ListOptionWidget::writeValueTo(QVariantMap &map) {
     model_->writeValueTo(map, path());
+}
+
+void ListOptionWidget::restoreToDefault() {
+    model_->readValueFrom(defaultValue_, "");
 }
 
 } // namespace kcm

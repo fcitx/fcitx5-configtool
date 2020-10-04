@@ -42,6 +42,7 @@ public:
 
     virtual void readValueFrom(const QVariantMap &map) = 0;
     virtual void writeValueTo(QVariantMap &map) = 0;
+    virtual void restoreToDefault() = 0;
     virtual bool isValid() const { return true; }
 
     static QString prettify(const FcitxQtConfigOption &option,
