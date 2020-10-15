@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-09 00:01-0700\n"
+"POT-Creation-Date: 2020-10-15 00:02-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -142,7 +142,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr "Vil du ændre gruppe? Ændringerne til den nuværende vil gå tabt!"
+msgstr "Vil du ændre gruppe? Ændringerne til den nuværende gruppe vil gå tabt!"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:52
 #, kde-format
@@ -179,7 +179,7 @@ msgstr "Gruppe:"
 msgid "Input Method"
 msgstr "Inputmetode"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:156
+#: src/kcm/package/contents/ui/KeyOption.qml:160
 #, kde-format
 msgid "Key code mode"
 msgstr "Tastekode-tilstand"

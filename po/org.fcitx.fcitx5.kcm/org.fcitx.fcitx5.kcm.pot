@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-27 00:01-0700\n"
+"POT-Creation-Date: 2020-10-15 00:02-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/KeyOption.qml:156
+#: src/kcm/package/contents/ui/KeyOption.qml:160
 #, kde-format
 msgid "Key code mode"
 msgstr ""
