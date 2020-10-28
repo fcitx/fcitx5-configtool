@@ -2,18 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
+# Translators:
+# Omeritzics Games, 2020
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2020-10-28 12:14-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: LANG\n"
+"PO-Revision-Date: 2020-08-01 05:15+0000\n"
+"Last-Translator: Omeritzics Games, 2020\n"
+"Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:53
 #, kde-format
@@ -86,16 +91,16 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:200
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "הגדרה"
 
 #: src/kcm/main.cpp:38
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "הגדרת Fcitx 5"
 
 #: src/kcm/kcm_fcitx5.desktop.in:14
 msgid "Configure Input Method"
-msgstr ""
+msgstr "הגדרת שיטת קלט"
 
 #: src/kcm/package/contents/ui/main.qml:170
 #, kde-format
@@ -178,7 +183,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:71
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "שפה:"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:88
 #, kde-format

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-09-15 00:02-0700\n"
+"POT-Creation-Date: 2020-10-28 12:14-0700\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -98,7 +98,7 @@ msgstr "附加组件"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr ""
+msgstr "所有迁移任务都已成功完成。"
 
 #: src/lib/configlib/layoutprovider.cpp:67
 #: src/lib/configlib/layoutprovider.cpp:69
@@ -178,7 +178,7 @@ msgstr "默认"
 #: src/migrator/lib/copydirectory.cpp:85
 #, kde-format
 msgid "Directory %1 does not exist."
-msgstr ""
+msgstr "目录 %1 不存在。"
 
 #: src/lib/configwidgetslib/addonselector.cpp:412
 #, kde-format
@@ -233,7 +233,7 @@ msgstr "获取 %1 的配置失败"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr ""
+msgstr "执行 DBus 调用失败。"
 
 #. i18n: file: src/migrator/app/taskpage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -294,11 +294,11 @@ msgstr "分组："
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr ""
+msgstr "从 Fcitx 4 导入拼音词典"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr ""
+msgstr "从 Fcitx 4 导入码表数据到已安装的码表"
 
 #: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
@@ -363,7 +363,7 @@ msgstr "从 Fcitx  4 迁移数据"
 
 #: src/migrator/kkc/kkcmigrator.cpp:40
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr ""
+msgstr "从 Fcitx 4 迁移 Kkc 词典"
 
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
@@ -417,7 +417,7 @@ msgstr "否"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
-msgstr ""
+msgstr "有一个任务失败了。终止迁移。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:317
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -473,7 +473,7 @@ msgstr "搜索输入法"
 #: rc.cpp:96
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "全选(&A)"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -510,12 +510,12 @@ msgstr "选择系统键盘布局"
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
 msgid "Service %1 does not present on DBus."
-msgstr ""
+msgstr "服务 %1 不在 DBus 上。"
 
 #: src/migrator/lib/dbuswatcher.cpp:34
 #, kde-format
 msgid "Service %1 still present on DBus."
-msgstr ""
+msgstr "服务 %1 还在 DBus 上存在。"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -552,7 +552,7 @@ msgstr ""
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
-msgstr ""
+msgstr "这个向导将帮助你从 Fcitx 4 迁移已有的用户数据到 Fcitx 5。"
 
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format
@@ -592,7 +592,7 @@ msgstr "查看键盘布局"
 #: rc.cpp:99
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "欢迎页"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:504
 msgid "Yes"
