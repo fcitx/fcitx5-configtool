@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# Omeritzics Games, 2020
+# Omer I.S., 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-10-28 12:14-0700\n"
+"POT-Creation-Date: 2020-11-01 00:01-0700\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Omeritzics Games, 2020\n"
+"Last-Translator: Omer I.S., 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ","
 
 #: src/kcm/package/contents/ui/AddonPage.qml:63
 #, kde-format
@@ -39,39 +39,39 @@ msgstr ""
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/kcm/package/contents/ui/ListOption.qml:180
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "הוספה"
 
 #: src/kcm/package/contents/ui/main.qml:255
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "הוספת קבוצה"
 
 #. object properties {{{
 #: src/kcm/package/contents/ui/AddIMPage.qml:15
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "הוספת שיטת קלט"
 
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "הוספת שיטת קלט..."
 
 #: src/kcm/package/contents/ui/KeyListOption.qml:98
 #, kde-format
 msgid "Add shortcut"
-msgstr ""
+msgstr "הוספת קיצור"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18
 #, kde-format
 msgid "Addons"
-msgstr ""
+msgstr "תוספים"
 
 #: src/kcm/main.cpp:42
 #, kde-format
@@ -86,7 +86,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "ניקוי"
 
 #: src/kcm/package/contents/ui/main.qml:200
 #, kde-format
@@ -173,7 +173,7 @@ msgstr ""
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
-msgstr ""
+msgstr "שיטת קלט"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:160
 #, kde-format
@@ -231,7 +231,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."
-msgstr ""
+msgstr "חיפוש..."
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
@@ -282,7 +282,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #: src/kcm/package/contents/ui/main.qml:73
 #, kde-format
