@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-03 00:02-0800\n"
+"POT-Creation-Date: 2020-11-05 00:02-0800\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -89,7 +89,7 @@ msgstr "Forfatter"
 #: rc.cpp:66
 #, kde-format
 msgid "Available Input Method:"
-msgstr ""
+msgstr "Tilgængelig inputmetode:"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:194
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -139,7 +139,7 @@ msgstr "Ophavsret 2017 Xuetian Weng"
 #: rc.cpp:30
 #, kde-format
 msgid "Current Input Method:"
-msgstr ""
+msgstr "Nuværende inputmetode:"
 
 #: src/kcm/package/contents/ui/main.qml:313
 #, kde-format
@@ -175,14 +175,14 @@ msgstr "Vil du ændre gruppe? Ændringerne til den nuværende gruppe vil gå tab
 #: rc.cpp:21 rc.cpp:57
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "Ned"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:15
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Rediger"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:52
 #, kde-format
@@ -201,14 +201,14 @@ msgstr "Fcitx 5"
 #: rc.cpp:90 rc.cpp:102
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr ""
+msgstr "Fcitx 5 kører ikke."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: rc.cpp:108
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx-konfiguration"
 
 #: src/kcm/package/contents/ui/main.qml:76
 #: src/kcm/package/contents/ui/main.qml:95
@@ -247,7 +247,7 @@ msgstr "Tastekode-tilstand"
 #: rc.cpp:42
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr ""
+msgstr "Tastaturlayout som skal bruges når der ikke er nogen aktiv inputmetode"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -268,7 +268,7 @@ msgstr "Layout:"
 #: rc.cpp:99
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr ""
+msgstr "Overfør data fra Fcitx 4"
 
 #: src/kcm/package/contents/ui/main.qml:276
 #, kde-format
@@ -320,14 +320,14 @@ msgstr "Kør Fcitx"
 #: rc.cpp:81
 #, kde-format
 msgid "Search Addons"
-msgstr ""
+msgstr "Søg efter tilføjelser"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
 #: rc.cpp:69
 #, kde-format
 msgid "Search Input Method"
-msgstr ""
+msgstr "Søg efter inputmetode"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:124
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
@@ -340,14 +340,14 @@ msgstr "Søg ..."
 #: rc.cpp:93
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "Vælg &alle"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:27
 #, kde-format
 msgid "Select &Font..."
-msgstr ""
+msgstr "Vælg &skrifttype ..."
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
@@ -372,14 +372,14 @@ msgstr "Vælg layout til %1"
 #: rc.cpp:87
 #, kde-format
 msgid "Select migration tasks"
-msgstr ""
+msgstr "Vælg overførelsesopgaver"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:45
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "Vælg systemets tastaturlayout"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
@@ -401,7 +401,7 @@ msgstr "Vælg systemets layout ..."
 #: rc.cpp:84
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "Vis &avancerede valgmuligheder"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format
@@ -416,6 +416,8 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
+"Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
+"stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -425,6 +427,8 @@ msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
 msgstr ""
+"Assistenten hjælper dig med at overføre eksisterende brugerdata fra Fcitx 4 "
+"til Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
@@ -433,7 +437,7 @@ msgstr ""
 #: rc.cpp:18 rc.cpp:54
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Op"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -447,7 +451,7 @@ msgstr "Variant:"
 #: rc.cpp:96
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "WelcomePage"
 
 #: src/kcm/main.cpp:42
 #, kde-format
