@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-03 00:02-0800\n"
+"POT-Creation-Date: 2020-11-08 13:34-0800\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -207,7 +207,7 @@ msgstr ""
 #: rc.cpp:108
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx 配置"
 
 #: src/kcm/package/contents/ui/main.qml:76
 #: src/kcm/package/contents/ui/main.qml:95
@@ -378,7 +378,7 @@ msgstr ""
 #: rc.cpp:45
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "选择系统键盘布局"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
@@ -423,7 +423,7 @@ msgstr ""
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
-msgstr ""
+msgstr "这个向导将帮助你从 Fcitx 4 迁移已有的用户数据到 Fcitx 5。"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
@@ -446,7 +446,7 @@ msgstr "变体："
 #: rc.cpp:96
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "欢迎页"
 
 #: src/kcm/main.cpp:42
 #, kde-format

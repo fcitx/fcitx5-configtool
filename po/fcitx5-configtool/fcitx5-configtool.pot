@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-05 00:02-0800\n"
+"POT-Creation-Date: 2020-11-08 13:34-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,13 +41,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:426
-#: src/lib/configwidgetslib/optionwidget.cpp:437
-#: src/lib/configwidgetslib/optionwidget.cpp:443
-#: src/lib/configwidgetslib/optionwidget.cpp:446
-#: src/lib/configwidgetslib/optionwidget.cpp:449
-#: src/lib/configwidgetslib/optionwidget.cpp:452
-#: src/lib/configwidgetslib/optionwidget.cpp:455
+#: src/lib/configwidgetslib/optionwidget.cpp:528
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:545
+#: src/lib/configwidgetslib/optionwidget.cpp:548
+#: src/lib/configwidgetslib/optionwidget.cpp:551
+#: src/lib/configwidgetslib/optionwidget.cpp:554
+#: src/lib/configwidgetslib/optionwidget.cpp:557
+#: src/lib/configwidgetslib/optionwidget.cpp:560
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -56,17 +57,17 @@ msgstr ""
 msgid "&Next >"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:383
+#: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:394
 #, kde-format
 msgid "- Disable %1\n"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:404
+#: src/lib/configwidgetslib/addonselector.cpp:405
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
@@ -93,7 +94,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:35
+#: src/configtool/mainwindow.cpp:36
 msgid "Addons"
 msgstr ""
 
@@ -146,8 +147,8 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/optionwidget.cpp:375
-#: src/lib/configwidgetslib/addonselector.cpp:184 rc.cpp:63 rc.cpp:168
+#: src/lib/configwidgetslib/optionwidget.cpp:477
+#: src/lib/configwidgetslib/addonselector.cpp:185 rc.cpp:63 rc.cpp:168
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -181,12 +182,12 @@ msgstr ""
 msgid "Directory %1 does not exist."
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:412
+#: src/lib/configwidgetslib/addonselector.cpp:413
 #, kde-format
 msgid "Disable %1"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:407
+#: src/lib/configwidgetslib/addonselector.cpp:408
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -278,7 +279,7 @@ msgstr ""
 msgid "Global Config"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:34
+#: src/configtool/mainwindow.cpp:35
 msgid "Global Options"
 msgstr ""
 
@@ -306,7 +307,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:33 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:34 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr ""
 
@@ -417,7 +418,7 @@ msgstr ""
 msgid "New Group"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:504
+#: src/lib/configwidgetslib/optionwidget.cpp:609
 msgid "No"
 msgstr ""
 
@@ -609,7 +610,7 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:504
+#: src/lib/configwidgetslib/optionwidget.cpp:609
 msgid "Yes"
 msgstr ""
 
@@ -625,7 +626,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:537
+#: src/lib/configwidgetslib/optionwidget.cpp:642
 #, kde-format
 msgid "[%1]"
 msgstr ""
