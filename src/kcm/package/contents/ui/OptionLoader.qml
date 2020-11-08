@@ -36,6 +36,8 @@ Loader {
             return "KeyListOption.qml"
         } else if (data.type == "Key") {
             return "KeyOption.qml"
+        } else if (data.type == "Color") {
+            return "ColorOption.qml"
         } else if (data.type.startsWith("List|")) {
             return "ListOption.qml"
         } else if (data.type == "External") {

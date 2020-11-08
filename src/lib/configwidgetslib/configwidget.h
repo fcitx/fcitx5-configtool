@@ -7,7 +7,6 @@
 #ifndef _KCM_FCITX_CONFIGWIDGET_H_
 #define _KCM_FCITX_CONFIGWIDGET_H_
 
-#include <KColorButton>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QWidget>
@@ -21,14 +20,6 @@ namespace kcm {
 
 class DBusProvider;
 
-class ColorButton : public KColorButton {
-    Q_OBJECT
-public:
-    explicit ColorButton(QWidget *parent = 0) : KColorButton(parent) {}
-public slots:
-    void setColor(const QColor &color) { KColorButton::setColor(color); }
-};
-
 class ConfigWidget : public QWidget {
     Q_OBJECT
 
@@ -39,6 +30,9 @@ public:
     static QDialog *configDialog(QWidget *parent, DBusProvider *module,
                                  const QString &uri,
                                  const QString &title = QString());
+
+    auto dbus() { return dbus_; }
+
 signals:
     void changed();
 

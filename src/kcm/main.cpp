@@ -109,10 +109,22 @@ QVariant decomposeDBusVariant(const QVariant &v) {
     return map;
 }
 
+QVariantList configTypeToVariant(const FcitxQtConfigType &type,
+                                 QVariantMap &typeMap,
+                                 const QMap<QString, FcitxQtConfigType> &types);
+
 void configOptionToVariant(QVariantList &options,
                            const FcitxQtConfigOption &option,
-                           const QVariantMap &typeMap) {
-    if (typeMap.contains(option.type())) {
+                           QVariantMap &typeMap,
+                           const QMap<QString, FcitxQtConfigType> &types) {
+    if (types.contains(option.type())) {
+        if (typeMap[option.type()].isNull()) {
+            // Fill a dummy value first to avoid infinite recursion if bug
+            // happens.
+            typeMap[option.type()] = QVariantMap();
+            typeMap[option.type()] =
+                configTypeToVariant(types[option.type()], typeMap, types);
+        }
         // Expand the nested type.
         // Add a section title.
         QVariantMap section;
@@ -123,7 +135,9 @@ void configOptionToVariant(QVariantList &options,
         for (const auto &subOption : subOptions) {
             auto map = subOption.value<QVariantMap>();
             if (map["isSection"].toBool()) {
-                options.append(subOption);
+                map["description"] = QString("%1 > %2").arg(
+                    option.description(), map["description"].toString());
+                options.append(map);
             } else {
                 auto names = map["name"].toStringList();
                 names.prepend(option.name());
@@ -149,11 +163,12 @@ void configOptionToVariant(QVariantList &options,
     }
 }
 
-QVariantList configTypeToVariant(const FcitxQtConfigType &type,
-                                 const QVariantMap &typeMap) {
+QVariantList
+configTypeToVariant(const FcitxQtConfigType &type, QVariantMap &typeMap,
+                    const QMap<QString, FcitxQtConfigType> &types) {
     QVariantList options;
     for (const auto &option : type.options()) {
-        configOptionToVariant(options, option, typeMap);
+        configOptionToVariant(options, option, typeMap, types);
     }
     return options;
 }
@@ -178,16 +193,21 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
                 }
                 QVariantMap map;
                 QVariantMap typeMap;
+                QMap<QString, FcitxQtConfigType> types;
                 map["uri"] = uri;
                 map["rawValue"] =
                     decomposeDBusVariant(reply.argumentAt<0>().variant());
                 map["typeName"] = configTypes[0].name();
 
-                // We do a revsere order.
-                for (const auto &configType :
-                     MakeIterRange(configTypes.rbegin(), configTypes.rend())) {
-                    typeMap[configType.name()] =
-                        configTypeToVariant(configType, typeMap);
+                // Reserve the place for types.
+                for (const auto &configType : configTypes) {
+                    types[configType.name()] = configType;
+                }
+                for (const auto &configType : configTypes) {
+                    if (typeMap[configType.name()].isNull()) {
+                        typeMap[configType.name()] =
+                            configTypeToVariant(configType, typeMap, types);
+                    }
                 }
                 map["typeMap"] = typeMap;
                 map["title"] = title;
