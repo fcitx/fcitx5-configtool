@@ -15,6 +15,7 @@
 #include <KQuickAddons/ConfigModule>
 #include <QFont>
 #include <QMap>
+#include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>
 #include <xkbcommon/xkbcommon.h>
@@ -57,6 +58,28 @@ public slots:
     }
     QString fontToString(const QFont &font) {
         return ::fcitx::kcm::fontToString(font);
+    }
+
+    QColor parseColor(const QString &str) {
+        Color color;
+        try {
+            color.setFromString(str.toStdString());
+        } catch (...) {
+        }
+        QColor qcolor;
+        qcolor.setRedF(color.redF());
+        qcolor.setGreenF(color.greenF());
+        qcolor.setBlueF(color.blueF());
+        qcolor.setAlphaF(color.alphaF());
+        return qcolor;
+    }
+    QString colorToString(const QColor &color) {
+        Color fcitxColor;
+        fcitxColor.setRedF(color.redF());
+        fcitxColor.setGreenF(color.greenF());
+        fcitxColor.setBlueF(color.blueF());
+        fcitxColor.setAlphaF(color.alphaF());
+        return QString::fromStdString(fcitxColor.toString());
     }
 
     void grabKeyboard(QQuickItem *item);

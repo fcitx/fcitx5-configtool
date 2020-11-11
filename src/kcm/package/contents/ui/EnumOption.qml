@@ -8,12 +8,12 @@ import QtQuick 2.14
 import QtQuick.Controls 2.14
 import org.kde.kirigami 2.10 as Kirigami
 
-ComboBox {
+Row {
     // properties {{{
     property variant properties
     property variant rawValue
     property int value: computeValue(rawValue)
-    property bool needsSave: value != currentIndex
+    property bool needsSave: value != comboBox.currentIndex
     // }}}
 
     // functions {{{
@@ -27,19 +27,14 @@ ComboBox {
     }
 
     function load(rawValue) {
-        currentIndex = computeValue(rawValue)
+        comboBox.currentIndex = computeValue(rawValue)
     }
 
     function save() {
-        rawValue = properties["Enum"][currentIndex.toString()]
+        rawValue = properties["Enum"][comboBox.currentIndex.toString()]
     }
     /// }}}
 
-    implicitWidth: Kirigami.Units.gridUnit * 8
-    textRole: "text"
-    model: ListModel {
-        id: listModel
-    }
     Component.onCompleted: {
         var i = 0
         while (true) {
@@ -56,12 +51,41 @@ ComboBox {
             if (text == "") {
                 text = value
             }
+            var subconfigpath = ""
+            if (properties.hasOwnProperty("SubConfigPath")) {
+                if (properties["SubConfigPath"].hasOwnProperty(i.toString())) {
+                    subconfigpath = properties["SubConfigPath"][i.toString()]
+                }
+            }
             listModel.append({
                                  "text": text,
-                                 "value": value
+                                 "value": value,
+                                 "subconfigpath": subconfigpath
                              })
             i++
         }
         load(rawValue)
+    }
+
+    ComboBox {
+        id: comboBox
+        textRole: "text"
+        implicitWidth: Kirigami.Units.gridUnit * 8
+        model: ListModel {
+            id: listModel
+        }
+    }
+
+    ToolButton {
+        id: configureButton
+
+        icon.name: "configure"
+        visible: listModel.get(comboBox.currentIndex).subconfigpath !== ""
+
+        onClicked: {
+            console.log("AAAA")
+            kcm.pushConfigPage(listModel.get(comboBox.currentIndex).text,
+                               listModel.get(comboBox.currentIndex).subconfigpath)
+        }
     }
 }

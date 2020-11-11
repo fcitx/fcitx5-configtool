@@ -17,6 +17,7 @@
 #include <QCheckBox>
 #include <QMessageBox>
 #include <QPainter>
+#include <QPushButton>
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <fcitx-utils/i18n.h>

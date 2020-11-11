@@ -6,8 +6,9 @@
  */
 #include "mainwindow.h"
 #include "logging.h"
+#include "verticalscrollarea.h"
+#include <QPushButton>
 #include <fcitx-utils/i18n.h>
-#include <verticalscrollarea.h>
 
 namespace fcitx {
 namespace kcm {

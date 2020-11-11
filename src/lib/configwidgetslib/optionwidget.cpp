@@ -6,12 +6,14 @@
  */
 
 #include "optionwidget.h"
+#include "configwidget.h"
 #include "font.h"
 #include "fontbutton.h"
 #include "keylistwidget.h"
 #include "listoptionwidget.h"
 #include "logging.h"
 #include "varianthelper.h"
+#include <KColorButton>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDialog>
@@ -21,7 +23,9 @@
 #include <QPointer>
 #include <QProcess>
 #include <QSpinBox>
+#include <QToolButton>
 #include <QVBoxLayout>
+#include <fcitx-utils/color.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
 #include <fcitxqtkeysequencewidget.h>
@@ -311,8 +315,10 @@ class EnumOptionWidget : public OptionWidget {
 public:
     EnumOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                      QWidget *parent)
-        : OptionWidget(path, parent), comboBox_(new QComboBox) {
-        QVBoxLayout *layout = new QVBoxLayout;
+        : OptionWidget(path, parent), comboBox_(new QComboBox),
+          toolButton_(new QToolButton) {
+        auto *layout = new QHBoxLayout;
+        toolButton_->setIcon(QIcon::fromTheme("preferences-system-symbolic"));
         layout->setMargin(0);
         int i = 0;
         while (true) {
@@ -326,14 +332,47 @@ public:
             if (text.isEmpty()) {
                 text = value;
             }
+            auto subConfigPath = valueFromVariantMap(
+                option.properties(), QString("SubConfigPath/%1").arg(i));
             comboBox_->addItem(text, value);
+            comboBox_->setItemData(i, subConfigPath, subConfigPathRole);
             i++;
         }
         layout->addWidget(comboBox_);
+        layout->addWidget(toolButton_);
         setLayout(layout);
 
         connect(comboBox_, qOverload<int>(&QComboBox::currentIndexChanged),
                 this, &OptionWidget::valueChanged);
+
+        connect(comboBox_, qOverload<int>(&QComboBox::currentIndexChanged),
+                this, [this]() {
+                    toolButton_->setVisible(
+                        !comboBox_->currentData(subConfigPathRole)
+                             .toString()
+                             .isEmpty());
+                });
+
+        connect(toolButton_, &QToolButton::clicked, this, [this]() {
+            auto widget = this->parentWidget();
+            ConfigWidget *configWidget;
+            while (widget) {
+                configWidget = qobject_cast<ConfigWidget *>(widget);
+                if (configWidget) {
+                    break;
+                }
+                widget = widget->parentWidget();
+            }
+            if (!configWidget) {
+                return;
+            }
+            QPointer<QDialog> dialog = ConfigWidget::configDialog(
+                this, configWidget->dbus(),
+                comboBox_->currentData(subConfigPathRole).toString(),
+                comboBox_->currentText());
+            dialog->exec();
+            delete dialog;
+        });
 
         defaultValue_ = option.defaultValue().variant().toString();
     }
@@ -358,7 +397,70 @@ public:
 
 private:
     QComboBox *comboBox_;
+    QToolButton *toolButton_;
     QString defaultValue_;
+    inline static constexpr int subConfigPathRole = Qt::UserRole + 1;
+};
+
+class ColorOptionWidget : public OptionWidget {
+    Q_OBJECT
+public:
+    ColorOptionWidget(const FcitxQtConfigOption &option, const QString &path,
+                      QWidget *parent)
+        : OptionWidget(path, parent), colorButton_(new KColorButton) {
+        QVBoxLayout *layout = new QVBoxLayout;
+        layout->setMargin(0);
+        layout->addWidget(colorButton_);
+        setLayout(layout);
+        connect(colorButton_, &KColorButton::changed, this,
+                &OptionWidget::valueChanged);
+
+        try {
+            defaultValue_.setFromString(
+                option.defaultValue().variant().toString().toStdString());
+        } catch (...) {
+        }
+    }
+
+    void readValueFrom(const QVariantMap &map) override {
+        auto value = valueFromVariantMap(map, path());
+        Color color;
+        try {
+            color.setFromString(value.toStdString());
+        } catch (...) {
+            color = defaultValue_;
+        }
+        QColor qcolor;
+        qcolor.setRedF(color.redF());
+        qcolor.setGreenF(color.greenF());
+        qcolor.setBlueF(color.blueF());
+        qcolor.setAlphaF(color.alphaF());
+        colorButton_->setColor(qcolor);
+    }
+
+    void writeValueTo(QVariantMap &map) override {
+        auto color = colorButton_->color();
+        Color fcitxColor;
+        fcitxColor.setRedF(color.redF());
+        fcitxColor.setGreenF(color.greenF());
+        fcitxColor.setBlueF(color.blueF());
+        fcitxColor.setAlphaF(color.alphaF());
+        valueToVariantMap(map, path(),
+                          QString::fromStdString(fcitxColor.toString()));
+    }
+
+    void restoreToDefault() override {
+        QColor qcolor;
+        qcolor.setRedF(defaultValue_.redF());
+        qcolor.setGreenF(defaultValue_.greenF());
+        qcolor.setBlueF(defaultValue_.blueF());
+        qcolor.setAlphaF(defaultValue_.alphaF());
+        colorButton_->setColor(qcolor);
+    }
+
+private:
+    KColorButton *colorButton_;
+    Color defaultValue_;
 };
 
 class ExternalOptionWidget : public OptionWidget {
@@ -446,6 +548,9 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "Enum") {
         widget = new EnumOptionWidget(option, path, parent);
+        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+    } else if (option.type() == "Color") {
+        widget = new ColorOptionWidget(option, path, parent);
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type().startsWith("List|")) {
         widget = new ListOptionWidget(option, path, parent);
