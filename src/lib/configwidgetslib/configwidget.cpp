@@ -10,7 +10,6 @@
 #include "logging.h"
 #include "optionwidget.h"
 #include "verticalscrollarea.h"
-#include <KTitleWidget>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QFormLayout>
