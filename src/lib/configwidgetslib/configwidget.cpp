@@ -161,24 +161,15 @@ void ConfigWidget::addOptionWidget(QFormLayout *layout,
 
 QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
                                     const QString &uri, const QString &title) {
-    QDialog *dialog = new QDialog(parent);
-    auto configPage = new ConfigWidget(uri, dbus, dialog);
-    dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
-    dialog->setWindowTitle(title);
+    auto configPage = new ConfigWidget(uri, dbus);
+    configPage->requestConfig(true);
     QVBoxLayout *dialogLayout = new QVBoxLayout;
-    dialog->setLayout(dialogLayout);
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
                              QDialogButtonBox::RestoreDefaults);
 
-    configPage->requestConfig(true);
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage);
-    if (!title.isEmpty()) {
-        auto titleWidget = new KTitleWidget;
-        titleWidget->setText(title);
-        dialogLayout->addWidget(titleWidget);
-    }
     dialogLayout->addWidget(configPageWrapper);
     dialogLayout->addWidget(buttonBox);
 
@@ -186,6 +177,11 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
             [configPage, buttonBox](QAbstractButton *button) {
                 configPage->buttonClicked(buttonBox->standardButton(button));
             });
+
+    QDialog *dialog = new QDialog(parent);
+    dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
+    dialog->setWindowTitle(title);
+    dialog->setLayout(dialogLayout);
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
