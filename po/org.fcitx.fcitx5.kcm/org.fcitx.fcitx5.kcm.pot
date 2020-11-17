@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-08 13:40-0800\n"
+"POT-Creation-Date: 2020-11-17 00:02-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -226,6 +226,12 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."
+msgstr ""
+
+#: src/kcm/package/contents/ui/ColorOption.qml:45
+#, kde-format
+msgctxt "@title:window"
+msgid "Select Color"
 msgstr ""
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
