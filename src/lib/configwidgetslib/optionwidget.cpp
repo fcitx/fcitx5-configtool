@@ -384,6 +384,8 @@ public:
             idx = comboBox_->findData(defaultValue_);
         }
         comboBox_->setCurrentIndex(idx);
+        toolButton_->setVisible(
+            !comboBox_->currentData(subConfigPathRole).toString().isEmpty());
     }
 
     void writeValueTo(QVariantMap &map) override {
