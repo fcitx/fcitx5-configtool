@@ -189,7 +189,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="runfcitxLabel">
+    <widget class="QLabel" name="textLabel">
      <property name="text">
       <string>Cannot connect to Fcitx by DBus, is Fcitx running?</string>
      </property>
@@ -212,7 +212,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="runfcitxLabel">
      <property name="text">
       <string/>
      </property>
