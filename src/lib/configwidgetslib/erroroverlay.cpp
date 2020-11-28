@@ -46,10 +46,7 @@ void ErrorOverlay::availabilityChanged(bool avail) {
 
 void ErrorOverlay::runFcitx5()
 {
-    QProcess p(0);
-    QString command = "fcitx5-autostart";
-    p.execute(command);
-    p.waitForFinished();
+    system("fcitx5-autostart");
 }
 
 void ErrorOverlay::reposition() {
