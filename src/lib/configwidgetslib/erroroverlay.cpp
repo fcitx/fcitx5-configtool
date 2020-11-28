@@ -9,6 +9,7 @@
 #include "ui_erroroverlay.h"
 #include <QAbstractButton>
 #include <QIcon>
+#include <fcitx-utils/standardpath.h>
 
 namespace fcitx {
 namespace kcm {
@@ -27,7 +28,7 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
   connect(dbus, &DBusProvider::availabilityChanged, this,
           &ErrorOverlay::availabilityChanged);
 
-  connect(ui_->pushButton, &QAbstractButton::pressed, this,
+  connect(ui_->runfcitxButton, &QAbstractButton::pressed, this,
           &ErrorOverlay::runFcitx5);
   availabilityChanged(dbus->available());
 }
