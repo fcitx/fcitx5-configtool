@@ -368,6 +368,19 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QLabel" name="infoLabel">
+       <property name="text">
+        <string>The first input method will be inactive state. Usually you need to put &lt;b&gt;Keyboard&lt;/b&gt; or &lt;b&gt;Keyboard - &lt;i&gt;layout name&lt;/i&gt;&lt;/b&gt; in the first place.</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
