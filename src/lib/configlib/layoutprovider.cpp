@@ -6,7 +6,6 @@
  */
 #include "layoutprovider.h"
 #include "dbusprovider.h"
-#include <QtQml/qqml.h>
 
 namespace fcitx {
 namespace kcm {
