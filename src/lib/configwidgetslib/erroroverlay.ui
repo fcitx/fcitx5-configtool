@@ -189,7 +189,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="pixmapLabel_2">
+    <widget class="QLabel" name="textLabel">
      <property name="text">
       <string>Cannot connect to Fcitx by DBus, is Fcitx running?</string>
      </property>
