@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
 # 黃柏諺 <s8321414@gmail.com>, 2020
+# bruh, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-17 00:02-0800\n"
+"POT-Creation-Date: 2020-11-29 00:02+0100\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: 黃柏諺 <s8321414@gmail.com>, 2020\n"
+"Last-Translator: bruh, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -25,17 +26,17 @@ msgstr ""
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr "、"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:63
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- 停用 %1\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:73
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- 停用 %1 的部分功能\n"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
@@ -62,7 +63,7 @@ msgstr "新增輸入法"
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "新增輸入法……"
 
 #: src/kcm/package/contents/ui/KeyListOption.qml:98
 #, kde-format
@@ -135,6 +136,9 @@ msgid ""
 "%2\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"停用 %1 將同時：\n"
+"%2\n"
+"確認要停用它嗎？"
 
 #: src/kcm/package/contents/ui/main.qml:337
 #, kde-format
@@ -170,7 +174,7 @@ msgstr "群組名稱"
 #: src/kcm/package/contents/ui/main.qml:106
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "群組："
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
@@ -215,10 +219,10 @@ msgstr "只顯示目前語言(&S)"
 #: src/kcm/package/contents/ui/AddonPage.qml:111
 #, kde-format
 msgid "Re-Enable"
-msgstr ""
+msgstr "重新啟用"
 
-#: src/kcm/package/contents/ui/main.qml:219
 #: src/kcm/package/contents/ui/ListOption.qml:123
+#: src/kcm/package/contents/ui/main.qml:219
 #, kde-format
 msgid "Remove"
 msgstr "移除"
@@ -238,7 +242,7 @@ msgstr "搜尋……"
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "選取顏色"
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
@@ -254,22 +258,22 @@ msgstr "選取佈局"
 #: src/kcm/package/contents/ui/main.qml:212
 #, kde-format
 msgid "Select layout for %1"
-msgstr ""
+msgstr "選取 %1 的佈局"
 
 #: src/kcm/package/contents/ui/main.qml:154
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr ""
+msgstr "選取系統鍵盤佈局……"
 
 #: src/kcm/package/contents/ui/main.qml:148
 #, kde-format
 msgid "Select system layout for group %1"
-msgstr ""
+msgstr "選取群組 %1 的系統佈局"
 
 #: src/kcm/package/contents/ui/main.qml:145
 #, kde-format
 msgid "Select system layout..."
-msgstr ""
+msgstr "選取系統佈局……"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format
