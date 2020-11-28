@@ -28,6 +28,7 @@ public:
     bool eventFilter(QObject *watched, QEvent *event) override;
 private slots:
     void availabilityChanged(bool avail);
+    void runFcitx5();
 
 private:
     void reposition();

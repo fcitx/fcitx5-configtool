@@ -8,6 +8,7 @@
 #include "dbusprovider.h"
 #include "ui_erroroverlay.h"
 #include <QIcon>
+#include <QAbstractButton>
 
 namespace fcitx {
 namespace kcm {
@@ -25,6 +26,8 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     connect(baseWidget_, &QObject::destroyed, this, &QObject::deleteLater);
     connect(dbus, &DBusProvider::availabilityChanged, this,
             &ErrorOverlay::availabilityChanged);
+
+    connect(ui_->pushButton,&QAbstractButton::pressed,this,&ErrorOverlay::runFcitx5);
     availabilityChanged(dbus->available());
 }
 
@@ -39,6 +42,14 @@ void ErrorOverlay::availabilityChanged(bool avail) {
             reposition();
         }
     }
+}
+
+void ErrorOverlay::runFcitx5()
+{
+    QProcess p(0);
+    QString command = "fcitx5-autostart";
+    p.execute(command);
+    p.waitForFinished();
 }
 
 void ErrorOverlay::reposition() {

@@ -189,7 +189,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="textLabel">
+    <widget class="QLabel" name="pixmapLabel_2">
      <property name="text">
       <string>Cannot connect to Fcitx by DBus, is Fcitx running?</string>
      </property>
@@ -200,6 +200,33 @@
    </item>
    <item>
     <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>run Fcitx5</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer_3">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
