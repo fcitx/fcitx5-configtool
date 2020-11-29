@@ -212,16 +212,16 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="runfcitxLabel">
+    <widget class="QLabel" name="runFcitxLabel">
      <property name="text">
       <string/>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="runfcitxButton">
+    <widget class="QPushButton" name="runFcitxButton">
      <property name="text">
-      <string>run Fcitx5</string>
+      <string>Run Fcitx 5</string>
      </property>
     </widget>
    </item>
