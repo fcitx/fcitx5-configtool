@@ -212,7 +212,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="systemRunLabel">
+    <widget class="QLabel" name="runFcitxLabel">
      <property name="text">
       <string/>
      </property>
