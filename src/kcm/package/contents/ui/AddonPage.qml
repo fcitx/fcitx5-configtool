@@ -84,7 +84,7 @@ KCM.ScrollViewKCM {
                     Kirigami.Heading {
                         Layout.fillWidth: true
                         text: model.name
-                        level: 3
+                        level: 5
                         elide: Text.ElideRight
                     }
 

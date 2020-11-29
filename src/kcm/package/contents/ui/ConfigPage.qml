@@ -5,7 +5,9 @@
  *
  */
 import QtQuick 2.14
+import QtQuick.Controls 2.14
 import org.kde.kirigami 2.10 as Kirigami
+import org.kde.kcm 1.1 as KCM
 
 Kirigami.ScrollablePage {
     id: configPage
@@ -33,11 +35,23 @@ Kirigami.ScrollablePage {
 
     ConfigGroup {
         id: configGroup
+        visible: false
+
+        width: parent.width
 
         SaveWarningDialog {
             id: dialog
 
             parent: configPage
         }
+
+        // Hack for force relayout the scrollview
+        Timer {
+            id: positionTimer
+            interval: 0
+            repeat: false
+            onTriggered: configGroup.visible = true;
+        }
     }
+    Component.onCompleted: positionTimer.start()
 }

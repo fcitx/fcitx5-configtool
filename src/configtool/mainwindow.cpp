@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "logging.h"
 #include "verticalscrollarea.h"
+#include <QKeyEvent>
 #include <QPushButton>
 #include <fcitx-utils/i18n.h>
 
@@ -66,6 +67,12 @@ void MainWindow::save() {
 void MainWindow::defaults() {
     configPage_->buttonClicked(QDialogButtonBox::RestoreDefaults);
     emit changed(true);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->matches(QKeySequence::Cancel)) {
+        qApp->quit();
+    }
 }
 
 void MainWindow::clicked(QAbstractButton *button) {

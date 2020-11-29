@@ -30,6 +30,9 @@ public:
 signals:
     void changed(bool state);
 
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+
 private slots:
     void clicked(QAbstractButton *button);
 
