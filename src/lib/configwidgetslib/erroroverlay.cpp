@@ -28,7 +28,7 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     connect(dbus, &DBusProvider::availabilityChanged, this,
             &ErrorOverlay::availabilityChanged);
 
-    connect(ui_->runfcitxButton, &QAbstractButton::pressed, this,
+    connect(ui_->runFcitxButton, &QAbstractButton::pressed, this,
             &ErrorOverlay::runFcitx5);
     availabilityChanged(dbus->available());
 }
