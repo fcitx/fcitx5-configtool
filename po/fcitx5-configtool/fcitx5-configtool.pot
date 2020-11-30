@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-29 00:02+0100\n"
+"POT-Creation-Date: 2020-12-01 00:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:129
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:33 rc.cpp:45
+#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:36 rc.cpp:48
 #, kde-format
 msgid "Add"
 msgstr ""
@@ -106,12 +106,12 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:278
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:63
+#: rc.cpp:66
 #, kde-format
 msgid "Available Input Method:"
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:194
+#. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:167
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #: rc.cpp:24
 #, kde-format
@@ -141,7 +141,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:57
+#: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -157,7 +157,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:27
+#: rc.cpp:30
 #, kde-format
 msgid "Current Input Method:"
 msgstr ""
@@ -196,7 +196,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:204
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:18 rc.cpp:54
+#: rc.cpp:18 rc.cpp:57
 #, kde-format
 msgid "Down"
 msgstr ""
@@ -231,7 +231,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
-#: rc.cpp:96 rc.cpp:105
+#: rc.cpp:99 rc.cpp:108
 #, kde-format
 msgid "Fcitx 5 is not running."
 msgstr ""
@@ -279,7 +279,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:30
+#: rc.cpp:33
 #, kde-format
 msgid "Group:"
 msgstr ""
@@ -314,7 +314,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:87
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:39
+#: rc.cpp:42
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr ""
@@ -330,14 +330,14 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:75
+#: rc.cpp:78
 #, kde-format
 msgid "Language:"
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:78
+#: rc.cpp:81
 #, kde-format
 msgid "Layout:"
 msgstr ""
@@ -348,7 +348,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
-#: rc.cpp:93
+#: rc.cpp:96
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
 msgstr ""
@@ -413,7 +413,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:317
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:69
+#: rc.cpp:72
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr ""
@@ -436,7 +436,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:154
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:36 rc.cpp:48
+#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Remove"
 msgstr ""
@@ -446,23 +446,30 @@ msgstr ""
 msgid "Rime"
 msgstr ""
 
+#. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
+#. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
+#: rc.cpp:27
+#, kde-format
+msgid "Run Fcitx 5"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:84
+#: rc.cpp:87
 #, kde-format
 msgid "Search Addons"
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:66
+#: rc.cpp:69
 #, kde-format
 msgid "Search Input Method"
 msgstr ""
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
-#: rc.cpp:108
+#: rc.cpp:111
 #, kde-format
 msgid "Select &All"
 msgstr ""
@@ -476,7 +483,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:60
+#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:63
 #, kde-format
 msgid "Select Layout"
 msgstr ""
@@ -487,14 +494,14 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
-#: rc.cpp:102
+#: rc.cpp:105
 #, kde-format
 msgid "Select migration tasks"
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:42
+#: rc.cpp:45
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr ""
@@ -511,7 +518,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:87
+#: rc.cpp:90
 #, kde-format
 msgid "Show &Advanced options"
 msgstr ""
@@ -528,7 +535,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:374
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:72
+#: rc.cpp:75
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -537,7 +544,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:99
+#: rc.cpp:102
 #, kde-format
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
@@ -561,14 +568,14 @@ msgstr ""
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:179
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:15 rc.cpp:51
+#: rc.cpp:15 rc.cpp:54
 #, kde-format
 msgid "Up"
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:81
+#: rc.cpp:84
 #, kde-format
 msgid "Variant:"
 msgstr ""
@@ -579,7 +586,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
-#: rc.cpp:90
+#: rc.cpp:93
 #, kde-format
 msgid "WelcomePage"
 msgstr ""
