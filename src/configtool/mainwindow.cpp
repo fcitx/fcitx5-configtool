@@ -70,7 +70,8 @@ void MainWindow::defaults() {
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {
-    if (event->matches(QKeySequence::Cancel)) {
+    QMainWindow::keyPressEvent(event);
+    if (!event->isAccepted() && event->matches(QKeySequence::Cancel)) {
         qApp->quit();
     }
 }
