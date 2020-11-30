@@ -7,7 +7,9 @@
 #include "erroroverlay.h"
 #include "dbusprovider.h"
 #include "ui_erroroverlay.h"
+#include <QAbstractButton>
 #include <QIcon>
+#include <fcitx-utils/standardpath.h>
 
 namespace fcitx {
 namespace kcm {
@@ -22,9 +24,13 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     ui_->pixmapLabel->setPixmap(
         QIcon::fromTheme("dialog-error-symbolic").pixmap(64));
 
+    ui_->runFcitxButton->setIcon(QIcon::fromTheme("system-run").pixmap(32));
     connect(baseWidget_, &QObject::destroyed, this, &QObject::deleteLater);
     connect(dbus, &DBusProvider::availabilityChanged, this,
             &ErrorOverlay::availabilityChanged);
+
+    connect(ui_->runFcitxButton, &QAbstractButton::pressed, this,
+            &ErrorOverlay::runFcitx5);
     availabilityChanged(dbus->available());
 }
 
@@ -39,6 +45,12 @@ void ErrorOverlay::availabilityChanged(bool avail) {
             reposition();
         }
     }
+}
+
+void ErrorOverlay::runFcitx5() {
+    QProcess::startDetached(
+        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")),
+        QStringList());
 }
 
 void ErrorOverlay::reposition() {
