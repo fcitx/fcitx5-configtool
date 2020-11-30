@@ -79,9 +79,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
 void MainWindow::clicked(QAbstractButton *button) {
     QDialogButtonBox::StandardButton standardButton =
         buttonBox->standardButton(button);
-    if (standardButton == QDialogButtonBox::Apply ||
-        standardButton == QDialogButtonBox::Ok) {
+    if (standardButton == QDialogButtonBox::Apply) {
         save();
+    } else if (standardButton == QDialogButtonBox::Ok) {
+        save();
+        qApp->quit();
     } else if (standardButton == QDialogButtonBox::Close) {
         qApp->quit();
     } else if (standardButton == QDialogButtonBox::Reset) {
