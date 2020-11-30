@@ -24,7 +24,6 @@ ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     ui_->pixmapLabel->setPixmap(
         QIcon::fromTheme("dialog-error-symbolic").pixmap(64));
 
-    ui_->runFcitxButton->setIcon(QIcon::fromTheme("system-run").pixmap(32));
     connect(baseWidget_, &QObject::destroyed, this, &QObject::deleteLater);
     connect(dbus, &DBusProvider::availabilityChanged, this,
             &ErrorOverlay::availabilityChanged);
