@@ -64,6 +64,7 @@ Kirigami.FormLayout {
             option: modelData
             Kirigami.FormData.isSection: modelData.isSection
             Kirigami.FormData.label: modelData.description
+            Kirigami.FormData.labelAlignment: Qt.AlignTop
 
             Connections {
                 target: loader.status == Loader.Ready ? loader.item : null

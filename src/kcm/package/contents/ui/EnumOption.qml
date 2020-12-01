@@ -70,7 +70,7 @@ Row {
     ComboBox {
         id: comboBox
         textRole: "text"
-        implicitWidth: Kirigami.Units.gridUnit * 8
+        implicitWidth: Kirigami.Units.gridUnit * 14
         model: ListModel {
             id: listModel
         }
@@ -83,7 +83,6 @@ Row {
         visible: listModel.get(comboBox.currentIndex).subconfigpath !== ""
 
         onClicked: {
-            console.log("AAAA")
             kcm.pushConfigPage(listModel.get(comboBox.currentIndex).text,
                                listModel.get(comboBox.currentIndex).subconfigpath)
         }

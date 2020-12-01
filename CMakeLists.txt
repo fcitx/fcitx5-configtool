@@ -27,7 +27,7 @@ if (ENABLE_KCM)
     find_package(KF5I18n REQUIRED)
     find_package(KF5Package REQUIRED)
     find_package(KF5Declarative REQUIRED)
-    find_package(KF5Kirigami2 REQUIRED)
+    find_package(KF5Kirigami2 5.76 REQUIRED)
     find_package(XKBCommon REQUIRED COMPONENTS XKBCommon)
 endif()
 
