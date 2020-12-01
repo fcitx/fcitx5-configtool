@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-01 00:02+0100\n"
+"POT-Creation-Date: 2020-12-02 00:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,6 +14,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#, kde-format
+msgid "%1:"
+msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:53
 #, kde-format
@@ -56,11 +61,6 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
-
-#: src/kcm/package/contents/ui/KeyListOption.qml:98
-#, kde-format
-msgid "Add shortcut"
 msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18

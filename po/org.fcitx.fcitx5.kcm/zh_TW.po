@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-29 00:02+0100\n"
+"POT-Creation-Date: 2020-12-02 00:02+0100\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: bruh, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -21,6 +21,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#, kde-format
+msgid "%1:"
+msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:53
 #, kde-format
@@ -64,11 +69,6 @@ msgstr "新增輸入法"
 #, kde-format
 msgid "Add Input Method..."
 msgstr "新增輸入法……"
-
-#: src/kcm/package/contents/ui/KeyListOption.qml:98
-#, kde-format
-msgid "Add shortcut"
-msgstr "新增快捷鍵"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18
 #, kde-format

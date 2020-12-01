@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-11-17 00:02-0800\n"
+"POT-Creation-Date: 2020-12-02 00:02+0100\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -20,6 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#, kde-format
+msgid "%1:"
+msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:53
 #, kde-format
@@ -62,11 +67,6 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:178
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
-
-#: src/kcm/package/contents/ui/KeyListOption.qml:98
-#, kde-format
-msgid "Add shortcut"
 msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18
@@ -217,8 +217,8 @@ msgstr "&Показывать только текущий язык"
 msgid "Re-Enable"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:219
 #: src/kcm/package/contents/ui/ListOption.qml:123
+#: src/kcm/package/contents/ui/main.qml:219
 #, kde-format
 msgid "Remove"
 msgstr ""
