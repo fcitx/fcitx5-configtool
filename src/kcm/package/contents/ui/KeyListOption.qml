@@ -9,7 +9,7 @@ import QtQuick.Layouts 1.14
 import QtQuick.Controls 2.14
 import org.kde.kirigami 2.10 as Kirigami
 
-ColumnLayout {
+RowLayout {
     id: keyList
 
     property variant properties
@@ -66,10 +66,9 @@ ColumnLayout {
         Repeater {
             model: listModel
             delegate: RowLayout {
-                Layout.fillWidth: true
                 KeyOption {
-                    Layout.minimumWidth: Kirigami.Units.gridUnit * 8
                     Layout.fillWidth: true
+                    Layout.minimumWidth: Kirigami.Units.gridUnit * 9
                     properties: keyList.properties.hasOwnProperty(
                                     "ListConstrain") ? keyList.properties.ListConstrain : {}
                     rawValue: model.key
@@ -79,7 +78,7 @@ ColumnLayout {
                         keyList.needsSave = true;
                     }
                 }
-                Button {
+                ToolButton {
                     icon.name: "edit-delete-symbolic"
                     onClicked: {
                         // Need to happen before real remove.
@@ -91,11 +90,10 @@ ColumnLayout {
         }
     }
 
-    Button {
+    ToolButton {
         id: addButton
-        Layout.alignment: Qt.AlignVCenter
+        Layout.alignment: Qt.AlignTop
         icon.name: "list-add-symbolic"
-        text: i18n("Add shortcut")
         onClicked: {
             keyList.needsSave = true;
             listModel.append({"key": ""});

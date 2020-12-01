@@ -63,8 +63,8 @@ Kirigami.FormLayout {
 
             option: modelData
             Kirigami.FormData.isSection: modelData.isSection
-            Kirigami.FormData.label: modelData.description
-            Kirigami.FormData.labelAlignment: Qt.AlignTop
+            Kirigami.FormData.label: modelData.isSection ? modelData.description : i18n("%1:", modelData.description)
+            Kirigami.FormData.labelAlignment: modelData.type.startsWith("List|") ? (height > Kirigami.Units.gridUnit * 2 ? Qt.AlignTop : 0) : 0
 
             Connections {
                 target: loader.status == Loader.Ready ? loader.item : null
