@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-01 00:02+0100\n"
+"POT-Creation-Date: 2020-12-04 00:02+0100\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: ABE Tsunehiko, 2017\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -34,17 +35,17 @@ msgstr "%1 (%2)"
 #: src/lib/configlib/layoutprovider.cpp:153
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: src/migrator/lib/processrunner.cpp:69
 #, kde-format
 msgid "%1 crashed."
-msgstr ""
+msgstr "%1 がクラッシュしました。"
 
 #: src/migrator/lib/processrunner.cpp:76
 #, kde-format
 msgid "%1 failed to start."
-msgstr ""
+msgstr "%1 を開始できませんでした。"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:530
 #: src/lib/configwidgetslib/optionwidget.cpp:541
@@ -60,22 +61,22 @@ msgstr "%1:"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr ""
+msgstr "次へ(&N) >"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/lib/configwidgetslib/addonselector.cpp:394
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- %1 を無効にする\n"
 
 #: src/lib/configwidgetslib/addonselector.cpp:405
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- %1 の一部の機能を無効にする\n"
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
@@ -90,24 +91,24 @@ msgstr "一般的なキーボドレイアウトビューアー"
 #: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:36 rc.cpp:48
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: src/configtool/mainwindow.cpp:37
 msgid "Addons"
-msgstr ""
+msgstr "アドオン"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr ""
+msgstr "すべての移行タスクが正常に完了しました。"
 
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
 msgid "Any language"
-msgstr ""
+msgstr "すべての言語"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
-msgstr ""
+msgstr "Fcitxに終了を要求しています..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:278
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -125,23 +126,23 @@ msgstr "DBusがFcitxと接続できませんでした。Fcitxは動いていま�
 
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "レイアウトの選択に一致するように入力メソッドを変更します。"
 
 #: src/lib/configwidgetslib/impage.cpp:315
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "入力メソッドの選択に一致するようにシステムレイアウトを変更します。"
 
 #: src/migrator/app/taskpage.cpp:249
 msgid "Checking if Fcitx is running..."
-msgstr ""
+msgstr "Fcitxが実行中か確認しています..."
 
 #: src/migrator/app/taskpage.cpp:237
 msgid "Checking if Fcitx is still running..."
-msgstr ""
+msgstr "Fcitxがまだ実行中か確認しています..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
-msgstr ""
+msgstr "詳細についてはアイテムをクリックしてください。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
@@ -149,16 +150,16 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:60
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "設定"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
-msgstr ""
+msgstr "コンバーターがクラッシュしました。"
 
 #: src/migrator/lib/copydirectory.cpp:113
 #, kde-format
 msgid "Copying file %1 to %2"
-msgstr ""
+msgstr "ファイル %1 を %2 にコピーしています"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:24
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -169,7 +170,7 @@ msgstr "現在の入力メソッド:"
 
 #: src/lib/configwidgetslib/impage.cpp:149
 msgid "Current group changed"
-msgstr ""
+msgstr "現在のグループを変更しました"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
@@ -178,12 +179,12 @@ msgstr "既定"
 #: src/migrator/lib/copydirectory.cpp:85
 #, kde-format
 msgid "Directory %1 does not exist."
-msgstr ""
+msgstr "ディレクトリ %1 は存在しません。"
 
 #: src/lib/configwidgetslib/addonselector.cpp:413
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "%1 を無効にする"
 
 #: src/lib/configwidgetslib/addonselector.cpp:408
 #, kde-format
@@ -192,10 +193,13 @@ msgid ""
 "%2%3\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"%1 を無効にすると次のようにもなります:\n"
+"%2 %3\n"
+"無効にしますか？"
 
 #: src/lib/configwidgetslib/impage.cpp:150
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "グループを変更しますか？現在のグループへの変更は失われます！"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -204,33 +208,33 @@ msgstr ""
 #: rc.cpp:18 rc.cpp:57
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "下へ"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: src/migrator/lib/copydirectory.cpp:119
 #, kde-format
 msgid "Failed to copy file %1 to %2"
-msgstr ""
+msgstr "ファイル %1 を %2 にコピーできませんでした"
 
 #: src/migrator/lib/copydirectory.cpp:92
 #, kde-format
 msgid "Failed to create directory %1."
-msgstr ""
+msgstr "ディレクトリ %1 の作成に失敗しました。"
 
 #: src/migrator/lib/configmigrator.cpp:89
 #, kde-format
 msgid "Failed to fetch config for %1"
-msgstr ""
+msgstr "%1 の設定の取得に失敗しました"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr ""
+msgstr "DBus Callの開始に失敗しました。"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -239,26 +243,26 @@ msgstr ""
 #: rc.cpp:99 rc.cpp:108
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr ""
+msgstr "Fcitx 5が実行されていません。"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitxの設定"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
-msgstr ""
+msgstr "Fcitxが終了しました。"
 
 #: src/migrator/app/taskpage.cpp:238
 msgid "Fcitx is fully exited."
-msgstr ""
+msgstr "Fcitxは完全に終了します。"
 
 #: src/migrator/app/taskpage.cpp:250
 msgid "Fcitx is started."
-msgstr ""
+msgstr "Fcitxが開始されます。"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -267,16 +271,16 @@ msgstr "フロントエンド"
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
-msgstr ""
+msgstr "グローバル設定"
 
 #: src/configtool/mainwindow.cpp:36
 msgid "Global Options"
-msgstr ""
+msgstr "グローバルオプション"
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
 msgid "Got error: %1 %2"
-msgstr ""
+msgstr "エラーが発生しました: %1 %2"
 
 #: src/lib/configwidgetslib/impage.cpp:373
 msgid "Group Name:"
@@ -291,11 +295,11 @@ msgstr "グループ:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からピンイン辞書をインポートする"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からインストール済みテーブルのデータをインポートする"
 
 #: src/configtool/mainwindow.cpp:35 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
@@ -303,7 +307,7 @@ msgstr "入力メソッド"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
-msgstr "キーボード"
+msgstr "キーボード <layout>"
 
 #: layout/main.cpp:53
 msgid "Keyboard Layout viewer"
@@ -331,7 +335,7 @@ msgstr "キーボードレイアウトビューアー"
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
 msgid "Kkc"
-msgstr ""
+msgstr "kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -349,52 +353,54 @@ msgstr "レイアウト:"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
-msgstr ""
+msgstr "ローダー"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
 #: rc.cpp:96
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からデータを移行する"
 
 #: src/migrator/kkc/kkcmigrator.cpp:40
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からkkc辞書を移行する"
 
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
+"Fcitx 4からRime辞書を移行します。注意: これにより既存のデータがすべて削除され"
+"ます。"
 
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Migrate Skk dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からSKK辞書を移行する"
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4からグローバルキーオプションを移行する"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
-msgstr ""
+msgstr "kkcルールオプションを移行しています..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
-msgstr ""
+msgstr "ピンインデータを移行しています..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
-msgstr ""
+msgstr "SKKルールオプションを移行しています..."
 
 #: src/migrator/global/globalconfigmigrator.cpp:89
 msgid "Migrating global hotkey key option..."
-msgstr ""
+msgstr "グローバルホットキーオプションを移行しています..."
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
-msgstr ""
+msgstr "移行ツール"
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
@@ -410,18 +416,18 @@ msgstr "新しいグループ"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
-msgstr ""
+msgstr "タスクの1つが失敗しました。移行を終了します。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:317
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:72
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr "現在の言語のみ表示 (&S)"
+msgstr "現在の言語のみ表示(&S)"
 
 #: src/lib/configlib/model.cpp:117
 msgid "Other"
@@ -429,11 +435,11 @@ msgstr "その他"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "ピンイン"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr ""
+msgstr "ピンインデータが移行されます。"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -444,19 +450,19 @@ msgstr ""
 #: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
 msgid "Rime"
-msgstr ""
+msgstr "Rime"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
 #. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5を実行する"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -477,7 +483,7 @@ msgstr "入力メソッドの検索"
 #: rc.cpp:111
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "すべて選択(&A)"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -491,7 +497,7 @@ msgstr "フォント選択 (&F)"
 #: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:63
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "レイアウトを選択"
 
 #: src/lib/configwidgetslib/impage.cpp:222
 msgid "Select default layout"
@@ -502,24 +508,24 @@ msgstr "既定のレイアウトを選択"
 #: rc.cpp:105
 #, kde-format
 msgid "Select migration tasks"
-msgstr ""
+msgstr "移行タスクを選択"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:90
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:45
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "システムキーボードのレイアウトを選択"
 
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
 msgid "Service %1 does not present on DBus."
-msgstr ""
+msgstr "サービス %1 はDBusに存在しません。"
 
 #: src/migrator/lib/dbuswatcher.cpp:34
 #, kde-format
 msgid "Service %1 still present on DBus."
-msgstr ""
+msgstr "サービス %1 はまだDBusに存在します。"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -531,12 +537,12 @@ msgstr "拡張オプションの表示 (&A)"
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:37
 msgid "Skk"
-msgstr ""
+msgstr "SKK"
 
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr ""
+msgstr "テーブル"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:374
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -557,11 +563,13 @@ msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
 msgstr ""
+"このウィザードは、既存のユーザーデータを Fcitx 4 から Fcitx 5 に移行するのに"
+"役立ちます"
 
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format
 msgid "Try to Migrating table file: %1 ..."
-msgstr ""
+msgstr "テーブルファイルの移行を試します: %1 ..."
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
@@ -578,14 +586,14 @@ msgstr "不明"
 #: rc.cpp:15 rc.cpp:54
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "上へ"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:84
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "バリアント:"
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
@@ -596,28 +604,32 @@ msgstr "キーボードレイアウトを見る"
 #: rc.cpp:93
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "ウェルカムページ"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #: src/lib/configwidgetslib/impage.cpp:316
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"現在設定されている入力メソッドがレイアウトと一致しません。レイアウト設定を変"
+"更しますか？"
 
 #: src/lib/configwidgetslib/impage.cpp:238
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"現在設定されている入力メソッドが選択したレイアウトと一致しません。対応する入"
+"力メソッドをレイアウトに追加しますか？"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:644
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: layout/main.cpp:26
 msgid "group"
@@ -629,4 +641,4 @@ msgstr "レイアウト"
 
 #: layout/main.cpp:28
 msgid "variant"
-msgstr ""
+msgstr "バリアント"
