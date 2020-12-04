@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
-project(kcm-fcitx VERSION 0.5.99)
+project(fcitx5-configtool VERSION 5.0.1)
 
 set(QT_MIN_VERSION "5.14.0")
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
