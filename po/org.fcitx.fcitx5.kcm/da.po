@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-02 00:02+0100\n"
+"POT-Creation-Date: 2020-12-05 00:02+0100\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/ConfigGroup.qml:66
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:53
 #, kde-format
@@ -241,7 +241,7 @@ msgstr "Søg ..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "Vælg farve"
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format

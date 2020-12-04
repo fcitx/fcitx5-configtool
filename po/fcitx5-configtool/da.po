@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-01 00:02+0100\n"
+"POT-Creation-Date: 2020-12-05 00:02+0100\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -460,7 +460,7 @@ msgstr "Rime"
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "Kør Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
