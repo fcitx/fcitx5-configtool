@@ -51,7 +51,7 @@ struct DrawingItem {
     int originX;
     int originY;
     int angle;
-    uint priority;
+    unsigned int priority;
 };
 
 struct Doodad : public DrawingItem {
@@ -64,7 +64,7 @@ struct DrawingKey : public DrawingItem {
     DrawingKey() : xkbkey(0), pressed(false), keycode(0) {}
     struct _XkbKey *xkbkey;
     bool pressed;
-    uint keycode;
+    unsigned int keycode;
 };
 
 struct KeyboardDrawingGroupLevel {
@@ -89,7 +89,7 @@ protected:
     void alloc();
     void release();
     void initInicatorDoodad(union _XkbDoodad *xkbdoodad, Doodad &doodad);
-    uint findKeycode(const char *keyName);
+    unsigned int findKeycode(const char *keyName);
     void rotateRectangle(int origin_x, int origin_y, int x, int y, int angle,
                          int &rotated_x, int &rotated_y);
     bool parseXkbColorSpec(char *colorspec, QColor &color);
@@ -99,8 +99,8 @@ protected:
 
     void drawKey(QPainter *painter, DrawingKey *item);
     void drawDoodad(QPainter *painter, Doodad *doodad);
-    void drawKeyLabel(QPainter *painter, uint keycode, int angle, int arg4,
-                      int originY, int x2, int y2, bool pressed);
+    void drawKeyLabel(QPainter *painter, unsigned int keycode, int angle,
+                      int arg4, int originY, int x2, int y2, bool pressed);
     void drawKeyLabelHelper(QPainter *painter, const QString &text, int angle,
                             int glp, int end_glp, int x, int y, int width,
                             int height, int padding, bool is_pressed);
@@ -148,7 +148,7 @@ private:
     KeyboardDrawingGroupLevel **groupLevels;
     bool trackModifiers = false;
     int mods;
-    QMap<uint, uint> deadMap;
+    QMap<unsigned int, unsigned int> deadMap;
 };
 
 } // namespace kcm
