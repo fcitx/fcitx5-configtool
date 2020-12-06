@@ -13,6 +13,7 @@
 #include <QAbstractNativeEventFilter>
 #include <QMap>
 #include <QWidget>
+#include <vector>
 
 class QPainter;
 struct Doodad;
@@ -137,17 +138,16 @@ private:
     QString keySymToString(unsigned long keysym);
 
     QList<DrawingItem *> keyboardItems;
-    DrawingKey *keys;
+    std::vector<DrawingKey> keys;
     QList<Doodad *> physicalIndicators;
-    struct _XkbDesc *xkb;
-    unsigned int l3mod;
-    int physicalIndicatorsSize;
-    bool xkbOnDisplay;
-    QColor *colors;
+    struct _XkbDesc *xkb = nullptr;
+    unsigned int l3mod = 0;
+    bool xkbOnDisplay = false;
+    std::vector<QColor> colors;
     QPixmap image;
-    double ratio;
+    double ratio = 1.0;
     KeyboardDrawingGroupLevel **groupLevels;
-    bool trackModifiers;
+    bool trackModifiers = false;
     int mods;
     QMap<uint, uint> deadMap;
 };

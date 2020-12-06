@@ -87,7 +87,7 @@ static QString FcitxXkbFindXkbRulesFile() {
 }
 
 KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget *parent)
-    : QWidget(parent), ratio(1.0), trackModifiers(false) {
+    : QWidget(parent), groupLevels(pGroupsLevels) {
     uint i = 0;
     for (i = 0; i < sizeof(deadMapData) / sizeof(deadMapData[0]); i++)
         deadMap[deadMapData[i].dead] = deadMapData[i].nondead;
@@ -100,8 +100,6 @@ KeyboardLayoutWidget::KeyboardLayoutWidget(QWidget *parent)
 
     if (!xkb)
         return;
-
-    groupLevels = pGroupsLevels;
 
     XkbGetNames(QX11Info::display(), XkbAllNamesMask, xkb);
 
@@ -279,26 +277,18 @@ void KeyboardLayoutWidget::setKeyboard(XkbComponentNamesPtr names) {
 
 void KeyboardLayoutWidget::alloc() {
     physicalIndicators.clear();
-    physicalIndicatorsSize = xkb->indicators->phys_indicators + 1;
+    int physicalIndicatorsSize = xkb->indicators->phys_indicators + 1;
     physicalIndicators.reserve(physicalIndicatorsSize);
     for (int i = 0; i < physicalIndicatorsSize; i++)
         physicalIndicators << NULL;
 
-    keys = new DrawingKey[xkb->max_key_code + 1];
+    keys.resize(xkb->max_key_code + 1);
 }
 
 void KeyboardLayoutWidget::release() {
     physicalIndicators.clear();
-    physicalIndicatorsSize = 0;
-    if (keys) {
-        delete[] keys;
-        keys = NULL;
-    }
-
-    if (colors) {
-        delete[] colors;
-        colors = NULL;
-    }
+    keys.clear();
+    colors.clear();
 
     foreach (DrawingItem *item, keyboardItems) {
         switch (item->type) {
@@ -436,7 +426,7 @@ void KeyboardLayoutWidget::initColors() {
     if (!xkb)
         return;
 
-    colors = new QColor[xkb->geom->num_colors];
+    colors.resize(xkb->geom->num_colors);
 
     for (i = 0; i < xkb->geom->num_colors; i++) {
         result = parseXkbColorSpec(xkb->geom->colors[i].spec, colors[i]);
