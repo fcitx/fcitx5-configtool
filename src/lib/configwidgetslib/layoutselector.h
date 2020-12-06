@@ -53,7 +53,7 @@ private:
     std::unique_ptr<Ui::LayoutSelector> ui_;
     DBusProvider *dbus_;
     LayoutProvider *layoutProvider_;
-    KeyboardLayoutWidget *keyboardLayoutWidget_;
+    KeyboardLayoutWidget *keyboardLayoutWidget_ = nullptr;
     Iso639 iso639_;
 
     QString preSelectLayout_;

@@ -8,8 +8,8 @@
 #define _LAYOUT_DEADMAPDATA_H_
 
 struct DeadMap {
-    uint dead;
-    uint nondead;
+    unsigned int dead;
+    unsigned int nondead;
 } deadMapData[] = {
 
     {XK_dead_grave, 0x0060},

@@ -142,7 +142,6 @@ private:
     QList<Doodad *> physicalIndicators;
     struct _XkbDesc *xkb = nullptr;
     unsigned int l3mod = 0;
-    bool xkbOnDisplay = false;
     std::vector<QColor> colors;
     QPixmap image;
     double ratio = 1.0;

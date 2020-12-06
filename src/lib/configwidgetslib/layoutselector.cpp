@@ -127,6 +127,10 @@ void LayoutSelector::layoutComboBoxChanged() {
 }
 
 void LayoutSelector::variantComboBoxChanged() {
+    if (!keyboardLayoutWidget_) {
+        return;
+    }
+
     auto layout = ui_->layoutComboBox->currentData().toString();
     auto variant = ui_->variantComboBox->currentData().toString();
     if (layout.isEmpty()) {
