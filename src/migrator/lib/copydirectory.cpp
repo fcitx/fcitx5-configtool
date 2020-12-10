@@ -28,6 +28,7 @@ namespace fcitx {
 namespace {
 
 bool cloneFile(int srcfd, int dstfd) {
+#if defined(Q_OS_LINUX)
     if (ioctl(dstfd, FICLONE, srcfd) == 0) {
         return true;
     }
@@ -48,6 +49,7 @@ bool cloneFile(int srcfd, int dstfd) {
     if (errno != EINVAL && errno != ENOSYS) {
         return false;
     }
+#endif
     // Fallback to write.
 
     char buffer[4096];
