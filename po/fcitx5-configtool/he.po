@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# Omeritzics Games <omeritzicschwartz@gmail.com>, 2020
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-01 00:02+0100\n"
+"POT-Creation-Date: 2020-12-10 01:10+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Omeritzics Games <omeritzicschwartz@gmail.com>, 2020\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr ""
 #: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:36 rc.cpp:48
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "הוספה"
 
 #: src/configtool/mainwindow.cpp:37
 msgid "Addons"
@@ -410,7 +410,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -598,7 +598,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #: src/lib/configwidgetslib/impage.cpp:316
 msgid ""
