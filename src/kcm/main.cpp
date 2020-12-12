@@ -14,6 +14,7 @@
 #include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickWindow>
+#include <QtGlobal>
 #include <config.h>
 #include <fcitx-utils/misc.h>
 #include <fcitx-utils/standardpath.h>
@@ -29,9 +30,15 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
       layoutProvider_(new LayoutProvider(dbus_, this)),
       addonModel_(new FlatAddonModel(this)),
       addonProxyModel_(new AddonProxyModel(this)) {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+    qmlRegisterType<FilteredIMModel>();
+    qmlRegisterType<IMProxyModel>();
+    qmlRegisterType<LanguageModel>();
+#else
     qmlRegisterAnonymousType<FilteredIMModel>("", 1);
     qmlRegisterAnonymousType<IMProxyModel>("", 1);
     qmlRegisterAnonymousType<LanguageModel>("", 1);
+#endif
 
     KAboutData *about =
         new KAboutData("org.fcitx.fcitx5.kcm", i18n("Fcitx 5"), PROJECT_VERSION,
