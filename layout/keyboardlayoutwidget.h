@@ -126,7 +126,7 @@ protected:
     int xkbToPixmapCoord(int n);
     double xkbToPixmapDouble(double d);
     void roundedPolygon(QPainter *painter, bool filled, double radius,
-                        const QVector<QPointF> &points);
+                        const std::vector<QPointF> &points);
     void drawCurveRectangle(QPainter *painter, bool filled, QColor color, int x,
                             int y, int width, int height, double radius);
     void roundedCorner(QPainterPath &path, QPointF b, QPointF c, double radius);

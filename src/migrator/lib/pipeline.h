@@ -10,7 +10,6 @@
 #include "fcitx5migrator_export.h"
 #include "pipelinejob.h"
 #include <QObject>
-#include <QVector>
 
 namespace fcitx {
 

@@ -680,18 +680,6 @@ void KeyboardLayoutWidget::generatePixmap(bool force) {
             break;
         }
     }
-
-    /*
-    QVector<QPointF> vec;
-    vec << QPointF(20, 20);
-    vec << QPointF(200, 20);
-    vec << QPointF(200, 200);
-    vec << QPointF(20, 200);
-
-    QBrush brush(Qt::gray);
-    painter.setBrush(brush);
-    roundedPolygon(&painter, false, 20, vec);*/
-    /*image.save("/tmp/test.png", "png");*/
 }
 
 void KeyboardLayoutWidget::drawKey(QPainter *painter, DrawingKey *key) {
@@ -811,7 +799,7 @@ void KeyboardLayoutWidget::drawPolygon(QPainter *painter, QColor fill_color,
                                        XkbPointPtr xkb_points,
                                        unsigned int num_points,
                                        unsigned int radius) {
-    QVector<QPointF> points;
+    std::vector<QPointF> points;
     bool filled;
     unsigned int i;
 
@@ -830,7 +818,7 @@ void KeyboardLayoutWidget::drawPolygon(QPainter *painter, QColor fill_color,
         QPointF point;
         point.setX(xkbToPixmapCoord(xkb_x + xkb_points[i].x));
         point.setY(xkbToPixmapCoord(xkb_y + xkb_points[i].y));
-        points << point;
+        points.push_back(point);
     }
 
     roundedPolygon(painter, filled, xkbToPixmapDouble(radius), points);
@@ -927,8 +915,8 @@ void KeyboardLayoutWidget::roundedCorner(QPainterPath &path, QPointF b,
 
 void KeyboardLayoutWidget::roundedPolygon(QPainter *painter, bool filled,
                                           double radius,
-                                          const QVector<QPointF> &points) {
-    int i, j;
+                                          const std::vector<QPointF> &points) {
+    size_t i, j;
 
     QPainterPath path;
 
