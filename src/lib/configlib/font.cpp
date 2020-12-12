@@ -6,9 +6,15 @@
  */
 #include "font.h"
 #include <QMap>
+#include <fcitx-utils/stringutils.h>
 
 QFont fcitx::kcm::parseFont(const QString &string) {
-    QStringList list = string.split(" ", Qt::SkipEmptyParts);
+    auto result = stringutils::split(string.toStdString(), " ",
+                                     stringutils::SplitBehavior::SkipEmpty);
+    QStringList list;
+    for (const auto &token : result) {
+        list << QString::fromStdString(token);
+    }
     int size = 9; // Default size.
     if (!list.empty()) {
         bool ok = false;
