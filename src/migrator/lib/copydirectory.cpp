@@ -9,7 +9,6 @@
 #include <QtConcurrent>
 #include <fcitx-utils/fs.h>
 #include <fcitx-utils/i18n.h>
-#include <filesystem>
 #include <unistd.h>
 
 #if defined(Q_OS_LINUX)
