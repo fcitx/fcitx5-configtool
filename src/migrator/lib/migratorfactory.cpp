@@ -11,6 +11,10 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QPluginLoader>
+#include <QtGlobal>
+#if (QT_VERSION < QT_VERSION_CHECK(5,14,0))
+#include <QVector>
+#endif
 #include <QSet>
 #include <QVariant>
 #include <fcitx-utils/standardpath.h>

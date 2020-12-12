@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 project(fcitx5-configtool VERSION 5.0.1)
 
-set(QT_MIN_VERSION "5.14.0")
+set(QT_MIN_VERSION "5.12.0")
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(KDEInstallDirs)
@@ -17,6 +17,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"org.fcitx.fcitx5.kcm\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent)
+find_package(Boost 1.61 REQUIRED COMPONENTS filesystem)
 
 if (ENABLE_CONFIG_QT)
     find_package(KF5ItemViews REQUIRED)
@@ -27,7 +28,7 @@ if (ENABLE_KCM)
     find_package(KF5I18n REQUIRED)
     find_package(KF5Package REQUIRED)
     find_package(KF5Declarative REQUIRED)
-    find_package(KF5Kirigami2 5.76 REQUIRED)
+    find_package(KF5Kirigami2 5.71 REQUIRED)
     find_package(XKBCommon REQUIRED COMPONENTS XKBCommon)
 endif()
 

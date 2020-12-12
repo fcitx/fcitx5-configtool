@@ -6,9 +6,14 @@
  */
 #include "font.h"
 #include <QMap>
+#include <QtGlobal>
 
 QFont fcitx::kcm::parseFont(const QString &string) {
+#if (QT_VERSION < QT_VERSION_CHECK(5,15,0))
+    QStringList list = string.split(" ", QString::SkipEmptyParts);
+#else
     QStringList list = string.split(" ", Qt::SkipEmptyParts);
+#endif
     int size = 9; // Default size.
     if (!list.empty()) {
         bool ok = false;

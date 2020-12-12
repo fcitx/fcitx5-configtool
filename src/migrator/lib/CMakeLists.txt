@@ -18,7 +18,7 @@ add_library(Fcitx5Migrator SHARED
     log.cpp
     configmigrator.cpp
     )
-target_link_libraries(Fcitx5Migrator Qt5::Core Qt5::Concurrent Qt5::DBus Fcitx5::Config Fcitx5::Utils Fcitx5Qt5::DBusAddons )
+target_link_libraries(Fcitx5Migrator Qt5::Core Qt5::Concurrent Qt5::DBus Fcitx5::Config Fcitx5::Utils Fcitx5Qt5::DBusAddons Boost::filesystem)
 set_target_properties(Fcitx5Migrator PROPERTIES
     VERSION ${Fcitx5Migrator_VERSION}
     SOVERSION ${Fcitx5Migrator_SOVERSION}

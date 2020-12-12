@@ -9,7 +9,11 @@
 #include <QtConcurrent>
 #include <fcitx-utils/fs.h>
 #include <fcitx-utils/i18n.h>
+#if __GNUC__ <= 7
+#include <boost/filesystem.hpp>
+#else
 #include <filesystem>
+#endif
 #include <unistd.h>
 
 #if defined(Q_OS_LINUX)

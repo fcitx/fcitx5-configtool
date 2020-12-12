@@ -7,6 +7,7 @@
 #include "listoptionwidget.h"
 #include "varianthelper.h"
 #include <QAbstractListModel>
+#include <QtGlobal>
 
 namespace fcitx {
 namespace kcm {
@@ -102,7 +103,11 @@ public:
                            index.parent(), index.row() - 1)) {
             return;
         }
+#if (QT_VERSION < QT_VERSION_CHECK(5,13,0))
+	values_.swap(index.row() - 1, index.row());
+#else
         values_.swapItemsAt(index.row() - 1, index.row());
+#endif
         endMoveRows();
     }
 
@@ -115,7 +120,11 @@ public:
                            index.parent(), index.row() + 2)) {
             return;
         }
+#if (QT_VERSION < QT_VERSION_CHECK(5,13,0))
+	values_.swap(index.row(), index.row() + 1);
+#else
         values_.swapItemsAt(index.row(), index.row() + 1);
+#endif
         endMoveRows();
     }
 
