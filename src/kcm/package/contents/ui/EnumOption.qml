@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  *
  */
-import QtQuick 2.14
-import QtQuick.Controls 2.14
+import QtQuick 2.12
+import QtQuick.Controls 2.12
 import org.kde.kirigami 2.10 as Kirigami
 
 Row {
@@ -70,7 +70,7 @@ Row {
     ComboBox {
         id: comboBox
         textRole: "text"
-        implicitWidth: Kirigami.Units.gridUnit * 14
+        implicitWidth: Kirigami.Units.gridUnit * 12
         model: ListModel {
             id: listModel
         }

@@ -23,6 +23,7 @@ if (ENABLE_CONFIG_QT)
 endif()
 
 if (ENABLE_KCM)
+    find_package(Qt5QuickControls2 REQUIRED)
     find_package(KF5CoreAddons REQUIRED)
     find_package(KF5I18n REQUIRED)
     find_package(KF5Package REQUIRED)
