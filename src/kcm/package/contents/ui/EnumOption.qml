@@ -70,7 +70,7 @@ Row {
     ComboBox {
         id: comboBox
         textRole: "text"
-        implicitWidth: Kirigami.Units.gridUnit * 12
+        implicitWidth: Kirigami.Units.gridUnit * 14
         model: ListModel {
             id: listModel
         }
