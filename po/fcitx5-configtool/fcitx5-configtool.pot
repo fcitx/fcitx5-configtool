@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-10 01:10+0000\n"
+"POT-Creation-Date: 2020-12-16 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Converter crashed."
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:113
+#: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
 msgstr ""
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:85
+#: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
 msgstr ""
@@ -208,12 +208,12 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:119
+#: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:92
+#: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
 msgstr ""

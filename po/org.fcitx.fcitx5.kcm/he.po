@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# Omeritzics Games <omeritzicschwartz@gmail.com>, 2020
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-02 00:02+0100\n"
+"POT-Creation-Date: 2020-12-16 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Omeritzics Games <omeritzicschwartz@gmail.com>, 2020\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "הוספת שיטת קלט..."
 msgid "Addons"
 msgstr "תוספים"
 
-#: src/kcm/main.cpp:42
+#: src/kcm/main.cpp:49
 #, kde-format
 msgid "Author"
 msgstr ""
@@ -93,7 +93,7 @@ msgstr "ניקוי"
 msgid "Configure"
 msgstr "הגדרה"
 
-#: src/kcm/main.cpp:38
+#: src/kcm/main.cpp:45
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "הגדרת Fcitx 5"
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Configure global options..."
 msgstr ""
 
-#: src/kcm/main.cpp:39
+#: src/kcm/main.cpp:46
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr ""
@@ -145,10 +145,10 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/kcm/main.cpp:37
+#: src/kcm/main.cpp:44
 #, kde-format
 msgid "Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5"
 
 #: src/kcm/package/contents/ui/main.qml:76
 #: src/kcm/package/contents/ui/main.qml:95
@@ -169,7 +169,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:106
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "קבוצה:"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
@@ -188,23 +188,23 @@ msgstr "שפה:"
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:88
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "פריסה:"
 
 #: src/kcm/package/contents/ui/main.qml:276
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "שם:"
 
 #: src/kcm/package/contents/ui/ListOption.qml:38
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #: src/kcm/package/contents/ui/main.qml:262
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
-msgstr ""
+msgstr "אישור"
 
 #: src/kcm/package/contents/ui/AddIMPage.qml:44
 #, kde-format
@@ -220,7 +220,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:219
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "הסרה"
 
 #: src/kcm/package/contents/ui/main.qml:57
 #, kde-format
@@ -237,18 +237,18 @@ msgstr "חיפוש..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "בחירת צבע"
 
 #: src/kcm/package/contents/ui/FontOption.qml:34
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "בחירת גופן"
 
 #: src/kcm/package/contents/ui/main.qml:208
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "בחירת פריסה"
 
 #: src/kcm/package/contents/ui/main.qml:212
 #, kde-format
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Variant:"
 msgstr ""
 
-#: src/kcm/main.cpp:42
+#: src/kcm/main.cpp:49
 #, kde-format
 msgid "Xuetian Weng"
 msgstr ""

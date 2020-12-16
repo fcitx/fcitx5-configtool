@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-10 01:10+0000\n"
+"POT-Creation-Date: 2020-12-16 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
@@ -155,7 +155,7 @@ msgstr "הגדרה"
 msgid "Converter crashed."
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:113
+#: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
 msgstr ""
@@ -173,9 +173,9 @@ msgstr ""
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
-msgstr ""
+msgstr "ברירת מחדל"
 
-#: src/migrator/lib/copydirectory.cpp:85
+#: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
 msgstr ""
@@ -213,12 +213,12 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:119
+#: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
 msgstr ""
 
-#: src/migrator/lib/copydirectory.cpp:92
+#: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
 msgstr ""
@@ -262,7 +262,7 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
-msgstr ""
+msgstr "ממשק גרפי"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
@@ -326,7 +326,7 @@ msgstr ""
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
-msgstr ""
+msgstr "מציג פריסות מקלדת"
 
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
@@ -406,7 +406,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:373
 msgid "New Group"
-msgstr ""
+msgstr "קבוצה חדשה"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "No"
