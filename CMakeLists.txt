@@ -44,7 +44,10 @@ find_package(Fcitx5Core REQUIRED)
 find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)
-find_package(Fcitx5Qt5WidgetsAddons REQUIRED)
+find_package(Fcitx5Qt5WidgetsAddons 5.0.2 REQUIRED)
+
+get_target_property(FCITX5_QT5_GUI_WRAPPER Fcitx5Qt5::gui-wrapper IMPORTED_LOCATION)
+
 find_package(KF5WidgetsAddons REQUIRED)
 find_package(IsoCodes REQUIRED)
 kde_enable_exceptions()

@@ -6,6 +6,7 @@
  */
 
 #include "optionwidget.h"
+#include "config.h"
 #include "configwidget.h"
 #include "font.h"
 #include "fontbutton.h"
@@ -18,6 +19,7 @@
 #include <QComboBox>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QFileInfo>
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QPointer>
@@ -484,9 +486,12 @@ public:
 
         connect(button_, &QPushButton::clicked, this, [this, parent]() {
             if (uri_.startsWith("fcitx://config/addon/")) {
-                auto wrapperPath = stringutils::joinPath(
-                    StandardPath::global().fcitxPath("libdir"),
-                    "fcitx5/libexec/fcitx5-qt5-gui-wrapper");
+                QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
+                if (!QFileInfo(wrapperPath).isExecutable()) {
+                    wrapperPath = QString::fromStdString(stringutils::joinPath(
+                        StandardPath::global().fcitxPath("libdir"),
+                        "fcitx5/libexec/fcitx5-qt5-gui-wrapper"));
+                }
                 QStringList args;
                 if (QGuiApplication::platformName() == "xcb") {
                     auto wid = parent->winId();
@@ -496,8 +501,8 @@ public:
                     }
                 }
                 args << uri_;
-                qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath.data() << args;
-                QProcess::startDetached(wrapperPath.data(), args);
+                qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
+                QProcess::startDetached(wrapperPath, args);
             } else {
                 // Assume this is a program path.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)

@@ -5,11 +5,13 @@
  *
  */
 #include "main.h"
+#include "config.h"
 #include "logging.h"
 #include "qtkeytrans.h"
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <QFileInfo>
 #include <QGuiApplication>
 #include <QQuickItem>
 #include <QQuickRenderControl>
@@ -271,9 +273,12 @@ void FcitxModule::saveAddon() {
 
 void FcitxModule::launchExternal(const QString &uri) {
     if (uri.startsWith("fcitx://config/addon/")) {
-        auto wrapperPath =
-            stringutils::joinPath(StandardPath::global().fcitxPath("libdir"),
-                                  "fcitx5/libexec/fcitx5-qt5-gui-wrapper");
+        QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
+        if (!QFileInfo(wrapperPath).isExecutable()) {
+            wrapperPath = QString::fromStdString(stringutils::joinPath(
+                StandardPath::global().fcitxPath("libdir"),
+                "fcitx5/libexec/fcitx5-qt5-gui-wrapper"));
+        }
         QStringList args;
         if (QGuiApplication::platformName() == "xcb") {
             auto window = mainUi()->window();
@@ -295,8 +300,8 @@ void FcitxModule::launchExternal(const QString &uri) {
             }
         }
         args << uri;
-        qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath.data() << args;
-        QProcess::startDetached(wrapperPath.data(), args);
+        qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
+        QProcess::startDetached(wrapperPath, args);
     } else {
         // Assume this is a program path.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
