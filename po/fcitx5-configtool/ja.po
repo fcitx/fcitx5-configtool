@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-07 00:02+0100\n"
+"POT-Creation-Date: 2020-12-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -47,14 +47,14 @@ msgstr "%1 がクラッシュしました。"
 msgid "%1 failed to start."
 msgstr "%1 を開始できませんでした。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:530
-#: src/lib/configwidgetslib/optionwidget.cpp:541
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:550
-#: src/lib/configwidgetslib/optionwidget.cpp:553
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:552
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -147,7 +147,7 @@ msgstr "詳細についてはアイテムをクリックしてください。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:481 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -156,7 +156,7 @@ msgstr "設定"
 msgid "Converter crashed."
 msgstr "コンバーターがクラッシュしました。"
 
-#: src/migrator/lib/copydirectory.cpp:113
+#: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
 msgstr "ファイル %1 を %2 にコピーしています"
@@ -174,9 +174,9 @@ msgstr "現在のグループを変更しました"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
-msgstr "既定"
+msgstr "デフォルト"
 
-#: src/migrator/lib/copydirectory.cpp:85
+#: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
 msgstr "ディレクトリ %1 は存在しません。"
@@ -217,12 +217,12 @@ msgstr "下へ"
 msgid "Edit"
 msgstr "編集"
 
-#: src/migrator/lib/copydirectory.cpp:119
+#: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
 msgstr "ファイル %1 を %2 にコピーできませんでした"
 
-#: src/migrator/lib/copydirectory.cpp:92
+#: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
 msgstr "ディレクトリ %1 の作成に失敗しました。"
@@ -414,7 +414,7 @@ msgstr "多言語"
 msgid "New Group"
 msgstr "新しいグループ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:616
 msgid "No"
 msgstr "いいえ"
 
@@ -607,7 +607,7 @@ msgstr "キーボードレイアウトを見る"
 msgid "WelcomePage"
 msgstr "ウェルカムページ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:616
 msgid "Yes"
 msgstr "はい"
 
@@ -627,7 +627,7 @@ msgstr ""
 "現在設定されている入力メソッドが選択したレイアウトと一致しません。対応する入"
 "力メソッドをレイアウトに追加しますか？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:644
+#: src/lib/configwidgetslib/optionwidget.cpp:649
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
