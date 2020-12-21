@@ -40,7 +40,7 @@ if (ENABLE_KCM)
     endif()
 endif()
 
-find_package(Fcitx5Core REQUIRED)
+find_package(Fcitx5Core 5.0.4 REQUIRED)
 find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)

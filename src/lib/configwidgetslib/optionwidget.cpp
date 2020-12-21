@@ -489,8 +489,8 @@ public:
                 QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
                 if (!QFileInfo(wrapperPath).isExecutable()) {
                     wrapperPath = QString::fromStdString(stringutils::joinPath(
-                        StandardPath::global().fcitxPath("libdir"),
-                        "fcitx5/libexec/fcitx5-qt5-gui-wrapper"));
+                        StandardPath::global().fcitxPath("libexecdir"),
+                        "fcitx5-qt5-gui-wrapper"));
                 }
                 QStringList args;
                 if (QGuiApplication::platformName() == "xcb") {
