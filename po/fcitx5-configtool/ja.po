@@ -6,14 +6,15 @@
 # csslayer <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
 # UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
+# Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-19 20:24+0000\n"
+"POT-Creation-Date: 2020-12-25 20:26+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
+"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -234,7 +235,7 @@ msgstr "%1 の設定の取得に失敗しました"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr "DBus Callの開始に失敗しました。"
+msgstr "DBus Call の開始に失敗しました。"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -243,26 +244,26 @@ msgstr "DBus Callの開始に失敗しました。"
 #: rc.cpp:99 rc.cpp:108
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr "Fcitx 5が実行されていません。"
+msgstr "Fcitx 5 が実行されていません。"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr "Fcitxの設定"
+msgstr "Fcitx の設定"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
-msgstr "Fcitxが終了しました。"
+msgstr "Fcitx が終了しました。"
 
 #: src/migrator/app/taskpage.cpp:238
 msgid "Fcitx is fully exited."
-msgstr "Fcitxは完全に終了します。"
+msgstr "Fcitx は完全に終了します。"
 
 #: src/migrator/app/taskpage.cpp:250
 msgid "Fcitx is started."
-msgstr "Fcitxが開始されます。"
+msgstr "Fcitx が開始されます。"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -295,11 +296,11 @@ msgstr "グループ:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr "Fcitx 4からピンイン辞書をインポートする"
+msgstr "Fcitx 4 からピンイン辞書をインポートする"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr "Fcitx 4からインストール済みテーブルのデータをインポートする"
+msgstr "Fcitx 4 からインストール済みテーブルのデータをインポートする"
 
 #: src/configtool/mainwindow.cpp:35 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
@@ -360,31 +361,31 @@ msgstr "ローダー"
 #: rc.cpp:96
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr "Fcitx 4からデータを移行する"
+msgstr "Fcitx 4 からデータを移行する"
 
 #: src/migrator/kkc/kkcmigrator.cpp:40
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr "Fcitx 4からkkc辞書を移行する"
+msgstr "Fcitx 4 から kkc 辞書を移行する"
 
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
-"Fcitx 4からRime辞書を移行します。注意: これにより既存のデータがすべて削除され"
-"ます。"
+"Fcitx 4 から Rime 辞書を移行します。注意: これにより既存のデータがすべて削除"
+"されます。"
 
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Migrate Skk dictionary from Fcitx 4"
-msgstr "Fcitx 4からSKK辞書を移行する"
+msgstr "Fcitx 4 から SKK 辞書を移行する"
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr "Fcitx 4からグローバルキーオプションを移行する"
+msgstr "Fcitx 4 からグローバルキーオプションを移行する"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
-msgstr "kkcルールオプションを移行しています..."
+msgstr "kkc ルールオプションを移行しています..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
@@ -392,7 +393,7 @@ msgstr "ピンインデータを移行しています..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
-msgstr "SKKルールオプションを移行しています..."
+msgstr "SKK ルールオプションを移行しています..."
 
 #: src/migrator/global/globalconfigmigrator.cpp:89
 msgid "Migrating global hotkey key option..."
@@ -462,7 +463,7 @@ msgstr "Rime"
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr "Fcitx 5を実行する"
+msgstr "Fcitx 5 を実行する"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -520,12 +521,12 @@ msgstr "システムキーボードのレイアウトを選択"
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
 msgid "Service %1 does not present on DBus."
-msgstr "サービス %1 はDBusに存在しません。"
+msgstr "サービス %1 は DBus に存在しません。"
 
 #: src/migrator/lib/dbuswatcher.cpp:34
 #, kde-format
 msgid "Service %1 still present on DBus."
-msgstr "サービス %1 はまだDBusに存在します。"
+msgstr "サービス %1 はまだ DBus に存在します。"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
