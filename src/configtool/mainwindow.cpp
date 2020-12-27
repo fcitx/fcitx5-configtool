@@ -42,6 +42,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(buttonBox, &QDialogButtonBox::clicked, this, &MainWindow::clicked);
     load();
+
+    buttonBox->button(QDialogButtonBox::Apply)->setText(_("&Apply"));
+    buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
+    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Close"));
+    buttonBox->button(QDialogButtonBox::Reset)->setText(_("&Reset"));
+    buttonBox->button(QDialogButtonBox::RestoreDefaults)
+        ->setText(_("Restore &Defaults"));
 }
 
 void MainWindow::handleChanged(bool changed) {

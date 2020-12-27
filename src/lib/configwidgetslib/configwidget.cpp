@@ -16,8 +16,10 @@
 #include <QGroupBox>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
+#include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 
 namespace fcitx {
@@ -166,6 +168,11 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
                              QDialogButtonBox::RestoreDefaults);
+
+    buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
+    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
+    buttonBox->button(QDialogButtonBox::RestoreDefaults)
+        ->setText(_("Restore &Defaults"));
 
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage);

@@ -12,6 +12,7 @@
 #include <QDBusPendingCallWatcher>
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QPushButton>
 #include <QStringListModel>
 #include <QX11Info>
 #include <fcitx-utils/i18n.h>
@@ -71,6 +72,8 @@ LayoutSelector::selectLayout(QWidget *parent, DBusProvider *dbus,
     auto buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                              Qt::Horizontal, dialog);
+    buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
+    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
     mainLayout->addWidget(buttonBox);

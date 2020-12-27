@@ -24,6 +24,7 @@
 #include <QLineEdit>
 #include <QPointer>
 #include <QProcess>
+#include <QPushButton>
 #include <QSpinBox>
 #include <QToolButton>
 #include <QVBoxLayout>
@@ -584,6 +585,8 @@ bool OptionWidget::execOptionDialog(const fcitx::FcitxQtConfigOption &option,
     dialog->setLayout(dialogLayout);
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
+    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
 
     dialogLayout->addWidget(buttonBox);
 
