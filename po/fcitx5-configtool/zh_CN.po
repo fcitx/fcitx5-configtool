@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-04 00:02+0100\n"
+"POT-Creation-Date: 2020-12-27 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -47,21 +47,48 @@ msgstr "%1 已崩溃。"
 msgid "%1 failed to start."
 msgstr "%1 启动失败。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:530
-#: src/lib/configwidgetslib/optionwidget.cpp:541
+#: src/lib/configwidgetslib/optionwidget.cpp:536
 #: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:550
 #: src/lib/configwidgetslib/optionwidget.cpp:553
 #: src/lib/configwidgetslib/optionwidget.cpp:556
 #: src/lib/configwidgetslib/optionwidget.cpp:559
 #: src/lib/configwidgetslib/optionwidget.cpp:562
+#: src/lib/configwidgetslib/optionwidget.cpp:565
+#: src/lib/configwidgetslib/optionwidget.cpp:568
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
+#: src/configtool/mainwindow.cpp:46
+msgid "&Apply"
+msgstr ""
+
+#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/fontbutton.cpp:48
+#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/optionwidget.cpp:589
+msgid "&Cancel"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:48
+msgid "&Close"
+msgstr ""
+
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
 msgstr "下一步(&N) >"
+
+#: src/configtool/mainwindow.cpp:47
+#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/fontbutton.cpp:47
+#: src/lib/configwidgetslib/layoutselector.cpp:75
+#: src/lib/configwidgetslib/optionwidget.cpp:588
+msgid "&OK"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:49
+msgid "&Reset"
+msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -147,7 +174,7 @@ msgstr "点击项目查看更多细节。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -156,7 +183,7 @@ msgstr "配置"
 msgid "Converter crashed."
 msgstr "转换器崩溃。"
 
-#: src/migrator/lib/copydirectory.cpp:113
+#: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
 msgstr "复制文件 %1 到 %2"
@@ -176,7 +203,7 @@ msgstr "当前分组已修改"
 msgid "Default"
 msgstr "默认"
 
-#: src/migrator/lib/copydirectory.cpp:85
+#: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
 msgstr "目录 %1 不存在。"
@@ -217,12 +244,12 @@ msgstr "向下"
 msgid "Edit"
 msgstr "编辑"
 
-#: src/migrator/lib/copydirectory.cpp:119
+#: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
 msgstr "从 %1 复制文件到 %2 失败"
 
-#: src/migrator/lib/copydirectory.cpp:92
+#: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
 msgstr "创建目录 %1 失败。"
@@ -412,7 +439,7 @@ msgstr "多语言"
 msgid "New Group"
 msgstr "新建分组"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "No"
 msgstr "否"
 
@@ -449,6 +476,11 @@ msgstr "拼音数据已迁移。"
 #, kde-format
 msgid "Remove"
 msgstr "移除"
+
+#: src/configtool/mainwindow.cpp:51
+#: src/lib/configwidgetslib/configwidget.cpp:175
+msgid "Restore &Defaults"
+msgstr ""
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -602,7 +634,7 @@ msgstr "查看键盘布局"
 msgid "WelcomePage"
 msgstr "欢迎页"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "Yes"
 msgstr "是"
 
@@ -619,7 +651,7 @@ msgid ""
 msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:644
+#: src/lib/configwidgetslib/optionwidget.cpp:652
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

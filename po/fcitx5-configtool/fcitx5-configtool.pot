@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-25 20:26+0000\n"
+"POT-Creation-Date: 2020-12-27 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,20 +41,47 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
-#: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:547
+#: src/lib/configwidgetslib/optionwidget.cpp:553
+#: src/lib/configwidgetslib/optionwidget.cpp:556
+#: src/lib/configwidgetslib/optionwidget.cpp:559
+#: src/lib/configwidgetslib/optionwidget.cpp:562
+#: src/lib/configwidgetslib/optionwidget.cpp:565
+#: src/lib/configwidgetslib/optionwidget.cpp:568
 #, kde-format
 msgid "%1:"
 msgstr ""
 
+#: src/configtool/mainwindow.cpp:46
+msgid "&Apply"
+msgstr ""
+
+#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/fontbutton.cpp:48
+#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/optionwidget.cpp:589
+msgid "&Cancel"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:48
+msgid "&Close"
+msgstr ""
+
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:47
+#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/fontbutton.cpp:47
+#: src/lib/configwidgetslib/layoutselector.cpp:75
+#: src/lib/configwidgetslib/optionwidget.cpp:588
+msgid "&OK"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:49
+msgid "&Reset"
 msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
@@ -141,7 +168,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:481 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -403,7 +430,7 @@ msgstr ""
 msgid "New Group"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:616
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "No"
 msgstr ""
 
@@ -439,6 +466,11 @@ msgstr ""
 #: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Remove"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:51
+#: src/lib/configwidgetslib/configwidget.cpp:175
+msgid "Restore &Defaults"
 msgstr ""
 
 #. namespace
@@ -591,7 +623,7 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:616
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "Yes"
 msgstr ""
 
@@ -607,7 +639,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:649
+#: src/lib/configwidgetslib/optionwidget.cpp:652
 #, kde-format
 msgid "[%1]"
 msgstr ""

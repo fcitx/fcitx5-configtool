@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-05 00:02+0100\n"
+"POT-Creation-Date: 2020-12-27 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -46,21 +46,48 @@ msgstr "%1 holdt op med at virke."
 msgid "%1 failed to start."
 msgstr "%1 kunne ikke starte."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:530
-#: src/lib/configwidgetslib/optionwidget.cpp:541
+#: src/lib/configwidgetslib/optionwidget.cpp:536
 #: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:550
 #: src/lib/configwidgetslib/optionwidget.cpp:553
 #: src/lib/configwidgetslib/optionwidget.cpp:556
 #: src/lib/configwidgetslib/optionwidget.cpp:559
 #: src/lib/configwidgetslib/optionwidget.cpp:562
+#: src/lib/configwidgetslib/optionwidget.cpp:565
+#: src/lib/configwidgetslib/optionwidget.cpp:568
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
+#: src/configtool/mainwindow.cpp:46
+msgid "&Apply"
+msgstr ""
+
+#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/fontbutton.cpp:48
+#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/optionwidget.cpp:589
+msgid "&Cancel"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:48
+msgid "&Close"
+msgstr ""
+
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
 msgstr "&Næste >"
+
+#: src/configtool/mainwindow.cpp:47
+#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/fontbutton.cpp:47
+#: src/lib/configwidgetslib/layoutselector.cpp:75
+#: src/lib/configwidgetslib/optionwidget.cpp:588
+msgid "&OK"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:49
+msgid "&Reset"
+msgstr ""
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -146,7 +173,7 @@ msgstr "Klik på en post for flere detaljer."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:479 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
@@ -155,7 +182,7 @@ msgstr "Konfigurer"
 msgid "Converter crashed."
 msgstr "Konverter holdt op med at virke."
 
-#: src/migrator/lib/copydirectory.cpp:113
+#: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
 msgstr "Kopierer filen %1 til %2"
@@ -175,7 +202,7 @@ msgstr "Nuværende gruppe ændret"
 msgid "Default"
 msgstr "Standard"
 
-#: src/migrator/lib/copydirectory.cpp:85
+#: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
 msgstr "Mappen %1 findes ikke."
@@ -216,12 +243,12 @@ msgstr "Ned"
 msgid "Edit"
 msgstr "Rediger"
 
-#: src/migrator/lib/copydirectory.cpp:119
+#: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
 msgstr "Kunne ikke kopiere filen %1 til %2"
 
-#: src/migrator/lib/copydirectory.cpp:92
+#: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
 msgstr "Kunne ikke oprette mappen %1."
@@ -412,7 +439,7 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "No"
 msgstr "Nej"
 
@@ -449,6 +476,11 @@ msgstr "Pinyin-data er overført."
 #, kde-format
 msgid "Remove"
 msgstr "Fjern"
+
+#: src/configtool/mainwindow.cpp:51
+#: src/lib/configwidgetslib/configwidget.cpp:175
+msgid "Restore &Defaults"
+msgstr ""
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -604,7 +636,7 @@ msgstr "Vis tastaturlayout"
 msgid "WelcomePage"
 msgstr "WelcomePage"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:619
 msgid "Yes"
 msgstr "Ja"
 
@@ -624,7 +656,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:644
+#: src/lib/configwidgetslib/optionwidget.cpp:652
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
