@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2020-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -61,18 +61,18 @@ msgstr "%1："
 
 #: src/configtool/mainwindow.cpp:46
 msgid "&Apply"
-msgstr ""
+msgstr "应用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:173
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 #: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
-msgstr ""
+msgstr "取消(&C)"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "&Close"
-msgstr ""
+msgstr "关闭(&C)"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
@@ -84,11 +84,11 @@ msgstr "下一步(&N) >"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
-msgstr ""
+msgstr "确定(&O)"
 
 #: src/configtool/mainwindow.cpp:49
 msgid "&Reset"
-msgstr ""
+msgstr "重置(&R)"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -480,7 +480,7 @@ msgstr "移除"
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:175
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "恢复默认(&D)"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36

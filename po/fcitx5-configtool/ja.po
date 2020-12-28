@@ -5,16 +5,16 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2020-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Takuro Onoue <kusanaginoturugi@gmail.com>, 2020\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -62,18 +62,18 @@ msgstr "%1:"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "&Apply"
-msgstr ""
+msgstr "適用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:173
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 #: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
-msgstr ""
+msgstr "キャンセル(&C)"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "&Close"
-msgstr ""
+msgstr "閉じる(&C)"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
@@ -85,11 +85,11 @@ msgstr "次へ(&N) >"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: src/configtool/mainwindow.cpp:49
 msgid "&Reset"
-msgstr ""
+msgstr "リセット(&R)"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -483,7 +483,7 @@ msgstr "削除"
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:175
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "復元とデフォルト"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -523,7 +523,7 @@ msgstr "すべて選択(&A)"
 #: rc.cpp:6
 #, kde-format
 msgid "Select &Font..."
-msgstr "フォント選択 (&F)"
+msgstr "フォントを選択(&F)..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:248
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
@@ -565,7 +565,7 @@ msgstr "サービス %1 はまだ DBus に存在します。"
 #: rc.cpp:90
 #, kde-format
 msgid "Show &Advanced options"
-msgstr "拡張オプションの表示 (&A)"
+msgstr "拡張オプションの表示(&A)"
 
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:37
@@ -603,7 +603,7 @@ msgstr ""
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format
 msgid "Try to Migrating table file: %1 ..."
-msgstr "テーブルファイルの移行を試します: %1 ..."
+msgstr "テーブルファイルの移行を試みています: %1 ..."
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
