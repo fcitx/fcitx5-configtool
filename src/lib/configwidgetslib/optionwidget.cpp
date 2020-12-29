@@ -586,7 +586,7 @@ bool OptionWidget::execOptionDialog(const fcitx::FcitxQtConfigOption &option,
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
-    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
+    buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
 
     dialogLayout->addWidget(buttonBox);
 

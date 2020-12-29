@@ -170,7 +170,7 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
                              QDialogButtonBox::RestoreDefaults);
 
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
-    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
+    buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
     buttonBox->button(QDialogButtonBox::RestoreDefaults)
         ->setText(_("Restore &Defaults"));
 

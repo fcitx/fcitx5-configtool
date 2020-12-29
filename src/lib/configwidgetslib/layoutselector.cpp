@@ -73,7 +73,7 @@ LayoutSelector::selectLayout(QWidget *parent, DBusProvider *dbus,
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel,
                              Qt::Horizontal, dialog);
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
-    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
+    buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
     mainLayout->addWidget(buttonBox);

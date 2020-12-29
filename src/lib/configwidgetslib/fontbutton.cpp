@@ -45,7 +45,7 @@ void FontButton::selectFont() {
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
-    buttonBox->button(QDialogButtonBox::Close)->setText(_("&Cancel"));
+    buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
     dialogLayout->addWidget(chooser);
     dialogLayout->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
