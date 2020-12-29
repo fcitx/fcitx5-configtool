@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-28 20:24+0000\n"
+"POT-Creation-Date: 2020-12-29 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -483,7 +483,7 @@ msgstr "削除"
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:175
 msgid "Restore &Defaults"
-msgstr "復元とデフォルト"
+msgstr "デフォルトに戻す(&D)"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -534,7 +534,7 @@ msgstr "レイアウトを選択"
 
 #: src/lib/configwidgetslib/impage.cpp:222
 msgid "Select default layout"
-msgstr "既定のレイアウトを選択"
+msgstr "デフォルトのレイアウトを選択"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
