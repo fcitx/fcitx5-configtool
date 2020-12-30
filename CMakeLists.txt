@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
-project(fcitx5-configtool VERSION 5.0.1)
 
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
+set(CMAKE_DISABLE_SOURCE_CHANGES ON)
+
+if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
+  message(FATAL_ERROR "In-source builds are disabled.
+    Please create a subfolder and use `cmake ..` inside it.
+    NOTE: cmake will now create CMakeCache.txt and CMakeFiles/*.
+          You must delete them, or cmake will refuse to work.")
+endif()
+
+project(fcitx5-configtool VERSION 5.0.1)
 
 set(QT_MIN_VERSION "5.12.0")
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
