@@ -70,7 +70,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         if (value.isNull()) {
             spinBox_->setValue(defaultValue_);
         }
@@ -106,7 +106,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         lineEdit_->setText(value);
     }
 
@@ -138,7 +138,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         fontButton_->setFont(parseFont(value));
     }
 
@@ -173,7 +173,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         checkBox_->setChecked(value == "True");
     }
 
@@ -201,11 +201,11 @@ public:
         keyListWidget_ = new KeyListWidget(this);
 
         keyListWidget_->setAllowModifierLess(
-            valueFromVariantMap(option.properties(),
-                                "ListConstrain/AllowModifierLess") == "True");
+            stringFromVariantMap(option.properties(),
+                                 "ListConstrain/AllowModifierLess") == "True");
         keyListWidget_->setAllowModifierOnly(
-            valueFromVariantMap(option.properties(),
-                                "ListConstrain/AllowModifierOnly") == "True");
+            stringFromVariantMap(option.properties(),
+                                 "ListConstrain/AllowModifierOnly") == "True");
         connect(keyListWidget_, &KeyListWidget::keyChanged, this,
                 &OptionWidget::valueChanged);
         layout->addWidget(keyListWidget_);
@@ -245,10 +245,10 @@ private:
         QList<Key> keys;
         while (true) {
             auto value =
-                valueFromVariantMap(map, QString("%1%2%3")
-                                             .arg(path)
-                                             .arg(path.isEmpty() ? "" : "/")
-                                             .arg(i));
+                stringFromVariantMap(map, QString("%1%2%3")
+                                              .arg(path)
+                                              .arg(path.isEmpty() ? "" : "/")
+                                              .arg(i));
             if (value.isNull()) {
                 break;
             }
@@ -275,10 +275,10 @@ public:
         layout->setMargin(0);
 
         keyWidget_->setModifierlessAllowed(
-            valueFromVariantMap(option.properties(), "AllowModifierLess") ==
+            stringFromVariantMap(option.properties(), "AllowModifierLess") ==
             "True");
         keyWidget_->setModifierOnlyAllowed(
-            valueFromVariantMap(option.properties(), "AllowModifierOnly") ==
+            stringFromVariantMap(option.properties(), "AllowModifierOnly") ==
             "True");
 
         connect(keyWidget_, &FcitxQtKeySequenceWidget::keySequenceChanged, this,
@@ -289,7 +289,7 @@ public:
 
     void readValueFrom(const QVariantMap &map) override {
         Key key;
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         key = Key(value.toUtf8().constData());
         keyWidget_->setKeySequence({key});
     }
@@ -325,17 +325,17 @@ public:
         layout->setMargin(0);
         int i = 0;
         while (true) {
-            auto value = valueFromVariantMap(option.properties(),
-                                             QString("Enum/%1").arg(i));
+            auto value = stringFromVariantMap(option.properties(),
+                                              QString("Enum/%1").arg(i));
             if (value.isNull()) {
                 break;
             }
-            auto text = valueFromVariantMap(option.properties(),
-                                            QString("EnumI18n/%1").arg(i));
+            auto text = stringFromVariantMap(option.properties(),
+                                             QString("EnumI18n/%1").arg(i));
             if (text.isEmpty()) {
                 text = value;
             }
-            auto subConfigPath = valueFromVariantMap(
+            auto subConfigPath = stringFromVariantMap(
                 option.properties(), QString("SubConfigPath/%1").arg(i));
             comboBox_->addItem(text, value);
             comboBox_->setItemData(i, subConfigPath, subConfigPathRole);
@@ -357,15 +357,7 @@ public:
                 });
 
         connect(toolButton_, &QToolButton::clicked, this, [this]() {
-            auto widget = this->parentWidget();
-            ConfigWidget *configWidget;
-            while (widget) {
-                configWidget = qobject_cast<ConfigWidget *>(widget);
-                if (configWidget) {
-                    break;
-                }
-                widget = widget->parentWidget();
-            }
+            ConfigWidget *configWidget = getConfigWidget(this);
             if (!configWidget) {
                 return;
             }
@@ -381,7 +373,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         auto idx = comboBox_->findData(value);
         if (idx < 0) {
             idx = comboBox_->findData(defaultValue_);
@@ -428,7 +420,7 @@ public:
     }
 
     void readValueFrom(const QVariantMap &map) override {
-        auto value = valueFromVariantMap(map, path());
+        auto value = stringFromVariantMap(map, path());
         Color color;
         try {
             color.setFromString(value.toStdString());
@@ -483,38 +475,54 @@ public:
         layout->addWidget(button_);
         setLayout(layout);
 
-        uri_ = valueFromVariantMap(option.properties(), "External");
+        uri_ = stringFromVariantMap(option.properties(), "External");
 
-        connect(button_, &QPushButton::clicked, this, [this, parent]() {
-            if (uri_.startsWith("fcitx://config/addon/")) {
-                QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
-                if (!QFileInfo(wrapperPath).isExecutable()) {
-                    wrapperPath = QString::fromStdString(stringutils::joinPath(
-                        StandardPath::global().fcitxPath("libexecdir"),
-                        "fcitx5-qt5-gui-wrapper"));
-                }
-                QStringList args;
-                if (QGuiApplication::platformName() == "xcb") {
-                    auto wid = parent->winId();
-                    if (wid) {
-                        args << "-w";
-                        args << QString::number(wid);
+        const bool launchSubConfig =
+            stringFromVariantMap(option.properties(), "LaunchSubConfig") ==
+            "True";
+
+        connect(
+            button_, &QPushButton::clicked, this,
+            [this, parent, name = option.name(), launchSubConfig]() {
+                if (launchSubConfig) {
+                    ConfigWidget *configWidget = getConfigWidget(this);
+                    if (!configWidget) {
+                        return;
                     }
-                }
-                args << uri_;
-                qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
-                QProcess::startDetached(wrapperPath, args);
-            } else {
+                    QPointer<QDialog> dialog = ConfigWidget::configDialog(
+                        this, configWidget->dbus(), uri_, name);
+                    dialog->exec();
+                    delete dialog;
+                } else if (uri_.startsWith("fcitx://config/addon/")) {
+                    QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
+                    if (!QFileInfo(wrapperPath).isExecutable()) {
+                        wrapperPath =
+                            QString::fromStdString(stringutils::joinPath(
+                                StandardPath::global().fcitxPath("libexecdir"),
+                                "fcitx5-qt5-gui-wrapper"));
+                    }
+                    QStringList args;
+                    if (QGuiApplication::platformName() == "xcb") {
+                        auto wid = parent->winId();
+                        if (wid) {
+                            args << "-w";
+                            args << QString::number(wid);
+                        }
+                    }
+                    args << uri_;
+                    qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
+                    QProcess::startDetached(wrapperPath, args);
+                } else {
                 // Assume this is a program path.
 #if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-                QStringList args = QProcess::splitCommand(uri_);
-                QString program = args.takeFirst();
-                QProcess::startDetached(program, args);
+                    QStringList args = QProcess::splitCommand(uri_);
+                    QString program = args.takeFirst();
+                    QProcess::startDetached(program, args);
 #else
-                QProcess::startDetached(uri_);
+                    QProcess::startDetached(uri_);
 #endif
-            }
-        });
+                }
+            });
     }
 
     void readValueFrom(const QVariantMap &) override {}
@@ -535,8 +543,8 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
         widget = new IntegerOptionWidget(option, path, parent);
         layout->addRow(QString(_("%1:")).arg(option.description()), widget);
     } else if (option.type() == "String") {
-        auto font = valueFromVariantMap(option.properties(), "Font");
-        auto isEnum = valueFromVariantMap(option.properties(), "IsEnum");
+        auto font = stringFromVariantMap(option.properties(), "Font");
+        auto isEnum = stringFromVariantMap(option.properties(), "IsEnum");
         if (font == "True") {
             widget = new FontOptionWidget(option, path, parent);
         } else if (isEnum == "True") {
@@ -575,38 +583,63 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
     return widget;
 }
 
-bool OptionWidget::execOptionDialog(const fcitx::FcitxQtConfigOption &option,
+bool OptionWidget::execOptionDialog(QWidget *parent,
+                                    const fcitx::FcitxQtConfigOption &option,
                                     QVariant &result) {
-    QPointer<QDialog> dialog = new QDialog;
+    QPointer<QDialog> dialog = new QDialog(parent);
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
+    dialog->setWindowTitle(option.name());
     QVBoxLayout *dialogLayout = new QVBoxLayout;
-    QFormLayout *subLayout = new QFormLayout;
-    dialogLayout->addLayout(subLayout);
     dialog->setLayout(dialogLayout);
+
+    ConfigWidget *parentConfigWidget = getConfigWidget(parent);
+    OptionWidget *optionWidget = nullptr;
+    ConfigWidget *configWidget = nullptr;
+    if (parentConfigWidget->description().contains(option.type())) {
+        configWidget =
+            new ConfigWidget(parentConfigWidget->description(), option.type(),
+                             parentConfigWidget->dbus());
+        configWidget->setValue(result);
+        dialogLayout->addWidget(configWidget);
+    } else {
+        QFormLayout *subLayout = new QFormLayout;
+        dialogLayout->addLayout(subLayout);
+        optionWidget =
+            addWidget(subLayout, option, QString("Value"), dialog.data());
+        if (optionWidget) {
+            return false;
+        }
+        QVariantMap origin;
+        origin["Value"] = result;
+        optionWidget->readValueFrom(origin);
+    }
+
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
     buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
-
     dialogLayout->addWidget(buttonBox);
-
-    auto optionWidget =
-        addWidget(subLayout, option, QString("Value"), dialog.data());
-    QVariantMap origin;
-    origin["Value"] = result;
-    optionWidget->readValueFrom(origin);
 
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
     auto ret = dialog->exec();
-    if (ret && dialog && optionWidget->isValid()) {
-        QVariantMap map;
-        optionWidget->writeValueTo(map);
-        result = map.value("Value");
-        return true;
+    bool dialogResult = false;
+    if (ret && dialog) {
+        if (optionWidget) {
+            if (optionWidget->isValid()) {
+                QVariantMap map;
+                optionWidget->writeValueTo(map);
+                result = map.value("Value");
+                dialogResult = true;
+            }
+        } else {
+            result = configWidget->value();
+            dialogResult = true;
+        }
     }
-    return false;
+    delete dialog;
+    return dialogResult;
 }
 
 QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
@@ -623,13 +656,13 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
         QMap<QString, QString> enumMap;
         int i = 0;
         while (true) {
-            auto value = valueFromVariantMap(option.properties(),
-                                             QString("Enum/%1").arg(i));
+            auto value = stringFromVariantMap(option.properties(),
+                                              QString("Enum/%1").arg(i));
             if (value.isNull()) {
                 break;
             }
-            auto text = valueFromVariantMap(option.properties(),
-                                            QString("EnumI18n/%1").arg(i));
+            auto text = stringFromVariantMap(option.properties(),
+                                             QString("EnumI18n/%1").arg(i));
             if (text.isEmpty()) {
                 text = value;
             }

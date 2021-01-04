@@ -9,7 +9,9 @@ import QtQuick.Controls 2.12
 
 Button {
     property variant properties
+    property string description
     readonly property bool needsSave: false
+    property bool subConfig: false
 
     function load(rawValue) {}
     function save() {}
@@ -17,6 +19,17 @@ Button {
 
     icon.name: "configure"
     onClicked: {
-        kcm.launchExternal(properties.External)
+        if (subConfig) {
+            kcm.pushConfigPage(description,
+                               properties.External)
+        } else {
+            kcm.launchExternal(properties.External)
+        }
+    }
+
+    Component.onCompleted: {
+        if (properties.hasOwnProperty("LaunchSubConfig") && properties["LaunchSubConfig"] == "True") {
+            subConfig = true
+        }
     }
 }

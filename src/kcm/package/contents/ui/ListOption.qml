@@ -17,12 +17,13 @@ ColumnLayout {
     property string typeName
     property bool needsSave: false
     property alias hovered: addButton.hovered
+    readonly property string subTypeName: typeName.substr(5)
 
     // functions {{{
     function getOption() {
         var option = {}
         option.isSection = false
-        option.type = typeName.substr(5)
+        option.type = subTypeName
         option.properties = properties
         option.defaultValue = ""
         option.name = []
@@ -70,6 +71,13 @@ ColumnLayout {
                 i++
             }
             return i18n("[%1]", strs.join(" "))
+        } else if (configPage.typeMap.hasOwnProperty(subType)) {
+            for (var i = 0; i < configPage.typeMap[subTypeName].length; ++i) {
+                var option = configPage.typeMap[subTypeName][i]
+                if (option.name.length === 1 && option.name[0] === properties.ListDisplayOption) {
+                    return prettify(value[properties.ListDisplayOption], option.type)
+                }
+            }
         }
         return ""
     }
@@ -142,7 +150,7 @@ ColumnLayout {
                     height: Math.max(implicitHeight,
                                      Kirigami.Units.iconSizes.smallMedium)
                     text: model !== null ? prettify(model.value,
-                                                    typeName.substr(5)) : ""
+                                                    subTypeName) : ""
                     color: listItem.checked
                            || (listItem.pressed && !listItem.checked
                                && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
@@ -188,13 +196,26 @@ ColumnLayout {
         id: sheet
 
         property int editIndex: -1
+        readonly property bool isSubConfig: configPage.typeMap.hasOwnProperty(subTypeName)
+
+        function item() {
+            return isSubConfig ? optionEditor.item : optionEditor.item.item
+        }
 
         function edit(index) {
             editIndex = index
             if (editIndex < listModel.count) {
-                optionEditor.item.load(listModel.get(sheet.editIndex).value)
+                if (isSubConfig) {
+                    item().setRawValue(listModel.get(sheet.editIndex).value)
+                } else {
+                    item().load(listModel.get(sheet.editIndex).value)
+                }
             } else {
-                optionEditor.item.load("")
+                if (isSubConfig) {
+                    item().defaults()
+                } else {
+                    item().load("")
+                }
             }
             sheet.open()
         }
@@ -204,12 +225,12 @@ ColumnLayout {
         footer: DialogButtonBox {
             standardButtons: DialogButtonBox.Ok | DialogButtonBox.Cancel
             onAccepted: {
-                optionEditor.item.save();
+                sheet.item().save();
                 // Add a new one.
                 if (sheet.editIndex == listModel.count) {
-                    listModel.append({"value": optionEditor.item.rawValue});
+                    listModel.append({"value": sheet.item().rawValue});
                 } else {
-                    listModel.get(sheet.editIndex).value = optionEditor.item.rawValue;
+                    listModel.get(sheet.editIndex).value = sheet.item().rawValue;
                 }
                 sheet.close();
                 needsSave = true;
@@ -217,13 +238,29 @@ ColumnLayout {
             onRejected: sheet.close()
         }
 
-        OptionLoader {
+        Loader {
             id: optionEditor
-            option: getOption(0)
+            sourceComponent: sheet.isSubConfig ? group : option
         }
     }
 
     Component.onCompleted: {
         load(rawValue)
+    }
+
+    Component {
+        id: option
+        OptionLoader {
+            option: getOption()
+        }
+    }
+
+    Component {
+        id: group
+        ConfigGroup {
+            typeMap: configPage.typeMap
+            typeName: subTypeName
+            rawValue: null
+        }
     }
 }

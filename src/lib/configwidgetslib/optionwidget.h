@@ -25,7 +25,8 @@ public:
                                    const fcitx::FcitxQtConfigOption &option,
                                    const QString &path, QWidget *parent);
 
-    static bool execOptionDialog(const fcitx::FcitxQtConfigOption &option,
+    static bool execOptionDialog(QWidget *parent,
+                                 const fcitx::FcitxQtConfigOption &option,
                                  QVariant &result);
 
     virtual void readValueFrom(const QVariantMap &map) = 0;

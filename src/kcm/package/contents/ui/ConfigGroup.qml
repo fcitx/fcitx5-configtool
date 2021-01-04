@@ -28,6 +28,15 @@ Kirigami.FormLayout {
         needsSave = false
     }
 
+    function setRawValue(rawValue) {
+        for (var i = 0; i < repeater.count; i++) {
+            var loader = repeater.itemAt(i)
+            if (loader.status == Loader.Ready) {
+                loader.item.load(Utils.getRawValue(rawValue, loader.option.name))
+            }
+        }
+    }
+
     function defaults() {
         for (var i = 0; i < repeater.count; i++) {
             var loader = repeater.itemAt(i)
@@ -62,6 +71,7 @@ Kirigami.FormLayout {
             id: loader
 
             option: modelData
+            rawValue: Utils.getRawValue(configGroup.rawValue, modelData.name)
             Kirigami.FormData.isSection: modelData.isSection
             Kirigami.FormData.label: modelData.isSection ? modelData.description : i18n("%1:", modelData.description)
             @DISABLE_UNDER_KIRIGAMI2_5_76@ Kirigami.FormData.labelAlignment: modelData.type.startsWith("List|") ? (height > Kirigami.Units.gridUnit * 2 ? Qt.AlignTop : 0) : 0

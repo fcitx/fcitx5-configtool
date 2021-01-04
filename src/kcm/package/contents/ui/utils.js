@@ -1,12 +1,15 @@
 function getRawValue(rawValue, name) {
     if (name.length == 0) {
-        return null;
+        return "";
+    }
+    if (rawValue === null) {
+        return "";
     }
     for (var i = 0; i < name.length; i++) {
         if (rawValue.hasOwnProperty(name[i])) {
             rawValue = rawValue[name[i]];
         } else {
-            return null;
+            return "";
         }
     }
     return rawValue;

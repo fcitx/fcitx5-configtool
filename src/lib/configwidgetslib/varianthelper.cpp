@@ -60,7 +60,7 @@ QVariant valueFromVariant(const QVariant &value, const QString &path) {
     return valueFromVariantHelper(toMap(value), pathList, 0);
 }
 
-QString valueFromVariantMap(const QVariantMap &map, const QString &path) {
+QString stringFromVariantMap(const QVariantMap &map, const QString &path) {
     auto pathList = path.split("/");
     if (pathList.empty()) {
         return QString();

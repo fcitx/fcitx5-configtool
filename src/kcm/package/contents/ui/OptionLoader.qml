@@ -14,6 +14,7 @@ Loader {
     id: loader
 
     property variant option
+    property variant rawValue
 
     function optionSource(data) {
         if (data.type == "Boolean") {
@@ -59,7 +60,7 @@ Loader {
                 "description": option.description,
                 "defaultValue": option.defaultValue,
                 "properties": option.properties,
-                "rawValue": Utils.getRawValue(configGroup.rawValue, option.name)
+                "rawValue": rawValue
             }
             loader.setSource(optionSource(option), prop)
         }

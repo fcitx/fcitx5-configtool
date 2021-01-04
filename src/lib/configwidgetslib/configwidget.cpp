@@ -43,6 +43,20 @@ ConfigWidget::ConfigWidget(const QString &uri, DBusProvider *dbus,
     setLayout(layout);
 }
 
+ConfigWidget::ConfigWidget(const QMap<QString, FcitxQtConfigOptionList> &desc,
+                           QString mainType, DBusProvider *dbus,
+                           QWidget *parent)
+    : QWidget(parent), desc_(desc), mainType_(mainType), dbus_(dbus),
+      mainWidget_(new QWidget(this)) {
+    setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
+    QVBoxLayout *layout = new QVBoxLayout;
+    layout->addWidget(mainWidget_);
+    setLayout(layout);
+
+    setupWidget(mainWidget_, mainType_, QString());
+    initialized_ = true;
+}
+
 void ConfigWidget::requestConfig(bool sync) {
     if (!dbus_->controller()) {
         return;
@@ -81,36 +95,55 @@ void ConfigWidget::requestConfigFinished(QDBusPendingCallWatcher *watcher) {
     }
 
     if (initialized_) {
-        dontEmitChanged_ = true;
-        auto optionWidgets = findChildren<OptionWidget *>();
-        auto variant = reply.argumentAt<0>().variant();
-        QVariantMap map;
-        if (variant.canConvert<QDBusArgument>()) {
-            auto argument = qvariant_cast<QDBusArgument>(variant);
-            argument >> map;
-        }
-        for (auto optionWidget : optionWidgets) {
-            optionWidget->readValueFrom(map);
-        }
-        dontEmitChanged_ = false;
+        setValue(reply.argumentAt<0>().variant());
     }
 
     adjustSize();
 }
 
-void ConfigWidget::load() { requestConfig(); }
-
-void ConfigWidget::save() {
-    if (!dbus_->controller()) {
+void ConfigWidget::load() {
+    if (uri_.isEmpty()) {
         return;
     }
+    requestConfig();
+}
+
+void ConfigWidget::save() {
+    if (!dbus_->controller() || uri_.isEmpty()) {
+        return;
+    }
+    QDBusVariant var(value());
+    dbus_->controller()->SetConfig(uri_, var);
+}
+
+void ConfigWidget::setValue(const QVariant &value) {
+    if (!initialized_) {
+        return;
+    }
+
+    dontEmitChanged_ = true;
+    auto optionWidgets = findChildren<OptionWidget *>();
+    QVariantMap map;
+    if (value.canConvert<QDBusArgument>()) {
+        auto argument = qvariant_cast<QDBusArgument>(value);
+        argument >> map;
+    } else {
+        map = value.toMap();
+    }
+    for (auto optionWidget : optionWidgets) {
+        optionWidget->readValueFrom(map);
+    }
+    dontEmitChanged_ = false;
+}
+
+QVariant ConfigWidget::value() const {
     QVariantMap map;
     auto optionWidgets = findChildren<OptionWidget *>();
     for (auto optionWidget : optionWidgets) {
         optionWidget->writeValueTo(map);
     }
-    QDBusVariant var(QVariant::fromValue(map));
-    dbus_->controller()->SetConfig(uri_, var);
+    qDebug() << map;
+    return map;
 }
 
 void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton button) {
@@ -199,6 +232,19 @@ void ConfigWidget::doChanged() {
         return;
     }
     emit changed();
+}
+
+ConfigWidget *getConfigWidget(QWidget *widget) {
+    widget = widget->parentWidget();
+    ConfigWidget *configWidget;
+    while (widget) {
+        configWidget = qobject_cast<ConfigWidget *>(widget);
+        if (configWidget) {
+            break;
+        }
+        widget = widget->parentWidget();
+    }
+    return configWidget;
 }
 
 } // namespace kcm

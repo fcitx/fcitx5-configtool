@@ -16,10 +16,7 @@ namespace kcm {
 QVariant valueFromVariant(const QVariant &value,
                           const QString &path = QString());
 
-QString valueFromVariantMapByPath(const QVariantMap &map,
-                                  const QStringList &path, int depth);
-
-QString valueFromVariantMap(const QVariantMap &map, const QString &path);
+QString stringFromVariantMap(const QVariantMap &map, const QString &path);
 
 void valueToVariantMapByPath(QVariantMap &map, const QStringList &path,
                              const QVariant &value, int depth);

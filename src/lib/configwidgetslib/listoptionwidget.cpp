@@ -7,6 +7,7 @@
 #include "listoptionwidget.h"
 #include "varianthelper.h"
 #include <QAbstractListModel>
+#include <QDebug>
 #include <QtGlobal>
 
 namespace fcitx {
@@ -27,6 +28,8 @@ public:
         switch (role) {
         case Qt::DisplayRole:
             return OptionWidget::prettify(parent_->subOption(), value);
+        case Qt::UserRole:
+            return value;
         }
         return QVariant();
     }
@@ -45,10 +48,10 @@ public:
         values_.clear();
         while (true) {
             auto value =
-                valueFromVariantMap(map, QString("%1%2%3")
-                                             .arg(path)
-                                             .arg(path.isEmpty() ? "" : "/")
-                                             .arg(i));
+                valueFromVariant(map, QString("%1%2%3")
+                                          .arg(path)
+                                          .arg(path.isEmpty() ? "" : "/")
+                                          .arg(i));
             if (value.isNull()) {
                 break;
             }
@@ -160,14 +163,14 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
             [this]() { updateButton(); });
     connect(addButton, &QAbstractButton::clicked, this, [this]() {
         QVariant result;
-        auto ok = OptionWidget::execOptionDialog(subOption_, result);
+        auto ok = OptionWidget::execOptionDialog(this, subOption_, result);
         if (ok) {
             model_->addItem(result);
         }
     });
     connect(editButton, &QAbstractButton::clicked, this, [this]() {
-        QVariant result;
-        auto ok = OptionWidget::execOptionDialog(subOption_, result);
+        QVariant result = model_->data(listView->currentIndex(), Qt::UserRole);
+        auto ok = OptionWidget::execOptionDialog(this, subOption_, result);
         if (ok) {
             model_->editItem(listView->currentIndex(), result);
         }
@@ -184,17 +187,22 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
         auto argument = qvariant_cast<QDBusArgument>(variant);
         argument >> defaultValue_;
     }
+
+    updateButton();
 }
 
 void ListOptionWidget::updateButton() {
     editButton->setEnabled(listView->currentIndex().isValid());
     removeButton->setEnabled(listView->currentIndex().isValid());
-    moveUpButton->setEnabled(listView->currentIndex().row() != 0);
-    moveDownButton->setEnabled(listView->currentIndex().row() !=
-                               model_->rowCount() - 1);
+    moveUpButton->setEnabled(listView->currentIndex().isValid() &&
+                             listView->currentIndex().row() != 0);
+    moveDownButton->setEnabled(listView->currentIndex().isValid() &&
+                               listView->currentIndex().row() !=
+                                   model_->rowCount() - 1);
 }
 
 void ListOptionWidget::readValueFrom(const QVariantMap &map) {
+    qDebug() << map;
     model_->readValueFrom(map, path());
 }
 
