@@ -142,7 +142,6 @@ QVariant ConfigWidget::value() const {
     for (auto optionWidget : optionWidgets) {
         optionWidget->writeValueTo(map);
     }
-    qDebug() << map;
     return map;
 }
 
