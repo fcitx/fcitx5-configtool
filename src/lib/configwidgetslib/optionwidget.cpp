@@ -683,6 +683,22 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
             i++;
         }
         return QString(_("[%1]")).arg(strs.join(" "));
+    } else {
+        auto *configWidget = getConfigWidget(this);
+        if (configWidget &&
+            configWidget->description().contains(option.type())) {
+            if (auto key =
+                    option.properties().value("ListDisplayOption").toString();
+                !key.isEmpty()) {
+                const auto &options =
+                    *configWidget->description().find(option.type());
+                for (const auto &option : options) {
+                    if (option.name() == key) {
+                        return prettify(option, valueFromVariant(value, key));
+                    }
+                }
+            }
+        }
     }
     return QString();
 }

@@ -34,8 +34,7 @@ public:
     virtual void restoreToDefault() = 0;
     virtual bool isValid() const { return true; }
 
-    static QString prettify(const FcitxQtConfigOption &option,
-                            const QVariant &value);
+    QString prettify(const FcitxQtConfigOption &option, const QVariant &value);
 
     const QString &path() const { return path_; }
 signals:

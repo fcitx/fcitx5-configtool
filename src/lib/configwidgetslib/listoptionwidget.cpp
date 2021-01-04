@@ -27,7 +27,7 @@ public:
 
         switch (role) {
         case Qt::DisplayRole:
-            return OptionWidget::prettify(parent_->subOption(), value);
+            return parent_->prettify(parent_->subOption(), value);
         case Qt::UserRole:
             return value;
         }
@@ -202,7 +202,6 @@ void ListOptionWidget::updateButton() {
 }
 
 void ListOptionWidget::readValueFrom(const QVariantMap &map) {
-    qDebug() << map;
     model_->readValueFrom(map, path());
 }
 
