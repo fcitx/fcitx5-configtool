@@ -55,12 +55,12 @@ QVariant valueFromVariantHelper(const QVariant &value,
     return valueFromVariantHelper(map[pathList[depth]], pathList, depth + 1);
 }
 
-QVariant valueFromVariant(const QVariant &value, const QString &path) {
+QVariant readVariant(const QVariant &value, const QString &path) {
     auto pathList = path.split("/");
     return valueFromVariantHelper(toMap(value), pathList, 0);
 }
 
-QString stringFromVariantMap(const QVariantMap &map, const QString &path) {
+QString readString(const QVariantMap &map, const QString &path) {
     auto pathList = path.split("/");
     if (pathList.empty()) {
         return QString();
@@ -68,8 +68,12 @@ QString stringFromVariantMap(const QVariantMap &map, const QString &path) {
     return valueFromVariantMapByPath(map, pathList, 0);
 }
 
-void valueToVariantMapByPath(QVariantMap &map, const QStringList &path,
-                             const QVariant &value, int depth) {
+bool readBool(const QVariantMap &map, const QString &path) {
+    return readString(map, path) == "True";
+}
+
+void writeVariantHelper(QVariantMap &map, const QStringList &path,
+                        const QVariant &value, int depth) {
     if (depth + 1 == path.size()) {
         map[path[depth]] = value;
     } else {
@@ -84,17 +88,17 @@ void valueToVariantMapByPath(QVariantMap &map, const QStringList &path,
         }
 
         auto &nextMap = *static_cast<QVariantMap *>(iter->data());
-        valueToVariantMapByPath(nextMap, path, value, depth + 1);
+        writeVariantHelper(nextMap, path, value, depth + 1);
     }
 }
 
-void valueToVariantMap(QVariantMap &map, const QString &path,
-                       const QVariant &value) {
+void writeVariant(QVariantMap &map, const QString &path,
+                  const QVariant &value) {
     auto pathList = path.split("/");
     if (pathList.empty()) {
         return;
     }
-    valueToVariantMapByPath(map, pathList, value, 0);
+    writeVariantHelper(map, pathList, value, 0);
 }
 
 } // namespace kcm
