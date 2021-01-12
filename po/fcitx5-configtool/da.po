@@ -4,15 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
-# scootergrisen, 2020
+# scootergrisen, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2021-01-12 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: scootergrisen, 2020\n"
+"Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -46,48 +46,48 @@ msgstr "%1 holdt op med at virke."
 msgid "%1 failed to start."
 msgstr "%1 kunne ikke starte."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:553
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:538
+#: src/lib/configwidgetslib/optionwidget.cpp:549
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:570
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "&Apply"
-msgstr ""
+msgstr "&Anvend"
 
-#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&Cancel"
-msgstr ""
+msgstr "&Annuller"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "&Close"
-msgstr ""
+msgstr "&Luk"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
 msgstr "&Næste >"
 
 #: src/configtool/mainwindow.cpp:47
-#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:613
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: src/configtool/mainwindow.cpp:49
 msgid "&Reset"
-msgstr ""
+msgstr "&Nulstil"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -173,7 +173,7 @@ msgstr "Klik på en post for flere detaljer."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:473 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
@@ -439,7 +439,7 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:646
 msgid "No"
 msgstr "Nej"
 
@@ -478,9 +478,9 @@ msgid "Remove"
 msgstr "Fjern"
 
 #: src/configtool/mainwindow.cpp:51
-#: src/lib/configwidgetslib/configwidget.cpp:175
+#: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "Gendan &standarder"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -636,7 +636,7 @@ msgstr "Vis tastaturlayout"
 msgid "WelcomePage"
 msgstr "WelcomePage"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:646
 msgid "Yes"
 msgstr "Ja"
 
@@ -656,7 +656,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:652
+#: src/lib/configwidgetslib/optionwidget.cpp:679
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-29 20:24+0000\n"
+"POT-Creation-Date: 2021-01-12 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#: src/kcm/package/contents/ui/ConfigGroup.qml:76
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -41,7 +41,7 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:180
+#: src/kcm/package/contents/ui/ListOption.qml:188
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
@@ -190,7 +190,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "No"
 msgstr ""
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Re-Enable"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:123
+#: src/kcm/package/contents/ui/ListOption.qml:131
 #: src/kcm/package/contents/ui/main.qml:219
 #, kde-format
 msgid "Remove"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Xuetian Weng"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "Yes"
 msgstr ""
@@ -299,12 +299,12 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:72
+#: src/kcm/package/contents/ui/ListOption.qml:73
 #, kde-format
 msgid "[%1]"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:116
+#: src/kcm/package/contents/ui/ListOption.qml:124
 #, kde-format
 msgid "edit"
 msgstr ""
