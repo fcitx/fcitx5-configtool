@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2021-01-15 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -46,14 +46,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:553
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:538
+#: src/lib/configwidgetslib/optionwidget.cpp:549
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:570
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -62,10 +62,10 @@ msgstr ""
 msgid "&Apply"
 msgstr ""
 
-#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&Cancel"
 msgstr ""
 
@@ -78,10 +78,10 @@ msgid "&Next >"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:47
-#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:613
 msgid "&OK"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgstr ""
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
 msgid "Any language"
-msgstr ""
+msgstr "כל שפה"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
@@ -173,7 +173,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:473 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
@@ -307,7 +307,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:373
 msgid "Group Name:"
-msgstr ""
+msgstr "שם קבוצה:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label_5)
@@ -372,7 +372,7 @@ msgstr "שפה:"
 #: rc.cpp:81
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "פריסה:"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
@@ -435,7 +435,7 @@ msgstr ""
 msgid "New Group"
 msgstr "קבוצה חדשה"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:646
 msgid "No"
 msgstr "לא"
 
@@ -456,7 +456,7 @@ msgstr "שונות"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "פִּנְיִין"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
@@ -474,7 +474,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:51
-#: src/lib/configwidgetslib/configwidget.cpp:175
+#: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr ""
 
@@ -595,7 +595,7 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
-msgstr ""
+msgstr "ממשק משתמש"
 
 #: src/lib/configlib/model.cpp:95
 msgid "Unknown"
@@ -628,7 +628,7 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:646
 msgid "Yes"
 msgstr "כן"
 
@@ -644,7 +644,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:652
+#: src/lib/configwidgetslib/optionwidget.cpp:679
 #, kde-format
 msgid "[%1]"
 msgstr ""
