@@ -352,7 +352,8 @@ QString FcitxModule::eventToString(int keyQt, int modifiers,
     }
 
     Key key;
-    if (qApp->platformName() == "xcb" || qApp->platformName() == "wayland") {
+    if (QGuiApplication::platformName() == "xcb" ||
+        QGuiApplication::platformName().startsWith("wayland")) {
         if (keyCode) {
             key = Key::fromKeyCode(key_.code(), key_.states());
         } else {
