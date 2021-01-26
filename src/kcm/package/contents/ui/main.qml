@@ -12,6 +12,7 @@ import org.kde.kcm 1.2 as KCM
 
 KCM.ScrollViewKCM {
     id: root
+    Kirigami.ColumnView.fillWidth: true
 
     function checkInputMethod() {
         var firstIM = imList.model.imAt(0);
