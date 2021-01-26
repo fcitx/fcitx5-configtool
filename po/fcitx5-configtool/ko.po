@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
-# JungHee Lee <daemul72@gmail.com>, 2020
+# Bruce Lee <daemul72@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2021-01-26 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2020\n"
+"Last-Translator: Bruce Lee <daemul72@gmail.com>, 2020\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -47,14 +47,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:553
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:550
 #: src/lib/configwidgetslib/optionwidget.cpp:556
 #: src/lib/configwidgetslib/optionwidget.cpp:559
 #: src/lib/configwidgetslib/optionwidget.cpp:562
 #: src/lib/configwidgetslib/optionwidget.cpp:565
 #: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:571
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -63,10 +63,10 @@ msgstr "%1:"
 msgid "&Apply"
 msgstr ""
 
-#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
 msgstr ""
 
@@ -79,10 +79,10 @@ msgid "&Next >"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:47
-#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
 msgstr ""
 
@@ -151,6 +151,10 @@ msgstr "사용가능한 입력기:"
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
+msgid "Change Fcitx 5 Configuration"
+msgstr ""
+
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
 msgstr "선택된 자판에 맞게 입력기 변경"
@@ -174,7 +178,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -260,6 +264,15 @@ msgstr ""
 msgid "Failed to start DBus Call."
 msgstr ""
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
+msgid "Fcitx 5 Configuration"
+msgstr ""
+
+#: src/migrator/app/main.cpp:20
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
+msgid "Fcitx 5 Migration Wizard"
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
@@ -271,7 +284,7 @@ msgstr ""
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: rc.cpp:3
+#: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
 msgstr "Fcitx 환경설정"
@@ -329,6 +342,11 @@ msgstr ""
 msgid "Input Method"
 msgstr "입력기"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Input Method Configuration"
+msgstr ""
+
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
 msgstr "키보드 <자판>"
@@ -367,6 +385,11 @@ msgstr ""
 #, kde-format
 msgid "Language:"
 msgstr "언어:"
+
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
+msgid ""
+"Launch the wizard to import data from other input method as Fcitx 4 etc."
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -436,7 +459,7 @@ msgstr "다중언어"
 msgid "New Group"
 msgstr "새 그룹"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
 msgstr "아니오"
 
@@ -475,7 +498,7 @@ msgid "Remove"
 msgstr "제거"
 
 #: src/configtool/mainwindow.cpp:51
-#: src/lib/configwidgetslib/configwidget.cpp:175
+#: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr ""
 
@@ -631,7 +654,7 @@ msgstr "키보드 자판 보기"
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
 msgstr "예"
 
@@ -650,7 +673,7 @@ msgstr ""
 "현재 구성된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
 "하시겠습니까?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:652
+#: src/lib/configwidgetslib/optionwidget.cpp:680
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

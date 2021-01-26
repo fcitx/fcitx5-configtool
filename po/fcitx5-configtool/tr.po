@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2021-01-26 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -45,14 +45,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:553
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:550
 #: src/lib/configwidgetslib/optionwidget.cpp:556
 #: src/lib/configwidgetslib/optionwidget.cpp:559
 #: src/lib/configwidgetslib/optionwidget.cpp:562
 #: src/lib/configwidgetslib/optionwidget.cpp:565
 #: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:571
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -61,10 +61,10 @@ msgstr ""
 msgid "&Apply"
 msgstr ""
 
-#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
 msgstr ""
 
@@ -77,10 +77,10 @@ msgid "&Next >"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:47
-#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
 msgstr ""
 
@@ -149,6 +149,10 @@ msgstr "Kullanılabilir Giriş Yöntemi:"
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "DBus tarafından Fcitx'e bağlanılamıyor, Fcitx çalışıyor mu?"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
+msgid "Change Fcitx 5 Configuration"
+msgstr ""
+
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
 msgstr ""
@@ -172,7 +176,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -258,6 +262,15 @@ msgstr ""
 msgid "Failed to start DBus Call."
 msgstr ""
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
+msgid "Fcitx 5 Configuration"
+msgstr ""
+
+#: src/migrator/app/main.cpp:20
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
+msgid "Fcitx 5 Migration Wizard"
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
@@ -269,7 +282,7 @@ msgstr ""
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: rc.cpp:3
+#: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
 msgstr ""
@@ -327,6 +340,11 @@ msgstr ""
 msgid "Input Method"
 msgstr "Giriş Yöntemi"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Input Method Configuration"
+msgstr ""
+
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
 msgstr "Klavye"
@@ -364,6 +382,11 @@ msgstr ""
 #: rc.cpp:78
 #, kde-format
 msgid "Language:"
+msgstr ""
+
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
+msgid ""
+"Launch the wizard to import data from other input method as Fcitx 4 etc."
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
@@ -434,7 +457,7 @@ msgstr "Çok dilli"
 msgid "New Group"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
 msgstr ""
 
@@ -473,7 +496,7 @@ msgid "Remove"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:51
-#: src/lib/configwidgetslib/configwidget.cpp:175
+#: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr ""
 
@@ -629,7 +652,7 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
 msgstr ""
 
@@ -645,7 +668,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:652
+#: src/lib/configwidgetslib/optionwidget.cpp:680
 #, kde-format
 msgid "[%1]"
 msgstr ""

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-27 20:24+0000\n"
+"POT-Creation-Date: 2021-01-26 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: bruh, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -49,14 +49,14 @@ msgstr "%1 當掉了。"
 msgid "%1 failed to start."
 msgstr "%1 啟動失敗。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:547
-#: src/lib/configwidgetslib/optionwidget.cpp:553
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:550
 #: src/lib/configwidgetslib/optionwidget.cpp:556
 #: src/lib/configwidgetslib/optionwidget.cpp:559
 #: src/lib/configwidgetslib/optionwidget.cpp:562
 #: src/lib/configwidgetslib/optionwidget.cpp:565
 #: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:571
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -65,10 +65,10 @@ msgstr "%1："
 msgid "&Apply"
 msgstr ""
 
-#: src/lib/configwidgetslib/configwidget.cpp:173
+#: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
 msgstr ""
 
@@ -81,10 +81,10 @@ msgid "&Next >"
 msgstr "下一步(&N) >"
 
 #: src/configtool/mainwindow.cpp:47
-#: src/lib/configwidgetslib/configwidget.cpp:172
+#: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
 msgstr ""
 
@@ -153,6 +153,10 @@ msgstr "可用輸入法："
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
+msgid "Change Fcitx 5 Configuration"
+msgstr ""
+
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
 msgstr "變更輸入法以符合選擇的配置。"
@@ -176,7 +180,7 @@ msgstr "點選項目以檢視更多細節。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:482 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -265,6 +269,15 @@ msgstr "獲取 %1 設定失敗"
 msgid "Failed to start DBus Call."
 msgstr "執行 DBus 調用失敗。"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
+msgid "Fcitx 5 Configuration"
+msgstr ""
+
+#: src/migrator/app/main.cpp:20
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
+msgid "Fcitx 5 Migration Wizard"
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
@@ -276,7 +289,7 @@ msgstr "Fcitx 5 未執行。"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: rc.cpp:3
+#: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
 msgstr "Fcitx 設定"
@@ -334,6 +347,11 @@ msgstr "從 Fcitx 4 導入已安裝碼表的碼表資料"
 msgid "Input Method"
 msgstr "輸入法"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Input Method Configuration"
+msgstr ""
+
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
 msgstr "鍵盤 <layout>"
@@ -372,6 +390,11 @@ msgstr "Kkc"
 #, kde-format
 msgid "Language:"
 msgstr "語言："
+
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
+msgid ""
+"Launch the wizard to import data from other input method as Fcitx 4 etc."
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -441,7 +464,7 @@ msgstr "多語言"
 msgid "New Group"
 msgstr "新群組"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
 msgstr "取消"
 
@@ -480,7 +503,7 @@ msgid "Remove"
 msgstr "移除"
 
 #: src/configtool/mainwindow.cpp:51
-#: src/lib/configwidgetslib/configwidget.cpp:175
+#: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr ""
 
@@ -636,7 +659,7 @@ msgstr "檢視鍵盤佈局"
 msgid "WelcomePage"
 msgstr "歡迎頁"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:619
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
 msgstr "確定"
 
@@ -652,7 +675,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:652
+#: src/lib/configwidgetslib/optionwidget.cpp:680
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

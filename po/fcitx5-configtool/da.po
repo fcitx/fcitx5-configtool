@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-01-12 20:24+0000\n"
+"POT-Creation-Date: 2021-01-26 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -46,14 +46,14 @@ msgstr "%1 holdt op med at virke."
 msgid "%1 failed to start."
 msgstr "%1 kunne ikke starte."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:538
-#: src/lib/configwidgetslib/optionwidget.cpp:549
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
-#: src/lib/configwidgetslib/optionwidget.cpp:570
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:550
+#: src/lib/configwidgetslib/optionwidget.cpp:556
+#: src/lib/configwidgetslib/optionwidget.cpp:559
+#: src/lib/configwidgetslib/optionwidget.cpp:562
+#: src/lib/configwidgetslib/optionwidget.cpp:565
+#: src/lib/configwidgetslib/optionwidget.cpp:568
+#: src/lib/configwidgetslib/optionwidget.cpp:571
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -65,7 +65,7 @@ msgstr "&Anvend"
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/layoutselector.cpp:76
-#: src/lib/configwidgetslib/optionwidget.cpp:614
+#: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
 msgstr "&Annuller"
 
@@ -81,7 +81,7 @@ msgstr "&Næste >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:613
+#: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
 msgstr "&OK"
 
@@ -150,6 +150,10 @@ msgstr "Tilgængelig inputmetode:"
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Kan ikke oprette forbindelse til Fcitx med DBus. Kører Fcitx?"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
+msgid "Change Fcitx 5 Configuration"
+msgstr ""
+
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
 msgstr "Skift inputmetode til at matche valget af layout."
@@ -173,7 +177,7 @@ msgstr "Klik på en post for flere detaljer."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:226
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:473 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:60
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
@@ -262,6 +266,15 @@ msgstr "Kunne ikke hente konfiguration for %1"
 msgid "Failed to start DBus Call."
 msgstr "Kunne ikke starte DBus-kald."
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
+msgid "Fcitx 5 Configuration"
+msgstr ""
+
+#: src/migrator/app/main.cpp:20
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
+msgid "Fcitx 5 Migration Wizard"
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
@@ -273,7 +286,7 @@ msgstr "Fcitx 5 kører ikke."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
-#: rc.cpp:3
+#: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
 msgstr "Fcitx-konfiguration"
@@ -331,6 +344,11 @@ msgstr "Importér tabeldata for installeret tabel fra Fcitx 4"
 msgid "Input Method"
 msgstr "Inputmetode"
 
+#: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Input Method Configuration"
+msgstr ""
+
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
 msgstr "Tastatur <layout>"
@@ -369,6 +387,11 @@ msgstr "Kkc"
 #, kde-format
 msgid "Language:"
 msgstr "Sprog:"
+
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
+msgid ""
+"Launch the wizard to import data from other input method as Fcitx 4 etc."
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -439,7 +462,7 @@ msgstr "Flersproget"
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:646
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
 msgstr "Nej"
 
@@ -636,7 +659,7 @@ msgstr "Vis tastaturlayout"
 msgid "WelcomePage"
 msgstr "WelcomePage"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:646
+#: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
 msgstr "Ja"
 
@@ -656,7 +679,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:679
+#: src/lib/configwidgetslib/optionwidget.cpp:680
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
