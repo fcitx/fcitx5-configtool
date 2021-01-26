@@ -37,7 +37,7 @@ public:
     QString prettify(const FcitxQtConfigOption &option, const QVariant &value);
 
     const QString &path() const { return path_; }
-signals:
+Q_SIGNALS:
     void valueChanged();
 
 private:

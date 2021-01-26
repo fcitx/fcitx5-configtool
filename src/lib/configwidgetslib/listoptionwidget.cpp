@@ -83,7 +83,7 @@ public:
         }
 
         values_[index.row()] = value;
-        emit dataChanged(index, index);
+        Q_EMIT dataChanged(index, index);
     }
 
     void removeItem(const QModelIndex &index) {
@@ -100,7 +100,7 @@ public:
             index.row() == 0) {
             return;
         }
-        emit layoutAboutToBeChanged();
+        Q_EMIT layoutAboutToBeChanged();
         if (!beginMoveRows(index.parent(), index.row(), index.row(),
                            index.parent(), index.row() - 1)) {
             return;

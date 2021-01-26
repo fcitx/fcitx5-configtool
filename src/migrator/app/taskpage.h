@@ -28,7 +28,7 @@ public:
 
     Pipeline *createPipeline();
 
-private slots:
+private Q_SLOTS:
     void availabilityChanged(bool avail);
 
 private:

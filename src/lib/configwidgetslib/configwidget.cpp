@@ -230,7 +230,7 @@ void ConfigWidget::doChanged() {
     if (dontEmitChanged_) {
         return;
     }
-    emit changed();
+    Q_EMIT changed();
 }
 
 ConfigWidget *getConfigWidget(QWidget *widget) {

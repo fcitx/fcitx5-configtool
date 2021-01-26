@@ -19,11 +19,11 @@ public:
     const QFont &font();
     QString fontName();
 
-public slots:
+public Q_SLOTS:
     void setFont(const QFont &font);
-signals:
+Q_SIGNALS:
     void fontChanged(const QFont &font);
-private slots:
+private Q_SLOTS:
     void selectFont();
 
 private:

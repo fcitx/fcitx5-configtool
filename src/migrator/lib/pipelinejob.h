@@ -21,7 +21,7 @@ public:
     virtual void abort() = 0;
     virtual void cleanUp() = 0;
 
-signals:
+Q_SIGNALS:
     void finished(bool success);
     void message(const QString &icon, const QString &message);
 };

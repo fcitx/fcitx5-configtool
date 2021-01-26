@@ -29,7 +29,7 @@ KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
     addButton_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(addButton_, &QToolButton::clicked, this, [this]() {
         addKey(Key());
-        emit keyChanged();
+        Q_EMIT keyChanged();
     });
 
     layout->addLayout(keysLayout_);
@@ -63,7 +63,7 @@ void KeyListWidget::addKey(fcitx::Key key) {
     connect(removeButton, &QPushButton::clicked, widget, [widget, this]() {
         auto idx = keysLayout_->indexOf(widget);
         if (removeKeyAt(idx)) {
-            emit keyChanged();
+            Q_EMIT keyChanged();
         }
     });
     connect(keyWidget, &FcitxQtKeySequenceWidget::keySequenceChanged, this,
@@ -93,7 +93,7 @@ void KeyListWidget::setKeys(const QList<fcitx::Key> &keys) {
             addKey(key);
         }
     }
-    emit keyChanged();
+    Q_EMIT keyChanged();
 }
 
 QList<fcitx::Key> KeyListWidget::keys() const {

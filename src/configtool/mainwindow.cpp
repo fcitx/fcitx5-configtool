@@ -24,11 +24,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(impage_, &IMPage::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "IMPage changed";
-        emit changed(true);
+        Q_EMIT changed(true);
     });
     connect(addonPage_, &AddonSelector::changed, this, [this]() {
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
-        emit changed(true);
+        Q_EMIT changed(true);
     });
     auto configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     pageWidget->addTab(configPageWrapper, _("Global Options"));
     pageWidget->addTab(addonPage_, _("Addons"));
     connect(configPage_, &ConfigWidget::changed, this,
-            [this]() { emit changed(true); });
+            [this]() { Q_EMIT changed(true); });
 
     connect(this, &MainWindow::changed, this, &MainWindow::handleChanged);
 
@@ -61,19 +61,19 @@ void MainWindow::load() {
     impage_->load();
     addonPage_->load();
     configPage_->load();
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void MainWindow::save() {
     impage_->save();
     addonPage_->save();
     configPage_->save();
-    emit changed(false);
+    Q_EMIT changed(false);
 }
 
 void MainWindow::defaults() {
     configPage_->buttonClicked(QDialogButtonBox::RestoreDefaults);
-    emit changed(true);
+    Q_EMIT changed(true);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event) {

@@ -29,7 +29,7 @@ public:
         sendMessage("dialog-information", message);
     }
 
-private slots:
+private Q_SLOTS:
     void emitFinished(bool result);
 
 private:

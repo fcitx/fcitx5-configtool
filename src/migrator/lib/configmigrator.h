@@ -24,7 +24,7 @@ public:
     void abort() override;
     void cleanUp() override;
 
-public slots:
+public Q_SLOTS:
     void requestConfigFinished(QDBusPendingCallWatcher *watcher);
 
     QString valueByPath(const QString &path) const;

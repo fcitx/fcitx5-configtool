@@ -42,7 +42,7 @@ void CallbackRunner::emitFinished(bool result) {
     if (!result) {
         return;
     }
-    emit finished(result);
+    Q_EMIT finished(result);
 }
 
 } // namespace fcitx

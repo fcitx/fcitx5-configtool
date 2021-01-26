@@ -38,10 +38,10 @@ public:
     auto dbus() { return dbus_; }
     auto &description() const { return desc_; }
 
-signals:
+Q_SIGNALS:
     void changed();
 
-public slots:
+public Q_SLOTS:
     void load();
     void save();
     void buttonClicked(QDialogButtonBox::StandardButton);
@@ -50,7 +50,7 @@ public slots:
     void setValue(const QVariant &variant);
 
     void requestConfig(bool sync = false);
-private slots:
+private Q_SLOTS:
     void requestConfigFinished(QDBusPendingCallWatcher *watcher);
     void doChanged();
 

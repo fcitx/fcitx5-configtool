@@ -26,7 +26,7 @@ public:
     void setAllowModifierLess(bool);
     void setAllowModifierOnly(bool);
 
-signals:
+Q_SIGNALS:
     void keyChanged();
 
 protected:

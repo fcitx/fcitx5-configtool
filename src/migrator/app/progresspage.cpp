@@ -42,7 +42,7 @@ void ProgressPage::initializePage() {
             parent_->button(QWizard::CancelButton)->setEnabled(false);
             appendMessage("dialog-positive",
                           _("All migration tasks are completed successfully."));
-            emit completeChanged();
+            Q_EMIT completeChanged();
         } else {
             appendMessage(
                 "dialog-error",

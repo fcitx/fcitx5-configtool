@@ -328,7 +328,7 @@ void KeyboardLayoutWidget::release() {
     keys.clear();
     colors.clear();
 
-    foreach (DrawingItem *item, keyboardItems) {
+    for (const auto *item : keyboardItems) {
         switch (item->type) {
         case KEYBOARD_DRAWING_ITEM_TYPE_INVALID:
         case KEYBOARD_DRAWING_ITEM_TYPE_KEY:
@@ -662,7 +662,7 @@ void KeyboardLayoutWidget::generatePixmap(bool force) {
     painter.setCompositionMode(QPainter::CompositionMode_Source);
     painter.fillRect(image.rect(), Qt::transparent);
 
-    foreach (DrawingItem *item, keyboardItems) {
+    for (const auto *item : keyboardItems) {
         if (!xkb)
             return;
 

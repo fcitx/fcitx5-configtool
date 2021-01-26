@@ -41,7 +41,7 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex &index) const override;
 
-signals:
+Q_SIGNALS:
     void changed();
     void configCommitted(const QByteArray &addonName);
 
@@ -51,7 +51,7 @@ protected:
                            const QStyleOptionViewItem &option,
                            const QPersistentModelIndex &index) const override;
 
-private slots:
+private Q_SLOTS:
     void checkBoxClicked(bool state);
     void configureClicked();
 
@@ -288,7 +288,7 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
                             Qt::QueuedConnection);
                     }
                 }
-                emit changed();
+                Q_EMIT changed();
             });
 
     delegate_ = new AddonDelegate(ui_->listView, this);

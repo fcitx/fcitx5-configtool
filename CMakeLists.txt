@@ -26,6 +26,7 @@ option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
 option(ENABLE_TEST "Enable test" Off)
 add_definitions(-DTRANSLATION_DOMAIN=\"org.fcitx.fcitx5.kcm\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
+add_definitions(-DQT_NO_KEYWORDS)
 
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent)
 

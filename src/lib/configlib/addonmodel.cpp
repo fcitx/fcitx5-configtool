@@ -115,8 +115,8 @@ bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
         ret = oldData != newData;
 
         if (ret) {
-            emit dataChanged(index, index);
-            emit changed(item.uniqueName(), newData);
+            Q_EMIT dataChanged(index, index);
+            Q_EMIT changed(item.uniqueName(), newData);
         }
     }
 
@@ -164,8 +164,8 @@ bool FlatAddonModel::setData(const QModelIndex &index, const QVariant &value,
     }
 
     if (ret) {
-        emit dataChanged(index, index);
-        emit changed();
+        Q_EMIT dataChanged(index, index);
+        Q_EMIT changed();
     }
 
     return ret;

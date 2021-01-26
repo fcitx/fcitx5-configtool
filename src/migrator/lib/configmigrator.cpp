@@ -62,7 +62,7 @@ void ConfigMigrator::start() {
         delete proxy_;
     }
     if (!startMessage_.isEmpty()) {
-        emit message("dialog-information", startMessage_);
+        Q_EMIT message("dialog-information", startMessage_);
     }
     proxy_ = new FcitxQtControllerProxy("org.fcitx.Fcitx5", "/controller",
                                         QDBusConnection::sessionBus(), this);
@@ -84,10 +84,10 @@ void fcitx::ConfigMigrator::requestConfigFinished(
     watcher->deleteLater();
     QDBusPendingReply<QDBusVariant, FcitxQtConfigTypeList> reply = *watcher;
     if (reply.isError()) {
-        emit message(
+        Q_EMIT message(
             "dialog-error",
             QString(_("Failed to fetch config for %1")).arg(configPath_));
-        emit finished(false);
+        Q_EMIT finished(false);
         return;
     }
 
@@ -96,7 +96,7 @@ void fcitx::ConfigMigrator::requestConfigFinished(
     decomposeDBusVariant(config_, variant);
     // No need for update.
     if (!transformer_(config_)) {
-        emit finished(true);
+        Q_EMIT finished(true);
         return;
     }
 
@@ -105,7 +105,7 @@ void fcitx::ConfigMigrator::requestConfigFinished(
     if (!finishMessage_.isEmpty()) {
         message("dialog-information", finishMessage_);
     }
-    emit finished(true);
+    Q_EMIT finished(true);
 }
 
 } // namespace fcitx

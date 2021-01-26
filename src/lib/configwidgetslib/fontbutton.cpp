@@ -30,7 +30,7 @@ QString FontButton::fontName() { return fontPreviewLabel->text(); }
 void FontButton::setFont(const QFont &font) {
     font_ = font;
     if (font.family() != font_.family()) {
-        emit fontChanged(font_);
+        Q_EMIT fontChanged(font_);
     }
     fontPreviewLabel->setText(fontToString(font_));
     fontPreviewLabel->setFont(font_);

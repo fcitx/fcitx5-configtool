@@ -31,7 +31,7 @@ public:
     void abort() override;
     void cleanUp() override;
 
-private slots:
+private Q_SLOTS:
 
 private:
     std::function<QDBusPendingCallWatcher *()> callback_;

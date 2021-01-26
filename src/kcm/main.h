@@ -41,7 +41,7 @@ public:
     auto addonModel() const { return addonProxyModel_; }
     bool availability() const { return dbus_->available(); }
 
-public slots:
+public Q_SLOTS:
     void load() override;
     void save() override;
     void defaults() override;
@@ -95,10 +95,10 @@ public slots:
     void fixLayout();
     void fixInputMethod();
 
-signals:
+Q_SIGNALS:
     void availabilityChanged(bool avail);
 
-private slots:
+private Q_SLOTS:
     void handleAvailabilityChanged(bool avail);
     void pageNeedsSaveChanged();
 

@@ -32,7 +32,7 @@ public:
     void setStartMessage(const QString &message) { startMessage_ = message; }
     void setFinishMessage(const QString &message) { finishMessage_ = message; }
 
-private slots:
+private Q_SLOTS:
     void processFinished(int exitCode, QProcess::ExitStatus status);
 
 private:

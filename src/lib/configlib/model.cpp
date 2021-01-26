@@ -462,7 +462,7 @@ void FilteredIMModel::move(int from, int to) {
                   to > from ? to + 1 : to);
     filteredIMEntryList_.move(from, to);
     endMoveRows();
-    emit imListChanged(filteredIMEntryList_);
+    Q_EMIT imListChanged(filteredIMEntryList_);
 }
 
 void FilteredIMModel::remove(int idx) {
@@ -472,7 +472,7 @@ void FilteredIMModel::remove(int idx) {
     beginRemoveRows(QModelIndex(), idx, idx);
     filteredIMEntryList_.removeAt(idx);
     endRemoveRows();
-    emit imListChanged(filteredIMEntryList_);
+    Q_EMIT imListChanged(filteredIMEntryList_);
 }
 
 } // namespace kcm

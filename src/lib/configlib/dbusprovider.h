@@ -24,10 +24,10 @@ public:
     bool available() const { return controller_; }
     FcitxQtControllerProxy *controller() { return controller_; }
 
-signals:
+Q_SIGNALS:
     void availabilityChanged(bool avail);
 
-private slots:
+private Q_SLOTS:
     void fcitxAvailabilityChanged(bool avail);
 
 private:

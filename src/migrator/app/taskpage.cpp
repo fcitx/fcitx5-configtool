@@ -54,8 +54,8 @@ public:
         } else {
             selected_.remove(index);
         }
-        emit dataChanged(index, index);
-        emit selectedChanged();
+        Q_EMIT dataChanged(index, index);
+        Q_EMIT selectedChanged();
         return true;
     }
 
@@ -93,7 +93,7 @@ public:
         }
         selected_.clear();
         endResetModel();
-        emit selectedChanged();
+        Q_EMIT selectedChanged();
     }
 
     void selectAll() {
@@ -105,14 +105,14 @@ public:
                 selected_.insert(createIndex(i, 0));
             }
         }
-        emit dataChanged(index(0, 0), index(migrators_.size() - 1));
-        emit selectedChanged();
+        Q_EMIT dataChanged(index(0, 0), index(migrators_.size() - 1));
+        Q_EMIT selectedChanged();
     }
 
     void clearSelection() {
         selected_.clear();
-        emit dataChanged(index(0, 0), index(migrators_.size() - 1));
-        emit selectedChanged();
+        Q_EMIT dataChanged(index(0, 0), index(migrators_.size() - 1));
+        Q_EMIT selectedChanged();
     }
 
     bool allSelected() const {
@@ -129,7 +129,7 @@ public:
         return result;
     }
 
-signals:
+Q_SIGNALS:
     void selectedChanged();
 
 private:
@@ -161,7 +161,7 @@ TaskPage::TaskPage(MainWindow *parent)
             });
     connect(model_, &TaskModel::selectedChanged, this, [this]() {
         selectAllBox->setChecked(model_->allSelected());
-        emit completeChanged();
+        Q_EMIT completeChanged();
     });
     connect(selectAllBox, &QCheckBox::clicked, this, [this](bool checked) {
         if (checked) {

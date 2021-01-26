@@ -39,11 +39,11 @@ public:
 
     bool showAdvanced() const;
 
-signals:
+Q_SIGNALS:
     void changed();
     void configCommitted(const QByteArray &componentName);
 
-private slots:
+private Q_SLOTS:
     void fetchAddonFinished(QDBusPendingCallWatcher *);
     void availabilityChanged();
     void warnAddonDisable(const QString &addon);

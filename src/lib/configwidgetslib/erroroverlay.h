@@ -26,7 +26,7 @@ public:
     ~ErrorOverlay();
 
     bool eventFilter(QObject *watched, QEvent *event) override;
-private slots:
+private Q_SLOTS:
     void availabilityChanged(bool avail);
     void runFcitx5();
 

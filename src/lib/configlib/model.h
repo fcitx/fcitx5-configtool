@@ -140,11 +140,11 @@ public:
     Q_INVOKABLE QString imAt(int idx) const {
         return index(idx).data(FcitxIMUniqueNameRole).toString();
     }
-public slots:
+public Q_SLOTS:
     void move(int from, int to);
     void remove(int index);
 
-signals:
+Q_SIGNALS:
     void imListChanged(FcitxQtInputMethodEntryList list);
 
 private:

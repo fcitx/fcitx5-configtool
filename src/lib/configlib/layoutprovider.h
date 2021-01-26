@@ -65,10 +65,10 @@ public:
 
     bool loaded() const { return loaded_; }
 
-signals:
+Q_SIGNALS:
     void loadedChanged();
 
-private slots:
+private Q_SLOTS:
     void availabilityChanged();
     void fetchLayoutFinished(QDBusPendingCallWatcher *watcher);
 
@@ -76,7 +76,7 @@ private:
     void setLoaded(bool loaded) {
         if (loaded != loaded_) {
             loaded_ = loaded;
-            emit loadedChanged();
+            Q_EMIT loadedChanged();
         }
     }
 

@@ -62,7 +62,7 @@ public:
     const auto &enabledList() const { return enabledList_; }
     const auto &disabledList() const { return disabledList_; }
 
-signals:
+Q_SIGNALS:
     void changed(const QString &addon, bool enabled);
 
 protected:
@@ -107,7 +107,7 @@ public:
 
     Q_INVOKABLE void enable(const QString &addon);
 
-signals:
+Q_SIGNALS:
     void changed();
 
 private:

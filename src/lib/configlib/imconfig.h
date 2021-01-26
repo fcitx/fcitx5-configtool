@@ -57,7 +57,7 @@ public:
         if (defaultLayout_ != l) {
             defaultLayout_ = l;
             emitChanged();
-            emit defaultLayoutChanged();
+            Q_EMIT defaultLayoutChanged();
         }
     }
 
@@ -74,7 +74,7 @@ public:
 
     void emitChanged();
 
-public slots:
+public Q_SLOTS:
     void addGroup(const QString &name);
     void deleteGroup(const QString &name);
     void save();
@@ -84,14 +84,14 @@ public slots:
     void removeIM(int index);
     void move(int from, int to);
 
-signals:
+Q_SIGNALS:
     void changed();
     void currentGroupChanged(const QString &group);
     void groupsChanged(const QStringList &groups);
     void imListChanged();
     void defaultLayoutChanged();
 
-private slots:
+private Q_SLOTS:
     void availabilityChanged();
     void fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher);
     void fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher);

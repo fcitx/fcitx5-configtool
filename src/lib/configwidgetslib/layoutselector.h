@@ -44,7 +44,7 @@ public:
 
     QPair<QString, QString> layout() const;
 
-private slots:
+private Q_SLOTS:
     void languageComboBoxChanged();
     void layoutComboBoxChanged();
     void variantComboBoxChanged();

@@ -29,10 +29,10 @@ void RenameFile::cleanUp() {}
 
 void RenameFile::emitFinished(bool result) {
     if (!result) {
-        emit message("dialog-error", _("Converter crashed."));
+        Q_EMIT message("dialog-error", _("Converter crashed."));
         return;
     }
-    emit finished(result);
+    Q_EMIT finished(result);
 }
 
 } // namespace fcitx

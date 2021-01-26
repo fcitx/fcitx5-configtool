@@ -109,7 +109,7 @@ void IMConfig::fetchGroupsFinished(QDBusPendingCallWatcher *watcher) {
 
     if (groups.isValid()) {
         groups_ = groups.value();
-        emit groupsChanged(groups_);
+        Q_EMIT groupsChanged(groups_);
     }
 
     if (!groups_.empty()) {
@@ -143,7 +143,7 @@ void IMConfig::setCurrentGroup(const QString &name) {
     if (dbus_->available() && !name.isEmpty()) {
         auto call = dbus_->controller()->InputMethodGroupInfo(name);
         lastGroup_ = name;
-        emit currentGroupChanged(lastGroup_);
+        Q_EMIT currentGroupChanged(lastGroup_);
         auto watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 &IMConfig::fetchGroupInfoFinished);
@@ -161,14 +161,14 @@ void IMConfig::fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher) {
         defaultLayout_.clear();
         imEntries_.clear();
     }
-    emit defaultLayoutChanged();
+    Q_EMIT defaultLayoutChanged();
 
     updateIMList();
 }
 
 void IMConfig::emitChanged() {
     needSave_ = true;
-    emit changed();
+    Q_EMIT changed();
 }
 
 void IMConfig::updateIMList(bool excludeCurrent) {
@@ -178,7 +178,7 @@ void IMConfig::updateIMList(bool excludeCurrent) {
     internalAvailIMModel_->filterIMEntryList(allIMs_, imEntries_);
     availIMModel_->filterIMEntryList(allIMs_, imEntries_);
 
-    emit imListChanged();
+    Q_EMIT imListChanged();
 }
 
 void IMConfig::addGroup(const QString &name) {

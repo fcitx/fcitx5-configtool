@@ -61,27 +61,27 @@ void ProcessRunner::processFinished(int exitCode, QProcess::ExitStatus status) {
     if (printOutputToMessage_) {
         for (const auto &line : messages_.split('\n')) {
             if (!line.isEmpty()) {
-                emit message("dialog-information", line);
+                Q_EMIT message("dialog-information", line);
             }
         }
     }
     if (status == QProcess::CrashExit) {
-        emit message("dialog-error", QString(_("%1 crashed.")).arg(file_));
-        emit finished(ignoreFailure_);
+        Q_EMIT message("dialog-error", QString(_("%1 crashed.")).arg(file_));
+        Q_EMIT finished(ignoreFailure_);
         return;
     }
 
     if (exitCode != 0) {
-        emit message("dialog-warning",
-                     QString(_("%1 failed to start.")).arg(file_));
-        emit finished(ignoreFailure_);
+        Q_EMIT message("dialog-warning",
+                       QString(_("%1 failed to start.")).arg(file_));
+        Q_EMIT finished(ignoreFailure_);
         return;
     }
 
     if (!finishMessage_.isEmpty()) {
-        emit message("dialog-information", finishMessage_);
+        Q_EMIT message("dialog-information", finishMessage_);
     }
-    emit finished(true);
+    Q_EMIT finished(true);
 }
 
 } // namespace fcitx

@@ -29,14 +29,14 @@ class IMPage : public QWidget {
 public:
     IMPage(DBusProvider *dbus, QWidget *parent);
     ~IMPage();
-signals:
+Q_SIGNALS:
     void changed();
-public slots:
+public Q_SLOTS:
     void save();
     void load();
     void defaults();
 
-private slots:
+private Q_SLOTS:
     void selectedGroupChanged();
 
     void availIMSelectionChanged();

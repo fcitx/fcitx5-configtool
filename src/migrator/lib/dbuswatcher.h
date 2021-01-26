@@ -25,7 +25,7 @@ public:
     void abort() override;
     void cleanUp() override;
 
-private slots:
+private Q_SLOTS:
 
 private:
     QString service_;

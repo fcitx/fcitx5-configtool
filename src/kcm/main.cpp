@@ -228,7 +228,7 @@ void FcitxModule::handleAvailabilityChanged(bool avail) {
     if (avail) {
         loadAddon();
     }
-    emit availabilityChanged(avail);
+    Q_EMIT availabilityChanged(avail);
 }
 
 void FcitxModule::loadAddon() {

@@ -27,13 +27,13 @@ public:
     void load();
     void save();
     void defaults();
-signals:
+Q_SIGNALS:
     void changed(bool state);
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
 
-private slots:
+private Q_SLOTS:
     void clicked(QAbstractButton *button);
 
 private:

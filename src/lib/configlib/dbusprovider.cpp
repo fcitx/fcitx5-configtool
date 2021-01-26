@@ -31,7 +31,7 @@ void DBusProvider::fcitxAvailabilityChanged(bool avail) {
         controller_->setTimeout(3000);
     }
 
-    emit availabilityChanged(controller_);
+    Q_EMIT availabilityChanged(controller_);
 }
 
 } // namespace kcm
