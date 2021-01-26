@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Fcitx 5 Configuration
+GenericName=Input Method Configuration
+Comment=Change Fcitx 5 Configuration
+Icon=fcitx
+Exec=fcitx5-config-qt
+Type=Application
+Catogories=Settings;
+NoDisplay=true

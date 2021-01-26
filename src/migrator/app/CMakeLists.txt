@@ -5,3 +5,7 @@ set_target_properties(fcitx5-migrator PROPERTIES
     AUTOUIC_OPTIONS "-tr=fcitx::tr2fcitx;--include=fcitxqti18nhelper.h")
 target_link_libraries(fcitx5-migrator pinyinmigrator skkmigrator rimemigrator kkcmigrator globalconfigmigrator tablemigrator Qt5::Widgets KF5::WidgetsAddons configlib Fcitx5Migrator Fcitx5Qt5::WidgetsAddons Fcitx5Qt5::DBusAddons)
 install(TARGETS fcitx5-migrator DESTINATION ${CMAKE_INSTALL_BINDIR})
+
+fcitx5_translate_desktop_file(org.fcitx.fcitx5-migrator.desktop.in
+  org.fcitx.fcitx5-migrator.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/fcitx5-configtool)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.fcitx.fcitx5-migrator.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
