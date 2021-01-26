@@ -26,17 +26,11 @@ Row {
         load(rawValue)
     }
 
-    Rectangle {
-        height: button.height
-        width: height
-        color: colorDialog.color
-    }
-
     Button {
         id: button
         icon.name: "document-edit"
         text: kcm.colorToString(colorDialog.color)
-        implicitWidth: Kirigami.Units.gridUnit * 4
+        implicitWidth: Kirigami.Units.gridUnit * 10
         onClicked: colorDialog.open()
 
         QtDialogs.ColorDialog {
@@ -45,5 +39,11 @@ Row {
             title: i18nc("@title:window", "Select Color")
             showAlphaChannel: true
         }
+    }
+
+    Rectangle {
+        height: button.height
+        width: height
+        color: colorDialog.color
     }
 }

@@ -405,6 +405,7 @@ public:
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setMargin(0);
         layout->addWidget(colorButton_);
+        colorButton_->setAlphaChannelEnabled(true);
         setLayout(layout);
         connect(colorButton_, &KColorButton::changed, this,
                 &OptionWidget::valueChanged);

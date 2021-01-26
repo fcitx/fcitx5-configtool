@@ -10,6 +10,8 @@ import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.1 as QtDialogs
 
 Button {
+    implicitWidth: Kirigami.Units.gridUnit * 10
+
     property variant rawValue
     property bool needsSave: text != rawValue
 
