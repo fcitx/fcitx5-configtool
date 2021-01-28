@@ -4,15 +4,15 @@
 #
 # Translators:
 # wwj402 <wwj402@gmail.com>, 2017
-# csslayer <wengxt@gmail.com>, 2020
+# csslayer <wengxt@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-01-26 20:24+0000\n"
+"POT-Creation-Date: 2021-01-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -153,7 +153,7 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "修改 Fcitx 5 配置"
 
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
@@ -269,12 +269,12 @@ msgstr "执行 DBus 调用失败。"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 配置"
 
 #: src/migrator/app/main.cpp:20
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Fcitx 5 迁移向导"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -348,7 +348,7 @@ msgstr "输入法"
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "输入法配置"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
@@ -392,7 +392,7 @@ msgstr "语言："
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
 msgid ""
 "Launch the wizard to import data from other input method as Fcitx 4 etc."
-msgstr ""
+msgstr "启动向导来从其他输入法导入数据，例如 Fcitx 4。"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
