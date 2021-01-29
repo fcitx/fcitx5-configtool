@@ -6,15 +6,15 @@
 # csslayer <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-01-26 20:24+0000\n"
+"POT-Creation-Date: 2021-01-29 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -154,7 +154,7 @@ msgstr "DBusがFcitxと接続できませんでした。Fcitxは動いていま�
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 の設定を変更"
 
 #: src/lib/configwidgetslib/impage.cpp:237
 msgid "Change Input method to match layout selection."
@@ -270,12 +270,12 @@ msgstr "DBus Call の開始に失敗しました。"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 の設定"
 
 #: src/migrator/app/main.cpp:20
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Fcitx 5 移行ウィザード"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -349,7 +349,7 @@ msgstr "入力メソッド"
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "入力メソッドの設定"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
@@ -394,6 +394,8 @@ msgstr "言語:"
 msgid ""
 "Launch the wizard to import data from other input method as Fcitx 4 etc."
 msgstr ""
+"ウィザードを起動して、Fcitx 4 などの他の入力メソッドからデータをインポートし"
+"ます。"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
