@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
-# Bruce Lee <daemul72@gmail.com>, 2020
+# Bruce Lee <daemul72@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-01-26 20:24+0000\n"
+"POT-Creation-Date: 2021-02-10 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Bruce Lee <daemul72@gmail.com>, 2020\n"
+"Last-Translator: Bruce Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr ""
+msgstr "다음(&N)>"
 
 #: src/configtool/mainwindow.cpp:47
 #: src/lib/configwidgetslib/configwidget.cpp:204
@@ -215,7 +215,7 @@ msgstr ""
 #: src/lib/configwidgetslib/addonselector.cpp:413
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "%1 비활성화"
 
 #: src/lib/configwidgetslib/addonselector.cpp:408
 #, kde-format
@@ -262,7 +262,7 @@ msgstr ""
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr ""
+msgstr "DBus 호출을 시작하지 못했습니다."
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
@@ -280,7 +280,7 @@ msgstr ""
 #: rc.cpp:99 rc.cpp:108
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr ""
+msgstr "Fcitx가 동작하지 않습니다."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -291,15 +291,15 @@ msgstr "Fcitx 환경설정"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
-msgstr ""
+msgstr "Fcitx가 종료되었습니다."
 
 #: src/migrator/app/taskpage.cpp:238
 msgid "Fcitx is fully exited."
-msgstr ""
+msgstr "Fcitx가 완전히 종료되었습니다."
 
 #: src/migrator/app/taskpage.cpp:250
 msgid "Fcitx is started."
-msgstr ""
+msgstr "Fcitx가 시작됩니다."
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -308,7 +308,7 @@ msgstr "전처리기"
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
-msgstr ""
+msgstr "전역 설정"
 
 #: src/configtool/mainwindow.cpp:36
 msgid "Global Options"
@@ -377,7 +377,7 @@ msgstr "키보드 자판 보기도구"
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
 msgid "Kkc"
-msgstr ""
+msgstr "Kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -445,7 +445,7 @@ msgstr ""
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
-msgstr ""
+msgstr "마이그레이션 도구"
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
@@ -480,11 +480,11 @@ msgstr "기타"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "병음"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr ""
+msgstr "병음 데이터가 마이그레이션됩니다."
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -505,7 +505,7 @@ msgstr ""
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
 msgid "Rime"
-msgstr ""
+msgstr "Rime"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
 #. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
@@ -519,7 +519,7 @@ msgstr ""
 #: rc.cpp:87
 #, kde-format
 msgid "Search Addons"
-msgstr "부가기능 검색"
+msgstr "애드온 검색"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
@@ -533,7 +533,7 @@ msgstr "입력기 검색"
 #: rc.cpp:111
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "모두 선택(&A)"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -592,7 +592,7 @@ msgstr ""
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr ""
+msgstr "표"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:374
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -652,7 +652,7 @@ msgstr "키보드 자판 보기"
 #: rc.cpp:93
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "시작 페이지"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
