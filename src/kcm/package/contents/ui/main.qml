@@ -158,6 +158,10 @@ KCM.ScrollViewKCM {
             Label {
                 text: kcm.layoutProvider.layoutDescription(kcm.imConfig.defaultLayout)
             }
+            TextField {
+                Layout.fillWidth: true
+                placeholderText: i18n("Test Input")
+            }
         }
         RowLayout {
             enabled: kcm.availability
