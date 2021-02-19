@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2020
+# csslayer <wengxt@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-02-19 05:11+0000\n"
+"POT-Creation-Date: 2021-02-19 05:20+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2020\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -281,7 +281,7 @@ msgstr "一些配置未保存"
 #: src/kcm/package/contents/ui/main.qml:163
 #, kde-format
 msgid "Test Input"
-msgstr ""
+msgstr "测试输入"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
