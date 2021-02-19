@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-17 20:24+0000\n"
+"POT-Creation-Date: 2021-02-19 05:11+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#: src/kcm/package/contents/ui/ConfigGroup.qml:76
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -46,13 +46,13 @@ msgstr "- %1 の一部の機能を無効にする\n"
 msgid "..."
 msgstr "..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:180
+#: src/kcm/package/contents/ui/ListOption.qml:188
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
 msgstr "追加"
 
-#: src/kcm/package/contents/ui/main.qml:255
+#: src/kcm/package/contents/ui/main.qml:260
 #, kde-format
 msgid "Add Group"
 msgstr "グループを追加"
@@ -63,7 +63,7 @@ msgstr "グループを追加"
 msgid "Add Input Method"
 msgstr "入力メソッドを追加"
 
-#: src/kcm/package/contents/ui/main.qml:178
+#: src/kcm/package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add Input Method..."
 msgstr "入力メソッドを追加..."
@@ -73,12 +73,12 @@ msgstr "入力メソッドを追加..."
 msgid "Addons"
 msgstr "アドオン"
 
-#: src/kcm/main.cpp:49
+#: src/kcm/main.cpp:51
 #, kde-format
 msgid "Author"
 msgstr "作者"
 
-#: src/kcm/package/contents/ui/main.qml:53
+#: src/kcm/package/contents/ui/main.qml:54
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "DBusがFcitxと接続できませんでした。Fcitxは動いていますか?"
@@ -88,12 +88,12 @@ msgstr "DBusがFcitxと接続できませんでした。Fcitxは動いていま�
 msgid "Clear"
 msgstr "クリア"
 
-#: src/kcm/package/contents/ui/main.qml:200
+#: src/kcm/package/contents/ui/main.qml:205
 #, kde-format
 msgid "Configure"
 msgstr "設定"
 
-#: src/kcm/main.cpp:45
+#: src/kcm/main.cpp:47
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "Fcitx 5 の設定"
@@ -102,22 +102,22 @@ msgstr "Fcitx 5 の設定"
 msgid "Configure Input Method"
 msgstr "入力メソッドの設定"
 
-#: src/kcm/package/contents/ui/main.qml:170
+#: src/kcm/package/contents/ui/main.qml:175
 #, kde-format
 msgid "Configure addons..."
 msgstr "アドオンを設定..."
 
-#: src/kcm/package/contents/ui/main.qml:164
+#: src/kcm/package/contents/ui/main.qml:169
 #, kde-format
 msgid "Configure global options..."
 msgstr "グローバルオプションを設定..."
 
-#: src/kcm/main.cpp:46
+#: src/kcm/main.cpp:48
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Copyright 2017 Xuetian Weng"
 
-#: src/kcm/package/contents/ui/main.qml:313
+#: src/kcm/package/contents/ui/main.qml:318
 #, kde-format
 msgid "Current group changed"
 msgstr "現在のグループが変更されました"
@@ -138,7 +138,7 @@ msgstr ""
 "%2\n"
 "無効にしてもよろしいですか？"
 
-#: src/kcm/package/contents/ui/main.qml:337
+#: src/kcm/package/contents/ui/main.qml:342
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "グループを変更しますか？現在のグループへの変更は失われます！"
@@ -148,28 +148,28 @@ msgstr "グループを変更しますか？現在のグループへの変更は
 msgid "Empty"
 msgstr "空"
 
-#: src/kcm/main.cpp:44
+#: src/kcm/main.cpp:46
 #, kde-format
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
-#: src/kcm/package/contents/ui/main.qml:76
-#: src/kcm/package/contents/ui/main.qml:95
+#: src/kcm/package/contents/ui/main.qml:77
+#: src/kcm/package/contents/ui/main.qml:96
 #, kde-format
 msgid "Fix"
 msgstr "修正"
 
-#: src/kcm/package/contents/ui/main.qml:166
+#: src/kcm/package/contents/ui/main.qml:171
 #, kde-format
 msgid "Global Options"
 msgstr "グローバルオプション"
 
-#: src/kcm/package/contents/ui/main.qml:277
+#: src/kcm/package/contents/ui/main.qml:282
 #, kde-format
 msgid "Group Name"
 msgstr "グループ名"
 
-#: src/kcm/package/contents/ui/main.qml:106
+#: src/kcm/package/contents/ui/main.qml:107
 #, kde-format
 msgid "Group:"
 msgstr "グループ:"
@@ -193,17 +193,17 @@ msgstr "言語:"
 msgid "Layout:"
 msgstr "レイアウト:"
 
-#: src/kcm/package/contents/ui/main.qml:276
+#: src/kcm/package/contents/ui/main.qml:281
 #, kde-format
 msgid "Name:"
 msgstr "名前:"
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "No"
 msgstr "いいえ"
 
-#: src/kcm/package/contents/ui/main.qml:262
+#: src/kcm/package/contents/ui/main.qml:267
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
@@ -219,13 +219,13 @@ msgstr "現在の言語のみ表示 (&S)"
 msgid "Re-Enable"
 msgstr "再度有効にする"
 
-#: src/kcm/package/contents/ui/ListOption.qml:123
-#: src/kcm/package/contents/ui/main.qml:219
+#: src/kcm/package/contents/ui/ListOption.qml:131
+#: src/kcm/package/contents/ui/main.qml:224
 #, kde-format
 msgid "Remove"
 msgstr "削除"
 
-#: src/kcm/package/contents/ui/main.qml:57
+#: src/kcm/package/contents/ui/main.qml:58
 #, kde-format
 msgid "Run Fcitx"
 msgstr "Fcitx を実行"
@@ -236,39 +236,39 @@ msgstr "Fcitx を実行"
 msgid "Search..."
 msgstr "検索"
 
-#: src/kcm/package/contents/ui/ColorOption.qml:45
+#: src/kcm/package/contents/ui/ColorOption.qml:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
 msgstr "色を選択"
 
-#: src/kcm/package/contents/ui/FontOption.qml:34
+#: src/kcm/package/contents/ui/FontOption.qml:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
 msgstr "フォントを選択"
 
-#: src/kcm/package/contents/ui/main.qml:208
+#: src/kcm/package/contents/ui/main.qml:213
 #, kde-format
 msgid "Select Layout"
 msgstr "レイアウトを選択"
 
-#: src/kcm/package/contents/ui/main.qml:212
+#: src/kcm/package/contents/ui/main.qml:217
 #, kde-format
 msgid "Select layout for %1"
 msgstr "%1 のレイアウトを選択"
 
-#: src/kcm/package/contents/ui/main.qml:154
+#: src/kcm/package/contents/ui/main.qml:155
 #, kde-format
 msgid "Select system keyboard layout..."
 msgstr "システムキーボードのレイアウトを選択..."
 
-#: src/kcm/package/contents/ui/main.qml:148
+#: src/kcm/package/contents/ui/main.qml:149
 #, kde-format
 msgid "Select system layout for group %1"
 msgstr "グループ %1 のシステムレイアウトを選択"
 
-#: src/kcm/package/contents/ui/main.qml:145
+#: src/kcm/package/contents/ui/main.qml:146
 #, kde-format
 msgid "Select system layout..."
 msgstr "システムレイアウトを選択..."
@@ -278,22 +278,27 @@ msgstr "システムレイアウトを選択..."
 msgid "Some config is not saved"
 msgstr "一部の設定が保存されません"
 
+#: src/kcm/package/contents/ui/main.qml:163
+#, kde-format
+msgid "Test Input"
+msgstr ""
+
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
 msgid "Variant:"
 msgstr "バリアント:"
 
-#: src/kcm/main.cpp:49
+#: src/kcm/main.cpp:51
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "Yes"
 msgstr "はい"
 
-#: src/kcm/package/contents/ui/main.qml:73
+#: src/kcm/package/contents/ui/main.qml:74
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
@@ -302,7 +307,7 @@ msgstr ""
 "現在設定されている入力メソッドがレイアウトと一致しません。レイアウト設定を変"
 "更しますか？"
 
-#: src/kcm/package/contents/ui/main.qml:92
+#: src/kcm/package/contents/ui/main.qml:93
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
@@ -311,12 +316,12 @@ msgstr ""
 "現在設定されている入力メソッドが選択したレイアウトと一致しません。対応する入"
 "力メソッドをレイアウトに追加しますか？"
 
-#: src/kcm/package/contents/ui/ListOption.qml:72
+#: src/kcm/package/contents/ui/ListOption.qml:73
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:116
+#: src/kcm/package/contents/ui/ListOption.qml:124
 #, kde-format
 msgid "edit"
 msgstr "編集"

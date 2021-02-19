@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2020-12-16 20:24+0000\n"
+"POT-Creation-Date: 2021-02-19 05:11+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 "1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 
-#: src/kcm/package/contents/ui/ConfigGroup.qml:66
+#: src/kcm/package/contents/ui/ConfigGroup.qml:76
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -46,13 +46,13 @@ msgstr ""
 msgid "..."
 msgstr "..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:180
+#: src/kcm/package/contents/ui/ListOption.qml:188
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
 msgstr "הוספה"
 
-#: src/kcm/package/contents/ui/main.qml:255
+#: src/kcm/package/contents/ui/main.qml:260
 #, kde-format
 msgid "Add Group"
 msgstr "הוספת קבוצה"
@@ -63,7 +63,7 @@ msgstr "הוספת קבוצה"
 msgid "Add Input Method"
 msgstr "הוספת שיטת קלט"
 
-#: src/kcm/package/contents/ui/main.qml:178
+#: src/kcm/package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add Input Method..."
 msgstr "הוספת שיטת קלט..."
@@ -73,12 +73,12 @@ msgstr "הוספת שיטת קלט..."
 msgid "Addons"
 msgstr "תוספים"
 
-#: src/kcm/main.cpp:49
+#: src/kcm/main.cpp:51
 #, kde-format
 msgid "Author"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:53
+#: src/kcm/package/contents/ui/main.qml:54
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr ""
@@ -88,12 +88,12 @@ msgstr ""
 msgid "Clear"
 msgstr "ניקוי"
 
-#: src/kcm/package/contents/ui/main.qml:200
+#: src/kcm/package/contents/ui/main.qml:205
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
 
-#: src/kcm/main.cpp:45
+#: src/kcm/main.cpp:47
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "הגדרת Fcitx 5"
@@ -102,22 +102,22 @@ msgstr "הגדרת Fcitx 5"
 msgid "Configure Input Method"
 msgstr "הגדרת שיטת קלט"
 
-#: src/kcm/package/contents/ui/main.qml:170
+#: src/kcm/package/contents/ui/main.qml:175
 #, kde-format
 msgid "Configure addons..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:164
+#: src/kcm/package/contents/ui/main.qml:169
 #, kde-format
 msgid "Configure global options..."
 msgstr ""
 
-#: src/kcm/main.cpp:46
+#: src/kcm/main.cpp:48
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:313
+#: src/kcm/package/contents/ui/main.qml:318
 #, kde-format
 msgid "Current group changed"
 msgstr ""
@@ -135,7 +135,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:337
+#: src/kcm/package/contents/ui/main.qml:342
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
@@ -145,28 +145,28 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/kcm/main.cpp:44
+#: src/kcm/main.cpp:46
 #, kde-format
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
-#: src/kcm/package/contents/ui/main.qml:76
-#: src/kcm/package/contents/ui/main.qml:95
+#: src/kcm/package/contents/ui/main.qml:77
+#: src/kcm/package/contents/ui/main.qml:96
 #, kde-format
 msgid "Fix"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:166
+#: src/kcm/package/contents/ui/main.qml:171
 #, kde-format
 msgid "Global Options"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:277
+#: src/kcm/package/contents/ui/main.qml:282
 #, kde-format
 msgid "Group Name"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:106
+#: src/kcm/package/contents/ui/main.qml:107
 #, kde-format
 msgid "Group:"
 msgstr "קבוצה:"
@@ -190,17 +190,17 @@ msgstr "שפה:"
 msgid "Layout:"
 msgstr "פריסה:"
 
-#: src/kcm/package/contents/ui/main.qml:276
+#: src/kcm/package/contents/ui/main.qml:281
 #, kde-format
 msgid "Name:"
 msgstr "שם:"
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "No"
 msgstr "לא"
 
-#: src/kcm/package/contents/ui/main.qml:262
+#: src/kcm/package/contents/ui/main.qml:267
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
@@ -216,13 +216,13 @@ msgstr ""
 msgid "Re-Enable"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:123
-#: src/kcm/package/contents/ui/main.qml:219
+#: src/kcm/package/contents/ui/ListOption.qml:131
+#: src/kcm/package/contents/ui/main.qml:224
 #, kde-format
 msgid "Remove"
 msgstr "הסרה"
 
-#: src/kcm/package/contents/ui/main.qml:57
+#: src/kcm/package/contents/ui/main.qml:58
 #, kde-format
 msgid "Run Fcitx"
 msgstr ""
@@ -233,39 +233,39 @@ msgstr ""
 msgid "Search..."
 msgstr "חיפוש..."
 
-#: src/kcm/package/contents/ui/ColorOption.qml:45
+#: src/kcm/package/contents/ui/ColorOption.qml:39
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
 msgstr "בחירת צבע"
 
-#: src/kcm/package/contents/ui/FontOption.qml:34
+#: src/kcm/package/contents/ui/FontOption.qml:37
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
 msgstr "בחירת גופן"
 
-#: src/kcm/package/contents/ui/main.qml:208
+#: src/kcm/package/contents/ui/main.qml:213
 #, kde-format
 msgid "Select Layout"
 msgstr "בחירת פריסה"
 
-#: src/kcm/package/contents/ui/main.qml:212
+#: src/kcm/package/contents/ui/main.qml:217
 #, kde-format
 msgid "Select layout for %1"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:154
+#: src/kcm/package/contents/ui/main.qml:155
 #, kde-format
 msgid "Select system keyboard layout..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:148
+#: src/kcm/package/contents/ui/main.qml:149
 #, kde-format
 msgid "Select system layout for group %1"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:145
+#: src/kcm/package/contents/ui/main.qml:146
 #, kde-format
 msgid "Select system layout..."
 msgstr ""
@@ -275,41 +275,46 @@ msgstr ""
 msgid "Some config is not saved"
 msgstr ""
 
+#: src/kcm/package/contents/ui/main.qml:163
+#, kde-format
+msgid "Test Input"
+msgstr ""
+
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
 msgid "Variant:"
 msgstr ""
 
-#: src/kcm/main.cpp:49
+#: src/kcm/main.cpp:51
 #, kde-format
 msgid "Xuetian Weng"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:38
+#: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "Yes"
 msgstr "כן"
 
-#: src/kcm/package/contents/ui/main.qml:73
+#: src/kcm/package/contents/ui/main.qml:74
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:92
+#: src/kcm/package/contents/ui/main.qml:93
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:72
+#: src/kcm/package/contents/ui/ListOption.qml:73
 #, kde-format
 msgid "[%1]"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:116
+#: src/kcm/package/contents/ui/ListOption.qml:124
 #, kde-format
 msgid "edit"
 msgstr ""

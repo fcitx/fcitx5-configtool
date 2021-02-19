@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-02-10 20:24+0000\n"
+"POT-Creation-Date: 2021-02-19 05:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:256
+#: src/kcm/package/contents/ui/main.qml:260
 #, kde-format
 msgid "Add Group"
 msgstr ""
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Add Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:179
+#: src/kcm/package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add Input Method..."
 msgstr ""
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:201
+#: src/kcm/package/contents/ui/main.qml:205
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -97,12 +97,12 @@ msgstr ""
 msgid "Configure Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:171
+#: src/kcm/package/contents/ui/main.qml:175
 #, kde-format
 msgid "Configure addons..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:165
+#: src/kcm/package/contents/ui/main.qml:169
 #, kde-format
 msgid "Configure global options..."
 msgstr ""
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Copyright 2017 Xuetian Weng"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:314
+#: src/kcm/package/contents/ui/main.qml:318
 #, kde-format
 msgid "Current group changed"
 msgstr ""
@@ -130,7 +130,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:338
+#: src/kcm/package/contents/ui/main.qml:342
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
@@ -151,12 +151,12 @@ msgstr ""
 msgid "Fix"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:167
+#: src/kcm/package/contents/ui/main.qml:171
 #, kde-format
 msgid "Global Options"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:278
+#: src/kcm/package/contents/ui/main.qml:282
 #, kde-format
 msgid "Group Name"
 msgstr ""
@@ -185,7 +185,7 @@ msgstr ""
 msgid "Layout:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:277
+#: src/kcm/package/contents/ui/main.qml:281
 #, kde-format
 msgid "Name:"
 msgstr ""
@@ -195,7 +195,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:263
+#: src/kcm/package/contents/ui/main.qml:267
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
@@ -212,7 +212,7 @@ msgid "Re-Enable"
 msgstr ""
 
 #: src/kcm/package/contents/ui/ListOption.qml:131
-#: src/kcm/package/contents/ui/main.qml:220
+#: src/kcm/package/contents/ui/main.qml:224
 #, kde-format
 msgid "Remove"
 msgstr ""
@@ -240,12 +240,12 @@ msgctxt "@title:window"
 msgid "Select Font"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:209
+#: src/kcm/package/contents/ui/main.qml:213
 #, kde-format
 msgid "Select Layout"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:213
+#: src/kcm/package/contents/ui/main.qml:217
 #, kde-format
 msgid "Select layout for %1"
 msgstr ""
@@ -268,6 +268,11 @@ msgstr ""
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
 #, kde-format
 msgid "Some config is not saved"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:163
+#, kde-format
+msgid "Test Input"
 msgstr ""
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104

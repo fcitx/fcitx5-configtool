@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-02-10 20:24+0000\n"
+"POT-Creation-Date: 2021-02-19 05:11+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Bruce Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -52,7 +52,7 @@ msgstr "..."
 msgid "Add"
 msgstr "추가"
 
-#: src/kcm/package/contents/ui/main.qml:256
+#: src/kcm/package/contents/ui/main.qml:260
 #, kde-format
 msgid "Add Group"
 msgstr "그룹 추가"
@@ -63,7 +63,7 @@ msgstr "그룹 추가"
 msgid "Add Input Method"
 msgstr "입력기 추가"
 
-#: src/kcm/package/contents/ui/main.qml:179
+#: src/kcm/package/contents/ui/main.qml:183
 #, kde-format
 msgid "Add Input Method..."
 msgstr "입력기 추가..."
@@ -88,7 +88,7 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 msgid "Clear"
 msgstr "지우기"
 
-#: src/kcm/package/contents/ui/main.qml:201
+#: src/kcm/package/contents/ui/main.qml:205
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -102,12 +102,12 @@ msgstr "Fcitx 5 구성하기"
 msgid "Configure Input Method"
 msgstr "입력기 구성하기"
 
-#: src/kcm/package/contents/ui/main.qml:171
+#: src/kcm/package/contents/ui/main.qml:175
 #, kde-format
 msgid "Configure addons..."
 msgstr "애드온 구성하기..."
 
-#: src/kcm/package/contents/ui/main.qml:165
+#: src/kcm/package/contents/ui/main.qml:169
 #, kde-format
 msgid "Configure global options..."
 msgstr "전역 옵션 구성하기..."
@@ -117,7 +117,7 @@ msgstr "전역 옵션 구성하기..."
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "저작권자 2017 Xuetian Weng"
 
-#: src/kcm/package/contents/ui/main.qml:314
+#: src/kcm/package/contents/ui/main.qml:318
 #, kde-format
 msgid "Current group changed"
 msgstr "현재 그룹이 변경됨"
@@ -135,7 +135,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:338
+#: src/kcm/package/contents/ui/main.qml:342
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
@@ -156,12 +156,12 @@ msgstr "Fcitx 5"
 msgid "Fix"
 msgstr "수정"
 
-#: src/kcm/package/contents/ui/main.qml:167
+#: src/kcm/package/contents/ui/main.qml:171
 #, kde-format
 msgid "Global Options"
 msgstr "전역 옵션"
 
-#: src/kcm/package/contents/ui/main.qml:278
+#: src/kcm/package/contents/ui/main.qml:282
 #, kde-format
 msgid "Group Name"
 msgstr "그룹 이름"
@@ -190,7 +190,7 @@ msgstr "언어:"
 msgid "Layout:"
 msgstr "자판:"
 
-#: src/kcm/package/contents/ui/main.qml:277
+#: src/kcm/package/contents/ui/main.qml:281
 #, kde-format
 msgid "Name:"
 msgstr "이름:"
@@ -200,7 +200,7 @@ msgstr "이름:"
 msgid "No"
 msgstr "아니오"
 
-#: src/kcm/package/contents/ui/main.qml:263
+#: src/kcm/package/contents/ui/main.qml:267
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
@@ -217,7 +217,7 @@ msgid "Re-Enable"
 msgstr "재 활성화"
 
 #: src/kcm/package/contents/ui/ListOption.qml:131
-#: src/kcm/package/contents/ui/main.qml:220
+#: src/kcm/package/contents/ui/main.qml:224
 #, kde-format
 msgid "Remove"
 msgstr "제거"
@@ -245,12 +245,12 @@ msgctxt "@title:window"
 msgid "Select Font"
 msgstr "글꼴 선택"
 
-#: src/kcm/package/contents/ui/main.qml:209
+#: src/kcm/package/contents/ui/main.qml:213
 #, kde-format
 msgid "Select Layout"
 msgstr "자판 선택"
 
-#: src/kcm/package/contents/ui/main.qml:213
+#: src/kcm/package/contents/ui/main.qml:217
 #, kde-format
 msgid "Select layout for %1"
 msgstr "%1용 자판 선택"
@@ -274,6 +274,11 @@ msgstr "시스템 자판 선택..."
 #, kde-format
 msgid "Some config is not saved"
 msgstr "일부 설정이 저장되지 않음"
+
+#: src/kcm/package/contents/ui/main.qml:163
+#, kde-format
+msgid "Test Input"
+msgstr ""
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
