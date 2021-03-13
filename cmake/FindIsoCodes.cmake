@@ -18,19 +18,5 @@ endif(ISOCODES_INCLUDE_DIR AND ISOCODES_LIBRARIES)
 find_package(PkgConfig)
 pkg_check_modules(PC_ISOCODES iso-codes)
 
-find_file(ISOCODES_ISO639_2_JSON iso_639-2.json
-          HINTS "${PC_ISOCODES_PREFIX}/share/iso-codes/json/"
-          )
+set(IsoCodes_PREFIX ${PC_ISOCODES_PREFIX})
 
-find_file(ISOCODES_ISO639_3_JSON iso_639-3.json
-          HINTS "${PC_ISOCODES_PREFIX}/share/iso-codes/json/"
-          )
-
-find_file(ISOCODES_ISO639_5_JSON iso_639-5.json
-          HINTS "${PC_ISOCODES_PREFIX}/share/iso-codes/json/"
-          )
-
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(IsoCodes  DEFAULT_MSG  ISOCODES_ISO639_2_JSON ISOCODES_ISO639_3_JSON ISOCODES_ISO639_5_JSON)
-
-mark_as_advanced(ISOCODES_ISO639_2_JSON ISOCODES_ISO639_3_JSON ISOCODES_ISO639_5_JSON)

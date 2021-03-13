@@ -60,6 +60,24 @@ get_target_property(FCITX5_QT5_GUI_WRAPPER Fcitx5Qt5::gui-wrapper IMPORTED_LOCAT
 
 find_package(KF5WidgetsAddons REQUIRED)
 find_package(IsoCodes REQUIRED)
+
+find_file(ISOCODES_ISO639_2_JSON iso_639-2.json
+          HINTS "${IsoCodes_PREFIX}/share/iso-codes/json/"
+          )
+
+find_file(ISOCODES_ISO639_3_JSON iso_639-3.json
+          HINTS "${IsoCodes_PREFIX}/share/iso-codes/json/"
+          )
+
+find_file(ISOCODES_ISO639_5_JSON iso_639-5.json
+          HINTS "${IsoCodes_PREFIX}/share/iso-codes/json/"
+          )
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(IsoCodes  DEFAULT_MSG  ISOCODES_ISO639_2_JSON ISOCODES_ISO639_3_JSON ISOCODES_ISO639_5_JSON)
+
+mark_as_advanced(ISOCODES_ISO639_2_JSON ISOCODES_ISO639_3_JSON ISOCODES_ISO639_5_JSON)
+
 kde_enable_exceptions()
 
 include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cmake")
