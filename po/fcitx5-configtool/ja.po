@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-20 14:42+0000\n"
+"POT-Creation-Date: 2021-03-20 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -314,6 +314,9 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"fcitx のアップデートが見つかりました。新しくインストールされる入力メソッドと"
+"アドオンを確認しますか？すでにロードされているアドオンを更新するには、fcitx "
+"を再起動する必要があります。"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -517,7 +520,7 @@ msgstr "削除"
 
 #: src/lib/configwidgetslib/impage.cpp:89
 msgid "Restart"
-msgstr ""
+msgstr "再起動"
 
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:207
@@ -663,7 +666,7 @@ msgstr "上へ"
 
 #: src/lib/configwidgetslib/impage.cpp:84
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
