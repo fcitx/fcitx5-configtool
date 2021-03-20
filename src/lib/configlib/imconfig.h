@@ -30,6 +30,7 @@ class IMConfig : public QObject {
     Q_PROPERTY(QStringList groups READ groups NOTIFY groupsChanged)
     Q_PROPERTY(QString currentGroup READ currentGroup WRITE setCurrentGroup)
     Q_PROPERTY(bool needSave READ needSave)
+    Q_PROPERTY(bool needUpdate READ needUpdate NOTIFY needUpdateChanged)
 public:
     enum ModelMode { Tree, Flatten };
 
@@ -42,6 +43,7 @@ public:
     const QString &currentGroup() const { return lastGroup_; }
     void setCurrentGroup(const QString &name);
     bool needSave() const { return needSave_; }
+    bool needUpdate() const { return needUpdate_; }
 
     void addIM(const QModelIndex &index);
     void removeIM(const QModelIndex &index);
@@ -83,6 +85,8 @@ public Q_SLOTS:
     void addIM(int index);
     void removeIM(int index);
     void move(int from, int to);
+    void refresh();
+    void restart();
 
 Q_SIGNALS:
     void changed();
@@ -90,12 +94,14 @@ Q_SIGNALS:
     void groupsChanged(const QStringList &groups);
     void imListChanged();
     void defaultLayoutChanged();
+    void needUpdateChanged(bool);
 
 private Q_SLOTS:
     void availabilityChanged();
     void fetchGroupInfoFinished(QDBusPendingCallWatcher *watcher);
     void fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher);
     void fetchGroupsFinished(QDBusPendingCallWatcher *watcher);
+    void checkUpdateFinished(QDBusPendingCallWatcher *watcher);
 
 private:
     void reloadGroup();
@@ -111,6 +117,7 @@ private:
     QStringList groups_;
     QString lastGroup_;
     bool needSave_ = false;
+    bool needUpdate_ = false;
 };
 } // namespace kcm
 } // namespace fcitx

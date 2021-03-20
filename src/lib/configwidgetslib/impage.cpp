@@ -12,6 +12,7 @@
 #include "layoutselector.h"
 #include "model.h"
 #include "ui_impage.h"
+#include <QAction>
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QPainter>
@@ -61,6 +62,7 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
       config_(new IMConfig(dbus, IMConfig::Tree, this)) {
     ui_->setupUi(this);
 
+    ui_->checkUpdateMessage->setVisible(false);
     connect(ui_->inputMethodGroupComboBox, &QComboBox::currentTextChanged, this,
             &IMPage::selectedGroupChanged);
     connect(config_, &IMConfig::changed, this, &IMPage::changed);
@@ -76,6 +78,18 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
                 }
                 ui_->deleteGroupButton->setEnabled(groups.size() > 1);
             });
+    connect(config_, &IMConfig::needUpdateChanged, ui_->checkUpdateMessage,
+            &QWidget::setVisible);
+
+    auto refreshAction = new QAction(_("Update"));
+    connect(refreshAction, &QAction::triggered, this,
+            [this]() { config_->refresh(); });
+    ui_->checkUpdateMessage->addAction(refreshAction);
+
+    auto restartAction = new QAction(_("Restart"));
+    connect(restartAction, &QAction::triggered, this,
+            [this]() { config_->restart(); });
+    ui_->checkUpdateMessage->addAction(restartAction);
 
     ui_->availIMView->setItemDelegate(new IMDelegate);
     ui_->availIMView->setModel(config_->availIMModel());

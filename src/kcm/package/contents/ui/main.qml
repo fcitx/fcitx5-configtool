@@ -65,6 +65,34 @@ KCM.ScrollViewKCM {
         }
 
         Kirigami.InlineMessage {
+            id: fcitxNeedUpdateMessage
+
+            Layout.fillWidth: true
+            type: Kirigami.MessageType.Information
+            visible: kcm.imConfig.needUpdate
+            showCloseButton: true
+            text: i18n("Found updates to fcitx installation. Do you want to check for newly installed input methods and addons? To update already loaded addons, fcitx would need to be restarted.")
+            actions: [
+                Kirigami.Action {
+                    iconName: "update-none"
+                    text: i18n("Update")
+                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
+                    onTriggered: {
+                        kcm.imConfig.refresh();
+                    }
+                },
+                Kirigami.Action {
+                    iconName: "system-run"
+                    text: i18n("Restart")
+                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
+                    onTriggered: {
+                        kcm.imConfig.restart();
+                    }
+                }
+            ]
+        }
+
+        Kirigami.InlineMessage {
             id: layoutNotMatchWarning
 
             Layout.fillWidth: true

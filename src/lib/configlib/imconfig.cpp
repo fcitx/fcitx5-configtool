@@ -127,6 +127,10 @@ void IMConfig::availabilityChanged() {
     auto imcallwatcher = new QDBusPendingCallWatcher(imcall, this);
     connect(imcallwatcher, &QDBusPendingCallWatcher::finished, this,
             &IMConfig::fetchInputMethodsFinished);
+    auto checkUpdate = dbus_->controller()->CheckUpdate();
+    auto checkUpdateWatcher = new QDBusPendingCallWatcher(checkUpdate, this);
+    connect(checkUpdateWatcher, &QDBusPendingCallWatcher::finished, this,
+            &IMConfig::checkUpdateFinished);
 }
 
 void IMConfig::fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher) {
@@ -136,7 +140,16 @@ void IMConfig::fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher) {
         allIMs_ = ims.value();
         updateIMList();
     }
-    return;
+}
+
+void IMConfig::checkUpdateFinished(QDBusPendingCallWatcher *watcher) {
+    QDBusPendingReply<bool> reply = *watcher;
+    watcher->deleteLater();
+    const bool needUpdate = !reply.isError() && reply.value();
+    if (needUpdate_ != needUpdate) {
+        needUpdate_ = needUpdate;
+        Q_EMIT needUpdateChanged(needUpdate_);
+    }
 }
 
 void IMConfig::setCurrentGroup(const QString &name) {
@@ -196,17 +209,40 @@ void IMConfig::addGroup(const QString &name) {
 }
 
 void IMConfig::deleteGroup(const QString &name) {
-    if (dbus_->controller()) {
-        auto call = dbus_->controller()->RemoveInputMethodGroup(name);
-        auto watcher = new QDBusPendingCallWatcher(call, this);
-        connect(watcher, &QDBusPendingCallWatcher::finished, this,
-                [this](QDBusPendingCallWatcher *watcher) {
-                    watcher->deleteLater();
-                    if (!watcher->isError()) {
-                        reloadGroup();
-                    }
-                });
+    if (!dbus_->controller()) {
+        return;
     }
+    auto call = dbus_->controller()->RemoveInputMethodGroup(name);
+    auto watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            [this](QDBusPendingCallWatcher *watcher) {
+                watcher->deleteLater();
+                if (!watcher->isError()) {
+                    reloadGroup();
+                }
+            });
+}
+
+void IMConfig::refresh() {
+    if (!dbus_->controller()) {
+        return;
+    }
+    auto call = dbus_->controller()->Refresh();
+    auto watcher = new QDBusPendingCallWatcher(call, this);
+    connect(watcher, &QDBusPendingCallWatcher::finished, this,
+            [this](QDBusPendingCallWatcher *watcher) {
+                watcher->deleteLater();
+                if (!watcher->isError()) {
+                    load();
+                }
+            });
+}
+
+void IMConfig::restart() {
+    if (!dbus_->controller()) {
+        return;
+    }
+    dbus_->controller()->Restart();
 }
 
 } // namespace kcm

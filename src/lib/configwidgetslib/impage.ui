@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
+    <width>752</width>
     <height>469</height>
    </rect>
   </property>
@@ -14,6 +14,16 @@
    <string comment="KDE::DoNotExtract">Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <item>
+    <widget class="KMessageWidget" name="checkUpdateMessage">
+     <property name="text">
+      <string>Found updates to fcitx installation. Do you want to check for newly installed input methods and addons? To update already loaded addons, fcitx would need to be restarted.</string>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
@@ -56,7 +66,8 @@
             <string>Add</string>
            </property>
            <property name="icon">
-            <iconset theme="list-add-symbolic"/>
+            <iconset theme="list-add-symbolic">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -72,7 +83,8 @@
             <string>Remove</string>
            </property>
            <property name="icon">
-            <iconset theme="list-remove-symbolic"/>
+            <iconset theme="list-remove-symbolic">
+             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -129,7 +141,8 @@
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset theme="go-previous-symbolic"/>
+          <iconset theme="go-previous-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -154,7 +167,8 @@
           <string>Remove</string>
          </property>
          <property name="icon">
-          <iconset theme="go-next-symbolic"/>
+          <iconset theme="go-next-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -179,7 +193,8 @@
           <string>Up</string>
          </property>
          <property name="icon">
-          <iconset theme="go-up-symbolic"/>
+          <iconset theme="go-up-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -204,7 +219,8 @@
           <string>Down</string>
          </property>
          <property name="icon">
-          <iconset theme="go-down-symbolic"/>
+          <iconset theme="go-down-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -226,7 +242,8 @@
           <string>Configure</string>
          </property>
          <property name="icon">
-          <iconset theme="preferences-system-symbolic"/>
+          <iconset theme="preferences-system-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -251,7 +268,8 @@
           <string notr="true">Layout</string>
          </property>
          <property name="icon">
-          <iconset theme="input-keyboard-symbolic"/>
+          <iconset theme="input-keyboard-symbolic">
+           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -385,6 +403,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KMessageWidget</class>
+   <extends>QFrame</extends>
+   <header>kmessagewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
