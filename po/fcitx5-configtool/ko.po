@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2017
-# Bruce Lee <daemul72@gmail.com>, 2021
+# JungHee Lee <daemul72@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-02-10 20:24+0000\n"
+"POT-Creation-Date: 2021-03-20 14:42+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Bruce Lee <daemul72@gmail.com>, 2021\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -111,11 +111,11 @@ msgstr "일반 키보드 자판 보기도구"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:56
+#. i18n: file: src/lib/configwidgetslib/impage.ui:66
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:129
+#. i18n: file: src/lib/configwidgetslib/impage.ui:141
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:36 rc.cpp:48
+#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Add"
 msgstr "추가"
@@ -137,9 +137,9 @@ msgstr "모든 언어"
 msgid "Asking Fcitx to exit..."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:278
+#. i18n: file: src/lib/configwidgetslib/impage.ui:296
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:66
+#: rc.cpp:69
 #, kde-format
 msgid "Available Input Method:"
 msgstr "사용가능한 입력기:"
@@ -155,11 +155,11 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 msgid "Change Fcitx 5 Configuration"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:237
+#: src/lib/configwidgetslib/impage.cpp:251
 msgid "Change Input method to match layout selection."
 msgstr "선택된 자판에 맞게 입력기 변경"
 
-#: src/lib/configwidgetslib/impage.cpp:315
+#: src/lib/configwidgetslib/impage.cpp:329
 msgid "Change System layout to match input method selection."
 msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
 
@@ -175,10 +175,10 @@ msgstr ""
 msgid "Click on an item for more details."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:226
+#. i18n: file: src/lib/configwidgetslib/impage.ui:242
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:60
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:63
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -192,14 +192,14 @@ msgstr ""
 msgid "Copying file %1 to %2"
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:24
+#. i18n: file: src/lib/configwidgetslib/impage.ui:34
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:30
+#: rc.cpp:33
 #, kde-format
 msgid "Current Input Method:"
 msgstr "현재 입력기:"
 
-#: src/lib/configwidgetslib/impage.cpp:149
+#: src/lib/configwidgetslib/impage.cpp:163
 msgid "Current group changed"
 msgstr "현재 그룹이 변경됨"
 
@@ -225,15 +225,15 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:150
+#: src/lib/configwidgetslib/impage.cpp:164
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:204
+#. i18n: file: src/lib/configwidgetslib/impage.ui:219
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:18 rc.cpp:57
+#: rc.cpp:18 rc.cpp:60
 #, kde-format
 msgid "Down"
 msgstr "아래쪽"
@@ -277,7 +277,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
-#: rc.cpp:99 rc.cpp:108
+#: rc.cpp:102 rc.cpp:111
 #, kde-format
 msgid "Fcitx 5 is not running."
 msgstr "Fcitx가 동작하지 않습니다."
@@ -301,6 +301,16 @@ msgstr "Fcitx가 완전히 종료되었습니다."
 msgid "Fcitx is started."
 msgstr "Fcitx가 시작됩니다."
 
+#. i18n: file: src/lib/configwidgetslib/impage.ui:20
+#. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
+#: rc.cpp:30
+#, kde-format
+msgid ""
+"Found updates to fcitx installation. Do you want to check for newly "
+"installed input methods and addons? To update already loaded addons, fcitx "
+"would need to be restarted."
+msgstr ""
+
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "전처리기"
@@ -319,13 +329,13 @@ msgstr "전역 옵션"
 msgid "Got error: %1 %2"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:373
+#: src/lib/configwidgetslib/impage.cpp:387
 msgid "Group Name:"
 msgstr "그룹 이름:"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:33
+#. i18n: file: src/lib/configwidgetslib/impage.ui:43
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: rc.cpp:33
+#: rc.cpp:36
 #, kde-format
 msgid "Group:"
 msgstr "그룹:"
@@ -363,9 +373,9 @@ msgstr "키보드 자판 <그룹> (0-3)"
 msgid "Keyboard layout <variant>"
 msgstr "키보드 자판 <변형>"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:87
+#. i18n: file: src/lib/configwidgetslib/impage.ui:99
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:42
+#: rc.cpp:45
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "활성 입력기가 없을 때 사용할 키보드 자판"
@@ -381,7 +391,7 @@ msgstr "Kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:78
+#: rc.cpp:81
 #, kde-format
 msgid "Language:"
 msgstr "언어:"
@@ -393,7 +403,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:81
+#: rc.cpp:84
 #, kde-format
 msgid "Layout:"
 msgstr "자판:"
@@ -404,7 +414,7 @@ msgstr "불러오기 도구"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
-#: rc.cpp:96
+#: rc.cpp:99
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
 msgstr ""
@@ -455,7 +465,7 @@ msgstr "모듈"
 msgid "Multilingual"
 msgstr "다중언어"
 
-#: src/lib/configwidgetslib/impage.cpp:373
+#: src/lib/configwidgetslib/impage.cpp:387
 msgid "New Group"
 msgstr "새 그룹"
 
@@ -467,9 +477,9 @@ msgstr "아니오"
 msgid "One of the task is failed. Terminating the migration."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:317
+#. i18n: file: src/lib/configwidgetslib/impage.ui:335
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:72
+#: rc.cpp:75
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "현재 언어만 표시(&S)"
@@ -488,14 +498,18 @@ msgstr "병음 데이터가 마이그레이션됩니다."
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:72
+#. i18n: file: src/lib/configwidgetslib/impage.ui:83
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:154
+#. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:39 rc.cpp:51
+#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:42 rc.cpp:54
 #, kde-format
 msgid "Remove"
 msgstr "제거"
+
+#: src/lib/configwidgetslib/impage.cpp:89
+msgid "Restart"
+msgstr ""
 
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:207
@@ -516,21 +530,21 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:87
+#: rc.cpp:90
 #, kde-format
 msgid "Search Addons"
 msgstr "애드온 검색"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:285
+#. i18n: file: src/lib/configwidgetslib/impage.ui:303
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:69
+#: rc.cpp:72
 #, kde-format
 msgid "Search Input Method"
 msgstr "입력기 검색"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
-#: rc.cpp:111
+#: rc.cpp:114
 #, kde-format
 msgid "Select &All"
 msgstr "모두 선택(&A)"
@@ -542,27 +556,27 @@ msgstr "모두 선택(&A)"
 msgid "Select &Font..."
 msgstr "글꼴 선택(&F)"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:248
+#. i18n: file: src/lib/configwidgetslib/impage.ui:265
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:282 rc.cpp:63
+#: src/lib/configwidgetslib/impage.cpp:296 rc.cpp:66
 #, kde-format
 msgid "Select Layout"
 msgstr "자판 선택"
 
-#: src/lib/configwidgetslib/impage.cpp:222
+#: src/lib/configwidgetslib/impage.cpp:236
 msgid "Select default layout"
 msgstr "기본 자판 선택"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
-#: rc.cpp:105
+#: rc.cpp:108
 #, kde-format
 msgid "Select migration tasks"
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:90
+#. i18n: file: src/lib/configwidgetslib/impage.ui:102
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:45
+#: rc.cpp:48
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr "시스템 키보드 자판 선택"
@@ -579,7 +593,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:90
+#: rc.cpp:93
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "고급 옵션 표시(&A)"
@@ -594,9 +608,9 @@ msgstr ""
 msgid "Table"
 msgstr "표"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:374
+#. i18n: file: src/lib/configwidgetslib/impage.ui:392
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:75
+#: rc.cpp:78
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -607,7 +621,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:102
+#: rc.cpp:105
 #, kde-format
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
@@ -629,16 +643,20 @@ msgstr "알 수 없음 "
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:179
+#. i18n: file: src/lib/configwidgetslib/impage.ui:193
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:15 rc.cpp:54
+#: rc.cpp:15 rc.cpp:57
 #, kde-format
 msgid "Up"
 msgstr "위쪽"
 
+#: src/lib/configwidgetslib/impage.cpp:84
+msgid "Update"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:84
+#: rc.cpp:87
 #, kde-format
 msgid "Variant:"
 msgstr "변형:"
@@ -649,7 +667,7 @@ msgstr "키보드 자판 보기"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
-#: rc.cpp:93
+#: rc.cpp:96
 #, kde-format
 msgid "WelcomePage"
 msgstr "시작 페이지"
@@ -658,14 +676,14 @@ msgstr "시작 페이지"
 msgid "Yes"
 msgstr "예"
 
-#: src/lib/configwidgetslib/impage.cpp:316
+#: src/lib/configwidgetslib/impage.cpp:330
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 "현재 구성된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
 
-#: src/lib/configwidgetslib/impage.cpp:238
+#: src/lib/configwidgetslib/impage.cpp:252
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
