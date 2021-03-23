@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-20 20:24+0000\n"
+"POT-Creation-Date: 2021-03-23 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,9 +59,12 @@ msgstr ""
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/layoutselector.cpp:76
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
+msgstr ""
+
+#: src/lib/configwidgetslib/layoutselector.cpp:76
+msgid "&Clear"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:48
