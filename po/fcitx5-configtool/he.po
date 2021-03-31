@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# Omeritzics Games <omeritzicschwartz@gmail.com>, 2021
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-23 20:24+0000\n"
+"POT-Creation-Date: 2021-03-31 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Omeritzics Games <omeritzicschwartz@gmail.com>, 2021\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -492,7 +492,7 @@ msgstr "שונות"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr "פִּנְיִין"
+msgstr "פיניין"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
