@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-23 20:24+0000\n"
+"POT-Creation-Date: 2021-04-02 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Bruce Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -40,12 +40,12 @@ msgstr "%1 - %2"
 #: src/migrator/lib/processrunner.cpp:69
 #, kde-format
 msgid "%1 crashed."
-msgstr ""
+msgstr "%1 충돌함."
 
 #: src/migrator/lib/processrunner.cpp:76
 #, kde-format
 msgid "%1 failed to start."
-msgstr ""
+msgstr "%1을(를) 시작하지 못함."
 
 #: src/lib/configwidgetslib/optionwidget.cpp:539
 #: src/lib/configwidgetslib/optionwidget.cpp:550
@@ -61,21 +61,21 @@ msgstr "%1:"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "&Apply"
-msgstr ""
+msgstr "적용(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
-msgstr ""
+msgstr "취소(&C)"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr ""
+msgstr "지우기(&C)"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "&Close"
-msgstr ""
+msgstr "닫기(&C)"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
@@ -87,11 +87,11 @@ msgstr "다음(&N)>"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
-msgstr ""
+msgstr "확인(&O)"
 
 #: src/configtool/mainwindow.cpp:49
 msgid "&Reset"
-msgstr ""
+msgstr "재설정(&R)"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -106,7 +106,7 @@ msgstr "-  %1 비활성화\n"
 #: src/lib/configwidgetslib/addonselector.cpp:405
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- %1의 일부 기능 비활성화\n"
 
 #: layout/main.cpp:23
 msgid "A general keyboard layout viewer"
@@ -129,7 +129,7 @@ msgstr "애드온"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr ""
+msgstr "모든 마이그레이션 작업이 성공적으로 완료되었습니다."
 
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
@@ -138,7 +138,7 @@ msgstr "모든 언어"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
-msgstr ""
+msgstr "Fcitx를 종료하도록 요청하는 중..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:296
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -156,7 +156,7 @@ msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니�
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 환경설정 변경"
 
 #: src/lib/configwidgetslib/impage.cpp:251
 msgid "Change Input method to match layout selection."
@@ -168,15 +168,15 @@ msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다.
 
 #: src/migrator/app/taskpage.cpp:249
 msgid "Checking if Fcitx is running..."
-msgstr ""
+msgstr "Fcitx가 실행 중인지 확인하는 중..."
 
 #: src/migrator/app/taskpage.cpp:237
 msgid "Checking if Fcitx is still running..."
-msgstr ""
+msgstr "Fcitx가 여전히 실행 중인지 확인하는 중..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
-msgstr ""
+msgstr "자세한 내용을 보려면 항목을 클릭하십시오."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:242
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
@@ -188,7 +188,7 @@ msgstr "구성하기"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
-msgstr ""
+msgstr "변환도구 충돌함."
 
 #: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
@@ -269,12 +269,12 @@ msgstr "DBus 호출을 시작하지 못했습니다."
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 환경설정"
 
 #: src/migrator/app/main.cpp:20
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Fcitx 5 마이그레이션 마법사"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -313,6 +313,9 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"fcitx 설치에 대한 업데이트를 찾았습니다. 새로 설치된 입력기 및 추가 기능을 확"
+"인하시겠습니까? 이미 불러온 추가 기능을 업데이트하려면 fcitx를 다시 시작해야 "
+"합니다."
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -345,11 +348,11 @@ msgstr "그룹:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 Pinyin 사전 가져오기"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 설치된 테이블의 테이블 데이터 가져오기"
 
 #: src/configtool/mainwindow.cpp:35 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
@@ -358,7 +361,7 @@ msgstr "입력기"
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "입력기 환경설정"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
@@ -402,7 +405,7 @@ msgstr "언어:"
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
 msgid ""
 "Launch the wizard to import data from other input method as Fcitx 4 etc."
-msgstr ""
+msgstr "Fcitx 4 등의 다른 입력기에서 데이터를 가져오려면 마법사를 실행합니다."
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -420,41 +423,43 @@ msgstr "불러오기 도구"
 #: rc.cpp:99
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 데이터 마이그레이션"
 
 #: src/migrator/kkc/kkcmigrator.cpp:40
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 Kkc 사전 마이그레이션"
 
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
+"Fcitx 4에서 Rime 사전을 마이그레이션합니다. 참고: 기존 데이터가 모두 제거됩니"
+"다."
 
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Migrate Skk dictionary from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 Skk 사전 마이그레이션"
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4에서 전역 키 옵션 마이그레이션"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
-msgstr ""
+msgstr "Kkc 규칙 옵션을 마이그레이션하는 중..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
-msgstr ""
+msgstr "Pinyin 데이터를 마이그레이션하는 중..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
-msgstr ""
+msgstr "Skk 규칙 옵션을 마이그레이션하는 중..."
 
 #: src/migrator/global/globalconfigmigrator.cpp:89
 msgid "Migrating global hotkey key option..."
-msgstr ""
+msgstr "전역 단축키 키 옵션을 마이그레이션하는 중..."
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
@@ -478,7 +483,7 @@ msgstr "아니오"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
-msgstr ""
+msgstr "작업 중 하나가 실패했습니다. 마이그레이션을 종료하고 있습니다."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:335
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -512,12 +517,12 @@ msgstr "제거"
 
 #: src/lib/configwidgetslib/impage.cpp:89
 msgid "Restart"
-msgstr ""
+msgstr "재시작"
 
 #: src/configtool/mainwindow.cpp:51
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "기본값 복원(&D)"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -529,7 +534,7 @@ msgstr "Rime"
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5 실행"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -575,7 +580,7 @@ msgstr "기본 자판 선택"
 #: rc.cpp:108
 #, kde-format
 msgid "Select migration tasks"
-msgstr ""
+msgstr "마이그레이션 작업 선택"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:102
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
@@ -604,7 +609,7 @@ msgstr "고급 옵션 표시(&A)"
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:37
 msgid "Skk"
-msgstr ""
+msgstr "Skk"
 
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
@@ -655,7 +660,7 @@ msgstr "위쪽"
 
 #: src/lib/configwidgetslib/impage.cpp:84
 msgid "Update"
-msgstr ""
+msgstr "업데이트"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
