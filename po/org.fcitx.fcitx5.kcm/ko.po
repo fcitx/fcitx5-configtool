@@ -4,15 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# Bruce Lee <daemul72@gmail.com>, 2021
+# Jung Hee Lee <daemul72@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-04-02 20:24+0000\n"
+"POT-Creation-Date: 2021-06-05 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Bruce Lee <daemul72@gmail.com>, 2021\n"
+"Last-Translator: Jung Hee Lee <daemul72@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "-  %1 비활성화\n"
 #: src/kcm/package/contents/ui/AddonPage.qml:73
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- %1의 일부 기능 비활성화\n"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:50
 #, kde-format
@@ -81,7 +81,7 @@ msgstr "작성자"
 #: src/kcm/package/contents/ui/main.qml:54
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "Fcitx를 DBus에 연결할 수 없습니다. Fcitx가 동작 중입니까?"
+msgstr "DBus로 Fcitx에 연결할 수 없습니다. Fcitx가 실행되고 있습니까?"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
@@ -163,8 +163,8 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
-"fcitx 설치에 대한 업데이트를 찾았습니다. 새로 설치된 입력기 및 추가 기능을 확"
-"인하시겠습니까? 이미 불러온 추가 기능을 업데이트하려면 fcitx를 다시 시작해야 "
+"Fcitx 설치에 대한 업데이트를 찾았습니다. 새로 설치된 입력기 및 추가 기능을 확"
+"인하시겠습니까? 이미 불러온 추가 기능을 업데이트하려면 Fcitx를 다시 시작해야 "
 "합니다."
 
 #: src/kcm/package/contents/ui/main.qml:199
