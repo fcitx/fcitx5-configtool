@@ -28,7 +28,7 @@ add_definitions(-DTRANSLATION_DOMAIN=\"org.fcitx.fcitx5.kcm\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 add_definitions(-DQT_NO_KEYWORDS)
 
-find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent)
+find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core Gui Widgets X11Extras Concurrent Svg)
 
 if (ENABLE_CONFIG_QT)
     find_package(KF5ItemViews REQUIRED)
