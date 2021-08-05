@@ -583,7 +583,7 @@ bool OptionWidget::execOptionDialog(QWidget *parent,
                                     QVariant &result) {
     QPointer<QDialog> dialog = new QDialog(parent);
     dialog->setWindowIcon(QIcon::fromTheme("fcitx"));
-    dialog->setWindowTitle(option.name());
+    dialog->setWindowTitle(option.description());
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     dialog->setLayout(dialogLayout);
 
@@ -601,7 +601,7 @@ bool OptionWidget::execOptionDialog(QWidget *parent,
         dialogLayout->addLayout(subLayout);
         optionWidget =
             addWidget(subLayout, option, QString("Value"), dialog.data());
-        if (optionWidget) {
+        if (!optionWidget) {
             return false;
         }
         QVariantMap origin;
