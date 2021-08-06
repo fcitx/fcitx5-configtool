@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-23 20:24+0000\n"
+"POT-Creation-Date: 2021-08-06 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -71,7 +71,7 @@ msgstr "取消(&C)"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr ""
+msgstr "清空(&C)"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "&Close"
