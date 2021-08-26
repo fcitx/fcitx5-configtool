@@ -55,6 +55,10 @@ find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt5DBusAddons REQUIRED)
 find_package(Fcitx5Qt5WidgetsAddons 5.0.2 REQUIRED)
+find_package(Qt5Svg)
+set_package_properties(Qt5Svg PROPERTIES
+    DESCRIPTION "May be used for show icons"
+    TYPE RUNTIME)
 
 get_target_property(FCITX5_QT5_GUI_WRAPPER Fcitx5Qt5::gui-wrapper IMPORTED_LOCATION)
 
@@ -76,3 +80,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_subdirectory(po)
 add_subdirectory(src)
 add_subdirectory(layout)
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
