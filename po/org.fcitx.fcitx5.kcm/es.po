@@ -2,18 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
+# Translators:
+# Adolfo Jayme-Barrientos, 2021
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2021-08-27 20:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: LANG\n"
+"PO-Revision-Date: 2020-08-01 05:15+0000\n"
+"Last-Translator: Adolfo Jayme-Barrientos, 2021\n"
+"Language-Team: Spanish (https://www.transifex.com/fcitx/teams/12005/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kcm/package/contents/ui/ConfigGroup.qml:76
 #, kde-format
@@ -45,38 +49,40 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddIMPage.qml:55
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: src/kcm/package/contents/ui/main.qml:288
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "Añadir grupo"
 
 #. object properties {{{
 #: src/kcm/package/contents/ui/AddIMPage.qml:15
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "Añadir método de entrada"
 
 #: src/kcm/package/contents/ui/main.qml:211
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "Añadir método de entrada…"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18
 #, kde-format
 msgid "Addons"
-msgstr ""
+msgstr "Complementos"
 
 #: src/kcm/main.cpp:51
 #, kde-format
 msgid "Author"
-msgstr ""
+msgstr "Autoría"
 
 #: src/kcm/package/contents/ui/main.qml:54
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr ""
+"No se puede conectar con Fcitx por DBus. Cerciórese de que se esté "
+"ejecutando Fcitx."
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
 #, kde-format
@@ -86,26 +92,26 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:233
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Configurar"
 
 #: src/kcm/main.cpp:47
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "Configurar Fcitx 5"
 
 #: src/kcm/kcm_fcitx5.desktop.in:14
 msgid "Configure Input Method"
-msgstr ""
+msgstr "Configurar método de entrada"
 
 #: src/kcm/package/contents/ui/main.qml:203
 #, kde-format
 msgid "Configure addons..."
-msgstr ""
+msgstr "Configurar complementos…"
 
 #: src/kcm/package/contents/ui/main.qml:197
 #, kde-format
 msgid "Configure global options..."
-msgstr ""
+msgstr "Configurar opciones globales…"
 
 #: src/kcm/main.cpp:48
 #, kde-format
@@ -138,12 +144,12 @@ msgstr ""
 #: src/kcm/package/contents/ui/KeyOption.qml:52
 #, kde-format
 msgid "Empty"
-msgstr ""
+msgstr "Vacío"
 
 #: src/kcm/main.cpp:46
 #, kde-format
 msgid "Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5"
 
 #: src/kcm/package/contents/ui/main.qml:105
 #: src/kcm/package/contents/ui/main.qml:124
@@ -162,7 +168,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:199
 #, kde-format
 msgid "Global Options"
-msgstr ""
+msgstr "Opciones globales"
 
 #: src/kcm/package/contents/ui/main.qml:310
 #, kde-format
@@ -172,11 +178,11 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:135
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "Grupo:"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Input Method"
-msgstr ""
+msgstr "Método de entrada"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:160
 #, kde-format
@@ -186,28 +192,28 @@ msgstr ""
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:71
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "Idioma:"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:88
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "Disposición:"
 
 #: src/kcm/package/contents/ui/main.qml:309
 #, kde-format
 msgid "Name:"
-msgstr ""
+msgstr "Nombre:"
 
 #: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: src/kcm/package/contents/ui/main.qml:295
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
 #, kde-format
 msgid "Ok"
-msgstr ""
+msgstr "Aceptar"
 
 #: src/kcm/package/contents/ui/AddIMPage.qml:44
 #, kde-format
@@ -217,29 +223,29 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddonPage.qml:111
 #, kde-format
 msgid "Re-Enable"
-msgstr ""
+msgstr "Reactivar"
 
 #: src/kcm/package/contents/ui/ListOption.qml:131
 #: src/kcm/package/contents/ui/main.qml:252
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Quitar"
 
 #: src/kcm/package/contents/ui/main.qml:86
 #, kde-format
 msgid "Restart"
-msgstr ""
+msgstr "Reiniciar"
 
 #: src/kcm/package/contents/ui/main.qml:58
 #, kde-format
 msgid "Run Fcitx"
-msgstr ""
+msgstr "Ejecutar Fcitx"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:124
 #: src/kcm/package/contents/ui/AddIMPage.qml:38
 #, kde-format
 msgid "Search..."
-msgstr ""
+msgstr "Buscar…"
 
 #: src/kcm/package/contents/ui/ColorOption.qml:39
 #, kde-format
@@ -291,12 +297,12 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:78
 #, kde-format
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "Variante:"
 
 #: src/kcm/main.cpp:51
 #, kde-format
@@ -306,7 +312,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/ListOption.qml:39
 #, kde-format
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: src/kcm/package/contents/ui/main.qml:102
 #, kde-format
@@ -330,4 +336,4 @@ msgstr ""
 #: src/kcm/package/contents/ui/ListOption.qml:124
 #, kde-format
 msgid "edit"
-msgstr ""
+msgstr "editar"
