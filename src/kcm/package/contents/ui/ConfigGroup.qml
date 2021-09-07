@@ -71,10 +71,10 @@ Kirigami.FormLayout {
             id: loader
 
             option: modelData
-            rawValue: Utils.getRawValue(configGroup.rawValue, modelData.name)
+            rawValue: modelData.isSection ? null : Utils.getRawValue(configGroup.rawValue, modelData.name)
             Kirigami.FormData.isSection: modelData.isSection
             Kirigami.FormData.label: modelData.isSection ? modelData.description : i18n("%1:", modelData.description)
-            @DISABLE_UNDER_KIRIGAMI2_5_76@ Kirigami.FormData.labelAlignment: modelData.type.startsWith("List|") ? (height > Kirigami.Units.gridUnit * 2 ? Qt.AlignTop : 0) : 0
+            @DISABLE_UNDER_KIRIGAMI2_5_76@ Kirigami.FormData.labelAlignment: !modelData.isSection && modelData.type.startsWith("List|") ? (height > Kirigami.Units.gridUnit * 2 ? Qt.AlignTop : 0) : 0
 
             Connections {
                 target: loader.status == Loader.Ready ? loader.item : null

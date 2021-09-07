@@ -252,6 +252,7 @@ ColumnLayout {
         id: option
         OptionLoader {
             option: getOption()
+            rawValue: ""
         }
     }
 
