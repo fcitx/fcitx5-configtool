@@ -31,17 +31,20 @@ Button {
     }
 
     function isOkWhenModifierless(event) {
-        if (event.text.length === 1) {
-            return false
-        }
-
-        if (event.key == Qt.Key_Return || event.key == Qt.Key_Space
+        var isSpecialKey = event.key == Qt.Key_Return || event.key == Qt.Key_Space
                 || event.key == Qt.Key_Tab || event.key == Qt.Key_Backtab
                 || event.key == Qt.Key_Backspace
-                || event.key == Qt.Key_Delete) {
+                || event.key == Qt.Key_Delete;
+
+        if (isSpecialKey) {
+            if ((event.modifiers & Qt.ShiftModifier) != 0) {
+                return true;
+            }
+            return false;
+        } else if (event.text.length === 1) {
             return false
         }
-        return true
+        return true;
     }
 
     function prettyKeyString(keyString) {
