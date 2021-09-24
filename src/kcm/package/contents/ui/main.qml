@@ -25,7 +25,7 @@ KCM.ScrollViewKCM {
     }
 
     implicitWidth: Kirigami.Units.gridUnit * 50
-    implicitHeight: Kirigami.Units.gridUnit * 25
+    implicitHeight: Kirigami.Units.gridUnit * 36
 
     view: ListView {
         id: imList
