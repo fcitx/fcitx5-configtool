@@ -11,66 +11,61 @@ import org.kde.kirigami 2.10 as Kirigami
 
 RowLayout {
     id: keyList
-
+    property alias hovered: addButton.hovered
+    property bool needsSave
     property variant properties
     property variant rawValue
-    property bool needsSave
-    property alias hovered: addButton.hovered
 
     function load(rawValue) {
         var diff = false;
         if (listModel.count !== 0) {
-            listModel.remove(0, listModel.count)
+            listModel.remove(0, listModel.count);
         }
-        var i = 0
+        var i = 0;
         while (true) {
             if (!rawValue.hasOwnProperty(i.toString())) {
-                break
+                break;
             }
-            var value = rawValue[i.toString()]
-            listModel.append({"key": value})
-
-            if (!keyList.rawValue.hasOwnProperty(i.toString()) ||
-                rawValue[i.toString()] !== keyList.rawValue[i.toString()]) {
+            var value = rawValue[i.toString()];
+            listModel.append({
+                    "key": value
+                });
+            if (!keyList.rawValue.hasOwnProperty(i.toString()) || rawValue[i.toString()] !== keyList.rawValue[i.toString()]) {
                 diff = true;
             }
-
-            i++
+            i++;
         }
-
         if (keyList.rawValue.hasOwnProperty(i.toString())) {
             diff = true;
         }
-
         needsSave = diff;
     }
-
     function save() {
-        var newRawValue = {}
-        var j = 0
+        var newRawValue = {};
+        var j = 0;
         for (var i = 0; i < listModel.count; i++) {
             if (listModel.get(i).key !== "") {
-                newRawValue[j.toString()] = listModel.get(i).key
-                j++
+                newRawValue[j.toString()] = listModel.get(i).key;
+                j++;
             }
         }
-        rawValue = newRawValue
-        needsSave = false
+        rawValue = newRawValue;
+        needsSave = false;
     }
 
     Component.onCompleted: {
-        load(rawValue)
+        load(rawValue);
     }
 
     ColumnLayout {
         Repeater {
             model: listModel
+
             delegate: RowLayout {
                 KeyOption {
                     Layout.fillWidth: true
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 9
-                    properties: keyList.properties.hasOwnProperty(
-                                    "ListConstrain") ? keyList.properties.ListConstrain : {}
+                    properties: keyList.properties.hasOwnProperty("ListConstrain") ? keyList.properties.ListConstrain : {}
                     rawValue: model.key
 
                     onKeyStringChanged: {
@@ -80,6 +75,7 @@ RowLayout {
                 }
                 ToolButton {
                     icon.name: "edit-delete-symbolic"
+
                     onClicked: {
                         // Need to happen before real remove.
                         keyList.needsSave = true;
@@ -89,17 +85,18 @@ RowLayout {
             }
         }
     }
-
     ToolButton {
         id: addButton
         Layout.alignment: Qt.AlignTop
         icon.name: "list-add-symbolic"
+
         onClicked: {
             keyList.needsSave = true;
-            listModel.append({"key": ""});
+            listModel.append({
+                    "key": ""
+                });
         }
     }
-
     ListModel {
         id: listModel
     }

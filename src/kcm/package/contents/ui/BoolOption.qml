@@ -8,23 +8,18 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 CheckBox {
-    // properties {{{
+    property bool needsSave: value !== checked
     property variant rawValue
     property bool value: rawValue === "True"
-    property bool needsSave: value !== checked
-    // }}}
 
-    // functions {{{
     function load(rawValue) {
-        checked = rawValue === "True"
+        checked = rawValue === "True";
     }
-
     function save() {
-        rawValue = checked ? "True" : "False"
+        rawValue = checked ? "True" : "False";
     }
-    // }}}
 
     Component.onCompleted: {
-        load(rawValue)
+        load(rawValue);
     }
 }

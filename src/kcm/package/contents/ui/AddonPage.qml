@@ -17,39 +17,84 @@ KCM.ScrollViewKCM {
 
     title: i18n("Addons")
 
+    function defaults() {
+    }
+    function load() {
+        kcm.loadAddon();
+        needsSave = false;
+    }
+    function save() {
+        kcm.saveAddon();
+        needsSave = false;
+    }
+    function showWarning() {
+        dialog.open();
+    }
+
+    Binding {
+        property: "filterText"
+        target: kcm.addonModel
+        value: search.text
+    }
+    SaveWarningDialog {
+        id: dialog
+    }
+
+    header: ColumnLayout {
+        Kirigami.InlineMessage {
+            id: disableAddonWarning
+            Layout.fillWidth: true
+            showCloseButton: true
+            type: Kirigami.MessageType.Warning
+
+            actions: [
+                Kirigami.Action {
+                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
+                    iconName: "edit-undo"
+                    text: i18n("Re-Enable")
+
+                    onTriggered: {
+                        kcm.addonModel.sourceModel.enable(reenableAddon);
+                        disableAddonWarning.visible = false;
+                    }
+                }
+            ]
+        }
+        RowLayout {
+            TextField {
+                id: search
+                Layout.fillWidth: true
+                placeholderText: i18n("Search...")
+            }
+        }
+    }
     view: ListView {
         model: kcm.addonModel
+
         section {
             property: "categoryName"
+
             delegate: Kirigami.ListSectionHeader {
                 label: section
             }
         }
+
         delegate: Kirigami.SwipeListItem {
             id: listItem
-            actions: [
-                Kirigami.Action {
-                    icon.name: "configure"
-                    onTriggered: kcm.pushConfigPage(
-                                     model.name,
-                                     "fcitx://config/addon/" + model.uniqueName)
-                    visible: model.configurable
-                }
-            ]
             RowLayout {
                 CheckBox {
                     id: itemChecked
-                    Layout.leftMargin: Kirigami.Units.gridUnit
                     Layout.alignment: Qt.AlignVCenter
+                    Layout.leftMargin: Kirigami.Units.gridUnit
                     checked: model.enabled
+
                     onClicked: {
-                        model.enabled = !model.enabled
+                        model.enabled = !model.enabled;
                         if (!model.enabled) {
                             var dependencies = model.dependencies;
                             var optionalDependencies = model.optionalDependencies;
                             if (dependencies.length > 0 || optionalDependencies.length > 0) {
-                                reenableAddon = model.uniqueName
-
+                                reenableAddon = model.uniqueName;
                                 var sep = i18nc("Separator of a comma list", ", ");
                                 var depWarning = "";
                                 if (dependencies.length > 0) {
@@ -76,78 +121,32 @@ KCM.ScrollViewKCM {
                                 disableAddonWarning.visible = true;
                             }
                         }
-                        needsSave = true
+                        needsSave = true;
                     }
                 }
-
                 ColumnLayout {
                     Kirigami.Heading {
                         Layout.fillWidth: true
-                        text: model.name
-                        level: 5
                         elide: Text.ElideRight
+                        level: 5
+                        text: model.name
                     }
-
                     Label {
-                        text: model.comment
                         opacity: listItem.hovered ? 0.8 : 0.6
+                        text: model.comment
                         visible: model.comment.length > 0
                     }
                 }
             }
-        }
-    }
 
-    header: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: disableAddonWarning
-
-            Layout.fillWidth: true
-            type: Kirigami.MessageType.Warning
-            showCloseButton: true
             actions: [
                 Kirigami.Action {
-                    iconName: "edit-undo"
-                    text: i18n("Re-Enable")
-                    displayHint: Kirigami.Action.DisplayHint.KeepVisible
-                    onTriggered: {
-                        kcm.addonModel.sourceModel.enable(reenableAddon);
-                        disableAddonWarning.visible = false;
-                    }
+                    icon.name: "configure"
+                    visible: model.configurable
+
+                    onTriggered: kcm.pushConfigPage(model.name, "fcitx://config/addon/" + model.uniqueName)
                 }
             ]
         }
-        RowLayout {
-            TextField {
-                Layout.fillWidth: true
-                id: search
-                placeholderText: i18n("Search...")
-            }
-        }
-    }
-
-    Binding {
-        target: kcm.addonModel
-        property: "filterText"
-        value: search.text
-    }
-
-    function load() {
-        kcm.loadAddon()
-        needsSave = false
-    }
-    function save() {
-        kcm.saveAddon()
-        needsSave = false
-    }
-
-    function defaults() {}
-
-    function showWarning() {
-        dialog.open()
-    }
-
-    SaveWarningDialog {
-        id: dialog
     }
 }

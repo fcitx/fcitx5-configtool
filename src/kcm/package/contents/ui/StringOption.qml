@@ -8,22 +8,17 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 
 TextField {
-    // properties {{{
-    property variant rawValue
     property bool needsSave: text !== rawValue
-    // }}}
+    property variant rawValue
 
-    // functions {{{
     function load(rawValue) {
-        text = rawValue
+        text = rawValue;
     }
-
     function save() {
-        rawValue = text
+        rawValue = text;
     }
-    // }}}
 
     Component.onCompleted: {
-        load(rawValue)
+        load(rawValue);
     }
 }

@@ -9,82 +9,74 @@ import QtQuick.Controls 2.12
 import org.kde.kirigami 2.10 as Kirigami
 
 Row {
-    // properties {{{
+    property bool needsSave: value != comboBox.currentIndex
     property variant properties
     property variant rawValue
     property int value: computeValue(rawValue)
-    property bool needsSave: value != comboBox.currentIndex
-    // }}}
 
-    // functions {{{
     function computeValue(rawValue) {
         for (var i = 0; i < listModel.count; i++) {
             if (listModel.get(i).value == rawValue) {
-                return i
+                return i;
             }
         }
-        return 0
+        return 0;
     }
-
     function load(rawValue) {
-        comboBox.currentIndex = computeValue(rawValue)
+        comboBox.currentIndex = computeValue(rawValue);
     }
-
     function save() {
-        rawValue = properties["Enum"][comboBox.currentIndex.toString()]
+        rawValue = properties["Enum"][comboBox.currentIndex.toString()];
     }
-    /// }}}
 
     Component.onCompleted: {
-        var i = 0
+        var i = 0;
         while (true) {
-            var value = properties["Enum"][i.toString()]
+            var value = properties["Enum"][i.toString()];
             if (!value) {
-                break
+                break;
             }
-            var text = ""
+            var text = "";
             if (properties.hasOwnProperty("EnumI18n")) {
                 if (properties["EnumI18n"].hasOwnProperty(i.toString())) {
-                    text = properties["EnumI18n"][i.toString()]
+                    text = properties["EnumI18n"][i.toString()];
                 }
             }
             if (text == "") {
-                text = value
+                text = value;
             }
-            var subconfigpath = ""
+            var subconfigpath = "";
             if (properties.hasOwnProperty("SubConfigPath")) {
                 if (properties["SubConfigPath"].hasOwnProperty(i.toString())) {
-                    subconfigpath = properties["SubConfigPath"][i.toString()]
+                    subconfigpath = properties["SubConfigPath"][i.toString()];
                 }
             }
             listModel.append({
-                                 "text": text,
-                                 "value": value,
-                                 "subconfigpath": subconfigpath
-                             })
-            i++
+                    "text": text,
+                    "value": value,
+                    "subconfigpath": subconfigpath
+                });
+            i++;
         }
-        load(rawValue)
+        load(rawValue);
     }
 
     ComboBox {
         id: comboBox
-        textRole: "text"
         implicitWidth: Kirigami.Units.gridUnit * 14
+        textRole: "text"
+
         model: ListModel {
             id: listModel
         }
     }
-
     ToolButton {
         id: configureButton
-
         icon.name: "configure"
         visible: listModel.get(comboBox.currentIndex).subconfigpath !== ""
 
         onClicked: {
-            kcm.pushConfigPage(listModel.get(comboBox.currentIndex).text,
-                               listModel.get(comboBox.currentIndex).subconfigpath)
+            kcm.pushConfigPage(listModel.get(comboBox.currentIndex).text, listModel.get(comboBox.currentIndex).subconfigpath);
         }
     }
 }

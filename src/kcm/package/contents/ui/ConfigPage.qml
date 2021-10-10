@@ -11,37 +11,35 @@ import org.kde.kcm 1.1 as KCM
 
 Kirigami.ScrollablePage {
     id: configPage
-
+    property alias needsSave: configGroup.needsSave
+    property alias rawValue: configGroup.rawValue
     property alias typeMap: configGroup.typeMap
     property alias typeName: configGroup.typeName
-    property alias rawValue: configGroup.rawValue
-    property alias needsSave: configGroup.needsSave
     property string uri
 
-    function load() {
-        configGroup.load()
-    }
     function defaults() {
-        configGroup.defaults()
+        configGroup.defaults();
+    }
+    function load() {
+        configGroup.load();
     }
     function save() {
-        configGroup.save()
-        kcm.saveConfig(uri, rawValue)
+        configGroup.save();
+        kcm.saveConfig(uri, rawValue);
+    }
+    function showWarning() {
+        dialog.open();
     }
 
-    function showWarning() {
-        dialog.open()
-    }
+    Component.onCompleted: positionTimer.start()
 
     ConfigGroup {
         id: configGroup
         visible: false
-
         width: parent.width
 
         SaveWarningDialog {
             id: dialog
-
             parent: configPage
         }
 
@@ -50,8 +48,8 @@ Kirigami.ScrollablePage {
             id: positionTimer
             interval: 0
             repeat: false
-            onTriggered: configGroup.visible = true;
+
+            onTriggered: configGroup.visible = true
         }
     }
-    Component.onCompleted: positionTimer.start()
 }

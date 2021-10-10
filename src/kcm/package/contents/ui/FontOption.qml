@@ -11,26 +11,24 @@ import QtQuick.Dialogs 1.1 as QtDialogs
 import org.kde.kirigami 2.10 as Kirigami
 
 Button {
-    implicitWidth: Kirigami.Units.gridUnit * 10
-
-    property variant rawValue
     property bool needsSave: text != rawValue
-
-    function load(rawValue) {
-        fontDialog.font = kcm.parseFont(rawValue)
-    }
-
-    function save() {
-        rawValue = text
-    }
+    property variant rawValue
 
     icon.name: "document-edit"
+    implicitWidth: Kirigami.Units.gridUnit * 10
     text: kcm.fontToString(fontDialog.font)
-    onClicked: fontDialog.open()
+
+    function load(rawValue) {
+        fontDialog.font = kcm.parseFont(rawValue);
+    }
+    function save() {
+        rawValue = text;
+    }
 
     Component.onCompleted: {
-        load(rawValue)
+        load(rawValue);
     }
+    onClicked: fontDialog.open()
 
     QtDialogs.FontDialog {
         id: fontDialog

@@ -12,46 +12,44 @@ import "utils.js" as Utils
 
 Loader {
     id: loader
-
     property variant option
     property variant rawValue
 
+    ToolTip.delay: Kirigami.Units.toolTipDelay
+    ToolTip.text: option.properties && option.properties.hasOwnProperty("Tooltip") ? option.properties["Tooltip"] : ""
+    ToolTip.visible: option.properties && option.properties.hasOwnProperty("Tooltip") && loader.item ? loader.item.hovered : false
+
     function optionSource(data) {
         if (data.type == "Boolean") {
-            return "BoolOption.qml"
+            return "BoolOption.qml";
         } else if (data.type == "Integer") {
-            return "IntegerOption.qml"
+            return "IntegerOption.qml";
         } else if (data.type == "Enum") {
-            return "EnumOption.qml"
+            return "EnumOption.qml";
         } else if (data.type == "String") {
-            if (data.properties.hasOwnProperty("Font")
-                    && data.properties.Font == "True") {
-                return "FontOption.qml"
-            } else if (data.properties.hasOwnProperty("IsEnum")
-                    && data.properties.IsEnum == "True") {
-                return "EnumOption.qml"
+            if (data.properties.hasOwnProperty("Font") && data.properties.Font == "True") {
+                return "FontOption.qml";
+            } else if (data.properties.hasOwnProperty("IsEnum") && data.properties.IsEnum == "True") {
+                return "EnumOption.qml";
             } else {
-                return "StringOption.qml"
+                return "StringOption.qml";
             }
         } else if (data.type == "List|Key") {
-            return "KeyListOption.qml"
+            return "KeyListOption.qml";
         } else if (data.type == "Key") {
-            return "KeyOption.qml"
+            return "KeyOption.qml";
         } else if (data.type == "Color") {
-            return "ColorOption.qml"
+            return "ColorOption.qml";
         } else if (data.type.startsWith("List|")) {
-            return "ListOption.qml"
+            return "ListOption.qml";
         } else if (data.type == "External") {
-            return "ExternalOption.qml"
+            return "ExternalOption.qml";
         } else {
-            console.log(data.type + " Not supported")
-            return ""
+            console.log(data.type + " Not supported");
+            return "";
         }
     }
 
-    ToolTip.visible: option.properties && option.properties.hasOwnProperty("Tooltip") && loader.item ? loader.item.hovered : false
-    ToolTip.delay: Kirigami.Units.toolTipDelay
-    ToolTip.text: option.properties && option.properties.hasOwnProperty("Tooltip") ? option.properties["Tooltip"] : ""
     Component.onCompleted: {
         if (!option.isSection) {
             var prop = {
@@ -61,8 +59,8 @@ Loader {
                 "defaultValue": option.defaultValue,
                 "properties": option.properties,
                 "rawValue": rawValue
-            }
-            loader.setSource(optionSource(option), prop)
+            };
+            loader.setSource(optionSource(option), prop);
         }
     }
 }

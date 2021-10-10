@@ -11,26 +11,47 @@ import org.kde.kirigami 2.10 as Kirigami
 import org.kde.kcm 1.2 as KCM
 
 KCM.ScrollViewKCM {
-    // object properties {{{
     title: i18n("Add Input Method")
 
-    view: ListView {
-        id: availIMView
-        model: kcm.imConfig.availIMModel
-        section {
-            property: "language"
-            delegate: Kirigami.ListSectionHeader {
-                label: section
+    Component.onCompleted: {
+        search.forceActiveFocus();
+    }
+
+    Binding {
+        property: "filterText"
+        target: kcm.imConfig.availIMModel
+        value: search.text
+    }
+
+    footer: RowLayout {
+        CheckBox {
+            checked: true
+            text: i18n("Only &Show Current Language")
+            visible: search.text.length === 0
+
+            onClicked: {
+                kcm.imConfig.availIMModel.showOnlyCurrentLanguage = checked;
             }
         }
-        delegate: Kirigami.BasicListItem {
-            label: model.name
+        Item {
+            Layout.fillWidth: true
+        }
+        Button {
+            icon.name: "list-add-symbolic"
+            text: i18n("Add")
+
             onClicked: {
-                availIMView.currentIndex = index
+                if (availIMView.currentIndex === -1) {
+                    return;
+                }
+                kcm.imConfig.addIM(availIMView.currentIndex);
+                if (kcm.imConfig.currentIMModel.count === 1) {
+                    kcm.mainUi.checkInputMethod();
+                }
+                kcm.pop();
             }
         }
     }
-
     header: RowLayout {
         TextField {
             id: search
@@ -38,44 +59,24 @@ KCM.ScrollViewKCM {
             placeholderText: i18n("Search...")
         }
     }
+    view: ListView {
+        id: availIMView
+        model: kcm.imConfig.availIMModel
 
-    footer: RowLayout {
-        CheckBox {
-            text: i18n("Only &Show Current Language")
-            checked: true
-            visible: search.text.length === 0
-            onClicked: {
-                kcm.imConfig.availIMModel.showOnlyCurrentLanguage = checked
+        section {
+            property: "language"
+
+            delegate: Kirigami.ListSectionHeader {
+                label: section
             }
         }
-        Item {
-            Layout.fillWidth: true
-        }
-        Button {
-            text: i18n("Add")
-            icon.name: "list-add-symbolic"
+
+        delegate: Kirigami.BasicListItem {
+            label: model.name
+
             onClicked: {
-                if (availIMView.currentIndex === -1) {
-                    return
-                }
-                kcm.imConfig.addIM(availIMView.currentIndex)
-                if (kcm.imConfig.currentIMModel.count === 1) {
-                    kcm.mainUi.checkInputMethod();
-                }
-                kcm.pop()
+                availIMView.currentIndex = index;
             }
         }
-    }
-
-    Component.onCompleted: {
-        search.forceActiveFocus();
-    }
-
-    // }}}
-
-    Binding {
-        target: kcm.imConfig.availIMModel
-        property: "filterText"
-        value: search.text
     }
 }
