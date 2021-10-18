@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-23 20:24+0000\n"
+"POT-Creation-Date: 2021-10-18 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -57,7 +57,7 @@ msgstr ""
 msgid "%1:"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
 msgstr ""
 
@@ -71,7 +71,7 @@ msgstr ""
 msgid "&Clear"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:48
+#: src/configtool/mainwindow.cpp:58
 msgid "&Close"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 msgid "&Next >"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:57
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
@@ -87,7 +87,7 @@ msgstr ""
 msgid "&OK"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:49
+#: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
 msgstr ""
 
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:37
+#: src/configtool/mainwindow.cpp:47
 msgid "Addons"
 msgstr ""
 
@@ -132,6 +132,10 @@ msgstr ""
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
 msgid "Any language"
+msgstr ""
+
+#: src/configtool/mainwindow.cpp:120
+msgid "Apply configuration changes"
 msgstr ""
 
 #: src/migrator/app/taskpage.cpp:235
@@ -230,6 +234,10 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
+#: src/configtool/mainwindow.cpp:121
+msgid "Do you want to save the changes or discard them?"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:219
@@ -269,7 +277,7 @@ msgstr ""
 msgid "Fcitx 5 Configuration"
 msgstr ""
 
-#: src/migrator/app/main.cpp:20
+#: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
 msgstr ""
@@ -321,7 +329,7 @@ msgstr ""
 msgid "Global Config"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:36
+#: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
 msgstr ""
 
@@ -349,7 +357,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:35 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "Giriş Yöntemi"
 
@@ -512,7 +520,7 @@ msgstr ""
 msgid "Restart"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:51
+#: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr ""

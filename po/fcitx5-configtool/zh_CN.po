@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-08-06 20:24+0000\n"
+"POT-Creation-Date: 2021-10-18 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -59,7 +59,7 @@ msgstr "%1 启动失败。"
 msgid "%1:"
 msgstr "%1："
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
 msgstr "应用(&A)"
 
@@ -73,7 +73,7 @@ msgstr "取消(&C)"
 msgid "&Clear"
 msgstr "清空(&C)"
 
-#: src/configtool/mainwindow.cpp:48
+#: src/configtool/mainwindow.cpp:58
 msgid "&Close"
 msgstr "关闭(&C)"
 
@@ -81,7 +81,7 @@ msgstr "关闭(&C)"
 msgid "&Next >"
 msgstr "下一步(&N) >"
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:57
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:75
@@ -89,7 +89,7 @@ msgstr "下一步(&N) >"
 msgid "&OK"
 msgstr "确定(&O)"
 
-#: src/configtool/mainwindow.cpp:49
+#: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
 msgstr "重置(&R)"
 
@@ -123,7 +123,7 @@ msgstr "通用键盘布局查看器"
 msgid "Add"
 msgstr "添加"
 
-#: src/configtool/mainwindow.cpp:37
+#: src/configtool/mainwindow.cpp:47
 msgid "Addons"
 msgstr "附加组件"
 
@@ -135,6 +135,10 @@ msgstr "所有迁移任务都已成功完成。"
 #: src/lib/configlib/layoutprovider.cpp:68
 msgid "Any language"
 msgstr "任意语言"
+
+#: src/configtool/mainwindow.cpp:120
+msgid "Apply configuration changes"
+msgstr ""
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
@@ -235,6 +239,10 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
+#: src/configtool/mainwindow.cpp:121
+msgid "Do you want to save the changes or discard them?"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:219
@@ -274,7 +282,7 @@ msgstr "执行 DBus 调用失败。"
 msgid "Fcitx 5 Configuration"
 msgstr "Fcitx 5 配置"
 
-#: src/migrator/app/main.cpp:20
+#: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
 msgstr "Fcitx 5 迁移向导"
@@ -328,7 +336,7 @@ msgstr "前端"
 msgid "Global Config"
 msgstr "全局配置"
 
-#: src/configtool/mainwindow.cpp:36
+#: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
 msgstr "全局选项"
 
@@ -356,7 +364,7 @@ msgstr "从 Fcitx 4 导入拼音词典"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "从 Fcitx 4 导入码表数据到已安装的码表"
 
-#: src/configtool/mainwindow.cpp:35 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "输入法"
 
@@ -519,7 +527,7 @@ msgstr "移除"
 msgid "Restart"
 msgstr "重启"
 
-#: src/configtool/mainwindow.cpp:51
+#: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr "恢复默认(&D)"
