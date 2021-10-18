@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QPluginLoader>
+#include <QSessionManager>
 #include <QtPlugin>
 #include <fcitx-utils/i18n.h>
 
@@ -20,6 +21,14 @@ int main(int argc, char *argv[]) {
     app.setApplicationDisplayName(_("Fcitx 5 Migration Wizard"));
     app.setOrganizationDomain("fcitx.org");
     fcitx::registerFcitxQtDBusTypes();
+
+    auto disableSessionManagement = [](QSessionManager &sm) {
+        sm.setRestartHint(QSessionManager::RestartNever);
+    };
+    QObject::connect(&app, &QGuiApplication::commitDataRequest,
+                     disableSessionManagement);
+    QObject::connect(&app, &QGuiApplication::saveStateRequest,
+                     disableSessionManagement);
 
     fcitx::MainWindow window;
     window.show();

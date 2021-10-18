@@ -8,7 +8,9 @@
 #include "logging.h"
 #include "verticalscrollarea.h"
 #include <QKeyEvent>
+#include <QMessageBox>
 #include <QPushButton>
+#include <QSessionManager>
 #include <fcitx-utils/i18n.h>
 
 namespace fcitx {
@@ -20,6 +22,14 @@ MainWindow::MainWindow(QWidget *parent)
       impage_(new IMPage(dbus_, this)),
       addonPage_(new AddonSelector(this, dbus_)),
       configPage_(new ConfigWidget("fcitx://config/global", dbus_, this)) {
+    QGuiApplication::setFallbackSessionManagementEnabled(false);
+    connect(qApp, &QGuiApplication::commitDataRequest, this,
+            &MainWindow::commitData);
+    connect(qApp, &QGuiApplication::saveStateRequest, this,
+            [](QSessionManager &manager) {
+                manager.setRestartHint(QSessionManager::RestartNever);
+            });
+
     setupUi(this);
 
     connect(impage_, &IMPage::changed, this, [this]() {
@@ -52,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::handleChanged(bool changed) {
+    changed_ = changed;
     buttonBox->button(QDialogButtonBox::Ok)->setEnabled(changed);
     buttonBox->button(QDialogButtonBox::Apply)->setEnabled(changed);
     buttonBox->button(QDialogButtonBox::Reset)->setEnabled(changed);
@@ -97,6 +108,29 @@ void MainWindow::clicked(QAbstractButton *button) {
         load();
     } else if (standardButton == QDialogButtonBox::RestoreDefaults) {
         defaults();
+    }
+}
+
+void MainWindow::commitData(QSessionManager &manager) {
+    manager.setRestartHint(QSessionManager::RestartNever);
+    if (!manager.allowsInteraction() || !changed_) {
+        return;
+    }
+    int ret = QMessageBox::warning(
+        this, _("Apply configuration changes"),
+        _("Do you want to save the changes or discard them?"),
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+    switch (ret) {
+    case QMessageBox::Save:
+        save();
+        manager.release();
+        break;
+    case QMessageBox::Discard:
+        break;
+    case QMessageBox::Cancel:
+    default:
+        manager.cancel();
     }
 }
 

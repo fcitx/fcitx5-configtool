@@ -35,9 +35,11 @@ protected:
 
 private Q_SLOTS:
     void clicked(QAbstractButton *button);
+    void commitData(QSessionManager &manager);
 
 private:
     void handleChanged(bool state);
+    bool changed_ = false;
     DBusProvider *dbus_;
     ErrorOverlay *errorOverlay_;
     IMPage *impage_;
