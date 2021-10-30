@@ -15,7 +15,6 @@ Button {
     property variant rawValue
 
     icon.name: "document-edit"
-    implicitWidth: Kirigami.Units.gridUnit * 10
     text: kcm.fontToString(fontDialog.font)
 
     function load(rawValue) {
