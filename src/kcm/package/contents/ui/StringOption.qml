@@ -9,7 +9,7 @@ import QtQuick.Controls 2.12
 
 TextField {
     property bool needsSave: text !== rawValue
-    property variant rawValue
+    property string rawValue
 
     function load(rawValue) {
         text = rawValue;
@@ -20,5 +20,6 @@ TextField {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
 }

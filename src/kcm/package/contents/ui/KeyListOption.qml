@@ -55,6 +55,7 @@ RowLayout {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
 
     ColumnLayout {

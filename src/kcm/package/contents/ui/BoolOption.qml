@@ -21,5 +21,6 @@ CheckBox {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
 }

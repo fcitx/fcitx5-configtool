@@ -23,6 +23,7 @@ Row {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
 
     Button {

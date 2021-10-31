@@ -59,6 +59,7 @@ Row {
             i++;
         }
         load(rawValue);
+        save();
     }
 
     ComboBox {

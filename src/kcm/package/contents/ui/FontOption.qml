@@ -11,7 +11,7 @@ import QtQuick.Dialogs 1.1 as QtDialogs
 import org.kde.kirigami 2.10 as Kirigami
 
 Button {
-    property bool needsSave: text != rawValue
+    property bool needsSave: text !== rawValue
     property variant rawValue
 
     icon.name: "document-edit"
@@ -26,6 +26,7 @@ Button {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
     onClicked: fontDialog.open()
 

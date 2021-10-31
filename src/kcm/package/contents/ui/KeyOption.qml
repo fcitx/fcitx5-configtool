@@ -65,6 +65,7 @@ Button {
             allowModifierOnly = properties.AllowModifierOnly == "True";
         }
         load(rawValue);
+        save();
     }
     Keys.onPressed: {
         event.accepted = true;

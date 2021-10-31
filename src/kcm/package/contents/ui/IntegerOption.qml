@@ -31,6 +31,7 @@ SpinBox {
             validator.top = parseInt(properties.IntMax);
         }
         load(rawValue);
+        save();
     }
 
     validator: IntValidator {

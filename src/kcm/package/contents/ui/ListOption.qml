@@ -106,6 +106,7 @@ ColumnLayout {
 
     Component.onCompleted: {
         load(rawValue);
+        save();
     }
 
     Component {
