@@ -4,14 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
+# abc Def <hdogan1974@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-10-18 20:24+0000\n"
+"POT-Creation-Date: 2021-11-02 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
+"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -136,7 +137,7 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:120
 msgid "Apply configuration changes"
-msgstr ""
+msgstr "Yapılandırma değişimlerini uygulayın"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
@@ -186,7 +187,7 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:63
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Yapılandır"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
@@ -252,7 +253,7 @@ msgstr ""
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
@@ -514,7 +515,7 @@ msgstr ""
 #: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:42 rc.cpp:54
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 #: src/lib/configwidgetslib/impage.cpp:89
 msgid "Restart"

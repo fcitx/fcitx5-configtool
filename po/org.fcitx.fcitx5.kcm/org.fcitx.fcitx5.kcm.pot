@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-10-20 20:24+0000\n"
+"POT-Creation-Date: 2021-11-02 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/ListOption.qml:179
 #: src/kcm/package/contents/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -177,7 +177,7 @@ msgstr ""
 msgid "Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/KeyOption.qml:140
+#: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
 msgid "Key code mode"
 msgstr ""
@@ -218,7 +218,7 @@ msgstr ""
 msgid "Re-Enable"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:144
+#: src/kcm/package/contents/ui/ListOption.qml:145
 #: src/kcm/package/contents/ui/main.qml:72
 #, kde-format
 msgid "Remove"
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/ColorOption.qml:40
+#: src/kcm/package/contents/ui/ColorOption.qml:41
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
@@ -326,7 +326,7 @@ msgstr ""
 msgid "[%1]"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:136
+#: src/kcm/package/contents/ui/ListOption.qml:137
 #, kde-format
 msgid "edit"
 msgstr ""
