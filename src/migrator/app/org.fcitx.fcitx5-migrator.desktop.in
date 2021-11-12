@@ -1,7 +1,6 @@
 [Desktop Entry]
 Name=Fcitx 5 Migration Wizard
-GenericName=Input Method Configuration
-Comment=Launch the wizard to import data from other input method as Fcitx 4 etc.
+Comment=Import data from other input method as Fcitx 4 etc.
 Icon=fcitx
 Exec=fcitx5-migrator
 Type=Application
