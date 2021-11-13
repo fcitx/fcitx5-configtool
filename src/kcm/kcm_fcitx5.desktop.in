@@ -8,7 +8,7 @@ X-KDE-ParentApp=kcontrol
 
 X-KDE-System-Settings-Parent-Category=regionalsettings
 
-Name=Fcitx Configuration
+Name=Input Method
 Comment=Configure Input Method
 
 X-KDE-Keywords=keyboard,input,im,fcitx
