@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-02 20:24+0000\n"
+"POT-Creation-Date: 2021-11-13 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Configure Fcitx 5"
 msgstr ""
 
-#: src/kcm/kcm_fcitx5.desktop.in:14
+#: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
 msgstr ""
 
@@ -173,7 +173,7 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
-#: src/kcm/kcm_fcitx5.desktop.in:13
+#: src/kcm/kcm_fcitx5.desktop.in:12
 msgid "Input Method"
 msgstr ""
 

@@ -4,14 +4,14 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
-# 이정희 <daemul72@gmail.com>, 2021
+# Jung Hee Lee <daemul72@gmail.com>, 2021
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-10-18 20:24+0000\n"
+"POT-Creation-Date: 2021-11-13 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -360,6 +360,10 @@ msgstr "그룹:"
 msgid "Import Pinyin dictionary from Fcitx 4"
 msgstr "Fcitx 4에서 Pinyin 사전 가져오기"
 
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Import data from other input method such as Fcitx 4"
+msgstr ""
+
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Fcitx 4에서 설치된 테이블의 테이블 데이터 가져오기"
@@ -369,7 +373,6 @@ msgid "Input Method"
 msgstr "입력기"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
-#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Input Method Configuration"
 msgstr "입력기 환경설정"
 
@@ -411,11 +414,6 @@ msgstr "Kkc"
 #, kde-format
 msgid "Language:"
 msgstr "언어:"
-
-#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
-msgid ""
-"Launch the wizard to import data from other input method as Fcitx 4 etc."
-msgstr "Fcitx 4 등의 다른 입력기에서 데이터를 가져오려면 마법사를 실행합니다."
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-10-18 20:24+0000\n"
+"POT-Creation-Date: 2021-11-13 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 "Language-Team: Vietnamese (https://www.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -353,6 +353,10 @@ msgstr ""
 msgid "Import Pinyin dictionary from Fcitx 4"
 msgstr ""
 
+#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
+msgid "Import data from other input method such as Fcitx 4"
+msgstr ""
+
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
@@ -362,7 +366,6 @@ msgid "Input Method"
 msgstr "Kiểu gõ"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
-#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Input Method Configuration"
 msgstr ""
 
@@ -403,11 +406,6 @@ msgstr ""
 #: rc.cpp:81
 #, kde-format
 msgid "Language:"
-msgstr ""
-
-#: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:5
-msgid ""
-"Launch the wizard to import data from other input method as Fcitx 4 etc."
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
