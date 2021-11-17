@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-13 20:24+0000\n"
+"POT-Creation-Date: 2021-11-17 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -120,20 +120,20 @@ msgstr ""
 #: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:39 rc.cpp:51
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
-msgstr ""
+msgstr "Eklentiler"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr ""
+msgstr "Tüm göç etme görevleri başarıyla tamamlandı."
 
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
 msgid "Any language"
-msgstr ""
+msgstr "Herhangi bir dil"
 
 #: src/configtool/mainwindow.cpp:120
 msgid "Apply configuration changes"
@@ -159,7 +159,7 @@ msgstr "DBus tarafından Fcitx'e bağlanılamıyor, Fcitx çalışıyor mu?"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 Yapılandırmasını Değiştirin"
 
 #: src/lib/configwidgetslib/impage.cpp:251
 msgid "Change Input method to match layout selection."
@@ -207,7 +207,7 @@ msgstr "Geçerli Giriş Yöntemi:"
 
 #: src/lib/configwidgetslib/impage.cpp:163
 msgid "Current group changed"
-msgstr ""
+msgstr "Geçerli grup değişti"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
@@ -276,7 +276,7 @@ msgstr ""
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 Yapılandırması"
 
 #: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
@@ -297,7 +297,7 @@ msgstr ""
 #: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx Yapılandırması"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
@@ -328,11 +328,11 @@ msgstr ""
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
-msgstr ""
+msgstr "Küresel Yapılandırma"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
-msgstr ""
+msgstr "Küresel Tercihler"
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
@@ -341,14 +341,14 @@ msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:387
 msgid "Group Name:"
-msgstr ""
+msgstr "Grup Adı:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:43
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:36
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "Grup:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
@@ -364,11 +364,11 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
-msgstr "Giriş Yöntemi"
+msgstr "Girdi Yöntemi"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "Girdi Yöntemi Yapılandırması"
 
 #: layout/main.cpp:27
 msgid "Keyboard <layout>"
@@ -376,7 +376,7 @@ msgstr "Klavye"
 
 #: layout/main.cpp:53
 msgid "Keyboard Layout viewer"
-msgstr ""
+msgstr "Klavye Serilimi görüntüleyici"
 
 #: layout/main.cpp:26
 msgid "Keyboard layout <group> (0-3)"
@@ -400,25 +400,25 @@ msgstr "Klavye Düzeni görüntüleyici"
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
 msgid "Kkc"
-msgstr ""
+msgstr "Kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: rc.cpp:81
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "Dil:"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:84
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "Serilim:"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
-msgstr ""
+msgstr "Yükleyici"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
@@ -463,11 +463,11 @@ msgstr ""
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
-msgstr ""
+msgstr "Göçme Aracı"
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
-msgstr ""
+msgstr "Modül"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
@@ -475,11 +475,11 @@ msgstr "Çok dilli"
 
 #: src/lib/configwidgetslib/impage.cpp:387
 msgid "New Group"
-msgstr ""
+msgstr "Yeni Grup"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -498,7 +498,7 @@ msgstr "Diğer"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
@@ -517,7 +517,7 @@ msgstr "Kaldır"
 
 #: src/lib/configwidgetslib/impage.cpp:89
 msgid "Restart"
-msgstr ""
+msgstr "Yeniden Başlat"
 
 #: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
@@ -534,14 +534,14 @@ msgstr ""
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "Fcitx 5'i Çalıştır"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
 #: rc.cpp:90
 #, kde-format
 msgid "Search Addons"
-msgstr ""
+msgstr "Eklentileri Ara"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:303
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
@@ -569,25 +569,25 @@ msgstr "Seç &Yazı tipi..."
 #: src/lib/configwidgetslib/impage.cpp:296 rc.cpp:66
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "Serilimi Seçin"
 
 #: src/lib/configwidgetslib/impage.cpp:236
 msgid "Select default layout"
-msgstr ""
+msgstr "Varsayılan serilimi seçin"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
 #: rc.cpp:108
 #, kde-format
 msgid "Select migration tasks"
-msgstr ""
+msgstr "Göçme görevlerini seçin"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:102
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:48
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "Sistem klavye serilimini seçin"
 
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
@@ -643,7 +643,7 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
-msgstr ""
+msgstr "UI"
 
 #: src/lib/configlib/model.cpp:95
 msgid "Unknown"
@@ -660,7 +660,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:84
 msgid "Update"
-msgstr ""
+msgstr "Güncelle"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -678,11 +678,11 @@ msgstr ""
 #: rc.cpp:96
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "Hoşgeldin Sayfası"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: src/lib/configwidgetslib/impage.cpp:330
 msgid ""
@@ -703,7 +703,7 @@ msgstr ""
 
 #: layout/main.cpp:26
 msgid "group"
-msgstr ""
+msgstr "grup"
 
 #: layout/main.cpp:27
 msgid "layout"
