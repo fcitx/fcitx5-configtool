@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2021
 # wwj402 <wwj402@gmail.com>, 2021
+# csslayer <wengxt@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-13 20:24+0000\n"
+"POT-Creation-Date: 2021-11-18 20:05+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: wwj402 <wwj402@gmail.com>, 2021\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -114,14 +114,24 @@ msgstr "通用键盘布局查看器"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:66
+#. i18n: file: src/lib/configwidgetslib/impage.ui:69
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:141
+#. i18n: file: src/lib/configwidgetslib/impage.ui:139
+#. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:39 rc.cpp:51
+#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: rc.cpp:60
 #, kde-format
 msgid "Add"
 msgstr "添加"
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:66
+#. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
+#: rc.cpp:39
+#, kde-format
+msgid "Add Group"
+msgstr ""
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
@@ -144,9 +154,9 @@ msgstr "应用配置更改"
 msgid "Asking Fcitx to exit..."
 msgstr "请求 Fcitx 退出..."
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:296
+#. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:69
+#: rc.cpp:93
 #, kde-format
 msgid "Available Input Method:"
 msgstr "可用输入法："
@@ -162,11 +172,11 @@ msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 msgid "Change Fcitx 5 Configuration"
 msgstr "修改 Fcitx 5 配置"
 
-#: src/lib/configwidgetslib/impage.cpp:251
+#: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
 msgstr "更改输入方式以匹配布局选择。"
 
-#: src/lib/configwidgetslib/impage.cpp:329
+#: src/lib/configwidgetslib/impage.cpp:348
 msgid "Change System layout to match input method selection."
 msgstr "更改系统布局以匹配输入方式选择。"
 
@@ -182,10 +192,12 @@ msgstr "检查 Fcitx 是否仍在运行..."
 msgid "Click on an item for more details."
 msgstr "点击项目查看更多细节。"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:242
+#. i18n: file: src/lib/configwidgetslib/impage.ui:236
+#. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:63
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -206,13 +218,20 @@ msgstr "复制文件 %1 到 %2"
 msgid "Current Input Method:"
 msgstr "当前输入法："
 
-#: src/lib/configwidgetslib/impage.cpp:163
+#: src/lib/configwidgetslib/impage.cpp:182
 msgid "Current group changed"
 msgstr "当前分组已修改"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "默认"
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:82
+#. i18n: ectx: property (toolTip), widget (QToolButton, deleteGroupButton)
+#: rc.cpp:45
+#, kde-format
+msgid "Delete Group"
+msgstr ""
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -235,7 +254,7 @@ msgstr ""
 "%2%3\n"
 "确认要禁用它吗？"
 
-#: src/lib/configwidgetslib/impage.cpp:164
+#: src/lib/configwidgetslib/impage.cpp:183
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
@@ -245,9 +264,9 @@ msgstr "您想保存更改还是放弃更改？"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:219
+#. i18n: file: src/lib/configwidgetslib/impage.ui:217
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:18 rc.cpp:60
+#: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
 msgstr "向下"
@@ -291,7 +310,7 @@ msgstr "Fcitx 5 迁移向导"
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
-#: rc.cpp:102 rc.cpp:111
+#: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
 msgstr "Fcitx 5 没有在运行。"
@@ -345,7 +364,7 @@ msgstr "全局选项"
 msgid "Got error: %1 %2"
 msgstr "发生错误：%1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:387
+#: src/lib/configwidgetslib/impage.cpp:406
 msgid "Group Name:"
 msgstr "分组名称："
 
@@ -362,7 +381,7 @@ msgstr "从 Fcitx 4 导入拼音词典"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
-msgstr ""
+msgstr "从其他输入法导入数据例如 Fcitx 4"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
@@ -392,9 +411,9 @@ msgstr "键盘布局<分组号> (0-3)"
 msgid "Keyboard layout <variant>"
 msgstr "键盘布局<变体>"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:99
+#. i18n: file: src/lib/configwidgetslib/impage.ui:97
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:45
+#: rc.cpp:51
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "无活动输入法时使用的键盘布局"
@@ -410,14 +429,21 @@ msgstr "Kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:81
+#: rc.cpp:105
 #, kde-format
 msgid "Language:"
 msgstr "语言："
 
+#. i18n: file: src/lib/configwidgetslib/impage.ui:261
+#. i18n: ectx: property (text), widget (QToolButton, layoutButton)
+#: rc.cpp:90
+#, kde-format
+msgid "Layout"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:84
+#: rc.cpp:108
 #, kde-format
 msgid "Layout:"
 msgstr "布局："
@@ -428,7 +454,7 @@ msgstr "启动器"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
-#: rc.cpp:99
+#: rc.cpp:123
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
 msgstr "从 Fcitx  4 迁移数据"
@@ -475,11 +501,25 @@ msgstr "迁移工具"
 msgid "Module"
 msgstr "模块"
 
+#. i18n: file: src/lib/configwidgetslib/impage.ui:214
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveDownButton)
+#: rc.cpp:75
+#, kde-format
+msgid "Move Down"
+msgstr ""
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:189
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
+#: rc.cpp:69
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
 msgstr "多语言"
 
-#: src/lib/configwidgetslib/impage.cpp:387
+#: src/lib/configwidgetslib/impage.cpp:406
 msgid "New Group"
 msgstr "新建分组"
 
@@ -491,9 +531,9 @@ msgstr "否"
 msgid "One of the task is failed. Terminating the migration."
 msgstr "有一个任务失败了。终止迁移。"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:335
+#. i18n: file: src/lib/configwidgetslib/impage.ui:324
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:75
+#: rc.cpp:99
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
@@ -512,16 +552,19 @@ msgstr "拼音数据已迁移。"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:83
+#. i18n: file: src/lib/configwidgetslib/impage.ui:85
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:164
+#. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:42 rc.cpp:54
+#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: rc.cpp:66
 #, kde-format
 msgid "Remove"
 msgstr "移除"
 
-#: src/lib/configwidgetslib/impage.cpp:89
+#: src/lib/configwidgetslib/impage.cpp:108
 msgid "Restart"
 msgstr "重启"
 
@@ -544,21 +587,21 @@ msgstr "运行 Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:90
+#: rc.cpp:114
 #, kde-format
 msgid "Search Addons"
 msgstr "搜索附加组件"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:303
+#. i18n: file: src/lib/configwidgetslib/impage.ui:292
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:72
+#: rc.cpp:96
 #, kde-format
 msgid "Search Input Method"
 msgstr "搜索输入法"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
-#: rc.cpp:114
+#: rc.cpp:138
 #, kde-format
 msgid "Select &All"
 msgstr "全选(&A)"
@@ -570,27 +613,27 @@ msgstr "全选(&A)"
 msgid "Select &Font..."
 msgstr "选择字体(&F)..."
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:265
+#. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:296 rc.cpp:66
+#: src/lib/configwidgetslib/impage.cpp:315 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "选择布局"
 
-#: src/lib/configwidgetslib/impage.cpp:236
+#: src/lib/configwidgetslib/impage.cpp:255
 msgid "Select default layout"
 msgstr "选择默认布局"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
-#: rc.cpp:108
+#: rc.cpp:132
 #, kde-format
 msgid "Select migration tasks"
 msgstr "选择迁移任务"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:102
+#. i18n: file: src/lib/configwidgetslib/impage.ui:100
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:48
+#: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr "选择系统键盘布局"
@@ -607,7 +650,7 @@ msgstr "服务 %1 还在 DBus 上存在。"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:93
+#: rc.cpp:117
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "显示高级选项(&A)"
@@ -622,9 +665,9 @@ msgstr "Skk"
 msgid "Table"
 msgstr "码表"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:392
+#. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:78
+#: rc.cpp:102
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -635,7 +678,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:105
+#: rc.cpp:129
 #, kde-format
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
@@ -657,20 +700,20 @@ msgstr "未知"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:193
+#. i18n: file: src/lib/configwidgetslib/impage.ui:192
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:15 rc.cpp:57
+#: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
 msgstr "向上"
 
-#: src/lib/configwidgetslib/impage.cpp:84
+#: src/lib/configwidgetslib/impage.cpp:103
 msgid "Update"
 msgstr "更新"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:87
+#: rc.cpp:111
 #, kde-format
 msgid "Variant:"
 msgstr "变体："
@@ -681,7 +724,7 @@ msgstr "查看键盘布局"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
-#: rc.cpp:96
+#: rc.cpp:120
 #, kde-format
 msgid "WelcomePage"
 msgstr "欢迎页"
@@ -690,13 +733,13 @@ msgstr "欢迎页"
 msgid "Yes"
 msgstr "是"
 
-#: src/lib/configwidgetslib/impage.cpp:330
+#: src/lib/configwidgetslib/impage.cpp:349
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
 
-#: src/lib/configwidgetslib/impage.cpp:252
+#: src/lib/configwidgetslib/impage.cpp:271
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"

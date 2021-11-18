@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-13 20:24+0000\n"
+"POT-Creation-Date: 2021-11-18 20:05+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -115,13 +115,23 @@ msgstr "Основной просмотрщик раскладки клавиа�
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:66
+#. i18n: file: src/lib/configwidgetslib/impage.ui:69
 #. i18n: ectx: property (text), widget (QToolButton, addGroupButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:141
+#. i18n: file: src/lib/configwidgetslib/impage.ui:139
+#. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:28 rc.cpp:9 rc.cpp:39 rc.cpp:51
+#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: rc.cpp:60
 #, kde-format
 msgid "Add"
+msgstr ""
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:66
+#. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
+#: rc.cpp:39
+#, kde-format
+msgid "Add Group"
 msgstr ""
 
 #: src/configtool/mainwindow.cpp:47
@@ -145,9 +155,9 @@ msgstr ""
 msgid "Asking Fcitx to exit..."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:296
+#. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:69
+#: rc.cpp:93
 #, kde-format
 msgid "Available Input Method:"
 msgstr "Доступный метод ввода:"
@@ -163,11 +173,11 @@ msgstr "Не удалось соединиться с Fcitx через DBus, з�
 msgid "Change Fcitx 5 Configuration"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:251
+#: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:329
+#: src/lib/configwidgetslib/impage.cpp:348
 msgid "Change System layout to match input method selection."
 msgstr ""
 
@@ -183,10 +193,12 @@ msgstr ""
 msgid "Click on an item for more details."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:242
+#. i18n: file: src/lib/configwidgetslib/impage.ui:236
+#. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:63
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -207,13 +219,20 @@ msgstr ""
 msgid "Current Input Method:"
 msgstr "Текущий метод ввода:"
 
-#: src/lib/configwidgetslib/impage.cpp:163
+#: src/lib/configwidgetslib/impage.cpp:182
 msgid "Current group changed"
 msgstr "Текущая группа изменена"
 
 #: src/lib/configlib/layoutmodel.cpp:123
 msgid "Default"
 msgstr "По умолчанию"
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:82
+#. i18n: ectx: property (toolTip), widget (QToolButton, deleteGroupButton)
+#: rc.cpp:45
+#, kde-format
+msgid "Delete Group"
+msgstr ""
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -233,7 +252,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:164
+#: src/lib/configwidgetslib/impage.cpp:183
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
@@ -243,9 +262,9 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:219
+#. i18n: file: src/lib/configwidgetslib/impage.ui:217
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
-#: rc.cpp:18 rc.cpp:60
+#: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
 msgstr ""
@@ -289,7 +308,7 @@ msgstr ""
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
 #. i18n: file: src/migrator/app/taskpage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
-#: rc.cpp:102 rc.cpp:111
+#: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
 msgstr ""
@@ -341,7 +360,7 @@ msgstr ""
 msgid "Got error: %1 %2"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:387
+#: src/lib/configwidgetslib/impage.cpp:406
 msgid "Group Name:"
 msgstr "Название группы:"
 
@@ -388,9 +407,9 @@ msgstr "Раскладка клавиатуры <group> (0-3)"
 msgid "Keyboard layout <variant>"
 msgstr "Раскладка клавиатуры <variant>"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:99
+#. i18n: file: src/lib/configwidgetslib/impage.ui:97
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:45
+#: rc.cpp:51
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
 msgstr "Раскладка клавиатуры при неактивных методах ввода"
@@ -406,14 +425,21 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: rc.cpp:81
+#: rc.cpp:105
 #, kde-format
 msgid "Language:"
 msgstr "Язык:"
 
+#. i18n: file: src/lib/configwidgetslib/impage.ui:261
+#. i18n: ectx: property (text), widget (QToolButton, layoutButton)
+#: rc.cpp:90
+#, kde-format
+msgid "Layout"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:84
+#: rc.cpp:108
 #, kde-format
 msgid "Layout:"
 msgstr "Раскладка:"
@@ -424,7 +450,7 @@ msgstr "Загрузчик"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
-#: rc.cpp:99
+#: rc.cpp:123
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
 msgstr ""
@@ -471,11 +497,25 @@ msgstr ""
 msgid "Module"
 msgstr "Модуль"
 
+#. i18n: file: src/lib/configwidgetslib/impage.ui:214
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveDownButton)
+#: rc.cpp:75
+#, kde-format
+msgid "Move Down"
+msgstr ""
+
+#. i18n: file: src/lib/configwidgetslib/impage.ui:189
+#. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
+#: rc.cpp:69
+#, kde-format
+msgid "Move Up"
+msgstr ""
+
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
 msgstr "Многоязычный"
 
-#: src/lib/configwidgetslib/impage.cpp:387
+#: src/lib/configwidgetslib/impage.cpp:406
 msgid "New Group"
 msgstr "Новая группа"
 
@@ -487,9 +527,9 @@ msgstr ""
 msgid "One of the task is failed. Terminating the migration."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:335
+#. i18n: file: src/lib/configwidgetslib/impage.ui:324
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
-#: rc.cpp:75
+#: rc.cpp:99
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "&Показывать только текущий язык"
@@ -508,16 +548,19 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:83
+#. i18n: file: src/lib/configwidgetslib/impage.ui:85
 #. i18n: ectx: property (text), widget (QToolButton, deleteGroupButton)
+#. i18n: file: src/lib/configwidgetslib/impage.ui:164
+#. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:59 rc.cpp:21 rc.cpp:42 rc.cpp:54
+#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: rc.cpp:66
 #, kde-format
 msgid "Remove"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:89
+#: src/lib/configwidgetslib/impage.cpp:108
 msgid "Restart"
 msgstr ""
 
@@ -540,21 +583,21 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
-#: rc.cpp:90
+#: rc.cpp:114
 #, kde-format
 msgid "Search Addons"
 msgstr "Найти дополнения"
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:303
+#. i18n: file: src/lib/configwidgetslib/impage.ui:292
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
-#: rc.cpp:72
+#: rc.cpp:96
 #, kde-format
 msgid "Search Input Method"
 msgstr "Поиск метода ввода"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
-#: rc.cpp:114
+#: rc.cpp:138
 #, kde-format
 msgid "Select &All"
 msgstr ""
@@ -566,27 +609,27 @@ msgstr ""
 msgid "Select &Font..."
 msgstr "Выбрать &шрифт..."
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:265
+#. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:296 rc.cpp:66
+#: src/lib/configwidgetslib/impage.cpp:315 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:236
+#: src/lib/configwidgetslib/impage.cpp:255
 msgid "Select default layout"
 msgstr "Выберите раскладку по умолчанию"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
-#: rc.cpp:108
+#: rc.cpp:132
 #, kde-format
 msgid "Select migration tasks"
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:102
+#. i18n: file: src/lib/configwidgetslib/impage.ui:100
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
-#: rc.cpp:48
+#: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
 msgstr ""
@@ -603,7 +646,7 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
-#: rc.cpp:93
+#: rc.cpp:117
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "Показать &дополнительные настройки"
@@ -618,9 +661,9 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/impage.ui:392
+#. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
-#: rc.cpp:78
+#: rc.cpp:102
 #, kde-format
 msgid ""
 "The first input method will be inactive state. Usually you need to put "
@@ -632,7 +675,7 @@ msgstr ""
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: rc.cpp:105
+#: rc.cpp:129
 #, kde-format
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
@@ -654,20 +697,20 @@ msgstr "Неизвестно"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#. i18n: file: src/lib/configwidgetslib/impage.ui:193
+#. i18n: file: src/lib/configwidgetslib/impage.ui:192
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
-#: rc.cpp:15 rc.cpp:57
+#: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:84
+#: src/lib/configwidgetslib/impage.cpp:103
 msgid "Update"
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: rc.cpp:87
+#: rc.cpp:111
 #, kde-format
 msgid "Variant:"
 msgstr "Вариант:"
@@ -678,7 +721,7 @@ msgstr "Просмотреть раскладку клавиатуры"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
-#: rc.cpp:96
+#: rc.cpp:120
 #, kde-format
 msgid "WelcomePage"
 msgstr ""
@@ -687,13 +730,13 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:330
+#: src/lib/configwidgetslib/impage.cpp:349
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:252
+#: src/lib/configwidgetslib/impage.cpp:271
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
