@@ -62,12 +62,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Add Group</string>
+           </property>
            <property name="text">
             <string>Add</string>
-           </property>
-           <property name="icon">
-            <iconset theme="list-add-symbolic">
-             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -79,12 +78,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Delete Group</string>
+           </property>
            <property name="text">
             <string>Remove</string>
-           </property>
-           <property name="icon">
-            <iconset theme="list-remove-symbolic">
-             <normaloff>.</normaloff>.</iconset>
            </property>
           </widget>
          </item>
@@ -137,12 +135,11 @@
            <height>0</height>
           </size>
          </property>
-         <property name="text">
+         <property name="toolTip">
           <string>Add</string>
          </property>
-         <property name="icon">
-          <iconset theme="go-previous-symbolic">
-           <normaloff>.</normaloff>.</iconset>
+         <property name="text">
+          <string>Add</string>
          </property>
         </widget>
        </item>
@@ -163,12 +160,11 @@
            <height>0</height>
           </size>
          </property>
-         <property name="text">
+         <property name="toolTip">
           <string>Remove</string>
          </property>
-         <property name="icon">
-          <iconset theme="go-next-symbolic">
-           <normaloff>.</normaloff>.</iconset>
+         <property name="text">
+          <string>Remove</string>
          </property>
         </widget>
        </item>
@@ -189,12 +185,11 @@
            <height>0</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Move Up</string>
+         </property>
          <property name="text">
           <string>Up</string>
-         </property>
-         <property name="icon">
-          <iconset theme="go-up-symbolic">
-           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -215,12 +210,11 @@
            <height>0</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>Move Down</string>
+         </property>
          <property name="text">
           <string>Down</string>
-         </property>
-         <property name="icon">
-          <iconset theme="go-down-symbolic">
-           <normaloff>.</normaloff>.</iconset>
          </property>
         </widget>
        </item>
@@ -238,12 +232,11 @@
            <height>0</height>
           </size>
          </property>
-         <property name="text">
+         <property name="toolTip">
           <string>Configure</string>
          </property>
-         <property name="icon">
-          <iconset theme="preferences-system-symbolic">
-           <normaloff>.</normaloff>.</iconset>
+         <property name="text">
+          <string>Configure</string>
          </property>
         </widget>
        </item>
@@ -265,11 +258,7 @@
           <string>Select Layout</string>
          </property>
          <property name="text">
-          <string notr="true">Layout</string>
-         </property>
-         <property name="icon">
-          <iconset theme="input-keyboard-symbolic">
-           <normaloff>.</normaloff>.</iconset>
+          <string>Layout</string>
          </property>
         </widget>
        </item>

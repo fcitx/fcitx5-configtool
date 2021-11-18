@@ -7,6 +7,7 @@
 
 #include "keylistwidget.h"
 #include <QHBoxLayout>
+#include <QStyle>
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <fcitx-utils/i18n.h>
@@ -24,7 +25,9 @@ KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
 
     addButton_ = new QToolButton;
     addButton_->setAutoRaise(true);
-    addButton_->setIcon(QIcon::fromTheme("list-add-symbolic"));
+    addButton_->setIcon(QIcon::fromTheme(
+        "list-add-symbolic",
+        style()->standardIcon(QStyle::SP_FileDialogNewFolder)));
     addButton_->setText(_("Add"));
     addButton_->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     connect(addButton_, &QToolButton::clicked, this, [this]() {
@@ -55,7 +58,8 @@ void KeyListWidget::addKey(fcitx::Key key) {
     layout->addWidget(keyWidget);
     auto removeButton = new QToolButton;
     removeButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    removeButton->setIcon(QIcon::fromTheme("list-remove-symbolic"));
+    removeButton->setIcon(QIcon::fromTheme(
+        "list-remove-symbolic", style()->standardIcon(QStyle::SP_TrashIcon)));
     removeButton->setText(_("Remove"));
     removeButton->setVisible(showRemoveButton());
     layout->addWidget(removeButton);

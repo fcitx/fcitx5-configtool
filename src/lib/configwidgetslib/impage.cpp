@@ -61,6 +61,25 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
     : QWidget(parent), ui_(std::make_unique<Ui::IMPage>()), dbus_(dbus),
       config_(new IMConfig(dbus, IMConfig::Tree, this)) {
     ui_->setupUi(this);
+    ui_->addIMButton->setIcon(QIcon::fromTheme(
+        "go-previous-symbolic", style()->standardIcon(QStyle::SP_ArrowLeft)));
+    ui_->removeIMButton->setIcon(QIcon::fromTheme(
+        "go-next-symbolic", style()->standardIcon(QStyle::SP_ArrowRight)));
+    ui_->moveUpButton->setIcon(QIcon::fromTheme(
+        "go-up-symbolic", style()->standardIcon(QStyle::SP_ArrowUp)));
+    ui_->moveDownButton->setIcon(QIcon::fromTheme(
+        "go-down-symbolic", style()->standardIcon(QStyle::SP_ArrowDown)));
+    ui_->configureButton->setIcon(QIcon::fromTheme(
+        "preferences-system-symbolic",
+        style()->standardIcon(QStyle::SP_FileDialogDetailedView)));
+    ui_->layoutButton->setIcon(
+        QIcon::fromTheme("input-keyboard-symbolic",
+                         style()->standardIcon(QStyle::SP_ComputerIcon)));
+    ui_->addGroupButton->setIcon(QIcon::fromTheme(
+        "list-add-symbolic",
+        style()->standardIcon(QStyle::SP_FileDialogNewFolder)));
+    ui_->deleteGroupButton->setIcon(QIcon::fromTheme(
+        "list-remove-symbolic", style()->standardIcon(QStyle::SP_TrashIcon)));
 
     ui_->checkUpdateMessage->setVisible(false);
     connect(ui_->inputMethodGroupComboBox, &QComboBox::currentTextChanged, this,
