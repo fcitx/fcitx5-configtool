@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:05+0000\n"
+"POT-Creation-Date: 2021-11-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -132,7 +132,7 @@ msgstr "追加"
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "グループを追加"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
@@ -232,7 +232,7 @@ msgstr "デフォルト"
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr ""
+msgstr "グループを削除"
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -441,7 +441,7 @@ msgstr "言語:"
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr ""
+msgstr "レイアウト"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -510,14 +510,14 @@ msgstr "モジュール"
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "下に移動"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "上に移動"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
