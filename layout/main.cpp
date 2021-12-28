@@ -10,6 +10,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QX11Info>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
@@ -42,7 +43,10 @@ int main(int argc, char *argv[]) {
     }
 
     if (!QX11Info::isPlatformX11()) {
-        qFatal("Only X11 is supported");
+        QMessageBox msgBox(QMessageBox::Critical,
+                           _("Error"),
+                           _("This program only works on X11."));
+        msgBox.exec();
         return 1;
     }
 
