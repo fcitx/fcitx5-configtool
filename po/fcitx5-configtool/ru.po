@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:05+0000\n"
+"POT-Creation-Date: 2021-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -109,7 +109,7 @@ msgstr ""
 msgid "- Disable some features in %1\n"
 msgstr ""
 
-#: layout/main.cpp:23
+#: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
 msgstr "Основной просмотрщик раскладки клавиатуры"
 
@@ -276,6 +276,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: layout/main.cpp:47
+msgid "Error"
+msgstr ""
+
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
@@ -391,19 +395,19 @@ msgstr "Метод ввода"
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "Клавиатура <layout>"
 
-#: layout/main.cpp:53
+#: layout/main.cpp:57
 msgid "Keyboard Layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Раскладка клавиатуры <group> (0-3)"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "Keyboard layout <variant>"
 msgstr "Раскладка клавиатуры <variant>"
 
@@ -673,6 +677,10 @@ msgstr ""
 "<b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на "
 "первое место."
 
+#: layout/main.cpp:48
+msgid "This program only works on X11."
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:129
@@ -747,14 +755,14 @@ msgstr ""
 msgid "[%1]"
 msgstr ""
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "group"
 msgstr "group"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "layout"
 msgstr "layout"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "variant"
 msgstr "variant"

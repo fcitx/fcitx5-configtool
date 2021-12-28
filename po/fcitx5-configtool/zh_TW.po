@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:05+0000\n"
+"POT-Creation-Date: 2021-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: bruh, 2020\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -110,7 +110,7 @@ msgstr "- 停用 %1\n"
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
 
-#: layout/main.cpp:23
+#: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
 msgstr "一般鍵盤佈局檢視器"
 
@@ -280,6 +280,10 @@ msgstr "下"
 msgid "Edit"
 msgstr "編輯"
 
+#: layout/main.cpp:47
+msgid "Error"
+msgstr ""
+
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
@@ -395,19 +399,19 @@ msgstr "輸入法"
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "鍵盤 <layout>"
 
-#: layout/main.cpp:53
+#: layout/main.cpp:57
 msgid "Keyboard Layout viewer"
 msgstr "鍵盤佈局檢視器"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "Keyboard layout <group> (0-3)"
 msgstr "鍵盤配置 <group> (0-3)"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "Keyboard layout <variant>"
 msgstr "鍵盤配置 <variant>"
 
@@ -676,6 +680,10 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
+#: layout/main.cpp:48
+msgid "This program only works on X11."
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:129
@@ -750,14 +758,14 @@ msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "group"
 msgstr "群組"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "layout"
 msgstr "配置"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "variant"
 msgstr "變體"

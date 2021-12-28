@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:05+0000\n"
+"POT-Creation-Date: 2021-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2021\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -108,7 +108,7 @@ msgstr "-  %1 비활성화\n"
 msgid "- Disable some features in %1\n"
 msgstr "- %1의 일부 기능 비활성화\n"
 
-#: layout/main.cpp:23
+#: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 자판 보기도구"
 
@@ -277,6 +277,10 @@ msgstr "아래쪽"
 msgid "Edit"
 msgstr "편집"
 
+#: layout/main.cpp:47
+msgid "Error"
+msgstr ""
+
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
@@ -395,19 +399,19 @@ msgstr "입력기"
 msgid "Input Method Configuration"
 msgstr "입력기 환경설정"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "키보드 <자판>"
 
-#: layout/main.cpp:53
+#: layout/main.cpp:57
 msgid "Keyboard Layout viewer"
 msgstr "키보드 자판 보기도구"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "Keyboard layout <group> (0-3)"
 msgstr "키보드 자판 <그룹> (0-3)"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "Keyboard layout <variant>"
 msgstr "키보드 자판 <변형>"
 
@@ -678,6 +682,10 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
+#: layout/main.cpp:48
+msgid "This program only works on X11."
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:129
@@ -757,14 +765,14 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "group"
 msgstr "그룹"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "layout"
 msgstr "자판"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "variant"
 msgstr "변형"

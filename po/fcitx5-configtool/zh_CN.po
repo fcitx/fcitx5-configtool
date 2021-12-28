@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:30+0000\n"
+"POT-Creation-Date: 2021-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -108,7 +108,7 @@ msgstr "- 禁用 %1\n"
 msgid "- Disable some features in %1\n"
 msgstr "- 禁用 %1 中的某些功能\n"
 
-#: layout/main.cpp:23
+#: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
 msgstr "通用键盘布局查看器"
 
@@ -278,6 +278,10 @@ msgstr "向下"
 msgid "Edit"
 msgstr "编辑"
 
+#: layout/main.cpp:47
+msgid "Error"
+msgstr ""
+
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
@@ -395,19 +399,19 @@ msgstr "输入法"
 msgid "Input Method Configuration"
 msgstr "输入法配置"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "键盘 <布局>"
 
-#: layout/main.cpp:53
+#: layout/main.cpp:57
 msgid "Keyboard Layout viewer"
 msgstr "键盘布局查看器"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "Keyboard layout <group> (0-3)"
 msgstr "键盘布局<分组号> (0-3)"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "Keyboard layout <variant>"
 msgstr "键盘布局<变体>"
 
@@ -676,6 +680,10 @@ msgstr ""
 "第一个输入法将为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称</"
 "i></b>放在第一位。"
 
+#: layout/main.cpp:48
+msgid "This program only works on X11."
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:129
@@ -751,14 +759,14 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "group"
 msgstr "分组"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "layout"
 msgstr "布局"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "variant"
 msgstr "变体"

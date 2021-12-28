@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-11-18 20:05+0000\n"
+"POT-Creation-Date: 2021-12-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: mar well <m.wellendorf@gmx.de>, 2018\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -107,7 +107,7 @@ msgstr ""
 msgid "- Disable some features in %1\n"
 msgstr ""
 
-#: layout/main.cpp:23
+#: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
 msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
 
@@ -275,6 +275,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: layout/main.cpp:47
+msgid "Error"
+msgstr ""
+
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
@@ -390,19 +394,19 @@ msgstr "Eingabemethode"
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "Tastatur <layout>"
 
-#: layout/main.cpp:53
+#: layout/main.cpp:57
 msgid "Keyboard Layout viewer"
 msgstr "Ansicht Tastaturlayout"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Tastaturlayout <group> (0-3)"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "Keyboard layout <variant>"
 msgstr "Tastaturlayout <variant>"
 
@@ -672,6 +676,10 @@ msgstr ""
 "<b>Tastatur</b> oder <b>Tastatur - <i>Tastaturlayout</i></b> als Erstes "
 "stehen."
 
+#: layout/main.cpp:48
+msgid "This program only works on X11."
+msgstr ""
+
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:129
@@ -750,14 +758,14 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:27
 msgid "group"
 msgstr "Gruppe"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:28
 msgid "layout"
 msgstr "Layout"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:29
 msgid "variant"
 msgstr "Variante"
