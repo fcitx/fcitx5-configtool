@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2021-12-29 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -280,7 +280,7 @@ msgstr "编辑"
 
 #: layout/main.cpp:47
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
@@ -682,7 +682,7 @@ msgstr ""
 
 #: layout/main.cpp:48
 msgid "This program only works on X11."
-msgstr ""
+msgstr "这个程序仅能在 X11 下使用。"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
