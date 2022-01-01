@@ -43,8 +43,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (!QX11Info::isPlatformX11()) {
-        QMessageBox msgBox(QMessageBox::Critical,
-                           _("Error"),
+        QMessageBox msgBox(QMessageBox::Critical, _("Error"),
                            _("This program only works on X11."));
         msgBox.exec();
         return 1;
