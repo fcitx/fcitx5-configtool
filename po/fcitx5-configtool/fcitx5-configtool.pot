@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-29 20:24+0000\n"
+"POT-Creation-Date: 2022-01-04 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -269,7 +269,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 msgid "Keyboard <layout>"
 msgstr ""
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr ""
 
@@ -667,7 +667,7 @@ msgid ""
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
 msgstr ""
 

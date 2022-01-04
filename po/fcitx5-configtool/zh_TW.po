@@ -7,14 +7,15 @@
 # 黃柏諺 <s8321414@gmail.com>, 2017
 # pan93412 <pan93412@gmail.com>, 2019
 # bruh, 2020
+# Weizhong Yang <zonble@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2022-01-04 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: bruh, 2020\n"
+"Last-Translator: Weizhong Yang <zonble@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -63,21 +64,21 @@ msgstr "%1："
 
 #: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
-msgstr ""
+msgstr "套用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
-msgstr ""
+msgstr "取消(&C)"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr ""
+msgstr "清除(&C)"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "&Close"
-msgstr ""
+msgstr "關閉 (&C)"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
@@ -89,11 +90,11 @@ msgstr "下一步(&N) >"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
-msgstr ""
+msgstr "確定(&O)"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
-msgstr ""
+msgstr "重置(&R)"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -133,7 +134,7 @@ msgstr "新增"
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "新增群組"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
@@ -150,7 +151,7 @@ msgstr "任何語言"
 
 #: src/configtool/mainwindow.cpp:120
 msgid "Apply configuration changes"
-msgstr ""
+msgstr "修改設定"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
@@ -172,7 +173,7 @@ msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "變更 Fcitx 5 設定"
 
 #: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
@@ -233,7 +234,7 @@ msgstr "預設"
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr ""
+msgstr "刪除群組"
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -262,7 +263,7 @@ msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 
 #: src/configtool/mainwindow.cpp:121
 msgid "Do you want to save the changes or discard them?"
-msgstr ""
+msgstr "您想要儲存還是要捨棄修改過的設定？"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -280,9 +281,9 @@ msgstr "下"
 msgid "Edit"
 msgstr "編輯"
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
-msgstr ""
+msgstr "錯誤"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
@@ -305,12 +306,12 @@ msgstr "執行 DBus 調用失敗。"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5 設定"
 
 #: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Fcitx 5 資料搬移精靈"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -349,6 +350,8 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"有新的 Fcitx 安裝套件。您想要檢查是否有新的輸入法以及附加組件嗎？如果要更新已"
+"經安裝的附加組件，您需要重新啟動 Fcitx。"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -385,7 +388,7 @@ msgstr "從 Fcitx 4 導入拼音詞典"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
-msgstr ""
+msgstr "從其他輸入法（如 Fcitx 4）匯入資料"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
@@ -397,13 +400,13 @@ msgstr "輸入法"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "輸入法設定"
 
 #: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "鍵盤 <layout>"
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr "鍵盤佈局檢視器"
 
@@ -443,7 +446,7 @@ msgstr "語言："
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr ""
+msgstr "佈局"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -510,14 +513,14 @@ msgstr "模組"
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "下移"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "上移"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
@@ -570,12 +573,12 @@ msgstr "移除"
 
 #: src/lib/configwidgetslib/impage.cpp:108
 msgid "Restart"
-msgstr ""
+msgstr "重新啟動"
 
 #: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "還原成預設值(&D)"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -587,7 +590,7 @@ msgstr "中州韻"
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "執行 Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -680,9 +683,9 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
-msgstr ""
+msgstr "本程式只能在 X11 下執行。"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -717,7 +720,7 @@ msgstr "上"
 
 #: src/lib/configwidgetslib/impage.cpp:103
 msgid "Update"
-msgstr ""
+msgstr "更新"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
