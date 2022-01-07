@@ -6,15 +6,15 @@
 # csslayer <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2022-01-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2021\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -279,9 +279,9 @@ msgstr "下へ"
 msgid "Edit"
 msgstr "編集"
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
@@ -405,7 +405,7 @@ msgstr "入力メソッドの設定"
 msgid "Keyboard <layout>"
 msgstr "キーボード <layout>"
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr "キーボードレイアウトビューアー"
 
@@ -685,9 +685,9 @@ msgstr ""
 "キーボード</b> または <b>キーボード - <i>レイアウト名</i></b> を置く必要があ"
 "ります。"
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
-msgstr ""
+msgstr "このプログラムは X11 でのみ動作します。"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
