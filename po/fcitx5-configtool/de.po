@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # mar well <m.wellendorf@gmx.de>, 2018
+# Ettore Atalan <atalanttore@googlemail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2022-01-14 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: mar well <m.wellendorf@gmx.de>, 2018\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +96,7 @@ msgstr ""
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/lib/configwidgetslib/addonselector.cpp:394
 #, kde-format
@@ -123,7 +124,7 @@ msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:66
 #. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
@@ -200,7 +201,7 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Konfigurieren"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
@@ -241,7 +242,7 @@ msgstr ""
 #: src/lib/configwidgetslib/addonselector.cpp:413
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "%1 deaktivieren"
 
 #: src/lib/configwidgetslib/addonselector.cpp:408
 #, kde-format
@@ -266,16 +267,16 @@ msgstr ""
 #: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "Herunter"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
 msgstr ""
 
@@ -321,7 +322,7 @@ msgstr ""
 #: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx-Konfiguration"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
@@ -356,7 +357,7 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
-msgstr ""
+msgstr "Globale Optionen"
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
@@ -398,7 +399,7 @@ msgstr ""
 msgid "Keyboard <layout>"
 msgstr "Tastatur <layout>"
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr "Ansicht Tastaturlayout"
 
@@ -561,7 +562,7 @@ msgstr ""
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: src/lib/configwidgetslib/impage.cpp:108
 msgid "Restart"
@@ -676,7 +677,7 @@ msgstr ""
 "<b>Tastatur</b> oder <b>Tastatur - <i>Tastaturlayout</i></b> als Erstes "
 "stehen."
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
 msgstr ""
 
@@ -709,7 +710,7 @@ msgstr "Unbekannt"
 #: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Hoch"
 
 #: src/lib/configwidgetslib/impage.cpp:103
 msgid "Update"
