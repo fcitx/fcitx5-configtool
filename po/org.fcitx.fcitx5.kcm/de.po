@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-01-14 20:24+0000\n"
+"POT-Creation-Date: 2022-01-15 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/ConfigGroup.qml:67
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:98
 #, kde-format
@@ -34,7 +34,7 @@ msgstr ", "
 #: src/kcm/package/contents/ui/AddonPage.qml:108
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- %1 deaktivieren\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:118
 #, kde-format
@@ -109,7 +109,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:201
 #, kde-format
 msgid "Configure global options..."
-msgstr ""
+msgstr "Globale Optionen konfigurieren..."
 
 #: src/kcm/main.cpp:48
 #, kde-format
@@ -185,7 +185,7 @@ msgstr "Eingabemethode"
 #: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "Tastencode-Modus"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:32
 #, kde-format
@@ -221,7 +221,7 @@ msgstr "Nur &gegenwärtige Sprache anzeigen"
 #: src/kcm/package/contents/ui/AddonPage.qml:54
 #, kde-format
 msgid "Re-Enable"
-msgstr ""
+msgstr "Reaktivieren"
 
 #: src/kcm/package/contents/ui/ListOption.qml:145
 #: src/kcm/package/contents/ui/main.qml:72
@@ -232,7 +232,7 @@ msgstr "Entfernen"
 #: src/kcm/package/contents/ui/main.qml:263
 #, kde-format
 msgid "Restart"
-msgstr ""
+msgstr "Neustart"
 
 #: src/kcm/package/contents/ui/main.qml:234
 #, kde-format
@@ -249,7 +249,7 @@ msgstr "Suche..."
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "Farbe auswählen"
 
 #: src/kcm/package/contents/ui/FontOption.qml:35
 #, kde-format
