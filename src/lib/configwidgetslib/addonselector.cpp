@@ -134,8 +134,9 @@ void AddonDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
     QFont font = titleFont(option.font);
     QFontMetrics fmTitle(font);
     painter->setFont(font);
+    Qt::AlignmentFlag flag = index.model()->data(index, CommentRole).toString().isEmpty() ? Qt::AlignVCenter : Qt::AlignTop;
     painter->drawText(
-        contentsRect, Qt::AlignLeft | Qt::AlignTop,
+        contentsRect, Qt::AlignLeft | flag,
         fmTitle.elidedText(
             index.model()->data(index, Qt::DisplayRole).toString(),
             Qt::ElideRight, contentsRect.width()));
