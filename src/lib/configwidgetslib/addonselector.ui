@@ -44,6 +44,12 @@
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
+     <property name="verticalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
+     <property name="horizontalScrollMode">
+      <enum>QAbstractItemView::ScrollPerItem</enum>
+     </property>
      <property name="indentation">
       <number>0</number>
      </property>
