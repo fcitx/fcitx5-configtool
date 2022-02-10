@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-01-31 20:24+0000\n"
+"POT-Creation-Date: 2022-02-10 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -641,7 +641,7 @@ msgstr ""
 msgid "Service %1 still present on DBus."
 msgstr ""
 
-#. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
+#. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
 #, kde-format

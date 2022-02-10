@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-01-31 20:24+0000\n"
+"POT-Creation-Date: 2022-02-10 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -278,7 +278,7 @@ msgstr "Выберите макет для %1"
 #: src/kcm/package/contents/ui/main.qml:184
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr "Выбор системы раскладки клавиатуры..."
+msgstr "Выбор системной раскладки клавиатуры..."
 
 #: src/kcm/package/contents/ui/main.qml:180
 #, kde-format

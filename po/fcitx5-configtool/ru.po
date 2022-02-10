@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017
+# Dmitry <dmitrydmitry761@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2022-02-10 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -36,17 +37,17 @@ msgstr "%1 (%2)"
 #: src/lib/configlib/layoutprovider.cpp:153
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: src/migrator/lib/processrunner.cpp:69
 #, kde-format
 msgid "%1 crashed."
-msgstr ""
+msgstr "%1 повреждён."
 
 #: src/migrator/lib/processrunner.cpp:76
 #, kde-format
 msgid "%1 failed to start."
-msgstr ""
+msgstr "%1 не удалось начать. "
 
 #: src/lib/configwidgetslib/optionwidget.cpp:539
 #: src/lib/configwidgetslib/optionwidget.cpp:550
@@ -62,25 +63,25 @@ msgstr "%1:"
 
 #: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
-msgstr ""
+msgstr "&Применить"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
-msgstr ""
+msgstr "&Отмена"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr ""
+msgstr "&Очистить"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "&Close"
-msgstr ""
+msgstr "&Закрыть"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr ""
+msgstr "&Следующее >"
 
 #: src/configtool/mainwindow.cpp:57
 #: src/lib/configwidgetslib/configwidget.cpp:204
@@ -88,26 +89,26 @@ msgstr ""
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
-msgstr ""
+msgstr "&Перезагрузить"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/lib/configwidgetslib/addonselector.cpp:394
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- Отключить %1\n"
 
 #: src/lib/configwidgetslib/addonselector.cpp:405
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- Отключить некоторые функции в %1\n"
 
 #: layout/main.cpp:24
 msgid "A general keyboard layout viewer"
@@ -125,22 +126,22 @@ msgstr "Основной просмотрщик раскладки клавиа�
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "Добавить"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:66
 #. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "Добавить группу"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
-msgstr ""
+msgstr "Аддоны"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr ""
+msgstr "Все задачи перемещения успешно завершены."
 
 #: src/lib/configlib/layoutprovider.cpp:66
 #: src/lib/configlib/layoutprovider.cpp:68
@@ -149,11 +150,11 @@ msgstr "Любой язык"
 
 #: src/configtool/mainwindow.cpp:120
 msgid "Apply configuration changes"
-msgstr ""
+msgstr "Применить изменения конфигурации"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
-msgstr ""
+msgstr "Прошу Fcitx выйти..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -171,27 +172,27 @@ msgstr "Не удалось соединиться с Fcitx через DBus, з�
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "Изменить конфигурацию Fcitx 5"
 
 #: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
-msgstr ""
+msgstr "Измените Метод ввода, чтобы он соответствовал выбранной раскладке."
 
 #: src/lib/configwidgetslib/impage.cpp:348
 msgid "Change System layout to match input method selection."
-msgstr ""
+msgstr "Измените раскладку системы в соответствии с выбором метода ввода."
 
 #: src/migrator/app/taskpage.cpp:249
 msgid "Checking if Fcitx is running..."
-msgstr ""
+msgstr "Проверяем, запущен ли Fcitx..."
 
 #: src/migrator/app/taskpage.cpp:237
 msgid "Checking if Fcitx is still running..."
-msgstr ""
+msgstr "Проверяем, работает ли Fcitx..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
-msgstr ""
+msgstr "Нажмите на элемент для получения более подробной информации."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:236
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
@@ -201,16 +202,16 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Настроить"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
-msgstr ""
+msgstr "Сбой конвертера."
 
 #: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
-msgstr ""
+msgstr "Копирование файла %1 в %2"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:34
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -232,17 +233,17 @@ msgstr "По умолчанию"
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr ""
+msgstr "Удалить Группу"
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
-msgstr ""
+msgstr "Каталог %1 не существует."
 
 #: src/lib/configwidgetslib/addonselector.cpp:413
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "Отключить %1"
 
 #: src/lib/configwidgetslib/addonselector.cpp:408
 #, kde-format
@@ -251,14 +252,17 @@ msgid ""
 "%2%3\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"Отключить %1 также:\n"
+"%2%3\n"
+"Вы уверены, что хотите отключить?"
 
 #: src/lib/configwidgetslib/impage.cpp:183
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "Вы хотите сменить группу? Изменения в текущей группе будут потеряны!"
 
 #: src/configtool/mainwindow.cpp:121
 msgid "Do you want to save the changes or discard them?"
-msgstr ""
+msgstr "Вы хотите сохранить изменения или отказаться от них?"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -267,46 +271,46 @@ msgstr ""
 #: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "Вниз"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Редактировать"
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
-msgstr ""
+msgstr "Ошибка"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
-msgstr ""
+msgstr "Не удалось скопировать файл %1 в %2"
 
 #: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
-msgstr ""
+msgstr "Не удалось создать каталог %1."
 
 #: src/migrator/lib/configmigrator.cpp:89
 #, kde-format
 msgid "Failed to fetch config for %1"
-msgstr ""
+msgstr "Не удалось получить конфигурацию для %1"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr ""
+msgstr "Не удалось запустить вызов DBus."
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Конфигурация Fcitx 5"
 
 #: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Мастер Перемещения Fcitx 5"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -315,26 +319,26 @@ msgstr ""
 #: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr ""
+msgstr "Fcitx 5 не запущен."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Настройка Fcitx"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
-msgstr ""
+msgstr "Выход из Fcitx."
 
 #: src/migrator/app/taskpage.cpp:238
 msgid "Fcitx is fully exited."
-msgstr ""
+msgstr "Fcitx полностью закрыт."
 
 #: src/migrator/app/taskpage.cpp:250
 msgid "Fcitx is started."
-msgstr ""
+msgstr "Fcitx запущен."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
@@ -345,6 +349,9 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"Найдены обновления для установки fcitx. Вы хотите проверить наличие недавно "
+"установленных методов ввода и дополнений? Чтобы обновить уже загруженные "
+"дополнения, необходимо перезапустить fcitx."
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -353,16 +360,16 @@ msgstr "Интерфейс"
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
-msgstr ""
+msgstr "Общие настройки"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
-msgstr ""
+msgstr "Глобальные параметры"
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
 msgid "Got error: %1 %2"
-msgstr ""
+msgstr "Получена ошибка: %1 %2"
 
 #: src/lib/configwidgetslib/impage.cpp:406
 msgid "Group Name:"
@@ -377,15 +384,15 @@ msgstr "Группа:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr ""
+msgstr "Импорт словаря Pinyin из Fcitx 4"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
-msgstr ""
+msgstr "Импорт данных из другого метода ввода, такого как Fcitx 4"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr ""
+msgstr "Импорт данных таблицы для установленной таблицы из Fcitx 4"
 
 #: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
@@ -393,13 +400,13 @@ msgstr "Метод ввода"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "Настройка метода ввода"
 
 #: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "Клавиатура <layout>"
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
@@ -425,7 +432,7 @@ msgstr "Просмотрщик раскладки клавиатуры"
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
 msgid "Kkc"
-msgstr ""
+msgstr "Kkc"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
@@ -439,7 +446,7 @@ msgstr "Язык:"
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr ""
+msgstr "Раскладка"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -457,45 +464,47 @@ msgstr "Загрузчик"
 #: rc.cpp:123
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr ""
+msgstr "Перенос данных из Fcitx 4"
 
 #: src/migrator/kkc/kkcmigrator.cpp:40
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr ""
+msgstr "Перенос словаря Kkc из Fcitx 4"
 
 #: src/migrator/rime/rimemigrator.cpp:39
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
+"Перенесите словарь Rime из Fcitx 4. Обратите внимание: это удалит все "
+"существующие данные."
 
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Migrate Skk dictionary from Fcitx 4"
-msgstr ""
+msgstr "Перенос словаря Skk из Fcitx 4"
 
 #: src/migrator/global/globalconfigmigrator.cpp:48
 msgid "Migrate global key option from Fcitx 4"
-msgstr ""
+msgstr "Перенести глобальные ключевые параметры из Fcitx 4"
 
 #: src/migrator/kkc/kkcmigrator.cpp:74
 msgid "Migrating Kkc rule option..."
-msgstr ""
+msgstr "Опция переноса правила Kkc..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
-msgstr ""
+msgstr "Перенос данных Pinyin..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
-msgstr ""
+msgstr "Опция переноса правила Skk..."
 
 #: src/migrator/global/globalconfigmigrator.cpp:89
 msgid "Migrating global hotkey key option..."
-msgstr ""
+msgstr "Перенос глобальных параметров горячей клавиши..."
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
-msgstr ""
+msgstr "Инструмент Перемещения"
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "Module"
@@ -506,14 +515,14 @@ msgstr "Модуль"
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "Двигать Вниз"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "Двигать Вверх"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
@@ -525,11 +534,11 @@ msgstr "Новая группа"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
-msgstr ""
+msgstr "Одно из заданий не выполнено. Прекращение перемещения."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:324
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
@@ -544,11 +553,11 @@ msgstr "Другое"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr ""
+msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr ""
+msgstr "Переносятся данные Pinyin."
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -562,28 +571,28 @@ msgstr ""
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: src/lib/configwidgetslib/impage.cpp:108
 msgid "Restart"
-msgstr ""
+msgstr "Перезапустить"
 
 #: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "Восстановить &Значения по умолчанию"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
 msgid "Rime"
-msgstr ""
+msgstr "Rime"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
 #. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr ""
+msgstr "Запустить Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -604,7 +613,7 @@ msgstr "Поиск метода ввода"
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "Выбрать &Все"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -618,7 +627,7 @@ msgstr "Выбрать &шрифт..."
 #: src/lib/configwidgetslib/impage.cpp:315 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "Выбрать Раскладку"
 
 #: src/lib/configwidgetslib/impage.cpp:255
 msgid "Select default layout"
@@ -629,26 +638,26 @@ msgstr "Выберите раскладку по умолчанию"
 #: rc.cpp:132
 #, kde-format
 msgid "Select migration tasks"
-msgstr ""
+msgstr "Выберите задачи переноса"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:100
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "Выберите системную раскладку клавиатуры"
 
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
 msgid "Service %1 does not present on DBus."
-msgstr ""
+msgstr "Служба %1 не представлена на DBus."
 
 #: src/migrator/lib/dbuswatcher.cpp:34
 #, kde-format
 msgid "Service %1 still present on DBus."
-msgstr ""
+msgstr "Служба %1 все еще присутствует на DBus."
 
-#. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
+#. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
 #, kde-format
@@ -658,12 +667,12 @@ msgstr "Показать &дополнительные настройки"
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:37
 msgid "Skk"
-msgstr ""
+msgstr "Skk"
 
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr ""
+msgstr "Таблица"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -677,9 +686,9 @@ msgstr ""
 "<b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на "
 "первое место."
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
-msgstr ""
+msgstr "Эта программа работает только на X11."
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -689,11 +698,13 @@ msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
 msgstr ""
+"Этот мастер поможет вам перенести существующие пользовательские данные с "
+"Fcitx 4 на Fcitx 5."
 
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format
 msgid "Try to Migrating table file: %1 ..."
-msgstr ""
+msgstr "Попробуйте выполнить перенос файла таблицы: %1 ..."
 
 #: src/lib/configlib/addonmodel.cpp:23
 msgid "UI"
@@ -710,11 +721,11 @@ msgstr "Неизвестно"
 #: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "Вверх"
 
 #: src/lib/configwidgetslib/impage.cpp:103
 msgid "Update"
-msgstr ""
+msgstr "Обновить"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
 #. i18n: ectx: property (text), widget (QLabel, label_2)
@@ -732,28 +743,32 @@ msgstr "Просмотреть раскладку клавиатуры"
 #: rc.cpp:120
 #, kde-format
 msgid "WelcomePage"
-msgstr ""
+msgstr "Страница Приветствия"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:647
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/lib/configwidgetslib/impage.cpp:349
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"Текущий настроенный метод ввода не соответствует раскладке. Хотите изменить "
+"настройку раскладки?"
 
 #: src/lib/configwidgetslib/impage.cpp:271
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"Ваш текущий метод ввода не соответствует выбранной раскладке. Вы хотите "
+"добавить соответствующий метод ввода для раскладки?"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:680
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: layout/main.cpp:27
 msgid "group"
