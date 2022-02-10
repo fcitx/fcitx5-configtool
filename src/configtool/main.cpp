@@ -10,6 +10,13 @@
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
+    QSharedMemory sm("fcitx5-config-qt");
+    if(sm.attach()) {
+        qCDebug(KCM_FCITX5) << "fcitx5-config-qt is running.";
+        return 0;
+    }
+    sm.create(1);
+
     app.setApplicationName("fcitx5-config-qt");
     app.setApplicationVersion(PROJECT_VERSION);
     app.setApplicationDisplayName(_("Fcitx Configuration"));
