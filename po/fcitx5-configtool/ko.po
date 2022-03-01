@@ -4,16 +4,16 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
-# Jung Hee Lee <daemul72@gmail.com>, 2021
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
+# JungHee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-12-28 20:24+0000\n"
+"POT-Creation-Date: 2022-03-01 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2021\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,7 @@ msgstr "모든 언어"
 
 #: src/configtool/mainwindow.cpp:120
 msgid "Apply configuration changes"
-msgstr ""
+msgstr "구성 변경사항 적용"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Asking Fcitx to exit..."
@@ -170,7 +170,7 @@ msgstr "DBus로 Fcitx에 연결할 수 없습니다. Fcitx가 실행되고 있�
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr "Fcitx 5 환경설정 변경"
+msgstr "Fcitx 5 구성 변경"
 
 #: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
@@ -277,7 +277,7 @@ msgstr "아래쪽"
 msgid "Edit"
 msgstr "편집"
 
-#: layout/main.cpp:47
+#: layout/main.cpp:46
 msgid "Error"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgstr "%1디렉토리를 생성하지 못했어요"
 #: src/migrator/lib/configmigrator.cpp:89
 #, kde-format
 msgid "Failed to fetch config for %1"
-msgstr "%1의 설정을 가져오지 못했어요"
+msgstr "%1의 구성을 가져오지 못했어요"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
@@ -302,7 +302,7 @@ msgstr "DBus 호출을 시작하지 못했습니다."
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr "Fcitx 5 환경설정"
+msgstr "Fcitx 5 구성"
 
 #: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
@@ -323,7 +323,7 @@ msgstr "Fcitx 5가 실행되고 있지 않습니다."
 #: src/configtool/main.cpp:15 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr "Fcitx 환경설정"
+msgstr "Fcitx 구성"
 
 #: src/migrator/app/taskpage.cpp:235
 msgid "Fcitx Exited."
@@ -357,7 +357,7 @@ msgstr "전처리기"
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
-msgstr "전역 설정"
+msgstr "전역 구성"
 
 #: src/configtool/mainwindow.cpp:46
 msgid "Global Options"
@@ -397,13 +397,13 @@ msgstr "입력기"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Input Method Configuration"
-msgstr "입력기 환경설정"
+msgstr "입력기 구성"
 
 #: layout/main.cpp:28
 msgid "Keyboard <layout>"
 msgstr "키보드 <자판>"
 
-#: layout/main.cpp:57
+#: layout/main.cpp:56
 msgid "Keyboard Layout viewer"
 msgstr "키보드 자판 보기도구"
 
@@ -654,7 +654,7 @@ msgstr "%1 서비스가 DBus에 없습니다."
 msgid "Service %1 still present on DBus."
 msgstr "%1 서비스가 여전히 DBus에 있습니다."
 
-#. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
+#. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
 #, kde-format
@@ -682,7 +682,7 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: layout/main.cpp:48
+#: layout/main.cpp:47
 msgid "This program only works on X11."
 msgstr ""
 
@@ -750,7 +750,7 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"현재 구성된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
+"현재 구성된 입력기가 자판과 맞지 않습니다. 자판 구성을 변경하시겠습니까?"
 
 #: src/lib/configwidgetslib/impage.cpp:271
 msgid ""

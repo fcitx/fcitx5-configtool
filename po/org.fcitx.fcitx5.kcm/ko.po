@@ -4,16 +4,16 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# 이정희 <daemul72@gmail.com>, 2021
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
+# JungHee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-10-17 20:24+0000\n"
+"POT-Creation-Date: 2022-03-01 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Bon Keun Seo <scobyseo@gmail.com>, 2021\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "- %1의 일부 기능 비활성화\n"
 msgid "..."
 msgstr "..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:178
+#: src/kcm/package/contents/ui/ListOption.qml:179
 #: src/kcm/package/contents/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -98,7 +98,7 @@ msgstr "구성하기"
 msgid "Configure Fcitx 5"
 msgstr "Fcitx 5 구성하기"
 
-#: src/kcm/kcm_fcitx5.desktop.in:14
+#: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
 msgstr "입력기 구성하기"
 
@@ -125,7 +125,7 @@ msgstr "현재 그룹이 변경됨"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:21
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 설정을 저장하십시오."
+msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 구성을 저장하십시오."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:120
 #, kde-format
@@ -184,11 +184,11 @@ msgstr "그룹 이름"
 msgid "Group:"
 msgstr "그룹:"
 
-#: src/kcm/kcm_fcitx5.desktop.in:13
+#: src/kcm/kcm_fcitx5.desktop.in:12
 msgid "Input Method"
 msgstr "입력기"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:140
+#: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
 msgid "Key code mode"
 msgstr "키 코드 모드"
@@ -229,7 +229,7 @@ msgstr "현재 언어만 표시(&S)"
 msgid "Re-Enable"
 msgstr "재 활성화"
 
-#: src/kcm/package/contents/ui/ListOption.qml:144
+#: src/kcm/package/contents/ui/ListOption.qml:145
 #: src/kcm/package/contents/ui/main.qml:72
 #, kde-format
 msgid "Remove"
@@ -251,7 +251,7 @@ msgstr "Fcitx 실행"
 msgid "Search..."
 msgstr "검색..."
 
-#: src/kcm/package/contents/ui/ColorOption.qml:40
+#: src/kcm/package/contents/ui/ColorOption.qml:41
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
@@ -291,7 +291,7 @@ msgstr "시스템 자판 선택..."
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:16
 #, kde-format
 msgid "Some config is not saved"
-msgstr "일부 설정이 저장되지 않음"
+msgstr "일부 구성이 저장되지 않음"
 
 #: src/kcm/package/contents/ui/main.qml:193
 #, kde-format
@@ -324,7 +324,7 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"현재 구성된 입력기가 자판과 맞지 않습니다. 자판 설정을 변경하시겠습니까?"
+"현재 구성된 입력기가 자판과 맞지 않습니다. 자판 구성을 변경하시겠습니까?"
 
 #: src/kcm/package/contents/ui/main.qml:294
 #, kde-format
@@ -340,7 +340,7 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:136
+#: src/kcm/package/contents/ui/ListOption.qml:137
 #, kde-format
 msgid "edit"
 msgstr "편집"
