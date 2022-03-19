@@ -8,14 +8,15 @@
 # pan93412 <pan93412@gmail.com>, 2019
 # bruh, 2020
 # Weizhong Yang <zonble@gmail.com>, 2022
+# 菘菘 <rrt467778@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-01-04 20:24+0000\n"
+"POT-Creation-Date: 2022-03-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Weizhong Yang <zonble@gmail.com>, 2022\n"
+"Last-Translator: 菘菘 <rrt467778@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -64,25 +65,25 @@ msgstr "%1："
 
 #: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
-msgstr "套用(&A)"
+msgstr "&套用"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
-msgstr "取消(&C)"
+msgstr "&取消"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr "清除(&C)"
+msgstr "&清除"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "&Close"
-msgstr "關閉 (&C)"
+msgstr "&關閉"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr "下一步(&N) >"
+msgstr "&下一步 >"
 
 #: src/configtool/mainwindow.cpp:57
 #: src/lib/configwidgetslib/configwidget.cpp:204
@@ -90,11 +91,11 @@ msgstr "下一步(&N) >"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
-msgstr "確定(&O)"
+msgstr "&確定"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
-msgstr "重置(&R)"
+msgstr "&重置"
 
 #: src/lib/configwidgetslib/addonselector.cpp:384
 msgctxt "Separator of a comma list"
@@ -578,7 +579,7 @@ msgstr "重新啟動"
 #: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr "還原成預設值(&D)"
+msgstr "還原成預設值"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -611,14 +612,14 @@ msgstr "搜尋輸入法"
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr "選取全部(&A)"
+msgstr "選取全部"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 #, kde-format
 msgid "Select &Font..."
-msgstr "選取字型(&F)"
+msgstr "選取字型"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
@@ -655,12 +656,12 @@ msgstr "服務 %1 不在 DBus 上。"
 msgid "Service %1 still present on DBus."
 msgstr "服務 %1 仍在 DBus 上存在。"
 
-#. i18n: file: src/lib/configwidgetslib/addonselector.ui:70
+#. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
 #, kde-format
 msgid "Show &Advanced options"
-msgstr "顯示進階選項(&A)"
+msgstr "顯示進階選項"
 
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:37
