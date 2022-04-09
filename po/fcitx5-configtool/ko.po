@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
-# JungHee Lee <daemul72@gmail.com>, 2022
+# Junghee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-01 20:24+0000\n"
+"POT-Creation-Date: 2022-04-09 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -131,7 +131,7 @@ msgstr "추가"
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "그룹 추가"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
@@ -231,7 +231,7 @@ msgstr "기본값"
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr ""
+msgstr "그룹 삭제"
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -259,7 +259,7 @@ msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사�
 
 #: src/configtool/mainwindow.cpp:121
 msgid "Do you want to save the changes or discard them?"
-msgstr ""
+msgstr "변경 사항을 저장하시겠습니까 아니면 삭제하시겠습니까?"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -279,7 +279,7 @@ msgstr "편집"
 
 #: layout/main.cpp:46
 msgid "Error"
-msgstr ""
+msgstr "오류"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
@@ -443,7 +443,7 @@ msgstr "언어:"
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr ""
+msgstr "자판"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -512,14 +512,14 @@ msgstr "모듈"
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "아래로 이동"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "위로 이동"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
@@ -684,7 +684,7 @@ msgstr ""
 
 #: layout/main.cpp:47
 msgid "This program only works on X11."
-msgstr ""
+msgstr "이 프로그램은 X11에서만 작동합니다."
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
