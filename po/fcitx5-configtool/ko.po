@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-09 20:24+0000\n"
+"POT-Creation-Date: 2022-04-10 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -170,7 +170,7 @@ msgstr "DBus로 Fcitx에 연결할 수 없습니다. Fcitx가 실행되고 있�
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
-msgstr "Fcitx 5 구성 변경"
+msgstr "Fcitx5 구성 변경"
 
 #: src/lib/configwidgetslib/impage.cpp:270
 msgid "Change Input method to match layout selection."
@@ -190,7 +190,7 @@ msgstr "Fcitx가 여전히 실행 중인지 확인하는 중..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
-msgstr "자세한 내용을 보려면 항목을 클릭하십시오."
+msgstr "자세한 내용을 보려면 항목을 클릭합니다."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:236
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
@@ -302,12 +302,12 @@ msgstr "DBus 호출을 시작하지 못했습니다."
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Fcitx 5 Configuration"
-msgstr "Fcitx 5 구성"
+msgstr "Fcitx5 구성"
 
 #: src/migrator/app/main.cpp:21
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Fcitx 5 Migration Wizard"
-msgstr "Fcitx 5 마이그레이션 마법사"
+msgstr "Fcitx5 마이그레이션 마법사"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -316,7 +316,7 @@ msgstr "Fcitx 5 마이그레이션 마법사"
 #: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr "Fcitx 5가 실행되고 있지 않습니다."
+msgstr "Fcitx5가 실행되고 있지 않습니다."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
@@ -385,7 +385,7 @@ msgstr "Fcitx 4에서 Pinyin 사전 가져오기"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
-msgstr ""
+msgstr "Fcitx 4와 같은 다른 입력기에서 데이터 가져오기"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
@@ -523,7 +523,7 @@ msgstr "위로 이동"
 
 #: src/lib/configlib/model.cpp:97
 msgid "Multilingual"
-msgstr "다중언어"
+msgstr "다국어"
 
 #: src/lib/configwidgetslib/impage.cpp:406
 msgid "New Group"
@@ -550,11 +550,11 @@ msgstr "기타"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr "병음"
+msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr "병음 데이터가 마이그레이션됩니다."
+msgstr "Pinyin 데이터가 마이그레이션됩니다."
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -589,7 +589,7 @@ msgstr "Rime"
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr "Fcitx 5 실행"
+msgstr "Fcitx5 실행"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
@@ -694,8 +694,8 @@ msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
 msgstr ""
-"이 마법사는 기존 사용자 데이터를 Fcitx 4에서 Fcitx 5로 옮기는 것을 도와줄 거"
-"에요."
+"이 마법사는 기존 사용자 데이터를 Fcitx 4에서 Fcitx5로 옮기는 것을 도와줄 거에"
+"요."
 
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format

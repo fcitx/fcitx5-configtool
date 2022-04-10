@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
-# JungHee Lee <daemul72@gmail.com>, 2022
+# Junghee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-03-01 20:24+0000\n"
+"POT-Creation-Date: 2022-04-10 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -96,7 +96,7 @@ msgstr "구성하기"
 #: src/kcm/main.cpp:47
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr "Fcitx 5 구성하기"
+msgstr "Fcitx5 구성하기"
 
 #: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
@@ -125,7 +125,7 @@ msgstr "현재 그룹이 변경됨"
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:21
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 구성을 저장하십시오."
+msgstr "현재 페이지가 아직 저장되지 않았습니다. 먼저 구성을 저장합니다."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:120
 #, kde-format
@@ -150,7 +150,7 @@ msgstr "비어있음"
 #: src/kcm/main.cpp:46
 #, kde-format
 msgid "Fcitx 5"
-msgstr "Fcitx 5"
+msgstr "Fcitx5"
 
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300
