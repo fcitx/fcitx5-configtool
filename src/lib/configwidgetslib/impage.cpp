@@ -22,6 +22,11 @@
 namespace fcitx {
 namespace kcm {
 
+bool isInFlatpak() {
+    static bool inFlatpak = QFile::exists("/.flatpak-info");
+    return inFlatpak;
+}
+
 class IMDelegate : public QStyledItemDelegate {
     Q_OBJECT
 public:
@@ -100,10 +105,16 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
     connect(config_, &IMConfig::needUpdateChanged, ui_->checkUpdateMessage,
             &QWidget::setVisible);
 
-    auto refreshAction = new QAction(_("Update"));
-    connect(refreshAction, &QAction::triggered, this,
-            [this]() { config_->refresh(); });
-    ui_->checkUpdateMessage->addAction(refreshAction);
+    if (isInFlatpak()) {
+        ui_->checkUpdateMessage->setText(
+            _("Found updates to fcitx installation. Do you want to restart "
+              "Fcitx?"));
+    } else {
+        auto refreshAction = new QAction(_("Update"));
+        connect(refreshAction, &QAction::triggered, this,
+                [this]() { config_->refresh(); });
+        ui_->checkUpdateMessage->addAction(refreshAction);
+    }
 
     auto restartAction = new QAction(_("Restart"));
     connect(restartAction, &QAction::triggered, this,
