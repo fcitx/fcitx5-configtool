@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-02-10 20:24+0000\n"
+"POT-Creation-Date: 2022-04-30 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -174,11 +174,11 @@ msgstr "Не удалось соединиться с Fcitx через DBus, з�
 msgid "Change Fcitx 5 Configuration"
 msgstr "Изменить конфигурацию Fcitx 5"
 
-#: src/lib/configwidgetslib/impage.cpp:270
+#: src/lib/configwidgetslib/impage.cpp:281
 msgid "Change Input method to match layout selection."
 msgstr "Измените Метод ввода, чтобы он соответствовал выбранной раскладке."
 
-#: src/lib/configwidgetslib/impage.cpp:348
+#: src/lib/configwidgetslib/impage.cpp:359
 msgid "Change System layout to match input method selection."
 msgstr "Измените раскладку системы в соответствии с выбором метода ввода."
 
@@ -220,7 +220,7 @@ msgstr "Копирование файла %1 в %2"
 msgid "Current Input Method:"
 msgstr "Текущий метод ввода:"
 
-#: src/lib/configwidgetslib/impage.cpp:182
+#: src/lib/configwidgetslib/impage.cpp:193
 msgid "Current group changed"
 msgstr "Текущая группа изменена"
 
@@ -256,7 +256,7 @@ msgstr ""
 "%2%3\n"
 "Вы уверены, что хотите отключить?"
 
-#: src/lib/configwidgetslib/impage.cpp:183
+#: src/lib/configwidgetslib/impage.cpp:194
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "Вы хотите сменить группу? Изменения в текущей группе будут потеряны!"
 
@@ -353,6 +353,10 @@ msgstr ""
 "установленных методов ввода и дополнений? Чтобы обновить уже загруженные "
 "дополнения, необходимо перезапустить fcitx."
 
+#: src/lib/configwidgetslib/impage.cpp:110
+msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
+msgstr ""
+
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "Интерфейс"
@@ -371,7 +375,7 @@ msgstr "Глобальные параметры"
 msgid "Got error: %1 %2"
 msgstr "Получена ошибка: %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:406
+#: src/lib/configwidgetslib/impage.cpp:417
 msgid "Group Name:"
 msgstr "Название группы:"
 
@@ -528,7 +532,7 @@ msgstr "Двигать Вверх"
 msgid "Multilingual"
 msgstr "Многоязычный"
 
-#: src/lib/configwidgetslib/impage.cpp:406
+#: src/lib/configwidgetslib/impage.cpp:417
 msgid "New Group"
 msgstr "Новая группа"
 
@@ -573,7 +577,7 @@ msgstr "Переносятся данные Pinyin."
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/lib/configwidgetslib/impage.cpp:108
+#: src/lib/configwidgetslib/impage.cpp:119
 msgid "Restart"
 msgstr "Перезапустить"
 
@@ -624,12 +628,12 @@ msgstr "Выбрать &шрифт..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:315 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:326 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "Выбрать Раскладку"
 
-#: src/lib/configwidgetslib/impage.cpp:255
+#: src/lib/configwidgetslib/impage.cpp:266
 msgid "Select default layout"
 msgstr "Выберите раскладку по умолчанию"
 
@@ -723,7 +727,7 @@ msgstr "Неизвестно"
 msgid "Up"
 msgstr "Вверх"
 
-#: src/lib/configwidgetslib/impage.cpp:103
+#: src/lib/configwidgetslib/impage.cpp:113
 msgid "Update"
 msgstr "Обновить"
 
@@ -749,7 +753,7 @@ msgstr "Страница Приветствия"
 msgid "Yes"
 msgstr "Да"
 
-#: src/lib/configwidgetslib/impage.cpp:349
+#: src/lib/configwidgetslib/impage.cpp:360
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
@@ -757,7 +761,7 @@ msgstr ""
 "Текущий настроенный метод ввода не соответствует раскладке. Хотите изменить "
 "настройку раскладки?"
 
-#: src/lib/configwidgetslib/impage.cpp:271
+#: src/lib/configwidgetslib/impage.cpp:282
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
