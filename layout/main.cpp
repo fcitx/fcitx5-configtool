@@ -16,9 +16,18 @@
 #include <fcitx-utils/standardpath.h>
 
 int main(int argc, char *argv[]) {
+    setenv("QT_QPA_PLATFORM", "xcb", 1);
+
     QApplication app(argc, argv);
     app.setApplicationName(QLatin1String("kbd-layout-viewer"));
     app.setApplicationVersion(QLatin1String(PROJECT_VERSION));
+
+    if (!QX11Info::isPlatformX11()) {
+        QMessageBox msgBox(QMessageBox::Critical, _("Error"),
+                           _("This program only works on X11."));
+        msgBox.exec();
+        return 1;
+    }
 
     QCommandLineParser parser;
     parser.setApplicationDescription(_("A general keyboard layout viewer"));
@@ -40,13 +49,6 @@ int main(int argc, char *argv[]) {
     }
     if (parser.isSet("variant")) {
         variant = parser.value("variant");
-    }
-
-    if (!QX11Info::isPlatformX11()) {
-        QMessageBox msgBox(QMessageBox::Critical, _("Error"),
-                           _("This program only works on X11."));
-        msgBox.exec();
-        return 1;
     }
 
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
