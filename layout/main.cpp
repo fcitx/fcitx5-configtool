@@ -16,7 +16,7 @@
 #include <fcitx-utils/standardpath.h>
 
 int main(int argc, char *argv[]) {
-    setenv("QT_QPA_PLATFORM", "xcb", 1);
+    qputenv("QT_QPA_PLATFORM", "xcb");
 
     QApplication app(argc, argv);
     app.setApplicationName(QLatin1String("kbd-layout-viewer"));
