@@ -21,6 +21,7 @@ enum {
     FcitxIMUniqueNameRole,
     FcitxIMConfigurableRole,
     FcitxIMLayoutRole,
+    FcitxIMActiveRole,
 };
 
 enum { LanguageType, IMType };

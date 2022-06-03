@@ -390,6 +390,8 @@ QVariant FilteredIMModel::data(const QModelIndex &index, int role) const {
         }
         return QString();
     }
+    case FcitxIMActiveRole:
+        return index.row() > 0 ? QString("active") : QString("inactive");
 
     default:
         return QVariant();
@@ -410,7 +412,8 @@ QHash<int, QByteArray> FilteredIMModel::roleNames() const {
             {FcitxLanguageRole, "languageCode"},
             {FcitxLanguageNameRole, "language"},
             {FcitxIMConfigurableRole, "configurable"},
-            {FcitxIMLayoutRole, "layout"}};
+            {FcitxIMLayoutRole, "layout"},
+            {FcitxIMActiveRole, "active"}};
 }
 
 void FilteredIMModel::filterIMEntryList(

@@ -349,6 +349,13 @@ KCM.ScrollViewKCM {
         enabled: kcm.availability
         model: kcm.imConfig.currentIMModel
 
+        section {
+            property: "active"
+            delegate: Kirigami.ListSectionHeader {
+                text: section == "inactive" ? i18n("Input Method Off") : i18n("Input Method On")
+            }
+        }
+
         delegate: Kirigami.DelegateRecycler {
             sourceComponent: delegateComponent
             width: imList.width
