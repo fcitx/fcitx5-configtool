@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-05-28 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: roxfr <roxfr@outlook.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -369,6 +369,10 @@ msgstr ""
 msgid "Frontend"
 msgstr "Frontal"
 
+#: src/plasmathemegenerator/main.cpp:44
+msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
+
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
@@ -567,6 +571,10 @@ msgstr "&Afficher uniquement la langue actuelle"
 msgid "Other"
 msgstr "Autre"
 
+#: src/plasmathemegenerator/main.cpp:48
+msgid "Output path <output> "
+msgstr ""
+
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "Pinyin"
@@ -574,6 +582,10 @@ msgstr "Pinyin"
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
 msgstr "Les données Pinyin sont migrées."
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "Plasma theme name <name> "
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -702,6 +714,11 @@ msgstr ""
 "mettre<b> Clavier</b>ou <b>Clavier - <i>nom de la disposition</i></b> en "
 "premier lieu."
 
+#: src/plasmathemegenerator/main.cpp:87
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
 #: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr "Ce programme ne fonctionne que sur X11."
@@ -794,6 +811,14 @@ msgstr "groupe"
 #: layout/main.cpp:37
 msgid "layout"
 msgstr "disposition"
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:48
+msgid "output"
+msgstr ""
 
 #: layout/main.cpp:38
 msgid "variant"

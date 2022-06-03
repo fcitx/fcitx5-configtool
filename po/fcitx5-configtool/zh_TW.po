@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-30 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: 菘菘 <rrt467778@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -112,7 +112,7 @@ msgstr "- 停用 %1\n"
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
 
-#: layout/main.cpp:24
+#: layout/main.cpp:33
 msgid "A general keyboard layout viewer"
 msgstr "一般鍵盤佈局檢視器"
 
@@ -282,7 +282,7 @@ msgstr "下"
 msgid "Edit"
 msgstr "編輯"
 
-#: layout/main.cpp:46
+#: layout/main.cpp:26
 msgid "Error"
 msgstr "錯誤"
 
@@ -362,6 +362,10 @@ msgstr ""
 msgid "Frontend"
 msgstr "前端"
 
+#: src/plasmathemegenerator/main.cpp:44
+msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
+
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
@@ -407,19 +411,19 @@ msgstr "輸入法"
 msgid "Input Method Configuration"
 msgstr "輸入法設定"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "Keyboard <layout>"
 msgstr "鍵盤 <layout>"
 
-#: layout/main.cpp:56
+#: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
 msgstr "鍵盤佈局檢視器"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "Keyboard layout <group> (0-3)"
 msgstr "鍵盤配置 <group> (0-3)"
 
-#: layout/main.cpp:29
+#: layout/main.cpp:38
 msgid "Keyboard layout <variant>"
 msgstr "鍵盤配置 <variant>"
 
@@ -554,6 +558,10 @@ msgstr "只顯示目前語言(&S)"
 msgid "Other"
 msgstr "其他"
 
+#: src/plasmathemegenerator/main.cpp:48
+msgid "Output path <output> "
+msgstr ""
+
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "拼音"
@@ -561,6 +569,10 @@ msgstr "拼音"
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
 msgstr "拼音數據已遷移。"
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "Plasma theme name <name> "
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -688,7 +700,12 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
-#: layout/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:87
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
+#: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr "本程式只能在 X11 下執行。"
 
@@ -766,14 +783,22 @@ msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "group"
 msgstr "群組"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "layout"
 msgstr "配置"
 
-#: layout/main.cpp:29
+#: src/plasmathemegenerator/main.cpp:47
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:48
+msgid "output"
+msgstr ""
+
+#: layout/main.cpp:38
 msgid "variant"
 msgstr "變體"

@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
-# JungHee Lee <daemul72@gmail.com>, 2022
+# Junghee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-30 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
+"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -108,7 +108,7 @@ msgstr "-  %1 비활성화\n"
 msgid "- Disable some features in %1\n"
 msgstr "- %1의 일부 기능 비활성화\n"
 
-#: layout/main.cpp:24
+#: layout/main.cpp:33
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 자판 보기도구"
 
@@ -277,7 +277,7 @@ msgstr "아래쪽"
 msgid "Edit"
 msgstr "편집"
 
-#: layout/main.cpp:46
+#: layout/main.cpp:26
 msgid "Error"
 msgstr "오류"
 
@@ -358,6 +358,10 @@ msgstr ""
 msgid "Frontend"
 msgstr "전처리기"
 
+#: src/plasmathemegenerator/main.cpp:44
+msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
+
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
@@ -403,19 +407,19 @@ msgstr "입력기"
 msgid "Input Method Configuration"
 msgstr "입력기 구성"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "Keyboard <layout>"
 msgstr "키보드 <자판>"
 
-#: layout/main.cpp:56
+#: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
 msgstr "키보드 자판 보기도구"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "Keyboard layout <group> (0-3)"
 msgstr "키보드 자판 <그룹> (0-3)"
 
-#: layout/main.cpp:29
+#: layout/main.cpp:38
 msgid "Keyboard layout <variant>"
 msgstr "키보드 자판 <변형>"
 
@@ -552,6 +556,10 @@ msgstr "현재 언어만 표시(&S)"
 msgid "Other"
 msgstr "기타"
 
+#: src/plasmathemegenerator/main.cpp:48
+msgid "Output path <output> "
+msgstr ""
+
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "Pinyin"
@@ -559,6 +567,10 @@ msgstr "Pinyin"
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
 msgstr "Pinyin 데이터가 마이그레이션됩니다."
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "Plasma theme name <name> "
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -686,7 +698,12 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: layout/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:87
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
+#: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr "이 프로그램은 X11에서만 작동합니다."
 
@@ -769,14 +786,22 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "group"
 msgstr "그룹"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "layout"
 msgstr "자판"
 
-#: layout/main.cpp:29
+#: src/plasmathemegenerator/main.cpp:47
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:48
+msgid "output"
+msgstr ""
+
+#: layout/main.cpp:38
 msgid "variant"
 msgstr "변형"

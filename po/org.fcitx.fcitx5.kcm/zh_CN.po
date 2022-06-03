@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2021-03-20 14:47+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -20,50 +20,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/kcm/package/contents/ui/ConfigGroup.qml:76
+#: src/kcm/package/contents/ui/ConfigGroup.qml:67
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
-#: src/kcm/package/contents/ui/AddonPage.qml:53
+#: src/kcm/package/contents/ui/AddonPage.qml:98
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "，"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:63
+#: src/kcm/package/contents/ui/AddonPage.qml:108
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 禁用 %1\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:73
+#: src/kcm/package/contents/ui/AddonPage.qml:118
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 禁用 %1 中的某些功能\n"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:50
+#: src/kcm/package/contents/ui/KeyOption.qml:49
 #, kde-format
 msgid "..."
 msgstr "..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:188
-#: src/kcm/package/contents/ui/AddIMPage.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:179
+#: src/kcm/package/contents/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
 msgstr "添加"
 
-#: src/kcm/package/contents/ui/main.qml:288
+#: src/kcm/package/contents/ui/main.qml:112
 #, kde-format
 msgid "Add Group"
 msgstr "添加分组"
 
-#. object properties {{{
-#: src/kcm/package/contents/ui/AddIMPage.qml:15
+#: src/kcm/package/contents/ui/AddIMPage.qml:14
 #, kde-format
 msgid "Add Input Method"
 msgstr "添加输入法"
 
-#: src/kcm/package/contents/ui/main.qml:211
+#: src/kcm/package/contents/ui/main.qml:216
 #, kde-format
 msgid "Add Input Method..."
 msgstr "添加输入法..."
@@ -78,17 +77,17 @@ msgstr "附加组件"
 msgid "Author"
 msgstr "作者"
 
-#: src/kcm/package/contents/ui/main.qml:54
+#: src/kcm/package/contents/ui/main.qml:226
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:37
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:73
 #, kde-format
 msgid "Clear"
 msgstr "清空"
 
-#: src/kcm/package/contents/ui/main.qml:233
+#: src/kcm/package/contents/ui/main.qml:58
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -98,16 +97,16 @@ msgstr "配置"
 msgid "Configure Fcitx 5"
 msgstr "配置 Fcitx 5"
 
-#: src/kcm/kcm_fcitx5.desktop.in:14
+#: src/kcm/kcm_fcitx5.desktop.in:13
 msgid "Configure Input Method"
 msgstr "配置输入法"
 
-#: src/kcm/package/contents/ui/main.qml:203
+#: src/kcm/package/contents/ui/main.qml:207
 #, kde-format
 msgid "Configure addons..."
 msgstr "配置附加组件..."
 
-#: src/kcm/package/contents/ui/main.qml:197
+#: src/kcm/package/contents/ui/main.qml:201
 #, kde-format
 msgid "Configure global options..."
 msgstr "配置全局选项..."
@@ -117,17 +116,17 @@ msgstr "配置全局选项..."
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Copyright 2017 Xuetian Weng"
 
-#: src/kcm/package/contents/ui/main.qml:346
+#: src/kcm/package/contents/ui/main.qml:147
 #, kde-format
 msgid "Current group changed"
 msgstr "当前分组已修改"
 
-#: src/kcm/package/contents/ui/SaveWarningDialog.qml:25
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:21
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
 msgstr "当前页未保存。请先保存配置。"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:75
+#: src/kcm/package/contents/ui/AddonPage.qml:120
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -138,12 +137,12 @@ msgstr ""
 "%2\n"
 "确认要禁用它吗？"
 
-#: src/kcm/package/contents/ui/main.qml:370
+#: src/kcm/package/contents/ui/main.qml:165
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:52
+#: src/kcm/package/contents/ui/KeyOption.qml:51
 #, kde-format
 msgid "Empty"
 msgstr "空"
@@ -153,13 +152,13 @@ msgstr "空"
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
-#: src/kcm/package/contents/ui/main.qml:105
-#: src/kcm/package/contents/ui/main.qml:124
+#: src/kcm/package/contents/ui/main.qml:281
+#: src/kcm/package/contents/ui/main.qml:300
 #, kde-format
 msgid "Fix"
 msgstr "修复"
 
-#: src/kcm/package/contents/ui/main.qml:74
+#: src/kcm/package/contents/ui/main.qml:246
 #, kde-format
 msgid ""
 "Found updates to fcitx installation. Do you want to check for newly "
@@ -169,141 +168,151 @@ msgstr ""
 "发现了 Fcitx 安装的更新。是否想要检查新安装的输入法和附加组件？如果需要更新已"
 "经加载的附加组件，Fcitx 需要重新启动。"
 
-#: src/kcm/package/contents/ui/main.qml:199
+#: src/kcm/package/contents/ui/main.qml:203
 #, kde-format
 msgid "Global Options"
 msgstr "全局选项"
 
-#: src/kcm/package/contents/ui/main.qml:310
+#: src/kcm/package/contents/ui/main.qml:92
 #, kde-format
 msgid "Group Name"
 msgstr "分组名称"
 
-#: src/kcm/package/contents/ui/main.qml:135
+#: src/kcm/package/contents/ui/main.qml:312
 #, kde-format
 msgid "Group:"
 msgstr "分组："
 
-#: src/kcm/kcm_fcitx5.desktop.in:13
+#: src/kcm/kcm_fcitx5.desktop.in:12
 msgid "Input Method"
 msgstr "输入法"
 
-#: src/kcm/package/contents/ui/KeyOption.qml:160
+#: src/kcm/package/contents/ui/main.qml:355
+#, kde-format
+msgid "Input Method Off"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:355
+#, kde-format
+msgid "Input Method On"
+msgstr ""
+
+#: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
 msgid "Key code mode"
 msgstr "扫描码模式"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:71
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:32
 #, kde-format
 msgid "Language:"
 msgstr "语言："
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:88
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:46
 #, kde-format
 msgid "Layout:"
 msgstr "布局："
 
-#: src/kcm/package/contents/ui/main.qml:309
+#: src/kcm/package/contents/ui/main.qml:91
 #, kde-format
 msgid "Name:"
 msgstr "名称："
 
-#: src/kcm/package/contents/ui/ListOption.qml:39
+#: src/kcm/package/contents/ui/ListOption.qml:53
 #, kde-format
 msgid "No"
 msgstr "否"
 
-#: src/kcm/package/contents/ui/main.qml:295
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:44
+#: src/kcm/package/contents/ui/main.qml:101
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:82
 #, kde-format
 msgid "Ok"
 msgstr "确定"
 
-#: src/kcm/package/contents/ui/AddIMPage.qml:44
+#: src/kcm/package/contents/ui/AddIMPage.qml:29
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:111
+#: src/kcm/package/contents/ui/AddonPage.qml:54
 #, kde-format
 msgid "Re-Enable"
 msgstr "重新启用"
 
-#: src/kcm/package/contents/ui/ListOption.qml:131
-#: src/kcm/package/contents/ui/main.qml:252
+#: src/kcm/package/contents/ui/ListOption.qml:145
+#: src/kcm/package/contents/ui/main.qml:72
 #, kde-format
 msgid "Remove"
 msgstr "移除"
 
-#: src/kcm/package/contents/ui/main.qml:86
+#: src/kcm/package/contents/ui/main.qml:263
 #, kde-format
 msgid "Restart"
 msgstr "重启"
 
-#: src/kcm/package/contents/ui/main.qml:58
+#: src/kcm/package/contents/ui/main.qml:234
 #, kde-format
 msgid "Run Fcitx"
 msgstr "运行 Fcitx"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:124
-#: src/kcm/package/contents/ui/AddIMPage.qml:38
+#: src/kcm/package/contents/ui/AddonPage.qml:67
+#: src/kcm/package/contents/ui/AddIMPage.qml:59
 #, kde-format
 msgid "Search..."
 msgstr "搜索..."
 
-#: src/kcm/package/contents/ui/ColorOption.qml:39
+#: src/kcm/package/contents/ui/ColorOption.qml:41
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
 msgstr "选择颜色"
 
-#: src/kcm/package/contents/ui/FontOption.qml:37
+#: src/kcm/package/contents/ui/FontOption.qml:35
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
 msgstr "选择字体"
 
-#: src/kcm/package/contents/ui/main.qml:241
+#: src/kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgid "Select Layout"
 msgstr "选择布局"
 
-#: src/kcm/package/contents/ui/main.qml:245
+#: src/kcm/package/contents/ui/main.qml:68
 #, kde-format
 msgid "Select layout for %1"
 msgstr "选择 %1 的布局"
 
-#: src/kcm/package/contents/ui/main.qml:183
+#: src/kcm/package/contents/ui/main.qml:184
 #, kde-format
 msgid "Select system keyboard layout..."
 msgstr "选择系统键盘布局..."
 
-#: src/kcm/package/contents/ui/main.qml:177
+#: src/kcm/package/contents/ui/main.qml:180
 #, kde-format
 msgid "Select system layout for group %1"
 msgstr "选择分组 %1 的系统布局"
 
-#: src/kcm/package/contents/ui/main.qml:174
+#: src/kcm/package/contents/ui/main.qml:177
 #, kde-format
 msgid "Select system layout..."
 msgstr "选择系统布局..."
 
-#: src/kcm/package/contents/ui/SaveWarningDialog.qml:13
+#: src/kcm/package/contents/ui/SaveWarningDialog.qml:16
 #, kde-format
 msgid "Some config is not saved"
 msgstr "一些配置未保存"
 
-#: src/kcm/package/contents/ui/main.qml:191
+#: src/kcm/package/contents/ui/main.qml:193
 #, kde-format
 msgid "Test Input"
 msgstr "测试输入"
 
-#: src/kcm/package/contents/ui/main.qml:78
+#: src/kcm/package/contents/ui/main.qml:254
 #, kde-format
 msgid "Update"
 msgstr "更新"
 
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:104
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:61
 #, kde-format
 msgid "Variant:"
 msgstr "变体："
@@ -313,19 +322,19 @@ msgstr "变体："
 msgid "Xuetian Weng"
 msgstr "翁学天"
 
-#: src/kcm/package/contents/ui/ListOption.qml:39
+#: src/kcm/package/contents/ui/ListOption.qml:53
 #, kde-format
 msgid "Yes"
 msgstr "是"
 
-#: src/kcm/package/contents/ui/main.qml:102
+#: src/kcm/package/contents/ui/main.qml:275
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
 
-#: src/kcm/package/contents/ui/main.qml:121
+#: src/kcm/package/contents/ui/main.qml:294
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
@@ -333,12 +342,12 @@ msgid ""
 msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
-#: src/kcm/package/contents/ui/ListOption.qml:73
+#: src/kcm/package/contents/ui/ListOption.qml:84
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:124
+#: src/kcm/package/contents/ui/ListOption.qml:137
 #, kde-format
 msgid "edit"
 msgstr "编辑"

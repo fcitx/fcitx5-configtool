@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-30 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 "Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
@@ -107,7 +107,7 @@ msgstr ""
 msgid "- Disable some features in %1\n"
 msgstr ""
 
-#: layout/main.cpp:24
+#: layout/main.cpp:33
 msgid "A general keyboard layout viewer"
 msgstr ""
 
@@ -274,7 +274,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: layout/main.cpp:46
+#: layout/main.cpp:26
 msgid "Error"
 msgstr ""
 
@@ -352,6 +352,10 @@ msgstr ""
 msgid "Frontend"
 msgstr "ממשק גרפי"
 
+#: src/plasmathemegenerator/main.cpp:44
+msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
+
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
@@ -397,19 +401,19 @@ msgstr ""
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "Keyboard <layout>"
 msgstr ""
 
-#: layout/main.cpp:56
+#: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
 msgstr ""
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "Keyboard layout <group> (0-3)"
 msgstr ""
 
-#: layout/main.cpp:29
+#: layout/main.cpp:38
 msgid "Keyboard layout <variant>"
 msgstr ""
 
@@ -544,12 +548,20 @@ msgstr ""
 msgid "Other"
 msgstr "שונות"
 
+#: src/plasmathemegenerator/main.cpp:48
+msgid "Output path <output> "
+msgstr ""
+
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "פיניין"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "Plasma theme name <name> "
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
@@ -676,7 +688,12 @@ msgid ""
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 
-#: layout/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:87
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
+#: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr ""
 
@@ -754,14 +771,22 @@ msgstr ""
 msgid "[%1]"
 msgstr ""
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "group"
 msgstr ""
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "layout"
 msgstr ""
 
-#: layout/main.cpp:29
+#: src/plasmathemegenerator/main.cpp:47
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:48
+msgid "output"
+msgstr ""
+
+#: layout/main.cpp:38
 msgid "variant"
 msgstr ""

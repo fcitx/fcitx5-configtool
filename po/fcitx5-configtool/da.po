@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-04-30 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -107,7 +107,7 @@ msgstr "- Deaktivér %1\n"
 msgid "- Disable some features in %1\n"
 msgstr "- Deaktivér nogle funktionaliteter i %1\n"
 
-#: layout/main.cpp:24
+#: layout/main.cpp:33
 msgid "A general keyboard layout viewer"
 msgstr "En generel tastaturlayout-fremviser"
 
@@ -277,7 +277,7 @@ msgstr "Ned"
 msgid "Edit"
 msgstr "Rediger"
 
-#: layout/main.cpp:46
+#: layout/main.cpp:26
 msgid "Error"
 msgstr ""
 
@@ -355,6 +355,10 @@ msgstr ""
 msgid "Frontend"
 msgstr "Frontend"
 
+#: src/plasmathemegenerator/main.cpp:44
+msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
+
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
 msgid "Global Config"
@@ -400,19 +404,19 @@ msgstr "Inputmetode"
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "Keyboard <layout>"
 msgstr "Tastatur <layout>"
 
-#: layout/main.cpp:56
+#: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
 msgstr "Tastaturlayout-fremviser"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Tastaturlayout <gruppe> (0-3)"
 
-#: layout/main.cpp:29
+#: layout/main.cpp:38
 msgid "Keyboard layout <variant>"
 msgstr "Tastaturlayout <variant>"
 
@@ -548,6 +552,10 @@ msgstr "&Vis kun nuværende sprog"
 msgid "Other"
 msgstr "Andre"
 
+#: src/plasmathemegenerator/main.cpp:48
+msgid "Output path <output> "
+msgstr ""
+
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "Pinyin"
@@ -555,6 +563,10 @@ msgstr "Pinyin"
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
 msgstr "Pinyin-data er overført."
+
+#: src/plasmathemegenerator/main.cpp:47
+msgid "Plasma theme name <name> "
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -682,7 +694,12 @@ msgstr ""
 "Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
 "stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
 
-#: layout/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:87
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
+#: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr ""
 
@@ -766,14 +783,22 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:36
 msgid "group"
 msgstr "gruppe"
 
-#: layout/main.cpp:28
+#: layout/main.cpp:37
 msgid "layout"
 msgstr "layout"
 
-#: layout/main.cpp:29
+#: src/plasmathemegenerator/main.cpp:47
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:48
+msgid "output"
+msgstr ""
+
+#: layout/main.cpp:38
 msgid "variant"
 msgstr "variant"

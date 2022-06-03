@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-05-23 20:24+0000\n"
+"POT-Creation-Date: 2022-06-03 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Adolfo Jayme-Barrientos, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/fcitx/teams/12005/es/)\n"
@@ -183,6 +183,16 @@ msgstr "Grupo:"
 #: src/kcm/kcm_fcitx5.desktop.in:12
 msgid "Input Method"
 msgstr "Método de entrada"
+
+#: src/kcm/package/contents/ui/main.qml:355
+#, kde-format
+msgid "Input Method Off"
+msgstr ""
+
+#: src/kcm/package/contents/ui/main.qml:355
+#, kde-format
+msgid "Input Method On"
+msgstr ""
 
 #: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
