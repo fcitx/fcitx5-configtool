@@ -70,6 +70,7 @@ int main(int argc, char *argv[]) {
                              .height();
     const int smallSpacing =
         qMax(2, (gridUnit / 4)); // 1/4 of gridUnit, at least 2
+    const qreal textMargin = smallSpacing / 2.0f;
     std::unique_ptr<Plasma::Theme> theme;
     if (parser.isSet("theme")) {
         theme = std::make_unique<Plasma::Theme>(parser.value("theme"));
@@ -139,16 +140,11 @@ int main(int argc, char *argv[]) {
         bgBottom += shadowBottom;
         background.save(dir.filePath("panel.png"));
 
-        const int textMargin = qRound(smallSpacing / 2.0f);
-        inputPanel["Spacing"] = std::to_string(textMargin);
+        menu["Spacing"] = std::to_string(textMargin);
         setMarginsToConfig(inputPanel, "ContentMargin", bgLeft, bgTop, bgRight,
                            bgBottom);
         setMarginsToConfig(menu, "ContentMargin", bgLeft, bgTop, bgRight,
                            bgBottom);
-        setMarginsToConfig(inputPanel, "TextMargin", textMargin, textMargin,
-                           textMargin, textMargin);
-        setMarginsToConfig(menu, "TextMargin", textMargin, textMargin,
-                           textMargin, textMargin);
         setMarginsToConfig(inputPanel, "ShadowMargin", shadowLeft, shadowTop,
                            shadowRight, shadowBottom);
         inputPanel["Background"]["Image"] = "panel.png";
@@ -172,12 +168,20 @@ int main(int argc, char *argv[]) {
         highlightSvg.framePixmap().save(dir.filePath("highlight.png"));
         qreal bgLeft = 0, bgRight = 0, bgTop = 0, bgBottom = 0;
         highlightSvg.getMargins(bgLeft, bgTop, bgRight, bgBottom);
+        bgLeft = qMax(textMargin, bgLeft);
+        bgTop = qMax(textMargin, bgTop);
+        bgRight = qMax(textMargin, bgRight);
+        bgBottom = qMax(textMargin, bgBottom);
 
         inputPanel["Highlight"]["Image"] = "highlight.png";
         menu["Highlight"]["Image"] = "highlight.png";
         setMarginsToConfig(inputPanel["Highlight"], "Margin", bgLeft, bgTop,
                            bgRight, bgBottom);
         setMarginsToConfig(menu["Highlight"], "Margin", bgLeft, bgTop, bgRight,
+                           bgBottom);
+        setMarginsToConfig(inputPanel, "TextMargin", bgLeft, bgTop + textMargin,
+                           bgRight, bgBottom + textMargin);
+        setMarginsToConfig(menu, "TextMargin", bgLeft, bgTop, bgRight,
                            bgBottom);
     }
 
