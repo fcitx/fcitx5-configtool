@@ -8,3 +8,7 @@ if (ENABLE_CONFIG_QT)
 endif()
 
 add_subdirectory(migrator)
+
+if (ENABLE_KCM)
+    add_subdirectory(plasmathemegenerator)
+endif()

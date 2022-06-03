@@ -42,6 +42,7 @@ if (ENABLE_KCM)
     find_package(KF5Declarative REQUIRED)
     find_package(KF5Kirigami2 5.68 REQUIRED)
     find_package(XKBCommon REQUIRED COMPONENTS XKBCommon)
+    find_package(KF5Plasma REQUIRED)
 
     if (KF5Kirigami2_VERSION VERSION_LESS 5.76)
         set(DISABLE_UNDER_KIRIGAMI2_5_76 "//Needs Kirigami2 5.76 ")
