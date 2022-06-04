@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-04 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -347,7 +347,7 @@ msgstr ""
 msgid "Frontend"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:44
+#: src/plasmathemegenerator/main.cpp:45
 msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
@@ -543,7 +543,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
 msgstr ""
 
@@ -555,7 +555,7 @@ msgstr ""
 msgid "Pinyin data is migrated."
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -683,7 +683,7 @@ msgid ""
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -774,11 +774,11 @@ msgstr ""
 msgid "layout"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "name"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "output"
 msgstr ""
 
