@@ -8,6 +8,7 @@
 #include <Plasma/FrameSvg>
 #include <Plasma/Theme>
 #include <QCommandLineParser>
+#include <QDebug>
 #include <QDir>
 #include <QPainter>
 #include <fcitx-config/iniparser.h>
