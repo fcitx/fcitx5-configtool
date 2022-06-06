@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-06 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: roxfr <roxfr@outlook.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -369,9 +369,11 @@ msgstr ""
 msgid "Frontend"
 msgstr "Frontal"
 
-#: src/plasmathemegenerator/main.cpp:44
+#: src/plasmathemegenerator/main.cpp:45
 msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
+"Générer un thème d'interface utilisateur Fcitx5 Classic basé sur le thème "
+"Plasma"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
@@ -571,9 +573,9 @@ msgstr "&Afficher uniquement la langue actuelle"
 msgid "Other"
 msgstr "Autre"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
-msgstr ""
+msgstr "Chemin de sortie <output>"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
@@ -583,9 +585,9 @@ msgstr "Pinyin"
 msgid "Pinyin data is migrated."
 msgstr "Les données Pinyin sont migrées."
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Nom du thème Plasma <name>"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -714,10 +716,10 @@ msgstr ""
 "mettre<b> Clavier</b>ou <b>Clavier - <i>nom de la disposition</i></b> en "
 "premier lieu."
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "Thème généré à partir du thème Plasma %1"
 
 #: layout/main.cpp:27
 msgid "This program only works on X11."
@@ -812,13 +814,13 @@ msgstr "groupe"
 msgid "layout"
 msgstr "disposition"
 
-#: src/plasmathemegenerator/main.cpp:47
-msgid "name"
-msgstr ""
-
 #: src/plasmathemegenerator/main.cpp:48
+msgid "name"
+msgstr "nom"
+
+#: src/plasmathemegenerator/main.cpp:49
 msgid "output"
-msgstr ""
+msgstr "sortie"
 
 #: layout/main.cpp:38
 msgid "variant"
