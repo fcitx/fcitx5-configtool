@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     app.setApplicationVersion(QLatin1String(PROJECT_VERSION));
     QCommandLineParser parser;
     parser.setApplicationDescription(
-        _("Generatr Fcitx 5 Classic UI Theme based on Plasma theme"));
+        _("Generate Fcitx 5 Classic UI Theme based on Plasma theme"));
     parser.addHelpOption();
     parser.addOptions(
         {{{"t", "theme"}, _("Plasma theme name <name> "), _("name")},
