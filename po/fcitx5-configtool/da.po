@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -355,8 +355,8 @@ msgstr ""
 msgid "Frontend"
 msgstr "Frontend"
 
-#: src/plasmathemegenerator/main.cpp:44
-msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+#: src/plasmathemegenerator/main.cpp:45
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
 #. namespace
@@ -552,7 +552,7 @@ msgstr "&Vis kun nuværende sprog"
 msgid "Other"
 msgstr "Andre"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
 msgstr ""
 
@@ -564,7 +564,7 @@ msgstr "Pinyin"
 msgid "Pinyin data is migrated."
 msgstr "Pinyin-data er overført."
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -694,7 +694,7 @@ msgstr ""
 "Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
 "stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -791,11 +791,11 @@ msgstr "gruppe"
 msgid "layout"
 msgstr "layout"
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "name"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "output"
 msgstr ""
 

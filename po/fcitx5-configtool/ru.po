@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-04 20:24+0000\n"
+"POT-Creation-Date: 2022-06-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -362,10 +362,8 @@ msgid "Frontend"
 msgstr "Интерфейс"
 
 #: src/plasmathemegenerator/main.cpp:45
-msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
-"Создать классическую тему пользовательского интерфейса Fcitx5 на основе "
-"Plasma theme"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45

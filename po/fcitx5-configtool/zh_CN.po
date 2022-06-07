@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
@@ -358,8 +358,8 @@ msgstr "发现 Fcitx 已更新。是否要重新启动 Fcitx？"
 msgid "Frontend"
 msgstr "前端"
 
-#: src/plasmathemegenerator/main.cpp:44
-msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+#: src/plasmathemegenerator/main.cpp:45
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
 #. namespace
@@ -554,7 +554,7 @@ msgstr "仅显示当前语言(&S)"
 msgid "Other"
 msgstr "其它"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
 msgstr ""
 
@@ -566,7 +566,7 @@ msgstr "拼音"
 msgid "Pinyin data is migrated."
 msgstr "拼音数据已迁移。"
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -696,7 +696,7 @@ msgstr ""
 "第一个输入法将为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称</"
 "i></b>放在第一位。"
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -788,11 +788,11 @@ msgstr "分组"
 msgid "layout"
 msgstr "布局"
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "name"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "output"
 msgstr ""
 

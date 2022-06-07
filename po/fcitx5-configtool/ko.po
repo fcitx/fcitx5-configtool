@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -358,8 +358,8 @@ msgstr ""
 msgid "Frontend"
 msgstr "전처리기"
 
-#: src/plasmathemegenerator/main.cpp:44
-msgid "Generatr Fcitx 5 Classic UI Theme based on Plasma theme"
+#: src/plasmathemegenerator/main.cpp:45
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
 #. namespace
@@ -556,7 +556,7 @@ msgstr "현재 언어만 표시(&S)"
 msgid "Other"
 msgstr "기타"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr "Pinyin"
 msgid "Pinyin data is migrated."
 msgstr "Pinyin 데이터가 마이그레이션됩니다."
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -698,7 +698,7 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -794,11 +794,11 @@ msgstr "그룹"
 msgid "layout"
 msgstr "자판"
 
-#: src/plasmathemegenerator/main.cpp:47
+#: src/plasmathemegenerator/main.cpp:48
 msgid "name"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:49
 msgid "output"
 msgstr ""
 
