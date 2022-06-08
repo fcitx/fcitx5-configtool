@@ -4,14 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2021
+# rocka, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-08 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
+"Last-Translator: rocka, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -190,12 +191,12 @@ msgstr "输入法"
 #: src/kcm/package/contents/ui/main.qml:355
 #, kde-format
 msgid "Input Method Off"
-msgstr ""
+msgstr "输入法关闭"
 
 #: src/kcm/package/contents/ui/main.qml:355
 #, kde-format
 msgid "Input Method On"
-msgstr ""
+msgstr "输入法开启"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
