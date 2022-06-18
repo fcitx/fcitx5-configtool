@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-07 20:24+0000\n"
+"POT-Creation-Date: 2022-06-18 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -355,6 +355,7 @@ msgstr ""
 #: src/lib/configwidgetslib/impage.cpp:110
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
+"Fcitx インストールのアップデートが見つかりました。Fcitx を再起動しますか？"
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
@@ -362,7 +363,7 @@ msgstr "フロントエンド"
 
 #: src/plasmathemegenerator/main.cpp:45
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
+msgstr "Plasma テーマに基づいて Fcitx 5 クラシック UI テーマを生成する"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
@@ -560,7 +561,7 @@ msgstr "その他"
 
 #: src/plasmathemegenerator/main.cpp:49
 msgid "Output path <output> "
-msgstr ""
+msgstr "出力パス <output>"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
@@ -572,7 +573,7 @@ msgstr "ピンインデータが移行されます。"
 
 #: src/plasmathemegenerator/main.cpp:48
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Plasma テーマ名 <name>"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -704,7 +705,7 @@ msgstr ""
 #: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "Plasma テーマ %1 から生成されたテーマ"
 
 #: layout/main.cpp:27
 msgid "This program only works on X11."
@@ -800,11 +801,11 @@ msgstr "レイアウト"
 
 #: src/plasmathemegenerator/main.cpp:48
 msgid "name"
-msgstr ""
+msgstr "名前"
 
 #: src/plasmathemegenerator/main.cpp:49
 msgid "output"
-msgstr ""
+msgstr "出力"
 
 #: layout/main.cpp:38
 msgid "variant"
