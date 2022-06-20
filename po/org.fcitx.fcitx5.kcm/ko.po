@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-06-20 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -191,12 +191,12 @@ msgstr "입력기"
 #: src/kcm/package/contents/ui/main.qml:355
 #, kde-format
 msgid "Input Method Off"
-msgstr ""
+msgstr "입력기 끔"
 
 #: src/kcm/package/contents/ui/main.qml:355
 #, kde-format
 msgid "Input Method On"
-msgstr ""
+msgstr "입력기 켬"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
