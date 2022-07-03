@@ -5,6 +5,7 @@
  *
  */
 #include "config.h"
+#include <KIconLoader>
 #include <Plasma/FrameSvg>
 #include <Plasma/Theme>
 #include <QCommandLineParser>
@@ -16,6 +17,7 @@
 #include <fcitx-config/rawconfig.h>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/i18n.h>
+#include <fcitx-utils/standardpath.h>
 #include <fcntl.h>
 #include <memory>
 #include <qmath.h>
@@ -39,6 +41,20 @@ void setMarginsToConfig(fcitx::RawConfig &config, const std::string &name,
     subConfig["Top"] = std::to_string(qRound(top));
     subConfig["Right"] = std::to_string(qRound(right));
     subConfig["Bottom"] = std::to_string(qRound(bottom));
+}
+
+template <typename ImageType>
+bool safeSaveImage(const ImageType &image, const QString &path) {
+    return fcitx::StandardPath::global().safeSave(
+        fcitx::StandardPath::Type::Data, path.toLocal8Bit().constData(),
+        [&image](int fd) {
+            QFile file;
+            if (!file.open(fd, QIODevice::WriteOnly)) {
+                qDebug() << "FAILED TO OPEN QFILE";
+                return false;
+            }
+            return image.save(&file, "png");
+        });
 }
 
 } // namespace
@@ -188,7 +204,7 @@ public:
             bgTop += shadowTop;
             bgRight += shadowRight;
             bgBottom += shadowBottom;
-            if (!background.save(dir.filePath("panel.png"))) {
+            if (!safeSaveImage(background, dir.filePath("panel.png"))) {
                 return false;
             }
 
@@ -217,8 +233,8 @@ public:
                 highlightSvg.setElementPrefix("selected");
             }
             highlightSvg.resizeFrame(QSize(200, 200));
-            if (!highlightSvg.framePixmap().save(
-                    dir.filePath("highlight.png"))) {
+            if (!safeSaveImage(highlightSvg.framePixmap(),
+                               dir.filePath("highlight.png"))) {
                 return false;
             }
             qreal bgLeft = 0, bgRight = 0, bgTop = 0, bgBottom = 0;
@@ -243,44 +259,52 @@ public:
 
         {
             Plasma::Svg icon;
+            icon.setContainsMultipleImages(true);
             icon.setTheme(theme_.get());
             icon.setImagePath("widgets/arrows");
+            icon.resize(KIconLoader::SizeSmallMedium,
+                        KIconLoader::SizeSmallMedium);
             if (icon.hasElement("left-arrow") &&
                 icon.hasElement("right-arrow")) {
                 inputPanel["PrevPage/Image"] = "prev.png";
-                if (!icon.pixmap("left-arrow").save(dir.filePath("prev.png"))) {
+                if (!safeSaveImage(icon.pixmap("left-arrow"),
+                                   dir.filePath("prev.png"))) {
                     return false;
                 }
                 inputPanel["NextPage/Image"] = "next.png";
-                if (!icon.pixmap("right-arrow")
-                         .save(dir.filePath("next.png"))) {
+                if (!safeSaveImage(icon.pixmap("right-arrow"),
+                                   dir.filePath("next.png"))) {
                     return false;
                 }
             }
+            icon.resize(KIconLoader::SizeSmall, KIconLoader::SizeSmall);
             if (icon.hasElement("right-arrow")) {
                 menu["SubMenu/Image"] = "arrow.png";
-                if (!icon.pixmap("right-arrow")
-                         .save(dir.filePath("arrow.png"))) {
+                if (!safeSaveImage(icon.pixmap("right-arrow"),
+                                   dir.filePath("arrow.png"))) {
                     return false;
                 }
             }
 
             Plasma::Svg radio;
+            radio.setContainsMultipleImages(true);
             radio.setTheme(theme_.get());
             radio.setImagePath("widgets/checkmarks");
+            radio.resize(KIconLoader::SizeSmall, KIconLoader::SizeSmall);
             if (radio.hasElement("radiobutton")) {
                 menu["CheckBox/Image"] = "radio.png";
-                if (!radio.pixmap("radiobutton")
-                         .save(dir.filePath("radio.png"))) {
+                if (!safeSaveImage(radio.pixmap("radiobutton"),
+                                   dir.filePath("radio.png"))) {
                     return false;
                 }
             }
             Plasma::Svg line;
+            line.setContainsMultipleImages(true);
             line.setTheme(theme_.get());
             line.setImagePath("widgets/line");
             if (line.hasElement("horizontal-line")) {
-                if (!line.pixmap("horizontal-line")
-                         .save(dir.filePath("line.png"))) {
+                if (!safeSaveImage(line.pixmap("horizontal-line"),
+                                   dir.filePath("line.png"))) {
                     return false;
                 }
                 menu["Separator/Image"] = "line.png";
