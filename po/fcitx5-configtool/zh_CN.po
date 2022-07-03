@@ -4,16 +4,16 @@
 #
 # Translators:
 # wwj402 <wwj402@gmail.com>, 2021
-# csslayer <wengxt@gmail.com>, 2022
 # rocka, 2022
+# csslayer <wengxt@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-03 15:41+0000\n"
+"POT-Creation-Date: 2022-07-03 15:55+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: rocka, 2022\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -341,7 +341,7 @@ msgstr "Fcitx 已启动。"
 
 #: src/plasmathemegenerator/main.cpp:78
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "文件描述符<fd>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
@@ -787,7 +787,7 @@ msgstr "[%1]"
 
 #: src/plasmathemegenerator/main.cpp:78
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: layout/main.cpp:36
 msgid "group"
