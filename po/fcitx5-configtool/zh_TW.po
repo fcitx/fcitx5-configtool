@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-07 20:24+0000\n"
+"POT-Creation-Date: 2022-07-03 15:41+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: 菘菘 <rrt467778@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -342,6 +342,10 @@ msgstr "Fcitx 已完全退出。"
 msgid "Fcitx is started."
 msgstr "Fcitx 已啟動。"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "File descriptor <fd> "
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -362,7 +366,7 @@ msgstr ""
 msgid "Frontend"
 msgstr "前端"
 
-#: src/plasmathemegenerator/main.cpp:45
+#: src/plasmathemegenerator/main.cpp:73
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
@@ -558,7 +562,7 @@ msgstr "只顯示目前語言(&S)"
 msgid "Other"
 msgstr "其他"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "Output path <output> "
 msgstr ""
 
@@ -570,7 +574,7 @@ msgstr "拼音"
 msgid "Pinyin data is migrated."
 msgstr "拼音數據已遷移。"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -700,7 +704,7 @@ msgstr ""
 "第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
-#: src/plasmathemegenerator/main.cpp:88
+#: src/plasmathemegenerator/main.cpp:150
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -783,6 +787,10 @@ msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新
 msgid "[%1]"
 msgstr "[%1]"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "fd"
+msgstr ""
+
 #: layout/main.cpp:36
 msgid "group"
 msgstr "群組"
@@ -791,11 +799,11 @@ msgstr "群組"
 msgid "layout"
 msgstr "配置"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "name"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "output"
 msgstr ""
 

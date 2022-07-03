@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-12 20:24+0000\n"
+"POT-Creation-Date: 2022-07-03 15:41+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: roxfr <roxfr@outlook.fr>, 2022\n"
 "Language-Team: French (https://www.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -345,6 +345,10 @@ msgstr "Fcitx est complètement fermé."
 msgid "Fcitx is started."
 msgstr "Fcitx est démarré."
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "File descriptor <fd> "
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -369,7 +373,7 @@ msgstr ""
 msgid "Frontend"
 msgstr "Frontal"
 
-#: src/plasmathemegenerator/main.cpp:45
+#: src/plasmathemegenerator/main.cpp:73
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 "Générer un thème d'interface utilisateur Fcitx 5 Classic basé sur le thème "
@@ -573,7 +577,7 @@ msgstr "&Afficher uniquement la langue actuelle"
 msgid "Other"
 msgstr "Autre"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "Output path <output> "
 msgstr "Chemin de sortie <output>"
 
@@ -585,7 +589,7 @@ msgstr "Pinyin"
 msgid "Pinyin data is migrated."
 msgstr "Les données Pinyin sont migrées."
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "Plasma theme name <name> "
 msgstr "Nom du thème Plasma <name>"
 
@@ -716,7 +720,7 @@ msgstr ""
 "mettre<b> Clavier</b>ou <b>Clavier - <i>nom de la disposition</i></b> en "
 "premier lieu."
 
-#: src/plasmathemegenerator/main.cpp:88
+#: src/plasmathemegenerator/main.cpp:150
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr "Thème généré à partir du thème Plasma %1"
@@ -806,6 +810,10 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "fd"
+msgstr ""
+
 #: layout/main.cpp:36
 msgid "group"
 msgstr "groupe"
@@ -814,11 +822,11 @@ msgstr "groupe"
 msgid "layout"
 msgstr "disposition"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "name"
 msgstr "nom"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "output"
 msgstr "sortie"
 

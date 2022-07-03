@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-20 20:24+0000\n"
+"POT-Creation-Date: 2022-07-03 15:41+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
@@ -337,6 +337,10 @@ msgstr "Fcitx가 완전히 종료되었습니다."
 msgid "Fcitx is started."
 msgstr "Fcitx가 시작됩니다."
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "File descriptor <fd> "
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -358,7 +362,7 @@ msgstr ""
 msgid "Frontend"
 msgstr "전처리기"
 
-#: src/plasmathemegenerator/main.cpp:45
+#: src/plasmathemegenerator/main.cpp:73
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
@@ -556,7 +560,7 @@ msgstr "현재 언어만 표시(&S)"
 msgid "Other"
 msgstr "기타"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "Output path <output> "
 msgstr ""
 
@@ -568,7 +572,7 @@ msgstr "Pinyin"
 msgid "Pinyin data is migrated."
 msgstr "Pinyin 데이터가 마이그레이션됩니다."
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "Plasma theme name <name> "
 msgstr ""
 
@@ -698,7 +702,7 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: src/plasmathemegenerator/main.cpp:88
+#: src/plasmathemegenerator/main.cpp:150
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
@@ -786,6 +790,10 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "fd"
+msgstr ""
+
 #: layout/main.cpp:36
 msgid "group"
 msgstr "그룹"
@@ -794,11 +802,11 @@ msgstr "그룹"
 msgid "layout"
 msgstr "자판"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "name"
 msgstr "이름"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "output"
 msgstr "출력"
 

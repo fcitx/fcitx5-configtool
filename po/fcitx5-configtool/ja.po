@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-18 20:24+0000\n"
+"POT-Creation-Date: 2022-07-03 15:41+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -339,6 +339,10 @@ msgstr "Fcitx は完全に終了します。"
 msgid "Fcitx is started."
 msgstr "Fcitx が開始されます。"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "File descriptor <fd> "
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -361,7 +365,7 @@ msgstr ""
 msgid "Frontend"
 msgstr "フロントエンド"
 
-#: src/plasmathemegenerator/main.cpp:45
+#: src/plasmathemegenerator/main.cpp:73
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr "Plasma テーマに基づいて Fcitx 5 クラシック UI テーマを生成する"
 
@@ -559,7 +563,7 @@ msgstr "現在の言語のみ表示(&S)"
 msgid "Other"
 msgstr "その他"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "Output path <output> "
 msgstr "出力パス <output>"
 
@@ -571,7 +575,7 @@ msgstr "ピンイン"
 msgid "Pinyin data is migrated."
 msgstr "ピンインデータが移行されます。"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "Plasma theme name <name> "
 msgstr "Plasma テーマ名 <name>"
 
@@ -702,7 +706,7 @@ msgstr ""
 "キーボード</b> または <b>キーボード - <i>レイアウト名</i></b> を置く必要があ"
 "ります。"
 
-#: src/plasmathemegenerator/main.cpp:88
+#: src/plasmathemegenerator/main.cpp:150
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr "Plasma テーマ %1 から生成されたテーマ"
@@ -791,6 +795,10 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
+#: src/plasmathemegenerator/main.cpp:78
+msgid "fd"
+msgstr ""
+
 #: layout/main.cpp:36
 msgid "group"
 msgstr "グループ"
@@ -799,11 +807,11 @@ msgstr "グループ"
 msgid "layout"
 msgstr "レイアウト"
 
-#: src/plasmathemegenerator/main.cpp:48
+#: src/plasmathemegenerator/main.cpp:76
 msgid "name"
 msgstr "名前"
 
-#: src/plasmathemegenerator/main.cpp:49
+#: src/plasmathemegenerator/main.cpp:77
 msgid "output"
 msgstr "出力"
 
