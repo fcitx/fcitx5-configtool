@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-03 15:41+0000\n"
+"POT-Creation-Date: 2022-07-04 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -341,7 +341,7 @@ msgstr "Fcitx が開始されます。"
 
 #: src/plasmathemegenerator/main.cpp:78
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "ファイル記述子 <fd>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
@@ -797,7 +797,7 @@ msgstr "[%1]"
 
 #: src/plasmathemegenerator/main.cpp:78
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: layout/main.cpp:36
 msgid "group"
