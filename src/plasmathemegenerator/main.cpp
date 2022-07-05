@@ -8,6 +8,7 @@
 #include <KIconLoader>
 #include <Plasma/FrameSvg>
 #include <Plasma/Theme>
+#include <QBitmap>
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QDir>
@@ -207,6 +208,22 @@ public:
             if (!safeSaveImage(background, dir.filePath("panel.png"))) {
                 return false;
             }
+            svg.resizeFrame(
+                QSizeF(200, 200) -
+                QSizeF(shadowLeft + shadowRight, shadowTop + shadowBottom) -
+                QSizeF(2, 2));
+            {
+                QImage mask(QSize(200, 200), QImage::Format_ARGB32);
+                mask.fill(Qt::transparent);
+                QPainter p(&mask);
+                p.setRenderHint(QPainter::SmoothPixmapTransform);
+                p.drawPixmap(QPointF(shadowLeft + 1, shadowTop + 1),
+                             svg.alphaMask().mask());
+                p.end();
+                if (!safeSaveImage(mask, dir.filePath("mask.png"))) {
+                    return false;
+                }
+            }
 
             menu["Spacing"] = std::to_string(textMargin);
             setMarginsToConfig(inputPanel, "ContentMargin", bgLeft, bgTop,
@@ -216,6 +233,8 @@ public:
             setMarginsToConfig(inputPanel, "ShadowMargin", shadowLeft,
                                shadowTop, shadowRight, shadowBottom);
             inputPanel["Background"]["Image"] = "panel.png";
+            inputPanel["BlurMask"] = "mask.png";
+            inputPanel["EnableBlur"] = "True";
             menu["Background"]["Image"] = "panel.png";
             setMarginsToConfig(inputPanel["Background"], "Margin", bgLeft,
                                bgTop, bgRight, bgBottom);
