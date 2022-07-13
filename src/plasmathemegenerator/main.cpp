@@ -330,13 +330,15 @@ public:
             }
         }
 
+        auto ret = fcitx::safeSaveAsIni(
+            config, dir.filePath("theme.conf").toLocal8Bit().constData());
+
         if (monitorMode()) {
             char buf = 0;
             fcitx::fs::safeWrite(fd_, &buf, 1);
             qDebug() << "Notify theme reloading.";
         }
-        return fcitx::safeSaveAsIni(
-            config, dir.filePath("theme.conf").toLocal8Bit().constData());
+        return ret;
     }
 
 private:
