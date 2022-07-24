@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-03 15:41+0000\n"
+"POT-Creation-Date: 2022-07-24 15:09+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 "Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -334,10 +334,6 @@ msgstr ""
 msgid "Fcitx is started."
 msgstr "Fcitx başlatıldı."
 
-#: src/plasmathemegenerator/main.cpp:78
-msgid "File descriptor <fd> "
-msgstr ""
-
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -354,10 +350,6 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:73
-msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
 #. namespace
@@ -552,20 +544,12 @@ msgstr "Göster :&Sadece Geçerli Dili"
 msgid "Other"
 msgstr "Diğer"
 
-#: src/plasmathemegenerator/main.cpp:77
-msgid "Output path <output> "
-msgstr ""
-
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:76
-msgid "Plasma theme name <name> "
 msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
@@ -694,11 +678,6 @@ msgstr ""
 "İlk giriş yöntemi aktif değildirr. Genellikle <b> Klavye </ b> veya <b> "
 "Klavye - <i> düzen adı </ i> </ b> koymanız gerekir."
 
-#: src/plasmathemegenerator/main.cpp:150
-#, kde-format
-msgid "Theme generated from Plasma Theme %1"
-msgstr ""
-
 #: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr ""
@@ -777,10 +756,6 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/plasmathemegenerator/main.cpp:78
-msgid "fd"
-msgstr ""
-
 #: layout/main.cpp:36
 msgid "group"
 msgstr "grup"
@@ -788,14 +763,6 @@ msgstr "grup"
 #: layout/main.cpp:37
 msgid "layout"
 msgstr "düzeni"
-
-#: src/plasmathemegenerator/main.cpp:76
-msgid "name"
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:77
-msgid "output"
-msgstr ""
 
 #: layout/main.cpp:38
 msgid "variant"

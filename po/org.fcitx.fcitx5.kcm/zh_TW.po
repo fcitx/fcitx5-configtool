@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-07-24 15:09+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: 菘菘 <rrt467778@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -155,6 +155,11 @@ msgstr "空"
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
+#: src/plasmathemegenerator/main.cpp:79
+#, kde-format
+msgid "File descriptor <fd> "
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300
 #, kde-format
@@ -170,6 +175,11 @@ msgid ""
 msgstr ""
 "有新的 Fcitx 安裝套件。您想要檢查是否有新的輸入法以及附加組件嗎？如果要更新已"
 "經安裝的附加組件，您需要重新啟動 Fcitx。"
+
+#: src/plasmathemegenerator/main.cpp:74
+#, kde-format
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
+msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:203
 #, kde-format
@@ -235,6 +245,16 @@ msgstr "是"
 #, kde-format
 msgid "Only &Show Current Language"
 msgstr "只顯示目前語言(&S)"
+
+#: src/plasmathemegenerator/main.cpp:78
+#, kde-format
+msgid "Output path <output> "
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:77
+#, kde-format
+msgid "Plasma theme name <name> "
+msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:54
 #, kde-format
@@ -310,6 +330,11 @@ msgstr "某些設定尚未儲存"
 msgid "Test Input"
 msgstr "測試輸入"
 
+#: src/plasmathemegenerator/main.cpp:152
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:254
 #, kde-format
 msgid "Update"
@@ -353,3 +378,18 @@ msgstr "[%1]"
 #, kde-format
 msgid "edit"
 msgstr "編輯"
+
+#: src/plasmathemegenerator/main.cpp:80
+#, kde-format
+msgid "fd"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:77
+#, kde-format
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:78
+#, kde-format
+msgid "output"
+msgstr ""

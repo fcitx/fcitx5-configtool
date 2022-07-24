@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-06-03 20:25+0000\n"
+"POT-Creation-Date: 2022-07-24 15:09+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Adolfo Jayme-Barrientos, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/fcitx/teams/12005/es/)\n"
@@ -151,6 +151,11 @@ msgstr "Vacío"
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
+#: src/plasmathemegenerator/main.cpp:79
+#, kde-format
+msgid "File descriptor <fd> "
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300
 #, kde-format
@@ -163,6 +168,11 @@ msgid ""
 "Found updates to fcitx installation. Do you want to check for newly "
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:74
+#, kde-format
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
 #: src/kcm/package/contents/ui/main.qml:203
@@ -228,6 +238,16 @@ msgstr "Aceptar"
 #: src/kcm/package/contents/ui/AddIMPage.qml:29
 #, kde-format
 msgid "Only &Show Current Language"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:78
+#, kde-format
+msgid "Output path <output> "
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:77
+#, kde-format
+msgid "Plasma theme name <name> "
 msgstr ""
 
 #: src/kcm/package/contents/ui/AddonPage.qml:54
@@ -304,6 +324,11 @@ msgstr ""
 msgid "Test Input"
 msgstr ""
 
+#: src/plasmathemegenerator/main.cpp:152
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
 #: src/kcm/package/contents/ui/main.qml:254
 #, kde-format
 msgid "Update"
@@ -347,3 +372,18 @@ msgstr ""
 #, kde-format
 msgid "edit"
 msgstr "editar"
+
+#: src/plasmathemegenerator/main.cpp:80
+#, kde-format
+msgid "fd"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:77
+#, kde-format
+msgid "name"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:78
+#, kde-format
+msgid "output"
+msgstr ""

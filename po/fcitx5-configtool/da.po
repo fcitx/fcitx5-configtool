@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-03 15:41+0000\n"
+"POT-Creation-Date: 2022-07-24 15:09+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -337,10 +337,6 @@ msgstr "Fcitx er afsluttet helt."
 msgid "Fcitx is started."
 msgstr "Fcitx er startet."
 
-#: src/plasmathemegenerator/main.cpp:78
-msgid "File descriptor <fd> "
-msgstr ""
-
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -358,10 +354,6 @@ msgstr ""
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Frontend"
 msgstr "Frontend"
-
-#: src/plasmathemegenerator/main.cpp:73
-msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:45
@@ -556,10 +548,6 @@ msgstr "&Vis kun nuværende sprog"
 msgid "Other"
 msgstr "Andre"
 
-#: src/plasmathemegenerator/main.cpp:77
-msgid "Output path <output> "
-msgstr ""
-
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
 msgstr "Pinyin"
@@ -567,10 +555,6 @@ msgstr "Pinyin"
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
 msgstr "Pinyin-data er overført."
-
-#: src/plasmathemegenerator/main.cpp:76
-msgid "Plasma theme name <name> "
-msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -698,11 +682,6 @@ msgstr ""
 "Den første inputmetode vil være i inaktiv tilstand. Typisk skal der først "
 "stå <b>Tastatur</b> eller <b>Tastatur - <i>layoutnavn</i></b>."
 
-#: src/plasmathemegenerator/main.cpp:150
-#, kde-format
-msgid "Theme generated from Plasma Theme %1"
-msgstr ""
-
 #: layout/main.cpp:27
 msgid "This program only works on X11."
 msgstr ""
@@ -787,10 +766,6 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/plasmathemegenerator/main.cpp:78
-msgid "fd"
-msgstr ""
-
 #: layout/main.cpp:36
 msgid "group"
 msgstr "gruppe"
@@ -798,14 +773,6 @@ msgstr "gruppe"
 #: layout/main.cpp:37
 msgid "layout"
 msgstr "layout"
-
-#: src/plasmathemegenerator/main.cpp:76
-msgid "name"
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:77
-msgid "output"
-msgstr ""
 
 #: layout/main.cpp:38
 msgid "variant"
