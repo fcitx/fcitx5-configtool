@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2021
 # rocka, 2022
+# csslayer <wengxt@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-24 15:09+0000\n"
+"POT-Creation-Date: 2022-07-24 15:16+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: rocka, 2022\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -156,7 +156,7 @@ msgstr "Fcitx 5"
 #: src/plasmathemegenerator/main.cpp:79
 #, kde-format
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "文件描述符<fd>"
 
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300
@@ -177,7 +177,7 @@ msgstr ""
 #: src/plasmathemegenerator/main.cpp:74
 #, kde-format
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
+msgstr "根据 Plasma 主题生成 Fcitx 5 经典用户界面主题"
 
 #: src/kcm/package/contents/ui/main.qml:203
 #, kde-format
@@ -247,12 +247,12 @@ msgstr "仅显示当前语言(&S)"
 #: src/plasmathemegenerator/main.cpp:78
 #, kde-format
 msgid "Output path <output> "
-msgstr ""
+msgstr "输出路径"
 
 #: src/plasmathemegenerator/main.cpp:77
 #, kde-format
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Plasma 主题名称"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:54
 #, kde-format
@@ -331,7 +331,7 @@ msgstr "测试输入"
 #: src/plasmathemegenerator/main.cpp:152
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "从 Plasma 主题 %1 生成的主题"
 
 #: src/kcm/package/contents/ui/main.qml:254
 #, kde-format
@@ -381,14 +381,14 @@ msgstr "编辑"
 #: src/plasmathemegenerator/main.cpp:80
 #, kde-format
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: src/plasmathemegenerator/main.cpp:77
 #, kde-format
 msgid "name"
-msgstr ""
+msgstr "名称"
 
 #: src/plasmathemegenerator/main.cpp:78
 #, kde-format
 msgid "output"
-msgstr ""
+msgstr "输出"
