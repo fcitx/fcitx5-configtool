@@ -6,6 +6,7 @@
  */
 #include "config.h"
 #include <KIconLoader>
+#include <KLocalizedString>
 #include <Plasma/FrameSvg>
 #include <Plasma/Theme>
 #include <QBitmap>
@@ -17,7 +18,6 @@
 #include <fcitx-config/iniparser.h>
 #include <fcitx-config/rawconfig.h>
 #include <fcitx-utils/color.h>
-#include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
 #include <fcntl.h>
 #include <memory>
@@ -71,12 +71,13 @@ public:
     bool init() {
         QCommandLineParser parser;
         parser.setApplicationDescription(
-            _("Generate Fcitx 5 Classic UI Theme based on Plasma theme"));
+            i18n("Generate Fcitx 5 Classic UI Theme based on Plasma theme"));
         parser.addHelpOption();
         parser.addOptions(
-            {{{"t", "theme"}, _("Plasma theme name <name> "), _("name")},
-             {{"o", "output"}, _("Output path <output> "), _("output")}});
-        QCommandLineOption option{"fd", _("File descriptor <fd> "), _("fd")};
+            {{{"t", "theme"}, i18n("Plasma theme name <name> "), i18n("name")},
+             {{"o", "output"}, i18n("Output path <output> "), i18n("output")}});
+        QCommandLineOption option{"fd", i18n("File descriptor <fd> "),
+                                  i18n("fd")};
         option.setFlags(QCommandLineOption::HiddenFromHelp);
         parser.addOption(option);
         parser.process(*this);
@@ -148,8 +149,7 @@ public:
         metadata["Version"] = "1";
         metadata["Author"] = "Fcitx";
         metadata["Description"] =
-            QString(_("Theme generated from Plasma Theme %1"))
-                .arg(theme_->themeName())
+            i18n("Theme generated from Plasma Theme %1", theme_->themeName())
                 .toStdString();
 
         auto &inputPanel = config["InputPanel"];
