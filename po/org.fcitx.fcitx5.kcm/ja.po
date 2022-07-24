@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-24 15:09+0000\n"
+"POT-Creation-Date: 2022-07-24 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -155,7 +155,7 @@ msgstr "Fcitx 5"
 #: src/plasmathemegenerator/main.cpp:79
 #, kde-format
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "ファイル記述子 <fd>"
 
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300
@@ -177,7 +177,7 @@ msgstr ""
 #: src/plasmathemegenerator/main.cpp:74
 #, kde-format
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
+msgstr "Plasma テーマに基づいて Fcitx 5 クラシック UI テーマを生成する"
 
 #: src/kcm/package/contents/ui/main.qml:203
 #, kde-format
@@ -247,12 +247,12 @@ msgstr "現在の言語のみ表示 (&S)"
 #: src/plasmathemegenerator/main.cpp:78
 #, kde-format
 msgid "Output path <output> "
-msgstr ""
+msgstr "出力パス <output>"
 
 #: src/plasmathemegenerator/main.cpp:77
 #, kde-format
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Plasma テーマ名 <name>"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:54
 #, kde-format
@@ -331,7 +331,7 @@ msgstr "テスト入力"
 #: src/plasmathemegenerator/main.cpp:152
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "Plasma テーマから生成されたテーマ %1"
 
 #: src/kcm/package/contents/ui/main.qml:254
 #, kde-format
@@ -384,14 +384,14 @@ msgstr "編集"
 #: src/plasmathemegenerator/main.cpp:80
 #, kde-format
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: src/plasmathemegenerator/main.cpp:77
 #, kde-format
 msgid "name"
-msgstr ""
+msgstr "名前"
 
 #: src/plasmathemegenerator/main.cpp:78
 #, kde-format
 msgid "output"
-msgstr ""
+msgstr "出力"
