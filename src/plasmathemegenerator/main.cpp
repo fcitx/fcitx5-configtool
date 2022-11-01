@@ -197,8 +197,12 @@ public:
             {
                 QPainter p(&background);
                 p.setRenderHint(QPainter::SmoothPixmapTransform);
+                p.save();
                 svg.paintFrame(&p, QPointF(shadowLeft, shadowTop));
+                p.restore();
+                p.save();
                 shadowSvg.paintFrame(&p);
+                p.restore();
                 p.end();
             }
             bgLeft += shadowLeft;
@@ -212,7 +216,7 @@ public:
                 QSizeF(200, 200) -
                 QSizeF(shadowLeft + shadowRight, shadowTop + shadowBottom) -
                 QSizeF(2, 2));
-            {
+            if (theme_->blurBehindEnabled()) {
                 QImage mask(QSize(200, 200), QImage::Format_ARGB32);
                 mask.fill(Qt::transparent);
                 QPainter p(&mask);
@@ -233,8 +237,10 @@ public:
             setMarginsToConfig(inputPanel, "ShadowMargin", shadowLeft,
                                shadowTop, shadowRight, shadowBottom);
             inputPanel["Background"]["Image"] = "panel.png";
-            inputPanel["BlurMask"] = "mask.png";
-            inputPanel["EnableBlur"] = "True";
+            if (theme_->blurBehindEnabled()) {
+                inputPanel["BlurMask"] = "mask.png";
+                inputPanel["EnableBlur"] = "True";
+            }
             menu["Background"]["Image"] = "panel.png";
             setMarginsToConfig(inputPanel["Background"], "Margin", bgLeft,
                                bgTop, bgRight, bgBottom);
