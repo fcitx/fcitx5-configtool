@@ -180,7 +180,8 @@ public:
             Plasma::FrameSvg shadowSvg;
             shadowSvg.setTheme(theme_.get());
             shadowSvg.setImagePath("dialogs/background");
-            if (shadowSvg.hasElementPrefix("shadow")) {
+            const bool hasShadow = shadowSvg.hasElementPrefix("shadow");
+            if (hasShadow) {
                 shadowSvg.setElementPrefix("shadow");
                 shadowSvg.resizeFrame(QSize(200, 200));
                 shadowSvg.getMargins(shadowLeft, shadowTop, shadowRight,
@@ -200,9 +201,11 @@ public:
                 p.save();
                 svg.paintFrame(&p, QPointF(shadowLeft, shadowTop));
                 p.restore();
-                p.save();
-                shadowSvg.paintFrame(&p);
-                p.restore();
+                if (hasShadow) {
+                    p.save();
+                    shadowSvg.paintFrame(&p);
+                    p.restore();
+                }
                 p.end();
             }
             bgLeft += shadowLeft;
