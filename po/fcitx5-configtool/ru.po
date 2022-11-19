@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-24 15:09+0000\n"
+"POT-Creation-Date: 2022-11-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -388,7 +388,7 @@ msgstr "Группа:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr "Импорт словаря Pinyin из Fcitx 4"
+msgstr "Импорт словаря Пиньинь из Fcitx 4"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
@@ -496,7 +496,7 @@ msgstr "Опция переноса правила Kkc..."
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
-msgstr "Перенос данных Pinyin..."
+msgstr "Перенос данных Пиньинь..."
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
@@ -557,11 +557,11 @@ msgstr "Другое"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:16
 msgid "Pinyin"
-msgstr "Pinyin"
+msgstr "Пиньинь"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr "Переносятся данные Pinyin."
+msgstr "Переносятся данные Пиньинь."
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -780,7 +780,7 @@ msgstr "group"
 
 #: layout/main.cpp:37
 msgid "layout"
-msgstr "layout"
+msgstr "раскладка"
 
 #: layout/main.cpp:38
 msgid "variant"

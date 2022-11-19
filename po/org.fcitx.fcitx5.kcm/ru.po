@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-07-25 20:25+0000\n"
+"POT-Creation-Date: 2022-11-19 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -215,7 +215,7 @@ msgstr "Метод ввода Включен"
 #: src/kcm/package/contents/ui/KeyOption.qml:141
 #, kde-format
 msgid "Key code mode"
-msgstr "Режим кода ключа"
+msgstr "Режим кода клавиши"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:32
 #, kde-format
@@ -300,12 +300,12 @@ msgstr "Выбрать шрифт"
 #: src/kcm/package/contents/ui/main.qml:65
 #, kde-format
 msgid "Select Layout"
-msgstr "Выберите макет"
+msgstr "Выбрать Раскладку"
 
 #: src/kcm/package/contents/ui/main.qml:68
 #, kde-format
 msgid "Select layout for %1"
-msgstr "Выберите макет для %1"
+msgstr "Выберите раскладку для %1"
 
 #: src/kcm/package/contents/ui/main.qml:184
 #, kde-format
