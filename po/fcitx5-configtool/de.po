@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-12-06 20:25+0000\n"
+"POT-Creation-Date: 2022-12-07 15:26+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: mar well <m.wellendorf@gmx.de>, 2022\n"
 "Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -187,7 +187,7 @@ msgstr ""
 
 #: src/migrator/app/taskpage.cpp:237
 msgid "Checking if Fcitx is still running..."
-msgstr ""
+msgstr "Testen, ob Fcitx noch läuft..."
 
 #: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
 msgid "Click on an item for more details."
