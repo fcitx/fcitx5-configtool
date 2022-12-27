@@ -66,6 +66,7 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
     : QWidget(parent), ui_(std::make_unique<Ui::IMPage>()), dbus_(dbus),
       config_(new IMConfig(dbus, IMConfig::Tree, this)) {
     ui_->setupUi(this);
+    ui_->availIMView->header()->setSortIndicator(0, Qt::AscendingOrder);
     ui_->addIMButton->setIcon(QIcon::fromTheme(
         "go-previous-symbolic", style()->standardIcon(QStyle::SP_ArrowLeft)));
     ui_->removeIMButton->setIcon(QIcon::fromTheme(
