@@ -42,6 +42,13 @@ KCM.ScrollViewKCM {
 
     header: ColumnLayout {
         Kirigami.InlineMessage {
+            id: showOptionWarning
+            Layout.fillWidth: true
+            visible: showEnable.checked
+            type: Kirigami.MessageType.Warning
+            text: i18n("The feature of enabling/disabling addons is only intended for advanced users who understand the potential implication. Fcitx needs to be restarted to make the changes to enable/disable to take effect.")
+        }
+        Kirigami.InlineMessage {
             id: disableAddonWarning
             Layout.fillWidth: true
             showCloseButton: true
@@ -87,6 +94,7 @@ KCM.ScrollViewKCM {
                     Layout.alignment: Qt.AlignVCenter
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     checked: model.enabled
+                    visible: showEnable.checked
 
                     onClicked: {
                         model.enabled = !model.enabled;
@@ -129,7 +137,7 @@ KCM.ScrollViewKCM {
                         Layout.fillWidth: true
                         elide: Text.ElideRight
                         level: 5
-                        text: model.name
+                        text: model.enabled ? model.name : i18n("%1 (Disabled)", model.name)
                     }
                     Label {
                         opacity: listItem.hovered ? 0.8 : 0.6
@@ -147,6 +155,14 @@ KCM.ScrollViewKCM {
                     onTriggered: kcm.pushConfigPage(model.name, "fcitx://config/addon/" + model.uniqueName)
                 }
             ]
+        }
+    }
+    footer: CheckBox {
+        id: showEnable
+        text: i18n("Show &Advanced options")
+
+        onClicked: {
+            showOptionWarning.visible = true;
         }
     }
 }

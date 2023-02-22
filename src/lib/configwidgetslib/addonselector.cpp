@@ -297,8 +297,17 @@ AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
 
     connect(ui_->lineEdit, &QLineEdit::textChanged, proxyModel_,
             &AddonProxyModel::setFilterText);
-    connect(ui_->advancedCheckbox, &QCheckBox::toggled, this,
-            [this]() { proxyModel_->invalidate(); });
+    connect(ui_->advancedCheckbox, &QCheckBox::toggled, this, [this]() {
+        if (showAdvanced()) {
+            QMessageBox::warning(
+                this, _("Advanced options"),
+                _("The feature of enabling/disabling addons is only intended "
+                  "for advanced users who understand the potential "
+                  "implication. Fcitx needs to be restarted to make the "
+                  "changes to enable/disable to take effect."));
+        }
+        proxyModel_->invalidate();
+    });
     connect(addonModel_, &AddonProxyModel::dataChanged, this,
             [this]() { proxyModel_->invalidate(); });
 }
