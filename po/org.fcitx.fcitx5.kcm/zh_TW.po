@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-11-05 20:25+0000\n"
+"POT-Creation-Date: 2023-02-22 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: 如月飛羽 <flyingfeather1501@gmail.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -24,23 +24,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: src/kcm/package/contents/ui/AddonPage.qml:140
+#, kde-format
+msgid "%1 (Disabled)"
+msgstr ""
+
 #: src/kcm/package/contents/ui/ConfigGroup.qml:67
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
-#: src/kcm/package/contents/ui/AddonPage.qml:98
+#: src/kcm/package/contents/ui/AddonPage.qml:106
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "、"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:108
+#: src/kcm/package/contents/ui/AddonPage.qml:116
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 停用 %1\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:118
+#: src/kcm/package/contents/ui/AddonPage.qml:126
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
@@ -130,7 +135,7 @@ msgstr "目前的群組已變更"
 msgid "Current page is not yet saved. Please save the config first."
 msgstr "目前的頁面尚未儲存。請先儲存設定。"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:120
+#: src/kcm/package/contents/ui/AddonPage.qml:128
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -257,7 +262,7 @@ msgstr "輸出路徑 <output>"
 msgid "Plasma theme name <name> "
 msgstr "Plasma 主題名稱 <name>"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:54
+#: src/kcm/package/contents/ui/AddonPage.qml:61
 #, kde-format
 msgid "Re-Enable"
 msgstr "重新啟用"
@@ -278,7 +283,7 @@ msgstr "重啟"
 msgid "Run Fcitx"
 msgstr "執行 Fcitx"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:67
+#: src/kcm/package/contents/ui/AddonPage.qml:74
 #: src/kcm/package/contents/ui/AddIMPage.qml:59
 #, kde-format
 msgid "Search..."
@@ -321,6 +326,11 @@ msgstr "選取群組 %1 的系統佈局"
 msgid "Select system layout..."
 msgstr "選取系統佈局…"
 
+#: src/kcm/package/contents/ui/AddonPage.qml:162
+#, kde-format
+msgid "Show &Advanced options"
+msgstr ""
+
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:16
 #, kde-format
 msgid "Some config is not saved"
@@ -330,6 +340,14 @@ msgstr "某些設定尚未儲存"
 #, kde-format
 msgid "Test Input"
 msgstr "測試輸入"
+
+#: src/kcm/package/contents/ui/AddonPage.qml:49
+#, kde-format
+msgid ""
+"The feature of enabling/disabling addons is only intended for advanced users "
+"who understand the potential implication. Fcitx needs to be restarted to "
+"make the changes to enable/disable to take effect."
+msgstr ""
 
 #: src/plasmathemegenerator/main.cpp:152
 #, kde-format

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-11-14 20:25+0000\n"
+"POT-Creation-Date: 2023-02-22 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: yan12125, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -98,17 +98,17 @@ msgstr "&確定"
 msgid "&Reset"
 msgstr "&重置"
 
-#: src/lib/configwidgetslib/addonselector.cpp:384
+#: src/lib/configwidgetslib/addonselector.cpp:393
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "、"
 
-#: src/lib/configwidgetslib/addonselector.cpp:394
+#: src/lib/configwidgetslib/addonselector.cpp:403
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 停用 %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:405
+#: src/lib/configwidgetslib/addonselector.cpp:414
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
@@ -141,6 +141,10 @@ msgstr "新增群組"
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
 msgstr "附加元件"
+
+#: src/lib/configwidgetslib/addonselector.cpp:303
+msgid "Advanced options"
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -177,11 +181,11 @@ msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
 msgid "Change Fcitx 5 Configuration"
 msgstr "變更 Fcitx 5 設定"
 
-#: src/lib/configwidgetslib/impage.cpp:281
+#: src/lib/configwidgetslib/impage.cpp:282
 msgid "Change Input method to match layout selection."
 msgstr "變更輸入法以符合選擇的配置。"
 
-#: src/lib/configwidgetslib/impage.cpp:359
+#: src/lib/configwidgetslib/impage.cpp:360
 msgid "Change System layout to match input method selection."
 msgstr "變更系統配置以符合選擇的輸入法。"
 
@@ -223,7 +227,7 @@ msgstr "複製文件 %1 至 %2"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: src/lib/configwidgetslib/impage.cpp:193
+#: src/lib/configwidgetslib/impage.cpp:194
 msgid "Current group changed"
 msgstr "目前的群組已變更"
 
@@ -243,12 +247,12 @@ msgstr "刪除群組"
 msgid "Directory %1 does not exist."
 msgstr "目錄 %1 不存在。"
 
-#: src/lib/configwidgetslib/addonselector.cpp:413
+#: src/lib/configwidgetslib/addonselector.cpp:422
 #, kde-format
 msgid "Disable %1"
 msgstr "停用 %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:408
+#: src/lib/configwidgetslib/addonselector.cpp:417
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -259,7 +263,7 @@ msgstr ""
 "%2%3\n"
 "確認要停用它嗎？"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:195
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 
@@ -355,7 +359,7 @@ msgstr ""
 "有新的 Fcitx 安裝套件。您想要檢查是否有新的輸入法以及附加組件嗎？如果要更新已"
 "經安裝的附加組件，您需要重新啟動 Fcitx。"
 
-#: src/lib/configwidgetslib/impage.cpp:110
+#: src/lib/configwidgetslib/impage.cpp:111
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr "安裝的 Fcitx 已更新。是否要重新啟動 Fcitx？"
 
@@ -377,7 +381,7 @@ msgstr "全域選項"
 msgid "Got error: %1 %2"
 msgstr "發生錯誤：%1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:417
+#: src/lib/configwidgetslib/impage.cpp:418
 msgid "Group Name:"
 msgstr "群組名稱："
 
@@ -532,7 +536,7 @@ msgstr "上移"
 msgid "Multilingual"
 msgstr "多語言"
 
-#: src/lib/configwidgetslib/impage.cpp:417
+#: src/lib/configwidgetslib/impage.cpp:418
 msgid "New Group"
 msgstr "新群組"
 
@@ -577,7 +581,7 @@ msgstr "拼音數據已遷移。"
 msgid "Remove"
 msgstr "移除"
 
-#: src/lib/configwidgetslib/impage.cpp:119
+#: src/lib/configwidgetslib/impage.cpp:120
 msgid "Restart"
 msgstr "重新啟動"
 
@@ -628,12 +632,12 @@ msgstr "選取字型"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:326 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "選取佈局"
 
-#: src/lib/configwidgetslib/impage.cpp:266
+#: src/lib/configwidgetslib/impage.cpp:267
 msgid "Select default layout"
 msgstr "選取預設佈局"
 
@@ -677,6 +681,13 @@ msgstr "Skk"
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
 msgstr "碼表"
+
+#: src/lib/configwidgetslib/addonselector.cpp:304
+msgid ""
+"The feature of enabling/disabling addons is only intended for advanced users "
+"who understand the potential implication. Fcitx needs to be restarted to "
+"make the changes to enable/disable to take effect."
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -724,7 +735,7 @@ msgstr "未知"
 msgid "Up"
 msgstr "上"
 
-#: src/lib/configwidgetslib/impage.cpp:113
+#: src/lib/configwidgetslib/impage.cpp:114
 msgid "Update"
 msgstr "更新"
 
@@ -750,13 +761,13 @@ msgstr "歡迎頁"
 msgid "Yes"
 msgstr "確定"
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:361
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您目前設定的輸入法與配置不符，是否變更配置設定？"
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:283
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"

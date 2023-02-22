@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2022-08-16 20:24+0000\n"
+"POT-Creation-Date: 2023-02-22 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: French (https://www.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -93,17 +93,17 @@ msgstr "&OK"
 msgid "&Reset"
 msgstr "&Réinitialiser"
 
-#: src/lib/configwidgetslib/addonselector.cpp:384
+#: src/lib/configwidgetslib/addonselector.cpp:393
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ", "
 
-#: src/lib/configwidgetslib/addonselector.cpp:394
+#: src/lib/configwidgetslib/addonselector.cpp:403
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- Désactiver %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:405
+#: src/lib/configwidgetslib/addonselector.cpp:414
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- Désactiver certaines fonctionnalités dans %1\n"
@@ -136,6 +136,10 @@ msgstr "Ajouter un groupe"
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
 msgstr "Modules complémentaires"
+
+#: src/lib/configwidgetslib/addonselector.cpp:303
+msgid "Advanced options"
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -174,13 +178,13 @@ msgstr ""
 msgid "Change Fcitx 5 Configuration"
 msgstr "Modifier la configuration de Fcitx 5"
 
-#: src/lib/configwidgetslib/impage.cpp:281
+#: src/lib/configwidgetslib/impage.cpp:282
 msgid "Change Input method to match layout selection."
 msgstr ""
 "Modifier la méthode d'entrée pour correspondre à la sélection de la "
 "disposition."
 
-#: src/lib/configwidgetslib/impage.cpp:359
+#: src/lib/configwidgetslib/impage.cpp:360
 msgid "Change System layout to match input method selection."
 msgstr ""
 "Modifier la disposition du système pour correspondre à la sélection de la "
@@ -224,7 +228,7 @@ msgstr "Copie du fichier %1 vers %2"
 msgid "Current Input Method:"
 msgstr "Méthode d'entrée actuelle :"
 
-#: src/lib/configwidgetslib/impage.cpp:193
+#: src/lib/configwidgetslib/impage.cpp:194
 msgid "Current group changed"
 msgstr "Le groupe actuel a changé"
 
@@ -244,12 +248,12 @@ msgstr "Supprimer le groupe"
 msgid "Directory %1 does not exist."
 msgstr "Le répertoire %1 n'existe pas."
 
-#: src/lib/configwidgetslib/addonselector.cpp:413
+#: src/lib/configwidgetslib/addonselector.cpp:422
 #, kde-format
 msgid "Disable %1"
 msgstr "Désactiver %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:408
+#: src/lib/configwidgetslib/addonselector.cpp:417
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -260,7 +264,7 @@ msgstr ""
 "%2%3\n"
 "Êtes-vous sûr de vouloir le désactiver ?"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:195
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 "Voulez-vous changer de groupe ? Les modifications apportées au groupe actuel "
@@ -360,7 +364,7 @@ msgstr ""
 "Pour mettre à jour les modules complémentaires déjà chargés, fcitx doit être "
 "redémarré."
 
-#: src/lib/configwidgetslib/impage.cpp:110
+#: src/lib/configwidgetslib/impage.cpp:111
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 "Mises à jour trouvées pour l'installation de fcitx. Voulez-vous redémarrer "
@@ -384,7 +388,7 @@ msgstr "Options globales"
 msgid "Got error: %1 %2"
 msgstr "Erreur : %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:417
+#: src/lib/configwidgetslib/impage.cpp:418
 msgid "Group Name:"
 msgstr "Nom du groupe :"
 
@@ -545,7 +549,7 @@ msgstr "Déplacer vers le haut"
 msgid "Multilingual"
 msgstr "Multilingue"
 
-#: src/lib/configwidgetslib/impage.cpp:417
+#: src/lib/configwidgetslib/impage.cpp:418
 msgid "New Group"
 msgstr "Nouveau groupe"
 
@@ -590,7 +594,7 @@ msgstr "Les données Pinyin sont migrées."
 msgid "Remove"
 msgstr "Supprimer"
 
-#: src/lib/configwidgetslib/impage.cpp:119
+#: src/lib/configwidgetslib/impage.cpp:120
 msgid "Restart"
 msgstr "Redémarrer"
 
@@ -641,12 +645,12 @@ msgstr "Sélectionner la &police..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:326 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "Sélectionner la disposition"
 
-#: src/lib/configwidgetslib/impage.cpp:266
+#: src/lib/configwidgetslib/impage.cpp:267
 msgid "Select default layout"
 msgstr "Sélectionner la disposition par défaut"
 
@@ -690,6 +694,13 @@ msgstr "Skk"
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
 msgstr "Tableau"
+
+#: src/lib/configwidgetslib/addonselector.cpp:304
+msgid ""
+"The feature of enabling/disabling addons is only intended for advanced users "
+"who understand the potential implication. Fcitx needs to be restarted to "
+"make the changes to enable/disable to take effect."
+msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -740,7 +751,7 @@ msgstr "Inconnu"
 msgid "Up"
 msgstr "Haut"
 
-#: src/lib/configwidgetslib/impage.cpp:113
+#: src/lib/configwidgetslib/impage.cpp:114
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -766,7 +777,7 @@ msgstr "Page d'accueil"
 msgid "Yes"
 msgstr "Oui"
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:361
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
@@ -774,7 +785,7 @@ msgstr ""
 "Votre méthode de saisie actuellement configurée ne correspond pas à votre "
 "disposition, voulez-vous modifier le paramètre de la disposition ?"
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:283
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
