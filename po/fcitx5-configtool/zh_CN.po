@@ -4,15 +4,15 @@
 #
 # Translators:
 # wwj402 <wwj402@gmail.com>, 2021
-# csslayer <wengxt@gmail.com>, 2022
+# csslayer <wengxt@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-02-23 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -139,7 +139,7 @@ msgstr "附加组件"
 
 #: src/lib/configwidgetslib/addonselector.cpp:303
 msgid "Advanced options"
-msgstr ""
+msgstr "高级选项"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -683,6 +683,8 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"启用/禁用附加组件的功能仅适用于了解潜在影响的高级用户。需要重新启动 Fcitx 才"
+"能使启用 /禁用的更改生效。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)

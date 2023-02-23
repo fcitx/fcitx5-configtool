@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # TotalCaesar659 <x24cm5b8c54q6szxw@yandex.ru>, 2017
-# Dmitry <dmitrydmitry761@gmail.com>, 2022
+# Dmitry <dmitrydmitry761@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-02-23 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -137,11 +137,11 @@ msgstr "Добавить группу"
 
 #: src/configtool/mainwindow.cpp:47
 msgid "Addons"
-msgstr "Аддоны"
+msgstr "Дополнения"
 
 #: src/lib/configwidgetslib/addonselector.cpp:303
 msgid "Advanced options"
-msgstr ""
+msgstr "Дополнительные параметры"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -688,6 +688,9 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"Функция включения/отключения дополнений предназначена только для продвинутых "
+"пользователей, которые понимают возможные последствия. Чтобы изменения "
+"вступили в силу, необходимо перезапустить Fcitx."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
