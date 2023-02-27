@@ -4,15 +4,15 @@
 #
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-02-27 20:25+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddonPage.qml:140
 #, kde-format
 msgid "%1 (Disabled)"
-msgstr ""
+msgstr "%1 (無効)"
 
 #: src/kcm/package/contents/ui/ConfigGroup.qml:67
 #, kde-format
@@ -326,7 +326,7 @@ msgstr "システムレイアウトを選択..."
 #: src/kcm/package/contents/ui/AddonPage.qml:162
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "高度なオプションを表示(&A)"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:16
 #, kde-format
@@ -345,6 +345,9 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"アドオンを有効/無効にする機能は、潜在的な影響を理解している上級ユーザーのみを"
+"対象としています。変更内容を有効にするには、Fcitx を再起動する必要がありま"
+"す。"
 
 #: src/plasmathemegenerator/main.cpp:152
 #, kde-format
