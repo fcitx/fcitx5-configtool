@@ -163,6 +163,7 @@ public:
         inputPanel["HighlightBackgroundColor"] =
             toFcitxColor(theme_->color(Plasma::Theme::HighlightColor))
                 .toString();
+        inputPanel["PageButtonAlignment"] = "Last Candidate";
 
         auto &menu = config["Menu"];
         inputPanel["NormalColor"] =
