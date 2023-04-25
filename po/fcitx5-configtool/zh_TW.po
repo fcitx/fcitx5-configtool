@@ -10,15 +10,16 @@
 # Weizhong Yang <zonble@gmail.com>, 2022
 # 菘菘 <rrt467778@gmail.com>, 2022
 # yan12125, 2022
+# Lau YeeYu, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-04-25 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: yan12125, 2022\n"
-"Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
+"Last-Translator: Lau YeeYu, 2023\n"
+"Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -66,25 +67,25 @@ msgstr "%1："
 
 #: src/configtool/mainwindow.cpp:56
 msgid "&Apply"
-msgstr "&套用"
+msgstr "套用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:615
 msgid "&Cancel"
-msgstr "&取消"
+msgstr "取消(&C)"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:76
 msgid "&Clear"
-msgstr "&清除"
+msgstr "清除(&C)"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "&Close"
-msgstr "&關閉"
+msgstr "關閉(&C)"
 
 #: src/migrator/app/taskpage.cpp:203
 msgid "&Next >"
-msgstr "&下一步 >"
+msgstr "下一步(&N) >"
 
 #: src/configtool/mainwindow.cpp:57
 #: src/lib/configwidgetslib/configwidget.cpp:204
@@ -92,11 +93,11 @@ msgstr "&下一步 >"
 #: src/lib/configwidgetslib/layoutselector.cpp:75
 #: src/lib/configwidgetslib/optionwidget.cpp:614
 msgid "&OK"
-msgstr "&確定"
+msgstr "確定(&O)"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "&Reset"
-msgstr "&重置"
+msgstr "&重置(&R)"
 
 #: src/lib/configwidgetslib/addonselector.cpp:393
 msgctxt "Separator of a comma list"
@@ -144,7 +145,7 @@ msgstr "附加元件"
 
 #: src/lib/configwidgetslib/addonselector.cpp:303
 msgid "Advanced options"
-msgstr ""
+msgstr "進階選項"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -588,7 +589,7 @@ msgstr "重新啟動"
 #: src/configtool/mainwindow.cpp:61
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
-msgstr "還原成預設值"
+msgstr "還原成預設值(&D)"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -621,7 +622,7 @@ msgstr "搜尋輸入法"
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr "選取全部"
+msgstr "選取全部(&A)"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -688,6 +689,8 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"啟用/禁用外掛程式的功能僅適用於瞭解潛在影響的進階使用者。需要重新啟動 Fcitx "
+"才可使啟用/禁用的更改生效。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
