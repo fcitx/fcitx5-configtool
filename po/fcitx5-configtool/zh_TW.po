@@ -11,14 +11,15 @@
 # 菘菘 <rrt467778@gmail.com>, 2022
 # yan12125, 2022
 # Lau YeeYu, 2023
+# Haowei Hsu, 2023
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-04-25 20:24+0000\n"
+"POT-Creation-Date: 2023-08-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Lau YeeYu, 2023\n"
+"Last-Translator: Haowei Hsu, 2023\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -116,7 +117,7 @@ msgstr "- 停用 %1 的部分功能\n"
 
 #: layout/main.cpp:33
 msgid "A general keyboard layout viewer"
-msgstr "一般鍵盤佈局檢視器"
+msgstr "一般鍵盤配置檢視器"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
@@ -419,7 +420,7 @@ msgstr "鍵盤 <layout>"
 
 #: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
-msgstr "鍵盤佈局檢視器"
+msgstr "鍵盤配置檢視器"
 
 #: layout/main.cpp:36
 msgid "Keyboard layout <group> (0-3)"
@@ -434,11 +435,11 @@ msgstr "鍵盤配置 <variant>"
 #: rc.cpp:51
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr "無活動輸入法時使用的鍵盤佈局"
+msgstr "無活動輸入法時使用的鍵盤配置"
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "Keyboard layout viewer"
-msgstr "鍵盤佈局檢視器"
+msgstr "鍵盤配置檢視器"
 
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
@@ -464,7 +465,7 @@ msgstr "佈局"
 #: rc.cpp:108
 #, kde-format
 msgid "Layout:"
-msgstr "佈局："
+msgstr "配置："
 
 #: src/lib/configlib/addonmodel.cpp:22
 msgid "Loader"
@@ -640,7 +641,7 @@ msgstr "選取佈局"
 
 #: src/lib/configwidgetslib/impage.cpp:267
 msgid "Select default layout"
-msgstr "選取預設佈局"
+msgstr "選取預設配置"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
@@ -751,7 +752,7 @@ msgstr "變體"
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
-msgstr "檢視鍵盤佈局"
+msgstr "檢視鍵盤配置"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
