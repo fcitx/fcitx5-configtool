@@ -1,7 +1,7 @@
 ecm_setup_version(PROJECT VARIABLE_PREFIX Fcitx5Migrator
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/migrator_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/Fcitx5MigratorVersion.cmake"
-                        SOVERSION 0)
+                        SOVERSION 1)
 
 add_library(Fcitx5Migrator SHARED
     migratorfactoryplugin.cpp
