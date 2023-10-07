@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-23 20:25+0000\n"
+"POT-Creation-Date: 2023-10-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
-"Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
+"Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -588,7 +588,7 @@ msgstr "恢复默认(&D)"
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
 msgid "Rime"
-msgstr "中州韻"
+msgstr "中州韵"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
 #. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
