@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-10-07 20:24+0000\n"
+"POT-Creation-Date: 2023-10-16 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
@@ -389,7 +389,7 @@ msgstr "分组："
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr "从 Fcitx 4 导入拼音词典"
+msgstr "从 Fcitx 4 导入拼音词库"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
