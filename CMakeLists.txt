@@ -10,7 +10,7 @@ if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
           You must delete them, or cmake will refuse to work.")
 endif()
 
-project(fcitx5-configtool VERSION 5.1.1)
+project(fcitx5-configtool VERSION 5.1.2)
 
 set(QT_MIN_VERSION "5.12.0")
 find_package(ECM 1.0.0 REQUIRED NO_MODULE)
