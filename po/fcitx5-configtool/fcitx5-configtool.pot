@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-10-16 20:24+0000\n"
+"POT-Creation-Date: 2023-11-02 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,17 +87,17 @@ msgstr ""
 msgid "&Reset"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:399
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:403
+#: src/lib/configwidgetslib/addonselector.cpp:409
 #, kde-format
 msgid "- Disable %1\n"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:414
+#: src/lib/configwidgetslib/addonselector.cpp:420
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
@@ -131,7 +131,7 @@ msgstr ""
 msgid "Addons"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:303
+#: src/lib/configwidgetslib/addonselector.cpp:309
 msgid "Advanced options"
 msgstr ""
 
@@ -194,7 +194,7 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:185
+#: src/lib/configwidgetslib/addonselector.cpp:191
 #: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
@@ -236,12 +236,12 @@ msgstr ""
 msgid "Directory %1 does not exist."
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:428
 #, kde-format
 msgid "Disable %1"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:417
+#: src/lib/configwidgetslib/addonselector.cpp:423
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Table"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:304
+#: src/lib/configwidgetslib/addonselector.cpp:310
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "

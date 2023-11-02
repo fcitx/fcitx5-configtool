@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-28 20:28+0000\n"
+"POT-Creation-Date: 2023-11-02 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
-"Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
+"Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -95,17 +95,17 @@ msgstr "&OK"
 msgid "&Reset"
 msgstr "&Перезагрузить"
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:399
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ", "
 
-#: src/lib/configwidgetslib/addonselector.cpp:403
+#: src/lib/configwidgetslib/addonselector.cpp:409
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- Отключить %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:414
+#: src/lib/configwidgetslib/addonselector.cpp:420
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- Отключить некоторые функции в %1\n"
@@ -139,7 +139,7 @@ msgstr "Добавить группу"
 msgid "Addons"
 msgstr "Дополнения"
 
-#: src/lib/configwidgetslib/addonselector.cpp:303
+#: src/lib/configwidgetslib/addonselector.cpp:309
 msgid "Advanced options"
 msgstr "Дополнительные параметры"
 
@@ -202,7 +202,7 @@ msgstr "Нажмите на элемент для получения более 
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:185
+#: src/lib/configwidgetslib/addonselector.cpp:191
 #: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
@@ -244,12 +244,12 @@ msgstr "Удалить Группу"
 msgid "Directory %1 does not exist."
 msgstr "Каталог %1 не существует."
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:428
 #, kde-format
 msgid "Disable %1"
 msgstr "Отключить %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:417
+#: src/lib/configwidgetslib/addonselector.cpp:423
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -639,21 +639,21 @@ msgstr "Выбрать Раскладку"
 
 #: src/lib/configwidgetslib/impage.cpp:267
 msgid "Select default layout"
-msgstr "Выберите раскладку по умолчанию"
+msgstr "Выбрать раскладку по умолчанию"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
 #: rc.cpp:132
 #, kde-format
 msgid "Select migration tasks"
-msgstr "Выберите задачи переноса"
+msgstr "Выбрать задачи переноса"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:100
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr "Выберите системную раскладку клавиатуры"
+msgstr "Выбрать системную раскладку клавиатуры"
 
 #: src/migrator/lib/dbuswatcher.cpp:38
 #, kde-format
@@ -682,7 +682,7 @@ msgstr "Skk"
 msgid "Table"
 msgstr "Таблица"
 
-#: src/lib/configwidgetslib/addonselector.cpp:304
+#: src/lib/configwidgetslib/addonselector.cpp:310
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
