@@ -7,7 +7,6 @@
 #include "main.h"
 #include "config.h"
 #include "logging.h"
-#include "qtkeytrans.h"
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -336,21 +335,7 @@ bool FcitxModule::eventFilter(QObject *, QEvent *event) {
     return false;
 }
 
-QString FcitxModule::eventToString(int keyQt, int modifiers,
-                                   quint32 nativeScanCode, const QString &text,
-                                   bool keyCode) {
-    int sym;
-    unsigned int states;
-
-    modifiers = modifiers & (Qt::SHIFT | Qt::CTRL | Qt::ALT | Qt::META);
-    if (keyQt > 0) {
-        if ((keyQt == Qt::Key_Backtab) && (modifiers & Qt::SHIFT)) {
-            keyQt = Qt::Key_Tab;
-        }
-    } else {
-        return QString();
-    }
-
+QString FcitxModule::eventToString(bool keyCode) {
     Key key;
     if (QGuiApplication::platformName() == "xcb" ||
         QGuiApplication::platformName().startsWith("wayland")) {
@@ -358,33 +343,6 @@ QString FcitxModule::eventToString(int keyQt, int modifiers,
             key = Key::fromKeyCode(key_.code(), key_.states());
         } else {
             key = key_.normalize();
-        }
-    } else if (qEventToSym(keyQt, Qt::KeyboardModifiers(modifiers), text, sym,
-                           states)) {
-        if (keyCode) {
-            key = Key::fromKeyCode(nativeScanCode, KeyStates(states));
-        } else {
-            if (keyQt == Qt::Key_Shift || keyQt == Qt::Key_Super_L ||
-                keyQt == Qt::Key_Alt || keyQt == Qt::Key_Control) {
-                auto xkbsym =
-                    xkb_state_key_get_one_sym(xkbState_.get(), nativeScanCode);
-                if (keyQt == Qt::Key_Shift && xkbsym == XKB_KEY_Shift_R) {
-                    sym = FcitxKey_Shift_R;
-                }
-                if (keyQt == Qt::Key_Super_L && xkbsym == XKB_KEY_Super_R) {
-                    sym = FcitxKey_Super_R;
-                }
-                if (keyQt == Qt::Key_Alt && xkbsym == XKB_KEY_Alt_R) {
-                    sym = FcitxKey_Alt_R;
-                }
-                if (keyQt == Qt::Key_Control && xkbsym == XKB_KEY_Control_R) {
-                    sym = FcitxKey_Control_R;
-                }
-            }
-            key = Key(static_cast<KeySym>(sym),
-                      KeyStates(states) |
-                          Key::keySymToStates(static_cast<KeySym>(sym)),
-                      nativeScanCode);
         }
     }
 

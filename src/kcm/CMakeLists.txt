@@ -1,6 +1,5 @@
 add_library(kcm_fcitx5 MODULE
     main.cpp
-    qtkeytrans.cpp
 )
 
 target_link_libraries(kcm_fcitx5

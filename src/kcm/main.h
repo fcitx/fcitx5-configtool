@@ -87,8 +87,7 @@ public Q_SLOTS:
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-    QString eventToString(int key, int modifiers, quint32 nativeScanCode,
-                          const QString &text, bool keyCode);
+    QString eventToString(bool keyCode);
     QString localizedKeyString(const QString &key);
 
     void runFcitx();
