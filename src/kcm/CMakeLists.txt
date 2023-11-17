@@ -22,9 +22,6 @@ endforeach()
 
 fcitx5_translate_desktop_file(kcm_fcitx5.desktop.in
   kcm_fcitx5.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/org.fcitx.fcitx5.kcm)
-fcitx5_translate_desktop_file(package/metadata.desktop
-  ${CMAKE_CURRENT_BINARY_DIR}/package/metadata.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/org.fcitx.fcitx5.kcm)
-kcoreaddons_desktop_to_json(kcm_fcitx5 "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop" DEFAULT_SERVICE_TYPE)
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop"
   DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
@@ -35,4 +32,3 @@ install(TARGETS kcm_fcitx5 DESTINATION ${KDE_INSTALL_PLUGINDIR}/kcms)
 #    So we just delete the file during the cmake.
 file(RELATIVE_PATH RELATIVE_BINARY_DIR ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
 kpackage_install_package(${RELATIVE_BINARY_DIR}/package org.fcitx.fcitx5.kcm kcms)
-file(REMOVE ${CMAKE_CURRENT_BINARY_DIR}/package/metadata.desktop)
