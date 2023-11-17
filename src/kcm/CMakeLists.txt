@@ -24,7 +24,7 @@ fcitx5_translate_desktop_file(kcm_fcitx5.desktop.in
   kcm_fcitx5.desktop PO_DIRECTORY ${PROJECT_SOURCE_DIR}/po/org.fcitx.fcitx5.kcm)
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/kcm_fcitx5.desktop"
-  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
+  DESTINATION ${KDE_INSTALL_APPDIR})
 install(TARGETS kcm_fcitx5 DESTINATION ${KDE_INSTALL_PLUGINDIR}/kcms)
 # This is a hack against kpackage_install_package
 # 1. kpackage_install_package only accept relative path to ${CMAKE_CURRENT_SOURCE_DIR}
