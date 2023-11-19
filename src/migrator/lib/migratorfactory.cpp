@@ -39,7 +39,7 @@ void MigratorFactoryPrivate::scan() {
     }
 
     StandardPath::global().scanFiles(
-        StandardPath::Type::Addon, "qt5",
+        StandardPath::Type::Addon, "qt" QT_STRINGIFY(QT_VERSION_MAJOR),
         [this](const std::string &path, const std::string &dirPath, bool user) {
             do {
                 if (user) {

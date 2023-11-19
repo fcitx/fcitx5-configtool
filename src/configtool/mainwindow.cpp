@@ -22,7 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
       impage_(new IMPage(dbus_, this)),
       addonPage_(new AddonSelector(this, dbus_)),
       configPage_(new ConfigWidget("fcitx://config/global", dbus_, this)) {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setFallbackSessionManagementEnabled(false);
+#endif
     connect(qApp, &QGuiApplication::commitDataRequest, this,
             &MainWindow::commitData);
     connect(qApp, &QGuiApplication::saveStateRequest, this,

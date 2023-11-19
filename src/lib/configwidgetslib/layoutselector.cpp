@@ -14,7 +14,6 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QStringListModel>
-#include <QX11Info>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtdbustypes.h>
@@ -46,7 +45,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
     connect(ui_->variantComboBox,
             qOverload<int>(&QComboBox::currentIndexChanged), this,
             &LayoutSelector::variantComboBoxChanged);
-    if (QX11Info::isPlatformX11()) {
+    if (qApp->platformName() == "xcb") {
         keyboardLayoutWidget_ = new KeyboardLayoutWidget(this);
         keyboardLayoutWidget_->setMinimumSize(QSize(400, 200));
         keyboardLayoutWidget_->setSizePolicy(QSizePolicy::Expanding,

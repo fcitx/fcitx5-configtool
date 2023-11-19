@@ -1,1 +1,5 @@
+if (QT_MAJOR_VERSION STREQUAL 5)
 fcitx5_install_translation(org.fcitx.fcitx5.kcm)
+else()
+fcitx5_install_translation(kcm_fcitx5)
+endif()

@@ -46,22 +46,18 @@ public:
         : OptionWidget(path, parent), spinBox_(new QSpinBox),
           defaultValue_(option.defaultValue().variant().toString().toInt()) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         spinBox_ = new QSpinBox;
         spinBox_->setMaximum(INT_MAX);
         spinBox_->setMinimum(INT_MIN);
         if (option.properties().contains("IntMax")) {
             auto max = option.properties().value("IntMax");
-            if (max.type() == QVariant::String) {
-                spinBox_->setMaximum(max.toInt());
-            }
+            spinBox_->setMaximum(max.toString().toInt());
         }
         if (option.properties().contains("IntMin")) {
             auto min = option.properties().value("IntMin");
-            if (min.type() == QVariant::String) {
-                spinBox_->setMinimum(min.toInt());
-            }
+            spinBox_->setMinimum(min.toString().toInt());
         }
         connect(spinBox_, qOverload<int>(&QSpinBox::valueChanged), this,
                 &OptionWidget::valueChanged);
@@ -96,7 +92,7 @@ public:
         : OptionWidget(path, parent), lineEdit_(new QLineEdit),
           defaultValue_(option.defaultValue().variant().toString()) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         lineEdit_ = new QLineEdit;
         connect(lineEdit_, &QLineEdit::textChanged, this,
@@ -129,7 +125,7 @@ public:
         : OptionWidget(path, parent), fontButton_(new FontButton),
           defaultValue_(option.defaultValue().variant().toString()) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         connect(fontButton_, &FontButton::fontChanged, this,
                 &OptionWidget::valueChanged);
@@ -163,7 +159,7 @@ public:
         : OptionWidget(path, parent), checkBox_(new QCheckBox),
           defaultValue_(option.defaultValue().variant().toString() == "True") {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         connect(checkBox_, &QCheckBox::clicked, this,
                 &OptionWidget::valueChanged);
@@ -195,7 +191,7 @@ public:
                         QWidget *parent)
         : OptionWidget(path, parent), keyListWidget_(new KeyListWidget) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         keyListWidget_ = new KeyListWidget(this);
 
@@ -270,7 +266,7 @@ public:
           defaultValue_(
               option.defaultValue().variant().toString().toUtf8().constData()) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         keyWidget_->setModifierlessAllowed(
             readBool(option.properties(), "AllowModifierLess"));
@@ -318,7 +314,7 @@ public:
           toolButton_(new QToolButton) {
         auto *layout = new QHBoxLayout;
         toolButton_->setIcon(QIcon::fromTheme("preferences-system-symbolic"));
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         int i = 0;
         while (true) {
@@ -403,7 +399,7 @@ public:
                       QWidget *parent)
         : OptionWidget(path, parent), colorButton_(new KColorButton) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
         layout->addWidget(colorButton_);
         colorButton_->setAlphaChannelEnabled(true);
         setLayout(layout);
@@ -467,7 +463,7 @@ public:
           uri_(readString(option.properties(), "External")),
           launchSubConfig_(readBool(option.properties(), "LaunchSubConfig")) {
         QVBoxLayout *layout = new QVBoxLayout;
-        layout->setMargin(0);
+        layout->setContentsMargins(0, 0, 0, 0);
 
         button_ = new QToolButton(this);
         button_->setIcon(QIcon::fromTheme("preferences-system-symbolic"));
@@ -488,7 +484,7 @@ public:
                     dialog->exec();
                     delete dialog;
                 } else if (uri_.startsWith("fcitx://config/addon/")) {
-                    QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
+                    QString wrapperPath = FCITX5_QT_GUI_WRAPPER;
                     if (!QFileInfo(wrapperPath).isExecutable()) {
                         wrapperPath =
                             QString::fromStdString(stringutils::joinPath(
@@ -673,7 +669,7 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
         auto subOption = option;
         subOption.setType(option.type().mid(5)); // Remove List|
         while (true) {
-            auto subValue = readVariant(value, QString(i));
+            auto subValue = readVariant(value, QString::number(i));
             strs << prettify(subOption, subValue);
             i++;
         }

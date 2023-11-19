@@ -47,9 +47,15 @@ Q_SIGNALS:
 
 protected:
     QList<QWidget *> createItemWidgets(const QModelIndex &index) const override;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    void updateItemWidgets(const QList<QWidget *> &widgets,
+                           const QStyleOptionViewItem &option,
+                           const QPersistentModelIndex &index) const override;
+#else
     void updateItemWidgets(const QList<QWidget *> widgets,
                            const QStyleOptionViewItem &option,
                            const QPersistentModelIndex &index) const override;
+#endif
 
 private Q_SLOTS:
     void checkBoxClicked(bool state);
@@ -211,9 +217,15 @@ AddonDelegate::createItemWidgets(const QModelIndex &index) const {
     return widgetList;
 }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+void AddonDelegate::updateItemWidgets(
+    const QList<QWidget *> &widgets, const QStyleOptionViewItem &option,
+    const QPersistentModelIndex &index) const {
+#else
 void AddonDelegate::updateItemWidgets(
     const QList<QWidget *> widgets, const QStyleOptionViewItem &option,
     const QPersistentModelIndex &index) const {
+#endif
     if (index.data(RowTypeRole).toInt() == CategoryType) {
         return;
     }

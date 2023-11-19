@@ -11,7 +11,6 @@
 #include <QCommandLineParser>
 #include <QMainWindow>
 #include <QMessageBox>
-#include <QX11Info>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
 
@@ -22,7 +21,7 @@ int main(int argc, char *argv[]) {
     app.setApplicationName(QLatin1String("kbd-layout-viewer"));
     app.setApplicationVersion(QLatin1String(PROJECT_VERSION));
 
-    if (!QX11Info::isPlatformX11()) {
+    if (app.platformName() != "xcb") {
         QMessageBox msgBox(QMessageBox::Critical, _("Error"),
                            _("This program only works on X11."));
         msgBox.exec();
@@ -51,7 +50,9 @@ int main(int argc, char *argv[]) {
         variant = parser.value("variant");
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     app.setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
 
     QMainWindow mainWindow;
     mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));

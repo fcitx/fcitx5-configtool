@@ -12,28 +12,52 @@
 #include "font.h"
 #include "imconfig.h"
 #include "model.h"
-#include <KQuickAddons/ConfigModule>
 #include <QFont>
 #include <QMap>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>
+#include <qt/QtCore/qobject.h>
 #include <xkbcommon/xkbcommon.h>
 
-class BalooSettings;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <KQuickConfigModule>
+#define FCITX_USE_NEW_KDECLARATIVE
+#else
+#include <KQuickAddons/ConfigModule>
+#include <kdeclarative_version.h>
+
+#if KDECLARATIVE_VERSION >= QT_VERSION_CHECK(5, 104, 0)
+#define FCITX_USE_NEW_KDECLARATIVE
+#endif
+
+#endif
 
 namespace fcitx {
 
 namespace kcm {
 
-class FcitxModule : public KQuickAddons::ConfigModule {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+using FcitxKCMBase = KQuickConfigModule;
+#else
+using FcitxKCMBase = KQuickAddons::ConfigModule;
+#endif
+
+class FcitxModule : public FcitxKCMBase {
     Q_OBJECT
     Q_PROPERTY(IMConfig *imConfig READ imConfig CONSTANT)
     Q_PROPERTY(LayoutProvider *layoutProvider READ layoutProvider CONSTANT)
     Q_PROPERTY(AddonProxyModel *addonModel READ addonModel CONSTANT)
     Q_PROPERTY(bool availability READ availability NOTIFY availabilityChanged)
 public:
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    FcitxModule(QObject *parent, const KPluginMetaData &metaData);
+#elif defined(FCITX_USE_NEW_KDECLARATIVE)
+    FcitxModule(QObject *parent, const KPluginMetaData &metaData,
+                const QVariantList &args);
+#else
     FcitxModule(QObject *parent, const QVariantList &args);
+#endif
     virtual ~FcitxModule() override;
 
     auto imConfig() const { return imConfig_; }

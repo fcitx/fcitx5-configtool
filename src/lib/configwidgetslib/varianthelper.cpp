@@ -82,7 +82,11 @@ void writeVariantHelper(QVariantMap &map, const QStringList &path,
             iter = map.insert(path[depth], QVariantMap());
         }
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        if (iter->typeId() != QMetaType::QVariantMap) {
+#else
         if (iter->type() != QVariant::Map) {
+#endif
             auto oldValue = *iter;
             *iter = QVariantMap({{"", oldValue}});
         }

@@ -18,9 +18,9 @@ namespace kcm {
 
 KeyListWidget::KeyListWidget(QWidget *parent) : QWidget(parent) {
     auto layout = new QHBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     keysLayout_ = new QVBoxLayout;
-    keysLayout_->setMargin(0);
+    keysLayout_->setContentsMargins(0, 0, 0, 0);
     auto subLayout = new QVBoxLayout;
 
     addButton_ = new QToolButton;
@@ -54,7 +54,7 @@ void KeyListWidget::addKey(fcitx::Key key) {
     keyWidget->setModifierOnlyAllowed(modifierOnly_);
     auto widget = new QWidget;
     auto layout = new QHBoxLayout;
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->addWidget(keyWidget);
     auto removeButton = new QToolButton;
     removeButton->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);

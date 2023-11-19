@@ -25,8 +25,15 @@ namespace fcitx {
 
 namespace kcm {
 
-FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
-    : KQuickAddons::ConfigModule(parent, args), dbus_(new DBusProvider(this)),
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData)
+#elif defined(FCITX_USE_NEW_KDECLARATIVE)
+FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData,
+                         const QVariantList &)
+#else
+FcitxModule::FcitxModule(QObject *parent, const QVariantList &)
+#endif
+    : FcitxKCMBase(parent, metaData), dbus_(new DBusProvider(this)),
       imConfig_(new IMConfig(dbus_, IMConfig::Flatten, this)),
       layoutProvider_(new LayoutProvider(dbus_, this)),
       addonModel_(new FlatAddonModel(this)),
@@ -41,6 +48,8 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     qmlRegisterAnonymousType<LanguageModel>("", 1);
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) &&                                  \
+    !defined(FCITX_USE_NEW_KDECLARATIVE)
     KAboutData *about =
         new KAboutData("org.fcitx.fcitx5.kcm", i18n("Fcitx 5"), PROJECT_VERSION,
                        i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
@@ -50,6 +59,7 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     about->addAuthor(i18n("Xuetian Weng"), i18n("Author"), "wengxt@gmail.com");
 
     setAboutData(about);
+#endif
     addonProxyModel_->setSourceModel(addonModel_);
     addonProxyModel_->sort(0);
 
@@ -71,7 +81,7 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
                                                XKB_KEYMAP_COMPILE_NO_FLAGS));
     xkbState_.reset(xkb_state_new(xkbKeymap_.get()));
 
-    connect(this, &ConfigModule::pagePushed, this, [this](QQuickItem *page) {
+    connect(this, &FcitxKCMBase::pagePushed, this, [this](QQuickItem *page) {
         pages_[currentIndex() + 1] = page;
         if (page->property("needsSave").isValid()) {
             connect(page, SIGNAL(needsSaveChanged()), this,
@@ -272,7 +282,7 @@ void FcitxModule::saveAddon() {
 
 void FcitxModule::launchExternal(const QString &uri) {
     if (uri.startsWith("fcitx://config/addon/")) {
-        QString wrapperPath = FCITX5_QT5_GUI_WRAPPER;
+        QString wrapperPath = FCITX5_QT_GUI_WRAPPER;
         if (!QFileInfo(wrapperPath).isExecutable()) {
             wrapperPath = QString::fromStdString(stringutils::joinPath(
                 StandardPath::global().fcitxPath("libexecdir"),

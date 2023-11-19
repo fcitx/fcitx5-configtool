@@ -102,10 +102,16 @@ static QString languageName(const QString &langCode) {
             // indistinguishable "unknown"
             return langCode;
         }
-        const bool hasCountry = langCode.indexOf("_") != -1 &&
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        const bool hasTerritory = (langCode.indexOf("_") != -1 &&
+            locale.territory() != QLocale::AnyTerritory);
+#else
+        const bool hasTerritory = langCode.indexOf("_") != -1 &&
                                 locale.country() != QLocale::AnyCountry;
+#endif
         QString languageName;
-        if (hasCountry) {
+        if (hasTerritory) {
             languageName = locale.nativeLanguageName();
         }
         if (languageName.isEmpty()) {
@@ -116,24 +122,32 @@ static QString languageName(const QString &langCode) {
         if (languageName.isEmpty()) {
             languageName = _("Other");
         }
-        QString countryName;
+        QString territoryName;
         // QLocale will always assign a default country for us, check if our
         // lang code
 
-        if (langCode.indexOf("_") != -1 &&
-            locale.country() != QLocale::AnyCountry) {
-            countryName = locale.nativeCountryName();
-            if (countryName.isEmpty()) {
-                countryName = QLocale::countryToString(locale.country());
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        if (hasTerritory) {
+            territoryName = locale.nativeTerritoryName();
+            if (territoryName.isEmpty()) {
+                territoryName = QLocale::territoryToString(locale.territory());
             }
         }
+#else
+        if (hasTerritory) {
+            territoryName = locale.nativeCountryName();
+            if (territoryName.isEmpty()) {
+                territoryName = QLocale::countryToString(locale.country());
+            }
+        }
+#endif
 
-        if (countryName.isEmpty()) {
+        if (territoryName.isEmpty()) {
             return languageName;
         } else {
             return QString(
                        C_("%1 is language name, %2 is country name", "%1 (%2)"))
-                .arg(languageName, countryName);
+                .arg(languageName, territoryName);
         }
     }
 }

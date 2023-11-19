@@ -7,7 +7,6 @@
 #include "config.h"
 #include <KIconLoader>
 #include <KLocalizedString>
-#include <Plasma/FrameSvg>
 #include <Plasma/Theme>
 #include <QBitmap>
 #include <QCommandLineParser>
@@ -22,6 +21,16 @@
 #include <fcntl.h>
 #include <memory>
 #include <qmath.h>
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <KSvg/FrameSvg>
+using FrameSvg = KSvg::FrameSvg;
+using Svg = KSvg::Svg;
+#else
+#include <Plasma/FrameSvg>
+using FrameSvg = Plasma::FrameSvg;
+using Svg = Plasma::Svg;
+#endif
 
 namespace {
 bool fd_is_valid(int fd) { return fcntl(fd, F_GETFD) != -1 || errno != EBADF; }
@@ -103,11 +112,22 @@ public:
 
         qDebug() << "Will write new themes to: " << outputPath_;
 
-        if (parser.isSet("theme")) {
+        if (parser.isSet("theme") && !monitorMode()) {
             theme_ = std::make_unique<Plasma::Theme>(parser.value("theme"));
         } else {
             theme_ = std::make_unique<Plasma::Theme>();
         }
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        if (parser.isSet("theme") && !monitorMode()) {
+            imageSet_ = std::make_unique<KSvg::ImageSet>(theme_->themeName());
+        } else {
+            // For monitor mode, we need a default constructed, so it can be
+            // shared with global image set. It will be able to listen to
+            // theme's global change like composite.
+            imageSet_ = std::make_unique<KSvg::ImageSet>();
+        }
+#endif
 
         if (monitorMode()) {
             socketNotifier_ =
@@ -120,6 +140,13 @@ public:
                         }
                     });
             connect(theme_.get(), &Plasma::Theme::themeChanged, this, [this]() {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                auto selectors = imageSet_->selectors();
+                // Force invalidate the cache to workaround a bug in ksvg.
+                // FIXME: remove this once fix is merged.
+                imageSet_->setSelectors({"bad"});
+                imageSet_->setSelectors(selectors);
+#endif
                 if (!generateTheme()) {
                     qDebug() << "Failed to generate theme.";
                 }
@@ -178,8 +205,8 @@ public:
             qreal shadowLeft = 0, shadowRight = 0, shadowTop = 0,
                   shadowBottom = 0;
             qreal bgLeft = 0, bgRight = 0, bgTop = 0, bgBottom = 0;
-            Plasma::FrameSvg shadowSvg;
-            shadowSvg.setTheme(theme_.get());
+            FrameSvg shadowSvg;
+            setThemeToSvg(shadowSvg);
             shadowSvg.setImagePath("dialogs/background");
             const bool hasShadow = shadowSvg.hasElementPrefix("shadow");
             if (hasShadow) {
@@ -189,8 +216,8 @@ public:
                                      shadowBottom);
             }
 
-            Plasma::FrameSvg svg;
-            svg.setTheme(theme_.get());
+            FrameSvg svg;
+            setThemeToSvg(svg);
             svg.setImagePath("dialogs/background");
             svg.resizeFrame(
                 QSizeF(200, 200) -
@@ -253,8 +280,8 @@ public:
         }
 
         {
-            Plasma::FrameSvg highlightSvg;
-            highlightSvg.setTheme(theme_.get());
+            FrameSvg highlightSvg;
+            setThemeToSvg(highlightSvg);
             highlightSvg.setImagePath("widgets/viewitem");
             if (highlightSvg.hasElementPrefix("hover")) {
                 highlightSvg.setElementPrefix("hover");
@@ -287,9 +314,9 @@ public:
         }
 
         {
-            Plasma::Svg icon;
+            Svg icon;
             icon.setContainsMultipleImages(true);
-            icon.setTheme(theme_.get());
+            setThemeToSvg(icon);
             icon.setImagePath("widgets/arrows");
             icon.resize(KIconLoader::SizeSmallMedium,
                         KIconLoader::SizeSmallMedium);
@@ -315,9 +342,9 @@ public:
                 }
             }
 
-            Plasma::Svg radio;
+            Svg radio;
             radio.setContainsMultipleImages(true);
-            radio.setTheme(theme_.get());
+            setThemeToSvg(radio);
             radio.setImagePath("widgets/checkmarks");
             radio.resize(KIconLoader::SizeSmall, KIconLoader::SizeSmall);
             if (radio.hasElement("radiobutton")) {
@@ -327,9 +354,9 @@ public:
                     return false;
                 }
             }
-            Plasma::Svg line;
+            Svg line;
             line.setContainsMultipleImages(true);
-            line.setTheme(theme_.get());
+            setThemeToSvg(line);
             line.setImagePath("widgets/line");
             if (line.hasElement("horizontal-line")) {
                 if (!safeSaveImage(line.pixmap("horizontal-line"),
@@ -351,10 +378,23 @@ public:
         return ret;
     }
 
+    template <typename T>
+    void setThemeToSvg(T &svg) {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        svg.setImageSet(imageSet_.get());
+#else
+        svg.setTheme(theme_.get());
+#endif
+    }
+
 private:
     QSocketNotifier *socketNotifier_ = nullptr;
     int fd_ = -1;
     std::unique_ptr<Plasma::Theme> theme_;
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    std::unique_ptr<KSvg::ImageSet> imageSet_;
+#else
+#endif
     QString outputPath_;
 };
 
