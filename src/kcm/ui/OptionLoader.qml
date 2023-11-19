@@ -61,7 +61,7 @@ Loader {
         if (!option.isSection) {
             var prop = {
                 "typeName": option.type,
-                "description": option.description,
+                "description": option.description ? option.description : "",
                 "defaultValue": option.defaultValue,
                 "properties": option.properties,
                 "rawValue": rawValue

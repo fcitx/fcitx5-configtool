@@ -130,6 +130,7 @@ ColumnLayout {
                     color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
                     height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
                     text: model !== null ? prettify(model.value, subTypeName) : ""
+                    elide: Text.ElideRight
                 }
             }
 
