@@ -27,13 +27,16 @@ namespace kcm {
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData)
+    : FcitxKCMBase(parent, metaData),
 #elif defined(FCITX_USE_NEW_KDECLARATIVE)
 FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData,
-                         const QVariantList &)
+                         const QVariantList &args)
+    : FcitxKCMBase(parent, metaData, args),
 #else
 FcitxModule::FcitxModule(QObject *parent, const QVariantList &)
+    : FcitxKCMBase(parent, args),
 #endif
-    : FcitxKCMBase(parent, metaData), dbus_(new DBusProvider(this)),
+      dbus_(new DBusProvider(this)),
       imConfig_(new IMConfig(dbus_, IMConfig::Flatten, this)),
       layoutProvider_(new LayoutProvider(dbus_, this)),
       addonModel_(new FlatAddonModel(this)),
