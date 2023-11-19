@@ -33,7 +33,7 @@ FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData,
                          const QVariantList &args)
     : FcitxKCMBase(parent, metaData, args),
 #else
-FcitxModule::FcitxModule(QObject *parent, const QVariantList &)
+FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
     : FcitxKCMBase(parent, args),
 #endif
       dbus_(new DBusProvider(this)),
