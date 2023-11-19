@@ -6,6 +6,7 @@
  */
 
 #include "keylistwidget.h"
+#include <QAction>
 #include <QHBoxLayout>
 #include <QStyle>
 #include <QToolButton>
@@ -52,6 +53,12 @@ void KeyListWidget::addKey(fcitx::Key key) {
     keyWidget->setKeySequence({key});
     keyWidget->setModifierlessAllowed(modifierLess_);
     keyWidget->setModifierOnlyAllowed(modifierOnly_);
+    auto voidSymbolAction = new QAction(keyWidget);
+    voidSymbolAction->setText(_("Set to Void Symbol"));
+    connect(voidSymbolAction, &QAction::triggered, keyWidget, [keyWidget] () {
+        keyWidget->setKeySequence({Key(FcitxKey_VoidSymbol)});
+    });
+    keyWidget->addAction(voidSymbolAction);
     auto widget = new QWidget;
     auto layout = new QHBoxLayout;
     layout->setContentsMargins(0, 0, 0, 0);
@@ -109,10 +116,7 @@ QList<fcitx::Key> KeyListWidget::keys() const {
             if (keyWidget->keySequence().isEmpty()) {
                 continue;
             }
-            auto &key = keyWidget->keySequence()[0];
-            if (key.isValid() && !result.contains(key)) {
-                result << keyWidget->keySequence()[0];
-            }
+            result << keyWidget->keySequence()[0];
         }
     }
     return result;

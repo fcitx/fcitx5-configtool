@@ -140,5 +140,12 @@ Button {
             checkable: true
             text: i18n("Key code mode")
         }
+        Action {
+            id: voidSymbolAction
+            text: i18n("Void Symbol")
+            onTriggered: {
+                keyString = "VoidSymbol";
+            }
+        }
     }
 }

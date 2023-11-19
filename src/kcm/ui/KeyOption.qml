@@ -54,7 +54,7 @@ Button {
                 return i18n("Empty");
             }
         }
-        return kcm.localizedKeyString(keyString);
+        return kcm ? kcm.localizedKeyString(keyString) : "";
     }
     function save() {
         rawValue = keyString;
@@ -142,6 +142,13 @@ Button {
             id: keyCodeAction
             checkable: true
             text: i18n("Key code mode")
+        }
+        Action {
+            id: voidSymbolAction
+            text: i18n("Void Symbol")
+            onTriggered: {
+                keyString = "VoidSymbol";
+            }
         }
     }
 }
