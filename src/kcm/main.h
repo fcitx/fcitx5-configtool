@@ -17,7 +17,6 @@
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>
-#include <qt/QtCore/qobject.h>
 #include <xkbcommon/xkbcommon.h>
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
