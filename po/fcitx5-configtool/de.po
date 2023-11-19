@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-11-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: mar well <m.wellendorf@gmx.de>, 2022\n"
-"Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
+"Language-Team: German (https://app.transifex.com/fcitx/teams/12005/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/model.cpp:135
+#: src/lib/configlib/model.cpp:149
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -47,33 +47,33 @@ msgstr "%1 abgestürzt."
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:539
-#: src/lib/configwidgetslib/optionwidget.cpp:550
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
-#: src/lib/configwidgetslib/optionwidget.cpp:571
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:552
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
-#: src/configtool/mainwindow.cpp:56
+#: src/configtool/mainwindow.cpp:58
 msgid "&Apply"
 msgstr "&Anwenden"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:615
+#: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
-#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/layoutselector.cpp:75
 msgid "&Clear"
 msgstr "&Löschen"
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:60
 msgid "&Close"
 msgstr "&Schließen"
 
@@ -81,34 +81,34 @@ msgstr "&Schließen"
 msgid "&Next >"
 msgstr "&Weiter >"
 
-#: src/configtool/mainwindow.cpp:57
+#: src/configtool/mainwindow.cpp:59
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
-#: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:614
+#: src/lib/configwidgetslib/layoutselector.cpp:74
+#: src/lib/configwidgetslib/optionwidget.cpp:610
 msgid "&OK"
 msgstr "&OK"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:61
 msgid "&Reset"
 msgstr "&Zurücksetzen"
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:411
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ", "
 
-#: src/lib/configwidgetslib/addonselector.cpp:403
+#: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- %1 deaktivieren\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:414
+#: src/lib/configwidgetslib/addonselector.cpp:432
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
 
-#: layout/main.cpp:33
+#: layout/main.cpp:32
 msgid "A general keyboard layout viewer"
 msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
 
@@ -120,7 +120,7 @@ msgstr "Ein allgemeiner Betrachter für Tastaturlayouts"
 #. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: src/lib/configwidgetslib/keylistwidget.cpp:32 rc.cpp:9 rc.cpp:42 rc.cpp:57
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
@@ -133,11 +133,11 @@ msgstr "Hinzufügen"
 msgid "Add Group"
 msgstr "Gruppe hinzufügen"
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:49
 msgid "Addons"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:303
+#: src/lib/configwidgetslib/addonselector.cpp:321
 msgid "Advanced options"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Any language"
 msgstr "Jede Sprache"
 
-#: src/configtool/mainwindow.cpp:120
+#: src/configtool/mainwindow.cpp:122
 msgid "Apply configuration changes"
 msgstr "Konfigurationsänderungen anwenden"
 
@@ -201,8 +201,8 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/addonselector.cpp:197
+#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurieren"
@@ -243,12 +243,12 @@ msgstr "Gruppe löschen"
 msgid "Directory %1 does not exist."
 msgstr "Verzeichnis %1 existiert nicht."
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:440
 #, kde-format
 msgid "Disable %1"
 msgstr "%1 deaktivieren"
 
-#: src/lib/configwidgetslib/addonselector.cpp:417
+#: src/lib/configwidgetslib/addonselector.cpp:435
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -260,7 +260,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:121
+#: src/configtool/mainwindow.cpp:123
 msgid "Do you want to save the changes or discard them?"
 msgstr ""
 
@@ -280,7 +280,7 @@ msgstr "Herunter"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:25
 msgid "Error"
 msgstr "Fehler"
 
@@ -363,7 +363,7 @@ msgstr "Frontend"
 msgid "Global Config"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:48
 msgid "Global Options"
 msgstr "Globale Optionen"
 
@@ -395,7 +395,7 @@ msgstr "Daten vonEingabemethoden, wie Fcitx4, importieren"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "Eingabemethode"
 
@@ -403,19 +403,19 @@ msgstr "Eingabemethode"
 msgid "Input Method Configuration"
 msgstr ""
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "Keyboard <layout>"
 msgstr "Tastatur <layout>"
 
-#: layout/main.cpp:58
+#: layout/main.cpp:59
 msgid "Keyboard Layout viewer"
 msgstr "Ansicht Tastaturlayout"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Tastaturlayout <group> (0-3)"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "Keyboard layout <variant>"
 msgstr "Tastaturlayout <variant>"
 
@@ -531,7 +531,7 @@ msgstr "Mehrsprachig"
 msgid "New Group"
 msgstr "Neue Gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "No"
 msgstr "Nein"
 
@@ -546,7 +546,7 @@ msgstr ""
 msgid "Only &Show Current Language"
 msgstr "Nur &gegenwärtige Sprache anzeigen"
 
-#: src/lib/configlib/model.cpp:117
+#: src/lib/configlib/model.cpp:123
 msgid "Other"
 msgstr "Andere"
 
@@ -566,7 +566,7 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: src/lib/configwidgetslib/keylistwidget.cpp:70 rc.cpp:21 rc.cpp:48 rc.cpp:63
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
@@ -576,7 +576,7 @@ msgstr "Entfernen"
 msgid "Restart"
 msgstr "Neustart"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:63
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr "&Standardeinstellungen wiederherstellen"
@@ -656,6 +656,10 @@ msgstr ""
 msgid "Service %1 still present on DBus."
 msgstr ""
 
+#: src/lib/configwidgetslib/keylistwidget.cpp:57
+msgid "Set to Void Symbol"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
@@ -673,7 +677,7 @@ msgstr ""
 msgid "Table"
 msgstr "Tabelle"
 
-#: src/lib/configwidgetslib/addonselector.cpp:304
+#: src/lib/configwidgetslib/addonselector.cpp:322
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
@@ -692,7 +696,7 @@ msgstr ""
 "<b>Tastatur</b> oder <b>Tastatur - <i>Tastaturlayout</i></b> als Erstes "
 "stehen."
 
-#: layout/main.cpp:27
+#: layout/main.cpp:26
 msgid "This program only works on X11."
 msgstr "Dieses Programm funktioniert nur unter X11."
 
@@ -749,7 +753,7 @@ msgstr "Tastaturlayout ansehen"
 msgid "WelcomePage"
 msgstr "WillkommensSeite"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "Yes"
 msgstr "Ja"
 
@@ -769,19 +773,19 @@ msgstr ""
 "Ihre gegenwärtig ausgewählte Eingabemethode passt nicht zu Ihrem Layout, "
 "wollen sie passenden Layouteinstellungen hinzufügen?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:680
+#: src/lib/configwidgetslib/optionwidget.cpp:676
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "group"
 msgstr "Gruppe"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "layout"
 msgstr "Layout"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "variant"
 msgstr "Variante"

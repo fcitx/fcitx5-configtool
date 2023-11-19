@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-02 20:24+0000\n"
+"POT-Creation-Date: 2023-11-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/model.cpp:135
+#: src/lib/configlib/model.cpp:149
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -49,33 +49,33 @@ msgstr "%1 повреждён."
 msgid "%1 failed to start."
 msgstr "%1 не удалось начать. "
 
-#: src/lib/configwidgetslib/optionwidget.cpp:539
-#: src/lib/configwidgetslib/optionwidget.cpp:550
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
-#: src/lib/configwidgetslib/optionwidget.cpp:571
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:552
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
-#: src/configtool/mainwindow.cpp:56
+#: src/configtool/mainwindow.cpp:58
 msgid "&Apply"
 msgstr "&Применить"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:615
+#: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "&Cancel"
 msgstr "&Отмена"
 
-#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/layoutselector.cpp:75
 msgid "&Clear"
 msgstr "&Очистить"
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:60
 msgid "&Close"
 msgstr "&Закрыть"
 
@@ -83,34 +83,34 @@ msgstr "&Закрыть"
 msgid "&Next >"
 msgstr "&Следующее >"
 
-#: src/configtool/mainwindow.cpp:57
+#: src/configtool/mainwindow.cpp:59
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
-#: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:614
+#: src/lib/configwidgetslib/layoutselector.cpp:74
+#: src/lib/configwidgetslib/optionwidget.cpp:610
 msgid "&OK"
 msgstr "&OK"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:61
 msgid "&Reset"
 msgstr "&Перезагрузить"
 
-#: src/lib/configwidgetslib/addonselector.cpp:399
+#: src/lib/configwidgetslib/addonselector.cpp:411
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ", "
 
-#: src/lib/configwidgetslib/addonselector.cpp:409
+#: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- Отключить %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:420
+#: src/lib/configwidgetslib/addonselector.cpp:432
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- Отключить некоторые функции в %1\n"
 
-#: layout/main.cpp:33
+#: layout/main.cpp:32
 msgid "A general keyboard layout viewer"
 msgstr "Основной просмотрщик раскладки клавиатуры"
 
@@ -122,7 +122,7 @@ msgstr "Основной просмотрщик раскладки клавиа�
 #. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: src/lib/configwidgetslib/keylistwidget.cpp:32 rc.cpp:9 rc.cpp:42 rc.cpp:57
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
@@ -135,11 +135,11 @@ msgstr "Добавить"
 msgid "Add Group"
 msgstr "Добавить группу"
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:49
 msgid "Addons"
 msgstr "Дополнения"
 
-#: src/lib/configwidgetslib/addonselector.cpp:309
+#: src/lib/configwidgetslib/addonselector.cpp:321
 msgid "Advanced options"
 msgstr "Дополнительные параметры"
 
@@ -152,7 +152,7 @@ msgstr "Все задачи перемещения успешно заверше
 msgid "Any language"
 msgstr "Любой язык"
 
-#: src/configtool/mainwindow.cpp:120
+#: src/configtool/mainwindow.cpp:122
 msgid "Apply configuration changes"
 msgstr "Применить изменения конфигурации"
 
@@ -202,8 +202,8 @@ msgstr "Нажмите на элемент для получения более 
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:191
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/addonselector.cpp:197
+#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "Настроить"
@@ -244,12 +244,12 @@ msgstr "Удалить Группу"
 msgid "Directory %1 does not exist."
 msgstr "Каталог %1 не существует."
 
-#: src/lib/configwidgetslib/addonselector.cpp:428
+#: src/lib/configwidgetslib/addonselector.cpp:440
 #, kde-format
 msgid "Disable %1"
 msgstr "Отключить %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:423
+#: src/lib/configwidgetslib/addonselector.cpp:435
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "Вы хотите сменить группу? Изменения в текущей группе будут потеряны!"
 
-#: src/configtool/mainwindow.cpp:121
+#: src/configtool/mainwindow.cpp:123
 msgid "Do you want to save the changes or discard them?"
 msgstr "Вы хотите сохранить изменения или отказаться от них?"
 
@@ -284,7 +284,7 @@ msgstr "Вниз"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:25
 msgid "Error"
 msgstr "Ошибка"
 
@@ -370,7 +370,7 @@ msgstr "Интерфейс"
 msgid "Global Config"
 msgstr "Общие настройки"
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:48
 msgid "Global Options"
 msgstr "Глобальные параметры"
 
@@ -402,7 +402,7 @@ msgstr "Импорт данных из другого метода ввода, �
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Импорт данных таблицы для установленной таблицы из Fcitx 4"
 
-#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "Метод ввода"
 
@@ -410,19 +410,19 @@ msgstr "Метод ввода"
 msgid "Input Method Configuration"
 msgstr "Настройка метода ввода"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "Keyboard <layout>"
 msgstr "Клавиатура <layout>"
 
-#: layout/main.cpp:58
+#: layout/main.cpp:59
 msgid "Keyboard Layout viewer"
 msgstr "Просмотрщик раскладки клавиатуры"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "Keyboard layout <group> (0-3)"
 msgstr "Раскладка клавиатуры <group> (0-3)"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "Keyboard layout <variant>"
 msgstr "Раскладка клавиатуры <variant>"
 
@@ -540,7 +540,7 @@ msgstr "Многоязычный"
 msgid "New Group"
 msgstr "Новая группа"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "No"
 msgstr "Нет"
 
@@ -555,7 +555,7 @@ msgstr "Одно из заданий не выполнено. Прекращен
 msgid "Only &Show Current Language"
 msgstr "&Показывать только текущий язык"
 
-#: src/lib/configlib/model.cpp:117
+#: src/lib/configlib/model.cpp:123
 msgid "Other"
 msgstr "Другое"
 
@@ -575,7 +575,7 @@ msgstr "Переносятся данные Пиньинь."
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: src/lib/configwidgetslib/keylistwidget.cpp:70 rc.cpp:21 rc.cpp:48 rc.cpp:63
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
@@ -585,7 +585,7 @@ msgstr "Удалить"
 msgid "Restart"
 msgstr "Перезапустить"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:63
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr "Восстановить &Значения по умолчанию"
@@ -665,6 +665,10 @@ msgstr "Служба %1 не представлена на DBus."
 msgid "Service %1 still present on DBus."
 msgstr "Служба %1 все еще присутствует на DBus."
 
+#: src/lib/configwidgetslib/keylistwidget.cpp:57
+msgid "Set to Void Symbol"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
@@ -682,7 +686,7 @@ msgstr "Skk"
 msgid "Table"
 msgstr "Таблица"
 
-#: src/lib/configwidgetslib/addonselector.cpp:310
+#: src/lib/configwidgetslib/addonselector.cpp:322
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
@@ -704,7 +708,7 @@ msgstr ""
 "<b>Клавиатура</b> или <b>Клавиатура - <i>название раскладки</i></b> на "
 "первое место."
 
-#: layout/main.cpp:27
+#: layout/main.cpp:26
 msgid "This program only works on X11."
 msgstr "Эта программа работает только на X11."
 
@@ -763,7 +767,7 @@ msgstr "Просмотреть раскладку клавиатуры"
 msgid "WelcomePage"
 msgstr "Страница Приветствия"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "Yes"
 msgstr "Да"
 
@@ -783,19 +787,19 @@ msgstr ""
 "Ваш текущий метод ввода не соответствует выбранной раскладке. Вы хотите "
 "добавить соответствующий метод ввода для раскладки?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:680
+#: src/lib/configwidgetslib/optionwidget.cpp:676
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "group"
 msgstr "группа"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "layout"
 msgstr "раскладка"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "variant"
 msgstr "вариант"

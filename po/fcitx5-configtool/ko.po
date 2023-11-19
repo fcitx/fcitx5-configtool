@@ -11,10 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-02-22 20:25+0000\n"
+"POT-Creation-Date: 2023-11-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
-"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
+"Language-Team: Korean (https://app.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/model.cpp:135
+#: src/lib/configlib/model.cpp:149
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -47,33 +47,33 @@ msgstr "%1 충돌함."
 msgid "%1 failed to start."
 msgstr "%1을(를) 시작하지 못함."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:539
-#: src/lib/configwidgetslib/optionwidget.cpp:550
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
-#: src/lib/configwidgetslib/optionwidget.cpp:571
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:552
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
 
-#: src/configtool/mainwindow.cpp:56
+#: src/configtool/mainwindow.cpp:58
 msgid "&Apply"
 msgstr "적용(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:615
+#: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "&Cancel"
 msgstr "취소(&C)"
 
-#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/layoutselector.cpp:75
 msgid "&Clear"
 msgstr "지우기(&C)"
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:60
 msgid "&Close"
 msgstr "닫기(&C)"
 
@@ -81,34 +81,34 @@ msgstr "닫기(&C)"
 msgid "&Next >"
 msgstr "다음(&N)>"
 
-#: src/configtool/mainwindow.cpp:57
+#: src/configtool/mainwindow.cpp:59
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
-#: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:614
+#: src/lib/configwidgetslib/layoutselector.cpp:74
+#: src/lib/configwidgetslib/optionwidget.cpp:610
 msgid "&OK"
 msgstr "확인(&O)"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:61
 msgid "&Reset"
 msgstr "재설정(&R)"
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:411
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ", "
 
-#: src/lib/configwidgetslib/addonselector.cpp:403
+#: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "-  %1 비활성화\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:414
+#: src/lib/configwidgetslib/addonselector.cpp:432
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- %1의 일부 기능 비활성화\n"
 
-#: layout/main.cpp:33
+#: layout/main.cpp:32
 msgid "A general keyboard layout viewer"
 msgstr "일반 키보드 자판 보기도구"
 
@@ -120,7 +120,7 @@ msgstr "일반 키보드 자판 보기도구"
 #. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: src/lib/configwidgetslib/keylistwidget.cpp:32 rc.cpp:9 rc.cpp:42 rc.cpp:57
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
@@ -133,11 +133,11 @@ msgstr "추가"
 msgid "Add Group"
 msgstr "그룹 추가"
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:49
 msgid "Addons"
 msgstr "애드온"
 
-#: src/lib/configwidgetslib/addonselector.cpp:303
+#: src/lib/configwidgetslib/addonselector.cpp:321
 msgid "Advanced options"
 msgstr ""
 
@@ -150,7 +150,7 @@ msgstr "모든 마이그레이션 작업이 성공적으로 완료되었습니�
 msgid "Any language"
 msgstr "모든 언어"
 
-#: src/configtool/mainwindow.cpp:120
+#: src/configtool/mainwindow.cpp:122
 msgid "Apply configuration changes"
 msgstr "구성 변경사항 적용"
 
@@ -200,8 +200,8 @@ msgstr "자세한 내용을 보려면 항목을 클릭합니다."
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/addonselector.cpp:197
+#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -242,12 +242,12 @@ msgstr "그룹 삭제"
 msgid "Directory %1 does not exist."
 msgstr "%1 디렉토리가 없어요."
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:440
 #, kde-format
 msgid "Disable %1"
 msgstr "%1 비활성화"
 
-#: src/lib/configwidgetslib/addonselector.cpp:417
+#: src/lib/configwidgetslib/addonselector.cpp:435
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
-#: src/configtool/mainwindow.cpp:121
+#: src/configtool/mainwindow.cpp:123
 msgid "Do you want to save the changes or discard them?"
 msgstr "변경 사항을 저장하시겠습니까 아니면 삭제하시겠습니까?"
 
@@ -281,7 +281,7 @@ msgstr "아래쪽"
 msgid "Edit"
 msgstr "편집"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:25
 msgid "Error"
 msgstr "오류"
 
@@ -367,7 +367,7 @@ msgstr "전처리기"
 msgid "Global Config"
 msgstr "전역 구성"
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:48
 msgid "Global Options"
 msgstr "전역 옵션"
 
@@ -399,7 +399,7 @@ msgstr "Fcitx 4와 같은 다른 입력기에서 데이터 가져오기"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Fcitx 4에서 설치된 테이블의 테이블 데이터 가져오기"
 
-#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "입력기"
 
@@ -407,19 +407,19 @@ msgstr "입력기"
 msgid "Input Method Configuration"
 msgstr "입력기 구성"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "Keyboard <layout>"
 msgstr "키보드 <자판>"
 
-#: layout/main.cpp:58
+#: layout/main.cpp:59
 msgid "Keyboard Layout viewer"
 msgstr "키보드 자판 보기도구"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "Keyboard layout <group> (0-3)"
 msgstr "키보드 자판 <그룹> (0-3)"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "Keyboard layout <variant>"
 msgstr "키보드 자판 <변형>"
 
@@ -537,7 +537,7 @@ msgstr "다국어"
 msgid "New Group"
 msgstr "새 그룹"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "No"
 msgstr "아니오"
 
@@ -552,7 +552,7 @@ msgstr "작업 중 하나가 실패했습니다. 마이그레이션을 종료하
 msgid "Only &Show Current Language"
 msgstr "현재 언어만 표시(&S)"
 
-#: src/lib/configlib/model.cpp:117
+#: src/lib/configlib/model.cpp:123
 msgid "Other"
 msgstr "기타"
 
@@ -572,7 +572,7 @@ msgstr "Pinyin 데이터가 마이그레이션됩니다."
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: src/lib/configwidgetslib/keylistwidget.cpp:70 rc.cpp:21 rc.cpp:48 rc.cpp:63
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
@@ -582,7 +582,7 @@ msgstr "제거"
 msgid "Restart"
 msgstr "재시작"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:63
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr "기본값 복원(&D)"
@@ -662,6 +662,10 @@ msgstr "%1 서비스가 DBus에 없습니다."
 msgid "Service %1 still present on DBus."
 msgstr "%1 서비스가 여전히 DBus에 있습니다."
 
+#: src/lib/configwidgetslib/keylistwidget.cpp:57
+msgid "Set to Void Symbol"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
@@ -679,7 +683,7 @@ msgstr "Skk"
 msgid "Table"
 msgstr "표"
 
-#: src/lib/configwidgetslib/addonselector.cpp:304
+#: src/lib/configwidgetslib/addonselector.cpp:322
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
@@ -697,7 +701,7 @@ msgstr ""
 "첫번째 입력기가 비활성화 상태입니다. 대체로 <b>키보드</b> 또는 <b>키보드 - "
 "<i> 자판명 </i> </b>을 첫 항목으로 하여야 합니다."
 
-#: layout/main.cpp:27
+#: layout/main.cpp:26
 msgid "This program only works on X11."
 msgstr "이 프로그램은 X11에서만 작동합니다."
 
@@ -756,7 +760,7 @@ msgstr "키보드 자판 보기"
 msgid "WelcomePage"
 msgstr "시작 페이지"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "Yes"
 msgstr "예"
 
@@ -775,19 +779,19 @@ msgstr ""
 "현재 구성된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
 "하시겠습니까?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:680
+#: src/lib/configwidgetslib/optionwidget.cpp:676
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "group"
 msgstr "그룹"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "layout"
 msgstr "자판"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "variant"
 msgstr "변형"

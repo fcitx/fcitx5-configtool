@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-10-16 20:24+0000\n"
+"POT-Creation-Date: 2023-11-19 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/model.cpp:135
+#: src/lib/configlib/model.cpp:149
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -47,33 +47,33 @@ msgstr "%1 已崩溃。"
 msgid "%1 failed to start."
 msgstr "%1 启动失败。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:539
-#: src/lib/configwidgetslib/optionwidget.cpp:550
-#: src/lib/configwidgetslib/optionwidget.cpp:556
-#: src/lib/configwidgetslib/optionwidget.cpp:559
-#: src/lib/configwidgetslib/optionwidget.cpp:562
-#: src/lib/configwidgetslib/optionwidget.cpp:565
-#: src/lib/configwidgetslib/optionwidget.cpp:568
-#: src/lib/configwidgetslib/optionwidget.cpp:571
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:552
+#: src/lib/configwidgetslib/optionwidget.cpp:555
+#: src/lib/configwidgetslib/optionwidget.cpp:558
+#: src/lib/configwidgetslib/optionwidget.cpp:561
+#: src/lib/configwidgetslib/optionwidget.cpp:564
+#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
-#: src/configtool/mainwindow.cpp:56
+#: src/configtool/mainwindow.cpp:58
 msgid "&Apply"
 msgstr "应用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:615
+#: src/lib/configwidgetslib/optionwidget.cpp:611
 msgid "&Cancel"
 msgstr "取消(&C)"
 
-#: src/lib/configwidgetslib/layoutselector.cpp:76
+#: src/lib/configwidgetslib/layoutselector.cpp:75
 msgid "&Clear"
 msgstr "清空(&C)"
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:60
 msgid "&Close"
 msgstr "关闭(&C)"
 
@@ -81,34 +81,34 @@ msgstr "关闭(&C)"
 msgid "&Next >"
 msgstr "下一步(&N) >"
 
-#: src/configtool/mainwindow.cpp:57
+#: src/configtool/mainwindow.cpp:59
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
-#: src/lib/configwidgetslib/layoutselector.cpp:75
-#: src/lib/configwidgetslib/optionwidget.cpp:614
+#: src/lib/configwidgetslib/layoutselector.cpp:74
+#: src/lib/configwidgetslib/optionwidget.cpp:610
 msgid "&OK"
 msgstr "确定(&O)"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:61
 msgid "&Reset"
 msgstr "重置(&R)"
 
-#: src/lib/configwidgetslib/addonselector.cpp:393
+#: src/lib/configwidgetslib/addonselector.cpp:411
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "，"
 
-#: src/lib/configwidgetslib/addonselector.cpp:403
+#: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 禁用 %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:414
+#: src/lib/configwidgetslib/addonselector.cpp:432
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 禁用 %1 中的某些功能\n"
 
-#: layout/main.cpp:33
+#: layout/main.cpp:32
 msgid "A general keyboard layout viewer"
 msgstr "通用键盘布局查看器"
 
@@ -120,7 +120,7 @@ msgstr "通用键盘布局查看器"
 #. i18n: ectx: property (toolTip), widget (QToolButton, addIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:142
 #. i18n: ectx: property (text), widget (QToolButton, addIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:31 rc.cpp:9 rc.cpp:42 rc.cpp:57
+#: src/lib/configwidgetslib/keylistwidget.cpp:32 rc.cpp:9 rc.cpp:42 rc.cpp:57
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
@@ -133,11 +133,11 @@ msgstr "添加"
 msgid "Add Group"
 msgstr "添加分组"
 
-#: src/configtool/mainwindow.cpp:47
+#: src/configtool/mainwindow.cpp:49
 msgid "Addons"
 msgstr "附加组件"
 
-#: src/lib/configwidgetslib/addonselector.cpp:303
+#: src/lib/configwidgetslib/addonselector.cpp:321
 msgid "Advanced options"
 msgstr "高级选项"
 
@@ -150,7 +150,7 @@ msgstr "所有迁移任务都已成功完成。"
 msgid "Any language"
 msgstr "任意语言"
 
-#: src/configtool/mainwindow.cpp:120
+#: src/configtool/mainwindow.cpp:122
 msgid "Apply configuration changes"
 msgstr "应用配置更改"
 
@@ -200,8 +200,8 @@ msgstr "点击项目查看更多细节。"
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:185
-#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/addonselector.cpp:197
+#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -242,12 +242,12 @@ msgstr "删除分组"
 msgid "Directory %1 does not exist."
 msgstr "目录 %1 不存在。"
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:440
 #, kde-format
 msgid "Disable %1"
 msgstr "禁用 %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:417
+#: src/lib/configwidgetslib/addonselector.cpp:435
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -262,7 +262,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
-#: src/configtool/mainwindow.cpp:121
+#: src/configtool/mainwindow.cpp:123
 msgid "Do you want to save the changes or discard them?"
 msgstr "您想保存更改还是放弃更改？"
 
@@ -282,7 +282,7 @@ msgstr "向下"
 msgid "Edit"
 msgstr "编辑"
 
-#: layout/main.cpp:26
+#: layout/main.cpp:25
 msgid "Error"
 msgstr "错误"
 
@@ -367,7 +367,7 @@ msgstr "前端"
 msgid "Global Config"
 msgstr "全局配置"
 
-#: src/configtool/mainwindow.cpp:46
+#: src/configtool/mainwindow.cpp:48
 msgid "Global Options"
 msgstr "全局选项"
 
@@ -399,7 +399,7 @@ msgstr "从其他输入法导入数据例如 Fcitx 4"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "从 Fcitx 4 导入码表数据到已安装的码表"
 
-#: src/configtool/mainwindow.cpp:45 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
 msgid "Input Method"
 msgstr "输入法"
 
@@ -407,19 +407,19 @@ msgstr "输入法"
 msgid "Input Method Configuration"
 msgstr "输入法配置"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "Keyboard <layout>"
 msgstr "键盘 <布局>"
 
-#: layout/main.cpp:58
+#: layout/main.cpp:59
 msgid "Keyboard Layout viewer"
 msgstr "键盘布局查看器"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "Keyboard layout <group> (0-3)"
 msgstr "键盘布局<分组号> (0-3)"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "Keyboard layout <variant>"
 msgstr "键盘布局<变体>"
 
@@ -535,7 +535,7 @@ msgstr "多语言"
 msgid "New Group"
 msgstr "新建分组"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "No"
 msgstr "否"
 
@@ -550,7 +550,7 @@ msgstr "有一个任务失败了。终止迁移。"
 msgid "Only &Show Current Language"
 msgstr "仅显示当前语言(&S)"
 
-#: src/lib/configlib/model.cpp:117
+#: src/lib/configlib/model.cpp:123
 msgid "Other"
 msgstr "其它"
 
@@ -570,7 +570,7 @@ msgstr "拼音数据已迁移。"
 #. i18n: ectx: property (toolTip), widget (QToolButton, removeIMButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:167
 #. i18n: ectx: property (text), widget (QToolButton, removeIMButton)
-#: src/lib/configwidgetslib/keylistwidget.cpp:63 rc.cpp:21 rc.cpp:48 rc.cpp:63
+#: src/lib/configwidgetslib/keylistwidget.cpp:70 rc.cpp:21 rc.cpp:48 rc.cpp:63
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
@@ -580,7 +580,7 @@ msgstr "移除"
 msgid "Restart"
 msgstr "重启"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:63
 #: src/lib/configwidgetslib/configwidget.cpp:207
 msgid "Restore &Defaults"
 msgstr "恢复默认(&D)"
@@ -660,6 +660,10 @@ msgstr "服务 %1 不在 DBus 上。"
 msgid "Service %1 still present on DBus."
 msgstr "服务 %1 还在 DBus 上存在。"
 
+#: src/lib/configwidgetslib/keylistwidget.cpp:57
+msgid "Set to Void Symbol"
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
@@ -677,7 +681,7 @@ msgstr "Skk"
 msgid "Table"
 msgstr "码表"
 
-#: src/lib/configwidgetslib/addonselector.cpp:304
+#: src/lib/configwidgetslib/addonselector.cpp:322
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
@@ -697,7 +701,7 @@ msgstr ""
 "第一个输入法将为非激活状态。通常您需要将<b>键盘</b>或<b>键盘 - <i>布局名称</"
 "i></b>放在第一位。"
 
-#: layout/main.cpp:27
+#: layout/main.cpp:26
 msgid "This program only works on X11."
 msgstr "这个程序仅能在 X11 下使用。"
 
@@ -754,7 +758,7 @@ msgstr "查看键盘布局"
 msgid "WelcomePage"
 msgstr "欢迎页"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:647
+#: src/lib/configwidgetslib/optionwidget.cpp:643
 msgid "Yes"
 msgstr "是"
 
@@ -771,19 +775,19 @@ msgid ""
 msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:680
+#: src/lib/configwidgetslib/optionwidget.cpp:676
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
 
-#: layout/main.cpp:36
+#: layout/main.cpp:35
 msgid "group"
 msgstr "分组"
 
-#: layout/main.cpp:37
+#: layout/main.cpp:36
 msgid "layout"
 msgstr "布局"
 
-#: layout/main.cpp:38
+#: layout/main.cpp:37
 msgid "variant"
 msgstr "变体"
