@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2023-11-20 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,8 +46,8 @@ msgstr ""
 msgid "..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:179
-#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:179
+#: src/kcm/package/contents/ui/ListOption.qml:180
+#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:180
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -260,8 +260,8 @@ msgstr ""
 msgid "Re-Enable"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:145
-#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:147
+#: src/kcm/package/contents/ui/ListOption.qml:146
+#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:148
 #: src/kcm/ui/main.qml:72
 #, kde-format
 msgid "Remove"
@@ -395,7 +395,7 @@ msgstr ""
 msgid "[%1]"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:137 src/kcm/ui/ListOption.qml:139
+#: src/kcm/package/contents/ui/ListOption.qml:138 src/kcm/ui/ListOption.qml:140
 #, kde-format
 msgid "edit"
 msgstr ""

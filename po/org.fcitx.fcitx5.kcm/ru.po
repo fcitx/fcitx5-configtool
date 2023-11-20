@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: org.fcitx.fcitx5.kcm\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2023-11-20 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -53,8 +53,8 @@ msgstr "- Отключить некоторые функции в %1\n"
 msgid "..."
 msgstr "..."
 
-#: src/kcm/package/contents/ui/ListOption.qml:179
-#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:179
+#: src/kcm/package/contents/ui/ListOption.qml:180
+#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:180
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -275,8 +275,8 @@ msgstr "Наименование Plasma theme <name>"
 msgid "Re-Enable"
 msgstr "Повторное включение"
 
-#: src/kcm/package/contents/ui/ListOption.qml:145
-#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:147
+#: src/kcm/package/contents/ui/ListOption.qml:146
+#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:148
 #: src/kcm/ui/main.qml:72
 #, kde-format
 msgid "Remove"
@@ -382,7 +382,7 @@ msgstr "Вариант:"
 #: src/kcm/package/contents/ui/KeyOption.qml:145 src/kcm/ui/KeyOption.qml:148
 #, kde-format
 msgid "Void Symbol"
-msgstr ""
+msgstr "Cимвол пустоты"
 
 #: src/kcm/main.cpp:62
 #, kde-format
@@ -417,7 +417,7 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:137 src/kcm/ui/ListOption.qml:139
+#: src/kcm/package/contents/ui/ListOption.qml:138 src/kcm/ui/ListOption.qml:140
 #, kde-format
 msgid "edit"
 msgstr "редактировать"
