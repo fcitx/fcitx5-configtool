@@ -59,6 +59,7 @@ RowLayout {
     }
 
     ColumnLayout {
+        visible: listModel.count > 0
         Repeater {
             model: listModel
 
@@ -88,7 +89,7 @@ RowLayout {
     }
     ToolButton {
         id: addButton
-        Layout.alignment: Qt.AlignTop
+        Layout.alignment: Qt.AlignTop | Qt.AlignLeft
         icon.name: "list-add-symbolic"
 
         onClicked: {

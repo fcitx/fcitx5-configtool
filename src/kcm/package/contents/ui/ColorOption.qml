@@ -10,7 +10,7 @@ import QtQuick.Layouts 1.12
 import QtQuick.Dialogs 1.1 as QtDialogs
 import org.kde.kirigami 2.10 as Kirigami
 
-Row {
+RowLayout {
     property bool needsSave: button.text != rawValue
     property variant rawValue
 
@@ -29,8 +29,9 @@ Row {
     Button {
         id: button
         icon.name: "document-edit"
-        implicitWidth: Kirigami.Units.gridUnit * 10
         text: kcm.colorToString(colorDialog.color)
+
+        Layout.fillWidth: true
 
         onClicked: colorDialog.open()
 

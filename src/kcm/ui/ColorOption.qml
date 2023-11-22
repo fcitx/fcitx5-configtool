@@ -10,7 +10,7 @@ import QtQuick.Layouts
 import QtQuick.Dialogs as QtDialogs
 import org.kde.kirigami as Kirigami
 
-Row {
+RowLayout {
     property string typeName
     property string description
     property variant defaultValue
@@ -36,7 +36,8 @@ Row {
         icon.name: "document-edit"
         implicitWidth: Kirigami.Units.gridUnit * 10
         text: kcm ? kcm.colorToString(value) : ""
-        
+
+        Layout.fillWidth: true
 
         onClicked: {
             colorDialog.selectedColor = value;
