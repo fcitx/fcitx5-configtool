@@ -113,46 +113,53 @@ ColumnLayout {
 
     Component {
         id: delegateComponent
-        Kirigami.SwipeListItem {
-            id: listItem
-            RowLayout {
-                Kirigami.ListItemDragHandle {
-                    listItem: listItem
-                    listView: optionView
 
-                    onMoveRequested: {
-                        needsSave = true;
-                        listModel.move(oldIndex, newIndex, 1);
+        ItemDelegate {
+            width: ListView.view ? ListView.view.width : implicitWidth
+            height: listItem.implicitHeight
+            Kirigami.SwipeListItem {
+                id: listItem
+                width: parent.width
+
+                RowLayout {
+                    Kirigami.ListItemDragHandle {
+                        listItem: listItem
+                        listView: optionView
+
+                        onMoveRequested: (oldIndex, newIndex) => {
+                            needsSave = true;
+                            listModel.move(oldIndex, newIndex, 1);
+                        }
+                    }
+                    Label {
+                        Layout.fillWidth: true
+                        color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
+                        height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
+                        text: model !== null ? prettify(model.value, subTypeName) : ""
+                        elide: Text.ElideRight
                     }
                 }
-                Label {
-                    Layout.fillWidth: true
-                    color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
-                    height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
-                    text: model !== null ? prettify(model.value, subTypeName) : ""
-                    elide: Text.ElideRight
-                }
+
+                actions: [
+                    Kirigami.Action {
+                        icon.name: "document-edit"
+                        text: i18n("edit")
+
+                        onTriggered: {
+                            sheet.edit(model.index);
+                        }
+                    },
+                    Kirigami.Action {
+                        icon.name: "list-remove-symbolic"
+                        text: i18n("Remove")
+
+                        onTriggered: {
+                            needsSave = true;
+                            listModel.remove(model.index);
+                        }
+                    }
+                ]
             }
-
-            actions: [
-                Kirigami.Action {
-                    icon.name: "document-edit"
-                    text: i18n("edit")
-
-                    onTriggered: {
-                        sheet.edit(model.index);
-                    }
-                },
-                Kirigami.Action {
-                    icon.name: "list-remove-symbolic"
-                    text: i18n("Remove")
-
-                    onTriggered: {
-                        needsSave = true;
-                        listModel.remove(model.index);
-                    }
-                }
-            ]
         }
     }
     ListModel {

@@ -32,51 +32,58 @@ KCM.ScrollViewKCM {
     }
     Component {
         id: delegateComponent
-        Kirigami.SwipeListItem {
-            id: listItem
-            RowLayout {
-                Kirigami.ListItemDragHandle {
-                    listItem: listItem
-                    listView: imList
+        ItemDelegate {
+            width: ListView.view ? ListView.view.width : implicitWidth
+            height: listItem.implicitHeight
 
-                    onMoveRequested: {
-                        imList.model.move(oldIndex, newIndex, 1);
-                        checkInputMethod();
+            Kirigami.SwipeListItem {
+                id: listItem
+                width: parent.width
+
+                RowLayout {
+                    Kirigami.ListItemDragHandle {
+                        listItem: listItem
+                        listView: imList
+
+                        onMoveRequested: (oldIndex, newIndex) => {
+                            imList.model.move(oldIndex, newIndex);
+                            checkInputMethod();
+                        }
+                    }
+                    Label {
+                        Layout.fillWidth: true
+                        color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
+                        height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
+                        text: model !== null ? model.name : ""
                     }
                 }
-                Label {
-                    Layout.fillWidth: true
-                    color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
-                    height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
-                    text: model !== null ? model.name : ""
-                }
+
+                actions: [
+                    Kirigami.Action {
+                        icon.name: "configure"
+                        text: i18n("Configure")
+                        visible: model !== null ? model.configurable : false
+
+                        onTriggered: kcm.pushConfigPage(model.name, "fcitx://config/inputmethod/" + model.uniqueName)
+                    },
+                    Kirigami.Action {
+                        icon.name: "input-keyboard"
+                        text: i18n("Select Layout")
+                        visible: model !== null ? !model.uniqueName.startsWith("keyboard-") : false
+
+                        onTriggered: selectLayoutSheet.selectLayout(i18n("Select layout for %1", model.name), model.uniqueName, (model.layout !== "" ? model.layout : kcm.imConfig.defaultLayout))
+                    },
+                    Kirigami.Action {
+                        icon.name: "list-remove-symbolic"
+                        text: i18n("Remove")
+
+                        onTriggered: {
+                            imList.model.remove(model.index);
+                            checkInputMethod();
+                        }
+                    }
+                ]
             }
-
-            actions: [
-                Kirigami.Action {
-                    icon.name: "configure"
-                    text: i18n("Configure")
-                    visible: model !== null ? model.configurable : false
-
-                    onTriggered: kcm.pushConfigPage(model.name, "fcitx://config/inputmethod/" + model.uniqueName)
-                },
-                Kirigami.Action {
-                    icon.name: "input-keyboard"
-                    text: i18n("Select Layout")
-                    visible: model !== null ? !model.uniqueName.startsWith("keyboard-") : false
-
-                    onTriggered: selectLayoutSheet.selectLayout(i18n("Select layout for %1", model.name), model.uniqueName, (model.layout !== "" ? model.layout : kcm.imConfig.defaultLayout))
-                },
-                Kirigami.Action {
-                    icon.name: "list-remove-symbolic"
-                    text: i18n("Remove")
-
-                    onTriggered: {
-                        imList.model.remove(model.index);
-                        checkInputMethod();
-                    }
-                }
-            ]
         }
     }
     Kirigami.OverlaySheet {
@@ -356,7 +363,6 @@ KCM.ScrollViewKCM {
             }
         }
 
-        delegate: delegateComponent
         reuseItems: true
 
         moveDisplaced: Transition {
@@ -365,5 +371,7 @@ KCM.ScrollViewKCM {
                 easing.type: Easing.InOutQuad
             }
         }
+
+        delegate: delegateComponent
     }
 }

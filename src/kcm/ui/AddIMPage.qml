@@ -73,7 +73,8 @@ KCM.ScrollViewKCM {
 
         delegate: ItemDelegate {
             text: model.name
-            Layout.fillWidth: true
+            width: parent.width
+            highlighted: ListView.isCurrentItem
 
             onClicked: {
                 availIMView.currentIndex = index;
