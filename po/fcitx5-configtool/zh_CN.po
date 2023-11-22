@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2023-11-22 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
@@ -47,14 +47,14 @@ msgstr "%1 已崩溃。"
 msgid "%1 failed to start."
 msgstr "%1 启动失败。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:514
+#: src/lib/configwidgetslib/optionwidget.cpp:525
+#: src/lib/configwidgetslib/optionwidget.cpp:531
+#: src/lib/configwidgetslib/optionwidget.cpp:534
+#: src/lib/configwidgetslib/optionwidget.cpp:537
+#: src/lib/configwidgetslib/optionwidget.cpp:540
+#: src/lib/configwidgetslib/optionwidget.cpp:543
 #: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -65,7 +65,7 @@ msgstr "应用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:590
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -85,7 +85,7 @@ msgstr "下一步(&N) >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&OK"
 msgstr "确定(&O)"
 
@@ -201,7 +201,7 @@ msgstr "点击项目查看更多细节。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "配置"
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr "发现 Fcitx 已更新。是否要重新启动 Fcitx？"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "前端"
 
@@ -399,7 +399,7 @@ msgstr "从其他输入法导入数据例如 Fcitx 4"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "从 Fcitx 4 导入码表数据到已安装的码表"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "输入法"
 
@@ -460,7 +460,7 @@ msgstr "布局"
 msgid "Layout:"
 msgstr "布局："
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr "启动器"
 
@@ -509,7 +509,7 @@ msgstr "正在迁移全局快捷键选项..."
 msgid "Migration Tool"
 msgstr "迁移工具"
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "模块"
 
@@ -535,7 +535,7 @@ msgstr "多语言"
 msgid "New Group"
 msgstr "新建分组"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "No"
 msgstr "否"
 
@@ -662,7 +662,7 @@ msgstr "服务 %1 还在 DBus 上存在。"
 
 #: src/lib/configwidgetslib/keylistwidget.cpp:57
 msgid "Set to Void Symbol"
-msgstr ""
+msgstr "设置为空符号"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -719,7 +719,7 @@ msgstr "这个向导将帮助你从 Fcitx 4 迁移已有的用户数据到 Fcitx
 msgid "Try to Migrating table file: %1 ..."
 msgstr "尝试迁移码表文件：%1... "
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "界面"
 
@@ -758,7 +758,7 @@ msgstr "查看键盘布局"
 msgid "WelcomePage"
 msgstr "欢迎页"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "Yes"
 msgstr "是"
 
@@ -775,7 +775,7 @@ msgid ""
 msgstr ""
 "您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:655
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

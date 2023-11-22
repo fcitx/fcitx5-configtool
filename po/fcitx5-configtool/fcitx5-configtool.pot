@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-20 20:24+0000\n"
+"POT-Creation-Date: 2023-11-22 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,14 +41,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:514
+#: src/lib/configwidgetslib/optionwidget.cpp:525
+#: src/lib/configwidgetslib/optionwidget.cpp:531
+#: src/lib/configwidgetslib/optionwidget.cpp:534
+#: src/lib/configwidgetslib/optionwidget.cpp:537
+#: src/lib/configwidgetslib/optionwidget.cpp:540
+#: src/lib/configwidgetslib/optionwidget.cpp:543
 #: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -59,7 +59,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:590
 msgid "&Cancel"
 msgstr ""
 
@@ -79,7 +79,7 @@ msgstr ""
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&OK"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -347,7 +347,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr ""
 
@@ -449,7 +449,7 @@ msgstr ""
 msgid "Layout:"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "Migration Tool"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr ""
 
@@ -524,7 +524,7 @@ msgstr ""
 msgid "New Group"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "No"
 msgstr ""
 
@@ -704,7 +704,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr ""
 
@@ -743,7 +743,7 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "Yes"
 msgstr ""
 
@@ -759,7 +759,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:655
 #, kde-format
 msgid "[%1]"
 msgstr ""
