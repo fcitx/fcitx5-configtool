@@ -157,6 +157,7 @@ ColumnLayout {
         id: listModel
     }
     ScrollView {
+        Layout.fillWidth: true
         Kirigami.Theme.colorSet: Kirigami.Theme.View
         Kirigami.Theme.inherit: false
         ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
