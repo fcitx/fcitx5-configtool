@@ -5,9 +5,14 @@
  *
  */
 #include "addonmodel.h"
+#include "config.h"
 #include <QCollator>
 #include <QDebug>
+#include <QDir>
+#include <QFileInfo>
+#include <QProcess>
 #include <fcitx-utils/i18n.h>
+#include <fcitx-utils/standardpath.h>
 #include <fcitx/addoninfo.h>
 
 namespace fcitx {
@@ -350,6 +355,61 @@ void AddonProxyModel::setFilterText(const QString &text) {
     if (filterText_ != text) {
         filterText_ = text;
         invalidate();
+    }
+}
+
+void launchExternalConfig(const QString &uri, WId wid) {
+    QFileInfo pathToWrapper(FCITX5_QT_GUI_WRAPPER);
+    QDir dirToWrapper = pathToWrapper.dir();
+    if (uri.startsWith("fcitx://config/addon/")) {
+        QLatin1String qt5Wrapper("fcitx5-qt5-gui-wrapper");
+        QLatin1String qt6Wrapper("fcitx5-qt6-gui-wrapper");
+
+        QString qt5WrapperPath = dirToWrapper.filePath(qt5Wrapper);
+        QString qt6WrapperPath = dirToWrapper.filePath(qt6Wrapper);
+
+        for (QString &wrapperPath :
+             {std::ref(qt6WrapperPath), std::ref(qt5WrapperPath)}) {
+            if (!QFileInfo(wrapperPath).isExecutable()) {
+                wrapperPath = QString::fromStdString(stringutils::joinPath(
+                    StandardPath::global().fcitxPath("libexecdir"),
+                    QFileInfo(wrapperPath).fileName().toStdString()));
+            }
+        }
+
+        QString wrapperToUse;
+        for (const QString &wrapperPath :
+             {std::cref(qt6WrapperPath), std::cref(qt5WrapperPath)}) {
+            QStringList args;
+            args << QLatin1String("--test");
+            args << uri;
+            int exit_status = QProcess::execute(wrapperPath, args);
+            if (exit_status == 0) {
+                wrapperToUse = wrapperPath;
+                break;
+            }
+        }
+
+        if (wrapperToUse.isEmpty()) {
+            return;
+        }
+
+        QStringList args;
+        if (wid) {
+            args << "-w";
+            args << QString::number(wid);
+        }
+        args << uri;
+        QProcess::startDetached(wrapperToUse, args);
+    } else {
+        // Assume this is a program path.
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+        QStringList args = QProcess::splitCommand(uri);
+        QString program = args.takeFirst();
+        QProcess::startDetached(program, args);
+#else
+        QProcess::startDetached(uri);
+#endif
     }
 }
 

@@ -6,6 +6,7 @@
  */
 
 #include "optionwidget.h"
+#include "addonmodel.h"
 #include "config.h"
 #include "configwidget.h"
 #include "font.h"
@@ -483,34 +484,12 @@ public:
                         this, configWidget->dbus(), uri_, name);
                     dialog->exec();
                     delete dialog;
-                } else if (uri_.startsWith("fcitx://config/addon/")) {
-                    QString wrapperPath = FCITX5_QT_GUI_WRAPPER;
-                    if (!QFileInfo(wrapperPath).isExecutable()) {
-                        wrapperPath =
-                            QString::fromStdString(stringutils::joinPath(
-                                StandardPath::global().fcitxPath("libexecdir"),
-                                "fcitx5-qt5-gui-wrapper"));
-                    }
-                    QStringList args;
-                    if (QGuiApplication::platformName() == "xcb") {
-                        auto wid = parent->winId();
-                        if (wid) {
-                            args << "-w";
-                            args << QString::number(wid);
-                        }
-                    }
-                    args << uri_;
-                    qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
-                    QProcess::startDetached(wrapperPath, args);
                 } else {
-                // Assume this is a program path.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-                    QStringList args = QProcess::splitCommand(uri_);
-                    QString program = args.takeFirst();
-                    QProcess::startDetached(program, args);
-#else
-                    QProcess::startDetached(uri_);
-#endif
+                    WId wid = 0;
+                    if (QGuiApplication::platformName() == "xcb") {
+                        wid = parent->winId();
+                    }
+                    launchExternalConfig(uri_, wid);
                 }
             });
     }

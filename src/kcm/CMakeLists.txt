@@ -1,5 +1,3 @@
-
-
 if (QT_MAJOR_VERSION STREQUAL 5)
     add_library(kcm_fcitx5 MODULE
         main.cpp

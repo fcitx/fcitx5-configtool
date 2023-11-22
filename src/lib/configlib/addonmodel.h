@@ -8,6 +8,7 @@
 #define _CONFIGLIB_ADDONMODEL_H_
 
 #include "model.h"
+#include <QWindow>
 
 namespace fcitx {
 namespace kcm {
@@ -152,6 +153,8 @@ private:
     bool filterAddon(const QModelIndex &index) const;
     QString filterText_;
 };
+
+void launchExternalConfig(const QString &uri, WId wid);
 
 } // namespace kcm
 } // namespace fcitx

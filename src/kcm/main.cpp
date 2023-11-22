@@ -5,6 +5,7 @@
  *
  */
 #include "main.h"
+#include "addonmodel.h"
 #include "config.h"
 #include "logging.h"
 #include <KAboutData>
@@ -284,46 +285,22 @@ void FcitxModule::saveAddon() {
 }
 
 void FcitxModule::launchExternal(const QString &uri) {
-    if (uri.startsWith("fcitx://config/addon/")) {
-        QString wrapperPath = FCITX5_QT_GUI_WRAPPER;
-        if (!QFileInfo(wrapperPath).isExecutable()) {
-            wrapperPath = QString::fromStdString(stringutils::joinPath(
-                StandardPath::global().fcitxPath("libexecdir"),
-                "fcitx5-qt5-gui-wrapper"));
-        }
-        QStringList args;
-        if (QGuiApplication::platformName() == "xcb") {
-            auto window = mainUi()->window();
-            QWindow *actualWindow = window;
-            if (window) {
-                auto renderWindow =
-                    QQuickRenderControl::renderWindowFor(window);
-                if (renderWindow) {
-                    actualWindow = renderWindow;
-                }
-            }
-            while (actualWindow && actualWindow->parent()) {
-                actualWindow = actualWindow->parent();
-            }
-            WId wid = actualWindow ? actualWindow->winId() : 0;
-            if (wid) {
-                args << "-w";
-                args << QString::number(wid);
+    WId wid = 0;
+    if (QGuiApplication::platformName() == "xcb") {
+        auto window = mainUi()->window();
+        QWindow *actualWindow = window;
+        if (window) {
+            auto renderWindow = QQuickRenderControl::renderWindowFor(window);
+            if (renderWindow) {
+                actualWindow = renderWindow;
             }
         }
-        args << uri;
-        qCDebug(KCM_FCITX5) << "Launch: " << wrapperPath << args;
-        QProcess::startDetached(wrapperPath, args);
-    } else {
-        // Assume this is a program path.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
-        QStringList args = QProcess::splitCommand(uri);
-        QString program = args.takeFirst();
-        QProcess::startDetached(program, args);
-#else
-        QProcess::startDetached(uri);
-#endif
+        while (actualWindow && actualWindow->parent()) {
+            actualWindow = actualWindow->parent();
+        }
+        wid = actualWindow ? actualWindow->winId() : 0;
     }
+    launchExternalConfig(uri, wid);
 }
 
 void FcitxModule::grabKeyboard(QQuickItem *item) {
