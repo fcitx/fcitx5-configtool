@@ -55,7 +55,7 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) &&                                  \
     !defined(FCITX_USE_NEW_KDECLARATIVE)
     KAboutData *about =
-        new KAboutData("org.fcitx.fcitx5.kcm", i18n("Fcitx 5"), PROJECT_VERSION,
+        new KAboutData("kcm_fcitx5", i18n("Fcitx 5"), PROJECT_VERSION,
                        i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
                        i18n("Copyright 2017 Xuetian Weng"), QString(),
                        QString(), "wengxt@gmail.com");

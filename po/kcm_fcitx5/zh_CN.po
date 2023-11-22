@@ -1,140 +1,139 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the org.fcitx.fcitx5.kcm package.
+# This file is distributed under the same license as the kcm_fcitx5 package.
 #
 # Translators:
-# Adolfo Jayme-Barrientos, 2021
+# rocka, 2022
+# csslayer <wengxt@gmail.com>, 2023
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: org.fcitx.fcitx5.kcm\n"
+"Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2023-11-19 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Adolfo Jayme-Barrientos, 2021\n"
-"Language-Team: Spanish (https://app.transifex.com/fcitx/teams/12005/es/)\n"
-"Language: es\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
+"Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
+"zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:140
 #, kde-format
 msgid "%1 (Disabled)"
-msgstr ""
+msgstr "%1 (已禁用)"
 
 #: src/kcm/package/contents/ui/ConfigGroup.qml:67 src/kcm/ui/ConfigGroup.qml:70
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1："
 
 #: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:106
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr "，"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:116
 #, kde-format
 msgid "- Disable %1\n"
-msgstr ""
+msgstr "- 禁用 %1\n"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:126
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr ""
+msgstr "- 禁用 %1 中的某些功能\n"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:49 src/kcm/ui/KeyOption.qml:52
 #, kde-format
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #: src/kcm/package/contents/ui/ListOption.qml:179
 #: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:179
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
-msgstr "Añadir"
+msgstr "添加"
 
 #: src/kcm/package/contents/ui/main.qml:112 src/kcm/ui/main.qml:112
 #, kde-format
 msgid "Add Group"
-msgstr "Añadir grupo"
+msgstr "添加分组"
 
 #: src/kcm/package/contents/ui/AddIMPage.qml:14 src/kcm/ui/AddIMPage.qml:14
 #, kde-format
 msgid "Add Input Method"
-msgstr "Añadir método de entrada"
+msgstr "添加输入法"
 
 #: src/kcm/package/contents/ui/main.qml:216 src/kcm/ui/main.qml:216
 #, kde-format
 msgid "Add Input Method..."
-msgstr "Añadir método de entrada…"
+msgstr "添加输入法..."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18 src/kcm/ui/AddonPage.qml:18
 #, kde-format
 msgid "Addons"
-msgstr "Complementos"
+msgstr "附加组件"
 
 #: src/kcm/main.cpp:62
 #, kde-format
 msgid "Author"
-msgstr "Autoría"
+msgstr "作者"
 
 #: src/kcm/package/contents/ui/main.qml:226 src/kcm/ui/main.qml:226
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr ""
-"No se puede conectar con Fcitx por DBus. Cerciórese de que se esté "
-"ejecutando Fcitx."
+msgstr "无法通过 DBus 连接到 Fcitx，Fcitx 是否正在运行？"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:73
 #: src/kcm/ui/SelectLayoutSheet.qml:73
 #, kde-format
 msgid "Clear"
-msgstr ""
+msgstr "清空"
 
 #: src/kcm/package/contents/ui/main.qml:58 src/kcm/ui/main.qml:58
 #, kde-format
 msgid "Configure"
-msgstr "Configurar"
+msgstr "配置"
 
 #: src/kcm/main.cpp:58
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr "Configurar Fcitx 5"
+msgstr "配置 Fcitx 5"
 
 #: src/kcm/kcm_fcitx5.desktop.in:8
 msgid "Configure Input Method"
-msgstr "Configurar método de entrada"
+msgstr "配置输入法"
 
 #: src/kcm/package/contents/ui/main.qml:207 src/kcm/ui/main.qml:207
 #, kde-format
 msgid "Configure addons..."
-msgstr "Configurar complementos…"
+msgstr "配置附加组件..."
 
 #: src/kcm/package/contents/ui/main.qml:201 src/kcm/ui/main.qml:201
 #, kde-format
 msgid "Configure global options..."
-msgstr "Configurar opciones globales…"
+msgstr "配置全局选项..."
 
 #: src/kcm/main.cpp:59
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
-msgstr ""
+msgstr "Copyright 2017 Xuetian Weng"
 
 #: src/kcm/package/contents/ui/main.qml:147 src/kcm/ui/main.qml:147
 #, kde-format
 msgid "Current group changed"
-msgstr ""
+msgstr "当前分组已修改"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:21
 #: src/kcm/ui/SaveWarningDialog.qml:21
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr ""
+msgstr "当前页未保存。请先保存配置。"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:128
 #, kde-format
@@ -143,16 +142,19 @@ msgid ""
 "%2\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"禁用 %1 将同时：\n"
+"%2\n"
+"确认要禁用它吗？"
 
 #: src/kcm/package/contents/ui/main.qml:165 src/kcm/ui/main.qml:165
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr ""
+msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:51 src/kcm/ui/KeyOption.qml:54
 #, kde-format
 msgid "Empty"
-msgstr "Vacío"
+msgstr "空"
 
 #: src/kcm/main.cpp:57
 #, kde-format
@@ -162,14 +164,14 @@ msgstr "Fcitx 5"
 #: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "文件描述符<fd>"
 
 #: src/kcm/package/contents/ui/main.qml:281
 #: src/kcm/package/contents/ui/main.qml:300 src/kcm/ui/main.qml:281
 #: src/kcm/ui/main.qml:300
 #, kde-format
 msgid "Fix"
-msgstr ""
+msgstr "修复"
 
 #: src/kcm/package/contents/ui/main.qml:246 src/kcm/ui/main.qml:246
 #, kde-format
@@ -178,171 +180,173 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"发现了 Fcitx 安装的更新。是否想要检查新安装的输入法和附加组件？如果需要更新已"
+"经加载的附加组件，Fcitx 需要重新启动。"
 
 #: src/plasmathemegenerator/main.cpp:83
 #, kde-format
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
+msgstr "根据 Plasma 主题生成 Fcitx 5 经典用户界面主题"
 
 #: src/kcm/package/contents/ui/main.qml:203 src/kcm/ui/main.qml:203
 #, kde-format
 msgid "Global Options"
-msgstr "Opciones globales"
+msgstr "全局选项"
 
 #: src/kcm/package/contents/ui/main.qml:92 src/kcm/ui/main.qml:92
 #, kde-format
 msgid "Group Name"
-msgstr ""
+msgstr "分组名称"
 
 #: src/kcm/package/contents/ui/main.qml:312 src/kcm/ui/main.qml:312
 #, kde-format
 msgid "Group:"
-msgstr "Grupo:"
+msgstr "分组："
 
 #: src/kcm/kcm_fcitx5.desktop.in:8
 msgid "Input Method"
-msgstr "Método de entrada"
+msgstr "输入法"
 
 #: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:355
 #, kde-format
 msgid "Input Method Off"
-msgstr ""
+msgstr "输入法关闭"
 
 #: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:355
 #, kde-format
 msgid "Input Method On"
-msgstr ""
+msgstr "输入法开启"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:141 src/kcm/ui/KeyOption.qml:144
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "扫描码模式"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:32
 #: src/kcm/ui/SelectLayoutSheet.qml:32
 #, kde-format
 msgid "Language:"
-msgstr "Idioma:"
+msgstr "语言："
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:46
 #: src/kcm/ui/SelectLayoutSheet.qml:46
 #, kde-format
 msgid "Layout:"
-msgstr "Disposición:"
+msgstr "布局："
 
 #: src/kcm/package/contents/ui/main.qml:91 src/kcm/ui/main.qml:91
 #, kde-format
 msgid "Name:"
-msgstr "Nombre:"
+msgstr "名称："
 
 #: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
 #, kde-format
 msgid "No"
-msgstr "No"
+msgstr "否"
 
 #: src/kcm/package/contents/ui/main.qml:101
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:82 src/kcm/ui/main.qml:101
 #: src/kcm/ui/SelectLayoutSheet.qml:82
 #, kde-format
 msgid "Ok"
-msgstr "Aceptar"
+msgstr "确定"
 
 #: src/kcm/package/contents/ui/AddIMPage.qml:29 src/kcm/ui/AddIMPage.qml:29
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr ""
+msgstr "仅显示当前语言(&S)"
 
 #: src/plasmathemegenerator/main.cpp:87
 #, kde-format
 msgid "Output path <output> "
-msgstr ""
+msgstr "输出路径"
 
 #: src/plasmathemegenerator/main.cpp:86
 #, kde-format
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Plasma 主题名称"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:61 src/kcm/ui/AddonPage.qml:61
 #, kde-format
 msgid "Re-Enable"
-msgstr "Reactivar"
+msgstr "重新启用"
 
 #: src/kcm/package/contents/ui/ListOption.qml:145
 #: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:147
 #: src/kcm/ui/main.qml:72
 #, kde-format
 msgid "Remove"
-msgstr "Quitar"
+msgstr "移除"
 
 #: src/kcm/package/contents/ui/main.qml:263 src/kcm/ui/main.qml:263
 #, kde-format
 msgid "Restart"
-msgstr "Reiniciar"
+msgstr "重启"
 
 #: src/kcm/package/contents/ui/main.qml:234 src/kcm/ui/main.qml:234
 #, kde-format
 msgid "Run Fcitx"
-msgstr "Ejecutar Fcitx"
+msgstr "运行 Fcitx"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:74
 #: src/kcm/package/contents/ui/AddIMPage.qml:59 src/kcm/ui/AddonPage.qml:74
 #: src/kcm/ui/AddIMPage.qml:59
 #, kde-format
 msgid "Search..."
-msgstr "Buscar…"
+msgstr "搜索..."
 
 #: src/kcm/package/contents/ui/ColorOption.qml:41 src/kcm/ui/ColorOption.qml:52
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "选择颜色"
 
 #: src/kcm/package/contents/ui/FontOption.qml:35 src/kcm/ui/FontOption.qml:44
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "选择字体"
 
 #: src/kcm/package/contents/ui/main.qml:65 src/kcm/ui/main.qml:65
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "选择布局"
 
 #: src/kcm/package/contents/ui/main.qml:68 src/kcm/ui/main.qml:68
 #, kde-format
 msgid "Select layout for %1"
-msgstr ""
+msgstr "选择 %1 的布局"
 
 #: src/kcm/package/contents/ui/main.qml:184 src/kcm/ui/main.qml:184
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr ""
+msgstr "选择系统键盘布局..."
 
 #: src/kcm/package/contents/ui/main.qml:180 src/kcm/ui/main.qml:180
 #, kde-format
 msgid "Select system layout for group %1"
-msgstr ""
+msgstr "选择分组 %1 的系统布局"
 
 #: src/kcm/package/contents/ui/main.qml:177 src/kcm/ui/main.qml:177
 #, kde-format
 msgid "Select system layout..."
-msgstr ""
+msgstr "选择系统布局..."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:162
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "显示高级选项(&A)"
 
 #: src/kcm/package/contents/ui/SaveWarningDialog.qml:16
 #: src/kcm/ui/SaveWarningDialog.qml:16
 #, kde-format
 msgid "Some config is not saved"
-msgstr ""
+msgstr "一些配置未保存"
 
 #: src/kcm/package/contents/ui/main.qml:193 src/kcm/ui/main.qml:193
 #, kde-format
 msgid "Test Input"
-msgstr ""
+msgstr "测试输入"
 
 #: src/kcm/package/contents/ui/AddonPage.qml:49 src/kcm/ui/AddonPage.qml:49
 #, kde-format
@@ -351,22 +355,24 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"启用/禁用附加组件的功能仅适用于了解潜在影响的高级用户。需要重新启动 Fcitx 才"
+"能使启用 /禁用的更改生效。"
 
 #: src/plasmathemegenerator/main.cpp:179
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "从 Plasma 主题 %1 生成的主题"
 
 #: src/kcm/package/contents/ui/main.qml:254 src/kcm/ui/main.qml:254
 #, kde-format
 msgid "Update"
-msgstr "Actualizar"
+msgstr "更新"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:61
 #: src/kcm/ui/SelectLayoutSheet.qml:61
 #, kde-format
 msgid "Variant:"
-msgstr "Variante:"
+msgstr "变体："
 
 #: src/kcm/package/contents/ui/KeyOption.qml:145 src/kcm/ui/KeyOption.qml:148
 #, kde-format
@@ -376,19 +382,19 @@ msgstr ""
 #: src/kcm/main.cpp:62
 #, kde-format
 msgid "Xuetian Weng"
-msgstr ""
+msgstr "翁学天"
 
 #: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
 #, kde-format
 msgid "Yes"
-msgstr "Sí"
+msgstr "是"
 
 #: src/kcm/package/contents/ui/main.qml:275 src/kcm/ui/main.qml:275
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
-msgstr ""
+msgstr "您当前配置的输入方式与您的布局不匹配，是否要更改布局设置？"
 
 #: src/kcm/package/contents/ui/main.qml:294 src/kcm/ui/main.qml:294
 #, kde-format
@@ -396,28 +402,29 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"您当前配置的输入方式与您所选的布局不匹配，是否要为布局添加相应的输入方式？"
 
 #: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:86
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: src/kcm/package/contents/ui/ListOption.qml:137 src/kcm/ui/ListOption.qml:139
 #, kde-format
 msgid "edit"
-msgstr "editar"
+msgstr "编辑"
 
 #: src/plasmathemegenerator/main.cpp:89
 #, kde-format
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: src/plasmathemegenerator/main.cpp:86
 #, kde-format
 msgid "name"
-msgstr ""
+msgstr "名称"
 
 #: src/plasmathemegenerator/main.cpp:87
 #, kde-format
 msgid "output"
-msgstr ""
+msgstr "输出"

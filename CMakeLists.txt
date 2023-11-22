@@ -40,7 +40,7 @@ include(GenerateExportHeader)
 option(ENABLE_KCM "Enable KDE Config Module" On)
 option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
 option(ENABLE_TEST "Enable test" Off)
-add_definitions(-DTRANSLATION_DOMAIN=\"org.fcitx.fcitx5.kcm\")
+add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx5\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 add_definitions(-DQT_NO_KEYWORDS)
 
