@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-20 20:24+0000\n"
+"POT-Creation-Date: 2023-11-23 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -49,14 +49,14 @@ msgstr "%1 повреждён."
 msgid "%1 failed to start."
 msgstr "%1 не удалось начать. "
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:514
+#: src/lib/configwidgetslib/optionwidget.cpp:525
+#: src/lib/configwidgetslib/optionwidget.cpp:531
+#: src/lib/configwidgetslib/optionwidget.cpp:534
+#: src/lib/configwidgetslib/optionwidget.cpp:537
+#: src/lib/configwidgetslib/optionwidget.cpp:540
+#: src/lib/configwidgetslib/optionwidget.cpp:543
 #: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -67,7 +67,7 @@ msgstr "&Применить"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:590
 msgid "&Cancel"
 msgstr "&Отмена"
 
@@ -87,7 +87,7 @@ msgstr "&Следующее >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&OK"
 msgstr "&OK"
 
@@ -203,7 +203,7 @@ msgstr "Нажмите на элемент для получения более 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "Настроить"
@@ -361,7 +361,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr "Найдены обновления для установки fcitx. Вы хотите перезапустить Fcitx?"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "Интерфейс"
 
@@ -402,7 +402,7 @@ msgstr "Импорт данных из другого метода ввода, �
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Импорт данных таблицы для установленной таблицы из Fcitx 4"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "Метод ввода"
 
@@ -463,7 +463,7 @@ msgstr "Раскладка"
 msgid "Layout:"
 msgstr "Раскладка:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr "Загрузчик"
 
@@ -514,7 +514,7 @@ msgstr "Перенос глобальных параметров горячей 
 msgid "Migration Tool"
 msgstr "Инструмент Перемещения"
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "Модуль"
 
@@ -540,7 +540,7 @@ msgstr "Многоязычный"
 msgid "New Group"
 msgstr "Новая группа"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "No"
 msgstr "Нет"
 
@@ -667,7 +667,7 @@ msgstr "Служба %1 все еще присутствует на DBus."
 
 #: src/lib/configwidgetslib/keylistwidget.cpp:57
 msgid "Set to Void Symbol"
-msgstr "Установить Cимвол пустоты"
+msgstr "Установить Пустой Cимвол"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -728,7 +728,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr "Попробуйте выполнить перенос файла таблицы: %1 ..."
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "Графический интерфейс"
 
@@ -767,7 +767,7 @@ msgstr "Просмотреть раскладку клавиатуры"
 msgid "WelcomePage"
 msgstr "Страница Приветствия"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "Yes"
 msgstr "Да"
 
@@ -787,7 +787,7 @@ msgstr ""
 "Ваш текущий метод ввода не соответствует выбранной раскладке. Вы хотите "
 "добавить соответствующий метод ввода для раскладки?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:655
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
