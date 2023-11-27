@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2023-11-27 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -48,14 +48,14 @@ msgstr "%1 がクラッシュしました。"
 msgid "%1 failed to start."
 msgstr "%1 を開始できませんでした。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:514
+#: src/lib/configwidgetslib/optionwidget.cpp:525
+#: src/lib/configwidgetslib/optionwidget.cpp:531
+#: src/lib/configwidgetslib/optionwidget.cpp:534
+#: src/lib/configwidgetslib/optionwidget.cpp:537
+#: src/lib/configwidgetslib/optionwidget.cpp:540
+#: src/lib/configwidgetslib/optionwidget.cpp:543
 #: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -66,7 +66,7 @@ msgstr "適用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:590
 msgid "&Cancel"
 msgstr "キャンセル(&C)"
 
@@ -86,7 +86,7 @@ msgstr "次へ(&N) >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&OK"
 msgstr "&OK"
 
@@ -202,7 +202,7 @@ msgstr "詳細についてはアイテムをクリックしてください。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -361,7 +361,7 @@ msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 "Fcitx インストールのアップデートが見つかりました。Fcitx を再起動しますか？"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "フロントエンド"
 
@@ -402,7 +402,7 @@ msgstr "Fcitx 4 などの他の入力メソッドからデータをインポー�
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Fcitx 4 からインストール済みテーブルのデータをインポートする"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "入力メソッド"
 
@@ -463,7 +463,7 @@ msgstr "レイアウト"
 msgid "Layout:"
 msgstr "レイアウト:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr "ローダー"
 
@@ -514,7 +514,7 @@ msgstr "グローバルホットキーオプションを移行しています...
 msgid "Migration Tool"
 msgstr "移行ツール"
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "モジュール"
 
@@ -540,7 +540,7 @@ msgstr "多言語"
 msgid "New Group"
 msgstr "新しいグループ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "No"
 msgstr "いいえ"
 
@@ -667,7 +667,7 @@ msgstr "サービス %1 はまだ DBus に存在します。"
 
 #: src/lib/configwidgetslib/keylistwidget.cpp:57
 msgid "Set to Void Symbol"
-msgstr ""
+msgstr "ボイドシンボルに設定"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
@@ -728,7 +728,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr "テーブルファイルの移行を試みています: %1 ..."
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "UI"
 
@@ -767,7 +767,7 @@ msgstr "キーボードレイアウトを見る"
 msgid "WelcomePage"
 msgstr "ウェルカムページ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:622
 msgid "Yes"
 msgstr "はい"
 
@@ -787,7 +787,7 @@ msgstr ""
 "現在設定されている入力メソッドが選択したレイアウトと一致しません。対応する入"
 "力メソッドをレイアウトに追加しますか？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:655
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
