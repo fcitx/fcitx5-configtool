@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-23 20:24+0000\n"
+"POT-Creation-Date: 2023-11-28 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -210,7 +210,7 @@ msgstr "Настроить"
 
 #: src/migrator/lib/renamefile.cpp:32
 msgid "Converter crashed."
-msgstr "Сбой конвертера."
+msgstr "Сбой преобразователя."
 
 #: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
