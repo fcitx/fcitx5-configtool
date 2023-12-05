@@ -88,7 +88,7 @@ KCM.ScrollViewKCM {
 
         delegate: Kirigami.SwipeListItem {
             id: listItem
-            RowLayout {
+            contentItem: RowLayout {
                 CheckBox {
                     id: itemChecked
                     Layout.alignment: Qt.AlignVCenter

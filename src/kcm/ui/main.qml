@@ -40,7 +40,7 @@ KCM.ScrollViewKCM {
                 id: listItem
                 width: parent.width
 
-                RowLayout {
+                contentItem: RowLayout {
                     Kirigami.ListItemDragHandle {
                         listItem: listItem
                         listView: imList
