@@ -7,6 +7,7 @@
 #include "main.h"
 #include "addonmodel.h"
 #include "config.h"
+#include "dbusprovider.h"
 #include "logging.h"
 #include <KAboutData>
 #include <KLocalizedString>
@@ -74,6 +75,8 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
             [this]() { setNeedsSave(true); });
     connect(addonModel_, &FlatAddonModel::changed, this,
             [this]() { setNeedsSave(true); });
+    connect(dbus_, &DBusProvider::canRestartChanged, this,
+            &FcitxModule::canRestartChanged);
 
     handleAvailabilityChanged(dbus_->available());
 

@@ -239,7 +239,7 @@ void IMConfig::refresh() {
 }
 
 void IMConfig::restart() {
-    if (!dbus_->controller()) {
+    if (!dbus_->controller() || !dbus_->canRestart()) {
         return;
     }
     dbus_->controller()->Restart();

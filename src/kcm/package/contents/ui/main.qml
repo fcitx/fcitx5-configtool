@@ -261,6 +261,7 @@ KCM.ScrollViewKCM {
                     displayHint: Kirigami.Action.DisplayHint.KeepVisible
                     iconName: "system-run"
                     text: i18n("Restart")
+                    visible: kcm.canRestart
 
                     onTriggered: {
                         kcm.imConfig.restart();

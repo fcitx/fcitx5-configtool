@@ -48,6 +48,7 @@ class FcitxModule : public FcitxKCMBase {
     Q_PROPERTY(LayoutProvider *layoutProvider READ layoutProvider CONSTANT)
     Q_PROPERTY(AddonProxyModel *addonModel READ addonModel CONSTANT)
     Q_PROPERTY(bool availability READ availability NOTIFY availabilityChanged)
+    Q_PROPERTY(bool canRestart READ canRestart NOTIFY canRestartChanged)
 public:
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     FcitxModule(QObject *parent, const KPluginMetaData &metaData);
@@ -63,6 +64,7 @@ public:
     auto layoutProvider() const { return layoutProvider_; }
     auto addonModel() const { return addonProxyModel_; }
     bool availability() const { return dbus_->available(); }
+    bool canRestart() const { return dbus_->canRestart(); }
 
 public Q_SLOTS:
     void load() override;
@@ -119,6 +121,7 @@ public Q_SLOTS:
 
 Q_SIGNALS:
     void availabilityChanged(bool avail);
+    void canRestartChanged(bool canRestart);
 
 private Q_SLOTS:
     void handleAvailabilityChanged(bool avail);

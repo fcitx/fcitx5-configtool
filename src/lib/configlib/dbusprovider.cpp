@@ -29,9 +29,31 @@ void DBusProvider::fcitxAvailabilityChanged(bool avail) {
             new FcitxQtControllerProxy(watcher_->serviceName(), "/controller",
                                        watcher_->connection(), this);
         controller_->setTimeout(3000);
+
+        loadCanRestart();
     }
 
     Q_EMIT availabilityChanged(controller_);
+}
+
+void DBusProvider::setCanRestart(bool canRestart) {
+    if (canRestart_ != canRestart) {
+        canRestart_ = canRestart;
+        Q_EMIT canRestartChanged(canRestart_);
+    }
+}
+
+void DBusProvider::loadCanRestart() {
+    auto call = controller_->CanRestart();
+    auto callwatcher = new QDBusPendingCallWatcher(call, this);
+    connect(callwatcher, &QDBusPendingCallWatcher::finished, this,
+            [this](QDBusPendingCallWatcher *watcher) {
+                QDBusPendingReply<bool> canRestart = *watcher;
+                watcher->deleteLater();
+                if (canRestart.isValid()) {
+                    setCanRestart(canRestart.value());
+                }
+            });
 }
 
 } // namespace kcm

@@ -111,16 +111,28 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
             _("Found updates to fcitx installation. Do you want to restart "
               "Fcitx?"));
     } else {
-        auto refreshAction = new QAction(_("Update"));
+        auto refreshAction = new QAction(_("Update"), this);
         connect(refreshAction, &QAction::triggered, this,
                 [this]() { config_->refresh(); });
         ui_->checkUpdateMessage->addAction(refreshAction);
     }
 
-    auto restartAction = new QAction(_("Restart"));
+    // Restart action is the last action, so we can just remove/add without
+    // "ïnsert".
+    auto restartAction = new QAction(_("Restart"), this);
     connect(restartAction, &QAction::triggered, this,
             [this]() { config_->restart(); });
-    ui_->checkUpdateMessage->addAction(restartAction);
+    connect(dbus, &DBusProvider::canRestartChanged, this,
+            [this, restartAction]() {
+                ui_->checkUpdateMessage->removeAction(restartAction);
+                if (dbus_->canRestart()) {
+                    ui_->checkUpdateMessage->addAction(restartAction);
+                }
+            });
+    if (dbus_->canRestart()) {
+        ui_->checkUpdateMessage->addAction(restartAction);
+    }
+    restartAction->setVisible(dbus->canRestart());
 
     ui_->availIMView->setItemDelegate(new IMDelegate);
     ui_->availIMView->setModel(config_->availIMModel());

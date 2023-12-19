@@ -78,7 +78,7 @@ endif()
 find_package(Fcitx5Core 5.0.4 REQUIRED)
 find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
-find_package(Fcitx5Qt${QT_MAJOR_VERSION}DBusAddons REQUIRED)
+find_package(Fcitx5Qt${QT_MAJOR_VERSION}DBusAddons 5.1.4 REQUIRED)
 find_package(Fcitx5Qt${QT_MAJOR_VERSION}WidgetsAddons 5.0.2 REQUIRED)
 find_package(Qt${QT_MAJOR_VERSION}Svg)
 set_package_properties(Qt${QT_MAJOR_VERSION}Svg PROPERTIES
