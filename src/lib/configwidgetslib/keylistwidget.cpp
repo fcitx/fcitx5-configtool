@@ -55,7 +55,7 @@ void KeyListWidget::addKey(fcitx::Key key) {
     keyWidget->setModifierOnlyAllowed(modifierOnly_);
     auto voidSymbolAction = new QAction(keyWidget);
     voidSymbolAction->setText(_("Set to Void Symbol"));
-    connect(voidSymbolAction, &QAction::triggered, keyWidget, [keyWidget] () {
+    connect(voidSymbolAction, &QAction::triggered, keyWidget, [keyWidget]() {
         keyWidget->setKeySequence({Key(FcitxKey_VoidSymbol)});
     });
     keyWidget->addAction(voidSymbolAction);

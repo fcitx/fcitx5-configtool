@@ -105,10 +105,10 @@ static QString languageName(const QString &langCode) {
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         const bool hasTerritory = (langCode.indexOf("_") != -1 &&
-            locale.territory() != QLocale::AnyTerritory);
+                                   locale.territory() != QLocale::AnyTerritory);
 #else
         const bool hasTerritory = langCode.indexOf("_") != -1 &&
-                                locale.country() != QLocale::AnyCountry;
+                                  locale.country() != QLocale::AnyCountry;
 #endif
         QString languageName;
         if (hasTerritory) {

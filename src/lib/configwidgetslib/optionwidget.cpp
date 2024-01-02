@@ -472,26 +472,25 @@ public:
         layout->addWidget(button_);
         setLayout(layout);
 
-        connect(
-            button_, &QPushButton::clicked, this,
-            [this, parent, name = option.name()]() {
-                if (launchSubConfig_) {
-                    ConfigWidget *configWidget = getConfigWidget(this);
-                    if (!configWidget) {
-                        return;
+        connect(button_, &QPushButton::clicked, this,
+                [this, parent, name = option.name()]() {
+                    if (launchSubConfig_) {
+                        ConfigWidget *configWidget = getConfigWidget(this);
+                        if (!configWidget) {
+                            return;
+                        }
+                        QPointer<QDialog> dialog = ConfigWidget::configDialog(
+                            this, configWidget->dbus(), uri_, name);
+                        dialog->exec();
+                        delete dialog;
+                    } else {
+                        WId wid = 0;
+                        if (QGuiApplication::platformName() == "xcb") {
+                            wid = parent->winId();
+                        }
+                        launchExternalConfig(uri_, wid);
                     }
-                    QPointer<QDialog> dialog = ConfigWidget::configDialog(
-                        this, configWidget->dbus(), uri_, name);
-                    dialog->exec();
-                    delete dialog;
-                } else {
-                    WId wid = 0;
-                    if (QGuiApplication::platformName() == "xcb") {
-                        wid = parent->winId();
-                    }
-                    launchExternalConfig(uri_, wid);
-                }
-            });
+                });
     }
 
     void readValueFrom(const QVariantMap &) override {}
