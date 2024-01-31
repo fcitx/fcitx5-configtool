@@ -75,6 +75,7 @@ void ConfigWidget::requestConfigFinished(QDBusPendingCallWatcher *watcher) {
     QDBusPendingReply<QDBusVariant, FcitxQtConfigTypeList> reply = *watcher;
     if (reply.isError()) {
         qCWarning(KCM_FCITX5) << reply.error();
+        validConfig_ = false;
         return;
     }
 
@@ -196,6 +197,10 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
                                     const QString &uri, const QString &title) {
     auto configPage = new ConfigWidget(uri, dbus);
     configPage->requestConfig(true);
+    if (!configPage->validConfig()) {
+        return nullptr;
+    }
+
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
