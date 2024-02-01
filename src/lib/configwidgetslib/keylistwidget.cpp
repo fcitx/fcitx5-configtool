@@ -10,7 +10,6 @@
 #include <QHBoxLayout>
 #include <QStyle>
 #include <QToolButton>
-#include <QVBoxLayout>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtkeysequencewidget.h>
 

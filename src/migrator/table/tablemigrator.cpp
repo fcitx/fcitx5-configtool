@@ -10,11 +10,9 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QStandardPaths>
-#include <fcitx-config/iniparser.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpath.h>
 #include <fcitx-utils/stringutils.h>
-#include <fcntl.h>
 
 namespace fcitx {
 

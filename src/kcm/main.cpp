@@ -6,9 +6,7 @@
  */
 #include "main.h"
 #include "addonmodel.h"
-#include "config.h"
 #include "dbusprovider.h"
-#include "logging.h"
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
@@ -18,10 +16,8 @@
 #include <QQuickRenderControl>
 #include <QQuickWindow>
 #include <QtGlobal>
-#include <config.h>
 #include <fcitx-utils/misc.h>
 #include <fcitx-utils/standardpath.h>
-#include <fcitx-utils/stringutils.h>
 
 namespace fcitx {
 

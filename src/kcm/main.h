@@ -11,7 +11,6 @@
 #include "dbusprovider.h"
 #include "font.h"
 #include "imconfig.h"
-#include "model.h"
 #include <QFont>
 #include <QMap>
 #include <fcitx-utils/color.h>
