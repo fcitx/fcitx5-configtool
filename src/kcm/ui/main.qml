@@ -356,11 +356,14 @@ KCM.ScrollViewKCM {
         id: imList
         enabled: kcm.availability
         model: kcm.imConfig.currentIMModel
+        clip: true
+        activeFocusOnTab: true
 
         section {
             property: "active"
             delegate: Kirigami.ListSectionHeader {
-                text: section == "inactive" ? i18n("Input Method Off") : i18n("Input Method On")
+                label: section == "inactive" ? i18n("Input Method Off") : i18n("Input Method On")
+                width: imList.width
             }
         }
 
