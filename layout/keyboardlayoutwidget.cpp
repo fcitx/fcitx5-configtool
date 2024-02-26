@@ -676,8 +676,8 @@ void KeyboardLayoutWidget::generatePixmap(bool force) {
     if (w == image.width() && h == image.height() && !force)
         return;
 
-    image = QPixmap(QSize(w, h) * devicePixelRatio());
-    image.setDevicePixelRatio(devicePixelRatio());
+    image = QPixmap(QSize(w, h) * devicePixelRatioF());
+    image.setDevicePixelRatio(devicePixelRatioF());
     image.fill(Qt::transparent);
     QPainter painter(&image);
     painter.setRenderHint(QPainter::Antialiasing, true);
