@@ -705,7 +705,7 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
+"第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤</b>或者<b>鍵盤 - <i>佈局名稱"
 "</i></b>放到第一個。"
 
 #: layout/main.cpp:26
