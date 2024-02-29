@@ -11,7 +11,7 @@ if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
           You must delete them, or cmake will refuse to work.")
 endif()
 
-project(fcitx5-configtool VERSION 5.1.3)
+project(fcitx5-configtool VERSION 5.1.4)
 
 option(USE_QT6 "Build with Qt6" Off)
 
