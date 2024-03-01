@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-02-06 20:24+0000\n"
+"POT-Creation-Date: 2024-03-01 00:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:140
+#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:142
 #, kde-format
 msgid "%1 (Disabled)"
 msgstr ""
@@ -25,18 +25,18 @@ msgstr ""
 msgid "%1:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:106
+#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:108
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:116
+#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:118
 #, kde-format
 msgid "- Disable %1\n"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:126
+#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:128
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Current page is not yet saved. Please save the config first."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:128
+#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:130
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -196,12 +196,12 @@ msgstr ""
 msgid "Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:363
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method Off"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:363
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method On"
 msgstr ""
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Select system layout..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:162
+#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:164
 #, kde-format
 msgid "Show &Advanced options"
 msgstr ""
