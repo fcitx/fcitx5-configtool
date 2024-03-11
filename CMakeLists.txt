@@ -13,7 +13,7 @@ endif()
 
 project(fcitx5-configtool VERSION 5.1.4)
 
-option(USE_QT6 "Build with Qt6" Off)
+option(USE_QT6 "Build with Qt6" On)
 
 if (USE_QT6)
 set(QT_MIN_VERSION "6.5.0")
