@@ -37,6 +37,7 @@ public:
 
     auto dbus() { return dbus_; }
     auto &description() const { return desc_; }
+    bool validConfig() const { return validConfig_; }
 
 Q_SIGNALS:
     void changed();
@@ -67,6 +68,7 @@ private:
     QWidget *mainWidget_;
 
     bool dontEmitChanged_ = false;
+    bool validConfig_ = true;
 };
 
 ConfigWidget *getConfigWidget(QWidget *widget);
