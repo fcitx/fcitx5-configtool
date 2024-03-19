@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2024-03-04 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e "
 "<ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2021\n"
@@ -18,8 +18,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
-"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
+"Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
+"1 == 0) ? 1: 2;\n"
 
 #: src/lib/configlib/layoutprovider.cpp:74
 #, kde-format
@@ -47,14 +47,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
-#: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr ""
@@ -65,7 +65,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr ""
 
@@ -176,11 +176,11 @@ msgstr ""
 msgid "Change Fcitx 5 Configuration"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr ""
 
@@ -201,7 +201,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "הגדרה"
@@ -222,7 +222,7 @@ msgstr ""
 msgid "Current Input Method:"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr ""
 
@@ -255,7 +255,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
@@ -353,7 +353,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "ממשק גרפי"
 
@@ -371,7 +371,7 @@ msgstr ""
 msgid "Got error: %1 %2"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "שם קבוצה:"
 
@@ -394,7 +394,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr ""
 
@@ -455,7 +455,7 @@ msgstr ""
 msgid "Layout:"
 msgstr "פריסה:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr ""
 
@@ -504,7 +504,7 @@ msgstr ""
 msgid "Migration Tool"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr ""
 
@@ -526,11 +526,11 @@ msgstr ""
 msgid "Multilingual"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "קבוצה חדשה"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "לא"
 
@@ -571,7 +571,9 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr ""
 
@@ -622,12 +624,12 @@ msgstr ""
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr ""
 
@@ -710,7 +712,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "ממשק משתמש"
 
@@ -749,23 +751,23 @@ msgstr ""
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "כן"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr ""

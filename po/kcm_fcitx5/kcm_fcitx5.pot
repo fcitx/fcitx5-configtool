@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-28 20:24+0000\n"
+"POT-Creation-Date: 2024-03-04 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:140
+#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:142
 #, kde-format
 msgid "%1 (Disabled)"
 msgstr ""
@@ -25,18 +25,18 @@ msgstr ""
 msgid "%1:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:106
+#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:108
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:116
+#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:118
 #, kde-format
 msgid "- Disable %1\n"
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:126
+#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:128
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Addons"
 msgstr ""
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:64
 #, kde-format
 msgid "Author"
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: src/kcm/main.cpp:59
+#: src/kcm/main.cpp:60
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr ""
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Configure global options..."
 msgstr ""
 
-#: src/kcm/main.cpp:60
+#: src/kcm/main.cpp:61
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Current page is not yet saved. Please save the config first."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:128
+#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:130
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/kcm/main.cpp:58
+#: src/kcm/main.cpp:59
 #, kde-format
 msgid "Fcitx 5"
 msgstr ""
@@ -157,9 +157,9 @@ msgstr ""
 msgid "File descriptor <fd> "
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:281
-#: src/kcm/package/contents/ui/main.qml:300 src/kcm/ui/main.qml:288
-#: src/kcm/ui/main.qml:307
+#: src/kcm/package/contents/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:301 src/kcm/ui/main.qml:289
+#: src/kcm/ui/main.qml:308
 #, kde-format
 msgid "Fix"
 msgstr ""
@@ -187,7 +187,7 @@ msgstr ""
 msgid "Group Name"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:312 src/kcm/ui/main.qml:319
+#: src/kcm/package/contents/ui/main.qml:313 src/kcm/ui/main.qml:320
 #, kde-format
 msgid "Group:"
 msgstr ""
@@ -196,12 +196,12 @@ msgstr ""
 msgid "Input Method"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method Off"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method On"
 msgstr ""
@@ -321,7 +321,7 @@ msgstr ""
 msgid "Select system layout..."
 msgstr ""
 
-#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:162
+#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:164
 #, kde-format
 msgid "Show &Advanced options"
 msgstr ""
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Void Symbol"
 msgstr ""
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:64
 #, kde-format
 msgid "Xuetian Weng"
 msgstr ""
@@ -376,14 +376,14 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:275 src/kcm/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:276 src/kcm/ui/main.qml:283
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/main.qml:294 src/kcm/ui/main.qml:301
+#: src/kcm/package/contents/ui/main.qml:295 src/kcm/ui/main.qml:302
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "

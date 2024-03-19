@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
 # 黃柏諺 <s8321414@gmail.com>, 2017
 # pan93412 <pan93412@gmail.com>, 2019
 # bruh, 2020
@@ -12,14 +11,15 @@
 # yan12125, 2022
 # Haowei Hsu <hwhsu1231@gmail.com>, 2023
 # Lau YeeYu, 2023
+# csslayer <wengxt@gmail.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-24 20:24+0000\n"
+"POT-Creation-Date: 2024-03-01 00:36+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Lau YeeYu, 2023\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -54,14 +54,14 @@ msgstr "%1 當掉了。"
 msgid "%1 failed to start."
 msgstr "%1 啟動失敗。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:514
-#: src/lib/configwidgetslib/optionwidget.cpp:525
-#: src/lib/configwidgetslib/optionwidget.cpp:531
-#: src/lib/configwidgetslib/optionwidget.cpp:534
-#: src/lib/configwidgetslib/optionwidget.cpp:537
-#: src/lib/configwidgetslib/optionwidget.cpp:540
-#: src/lib/configwidgetslib/optionwidget.cpp:543
-#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -72,7 +72,7 @@ msgstr "套用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:590
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -92,7 +92,7 @@ msgstr "下一步(&N) >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr "確定(&O)"
 
@@ -183,11 +183,11 @@ msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
 msgid "Change Fcitx 5 Configuration"
 msgstr "變更 Fcitx 5 設定"
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr "變更輸入法以符合選擇的配置。"
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr "變更系統配置以符合選擇的輸入法。"
 
@@ -229,7 +229,7 @@ msgstr "複製文件 %1 至 %2"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr "目前的群組已變更"
 
@@ -265,7 +265,7 @@ msgstr ""
 "%2%3\n"
 "確認要停用它嗎？"
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 
@@ -383,7 +383,7 @@ msgstr "全域選項"
 msgid "Got error: %1 %2"
 msgstr "發生錯誤：%1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "群組名稱："
 
@@ -538,11 +538,11 @@ msgstr "上移"
 msgid "Multilingual"
 msgstr "多語言"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "新群組"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:622
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "取消"
 
@@ -583,7 +583,9 @@ msgstr "拼音數據已遷移。"
 msgid "Remove"
 msgstr "移除"
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr "重新啟動"
 
@@ -634,12 +636,12 @@ msgstr "選取字型"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "選取佈局"
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr "選取預設配置"
 
@@ -705,8 +707,8 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"第一個輸入法將作爲非激活狀態。通常您需要將<b>鍵盤<b>或者<b>鍵盤 - <i>佈局名稱"
-"</i></b>放到第一個。"
+"第一個輸入法將作為非激活狀態。通常您要將<b>鍵盤</b>或者<b>鍵盤 - <i>配置名稱"
+"</i></b> 放在第一位。"
 
 #: layout/main.cpp:26
 msgid "This program only works on X11."
@@ -765,23 +767,23 @@ msgstr "檢視鍵盤配置"
 msgid "WelcomePage"
 msgstr "歡迎頁"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:622
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "確定"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您目前設定的輸入法與配置不符，是否變更配置設定？"
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:655
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

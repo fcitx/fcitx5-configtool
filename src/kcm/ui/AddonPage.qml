@@ -76,6 +76,7 @@ KCM.ScrollViewKCM {
         }
     }
     view: ListView {
+        id: list
         model: kcm ? kcm.addonModel : null
 
         section {
@@ -83,6 +84,7 @@ KCM.ScrollViewKCM {
 
             delegate: Kirigami.ListSectionHeader {
                 label: section
+                width: list.width
             }
         }
 

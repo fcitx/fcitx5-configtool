@@ -825,16 +825,14 @@ void KeyboardLayoutWidget::drawPolygon(QPainter *painter, QColor fill_color,
     bool filled;
     unsigned int i;
 
+    painter->save();
     if (fill_color.isValid()) {
         filled = true;
+        painter->setBrush(QBrush(fill_color));
     } else {
-        fill_color = Qt::gray;
+        painter->setPen(Qt::gray);
         filled = false;
     }
-
-    QBrush brush(fill_color);
-    painter->save();
-    painter->setBrush(brush);
 
     for (i = 0; i < num_points; i++) {
         QPointF point;
@@ -1238,8 +1236,8 @@ void KeyboardLayoutWidget::drawKeyLabelHelper(QPainter *painter,
     while (maxTry--) {
         QFontMetricsF fm(font);
         qreal w = fm.size(align, text).width();
-        if (w > textRect.width()) {
-            qreal scale = textRect.width() / w;
+        if (w > textRect.width() - padding * 2) {
+            qreal scale = (textRect.width() - padding * 2) / w;
             font.setPointSizeF(font.pointSizeF() * scale);
         } else {
             break;

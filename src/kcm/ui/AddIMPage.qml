@@ -68,6 +68,7 @@ KCM.ScrollViewKCM {
 
             delegate: Kirigami.ListSectionHeader {
                 label: section
+                width: availIMView.width
             }
         }
 
