@@ -6,7 +6,6 @@
  */
 #include "globalconfigmigrator.h"
 #include "configmigrator.h"
-#include "copydirectory.h"
 #include "pipeline.h"
 #include <QFileInfo>
 #include <fcitx-config/iniparser.h>

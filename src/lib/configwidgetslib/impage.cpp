@@ -17,7 +17,6 @@
 #include <QMessageBox>
 #include <QPainter>
 #include <QStyledItemDelegate>
-#include <fcitxqtcontrollerproxy.h>
 
 namespace fcitx {
 namespace kcm {
