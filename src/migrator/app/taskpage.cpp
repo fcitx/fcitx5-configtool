@@ -83,15 +83,16 @@ public:
         migrators_ = factory_->list(availableAddons);
         migratorStatesCache_.resize(migrators_.size());
         int idx = 0;
-        availMigrators_ = 0;
+        auto tmpAvailMigrators = 0;
         for (const auto &migrator : migrators_) {
             migratorStatesCache_[idx] = migrator->check();
             if (migratorStatesCache_[idx]) {
-                availMigrators_++;
+                tmpAvailMigrators++;
             }
             idx++;
         }
         selected_.clear();
+        setAvailMigrators(tmpAvailMigrators);
         endResetModel();
         Q_EMIT selectedChanged();
     }
@@ -116,7 +117,7 @@ public:
     }
 
     bool allSelected() const {
-        return static_cast<int>(availMigrators_) == selected_.size();
+        return availMigrators_ != 0 && static_cast<int>(availMigrators_) == selected_.size();
     }
 
     bool someSelected() const { return !selected_.isEmpty(); }
@@ -129,8 +130,16 @@ public:
         return result;
     }
 
+    void setAvailMigrators(int availMigrators) {
+        if (availMigrators == static_cast<int>(availMigrators_))
+            return;
+        availMigrators_ = availMigrators;
+        Q_EMIT availMigratorsChanged(availMigrators_);
+    }
+
 Q_SIGNALS:
     void selectedChanged();
+    void availMigratorsChanged(int);
 
 private:
     const MigratorFactory *factory_;
@@ -148,7 +157,8 @@ TaskPage::TaskPage(MainWindow *parent)
     taskView->setModel(model_);
     fcitxNotRunningMessage->setVisible(!parent_->dbus()->available());
 
-    descriptionLabel->setText(_("Click on an item for more details."));
+    selectAllBox->hide();
+    descriptionLabel->setText(_("No available migrators."));
     connect(taskView->selectionModel(), &QItemSelectionModel::currentChanged,
             this, [this](const QModelIndex &current) {
                 if (current.isValid()) {
@@ -162,6 +172,15 @@ TaskPage::TaskPage(MainWindow *parent)
     connect(model_, &TaskModel::selectedChanged, this, [this]() {
         selectAllBox->setChecked(model_->allSelected());
         Q_EMIT completeChanged();
+    });
+    connect(model_, &TaskModel::availMigratorsChanged, this, [this](int availMigrators) {
+        if (!availMigrators) {
+            selectAllBox->hide();
+            descriptionLabel->setText(_("No available migrators."));
+        } else {
+            selectAllBox->show();
+            descriptionLabel->setText(_("Click on an item for more details."));
+        }
     });
     connect(selectAllBox, &QCheckBox::clicked, this, [this](bool checked) {
         if (checked) {
