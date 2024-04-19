@@ -35,6 +35,8 @@ public:
                 return selected_.contains(index) ? Qt::Checked : Qt::Unchecked;
             }
             break;
+        default:
+            break;
         }
         return {};
     }
@@ -83,16 +85,16 @@ public:
         migrators_ = factory_->list(availableAddons);
         migratorStatesCache_.resize(migrators_.size());
         int idx = 0;
-        auto tmpAvailMigrators = 0;
+        int nAvailMigrators = 0;
         for (const auto &migrator : migrators_) {
             migratorStatesCache_[idx] = migrator->check();
             if (migratorStatesCache_[idx]) {
-                tmpAvailMigrators++;
+                nAvailMigrators++;
             }
             idx++;
         }
         selected_.clear();
-        setAvailMigrators(tmpAvailMigrators);
+        setAvailableSize(nAvailMigrators);
         endResetModel();
         Q_EMIT selectedChanged();
     }
@@ -117,7 +119,8 @@ public:
     }
 
     bool allSelected() const {
-        return availMigrators_ != 0 && static_cast<int>(availMigrators_) == selected_.size();
+        return availableSize_ != 0 &&
+               availableSize_ == selected_.size();
     }
 
     bool someSelected() const { return !selected_.isEmpty(); }
@@ -130,22 +133,23 @@ public:
         return result;
     }
 
-    void setAvailMigrators(int availMigrators) {
-        if (availMigrators == static_cast<int>(availMigrators_))
+    void setAvailableSize(int n) {
+        if (n == availableSize_) {
             return;
-        availMigrators_ = availMigrators;
-        Q_EMIT availMigratorsChanged(availMigrators_);
+        }
+        availableSize_ = n;
+        Q_EMIT availableSizeChanged(availableSize_);
     }
 
 Q_SIGNALS:
     void selectedChanged();
-    void availMigratorsChanged(int);
+    void availableSizeChanged(int availableSize);
 
 private:
     const MigratorFactory *factory_;
     std::vector<std::unique_ptr<Migrator>> migrators_;
     std::vector<bool> migratorStatesCache_;
-    size_t availMigrators_ = 0;
+    int availableSize_ = 0;
     QSet<QPersistentModelIndex> selected_;
 };
 
@@ -157,8 +161,6 @@ TaskPage::TaskPage(MainWindow *parent)
     taskView->setModel(model_);
     fcitxNotRunningMessage->setVisible(!parent_->dbus()->available());
 
-    selectAllBox->hide();
-    descriptionLabel->setText(_("No available migrators."));
     connect(taskView->selectionModel(), &QItemSelectionModel::currentChanged,
             this, [this](const QModelIndex &current) {
                 if (current.isValid()) {
@@ -173,15 +175,17 @@ TaskPage::TaskPage(MainWindow *parent)
         selectAllBox->setChecked(model_->allSelected());
         Q_EMIT completeChanged();
     });
-    connect(model_, &TaskModel::availMigratorsChanged, this, [this](int availMigrators) {
-        if (!availMigrators) {
-            selectAllBox->hide();
-            descriptionLabel->setText(_("No available migrators."));
-        } else {
+    auto availableSizeChanged = [this](int availMigrators) {
+        if (availMigrators) {
             selectAllBox->show();
             descriptionLabel->setText(_("Click on an item for more details."));
+        } else {
+            selectAllBox->hide();
+            descriptionLabel->setText(_("No available migrators."));
         }
-    });
+    };
+    connect(model_, &TaskModel::availableSizeChanged, this,
+            availableSizeChanged);
     connect(selectAllBox, &QCheckBox::clicked, this, [this](bool checked) {
         if (checked) {
             model_->selectAll();
@@ -189,13 +193,14 @@ TaskPage::TaskPage(MainWindow *parent)
             model_->clearSelection();
         }
     });
+    availableSizeChanged(0);
 }
 
 void TaskPage::availabilityChanged(bool avail) {
     fcitxNotRunningMessage->setVisible(!avail);
     if (avail) {
         auto call = parent_->dbus()->controller()->GetAddonsV2();
-        auto watcher = new QDBusPendingCallWatcher(call, this);
+        auto *watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 [this](QDBusPendingCallWatcher *watcher) {
                     watcher->deleteLater();
@@ -259,7 +264,7 @@ Pipeline *TaskPage::createPipeline() {
             migrator->addOfflineJob(pipeline);
         }
 
-        auto startFcitxJob = new ProcessRunner("fcitx5", {"-d"}, {});
+        auto *startFcitxJob = new ProcessRunner("fcitx5", {"-d"}, {});
         startFcitxJob->setStartMessage("Restarting Fcitx 5...");
         startFcitxJob->setFinishMessage("Fcitx 5 is restarted.");
         pipeline->addJob(startFcitxJob);
