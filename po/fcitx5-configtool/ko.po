@@ -5,15 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2017
 # Bon Keun Seo <scobyseo@gmail.com>, 2021
-# Junghee Lee <daemul72@gmail.com>, 2022
+# JungHee Lee <daemul72@gmail.com>, 2022
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
 "Language-Team: Korean (https://app.transifex.com/fcitx/teams/12005/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -47,14 +47,14 @@ msgstr "%1 충돌함."
 msgid "%1 failed to start."
 msgstr "%1을(를) 시작하지 못함."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
-#: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -65,7 +65,7 @@ msgstr "적용(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr "취소(&C)"
 
@@ -77,7 +77,7 @@ msgstr "지우기(&C)"
 msgid "&Close"
 msgstr "닫기(&C)"
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr "다음(&N)>"
 
@@ -85,7 +85,7 @@ msgstr "다음(&N)>"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr "확인(&O)"
 
@@ -154,7 +154,7 @@ msgstr "모든 언어"
 msgid "Apply configuration changes"
 msgstr "구성 변경사항 적용"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr "Fcitx를 종료하도록 요청하는 중..."
 
@@ -176,23 +176,23 @@ msgstr "DBus로 Fcitx에 연결할 수 없습니다. Fcitx가 실행되고 있�
 msgid "Change Fcitx 5 Configuration"
 msgstr "Fcitx5 구성 변경"
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr "선택된 자판에 맞게 입력기 변경"
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr "입력기 선택과 일치하도록 시스템 자판을 변경합니다."
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr "Fcitx가 실행 중인지 확인하는 중..."
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr "Fcitx가 여전히 실행 중인지 확인하는 중..."
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr "자세한 내용을 보려면 항목을 클릭합니다."
 
@@ -201,7 +201,7 @@ msgstr "자세한 내용을 보려면 항목을 클릭합니다."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "구성하기"
@@ -222,7 +222,7 @@ msgstr "파일 %1을 %2로 복사 중"
 msgid "Current Input Method:"
 msgstr "현재 입력기:"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr "현재 그룹이 변경됨"
 
@@ -257,7 +257,7 @@ msgstr ""
 "%1을 해제하면 %2%3도 함께 꺼집니다.\n"
 "정말로 해제하실 건가요?"
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "그룹을 변경하시겠습니까? 현재 그룹에 대한 변경 사항은 손실됩니다!"
 
@@ -329,15 +329,15 @@ msgstr "Fcitx5가 실행되고 있지 않습니다."
 msgid "Fcitx Configuration"
 msgstr "Fcitx 구성"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr "Fcitx가 종료되었습니다."
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr "Fcitx가 완전히 종료되었습니다."
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr "Fcitx가 시작됩니다."
 
@@ -358,7 +358,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "전처리기"
 
@@ -376,7 +376,7 @@ msgstr "전역 옵션"
 msgid "Got error: %1 %2"
 msgstr "오류: %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "그룹 이름:"
 
@@ -399,7 +399,7 @@ msgstr "Fcitx 4와 같은 다른 입력기에서 데이터 가져오기"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Fcitx 4에서 설치된 테이블의 테이블 데이터 가져오기"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "입력기"
 
@@ -460,7 +460,7 @@ msgstr "자판"
 msgid "Layout:"
 msgstr "자판:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr "불러오기 도구"
 
@@ -511,7 +511,7 @@ msgstr "전역 단축키 키 옵션을 마이그레이션하는 중..."
 msgid "Migration Tool"
 msgstr "마이그레이션 도구"
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "모듈"
 
@@ -533,13 +533,17 @@ msgstr "위로 이동"
 msgid "Multilingual"
 msgstr "다국어"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "새 그룹"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "아니오"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -578,7 +582,9 @@ msgstr "Pinyin 데이터가 마이그레이션됩니다."
 msgid "Remove"
 msgstr "제거"
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr "재시작"
 
@@ -629,12 +635,12 @@ msgstr "글꼴 선택(&F)"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "자판 선택"
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr "기본 자판 선택"
 
@@ -721,7 +727,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr "표 파일을 옮기려고 시도: %1 ..."
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "사용자 인터페이스"
 
@@ -760,18 +766,18 @@ msgstr "키보드 자판 보기"
 msgid "WelcomePage"
 msgstr "시작 페이지"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "예"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 "현재 구성된 입력기가 자판과 맞지 않습니다. 자판 구성을 변경하시겠습니까?"
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
@@ -779,7 +785,7 @@ msgstr ""
 "현재 구성된 입력기가 선택한 자판과 맞지 않습니다. 자판에 적합한 입력기를 추가"
 "하시겠습니까?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

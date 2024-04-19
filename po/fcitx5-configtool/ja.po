@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-27 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2023\n"
 "Language-Team: Japanese (https://app.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -48,14 +48,14 @@ msgstr "%1 がクラッシュしました。"
 msgid "%1 failed to start."
 msgstr "%1 を開始できませんでした。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:514
-#: src/lib/configwidgetslib/optionwidget.cpp:525
-#: src/lib/configwidgetslib/optionwidget.cpp:531
-#: src/lib/configwidgetslib/optionwidget.cpp:534
-#: src/lib/configwidgetslib/optionwidget.cpp:537
-#: src/lib/configwidgetslib/optionwidget.cpp:540
-#: src/lib/configwidgetslib/optionwidget.cpp:543
-#: src/lib/configwidgetslib/optionwidget.cpp:546
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -66,7 +66,7 @@ msgstr "適用(&A)"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:590
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr "キャンセル(&C)"
 
@@ -78,7 +78,7 @@ msgstr "クリア(&C)"
 msgid "&Close"
 msgstr "閉じる(&C)"
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr "次へ(&N) >"
 
@@ -86,7 +86,7 @@ msgstr "次へ(&N) >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr "&OK"
 
@@ -155,7 +155,7 @@ msgstr "すべての言語"
 msgid "Apply configuration changes"
 msgstr "設定の変更を適用する"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr "Fcitxに終了を要求しています..."
 
@@ -177,23 +177,23 @@ msgstr "DBusがFcitxと接続できませんでした。Fcitxは動いていま�
 msgid "Change Fcitx 5 Configuration"
 msgstr "Fcitx 5 の設定を変更"
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr "レイアウトの選択に一致するように入力メソッドを変更します。"
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr "入力メソッドの選択に一致するようにシステムレイアウトを変更します。"
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr "Fcitxが実行中か確認しています..."
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr "Fcitxがまだ実行中か確認しています..."
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr "詳細についてはアイテムをクリックしてください。"
 
@@ -223,7 +223,7 @@ msgstr "ファイル %1 を %2 にコピーしています"
 msgid "Current Input Method:"
 msgstr "現在の入力メソッド:"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr "現在のグループを変更しました"
 
@@ -259,7 +259,7 @@ msgstr ""
 "%2 %3\n"
 "無効にしますか？"
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "グループを変更しますか？現在のグループへの変更は失われます！"
 
@@ -331,15 +331,15 @@ msgstr "Fcitx 5 が実行されていません。"
 msgid "Fcitx Configuration"
 msgstr "Fcitx の設定"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr "Fcitx が終了しました。"
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr "Fcitx は完全に終了します。"
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr "Fcitx が開始されます。"
 
@@ -379,7 +379,7 @@ msgstr "グローバルオプション"
 msgid "Got error: %1 %2"
 msgstr "エラーが発生しました: %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "グループ名:"
 
@@ -536,13 +536,17 @@ msgstr "上に移動"
 msgid "Multilingual"
 msgstr "多言語"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "新しいグループ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:622
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "いいえ"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -581,7 +585,9 @@ msgstr "ピンインデータが移行されます。"
 msgid "Remove"
 msgstr "削除"
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr "再起動"
 
@@ -632,12 +638,12 @@ msgstr "フォントを選択(&F)..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "レイアウトを選択"
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr "デフォルトのレイアウトを選択"
 
@@ -767,11 +773,11 @@ msgstr "キーボードレイアウトを見る"
 msgid "WelcomePage"
 msgstr "ウェルカムページ"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:622
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "はい"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
@@ -779,7 +785,7 @@ msgstr ""
 "現在設定されている入力メソッドがレイアウトと一致しません。レイアウト設定を変"
 "更しますか？"
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
@@ -787,7 +793,7 @@ msgstr ""
 "現在設定されている入力メソッドが選択したレイアウトと一致しません。対応する入"
 "力メソッドをレイアウトに追加しますか？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:655
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

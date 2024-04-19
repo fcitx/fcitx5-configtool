@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-03-04 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e "
 "<ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2021\n"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "&Close"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgstr "כל שפה"
 msgid "Apply configuration changes"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr ""
 
@@ -184,15 +184,15 @@ msgstr ""
 msgid "Change System layout to match input method selection."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr ""
 
@@ -327,15 +327,15 @@ msgstr ""
 msgid "Fcitx Configuration"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr ""
 
@@ -533,6 +533,10 @@ msgstr "קבוצה חדשה"
 #: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "לא"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."

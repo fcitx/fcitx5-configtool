@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (https://app.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -46,14 +46,14 @@ msgstr ""
 msgid "%1 failed to start."
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
-#: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -64,7 +64,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr ""
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "&Close"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr ""
 
@@ -153,7 +153,7 @@ msgstr "Qualsevol llengua"
 msgid "Apply configuration changes"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr ""
 
@@ -175,23 +175,23 @@ msgstr "No es pot connectar a fcitx amb DBus, està fcitx en execució?"
 msgid "Change Fcitx 5 Configuration"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr ""
 
@@ -200,7 +200,7 @@ msgstr ""
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr ""
@@ -221,7 +221,7 @@ msgstr ""
 msgid "Current Input Method:"
 msgstr "Mètode d'entrada actual:"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr ""
 
@@ -254,7 +254,7 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
@@ -326,15 +326,15 @@ msgstr ""
 msgid "Fcitx Configuration"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr ""
 
@@ -352,7 +352,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "Frontal"
 
@@ -370,7 +370,7 @@ msgstr ""
 msgid "Got error: %1 %2"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "Nom del grup:"
 
@@ -393,7 +393,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "Mètode d'entrada"
 
@@ -456,7 +456,7 @@ msgstr ""
 msgid "Layout:"
 msgstr "Disposició:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr ""
 
@@ -505,7 +505,7 @@ msgstr ""
 msgid "Migration Tool"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "Mòdul"
 
@@ -527,13 +527,17 @@ msgstr ""
 msgid "Multilingual"
 msgstr "Plurilingüe"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "Grup nou"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "No"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -572,7 +576,9 @@ msgstr ""
 msgid "Remove"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr ""
 
@@ -623,12 +629,12 @@ msgstr "Selecciona la &lletra..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr "Selecciona la disposició predeterminada"
 
@@ -714,7 +720,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "Interfície d'usuari"
 
@@ -753,23 +759,23 @@ msgstr "Visualitza la disposició de teclat"
 msgid "WelcomePage"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "Sí"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

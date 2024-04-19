@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-03 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: shijie.chen <xingwozhonghua@126.com>, 2024\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
@@ -78,7 +78,7 @@ msgstr "清空(&C)"
 msgid "&Close"
 msgstr "关闭(&C)"
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr "下一步(&N) >"
 
@@ -155,7 +155,7 @@ msgstr "任意语言"
 msgid "Apply configuration changes"
 msgstr "应用配置更改"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr "请求 Fcitx 退出..."
 
@@ -185,15 +185,15 @@ msgstr "更改输入方式以匹配布局选择。"
 msgid "Change System layout to match input method selection."
 msgstr "更改系统布局以匹配输入方式选择。"
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr "检查 Fcitx 是否正在运行..."
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr "检查 Fcitx 是否仍在运行..."
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr "点击项目查看更多细节。"
 
@@ -331,15 +331,15 @@ msgstr "Fcitx 5 没有在运行。"
 msgid "Fcitx Configuration"
 msgstr "Fcitx 配置"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr "Fcitx 已退出。"
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr "Fcitx 已经完全退出。"
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr "Fcitx 已启动。"
 
@@ -539,6 +539,10 @@ msgstr "新建分组"
 #: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "否"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."

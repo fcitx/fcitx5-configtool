@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-19 20:24+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: scootergrisen, 2021\n"
 "Language-Team: Danish (https://app.transifex.com/fcitx/teams/12005/da/)\n"
@@ -46,14 +46,14 @@ msgstr "%1 holdt op med at virke."
 msgid "%1 failed to start."
 msgstr "%1 kunne ikke starte."
 
-#: src/lib/configwidgetslib/optionwidget.cpp:535
-#: src/lib/configwidgetslib/optionwidget.cpp:546
-#: src/lib/configwidgetslib/optionwidget.cpp:552
-#: src/lib/configwidgetslib/optionwidget.cpp:555
-#: src/lib/configwidgetslib/optionwidget.cpp:558
-#: src/lib/configwidgetslib/optionwidget.cpp:561
-#: src/lib/configwidgetslib/optionwidget.cpp:564
-#: src/lib/configwidgetslib/optionwidget.cpp:567
+#: src/lib/configwidgetslib/optionwidget.cpp:513
+#: src/lib/configwidgetslib/optionwidget.cpp:524
+#: src/lib/configwidgetslib/optionwidget.cpp:530
+#: src/lib/configwidgetslib/optionwidget.cpp:533
+#: src/lib/configwidgetslib/optionwidget.cpp:536
+#: src/lib/configwidgetslib/optionwidget.cpp:539
+#: src/lib/configwidgetslib/optionwidget.cpp:542
+#: src/lib/configwidgetslib/optionwidget.cpp:545
 #, kde-format
 msgid "%1:"
 msgstr "%1:"
@@ -64,7 +64,7 @@ msgstr "&Anvend"
 
 #: src/lib/configwidgetslib/configwidget.cpp:205
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:611
+#: src/lib/configwidgetslib/optionwidget.cpp:589
 msgid "&Cancel"
 msgstr "&Annuller"
 
@@ -76,7 +76,7 @@ msgstr ""
 msgid "&Close"
 msgstr "&Luk"
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr "&Næste >"
 
@@ -84,7 +84,7 @@ msgstr "&Næste >"
 #: src/lib/configwidgetslib/configwidget.cpp:204
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:610
+#: src/lib/configwidgetslib/optionwidget.cpp:588
 msgid "&OK"
 msgstr "&OK"
 
@@ -153,7 +153,7 @@ msgstr "Vilkårligt sprog"
 msgid "Apply configuration changes"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr "Spørger Fcitx om at afslutte ..."
 
@@ -175,23 +175,23 @@ msgstr "Kan ikke oprette forbindelse til Fcitx med DBus. Kører Fcitx?"
 msgid "Change Fcitx 5 Configuration"
 msgstr ""
 
-#: src/lib/configwidgetslib/impage.cpp:282
+#: src/lib/configwidgetslib/impage.cpp:294
 msgid "Change Input method to match layout selection."
 msgstr "Skift inputmetode til at matche valget af layout."
 
-#: src/lib/configwidgetslib/impage.cpp:360
+#: src/lib/configwidgetslib/impage.cpp:372
 msgid "Change System layout to match input method selection."
 msgstr "Skift systemets layout til at matche valget af inputmetode."
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr "Tjekker om Fcitx kører ..."
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr "Tjekker om Fcitx stadigvæk kører ..."
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr "Klik på en post for flere detaljer."
 
@@ -200,7 +200,7 @@ msgstr "Klik på en post for flere detaljer."
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:470 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "Konfigurer"
@@ -221,7 +221,7 @@ msgstr "Kopierer filen %1 til %2"
 msgid "Current Input Method:"
 msgstr "Nuværende inputmetode:"
 
-#: src/lib/configwidgetslib/impage.cpp:194
+#: src/lib/configwidgetslib/impage.cpp:206
 msgid "Current group changed"
 msgstr "Nuværende gruppe ændret"
 
@@ -257,7 +257,7 @@ msgstr ""
 "%2%3\n"
 "Er du sikker på, at du vil deaktivere den?"
 
-#: src/lib/configwidgetslib/impage.cpp:195
+#: src/lib/configwidgetslib/impage.cpp:207
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "Vil du ændre gruppe? Ændringerne til den nuværende vil gå tabt!"
 
@@ -329,15 +329,15 @@ msgstr "Fcitx 5 kører ikke."
 msgid "Fcitx Configuration"
 msgstr "Fcitx-konfiguration"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr "Fcitx afsluttet."
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr "Fcitx er afsluttet helt."
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr "Fcitx er startet."
 
@@ -355,7 +355,7 @@ msgstr ""
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Frontend"
 msgstr "Frontend"
 
@@ -373,7 +373,7 @@ msgstr "Globale valgmuligheder"
 msgid "Got error: %1 %2"
 msgstr "Fik fejl: %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "Group Name:"
 msgstr "Gruppenavn:"
 
@@ -396,7 +396,7 @@ msgstr ""
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "Importér tabeldata for installeret tabel fra Fcitx 4"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:22
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
 msgstr "Inputmetode"
 
@@ -457,7 +457,7 @@ msgstr ""
 msgid "Layout:"
 msgstr "Layout:"
 
-#: src/lib/configlib/addonmodel.cpp:22
+#: src/lib/configlib/addonmodel.cpp:27
 msgid "Loader"
 msgstr "Indlæser"
 
@@ -507,7 +507,7 @@ msgstr "Overfør tastvalgmulighed for global hottast ..."
 msgid "Migration Tool"
 msgstr "Overførelsesværktøj"
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "Module"
 msgstr "Modul"
 
@@ -529,13 +529,17 @@ msgstr ""
 msgid "Multilingual"
 msgstr "Flersproget"
 
-#: src/lib/configwidgetslib/impage.cpp:418
+#: src/lib/configwidgetslib/impage.cpp:430
 msgid "New Group"
 msgstr "Ny gruppe"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "Nej"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -574,7 +578,9 @@ msgstr "Pinyin-data er overført."
 msgid "Remove"
 msgstr "Fjern"
 
-#: src/lib/configwidgetslib/impage.cpp:120
+#. Restart action is the last action, so we can just remove/add without
+#. "ïnsert".
+#: src/lib/configwidgetslib/impage.cpp:122
 msgid "Restart"
 msgstr ""
 
@@ -625,12 +631,12 @@ msgstr "Vælg &skrifttype ..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:327 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:339 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "Vælg layout"
 
-#: src/lib/configwidgetslib/impage.cpp:267
+#: src/lib/configwidgetslib/impage.cpp:279
 msgid "Select default layout"
 msgstr "Vælg standardlayout"
 
@@ -717,7 +723,7 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr "Prøv at overføre tabelfil: %1 ..."
 
-#: src/lib/configlib/addonmodel.cpp:23
+#: src/lib/configlib/addonmodel.cpp:28
 msgid "UI"
 msgstr "Brugerflade"
 
@@ -756,11 +762,11 @@ msgstr "Vis tastaturlayout"
 msgid "WelcomePage"
 msgstr "WelcomePage"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:643
+#: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "Yes"
 msgstr "Ja"
 
-#: src/lib/configwidgetslib/impage.cpp:361
+#: src/lib/configwidgetslib/impage.cpp:373
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
@@ -768,7 +774,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "skifte layoutindstillingen?"
 
-#: src/lib/configwidgetslib/impage.cpp:283
+#: src/lib/configwidgetslib/impage.cpp:295
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
@@ -776,7 +782,7 @@ msgstr ""
 "Din nuværende konfigurerede inputmetode matcher ikke dit layout. Vil du "
 "tilføje layoutets tilhørende inputmetode?"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:676
+#: src/lib/configwidgetslib/optionwidget.cpp:654
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"

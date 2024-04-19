@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-03-01 00:36+0000\n"
+"POT-Creation-Date: 2024-04-19 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
@@ -84,7 +84,7 @@ msgstr "清除(&C)"
 msgid "&Close"
 msgstr "關閉(&C)"
 
-#: src/migrator/app/taskpage.cpp:203
+#: src/migrator/app/taskpage.cpp:227
 msgid "&Next >"
 msgstr "下一步(&N) >"
 
@@ -161,7 +161,7 @@ msgstr "任何語言"
 msgid "Apply configuration changes"
 msgstr "修改設定"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Asking Fcitx to exit..."
 msgstr "請求 Fcitx 退出……"
 
@@ -191,15 +191,15 @@ msgstr "變更輸入法以符合選擇的配置。"
 msgid "Change System layout to match input method selection."
 msgstr "變更系統配置以符合選擇的輸入法。"
 
-#: src/migrator/app/taskpage.cpp:249
+#: src/migrator/app/taskpage.cpp:273
 msgid "Checking if Fcitx is running..."
 msgstr "檢查 Fcitx 是否正在執行……"
 
-#: src/migrator/app/taskpage.cpp:237
+#: src/migrator/app/taskpage.cpp:261
 msgid "Checking if Fcitx is still running..."
 msgstr "檢查 Fcitx 是否仍在執行……"
 
-#: src/migrator/app/taskpage.cpp:151 src/migrator/app/taskpage.cpp:159
+#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
 msgid "Click on an item for more details."
 msgstr "點選項目以檢視更多細節。"
 
@@ -337,15 +337,15 @@ msgstr "Fcitx 5 未執行。"
 msgid "Fcitx Configuration"
 msgstr "Fcitx 設定"
 
-#: src/migrator/app/taskpage.cpp:235
+#: src/migrator/app/taskpage.cpp:259
 msgid "Fcitx Exited."
 msgstr "Fcitx 已退出。"
 
-#: src/migrator/app/taskpage.cpp:238
+#: src/migrator/app/taskpage.cpp:262
 msgid "Fcitx is fully exited."
 msgstr "Fcitx 已完全退出。"
 
-#: src/migrator/app/taskpage.cpp:250
+#: src/migrator/app/taskpage.cpp:274
 msgid "Fcitx is started."
 msgstr "Fcitx 已啟動。"
 
@@ -545,6 +545,10 @@ msgstr "新群組"
 #: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "No"
 msgstr "取消"
+
+#: src/migrator/app/taskpage.cpp:184
+msgid "No available migrators."
+msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
