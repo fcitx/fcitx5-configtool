@@ -35,10 +35,13 @@ Row {
     Component.onCompleted: {
         var i = 0;
         while (true) {
-            var value = properties["Enum"][i.toString()];
-            if (!value) {
+            if (!properties.hasOwnProperty("Enum")) {
                 break;
             }
+            if (!properties["Enum"].hasOwnProperty(i.toString())) {
+                break;
+            }
+            var value = properties["Enum"][i.toString()];
             var text = "";
             if (properties.hasOwnProperty("EnumI18n")) {
                 if (properties["EnumI18n"].hasOwnProperty(i.toString())) {
