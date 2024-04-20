@@ -181,7 +181,7 @@ TaskPage::TaskPage(MainWindow *parent)
             descriptionLabel->setText(_("Click on an item for more details."));
         } else {
             selectAllBox->hide();
-            descriptionLabel->setText(_("No available migrators."));
+            descriptionLabel->setText(_("No available options."));
         }
     };
     connect(model_, &TaskModel::availableSizeChanged, this,
