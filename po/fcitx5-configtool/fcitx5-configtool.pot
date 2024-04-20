@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-19 20:25+0000\n"
+"POT-Creation-Date: 2024-04-20 20:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -529,7 +529,7 @@ msgid "No"
 msgstr ""
 
 #: src/migrator/app/taskpage.cpp:184
-msgid "No available migrators."
+msgid "No available options."
 msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49

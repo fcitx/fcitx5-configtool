@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-19 20:25+0000\n"
+"POT-Creation-Date: 2024-04-20 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -558,7 +558,7 @@ msgid "No"
 msgstr "Non"
 
 #: src/migrator/app/taskpage.cpp:184
-msgid "No available migrators."
+msgid "No available options."
 msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49

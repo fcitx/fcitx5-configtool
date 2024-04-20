@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-19 20:25+0000\n"
+"POT-Creation-Date: 2024-04-20 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2017\n"
 "Language-Team: Catalan (https://app.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -536,7 +536,7 @@ msgid "No"
 msgstr "No"
 
 #: src/migrator/app/taskpage.cpp:184
-msgid "No available migrators."
+msgid "No available options."
 msgstr ""
 
 #: src/migrator/app/progresspage.cpp:49
