@@ -4,16 +4,16 @@
 #
 # Translators:
 # wwj402 <wwj402@gmail.com>, 2021
-# csslayer <wengxt@gmail.com>, 2023
 # shijie.chen <xingwozhonghua@126.com>, 2024
+# csslayer <wengxt@gmail.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-20 20:25+0000\n"
+"POT-Creation-Date: 2024-04-21 20:25+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: shijie.chen <xingwozhonghua@126.com>, 2024\n"
+"Last-Translator: csslayer <wengxt@gmail.com>, 2024\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -542,7 +542,7 @@ msgstr "否"
 
 #: src/migrator/app/taskpage.cpp:184
 msgid "No available options."
-msgstr ""
+msgstr "无可用选项"
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
