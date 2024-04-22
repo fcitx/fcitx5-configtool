@@ -119,8 +119,7 @@ public:
     }
 
     bool allSelected() const {
-        return availableSize_ != 0 &&
-               availableSize_ == selected_.size();
+        return availableSize_ != 0 && availableSize_ == selected_.size();
     }
 
     bool someSelected() const { return !selected_.isEmpty(); }
