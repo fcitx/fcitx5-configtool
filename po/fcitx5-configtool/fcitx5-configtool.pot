@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-21 20:25+0000\n"
+"POT-Creation-Date: 2024-04-24 20:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,7 @@ msgstr ""
 msgid "&Close"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:227
+#: src/migrator/app/taskpage.cpp:226
 msgid "&Next >"
 msgstr ""
 
@@ -148,7 +148,7 @@ msgstr ""
 msgid "Apply configuration changes"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:259
+#: src/migrator/app/taskpage.cpp:258
 msgid "Asking Fcitx to exit..."
 msgstr ""
 
@@ -178,15 +178,15 @@ msgstr ""
 msgid "Change System layout to match input method selection."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:273
+#: src/migrator/app/taskpage.cpp:272
 msgid "Checking if Fcitx is running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:261
+#: src/migrator/app/taskpage.cpp:260
 msgid "Checking if Fcitx is still running..."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:171 src/migrator/app/taskpage.cpp:181
+#: src/migrator/app/taskpage.cpp:170 src/migrator/app/taskpage.cpp:180
 msgid "Click on an item for more details."
 msgstr ""
 
@@ -321,15 +321,15 @@ msgstr ""
 msgid "Fcitx Configuration"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:259
+#: src/migrator/app/taskpage.cpp:258
 msgid "Fcitx Exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:262
+#: src/migrator/app/taskpage.cpp:261
 msgid "Fcitx is fully exited."
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:274
+#: src/migrator/app/taskpage.cpp:273
 msgid "Fcitx is started."
 msgstr ""
 
@@ -528,7 +528,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: src/migrator/app/taskpage.cpp:184
+#: src/migrator/app/taskpage.cpp:183
 msgid "No available options."
 msgstr ""
 
