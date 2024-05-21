@@ -393,6 +393,9 @@ void IMPage::configureIM() {
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
         this, dbus_, QString("fcitx://config/inputmethod/%1").arg(uniqueName),
         curIndex.data(Qt::DisplayRole).toString());
+    if (dialog == nullptr) {
+        return;
+    }
     dialog->exec();
     delete dialog;
 }
