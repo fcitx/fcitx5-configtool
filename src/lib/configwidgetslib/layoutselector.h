@@ -53,7 +53,9 @@ private:
     std::unique_ptr<Ui::LayoutSelector> ui_;
     DBusProvider *dbus_;
     LayoutProvider *layoutProvider_;
+#ifdef ENABLE_X11
     KeyboardLayoutWidget *keyboardLayoutWidget_ = nullptr;
+#endif
     Iso639 iso639_;
 
     QString preSelectLayout_;

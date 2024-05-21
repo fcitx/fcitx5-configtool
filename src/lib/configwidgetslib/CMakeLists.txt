@@ -28,5 +28,7 @@ target_link_libraries(configwidgetslib
     Fcitx5::Utils
     Fcitx5Qt${QT_MAJOR_VERSION}::DBusAddons
     Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons
-    configlib
-    layoutlib)
+    configlib)
+if (ENABLE_X11)
+target_link_libraries(configwidgetslib layoutlib)
+endif ()
