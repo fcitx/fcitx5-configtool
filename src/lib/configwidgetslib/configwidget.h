@@ -49,6 +49,8 @@ public Q_SLOTS:
     QVariant value() const;
     void setValue(const QVariant &variant);
 
+    QString extractOnlyExternalCommand() const;
+
     void requestConfig(bool sync = false);
 private Q_SLOTS:
     void requestConfigFinished(QDBusPendingCallWatcher *watcher);

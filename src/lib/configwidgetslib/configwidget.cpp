@@ -5,6 +5,7 @@
  *
  */
 #include "configwidget.h"
+#include "addonmodel.h"
 #include "dbusprovider.h"
 #include "keylistwidget.h"
 #include "logging.h"
@@ -14,16 +15,17 @@
 #include <QComboBox>
 #include <QFormLayout>
 #include <QGroupBox>
+#include <QGuiApplication>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QScrollArea>
 #include <QSpinBox>
+#include <QString>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 namespace {
 QString joinPath(const QString &path, const QString &option) {
@@ -99,6 +101,28 @@ void ConfigWidget::requestConfigFinished(QDBusPendingCallWatcher *watcher) {
     }
 
     adjustSize();
+}
+
+QString ConfigWidget::extractOnlyExternalCommand() const {
+    if (!desc_.contains(mainType_)) {
+        return {};
+    }
+    auto options = desc_.value(mainType_);
+    if (options.size() != 1) {
+        return {};
+    }
+
+    if (options[0].type() != "External") {
+        return {};
+    }
+
+    const auto &properties = options[0].properties();
+    if (properties.contains("LaunchSubConfig") &&
+        properties.value("LaunchSubConfig").toString() == "True") {
+        return {};
+    }
+
+    return options[0].properties().value("External").toString();
 }
 
 void ConfigWidget::load() {
@@ -196,6 +220,16 @@ QDialog *ConfigWidget::configDialog(QWidget *parent, DBusProvider *dbus,
                                     const QString &uri, const QString &title) {
     auto configPage = new ConfigWidget(uri, dbus);
     configPage->requestConfig(true);
+    if (auto command = configPage->extractOnlyExternalCommand();
+        !command.isEmpty()) {
+        WId wid = 0;
+        if (QGuiApplication::platformName() == "xcb") {
+            wid = parent->winId();
+        }
+        launchExternalConfig(command, wid);
+        delete configPage;
+        return nullptr;
+    }
     QVBoxLayout *dialogLayout = new QVBoxLayout;
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel |
@@ -246,5 +280,4 @@ ConfigWidget *getConfigWidget(QWidget *widget) {
     return configWidget;
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

@@ -22,6 +22,7 @@
 #include <QDialogButtonBox>
 #include <QFileInfo>
 #include <QFormLayout>
+#include <QGuiApplication>
 #include <QLineEdit>
 #include <QPointer>
 #include <QProcess>
@@ -359,8 +360,10 @@ public:
                 this, configWidget->dbus(),
                 comboBox_->currentData(subConfigPathRole).toString(),
                 comboBox_->currentText());
-            dialog->exec();
-            delete dialog;
+            if (dialog) {
+                dialog->exec();
+                delete dialog;
+            }
         });
 
         defaultValue_ = option.defaultValue().variant().toString();
@@ -481,8 +484,10 @@ public:
                         }
                         QPointer<QDialog> dialog = ConfigWidget::configDialog(
                             this, configWidget->dbus(), uri_, name);
-                        dialog->exec();
-                        delete dialog;
+                        if (dialog) {
+                            dialog->exec();
+                            delete dialog;
+                        }
                     } else {
                         WId wid = 0;
                         if (QGuiApplication::platformName() == "xcb") {

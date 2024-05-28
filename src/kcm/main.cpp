@@ -17,15 +17,42 @@
 #include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickWindow>
+#include <QString>
+#include <QVariantMap>
 #include <QtGlobal>
 #include <config.h>
 #include <fcitx-utils/misc.h>
 #include <fcitx-utils/standardpath.h>
 #include <fcitx-utils/stringutils.h>
 
-namespace fcitx {
+namespace fcitx::kcm {
 
-namespace kcm {
+namespace {
+QString maybeExtractExternalCommand(const QVariantMap &typeMap,
+                                    const QString &baseTypeName) {
+
+    if (!typeMap.contains(baseTypeName)) {
+        return {};
+    }
+    auto list = typeMap.value(baseTypeName).toList();
+    if (list.size() != 1) {
+        return {};
+    }
+    auto option = list[0].toMap();
+    if (option.value("type").toString() != "External") {
+        return {};
+    }
+
+    auto properties = option.value("properties").toMap();
+
+    if (properties.contains("LaunchSubConfig") &&
+        properties.value("LaunchSubConfig").toString() == "True") {
+        return {};
+    }
+
+    return properties.value("External").toString();
+}
+} // namespace
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData)
@@ -222,7 +249,8 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
                 map["uri"] = uri;
                 map["rawValue"] =
                     decomposeDBusVariant(reply.argumentAt<0>().variant());
-                map["typeName"] = configTypes[0].name();
+                QString baseTypeName = configTypes[0].name();
+                map["typeName"] = baseTypeName;
 
                 // Reserve the place for types.
                 for (const auto &configType : configTypes) {
@@ -236,7 +264,13 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
                 }
                 map["typeMap"] = typeMap;
                 map["title"] = title;
-                push("ConfigPage.qml", map);
+                if (QString command =
+                        maybeExtractExternalCommand(typeMap, baseTypeName);
+                    !command.isEmpty()) {
+                    launchExternal(command);
+                } else {
+                    push("ConfigPage.qml", map);
+                }
             });
 }
 
@@ -415,8 +449,7 @@ void FcitxModule::fixInputMethod() {
     imConfig_->emitChanged();
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 K_PLUGIN_FACTORY_WITH_JSON(KCMFcitxFactory, "kcm_fcitx5.json",
                            registerPlugin<fcitx::kcm::FcitxModule>();)
