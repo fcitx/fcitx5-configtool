@@ -278,8 +278,10 @@ void AddonDelegate::configureClicked() {
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
         parent_, parent_->dbus(), QString("fcitx://config/addon/%1").arg(name),
         addonName);
-    dialog->exec();
-    delete dialog;
+    if (dialog) {
+        dialog->exec();
+        delete dialog;
+    }
 }
 
 AddonSelector::AddonSelector(QWidget *parent, DBusProvider *dbus)
