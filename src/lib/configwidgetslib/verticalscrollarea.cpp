@@ -6,7 +6,6 @@
  */
 #include <QEvent>
 #include <QScrollBar>
-#include <QVBoxLayout>
 
 #include "verticalscrollarea.h"
 

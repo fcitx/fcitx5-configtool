@@ -9,7 +9,6 @@
 #include "imconfig.h"
 #include <QDBusPendingCallWatcher>
 #include <QWidget>
-#include <fcitxqtdbustypes.h>
 #include <memory>
 
 namespace Ui {

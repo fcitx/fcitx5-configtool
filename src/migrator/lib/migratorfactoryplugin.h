@@ -9,7 +9,6 @@
 
 #include "fcitx5migrator_export.h"
 #include "migrator.h"
-#include <QtPlugin>
 
 namespace fcitx {
 
