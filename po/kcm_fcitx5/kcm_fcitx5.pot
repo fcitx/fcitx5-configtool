@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-24 20:25+0000\n"
+"POT-Creation-Date: 2024-07-08 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 msgid "Addons"
 msgstr ""
 
-#: src/kcm/main.cpp:64
+#: src/kcm/main.cpp:91
 #, kde-format
 msgid "Author"
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: src/kcm/main.cpp:60
+#: src/kcm/main.cpp:87
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr ""
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Configure global options..."
 msgstr ""
 
-#: src/kcm/main.cpp:61
+#: src/kcm/main.cpp:88
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr ""
@@ -147,7 +147,7 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/kcm/main.cpp:59
+#: src/kcm/main.cpp:86
 #, kde-format
 msgid "Fcitx 5"
 msgstr ""
@@ -366,7 +366,7 @@ msgstr ""
 msgid "Void Symbol"
 msgstr ""
 
-#: src/kcm/main.cpp:64
+#: src/kcm/main.cpp:91
 #, kde-format
 msgid "Xuetian Weng"
 msgstr ""

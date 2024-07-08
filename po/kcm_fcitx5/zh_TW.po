@@ -7,16 +7,16 @@
 # 黃柏諺 <s8321414@gmail.com>, 2020
 # bruh, 2020
 # 菘菘 <rrt467778@gmail.com>, 2022
-# 如月飛羽 <flyingfeather1501@gmail.com>, 2022
-# Lau YeeYu, 2023
+# Yiyu Liu, 2023
+# Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-24 20:24+0000\n"
+"POT-Creation-Date: 2024-07-08 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Lau YeeYu, 2023\n"
+"Last-Translator: Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -25,28 +25,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:140
+#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:142
 #, kde-format
 msgid "%1 (Disabled)"
-msgstr "%1 (已禁用)"
+msgstr "%1 (已停用)"
 
 #: src/kcm/package/contents/ui/ConfigGroup.qml:68 src/kcm/ui/ConfigGroup.qml:71
 #, kde-format
 msgid "%1:"
 msgstr "%1："
 
-#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:106
+#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:108
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "、"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:116
+#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:118
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 停用 %1\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:126
+#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:128
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
@@ -83,7 +83,7 @@ msgstr "新增輸入法…"
 msgid "Addons"
 msgstr "附加元件"
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:91
 #, kde-format
 msgid "Author"
 msgstr "作者"
@@ -104,7 +104,7 @@ msgstr "清除"
 msgid "Configure"
 msgstr "設定"
 
-#: src/kcm/main.cpp:59
+#: src/kcm/main.cpp:87
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "設定 Fcitx 5"
@@ -123,7 +123,7 @@ msgstr "設定附加元件…"
 msgid "Configure global options..."
 msgstr "設定全域選項…"
 
-#: src/kcm/main.cpp:60
+#: src/kcm/main.cpp:88
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Copyright 2017 Xuetian Weng"
@@ -139,7 +139,7 @@ msgstr "目前的群組已變更"
 msgid "Current page is not yet saved. Please save the config first."
 msgstr "目前的頁面尚未儲存。請先儲存設定。"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:128
+#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:130
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -160,7 +160,7 @@ msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 msgid "Empty"
 msgstr "空"
 
-#: src/kcm/main.cpp:58
+#: src/kcm/main.cpp:86
 #, kde-format
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
@@ -170,9 +170,9 @@ msgstr "Fcitx 5"
 msgid "File descriptor <fd> "
 msgstr "檔案描述子 <fd>"
 
-#: src/kcm/package/contents/ui/main.qml:281
-#: src/kcm/package/contents/ui/main.qml:300 src/kcm/ui/main.qml:288
-#: src/kcm/ui/main.qml:307
+#: src/kcm/package/contents/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:301 src/kcm/ui/main.qml:289
+#: src/kcm/ui/main.qml:308
 #, kde-format
 msgid "Fix"
 msgstr "修復"
@@ -202,7 +202,7 @@ msgstr "全域選項"
 msgid "Group Name"
 msgstr "群組名稱"
 
-#: src/kcm/package/contents/ui/main.qml:312 src/kcm/ui/main.qml:319
+#: src/kcm/package/contents/ui/main.qml:313 src/kcm/ui/main.qml:320
 #, kde-format
 msgid "Group:"
 msgstr "群組："
@@ -211,12 +211,12 @@ msgstr "群組："
 msgid "Input Method"
 msgstr "輸入法"
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method Off"
 msgstr "輸入法關閉"
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:365
 #, kde-format
 msgid "Input Method On"
 msgstr "輸入法開啟"
@@ -336,7 +336,7 @@ msgstr "選取群組 %1 的系統佈局"
 msgid "Select system layout..."
 msgstr "選取系統佈局…"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:162
+#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:164
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "顯示進階選項(&A)"
@@ -359,8 +359,8 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
-"啟用/禁用外掛程式的功能僅適用於瞭解潛在影響的進階使用者。需要重新啟動 Fcitx "
-"才可使啟用/禁用的更改生效。"
+"啟用/停用附加元件的功能只適合瞭解潛在影響的進階使用者使用。需要重新啟動 "
+"Fcitx 才可使啟用/停用的更改生效。"
 
 #: src/plasmathemegenerator/main.cpp:179
 #, kde-format
@@ -383,7 +383,7 @@ msgstr "變體："
 msgid "Void Symbol"
 msgstr "空符號"
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:91
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
@@ -393,14 +393,14 @@ msgstr "Xuetian Weng"
 msgid "Yes"
 msgstr "確定"
 
-#: src/kcm/package/contents/ui/main.qml:275 src/kcm/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:276 src/kcm/ui/main.qml:283
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您目前設定的輸入法與佈局不符，是否變更佈局設定？"
 
-#: src/kcm/package/contents/ui/main.qml:294 src/kcm/ui/main.qml:301
+#: src/kcm/package/contents/ui/main.qml:295 src/kcm/ui/main.qml:302
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "

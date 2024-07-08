@@ -11,15 +11,16 @@
 # yan12125, 2022
 # Haowei Hsu <hwhsu1231@gmail.com>, 2023
 # csslayer <wengxt@gmail.com>, 2024
-# Lau YeeYu, 2024
+# Yiyu Liu, 2024
+# Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2024-04-24 20:25+0000\n"
+"POT-Creation-Date: 2024-07-08 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Lau YeeYu, 2024\n"
+"Last-Translator: Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -54,14 +55,14 @@ msgstr "%1 當掉了。"
 msgid "%1 failed to start."
 msgstr "%1 啟動失敗。"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:513
-#: src/lib/configwidgetslib/optionwidget.cpp:524
-#: src/lib/configwidgetslib/optionwidget.cpp:530
-#: src/lib/configwidgetslib/optionwidget.cpp:533
-#: src/lib/configwidgetslib/optionwidget.cpp:536
-#: src/lib/configwidgetslib/optionwidget.cpp:539
-#: src/lib/configwidgetslib/optionwidget.cpp:542
-#: src/lib/configwidgetslib/optionwidget.cpp:545
+#: src/lib/configwidgetslib/optionwidget.cpp:518
+#: src/lib/configwidgetslib/optionwidget.cpp:529
+#: src/lib/configwidgetslib/optionwidget.cpp:535
+#: src/lib/configwidgetslib/optionwidget.cpp:538
+#: src/lib/configwidgetslib/optionwidget.cpp:541
+#: src/lib/configwidgetslib/optionwidget.cpp:544
+#: src/lib/configwidgetslib/optionwidget.cpp:547
+#: src/lib/configwidgetslib/optionwidget.cpp:550
 #, kde-format
 msgid "%1:"
 msgstr "%1："
@@ -70,9 +71,9 @@ msgstr "%1："
 msgid "&Apply"
 msgstr "套用(&A)"
 
-#: src/lib/configwidgetslib/configwidget.cpp:205
+#: src/lib/configwidgetslib/configwidget.cpp:239
 #: src/lib/configwidgetslib/fontbutton.cpp:48
-#: src/lib/configwidgetslib/optionwidget.cpp:589
+#: src/lib/configwidgetslib/optionwidget.cpp:594
 msgid "&Cancel"
 msgstr "取消(&C)"
 
@@ -89,28 +90,28 @@ msgid "&Next >"
 msgstr "下一步(&N) >"
 
 #: src/configtool/mainwindow.cpp:59
-#: src/lib/configwidgetslib/configwidget.cpp:204
+#: src/lib/configwidgetslib/configwidget.cpp:238
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:74
-#: src/lib/configwidgetslib/optionwidget.cpp:588
+#: src/lib/configwidgetslib/optionwidget.cpp:593
 msgid "&OK"
 msgstr "確定(&O)"
 
 #: src/configtool/mainwindow.cpp:61
 msgid "&Reset"
-msgstr "&重置(&R)"
+msgstr "重設(&R)"
 
-#: src/lib/configwidgetslib/addonselector.cpp:411
+#: src/lib/configwidgetslib/addonselector.cpp:413
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr "、"
 
-#: src/lib/configwidgetslib/addonselector.cpp:421
+#: src/lib/configwidgetslib/addonselector.cpp:423
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- 停用 %1\n"
 
-#: src/lib/configwidgetslib/addonselector.cpp:432
+#: src/lib/configwidgetslib/addonselector.cpp:434
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- 停用 %1 的部分功能\n"
@@ -144,7 +145,7 @@ msgstr "新增群組"
 msgid "Addons"
 msgstr "附加元件"
 
-#: src/lib/configwidgetslib/addonselector.cpp:321
+#: src/lib/configwidgetslib/addonselector.cpp:323
 msgid "Advanced options"
 msgstr "進階選項"
 
@@ -177,7 +178,7 @@ msgstr "可用輸入法："
 #: rc.cpp:24
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "無法通過 DBus 連接到 Fcitx，Fcitx 是否正在運行？"
+msgstr "無法透過 DBus 連線至 Fcitx，Fcitx 有在執行嗎？"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:5
 msgid "Change Fcitx 5 Configuration"
@@ -208,7 +209,7 @@ msgstr "點選項目以檢視更多細節。"
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
 #: src/lib/configwidgetslib/addonselector.cpp:197
-#: src/lib/configwidgetslib/optionwidget.cpp:471 rc.cpp:81 rc.cpp:84
+#: src/lib/configwidgetslib/optionwidget.cpp:474 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
 msgstr "設定"
@@ -249,12 +250,12 @@ msgstr "刪除群組"
 msgid "Directory %1 does not exist."
 msgstr "目錄 %1 不存在。"
 
-#: src/lib/configwidgetslib/addonselector.cpp:440
+#: src/lib/configwidgetslib/addonselector.cpp:442
 #, kde-format
 msgid "Disable %1"
 msgstr "停用 %1"
 
-#: src/lib/configwidgetslib/addonselector.cpp:435
+#: src/lib/configwidgetslib/addonselector.cpp:437
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -296,7 +297,7 @@ msgstr "錯誤"
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
-msgstr "複製文件 %1 至 %2 失敗"
+msgstr "複製檔案 %1 至 %2 失敗"
 
 #: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
@@ -358,8 +359,8 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
-"有新的 Fcitx 安裝套件。您想要檢查是否有新的輸入法以及附加組件嗎？如果要更新已"
-"經安裝的附加組件，您需要重新啟動 Fcitx。"
+"發現了 Fcitx 安裝上的變更。您想要檢查是否有新安裝輸入法或附加元件嗎？如果要更"
+"新已經載入的附加元件，您需要重新啟動 Fcitx。"
 
 #: src/lib/configwidgetslib/impage.cpp:111
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
@@ -383,7 +384,7 @@ msgstr "全域選項"
 msgid "Got error: %1 %2"
 msgstr "發生錯誤：%1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:430
+#: src/lib/configwidgetslib/impage.cpp:432
 msgid "Group Name:"
 msgstr "群組名稱："
 
@@ -396,7 +397,7 @@ msgstr "群組："
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:19
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr "從 Fcitx 4 導入拼音詞典"
+msgstr "從 Fcitx 4 匯入拼音詞典"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:4
 msgid "Import data from other input method such as Fcitx 4"
@@ -404,7 +405,7 @@ msgstr "從其他輸入法（如 Fcitx 4）匯入資料"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr "從 Fcitx 4 導入已安裝碼表的碼表資料"
+msgstr "從 Fcitx 4 匯入已安裝碼表的碼表資料"
 
 #: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:27
 msgid "Input Method"
@@ -486,7 +487,7 @@ msgstr "從 Fcitx 4 遷移 Kkc 詞典"
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
-msgstr "從 Fcitx 4 遷移 Rime 詞典。注意：這將會移除所有已有數據。"
+msgstr "從 Fcitx 4 遷移 Rime 詞典。注意：這將會移除所有現存資料。"
 
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Migrate Skk dictionary from Fcitx 4"
@@ -502,7 +503,7 @@ msgstr "遷移 Kkc 規則設定……"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:35
 msgid "Migrating Pinyin data..."
-msgstr "遷移拼音數據……"
+msgstr "遷移拼音資料……"
 
 #: src/migrator/skk/skkmigrator.cpp:74
 msgid "Migrating Skk rule option..."
@@ -538,11 +539,11 @@ msgstr "上移"
 msgid "Multilingual"
 msgstr "多語言"
 
-#: src/lib/configwidgetslib/impage.cpp:430
+#: src/lib/configwidgetslib/impage.cpp:432
 msgid "New Group"
 msgstr "新群組"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:621
+#: src/lib/configwidgetslib/optionwidget.cpp:626
 msgid "No"
 msgstr "取消"
 
@@ -571,7 +572,7 @@ msgstr "拼音"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Pinyin data is migrated."
-msgstr "拼音數據已遷移。"
+msgstr "拼音資料已遷移。"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -594,7 +595,7 @@ msgid "Restart"
 msgstr "重新啟動"
 
 #: src/configtool/mainwindow.cpp:63
-#: src/lib/configwidgetslib/configwidget.cpp:207
+#: src/lib/configwidgetslib/configwidget.cpp:241
 msgid "Restore &Defaults"
 msgstr "還原成預設值(&D)"
 
@@ -694,14 +695,14 @@ msgstr "Skk"
 msgid "Table"
 msgstr "碼表"
 
-#: src/lib/configwidgetslib/addonselector.cpp:322
+#: src/lib/configwidgetslib/addonselector.cpp:324
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
-"啟用/禁用外掛程式的功能僅適用於瞭解潛在影響的進階使用者。需要重新啟動 Fcitx "
-"才可使啟用/禁用的更改生效。"
+"啟用/停用附加元件的功能只適合瞭解潛在影響的進階使用者使用。需要重新啟動 "
+"Fcitx 才可使啟用/停用的更改生效。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -725,7 +726,7 @@ msgstr "本程式只能在 X11 下執行。"
 msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
-msgstr "這個嚮導將幫助你從 Fcitx 4 遷移已有的使用者資料到 Fcitx 5。"
+msgstr "這個精靈將幫助你從 Fcitx 4 遷移現存的使用者資料到 Fcitx 5。"
 
 #: src/migrator/table/tablemigrator.cpp:68
 #, kde-format
@@ -758,7 +759,7 @@ msgstr "更新"
 #: rc.cpp:111
 #, kde-format
 msgid "Variant:"
-msgstr "變體"
+msgstr "變體："
 
 #: layout/kbd-layout-viewer5.desktop.in:8
 msgid "View keyboard layout"
@@ -771,7 +772,7 @@ msgstr "檢視鍵盤配置"
 msgid "WelcomePage"
 msgstr "歡迎頁"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:621
+#: src/lib/configwidgetslib/optionwidget.cpp:626
 msgid "Yes"
 msgstr "確定"
 
@@ -787,7 +788,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr "您目前設定的輸入法與選取配置不符，是否要對配置新增對應輸入法？"
 
-#: src/lib/configwidgetslib/optionwidget.cpp:654
+#: src/lib/configwidgetslib/optionwidget.cpp:659
 #, kde-format
 msgid "[%1]"
 msgstr "[%1]"
