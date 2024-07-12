@@ -7,7 +7,6 @@
 #include "addonmodel.h"
 #include "config.h"
 #include <QCollator>
-#include <QDebug>
 #include <QDir>
 #include <QFileInfo>
 #include <QProcess>

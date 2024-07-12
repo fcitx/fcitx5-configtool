@@ -10,7 +10,6 @@
 #ifndef KEYBOARDLAYOUTWIDGET_H
 #define KEYBOARDLAYOUTWIDGET_H
 
-#include <QAbstractNativeEventFilter>
 #include <QMap>
 #include <QWidget>
 #include <vector>

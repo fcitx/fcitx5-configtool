@@ -10,7 +10,6 @@
 #include "categoryhelper.h"
 #include "configwidget.h"
 #include "dbusprovider.h"
-#include "model.h"
 #include "ui_addonselector.h"
 #include <KWidgetItemDelegate>
 #include <QApplication>

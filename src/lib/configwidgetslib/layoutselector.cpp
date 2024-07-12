@@ -15,7 +15,6 @@
 #include <QPushButton>
 #include <QStringListModel>
 #include <fcitx-utils/i18n.h>
-#include <fcitxqtcontrollerproxy.h>
 #include <fcitxqtdbustypes.h>
 
 namespace fcitx {
