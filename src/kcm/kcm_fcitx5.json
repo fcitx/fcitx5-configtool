@@ -13,7 +13,7 @@
         "Description[ru]": "Настроить метод ввода",
         "Description[zh_CN]": "配置输入法",
         "Description[zh_TW]": "設定輸入法",
-        "Icon": "fcitx",
+        "Icon": "preferences-desktop-keyboard",
         "Name": "Input Method",
         "Name[ca]": "Mètode d'entrada",
         "Name[da]": "Inputmetode",
