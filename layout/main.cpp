@@ -12,7 +12,6 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
 
 int main(int argc, char *argv[]) {
     qputenv("QT_QPA_PLATFORM", "xcb");

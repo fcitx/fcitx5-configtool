@@ -7,7 +7,6 @@
 #include "configwidget.h"
 #include "addonmodel.h"
 #include "dbusprovider.h"
-#include "keylistwidget.h"
 #include "logging.h"
 #include "optionwidget.h"
 #include "verticalscrollarea.h"

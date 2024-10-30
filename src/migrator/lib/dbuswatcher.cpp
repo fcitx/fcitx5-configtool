@@ -7,7 +7,6 @@
 #include "dbuswatcher.h"
 #include <QDBusConnection>
 #include <QDBusConnectionInterface>
-#include <QDebug>
 #include <QTimer>
 #include <fcitx-utils/i18n.h>
 

@@ -10,7 +10,6 @@
 #include <Plasma/Theme>
 #include <QBitmap>
 #include <QCommandLineParser>
-#include <QDebug>
 #include <QDir>
 #include <QPainter>
 #include <QSocketNotifier>
@@ -20,7 +19,6 @@
 #include <fcitx-utils/standardpath.h>
 #include <fcntl.h>
 #include <memory>
-#include <qmath.h>
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #include <KSvg/FrameSvg>

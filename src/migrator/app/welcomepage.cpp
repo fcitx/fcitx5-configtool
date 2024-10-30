@@ -6,7 +6,6 @@
  */
 #include "welcomepage.h"
 #include "mainwindow.h"
-#include <QDebug>
 
 namespace fcitx {
 

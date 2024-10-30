@@ -6,7 +6,6 @@
 #ifndef _KCM_FCITX_MODEL_H_
 #define _KCM_FCITX_MODEL_H_
 
-#include <QAbstractListModel>
 #include <QSet>
 #include <QSortFilterProxyModel>
 #include <fcitxqtdbustypes.h>
