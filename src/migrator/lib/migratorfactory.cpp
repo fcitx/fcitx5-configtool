@@ -11,6 +11,7 @@
 #include <QDir>
 #include <QFileInfo>
 #include <QPluginLoader>
+#include <QSet>
 #include <QVariant>
 #include <QVector>
 #include <fcitx-utils/standardpath.h>

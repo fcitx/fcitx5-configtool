@@ -10,6 +10,7 @@
 #include "fcitx5migrator_export.h"
 #include "migrator.h"
 #include <QObject>
+#include <QSet>
 #include <memory>
 #include <vector>
 
