@@ -31,7 +31,7 @@ QString joinPath(const QString &path, const QString &option) {
     if (path.isEmpty()) {
         return option;
     }
-    return QString("%1/%2").arg(path, option);
+    return QStringLiteral("%1/%2").arg(path, option);
 }
 } // namespace
 

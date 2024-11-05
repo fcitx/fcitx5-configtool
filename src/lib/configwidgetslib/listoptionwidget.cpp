@@ -46,7 +46,7 @@ public:
         int i = 0;
         values_.clear();
         while (true) {
-            auto value = readVariant(map, QString("%1%2%3")
+            auto value = readVariant(map, QStringLiteral("%1%2%3")
                                               .arg(path)
                                               .arg(path.isEmpty() ? "" : "/")
                                               .arg(i));
@@ -62,7 +62,7 @@ public:
     void writeValueTo(QVariantMap &map, const QString &path) {
         int i = 0;
         for (auto &value : values_) {
-            writeVariant(map, QString("%1/%2").arg(path).arg(i), value);
+            writeVariant(map, QStringLiteral("%1/%2").arg(path).arg(i), value);
             i++;
         }
         if (!i) {

@@ -275,8 +275,8 @@ void AddonDelegate::configureClicked() {
     }
     auto addonName = index.data(Qt::DisplayRole).toString();
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
-        parent_, parent_->dbus(), QString("fcitx://config/addon/%1").arg(name),
-        addonName);
+        parent_, parent_->dbus(),
+        QStringLiteral("fcitx://config/addon/%1").arg(name), addonName);
     if (dialog) {
         dialog->exec();
         delete dialog;

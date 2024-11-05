@@ -283,10 +283,10 @@ void IMPage::selectDefaultLayout() {
         config_->setDefaultLayout(result.first);
     } else {
         config_->setDefaultLayout(
-            QString("%0-%1").arg(result.first, result.second));
+            QStringLiteral("%0-%1").arg(result.first, result.second));
     }
 
-    auto imname = QString("keyboard-%0").arg(config_->defaultLayout());
+    auto imname = QStringLiteral("keyboard-%0").arg(config_->defaultLayout());
     if (config_->imEntries().empty() ||
         config_->imEntries().front().key() != imname) {
         auto result = QMessageBox::question(
@@ -344,8 +344,8 @@ void IMPage::selectLayout() {
     if (result.second.isEmpty()) {
         config_->setLayout(imName, result.first);
     } else {
-        config_->setLayout(imName,
-                           QString("%0-%1").arg(result.first, result.second));
+        config_->setLayout(
+            imName, QStringLiteral("%0-%1").arg(result.first, result.second));
     }
 }
 
@@ -363,7 +363,7 @@ void IMPage::checkDefaultLayout() {
     const auto &imEntries = config_->imEntries();
     if (imEntries.size() > 0 &&
         imEntries[0].key() !=
-            QString("keyboard-%0").arg(config_->defaultLayout()) &&
+            QStringLiteral("keyboard-%0").arg(config_->defaultLayout()) &&
         imEntries[0].key().startsWith("keyboard-")) {
         // Remove "keyboard-".
         auto layoutString = imEntries[0].key().mid(9);
@@ -390,7 +390,8 @@ void IMPage::configureIM() {
     }
     const QString uniqueName = curIndex.data(FcitxIMUniqueNameRole).toString();
     QPointer<QDialog> dialog = ConfigWidget::configDialog(
-        this, dbus_, QString("fcitx://config/inputmethod/%1").arg(uniqueName),
+        this, dbus_,
+        QStringLiteral("fcitx://config/inputmethod/%1").arg(uniqueName),
         curIndex.data(Qt::DisplayRole).toString());
     if (dialog) {
         dialog->exec();

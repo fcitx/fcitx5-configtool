@@ -405,7 +405,8 @@ QVariant FilteredIMModel::data(const QModelIndex &index, int role) const {
         return QString();
     }
     case FcitxIMActiveRole:
-        return index.row() > 0 ? QString("active") : QString("inactive");
+        return index.row() > 0 ? QStringLiteral("active")
+                               : QStringLiteral("inactive");
 
     default:
         return QVariant();
