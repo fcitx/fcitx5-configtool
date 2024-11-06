@@ -226,7 +226,8 @@ public:
         int i = 0;
         for (auto &key : keys) {
             auto value = QString::fromUtf8(key.toString().data());
-            writeVariant(map, QString("%1/%2").arg(path()).arg(i), value);
+            writeVariant(map, QStringLiteral("%1/%2").arg(path()).arg(i),
+                         value);
             i++;
         }
         if (keys.empty()) {
@@ -241,7 +242,7 @@ private:
         int i = 0;
         QList<Key> keys;
         while (true) {
-            auto value = readString(map, QString("%1%2%3")
+            auto value = readString(map, QStringLiteral("%1%2%3")
                                              .arg(path)
                                              .arg(path.isEmpty() ? "" : "/")
                                              .arg(i));
@@ -320,18 +321,18 @@ public:
 
         int i = 0;
         while (true) {
-            auto value =
-                readString(option.properties(), QString("Enum/%1").arg(i));
+            auto value = readString(option.properties(),
+                                    QStringLiteral("Enum/%1").arg(i));
             if (value.isNull()) {
                 break;
             }
-            auto text =
-                readString(option.properties(), QString("EnumI18n/%1").arg(i));
+            auto text = readString(option.properties(),
+                                   QStringLiteral("EnumI18n/%1").arg(i));
             if (text.isEmpty()) {
                 text = value;
             }
-            auto subConfigPath = readString(option.properties(),
-                                            QString("SubConfigPath/%1").arg(i));
+            auto subConfigPath = readString(
+                option.properties(), QStringLiteral("SubConfigPath/%1").arg(i));
             comboBox_->addItem(text, value);
             comboBox_->setItemData(i, subConfigPath, subConfigPathRole);
             i++;
@@ -578,8 +579,8 @@ bool OptionWidget::execOptionDialog(QWidget *parent,
     } else {
         QFormLayout *subLayout = new QFormLayout;
         dialogLayout->addLayout(subLayout);
-        optionWidget =
-            addWidget(subLayout, option, QString("Value"), dialog.data());
+        optionWidget = addWidget(subLayout, option, QStringLiteral("Value"),
+                                 dialog.data());
         if (!optionWidget) {
             return false;
         }
@@ -630,13 +631,13 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
         QMap<QString, QString> enumMap;
         int i = 0;
         while (true) {
-            auto value =
-                readString(option.properties(), QString("Enum/%1").arg(i));
+            auto value = readString(option.properties(),
+                                    QStringLiteral("Enum/%1").arg(i));
             if (value.isNull()) {
                 break;
             }
-            auto text =
-                readString(option.properties(), QString("EnumI18n/%1").arg(i));
+            auto text = readString(option.properties(),
+                                   QStringLiteral("EnumI18n/%1").arg(i));
             if (text.isEmpty()) {
                 text = value;
             }

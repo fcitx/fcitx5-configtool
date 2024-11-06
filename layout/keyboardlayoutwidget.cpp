@@ -109,7 +109,7 @@ static QString FcitxXkbFindXkbRulesFile() {
     QString rulesName = FcitxXkbGetRulesName();
 
     if (!rulesName.isEmpty()) {
-        rulesFile = QString("%1/rules/%2.xml")
+        rulesFile = QStringLiteral("%1/rules/%2.xml")
                         .arg(XKEYBOARDCONFIG_XKBBASE)
                         .arg(rulesName);
     }

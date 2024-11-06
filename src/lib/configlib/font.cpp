@@ -101,7 +101,7 @@ QString fcitx::kcm::fontToString(const QFont &font) {
         break;
     }
     style = styles.join(" ");
-    return QString("%1%2%3 %4")
+    return QStringLiteral("%1%2%3 %4")
         .arg(font.family(), (!style.isEmpty() ? " " : ""), style,
              QString::number(font.pointSize()));
 }

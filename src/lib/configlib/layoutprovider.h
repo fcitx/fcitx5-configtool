@@ -58,7 +58,7 @@ public:
             if (variant.isEmpty()) {
                 return layout;
             }
-            return QString("%1-%2").arg(layout, variant);
+            return QStringLiteral("%1-%2").arg(layout, variant);
         }
         return QString();
     }

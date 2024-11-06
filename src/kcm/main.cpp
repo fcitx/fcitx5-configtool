@@ -183,7 +183,7 @@ void configOptionToVariant(QVariantList &options,
         for (const auto &subOption : subOptions) {
             auto map = subOption.value<QVariantMap>();
             if (map["isSection"].toBool()) {
-                map["description"] = QString("%1 > %2").arg(
+                map["description"] = QStringLiteral("%1 > %2").arg(
                     option.description(), map["description"].toString());
                 options.append(map);
             } else {
@@ -418,7 +418,7 @@ void FcitxModule::fixLayout() {
     const auto &imEntries = imConfig_->imEntries();
     if (imEntries.size() > 0 &&
         imEntries[0].key() !=
-            QString("keyboard-%0").arg(imConfig_->defaultLayout()) &&
+            QStringLiteral("keyboard-%0").arg(imConfig_->defaultLayout()) &&
         imEntries[0].key().startsWith("keyboard-")) {
         auto layoutString = imEntries[0].key().mid(9);
         imConfig_->setDefaultLayout(layoutString);
@@ -426,7 +426,7 @@ void FcitxModule::fixLayout() {
 }
 
 void FcitxModule::fixInputMethod() {
-    auto imname = QString("keyboard-%0").arg(imConfig_->defaultLayout());
+    auto imname = QStringLiteral("keyboard-%0").arg(imConfig_->defaultLayout());
     FcitxQtStringKeyValue imEntry;
     int i = 0;
     auto imEntries = imConfig_->imEntries();
