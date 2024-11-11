@@ -646,7 +646,6 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
         }
         return enumMap.value(value.toString());
     } else if (option.type().startsWith("List|")) {
-
         int i = 0;
         QStringList strs;
         strs.clear();
@@ -654,6 +653,9 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
         subOption.setType(option.type().mid(5)); // Remove List|
         while (true) {
             auto subValue = readVariant(value, QString::number(i));
+            if (subValue.isNull()) {
+                break;
+            }
             strs << prettify(subOption, subValue);
             i++;
         }
