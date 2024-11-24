@@ -10,6 +10,7 @@
 #include <Plasma/Theme>
 #include <QBitmap>
 #include <QCommandLineParser>
+#include <QDebug>
 #include <QDir>
 #include <QPainter>
 #include <QSocketNotifier>
