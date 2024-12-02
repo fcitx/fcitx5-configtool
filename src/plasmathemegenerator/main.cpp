@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QPainter>
+#include <QSessionManager>
 #include <QSocketNotifier>
 #include <fcitx-config/iniparser.h>
 #include <fcitx-config/rawconfig.h>
@@ -81,6 +82,7 @@ public:
         parser.setApplicationDescription(
             i18n("Generate Fcitx 5 Classic UI Theme based on Plasma theme"));
         parser.addHelpOption();
+        parser.addVersionOption();
         parser.addOptions(
             {{{"t", "theme"}, i18n("Plasma theme name <name> "), i18n("name")},
              {{"o", "output"}, i18n("Output path <output> "), i18n("output")}});
@@ -151,6 +153,14 @@ public:
                 }
             });
         }
+
+        auto disableSessionManagement = [](QSessionManager &sm) {
+            sm.setRestartHint(QSessionManager::RestartNever);
+        };
+        QObject::connect(this, &QGuiApplication::commitDataRequest,
+                         disableSessionManagement);
+        QObject::connect(this, &QGuiApplication::saveStateRequest,
+                         disableSessionManagement);
         return true;
     }
 

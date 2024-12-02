@@ -44,8 +44,15 @@ add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx5\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 add_definitions(-DQT_NO_KEYWORDS)
 
+set(CONFIG_QT_UNIQUE_APP_SUPPORT 0)
 if (ENABLE_CONFIG_QT)
     find_package(KF${QT_MAJOR_VERSION}ItemViews REQUIRED)
+    find_package(KF${QT_MAJOR_VERSION}DBusAddons 5.91)
+    find_package(KF${QT_MAJOR_VERSION}WindowSystem 5.91)
+
+    if (TARGET KF${QT_MAJOR_VERSION}::DBusAddons AND TARGET KF${QT_MAJOR_VERSION}::WindowSystem)
+        set(CONFIG_QT_UNIQUE_APP_SUPPORT 1)
+    endif()
 endif()
 
 if (ENABLE_KCM)

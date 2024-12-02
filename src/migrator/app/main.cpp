@@ -1,6 +1,7 @@
 #include "config.h"
 #include "mainwindow.h"
 #include <QApplication>
+#include <QCommandLineParser>
 #include <QDebug>
 #include <QPluginLoader>
 #include <QSessionManager>
@@ -21,6 +22,11 @@ int main(int argc, char *argv[]) {
     app.setApplicationDisplayName(_("Fcitx 5 Migration Wizard"));
     app.setOrganizationDomain("fcitx.org");
     fcitx::registerFcitxQtDBusTypes();
+
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.process(app);
 
     auto disableSessionManagement = [](QSessionManager &sm) {
         sm.setRestartHint(QSessionManager::RestartNever);
