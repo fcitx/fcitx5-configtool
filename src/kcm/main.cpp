@@ -6,6 +6,7 @@
  */
 #include "main.h"
 #include "addonmodel.h"
+#include "config.h"
 #include "dbusprovider.h"
 #include <KAboutData>
 #include <KLocalizedString>
