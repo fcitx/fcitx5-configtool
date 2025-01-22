@@ -115,50 +115,49 @@ ColumnLayout {
         id: delegateComponent
 
         ItemDelegate {
+            id: listItem
+            property var model: itemModel
             width: ListView.view ? ListView.view.width : implicitWidth
-            height: listItem.implicitHeight
-            Kirigami.SwipeListItem {
-                id: listItem
-                width: parent.width
+            contentItem: RowLayout {
+                Kirigami.ListItemDragHandle {
+                    listItem: listItem
+                    listView: optionView
+                    property var index: itemIndex
 
-                contentItem: RowLayout {
-                    Kirigami.ListItemDragHandle {
-                        listItem: listItem
-                        listView: optionView
-
-                        onMoveRequested: (oldIndex, newIndex) => {
-                            needsSave = true;
-                            listModel.move(oldIndex, newIndex, 1);
-                        }
-                    }
-                    Label {
-                        Layout.fillWidth: true
-                        color: listItem.checked || (listItem.pressed && !listItem.checked && !listItem.sectionDelegate) ? listItem.activeTextColor : listItem.textColor
-                        height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
-                        text: model !== null ? prettify(model.value, subTypeName) : ""
-                        elide: Text.ElideRight
+                    onMoveRequested: (oldIndex, newIndex) => {
+                        needsSave = true;
+                        listModel.move(oldIndex, newIndex, 1);
                     }
                 }
+                Label {
+                    Layout.fillWidth: true
+                    height: Math.max(implicitHeight, Kirigami.Units.iconSizes.smallMedium)
+                    text: model !== null ? prettify(model.value, subTypeName) : ""
+                    elide: Text.ElideRight
+                }
+                ToolButton {
+                    icon.name: "document-edit"
+                    text: i18n("edit")
+                    display: AbstractButton.IconOnly
+                    ToolTip.text: text
+                    ToolTip.visible: hovered
 
-                actions: [
-                    Kirigami.Action {
-                        icon.name: "document-edit"
-                        text: i18n("edit")
-
-                        onTriggered: {
-                            sheet.edit(model.index);
-                        }
-                    },
-                    Kirigami.Action {
-                        icon.name: "list-remove-symbolic"
-                        text: i18n("Remove")
-
-                        onTriggered: {
-                            needsSave = true;
-                            listModel.remove(model.index);
-                        }
+                    onClicked: {
+                        sheet.edit(model.index);
                     }
-                ]
+                }
+                ToolButton {
+                    icon.name: "list-remove-symbolic"
+                    text: i18n("Remove")
+                    display: AbstractButton.IconOnly
+                    ToolTip.text: text
+                    ToolTip.visible: hovered
+
+                    onClicked: {
+                        needsSave = true;
+                        listModel.remove(model.index);
+                    }
+                }
             }
         }
     }
@@ -177,8 +176,12 @@ ColumnLayout {
             id: optionView
             model: listModel
 
-            delegate: delegateComponent
-            reuseItems: true
+            delegate: Loader {
+                width: optionView.width
+                sourceComponent: delegateComponent
+                property var itemModel: model
+                property var itemIndex: index
+            }
         }
     }
     RowLayout {

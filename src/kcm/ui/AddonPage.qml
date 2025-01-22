@@ -88,8 +88,9 @@ KCM.ScrollViewKCM {
             }
         }
 
-        delegate: Kirigami.SwipeListItem {
+        delegate: ItemDelegate {
             id: listItem
+            width: ListView.view ? ListView.view.width : implicitWidth
             contentItem: RowLayout {
                 CheckBox {
                     id: itemChecked
@@ -147,16 +148,16 @@ KCM.ScrollViewKCM {
                         visible: model.comment.length > 0
                     }
                 }
-            }
-
-            actions: [
-                Kirigami.Action {
+                ToolButton {
                     icon.name: "configure"
                     visible: model.configurable
+                    display: AbstractButton.IconOnly
+                    ToolTip.text: text
+                    ToolTip.visible: hovered
 
-                    onTriggered: kcm.pushConfigPage(model.name, "fcitx://config/addon/" + model.uniqueName)
+                    onClicked: kcm.pushConfigPage(model.name, "fcitx://config/addon/" + model.uniqueName)
                 }
-            ]
+            }
         }
     }
     footer: CheckBox {
