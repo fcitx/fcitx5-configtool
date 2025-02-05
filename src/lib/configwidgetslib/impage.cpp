@@ -205,8 +205,10 @@ void IMPage::selectedGroupChanged() {
             QMessageBox::question(this, _("Current group changed"),
                                   _("Do you want to change group? Changes to "
                                     "current group will be lost!"))) {
+            ui_->inputMethodGroupComboBox->blockSignals(true);
             ui_->inputMethodGroupComboBox->setCurrentText(
                 config_->currentGroup());
+            ui_->inputMethodGroupComboBox->blockSignals(false);
             return;
         }
     }
