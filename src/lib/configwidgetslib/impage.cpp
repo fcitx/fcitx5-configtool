@@ -205,8 +205,20 @@ void IMPage::selectedGroupChanged() {
             QMessageBox::question(this, _("Current group changed"),
                                   _("Do you want to change group? Changes to "
                                     "current group will be lost!"))) {
+            // Temporarily disconnect the signal
+            bool connection = disconnect(ui_->inputMethodGroupComboBox,
+                                         &QComboBox::currentTextChanged, this,
+                                         &IMPage::selectedGroupChanged);
+
             ui_->inputMethodGroupComboBox->setCurrentText(
                 config_->currentGroup());
+
+            // Restore the connection
+            if (connection) {
+                connect(ui_->inputMethodGroupComboBox,
+                        &QComboBox::currentTextChanged, this,
+                        &IMPage::selectedGroupChanged);
+            }
             return;
         }
     }
