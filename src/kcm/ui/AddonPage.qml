@@ -150,6 +150,7 @@ KCM.ScrollViewKCM {
                 }
                 ToolButton {
                     icon.name: "configure"
+                    text: i18n("Configure")
                     visible: model.configurable
                     display: AbstractButton.IconOnly
                     ToolTip.text: text

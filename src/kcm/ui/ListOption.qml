@@ -137,7 +137,7 @@ ColumnLayout {
                 }
                 ToolButton {
                     icon.name: "document-edit"
-                    text: i18n("edit")
+                    text: i18n("Edit")
                     display: AbstractButton.IconOnly
                     ToolTip.text: text
                     ToolTip.visible: hovered
