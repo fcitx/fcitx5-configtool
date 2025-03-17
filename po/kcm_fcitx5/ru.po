@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2023-11-23 20:24+0000\n"
+"POT-Creation-Date: 2025-03-17 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:140
+#: src/kcm/package/contents/ui/AddonPage.qml:140 src/kcm/ui/AddonPage.qml:143
 #, kde-format
 msgid "%1 (Disabled)"
 msgstr "%1 (Отключено)"
@@ -32,18 +32,18 @@ msgstr "%1 (Отключено)"
 msgid "%1:"
 msgstr "%1:"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:106
+#: src/kcm/package/contents/ui/AddonPage.qml:106 src/kcm/ui/AddonPage.qml:109
 #, kde-format
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ",  "
 
-#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:116
+#: src/kcm/package/contents/ui/AddonPage.qml:116 src/kcm/ui/AddonPage.qml:119
 #, kde-format
 msgid "- Disable %1\n"
 msgstr "- Отключить %1\n"
 
-#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:126
+#: src/kcm/package/contents/ui/AddonPage.qml:126 src/kcm/ui/AddonPage.qml:129
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr "- Отключить некоторые функции в %1\n"
@@ -54,13 +54,13 @@ msgid "..."
 msgstr "..."
 
 #: src/kcm/package/contents/ui/ListOption.qml:181
-#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:188
+#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:191
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
 msgstr "Добавить"
 
-#: src/kcm/package/contents/ui/main.qml:112 src/kcm/ui/main.qml:119
+#: src/kcm/package/contents/ui/main.qml:112 src/kcm/ui/main.qml:123
 #, kde-format
 msgid "Add Group"
 msgstr "Добавить группу"
@@ -70,7 +70,7 @@ msgstr "Добавить группу"
 msgid "Add Input Method"
 msgstr "Добавить метод ввода"
 
-#: src/kcm/package/contents/ui/main.qml:216 src/kcm/ui/main.qml:223
+#: src/kcm/package/contents/ui/main.qml:216 src/kcm/ui/main.qml:227
 #, kde-format
 msgid "Add Input Method..."
 msgstr "Добавить метод ввода..."
@@ -80,12 +80,12 @@ msgstr "Добавить метод ввода..."
 msgid "Addons"
 msgstr "Дополнения"
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:88
 #, kde-format
 msgid "Author"
 msgstr "Автор"
 
-#: src/kcm/package/contents/ui/main.qml:226 src/kcm/ui/main.qml:233
+#: src/kcm/package/contents/ui/main.qml:226 src/kcm/ui/main.qml:237
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
 msgstr "Не удалось соединиться с Fcitx через DBus, запущен ли Fcitx?"
@@ -96,36 +96,37 @@ msgstr "Не удалось соединиться с Fcitx через DBus, з�
 msgid "Clear"
 msgstr "Очистить"
 
-#: src/kcm/package/contents/ui/main.qml:58 src/kcm/ui/main.qml:64
+#: src/kcm/package/contents/ui/main.qml:58 src/kcm/ui/AddonPage.qml:153
+#: src/kcm/ui/main.qml:60
 #, kde-format
 msgid "Configure"
 msgstr "Настроить"
 
-#: src/kcm/main.cpp:59
+#: src/kcm/main.cpp:84
 #, kde-format
 msgid "Configure Fcitx 5"
 msgstr "Настроить Fcitx 5"
 
-#: src/kcm/kcm_fcitx5_kservice.desktop.in:13 src/kcm/kcm_fcitx5.desktop.in:8
+#: src/kcm/kcm_fcitx5_kservice.desktop.in:12 src/kcm/kcm_fcitx5.desktop.in:8
 msgid "Configure Input Method"
 msgstr "Настроить метод ввода"
 
-#: src/kcm/package/contents/ui/main.qml:207 src/kcm/ui/main.qml:214
+#: src/kcm/package/contents/ui/main.qml:207 src/kcm/ui/main.qml:218
 #, kde-format
 msgid "Configure addons..."
 msgstr "Настроить дополнения..."
 
-#: src/kcm/package/contents/ui/main.qml:201 src/kcm/ui/main.qml:208
+#: src/kcm/package/contents/ui/main.qml:201 src/kcm/ui/main.qml:212
 #, kde-format
 msgid "Configure global options..."
 msgstr "Настроить глобальные параметры..."
 
-#: src/kcm/main.cpp:60
+#: src/kcm/main.cpp:85
 #, kde-format
 msgid "Copyright 2017 Xuetian Weng"
 msgstr "Copyright 2017 Xuetian Weng"
 
-#: src/kcm/package/contents/ui/main.qml:147 src/kcm/ui/main.qml:154
+#: src/kcm/package/contents/ui/main.qml:147 src/kcm/ui/main.qml:158
 #, kde-format
 msgid "Current group changed"
 msgstr "Текущая группа изменена"
@@ -136,7 +137,7 @@ msgstr "Текущая группа изменена"
 msgid "Current page is not yet saved. Please save the config first."
 msgstr "Текущая страница еще не сохранена. Сначала сохраните конфигурацию."
 
-#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:128
+#: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:131
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -147,34 +148,39 @@ msgstr ""
 "%2\n"
 "Вы уверены, что хотите отключить его?"
 
-#: src/kcm/package/contents/ui/main.qml:165 src/kcm/ui/main.qml:172
+#: src/kcm/package/contents/ui/main.qml:165 src/kcm/ui/main.qml:176
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "Вы хотите сменить группу? Изменения в текущей группе будут потеряны!"
+
+#: src/kcm/ui/ListOption.qml:140
+#, kde-format
+msgid "Edit"
+msgstr ""
 
 #: src/kcm/package/contents/ui/KeyOption.qml:51 src/kcm/ui/KeyOption.qml:54
 #, kde-format
 msgid "Empty"
 msgstr "Пусто"
 
-#: src/kcm/main.cpp:58
+#: src/kcm/main.cpp:83
 #, kde-format
 msgid "Fcitx 5"
 msgstr "Fcitx 5"
 
-#: src/plasmathemegenerator/main.cpp:88
+#: src/plasmathemegenerator/main.cpp:89
 #, kde-format
 msgid "File descriptor <fd> "
 msgstr "Файловый дескриптор <fd>"
 
-#: src/kcm/package/contents/ui/main.qml:281
-#: src/kcm/package/contents/ui/main.qml:300 src/kcm/ui/main.qml:288
-#: src/kcm/ui/main.qml:307
+#: src/kcm/package/contents/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:301 src/kcm/ui/main.qml:293
+#: src/kcm/ui/main.qml:312
 #, kde-format
 msgid "Fix"
 msgstr "Исправить"
 
-#: src/kcm/package/contents/ui/main.qml:246 src/kcm/ui/main.qml:253
+#: src/kcm/package/contents/ui/main.qml:246 src/kcm/ui/main.qml:257
 #, kde-format
 msgid ""
 "Found updates to fcitx installation. Do you want to check for newly "
@@ -192,31 +198,31 @@ msgstr ""
 "Создать классическую тему пользовательского интерфейса Fcitx5 на основе "
 "Plasma theme"
 
-#: src/kcm/package/contents/ui/main.qml:203 src/kcm/ui/main.qml:210
+#: src/kcm/package/contents/ui/main.qml:203 src/kcm/ui/main.qml:214
 #, kde-format
 msgid "Global Options"
 msgstr "Глобальные параметры"
 
-#: src/kcm/package/contents/ui/main.qml:92 src/kcm/ui/main.qml:99
+#: src/kcm/package/contents/ui/main.qml:92 src/kcm/ui/main.qml:103
 #, kde-format
 msgid "Group Name"
 msgstr "Наименование группы"
 
-#: src/kcm/package/contents/ui/main.qml:312 src/kcm/ui/main.qml:319
+#: src/kcm/package/contents/ui/main.qml:313 src/kcm/ui/main.qml:324
 #, kde-format
 msgid "Group:"
 msgstr "Группа"
 
-#: src/kcm/kcm_fcitx5_kservice.desktop.in:12 src/kcm/kcm_fcitx5.desktop.in:8
+#: src/kcm/kcm_fcitx5_kservice.desktop.in:11 src/kcm/kcm_fcitx5.desktop.in:7
 msgid "Input Method"
 msgstr "Метод ввода"
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:366
 #, kde-format
 msgid "Input Method Off"
 msgstr "Метод ввода Выключен"
 
-#: src/kcm/package/contents/ui/main.qml:355 src/kcm/ui/main.qml:362
+#: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:366
 #, kde-format
 msgid "Input Method On"
 msgstr "Метод ввода Включен"
@@ -238,7 +244,7 @@ msgstr "Язык:"
 msgid "Layout:"
 msgstr "Раскладка:"
 
-#: src/kcm/package/contents/ui/main.qml:91 src/kcm/ui/main.qml:98
+#: src/kcm/package/contents/ui/main.qml:91 src/kcm/ui/main.qml:102
 #, kde-format
 msgid "Name:"
 msgstr "Имя"
@@ -249,7 +255,7 @@ msgid "No"
 msgstr "Нет"
 
 #: src/kcm/package/contents/ui/main.qml:101
-#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:82 src/kcm/ui/main.qml:108
+#: src/kcm/package/contents/ui/SelectLayoutSheet.qml:82 src/kcm/ui/main.qml:112
 #: src/kcm/ui/SelectLayoutSheet.qml:82
 #, kde-format
 msgid "Ok"
@@ -260,12 +266,12 @@ msgstr "Хорошо"
 msgid "Only &Show Current Language"
 msgstr "&Показывать только текущий язык"
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "Output path <output> "
 msgstr "Путь вывода <output>"
 
-#: src/plasmathemegenerator/main.cpp:86
+#: src/plasmathemegenerator/main.cpp:87
 #, kde-format
 msgid "Plasma theme name <name> "
 msgstr "Наименование Plasma theme <name>"
@@ -276,18 +282,18 @@ msgid "Re-Enable"
 msgstr "Повторное включение"
 
 #: src/kcm/package/contents/ui/ListOption.qml:146
-#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:154
-#: src/kcm/ui/main.qml:78
+#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:151
+#: src/kcm/ui/main.qml:80
 #, kde-format
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/kcm/package/contents/ui/main.qml:263 src/kcm/ui/main.qml:270
+#: src/kcm/package/contents/ui/main.qml:263 src/kcm/ui/main.qml:274
 #, kde-format
 msgid "Restart"
 msgstr "Перезапуск"
 
-#: src/kcm/package/contents/ui/main.qml:234 src/kcm/ui/main.qml:241
+#: src/kcm/package/contents/ui/main.qml:234 src/kcm/ui/main.qml:245
 #, kde-format
 msgid "Run Fcitx"
 msgstr "Запустить Fcitx"
@@ -311,32 +317,32 @@ msgctxt "@title:window"
 msgid "Select Font"
 msgstr "Выбрать шрифт"
 
-#: src/kcm/package/contents/ui/main.qml:65 src/kcm/ui/main.qml:71
+#: src/kcm/package/contents/ui/main.qml:65 src/kcm/ui/main.qml:70
 #, kde-format
 msgid "Select Layout"
 msgstr "Выбрать Раскладку"
 
-#: src/kcm/package/contents/ui/main.qml:68 src/kcm/ui/main.qml:74
+#: src/kcm/package/contents/ui/main.qml:68 src/kcm/ui/main.qml:76
 #, kde-format
 msgid "Select layout for %1"
 msgstr "Выбрать раскладку для %1"
 
-#: src/kcm/package/contents/ui/main.qml:184 src/kcm/ui/main.qml:191
+#: src/kcm/package/contents/ui/main.qml:184 src/kcm/ui/main.qml:195
 #, kde-format
 msgid "Select system keyboard layout..."
 msgstr "Выбор системной раскладки клавиатуры..."
 
-#: src/kcm/package/contents/ui/main.qml:180 src/kcm/ui/main.qml:187
+#: src/kcm/package/contents/ui/main.qml:180 src/kcm/ui/main.qml:191
 #, kde-format
 msgid "Select system layout for group %1"
 msgstr "Выбрать раскладку системы для группы %1"
 
-#: src/kcm/package/contents/ui/main.qml:177 src/kcm/ui/main.qml:184
+#: src/kcm/package/contents/ui/main.qml:177 src/kcm/ui/main.qml:188
 #, kde-format
 msgid "Select system layout..."
 msgstr "Выбрать раскладку системы..."
 
-#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:162
+#: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:166
 #, kde-format
 msgid "Show &Advanced options"
 msgstr "Показать &Дополнительные параметры"
@@ -347,7 +353,7 @@ msgstr "Показать &Дополнительные параметры"
 msgid "Some config is not saved"
 msgstr "Некоторые конфиги не сохраняются"
 
-#: src/kcm/package/contents/ui/main.qml:193 src/kcm/ui/main.qml:200
+#: src/kcm/package/contents/ui/main.qml:193 src/kcm/ui/main.qml:204
 #, kde-format
 msgid "Test Input"
 msgstr "Тестовый ввод"
@@ -363,12 +369,12 @@ msgstr ""
 "пользователей, которые понимают возможные последствия. Чтобы изменения "
 "вступили в силу, необходимо перезапустить Fcitx."
 
-#: src/plasmathemegenerator/main.cpp:179
+#: src/plasmathemegenerator/main.cpp:188
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
 msgstr "Тема сгенерирована из Plasma Theme %1"
 
-#: src/kcm/package/contents/ui/main.qml:254 src/kcm/ui/main.qml:261
+#: src/kcm/package/contents/ui/main.qml:254 src/kcm/ui/main.qml:265
 #, kde-format
 msgid "Update"
 msgstr "Обновить"
@@ -384,7 +390,7 @@ msgstr "Вариант:"
 msgid "Void Symbol"
 msgstr "Пустой Cимвол"
 
-#: src/kcm/main.cpp:63
+#: src/kcm/main.cpp:88
 #, kde-format
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
@@ -394,7 +400,7 @@ msgstr "Xuetian Weng"
 msgid "Yes"
 msgstr "Да"
 
-#: src/kcm/package/contents/ui/main.qml:275 src/kcm/ui/main.qml:282
+#: src/kcm/package/contents/ui/main.qml:276 src/kcm/ui/main.qml:287
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your layout, do you "
@@ -403,7 +409,7 @@ msgstr ""
 "Текущий настроенный метод ввода не соответствует раскладке. Хотите изменить "
 "настройку раскладки?"
 
-#: src/kcm/package/contents/ui/main.qml:294 src/kcm/ui/main.qml:301
+#: src/kcm/package/contents/ui/main.qml:295 src/kcm/ui/main.qml:306
 #, kde-format
 msgid ""
 "Your currently configured input method does not match your selected layout, "
@@ -417,22 +423,22 @@ msgstr ""
 msgid "[%1]"
 msgstr "[%1]"
 
-#: src/kcm/package/contents/ui/ListOption.qml:138 src/kcm/ui/ListOption.qml:146
+#: src/kcm/package/contents/ui/ListOption.qml:138
 #, kde-format
 msgid "edit"
 msgstr "редактировать"
 
-#: src/plasmathemegenerator/main.cpp:89
+#: src/plasmathemegenerator/main.cpp:90
 #, kde-format
 msgid "fd"
 msgstr "fd"
 
-#: src/plasmathemegenerator/main.cpp:86
+#: src/plasmathemegenerator/main.cpp:87
 #, kde-format
 msgid "name"
 msgstr "имя"
 
-#: src/plasmathemegenerator/main.cpp:87
+#: src/plasmathemegenerator/main.cpp:88
 #, kde-format
 msgid "output"
 msgstr "выход"
