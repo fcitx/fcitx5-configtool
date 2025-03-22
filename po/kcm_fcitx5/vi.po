@@ -5,14 +5,15 @@
 # Translators:
 # csslayer <wengxt@gmail.com>, 2020
 # zenfas, 2024
+# hoanghuy309 <hoanghuy309@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-03-17 20:24+0000\n"
+"POT-Creation-Date: 2025-03-22 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: zenfas, 2024\n"
+"Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -66,12 +67,12 @@ msgstr ""
 #: src/kcm/package/contents/ui/AddIMPage.qml:14 src/kcm/ui/AddIMPage.qml:14
 #, kde-format
 msgid "Add Input Method"
-msgstr ""
+msgstr "Thêm Kiểu Gõ"
 
 #: src/kcm/package/contents/ui/main.qml:216 src/kcm/ui/main.qml:227
 #, kde-format
 msgid "Add Input Method..."
-msgstr ""
+msgstr "Thêm Kiểu Gõ..."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:18 src/kcm/ui/AddonPage.qml:18
 #, kde-format
@@ -107,7 +108,7 @@ msgstr ""
 
 #: src/kcm/kcm_fcitx5_kservice.desktop.in:12 src/kcm/kcm_fcitx5.desktop.in:8
 msgid "Configure Input Method"
-msgstr ""
+msgstr "Cấu Hình Kiểu Gõ"
 
 #: src/kcm/package/contents/ui/main.qml:207 src/kcm/ui/main.qml:218
 #, kde-format
@@ -210,12 +211,12 @@ msgstr "Kiểu gõ"
 #: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:366
 #, kde-format
 msgid "Input Method Off"
-msgstr ""
+msgstr "Kiểu Gõ Tắt"
 
 #: src/kcm/package/contents/ui/main.qml:356 src/kcm/ui/main.qml:366
 #, kde-format
 msgid "Input Method On"
-msgstr ""
+msgstr "Kiểu Gõ Bật"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:141 src/kcm/ui/KeyOption.qml:144
 #, kde-format
@@ -393,6 +394,8 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"Bạn hiện tại cấu hình kiểu gõ không khớp với bố cục, bạn có muốn thay đổi "
+"cài đặt bố cục không?"
 
 #: src/kcm/package/contents/ui/main.qml:295 src/kcm/ui/main.qml:306
 #, kde-format
@@ -400,6 +403,8 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"Bạn hiện tại cấu hình kiểu gõ không khớp với bố cục, bạn có muốn thêm kiểu "
+"gõ tương ứng cho bố cục không?"
 
 #: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:86
 #, kde-format
