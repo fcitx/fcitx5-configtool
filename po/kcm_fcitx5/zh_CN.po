@@ -5,14 +5,15 @@
 # Translators:
 # rocka, 2022
 # csslayer <wengxt@gmail.com>, 2023
+# Yiyu Liu, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-03-17 20:24+0000\n"
+"POT-Creation-Date: 2025-03-24 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: csslayer <wengxt@gmail.com>, 2023\n"
+"Last-Translator: Yiyu Liu, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -155,7 +156,7 @@ msgstr "您想要更改分组吗？当前分组未保存的修改将会丢失！
 #: src/kcm/ui/ListOption.qml:140
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:51 src/kcm/ui/KeyOption.qml:54
 #, kde-format

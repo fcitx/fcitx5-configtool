@@ -7,16 +7,16 @@
 # 黃柏諺 <s8321414@gmail.com>, 2020
 # bruh, 2020
 # 菘菘 <rrt467778@gmail.com>, 2022
-# Yiyu Liu, 2023
 # Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024
+# Yiyu Liu, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-03-17 20:24+0000\n"
+"POT-Creation-Date: 2025-03-24 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024\n"
+"Last-Translator: Yiyu Liu, 2025\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_TW/)\n"
 "Language: zh_TW\n"
@@ -159,7 +159,7 @@ msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 #: src/kcm/ui/ListOption.qml:140
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: src/kcm/package/contents/ui/KeyOption.qml:51 src/kcm/ui/KeyOption.qml:54
 #, kde-format
