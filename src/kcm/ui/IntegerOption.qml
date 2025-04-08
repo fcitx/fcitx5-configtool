@@ -6,6 +6,7 @@
  */
 import QtQuick
 import QtQuick.Controls
+import "utils.js" as Utils
 
 SpinBox {
     property string typeName
@@ -27,10 +28,10 @@ SpinBox {
     }
 
     Component.onCompleted: {
-        if (properties.hasOwnProperty("IntMin")) {
+        if (Utils.hasProperty(properties, "IntMin")) {
             validator.bottom = parseInt(properties.IntMin);
         }
-        if (properties.hasOwnProperty("IntMax")) {
+        if (Utils.hasProperty(properties, "IntMax")) {
             validator.top = parseInt(properties.IntMax);
         }
         load(rawValue);

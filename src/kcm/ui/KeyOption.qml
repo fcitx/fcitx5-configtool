@@ -61,10 +61,10 @@ Button {
     }
 
     Component.onCompleted: {
-        if (properties.hasOwnProperty("AllowModifierLess")) {
+        if (Utils.hasProperty(properties, "AllowModifierLess")) {
             allowModifierLess = properties.AllowModifierLess == "True";
         }
-        if (properties.hasOwnProperty("AllowModifierOnly")) {
+        if (Utils.hasProperty(properties, "AllowModifierOnly")) {
             allowModifierOnly = properties.AllowModifierOnly == "True";
         }
         load(rawValue);

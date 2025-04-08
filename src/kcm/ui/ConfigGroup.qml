@@ -43,7 +43,7 @@ Kirigami.FormLayout {
             var loader = repeater.itemAt(i);
             if (loader.status == Loader.Ready) {
                 loader.item.save();
-                if (loader.item.hasOwnProperty("rawValue")) {
+                if (Utils.hasProperty(loader.item, "rawValue")) {
                     Utils.setRawValue(rawValue, loader.option.name, loader.item.rawValue);
                 }
             }

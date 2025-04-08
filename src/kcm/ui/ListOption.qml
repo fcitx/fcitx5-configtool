@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
+import "utils.js" as Utils
 
 ColumnLayout {
     id: listOption
@@ -36,7 +37,7 @@ ColumnLayout {
         }
         var i = 0;
         while (true) {
-            if (!rawValue.hasOwnProperty(i.toString())) {
+            if (!Utils.hasProperty(rawValue, i.toString())) {
                 break;
             }
             var value = rawValue[i.toString()];
@@ -59,12 +60,12 @@ ColumnLayout {
             var i = 0;
             var enumMap = {};
             while (true) {
-                if (!properties.Enum.hasOwnProperty(i.toString())) {
+                if (!Utils.hasProperty(properties.Enum, i.toString())) {
                     break;
                 }
                 var enumString = properties.Enum[i.toString()];
                 var text = enumString;
-                if (properties.hasOwnProperty("EnumI18n") && properties.EnumI18n.hasOwnProperty(i.toString())) {
+                if (Utils.hasProperty(properties, "EnumI18n") && Utils.hasProperty(properties.EnumI18n, i.toString())) {
                     text = properties.EnumI18n[i.toString()];
                 }
                 enumMap[enumString] = text;
@@ -76,7 +77,7 @@ ColumnLayout {
             subSubType = subType.substr(5);
             var strs = [];
             while (true) {
-                if (!value.hasOwnProperty(i.toString())) {
+                if (!Utils.hasProperty(value, i.toString())) {
                     break;
                 }
                 var subValue = prettify(value[i.toString()]);
@@ -84,7 +85,7 @@ ColumnLayout {
                 i++;
             }
             return i18n("[%1]", strs.join(" "));
-        } else if (configPage.typeMap.hasOwnProperty(subType)) {
+        } else if (Utils.hasProperty(configPage.typeMap, subType)) {
             for (var i = 0; i < configPage.typeMap[subTypeName].length; ++i) {
                 var option = configPage.typeMap[subTypeName][i];
                 if (option.name.length === 1 && option.name[0] === properties.ListDisplayOption) {
@@ -198,7 +199,7 @@ ColumnLayout {
     Kirigami.OverlaySheet {
         id: sheet
         property int editIndex: -1
-        readonly property bool isSubConfig: configPage.typeMap.hasOwnProperty(subTypeName)
+        readonly property bool isSubConfig: Utils.hasProperty(configPage.typeMap, subTypeName)
 
         parent: configPage
 

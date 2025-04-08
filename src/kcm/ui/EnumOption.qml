@@ -7,6 +7,7 @@
 import QtQuick
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
+import "utils.js" as Utils
 
 Row {
     property string typeName
@@ -35,16 +36,16 @@ Row {
     Component.onCompleted: {
         var i = 0;
         while (true) {
-            if (!properties.hasOwnProperty("Enum")) {
+            if (!Utils.hasProperty(properties, "Enum")) {
                 break;
             }
-            if (!properties["Enum"].hasOwnProperty(i.toString())) {
+            if (!Utils.hasProperty(properties["Enum"], i.toString())) {
                 break;
             }
             var value = properties["Enum"][i.toString()];
             var text = "";
-            if (properties.hasOwnProperty("EnumI18n")) {
-                if (properties["EnumI18n"].hasOwnProperty(i.toString())) {
+            if (Utils.hasProperty(properties, "EnumI18n")) {
+                if (Utils.hasProperty(properties["EnumI18n"], i.toString())) {
                     text = properties["EnumI18n"][i.toString()];
                 }
             }
@@ -52,8 +53,8 @@ Row {
                 text = value;
             }
             var subconfigpath = "";
-            if (properties.hasOwnProperty("SubConfigPath")) {
-                if (properties["SubConfigPath"].hasOwnProperty(i.toString())) {
+            if (Utils.hasProperty(properties, "SubConfigPath")) {
+                if (Utils.hasProperty(properties["SubConfigPath"], i.toString())) {
                     subconfigpath = properties["SubConfigPath"][i.toString()];
                 }
             }

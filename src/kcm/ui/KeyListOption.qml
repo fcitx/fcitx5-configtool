@@ -8,6 +8,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import org.kde.kirigami as Kirigami
+import "utils.js" as Utils
 
 RowLayout {
     id: keyList
@@ -26,19 +27,19 @@ RowLayout {
         }
         var i = 0;
         while (true) {
-            if (!rawValue.hasOwnProperty(i.toString())) {
+            if (!Utils.hasProperty(rawValue, i.toString())) {
                 break;
             }
             var value = rawValue[i.toString()];
             listModel.append({
                     "key": value
                 });
-            if (!keyList.rawValue.hasOwnProperty(i.toString()) || rawValue[i.toString()] !== keyList.rawValue[i.toString()]) {
+            if (!Utils.hasProperty(keyList.rawValue, i.toString()) || rawValue[i.toString()] !== keyList.rawValue[i.toString()]) {
                 diff = true;
             }
             i++;
         }
-        if (keyList.rawValue.hasOwnProperty(i.toString())) {
+        if (Utils.hasProperty(keyList.rawValue, i.toString())) {
             diff = true;
         }
         needsSave = diff;
@@ -70,7 +71,7 @@ RowLayout {
                 KeyOption {
                     Layout.fillWidth: true
                     Layout.minimumWidth: Kirigami.Units.gridUnit * 9
-                    properties: keyList.properties.hasOwnProperty("ListConstrain") ? keyList.properties.ListConstrain : {}
+                    properties: Utils.hasProperty(keyList.properties, "ListConstrain") ? keyList.properties.ListConstrain : {}
                     rawValue: model.key
 
                     onKeyStringChanged: {

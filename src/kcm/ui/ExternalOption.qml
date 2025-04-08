@@ -6,6 +6,7 @@
  */
 import QtQuick
 import QtQuick.Controls
+import "utils.js" as Utils
 
 Button {
     property string typeName
@@ -26,7 +27,7 @@ Button {
     }
 
     Component.onCompleted: {
-        if (properties.hasOwnProperty("LaunchSubConfig") && properties["LaunchSubConfig"] == "True") {
+        if (Utils.hasProperty(properties, "LaunchSubConfig") && properties["LaunchSubConfig"] == "True") {
             subConfig = true;
         }
     }

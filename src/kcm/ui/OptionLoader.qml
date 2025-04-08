@@ -16,10 +16,10 @@ Loader {
     property variant rawValue
 
     ToolTip.delay: Kirigami.Units.toolTipDelay
-    ToolTip.text: option.properties && option.properties.hasOwnProperty("Tooltip") ? option.properties["Tooltip"] : ""
+    ToolTip.text: option.properties && Utils.hasProperty(option.properties, "Tooltip") ? option.properties["Tooltip"] : ""
     ToolTip.visible: {
-        if (option.properties && option.properties.hasOwnProperty("Tooltip") && loader.item) {
-            if (loader.item.hasOwnProperty("hovered")) {
+        if (option.properties && Utils.hasProperty(option.properties, "Tooltip") && loader.item) {
+            if (Utils.hasProperty(loader.item, "hovered")) {
                 return loader.item.hovered;
             }
         }
@@ -34,9 +34,9 @@ Loader {
         } else if (data.type == "Enum") {
             return "EnumOption.qml";
         } else if (data.type == "String") {
-            if (data.properties.hasOwnProperty("Font") && data.properties.Font == "True") {
+            if (Utils.hasProperty(data.properties, "Font") && data.properties.Font == "True") {
                 return "FontOption.qml";
-            } else if (data.properties.hasOwnProperty("IsEnum") && data.properties.IsEnum == "True") {
+            } else if (Utils.hasProperty(data.properties, "IsEnum") && data.properties.IsEnum == "True") {
                 return "EnumOption.qml";
             } else {
                 return "StringOption.qml";
