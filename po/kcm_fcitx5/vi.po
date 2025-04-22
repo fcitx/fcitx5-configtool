@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-03-22 20:24+0000\n"
+"POT-Creation-Date: 2025-04-22 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -53,7 +53,7 @@ msgid "..."
 msgstr ""
 
 #: src/kcm/package/contents/ui/ListOption.qml:181
-#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:191
+#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:192
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -99,12 +99,12 @@ msgstr ""
 #: src/kcm/ui/main.qml:60
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Cấu hình"
 
 #: src/kcm/main.cpp:84
 #, kde-format
 msgid "Configure Fcitx 5"
-msgstr ""
+msgstr "Cấu Hình Fcitx 5"
 
 #: src/kcm/kcm_fcitx5_kservice.desktop.in:12 src/kcm/kcm_fcitx5.desktop.in:8
 msgid "Configure Input Method"
@@ -134,7 +134,7 @@ msgstr ""
 #: src/kcm/ui/SaveWarningDialog.qml:21
 #, kde-format
 msgid "Current page is not yet saved. Please save the config first."
-msgstr ""
+msgstr "Trang hiện tại chưa được lưu. Vui lòng lưu cấu hình trước."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:128 src/kcm/ui/AddonPage.qml:131
 #, kde-format
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
-#: src/kcm/ui/ListOption.qml:140
+#: src/kcm/ui/ListOption.qml:141
 #, kde-format
 msgid "Edit"
 msgstr ""
@@ -221,7 +221,7 @@ msgstr "Kiểu Gõ Bật"
 #: src/kcm/package/contents/ui/KeyOption.qml:141 src/kcm/ui/KeyOption.qml:144
 #, kde-format
 msgid "Key code mode"
-msgstr ""
+msgstr "Chế độ mã phím"
 
 #: src/kcm/package/contents/ui/SelectLayoutSheet.qml:32
 #: src/kcm/ui/SelectLayoutSheet.qml:32
@@ -240,7 +240,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:56
 #, kde-format
 msgid "No"
 msgstr ""
@@ -273,7 +273,7 @@ msgid "Re-Enable"
 msgstr ""
 
 #: src/kcm/package/contents/ui/ListOption.qml:146
-#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:151
+#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:152
 #: src/kcm/ui/main.qml:80
 #, kde-format
 msgid "Remove"
@@ -300,18 +300,18 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Color"
-msgstr ""
+msgstr "Chọn Màu"
 
 #: src/kcm/package/contents/ui/FontOption.qml:35 src/kcm/ui/FontOption.qml:44
 #, kde-format
 msgctxt "@title:window"
 msgid "Select Font"
-msgstr ""
+msgstr "Chọn Font"
 
 #: src/kcm/package/contents/ui/main.qml:65 src/kcm/ui/main.qml:70
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "Chọn Bố Cục"
 
 #: src/kcm/package/contents/ui/main.qml:68 src/kcm/ui/main.qml:76
 #, kde-format
@@ -321,17 +321,17 @@ msgstr ""
 #: src/kcm/package/contents/ui/main.qml:184 src/kcm/ui/main.qml:195
 #, kde-format
 msgid "Select system keyboard layout..."
-msgstr ""
+msgstr "Chọn bố cục bàn phím hệ thống ..."
 
 #: src/kcm/package/contents/ui/main.qml:180 src/kcm/ui/main.qml:191
 #, kde-format
 msgid "Select system layout for group %1"
-msgstr ""
+msgstr "Chọn bố cục hệ thống cho nhóm %1"
 
 #: src/kcm/package/contents/ui/main.qml:177 src/kcm/ui/main.qml:188
 #, kde-format
 msgid "Select system layout..."
-msgstr ""
+msgstr "Chọn bố cục hệ thống ..."
 
 #: src/kcm/package/contents/ui/AddonPage.qml:162 src/kcm/ui/AddonPage.qml:166
 #, kde-format
@@ -342,7 +342,7 @@ msgstr ""
 #: src/kcm/ui/SaveWarningDialog.qml:16
 #, kde-format
 msgid "Some config is not saved"
-msgstr ""
+msgstr "Một số cấu hình không được lưu"
 
 #: src/kcm/package/contents/ui/main.qml:193 src/kcm/ui/main.qml:204
 #, kde-format
@@ -383,7 +383,7 @@ msgstr ""
 msgid "Xuetian Weng"
 msgstr "Xuetian Weng"
 
-#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:56
 #, kde-format
 msgid "Yes"
 msgstr ""
@@ -406,7 +406,7 @@ msgstr ""
 "Bạn hiện tại cấu hình kiểu gõ không khớp với bố cục, bạn có muốn thêm kiểu "
 "gõ tương ứng cho bố cục không?"
 
-#: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:86
+#: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:87
 #, kde-format
 msgid "[%1]"
 msgstr ""

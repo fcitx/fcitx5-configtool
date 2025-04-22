@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-01 20:24+0000\n"
+"POT-Creation-Date: 2025-04-22 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -74,7 +74,7 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:60
 msgid "&Close"
-msgstr ""
+msgstr "Đóng"
 
 #: src/migrator/app/taskpage.cpp:226
 msgid "&Next >"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: layout/main.cpp:31
 msgid "A general keyboard layout viewer"
-msgstr ""
+msgstr "Trình xem bố cục bàn phím chung"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
@@ -151,7 +151,7 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:122
 msgid "Apply configuration changes"
-msgstr ""
+msgstr "Áp dụng thay đổi cấu hình"
 
 #: src/migrator/app/taskpage.cpp:258
 msgid "Asking Fcitx to exit..."
@@ -173,7 +173,7 @@ msgstr ""
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Change Fcitx 5 Configuration"
-msgstr ""
+msgstr "Thay Đổi Cấu Hình Fctix 5"
 
 #: src/lib/configwidgetslib/impage.cpp:305
 msgid "Change Input method to match layout selection."
@@ -203,7 +203,7 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:475 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "Cấu hình"
 
 #: src/migrator/lib/renamefile.cpp:28
 msgid "Converter crashed."
@@ -260,7 +260,7 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:123
 msgid "Do you want to save the changes or discard them?"
-msgstr ""
+msgstr "Bạn có muốn lưu các thay đổi hoặc loại bỏ chúng?"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -303,7 +303,7 @@ msgstr ""
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:2
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Cấu Hình Fcitx 5"
 
 #: src/migrator/app/main.cpp:22
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:2
@@ -324,7 +324,7 @@ msgstr ""
 #: src/configtool/main.cpp:22 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Cấu Hình Fcitx"
 
 #: src/migrator/app/taskpage.cpp:258
 msgid "Fcitx Exited."
@@ -359,7 +359,7 @@ msgstr ""
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:44
 msgid "Global Config"
-msgstr ""
+msgstr "Cấu Hình Chung"
 
 #: src/configtool/mainwindow.cpp:48
 msgid "Global Options"
@@ -403,7 +403,7 @@ msgstr "Cấu hình Kiểu Gõ"
 
 #: layout/main.cpp:35
 msgid "Keyboard <layout>"
-msgstr ""
+msgstr "Bàn phím <layout>"
 
 #: layout/main.cpp:58
 msgid "Keyboard Layout viewer"
@@ -411,11 +411,11 @@ msgstr ""
 
 #: layout/main.cpp:34
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "Bố cục bàn phím <group> (0-3)"
 
 #: layout/main.cpp:36
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "Bố cục bàn phím <variant>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:97
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
@@ -426,7 +426,7 @@ msgstr ""
 
 #: layout/kbd-layout-viewer5.desktop.in:6
 msgid "Keyboard layout viewer"
-msgstr ""
+msgstr "Trình xem bố cục bàn phím"
 
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:37
@@ -583,7 +583,7 @@ msgstr ""
 #: src/configtool/mainwindow.cpp:63
 #: src/lib/configwidgetslib/configwidget.cpp:240
 msgid "Restore &Defaults"
-msgstr ""
+msgstr "Khôi Phục Mặc Định"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:36
@@ -616,7 +616,7 @@ msgstr "Tìm Kiểu Gõ"
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "Chọn Tất Cả"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
@@ -630,11 +630,11 @@ msgstr "Chọn &Font..."
 #: src/lib/configwidgetslib/impage.cpp:350 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
-msgstr ""
+msgstr "Chọn Bố Cục"
 
 #: src/lib/configwidgetslib/impage.cpp:290
 msgid "Select default layout"
-msgstr ""
+msgstr "Chọn bố cục mặc định"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
@@ -648,7 +648,7 @@ msgstr ""
 #: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr ""
+msgstr "Chọn bố cục bàn phím hệ thống"
 
 #: src/migrator/lib/dbuswatcher.cpp:37
 #, kde-format
@@ -763,12 +763,16 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
+"Bạn hiện tại cấu hình kiểu gõ không khớp với bố cục, bạn có muốn thay đổi "
+"cài đặt bố cục không?"
 
 #: src/lib/configwidgetslib/impage.cpp:306
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
+"Kiểu gõ hiện được cấu hình hiện tại của bạn không khớp với bố cục đã chọn "
+"của bạn, bạn có muốn thêm kiểu gõ tương ứng cho bố cục không?"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:662
 #, kde-format

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-01 20:24+0000\n"
+"POT-Creation-Date: 2025-04-22 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgid "..."
 msgstr ""
 
 #: src/kcm/package/contents/ui/ListOption.qml:181
-#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:191
+#: src/kcm/package/contents/ui/AddIMPage.qml:41 src/kcm/ui/ListOption.qml:192
 #: src/kcm/ui/AddIMPage.qml:41
 #, kde-format
 msgid "Add"
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
-#: src/kcm/ui/ListOption.qml:140
+#: src/kcm/ui/ListOption.qml:141
 #, kde-format
 msgid "Edit"
 msgstr ""
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:56
 #, kde-format
 msgid "No"
 msgstr ""
@@ -267,7 +267,7 @@ msgid "Re-Enable"
 msgstr ""
 
 #: src/kcm/package/contents/ui/ListOption.qml:146
-#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:151
+#: src/kcm/package/contents/ui/main.qml:72 src/kcm/ui/ListOption.qml:152
 #: src/kcm/ui/main.qml:80
 #, kde-format
 msgid "Remove"
@@ -377,7 +377,7 @@ msgstr ""
 msgid "Xuetian Weng"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:55
+#: src/kcm/package/contents/ui/ListOption.qml:53 src/kcm/ui/ListOption.qml:56
 #, kde-format
 msgid "Yes"
 msgstr ""
@@ -396,7 +396,7 @@ msgid ""
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
 
-#: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:86
+#: src/kcm/package/contents/ui/ListOption.qml:84 src/kcm/ui/ListOption.qml:87
 #, kde-format
 msgid "[%1]"
 msgstr ""
