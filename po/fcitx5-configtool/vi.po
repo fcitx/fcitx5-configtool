@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-22 20:24+0000\n"
+"POT-Creation-Date: 2025-04-23 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -347,10 +347,14 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"Đã tìm thấy cập nhật để cài đặt fcitx. Bạn có muốn kiểm tra các kiểu gõ và "
+"addon mới được cài đặt không? Để cập nhật các addon đã được tải, fcitx sẽ "
+"cần phải được khởi động lại."
 
 #: src/lib/configwidgetslib/impage.cpp:110
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
+"Đã tìm thấy cập nhật để cài đặt fcitx. Bạn có muốn khởi động lại fcitx?"
 
 #: src/lib/configlib/addonmodel.cpp:26
 msgid "Frontend"

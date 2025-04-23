@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-22 20:24+0000\n"
+"POT-Creation-Date: 2025-04-23 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
@@ -183,6 +183,9 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
+"Đã tìm thấy cập nhật để cài đặt fcitx. Bạn có muốn kiểm tra các kiểu gõ và "
+"addon mới được cài đặt không? Để cập nhật các addon đã được tải, fcitx sẽ "
+"cần phải được khởi động lại."
 
 #: src/plasmathemegenerator/main.cpp:83
 #, kde-format
