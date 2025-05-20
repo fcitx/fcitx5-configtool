@@ -8,10 +8,24 @@
 #define _CONFIGLIB_ADDONMODEL_H_
 
 #include "model.h"
+#include <QByteArray>
+#include <QHash>
+#include <QLatin1String>
+#include <QList>
+#include <QModelIndex>
+#include <QObject>
+#include <QSet>
+#include <QSortFilterProxyModel>
+#include <QString>
+#include <QStringList>
+#include <QVariant>
 #include <QWindow>
+#include <QWindowList>
+#include <Qt>
+#include <fcitxqtdbustypes.h>
+#include <utility>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 enum ExtraRoles {
     CommentRole = 0x19880209,
@@ -48,7 +62,7 @@ public:
             if (!addonCategoryMap.contains(addon.category())) {
                 idx = addonEntryList_.count();
                 addonCategoryMap[addon.category()] = idx;
-                addonEntryList_.append(QPair<int, FcitxQtAddonInfoV2List>(
+                addonEntryList_.append(std::pair<int, FcitxQtAddonInfoV2List>(
                     addon.category(), FcitxQtAddonInfoV2List()));
             } else {
                 idx = addonCategoryMap[addon.category()];
@@ -77,7 +91,7 @@ protected:
 private:
     QSet<QString> enabledList_;
     QSet<QString> disabledList_;
-    QList<QPair<int, FcitxQtAddonInfoV2List>> addonEntryList_;
+    QList<std::pair<int, FcitxQtAddonInfoV2List>> addonEntryList_;
 };
 
 class FlatAddonModel : public QAbstractListModel {
@@ -143,8 +157,8 @@ public:
     void setFilterText(const QString &text);
 
 protected:
-    bool filterAcceptsRow(int source_row,
-                          const QModelIndex &source_parent) const override;
+    bool filterAcceptsRow(int sourceRow,
+                          const QModelIndex &sourceParent) const override;
     bool lessThan(const QModelIndex &left,
                   const QModelIndex &right) const override;
 
@@ -156,7 +170,6 @@ private:
 
 void launchExternalConfig(const QString &uri, WId wid);
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _CONFIGLIB_ADDONMODEL_H_

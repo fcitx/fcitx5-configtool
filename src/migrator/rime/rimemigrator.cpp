@@ -5,12 +5,14 @@
  *
  */
 #include "rimemigrator.h"
+#include "callbackrunner.h"
 #include "copydirectory.h"
 #include "pipeline.h"
 #include <QDir>
 #include <QFileInfo>
+#include <QString>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitx-utils/stringutils.h>
 
 namespace fcitx {
@@ -18,17 +20,17 @@ namespace fcitx {
 namespace {
 
 QString fcitx4Path() {
-    auto path = stringutils::joinPath(
-        StandardPath::global().userDirectory(StandardPath::Type::Config),
-        "fcitx/rime");
-    return QString::fromStdString(path);
+    auto path =
+        StandardPaths::global().userDirectory(StandardPathsType::Config) /
+        "fcitx/rime";
+    return QString::fromStdString(path.string());
 }
 
 QString fcitx5Path() {
-    auto path = stringutils::joinPath(
-        StandardPath::global().userDirectory(StandardPath::Type::PkgData),
-        "rime");
-    return QString::fromStdString(path);
+    auto path =
+        StandardPaths::global().userDirectory(StandardPathsType::PkgData) /
+        "rime";
+    return QString::fromStdString(path.string());
 }
 
 } // namespace
@@ -54,7 +56,7 @@ void RimeMigrator::addOfflineJob(Pipeline *pipeline) {
             return dir.removeRecursively();
         },
         this));
-    auto migratorJob = new CopyDirectory(fcitx4Path(), fcitx5Path(), this);
+    auto *migratorJob = new CopyDirectory(fcitx4Path(), fcitx5Path(), this);
     pipeline->addJob(migratorJob);
 }
 

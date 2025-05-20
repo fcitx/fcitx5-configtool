@@ -32,7 +32,7 @@
 #include <QVBoxLayout>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitxqtkeysequencewidget.h>
 
 namespace fcitx {

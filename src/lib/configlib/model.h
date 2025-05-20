@@ -71,7 +71,7 @@ protected:
     QVariant dataForCategory(const QModelIndex &index, int role) const override;
 
 private:
-    QList<QPair<QString, FcitxQtInputMethodEntryList>> filteredIMEntryList;
+    QList<std::pair<QString, FcitxQtInputMethodEntryList>> filteredIMEntryList;
 };
 
 class IMProxyModel : public QSortFilterProxyModel,

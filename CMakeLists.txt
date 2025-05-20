@@ -82,7 +82,7 @@ if (ENABLE_KCM)
     endif()
 endif()
 
-find_package(Fcitx5Core 5.0.4 REQUIRED)
+find_package(Fcitx5Core 5.1.13 REQUIRED)
 find_package(Fcitx5Config REQUIRED)
 find_package(Fcitx5Utils REQUIRED)
 find_package(Fcitx5Qt${QT_MAJOR_VERSION}DBusAddons 5.1.4 REQUIRED)

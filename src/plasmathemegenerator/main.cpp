@@ -9,21 +9,37 @@
 #include <KLocalizedString>
 #include <Plasma/Theme>
 #include <QBitmap>
+#include <QColor>
+#include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QDir>
+#include <QLatin1String>
+#include <QObject>
 #include <QPainter>
 #include <QSessionManager>
 #include <QSocketNotifier>
+#include <QStringLiteral>
+#include <Qt>
+#include <QtLogging>
+#include <QtNumeric>
+#include <QtTypes>
+#include <QtVersionChecks>
+#include <algorithm>
+#include <cerrno>
 #include <fcitx-config/iniparser.h>
 #include <fcitx-config/rawconfig.h>
 #include <fcitx-utils/color.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/fs.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcntl.h>
 #include <memory>
+#include <string>
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 #include <KSvg/FrameSvg>
+#include <KSvg/ImageSet>
+#include <KSvg/Svg>
 using FrameSvg = KSvg::FrameSvg;
 using Svg = KSvg::Svg;
 #else
@@ -55,8 +71,8 @@ void setMarginsToConfig(fcitx::RawConfig &config, const std::string &name,
 
 template <typename ImageType>
 bool safeSaveImage(const ImageType &image, const QString &path) {
-    return fcitx::StandardPath::global().safeSave(
-        fcitx::StandardPath::Type::Data, path.toLocal8Bit().constData(),
+    return fcitx::StandardPaths::global().safeSave(
+        fcitx::StandardPathsType::Data, path.toLocal8Bit().constData(),
         [&image](int fd) {
             QFile file;
             if (!file.open(fd, QIODevice::WriteOnly)) {
@@ -105,10 +121,11 @@ public:
         if (parser.isSet("output")) {
             outputPath_ = parser.value("output");
         } else {
-            outputPath_ = QString::fromStdString(fcitx::stringutils::joinPath(
-                fcitx::StandardPath::global().userDirectory(
-                    fcitx::StandardPath::Type::PkgData),
-                "themes/plasma"));
+            outputPath_ = QString::fromStdString(
+                (fcitx::StandardPaths::global().userDirectory(
+                     fcitx::StandardPathsType::PkgData) /
+                 "themes/plasma")
+                    .string());
         }
 
         qDebug() << "Will write new themes to: " << outputPath_;
@@ -176,8 +193,8 @@ public:
                                  .boundingRect(QStringLiteral("M"))
                                  .height();
         const int smallSpacing =
-            qMax(2, (gridUnit / 4)); // 1/4 of gridUnit, at least 2
-        const qreal textMargin = smallSpacing / 2.0f;
+            std::max(2, (gridUnit / 4)); // 1/4 of gridUnit, at least 2
+        const qreal textMargin = smallSpacing / 2.0F;
         fcitx::RawConfig config;
         // Write metadata to theme config
         auto &metadata = config["Metadata"];
@@ -211,9 +228,14 @@ public:
         background.fill(Qt::transparent);
 
         {
-            qreal shadowLeft = 0, shadowRight = 0, shadowTop = 0,
-                  shadowBottom = 0;
-            qreal bgLeft = 0, bgRight = 0, bgTop = 0, bgBottom = 0;
+            qreal shadowLeft = 0;
+            qreal shadowRight = 0;
+            qreal shadowTop = 0;
+            qreal shadowBottom = 0;
+            qreal bgLeft = 0;
+            qreal bgRight = 0;
+            qreal bgTop = 0;
+            qreal bgBottom = 0;
             FrameSvg shadowSvg;
             setThemeToSvg(shadowSvg);
             shadowSvg.setImagePath("dialogs/background");
@@ -302,12 +324,15 @@ public:
                                dir.filePath("highlight.png"))) {
                 return false;
             }
-            qreal bgLeft = 0, bgRight = 0, bgTop = 0, bgBottom = 0;
+            qreal bgLeft = 0;
+            qreal bgRight = 0;
+            qreal bgTop = 0;
+            qreal bgBottom = 0;
             highlightSvg.getMargins(bgLeft, bgTop, bgRight, bgBottom);
-            bgLeft = qMax(textMargin, bgLeft);
-            bgTop = qMax(textMargin, bgTop);
-            bgRight = qMax(textMargin, bgRight);
-            bgBottom = qMax(textMargin, bgBottom);
+            bgLeft = std::max(textMargin, bgLeft);
+            bgTop = std::max(textMargin, bgTop);
+            bgRight = std::max(textMargin, bgRight);
+            bgBottom = std::max(textMargin, bgBottom);
 
             inputPanel["Highlight"]["Image"] = "highlight.png";
             menu["Highlight"]["Image"] = "highlight.png";

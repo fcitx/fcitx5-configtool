@@ -6,16 +6,27 @@
  */
 #include "addonmodel.h"
 #include "config.h"
+#include "model.h"
+#include <QAbstractListModel>
 #include <QCollator>
 #include <QDir>
 #include <QFileInfo>
+#include <QHash>
+#include <QLatin1String>
+#include <QMap>
+#include <QObject>
 #include <QProcess>
+#include <QString>
+#include <QStringList>
+#include <QVariant>
+#include <Qt>
+#include <QtVersionChecks>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitx/addoninfo.h>
+#include <functional>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 namespace {
 
 QString categoryName(int category) {
@@ -55,7 +66,6 @@ QVariant AddonModel::dataForItem(const QModelIndex &index, int role) const {
     const auto &addon = addonList[index.row()];
 
     switch (role) {
-
     case Qt::DisplayRole:
         return addon.name();
 
@@ -81,8 +91,10 @@ QVariant AddonModel::dataForItem(const QModelIndex &index, int role) const {
 
     case RowTypeRole:
         return AddonType;
+    default:
+        break;
     }
-    return QVariant();
+    return {};
 }
 
 bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
@@ -101,7 +113,7 @@ bool AddonModel::setData(const QModelIndex &index, const QVariant &value,
 
     bool ret = false;
 
-    auto &item = addonList[index.row()];
+    const auto &item = addonList[index.row()];
     if (role == Qt::CheckStateRole) {
         auto oldData = data(index, role).toBool();
         auto enabled = value.toBool();
@@ -177,13 +189,12 @@ bool FlatAddonModel::setData(const QModelIndex &index, const QVariant &value,
 
 QVariant FlatAddonModel::data(const QModelIndex &index, int role) const {
     if (!index.isValid() || index.row() >= addonEntryList_.size()) {
-        return QVariant();
+        return {};
     }
 
     const auto &addon = addonEntryList_.at(index.row());
 
     switch (role) {
-
     case Qt::DisplayRole:
         return addon.name();
 
@@ -219,8 +230,11 @@ QVariant FlatAddonModel::data(const QModelIndex &index, int role) const {
 
     case RowTypeRole:
         return AddonType;
+
+    default:
+        break;
     }
-    return QVariant();
+    return {};
 }
 
 int FlatAddonModel::rowCount(const QModelIndex &parent) const {
@@ -294,8 +308,9 @@ bool AddonProxyModel::filterAcceptsRow(int sourceRow,
 
 bool AddonProxyModel::filterCategory(const QModelIndex &index) const {
     int childCount = index.model()->rowCount(index);
-    if (childCount == 0)
+    if (childCount == 0) {
         return false;
+    }
 
     for (int i = 0; i < childCount; ++i) {
         if (filterAddon(index.model()->index(i, 0, index))) {
@@ -341,7 +356,8 @@ bool AddonProxyModel::lessThan(const QModelIndex &left,
 
     if (result < 0) {
         return true;
-    } else if (result > 0) {
+    }
+    if (result > 0) {
         return false;
     }
 
@@ -370,9 +386,9 @@ void launchExternalConfig(const QString &uri, WId wid) {
         for (QString &wrapperPath :
              {std::ref(qt6WrapperPath), std::ref(qt5WrapperPath)}) {
             if (!QFileInfo(wrapperPath).isExecutable()) {
-                wrapperPath = QString::fromStdString(stringutils::joinPath(
-                    StandardPath::global().fcitxPath("libexecdir"),
-                    QFileInfo(wrapperPath).fileName().toStdString()));
+                wrapperPath = QString::fromStdString(
+                    StandardPaths::fcitxPath("libexecdir") /
+                    QFileInfo(wrapperPath).fileName().toStdString());
             }
         }
 
@@ -412,5 +428,4 @@ void launchExternalConfig(const QString &uri, WId wid) {
     }
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

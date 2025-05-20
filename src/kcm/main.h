@@ -13,12 +13,17 @@
 #include "imconfig.h"
 #include <QFont>
 #include <QMap>
+#include <QObject>
+#include <QString>
+#include <QtVersionChecks>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>
+#include <memory>
 #include <xkbcommon/xkbcommon.h>
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <KPluginMetaData>
 #include <KQuickConfigModule>
 #define FCITX_USE_NEW_KDECLARATIVE
 #else
@@ -31,9 +36,7 @@
 
 #endif
 
-namespace fcitx {
-
-namespace kcm {
+namespace fcitx::kcm {
 
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 using FcitxKCMBase = KQuickConfigModule;
@@ -112,7 +115,7 @@ public Q_SLOTS:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
     QString eventToString(bool keyCode);
-    QString localizedKeyString(const QString &key);
+    QString localizedKeyString(const QString &str);
 
     void runFcitx();
     void fixLayout();
@@ -135,17 +138,17 @@ private:
     QMap<int, QPointer<QQuickItem>> pages_;
     struct XKBStateDeleter {
         void operator()(struct xkb_state *state) const {
-            return xkb_state_unref(state);
+            xkb_state_unref(state);
         }
     };
     struct XKBKeymapDeleter {
         void operator()(struct xkb_keymap *keymap) const {
-            return xkb_keymap_unref(keymap);
+            xkb_keymap_unref(keymap);
         }
     };
     struct XKBContextDeleter {
         void operator()(struct xkb_context *context) const {
-            return xkb_context_unref(context);
+            xkb_context_unref(context);
         }
     };
     using ScopedXKBState = std::unique_ptr<struct xkb_state, XKBStateDeleter>;
@@ -159,7 +162,6 @@ private:
     Key key_;
 };
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX5_KCM_NG_MAIN_H_

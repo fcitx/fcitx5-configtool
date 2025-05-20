@@ -8,11 +8,19 @@
 #include "dbusprovider.h"
 #include "ui_erroroverlay.h"
 #include <QAbstractButton>
+#include <QEvent>
 #include <QIcon>
-#include <fcitx-utils/standardpath.h>
+#include <QObject>
+#include <QPoint>
+#include <QProcess>
+#include <QString>
+#include <QStringList>
+#include <QWidget>
+#include <QtContainerFwd>
+#include <fcitx-utils/standardpaths.h>
+#include <memory>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 ErrorOverlay::ErrorOverlay(DBusProvider *dbus, QWidget *parent)
     : QWidget(parent), ui_(std::make_unique<Ui::ErrorOverlay>()),
@@ -48,7 +56,8 @@ void ErrorOverlay::availabilityChanged(bool avail) {
 
 void ErrorOverlay::runFcitx5() {
     QProcess::startDetached(
-        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")),
+        QString::fromStdString(
+            StandardPaths::fcitxPath("bindir", "fcitx5").string()),
         QStringList());
 }
 
@@ -87,5 +96,4 @@ bool ErrorOverlay::eventFilter(QObject *object, QEvent *event) {
     return QWidget::eventFilter(object, event);
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

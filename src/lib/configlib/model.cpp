@@ -220,7 +220,7 @@ void AvailIMModel::filterIMEntryList(
             idx = filteredIMEntryList.count();
             languageMap[im.languageCode()] = idx;
             filteredIMEntryList.append(
-                QPair<QString, FcitxQtInputMethodEntryList>(
+                std::pair<QString, FcitxQtInputMethodEntryList>(
                     im.languageCode(), FcitxQtInputMethodEntryList()));
         } else {
             idx = languageMap[im.languageCode()];

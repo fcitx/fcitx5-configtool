@@ -55,7 +55,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
 
 LayoutSelector::~LayoutSelector() {}
 
-QPair<QString, QString>
+std::pair<QString, QString>
 LayoutSelector::selectLayout(QWidget *parent, DBusProvider *dbus,
                              const QString &title, const QString &layout,
                              const QString &variant, bool *ok) {
@@ -105,7 +105,7 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
     preSelectVariant_.clear();
 }
 
-QPair<QString, QString> LayoutSelector::layout() const {
+std::pair<QString, QString> LayoutSelector::layout() const {
     return {ui_->layoutComboBox->currentData().toString(),
             ui_->variantComboBox->currentData().toString()};
 }

@@ -8,21 +8,27 @@
 #include "configmigrator.h"
 #include "pipeline.h"
 #include <QFileInfo>
+#include <QString>
+#include <cstddef>
 #include <fcitx-config/iniparser.h>
+#include <fcitx-config/rawconfig.h>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/key.h>
+#include <fcitx-utils/standardpaths.h>
 #include <fcitx-utils/stringutils.h>
-#include <fcntl.h>
+#include <string>
+#include <utility>
+#include <vector>
 
 namespace fcitx {
 
 namespace {
 
 QString fcitx4Path() {
-    auto path = stringutils::joinPath(
-        StandardPath::global().userDirectory(StandardPath::Type::Config),
-        "fcitx/config");
-    return QString::fromStdString(path);
+    auto path =
+        StandardPaths::global().userDirectory(StandardPathsType::Config) /
+        "fcitx/config";
+    return QString::fromStdString(path.string());
 }
 
 bool setKeyListToConfig(RawConfig &config, const std::string &path,
@@ -57,11 +63,12 @@ GlobalConfigMigrator *GlobalConfigMigratorPlugin::create() {
 }
 
 void GlobalConfigMigrator::addOnlineJob(Pipeline *pipeline) {
-    auto portRuleJob = new ConfigMigrator(
+    auto *portRuleJob = new ConfigMigrator(
         "fcitx://config/global",
         [](RawConfig &config) {
-            auto configFile = StandardPath::global().openUser(
-                StandardPath::Type::Config, "fcitx/config", O_RDONLY);
+            auto configFile = StandardPaths::global().open(
+                StandardPathsType::Config, "fcitx/config",
+                StandardPathsMode::User);
             if (configFile.isValid()) {
                 bool changed = false;
                 RawConfig fcitx4Config;
@@ -72,7 +79,7 @@ void GlobalConfigMigrator::addOnlineJob(Pipeline *pipeline) {
                     {"Hotkey/ActivateKey", "Hotkey/ActivateKeys"},
                     {"Hotkey/InactivateKey", "Hotkey/DeactivateKeys"}};
                 for (const auto &[oldKey, newKey] : keyPairs) {
-                    if (auto *value = fcitx4Config.valueByPath(oldKey)) {
+                    if (const auto *value = fcitx4Config.valueByPath(oldKey)) {
                         changed = setKeyListToConfig(
                                       config, newKey,
                                       Key::keyListFromString(*value)) ||

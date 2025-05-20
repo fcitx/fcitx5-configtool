@@ -6,6 +6,8 @@
 #ifndef _FCITX_ERROROVERLAY_H_
 #define _FCITX_ERROROVERLAY_H_
 
+#include <QEvent>
+#include <QObject>
 #include <QPointer>
 #include <QWidget>
 #include <memory>
@@ -14,8 +16,7 @@ namespace Ui {
 class ErrorOverlay;
 }
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class DBusProvider;
 
@@ -25,7 +26,7 @@ public:
     explicit ErrorOverlay(DBusProvider *dbus, QWidget *parent);
     ~ErrorOverlay();
 
-    bool eventFilter(QObject *watched, QEvent *event) override;
+    bool eventFilter(QObject *object, QEvent *event) override;
 private Q_SLOTS:
     void availabilityChanged(bool avail);
     void runFcitx5();
@@ -38,7 +39,6 @@ private:
     bool enabled_ = false;
 };
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _FCITX_ERROROVERLAY_H_

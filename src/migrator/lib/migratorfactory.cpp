@@ -6,15 +6,25 @@
  */
 
 #include "migratorfactory.h"
+#include "migrator.h"
 #include "migratorfactory_p.h"
 #include "migratorfactoryplugin.h"
 #include <QDir>
 #include <QFileInfo>
+#include <QLatin1String>
+#include <QLibrary>
+#include <QObject>
 #include <QPluginLoader>
 #include <QSet>
+#include <QString>
 #include <QVariant>
 #include <QVector>
-#include <fcitx-utils/standardpath.h>
+#include <QtClassHelperMacros>
+#include <QtVersionChecks>
+#include <fcitx-utils/standardpaths.h>
+#include <filesystem>
+#include <memory>
+#include <vector>
 
 namespace fcitx {
 
@@ -32,48 +42,37 @@ void MigratorFactoryPrivate::scan() {
         }
         auto pluginMetadata = metadata.value("MetaData").toObject();
         auto addon = metadata.value("addon").toVariant().toString();
-        if (auto plugin = qobject_cast<FcitxMigratorFactoryPlugin *>(
+        if (auto *plugin = qobject_cast<FcitxMigratorFactoryPlugin *>(
                 staticPlugin.instance())) {
             plugins_.emplace_back(plugin, addon);
         }
     }
 
-    StandardPath::global().scanFiles(
-        StandardPath::Type::Addon, "qt" QT_STRINGIFY(QT_VERSION_MAJOR),
-        [this](const std::string &path, const std::string &dirPath, bool user) {
-            do {
-                if (user) {
-                    break;
-                }
+    auto libraries = StandardPaths::global().locate(
+        StandardPathsType::Addon, "qt" QT_STRINGIFY(QT_VERSION_MAJOR),
+        [](const std::filesystem::path &path) {
+            QString filePath(QString::fromStdString(path.string()));
+            return QLibrary::isLibrary(filePath);
+        },
+        StandardPathsMode::System);
 
-                QDir dir(QString::fromLocal8Bit(dirPath.c_str()));
-                QFileInfo fi(
-                    dir.filePath(QString::fromLocal8Bit(path.c_str())));
-
-                QString filePath = fi.filePath(); // file name with path
-                QString fileName = fi.fileName(); // just file name
-
-                if (!QLibrary::isLibrary(filePath)) {
-                    break;
-                }
-
-                QPluginLoader *loader = new QPluginLoader(filePath, this);
-                if (loader->metaData().value("IID") !=
-                    QLatin1String(FcitxMigratorFactoryInterface_iid)) {
-                    delete loader;
-                    continue;
-                }
-                auto metadata = loader->metaData().value("MetaData").toObject();
-                auto addon = metadata.value("addon").toVariant().toString();
-                if (auto plugin = qobject_cast<FcitxMigratorFactoryPlugin *>(
-                        loader->instance())) {
-                    plugins_.emplace_back(plugin, addon);
-                } else {
-                    delete loader;
-                }
-            } while (0);
-            return true;
-        });
+    for (const auto &[_, filePath] : libraries) {
+        auto *loader =
+            new QPluginLoader(QString::fromStdString(filePath.string()), this);
+        if (loader->metaData().value("IID") !=
+            QLatin1String(FcitxMigratorFactoryInterface_iid)) {
+            delete loader;
+            continue;
+        }
+        auto metadata = loader->metaData().value("MetaData").toObject();
+        auto addon = metadata.value("addon").toVariant().toString();
+        if (auto *plugin = qobject_cast<FcitxMigratorFactoryPlugin *>(
+                loader->instance())) {
+            plugins_.emplace_back(plugin, addon);
+        } else {
+            delete loader;
+        }
+    }
 }
 
 MigratorFactory::MigratorFactory(QObject *parent)
@@ -90,7 +89,7 @@ MigratorFactory::list(const QSet<QString> &addons) const {
     std::vector<std::unique_ptr<Migrator>> result;
     for (const auto &[plugin, addon] : d->plugins_) {
         if (addon.isEmpty() || addons.contains(addon)) {
-            if (auto migrator = plugin->create()) {
+            if (auto *migrator = plugin->create()) {
                 result.emplace_back(migrator);
             }
         }

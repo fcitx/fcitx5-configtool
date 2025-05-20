@@ -8,19 +8,36 @@
 #include "addonmodel.h"
 #include "config.h"
 #include "dbusprovider.h"
+#include "imconfig.h"
+#include "layoutprovider.h"
 #include <KAboutData>
 #include <KLocalizedString>
 #include <KPluginFactory>
+#include <QDBusArgument>
+#include <QDBusPendingReply>
+#include <QDBusVariant>
 #include <QFileInfo>
 #include <QGuiApplication>
+#include <QKeyEvent>
+#include <QMap>
+#include <QObject>
+#include <QProcess>
+#include <QQmlTypeNotAvailable>
 #include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickWindow>
 #include <QString>
+#include <QStringLiteral>
 #include <QVariantMap>
+#include <QWindowList>
+#include <Qt>
+#include <QtContainerFwd>
 #include <QtGlobal>
+#include <QtVersionChecks>
+#include <fcitx-utils/key.h>
 #include <fcitx-utils/misc.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
+#include <fcitxqtdbustypes.h>
 
 namespace fcitx::kcm {
 
@@ -227,7 +244,7 @@ void FcitxModule::pushConfigPage(const QString &title, const QString &uri) {
         return;
     }
     auto call = dbus_->controller()->GetConfig(uri);
-    auto watcher = new QDBusPendingCallWatcher(call, this);
+    auto *watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [this, uri, title](QDBusPendingCallWatcher *watcher) {
                 watcher->deleteLater();
@@ -283,7 +300,7 @@ void FcitxModule::loadAddon() {
         return;
     }
     auto call = dbus_->controller()->GetAddonsV2();
-    auto callwatcher = new QDBusPendingCallWatcher(call, this);
+    auto *callwatcher = new QDBusPendingCallWatcher(call, this);
     connect(callwatcher, &QDBusPendingCallWatcher::finished, this,
             [this](QDBusPendingCallWatcher *watcher) {
                 QDBusPendingReply<FcitxQtAddonInfoV2List> addons = *watcher;
@@ -300,13 +317,13 @@ void FcitxModule::saveAddon() {
         return;
     }
     FcitxQtAddonStateList list;
-    for (auto &enabled : addonModel_->enabledList()) {
+    for (const auto &enabled : addonModel_->enabledList()) {
         FcitxQtAddonState state;
         state.setUniqueName(enabled);
         state.setEnabled(true);
         list.append(state);
     }
-    for (auto &disabled : addonModel_->disabledList()) {
+    for (const auto &disabled : addonModel_->disabledList()) {
         FcitxQtAddonState state;
         state.setUniqueName(disabled);
         state.setEnabled(false);
@@ -321,10 +338,10 @@ void FcitxModule::saveAddon() {
 void FcitxModule::launchExternal(const QString &uri) {
     WId wid = 0;
     if (QGuiApplication::platformName() == "xcb") {
-        auto window = mainUi()->window();
+        auto *window = mainUi()->window();
         QWindow *actualWindow = window;
         if (window) {
-            auto renderWindow = QQuickRenderControl::renderWindowFor(window);
+            auto *renderWindow = QQuickRenderControl::renderWindowFor(window);
             if (renderWindow) {
                 actualWindow = renderWindow;
             }
@@ -351,7 +368,7 @@ bool FcitxModule::eventFilter(QObject *, QEvent *event) {
     if (event->type() == QEvent::KeyPress ||
         event->type() == QEvent::KeyRelease ||
         event->type() == QEvent::ShortcutOverride) {
-        auto keyEvent = static_cast<QKeyEvent *>(event);
+        auto *keyEvent = static_cast<QKeyEvent *>(event);
         key_ = Key(static_cast<KeySym>(keyEvent->nativeVirtualKey()),
                    KeyStates(keyEvent->nativeModifiers()),
                    keyEvent->nativeScanCode());
@@ -411,7 +428,7 @@ void FcitxModule::defaults() {
 
 void FcitxModule::runFcitx() {
     QProcess::startDetached(
-        QString::fromStdString(StandardPath::fcitxPath("bindir", "fcitx5")),
+        QString::fromStdString(StandardPaths::fcitxPath("bindir", "fcitx5")),
         QStringList());
 }
 

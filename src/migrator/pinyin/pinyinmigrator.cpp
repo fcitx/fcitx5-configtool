@@ -8,8 +8,9 @@
 #include "pipeline.h"
 #include "processrunner.h"
 #include <QFileInfo>
+#include <QString>
 #include <fcitx-utils/i18n.h>
-#include <fcitx-utils/standardpath.h>
+#include <fcitx-utils/standardpaths.h>
 
 namespace fcitx {
 
@@ -20,17 +21,17 @@ QString PinyinMigrator::description() const {
 }
 
 bool PinyinMigrator::check() const {
-    auto path = stringutils::joinPath(
-        StandardPath::global().userDirectory(StandardPath::Type::Config),
-        "fcitx/pinyin");
-    QFileInfo file(QString::fromStdString(path));
+    auto path =
+        StandardPaths::global().userDirectory(StandardPathsType::Config) /
+        "fcitx/pinyin";
+    QFileInfo file(QString::fromStdString(path.string()));
     return file.isDir();
 }
 
 PinyinMigrator *PinyinMigratorPlugin::create() { return new PinyinMigrator(); }
 
 void PinyinMigrator::addOfflineJob(Pipeline *pipeline) {
-    auto migratorJob =
+    auto *migratorJob =
         new ProcessRunner("libime_migrate_fcitx4_pinyin", {}, {});
     migratorJob->setStartMessage(_("Migrating Pinyin data..."));
     migratorJob->setFinishMessage(_("Pinyin data is migrated."));

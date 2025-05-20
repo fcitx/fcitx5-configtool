@@ -37,12 +37,12 @@ public:
     ~LayoutSelector();
     void setLayout(const QString &layout, const QString &variant);
 
-    static QPair<QString, QString>
+    static std::pair<QString, QString>
     selectLayout(QWidget *parent, DBusProvider *dbus, const QString &title,
                  const QString &layout, const QString &variant,
                  bool *ok = nullptr);
 
-    QPair<QString, QString> layout() const;
+    std::pair<QString, QString> layout() const;
 
 private Q_SLOTS:
     void languageComboBoxChanged();
