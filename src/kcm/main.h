@@ -15,7 +15,6 @@
 #include <QMap>
 #include <QObject>
 #include <QString>
-#include <QtVersionChecks>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>

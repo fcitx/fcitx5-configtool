@@ -33,7 +33,6 @@
 #include <Qt>
 #include <QtContainerFwd>
 #include <QtGlobal>
-#include <QtVersionChecks>
 #include <fcitx-utils/key.h>
 #include <fcitx-utils/misc.h>
 #include <fcitx-utils/standardpaths.h>

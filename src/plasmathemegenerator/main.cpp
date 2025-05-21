@@ -24,7 +24,6 @@
 #include <QtLogging>
 #include <QtNumeric>
 #include <QtTypes>
-#include <QtVersionChecks>
 #include <algorithm>
 #include <cerrno>
 #include <fcitx-config/iniparser.h>

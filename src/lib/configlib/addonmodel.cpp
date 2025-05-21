@@ -20,7 +20,6 @@
 #include <QStringList>
 #include <QVariant>
 #include <Qt>
-#include <QtVersionChecks>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/standardpaths.h>
 #include <fcitx/addoninfo.h>

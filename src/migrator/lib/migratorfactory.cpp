@@ -19,8 +19,6 @@
 #include <QString>
 #include <QVariant>
 #include <QVector>
-#include <QtClassHelperMacros>
-#include <QtVersionChecks>
 #include <fcitx-utils/standardpaths.h>
 #include <filesystem>
 #include <memory>

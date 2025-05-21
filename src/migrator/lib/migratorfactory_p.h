@@ -12,7 +12,6 @@
 #include <QMap>
 #include <QObject>
 #include <QString>
-#include <QtClassHelperMacros>
 #include <utility>
 #include <vector>
 
