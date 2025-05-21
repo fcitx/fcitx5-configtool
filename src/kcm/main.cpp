@@ -22,7 +22,6 @@
 #include <QMap>
 #include <QObject>
 #include <QProcess>
-#include <QQmlTypeNotAvailable>
 #include <QQuickItem>
 #include <QQuickRenderControl>
 #include <QQuickWindow>
