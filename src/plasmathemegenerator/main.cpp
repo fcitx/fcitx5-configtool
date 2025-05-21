@@ -21,7 +21,6 @@
 #include <QSocketNotifier>
 #include <QStringLiteral>
 #include <Qt>
-#include <QtLogging>
 #include <QtNumeric>
 #include <QtTypes>
 #include <algorithm>
