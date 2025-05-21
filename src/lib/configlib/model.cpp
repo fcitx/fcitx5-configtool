@@ -443,7 +443,6 @@ void FilteredIMModel::filterIMEntryList(
     // 1. "enabledIMs" is usually very small.
     // 2. CurrentIM mode need to keep order by enabledIMs.
     if (mode_ == CurrentIM) {
-        int row = 0;
         QMap<QString, const FcitxQtInputMethodEntry *> nameMap;
         for (auto &imEntry : imEntryList) {
             nameMap.insert(imEntry.uniqueName(), &imEntry);
@@ -452,7 +451,6 @@ void FilteredIMModel::filterIMEntryList(
         for (const auto &im : enabledIMList) {
             if (auto value = nameMap.value(im.key(), nullptr)) {
                 filteredIMEntryList_.append(*value);
-                row++;
             }
         }
     } else if (mode_ == AvailIM) {

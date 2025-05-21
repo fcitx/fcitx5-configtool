@@ -22,7 +22,6 @@
 #include <QStringLiteral>
 #include <Qt>
 #include <QtNumeric>
-#include <QtTypes>
 #include <algorithm>
 #include <cerrno>
 #include <fcitx-config/iniparser.h>
