@@ -49,10 +49,6 @@ int main(int argc, char *argv[]) {
         variant = parser.value("variant");
     }
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-
     QMainWindow mainWindow;
     mainWindow.setWindowIcon(QIcon::fromTheme("input-keyboard"));
     mainWindow.setWindowTitle(_("Keyboard Layout viewer"));

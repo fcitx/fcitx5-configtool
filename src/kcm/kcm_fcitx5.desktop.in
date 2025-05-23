@@ -1,8 +1,0 @@
-[Desktop Entry]
-Icon=fcitx
-Type=Application
-X-KDE-AliasFor=systemsettings
-Exec=systemsettings kcm_fcitx5
-NoDisplay=True
-Name=Input Method
-Comment=Configure Input Method

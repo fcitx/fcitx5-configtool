@@ -6,13 +6,8 @@ target_link_libraries(fcitx5-plasma-theme-generator
     Fcitx5::Utils
     Fcitx5::Config)
 
-if (QT_MAJOR_VERSION STREQUAL 5)
-target_link_libraries(fcitx5-plasma-theme-generator
-    KF${QT_MAJOR_VERSION}::Plasma)
-elseif (QT_MAJOR_VERSION STREQUAL 6)
 target_link_libraries(fcitx5-plasma-theme-generator
     Plasma::Plasma
     KF${QT_MAJOR_VERSION}::Svg)
-endif()
 
 install(TARGETS fcitx5-plasma-theme-generator DESTINATION ${CMAKE_INSTALL_BINDIR})

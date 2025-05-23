@@ -103,13 +103,8 @@ static QString languageName(const QString &langCode) {
             return langCode;
         }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         const bool hasTerritory = (langCode.indexOf("_") != -1 &&
                                    locale.territory() != QLocale::AnyTerritory);
-#else
-        const bool hasTerritory = langCode.indexOf("_") != -1 &&
-                                  locale.country() != QLocale::AnyCountry;
-#endif
         QString languageName;
         if (hasTerritory) {
             languageName = locale.nativeLanguageName();
@@ -126,21 +121,12 @@ static QString languageName(const QString &langCode) {
         // QLocale will always assign a default country for us, check if our
         // lang code
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         if (hasTerritory) {
             territoryName = locale.nativeTerritoryName();
             if (territoryName.isEmpty()) {
                 territoryName = QLocale::territoryToString(locale.territory());
             }
         }
-#else
-        if (hasTerritory) {
-            territoryName = locale.nativeCountryName();
-            if (territoryName.isEmpty()) {
-                territoryName = QLocale::countryToString(locale.country());
-            }
-        }
-#endif
 
         if (territoryName.isEmpty()) {
             return languageName;

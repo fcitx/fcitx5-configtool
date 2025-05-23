@@ -417,13 +417,9 @@ void launchExternalConfig(const QString &uri, WId wid) {
         QProcess::startDetached(wrapperToUse, args);
     } else {
         // Assume this is a program path.
-#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
         QStringList args = QProcess::splitCommand(uri);
         QString program = args.takeFirst();
         QProcess::startDetached(program, args);
-#else
-        QProcess::startDetached(uri);
-#endif
     }
 }
 

@@ -36,6 +36,7 @@
 #include <fcitx-utils/misc.h>
 #include <fcitx-utils/standardpaths.h>
 #include <fcitxqtdbustypes.h>
+#include <kquickconfigmodule.h>
 
 namespace fcitx::kcm {
 
@@ -66,44 +67,16 @@ QString maybeExtractExternalCommand(const QVariantMap &typeMap,
 }
 } // namespace
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
 FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData)
-    : FcitxKCMBase(parent, metaData),
-#elif defined(FCITX_USE_NEW_KDECLARATIVE)
-FcitxModule::FcitxModule(QObject *parent, const KPluginMetaData &metaData,
-                         const QVariantList &args)
-    : FcitxKCMBase(parent, metaData, args),
-#else
-FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
-    : FcitxKCMBase(parent, args),
-#endif
-      dbus_(new DBusProvider(this)),
+    : KQuickConfigModule(parent, metaData), dbus_(new DBusProvider(this)),
       imConfig_(new IMConfig(dbus_, IMConfig::Flatten, this)),
       layoutProvider_(new LayoutProvider(dbus_, this)),
       addonModel_(new FlatAddonModel(this)),
       addonProxyModel_(new AddonProxyModel(this)) {
-#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
-    qmlRegisterType<FilteredIMModel>();
-    qmlRegisterType<IMProxyModel>();
-    qmlRegisterType<LanguageModel>();
-#else
     qmlRegisterAnonymousType<FilteredIMModel>("", 1);
     qmlRegisterAnonymousType<IMProxyModel>("", 1);
     qmlRegisterAnonymousType<LanguageModel>("", 1);
-#endif
 
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0) &&                                  \
-    !defined(FCITX_USE_NEW_KDECLARATIVE)
-    KAboutData *about =
-        new KAboutData("kcm_fcitx5", i18n("Fcitx 5"), PROJECT_VERSION,
-                       i18n("Configure Fcitx 5"), KAboutLicense::GPL_V2,
-                       i18n("Copyright 2017 Xuetian Weng"), QString(),
-                       QString(), "wengxt@gmail.com");
-
-    about->addAuthor(i18n("Xuetian Weng"), i18n("Author"), "wengxt@gmail.com");
-
-    setAboutData(about);
-#endif
     addonProxyModel_->setSourceModel(addonModel_);
     addonProxyModel_->sort(0);
 
@@ -127,13 +100,14 @@ FcitxModule::FcitxModule(QObject *parent, const QVariantList &args)
                                                XKB_KEYMAP_COMPILE_NO_FLAGS));
     xkbState_.reset(xkb_state_new(xkbKeymap_.get()));
 
-    connect(this, &FcitxKCMBase::pagePushed, this, [this](QQuickItem *page) {
-        pages_[currentIndex() + 1] = page;
-        if (page->property("needsSave").isValid()) {
-            connect(page, SIGNAL(needsSaveChanged()), this,
-                    SLOT(pageNeedsSaveChanged()));
-        }
-    });
+    connect(this, &KQuickConfigModule::pagePushed, this,
+            [this](QQuickItem *page) {
+                pages_[currentIndex() + 1] = page;
+                if (page->property("needsSave").isValid()) {
+                    connect(page, SIGNAL(needsSaveChanged()), this,
+                            SLOT(pageNeedsSaveChanged()));
+                }
+            });
 }
 
 FcitxModule::~FcitxModule() {}

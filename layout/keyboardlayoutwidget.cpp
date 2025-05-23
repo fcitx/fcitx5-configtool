@@ -12,9 +12,6 @@
 #include <QPainter>
 #include <QPainterPath>
 #include <QVector2D>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <QX11Info>
-#endif
 #include <qmath.h>
 
 #include <fcitx-utils/key.h>
@@ -47,12 +44,6 @@ namespace fcitx {
 namespace kcm {
 
 namespace {
-
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-bool isPlatformX11() { return QX11Info::isPlatformX11(); }
-
-auto *getXDisplay() { return QX11Info::display(); }
-#else
 bool isPlatformX11() {
     return qGuiApp->nativeInterface<QNativeInterface::QX11Application>();
 }
@@ -61,7 +52,6 @@ auto *getXDisplay() {
     return qGuiApp->nativeInterface<QNativeInterface::QX11Application>()
         ->display();
 }
-#endif
 
 } // namespace
 

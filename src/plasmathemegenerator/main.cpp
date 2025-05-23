@@ -7,6 +7,9 @@
 #include "config.h"
 #include <KIconLoader>
 #include <KLocalizedString>
+#include <KSvg/FrameSvg>
+#include <KSvg/ImageSet>
+#include <KSvg/Svg>
 #include <Plasma/Theme>
 #include <QBitmap>
 #include <QColor>
@@ -32,18 +35,8 @@
 #include <fcntl.h>
 #include <memory>
 #include <string>
-
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
-#include <KSvg/FrameSvg>
-#include <KSvg/ImageSet>
-#include <KSvg/Svg>
 using FrameSvg = KSvg::FrameSvg;
 using Svg = KSvg::Svg;
-#else
-#include <Plasma/FrameSvg>
-using FrameSvg = Plasma::FrameSvg;
-using Svg = Plasma::Svg;
-#endif
 
 namespace {
 bool fd_is_valid(int fd) { return fcntl(fd, F_GETFD) != -1 || errno != EBADF; }
@@ -133,7 +126,6 @@ public:
             theme_ = std::make_unique<Plasma::Theme>();
         }
 
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         if (parser.isSet("theme") && !monitorMode()) {
             imageSet_ = std::make_unique<KSvg::ImageSet>(theme_->themeName());
         } else {
@@ -142,7 +134,6 @@ public:
             // theme's global change like composite.
             imageSet_ = std::make_unique<KSvg::ImageSet>();
         }
-#endif
 
         if (monitorMode()) {
             socketNotifier_ =
@@ -155,13 +146,11 @@ public:
                         }
                     });
             connect(theme_.get(), &Plasma::Theme::themeChanged, this, [this]() {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
                 auto selectors = imageSet_->selectors();
                 // Force invalidate the cache to workaround a bug in ksvg.
                 // FIXME: remove this once fix is merged.
                 imageSet_->setSelectors({"bad"});
                 imageSet_->setSelectors(selectors);
-#endif
                 if (!generateTheme()) {
                     qDebug() << "Failed to generate theme.";
                 }
@@ -411,21 +400,14 @@ public:
 
     template <typename T>
     void setThemeToSvg(T &svg) {
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
         svg.setImageSet(imageSet_.get());
-#else
-        svg.setTheme(theme_.get());
-#endif
     }
 
 private:
     QSocketNotifier *socketNotifier_ = nullptr;
     int fd_ = -1;
     std::unique_ptr<Plasma::Theme> theme_;
-#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
     std::unique_ptr<KSvg::ImageSet> imageSet_;
-#else
-#endif
     QString outputPath_;
 };
 
