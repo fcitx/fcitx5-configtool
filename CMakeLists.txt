@@ -13,7 +13,7 @@ endif()
 
 project(fcitx5-configtool VERSION 5.1.9)
 
-set(QT_MIN_VERSION "6.5.0")
+set(QT_MIN_VERSION "6.4.0")
 set(QT_MAJOR_VERSION 6)
 
 find_package(ECM 5.68.0 REQUIRED)
