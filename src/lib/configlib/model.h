@@ -6,12 +6,19 @@
 #ifndef _KCM_FCITX_MODEL_H_
 #define _KCM_FCITX_MODEL_H_
 
+#include "iso639.h"
+#include <QAbstractItemModel>
+#include <QHash>
+#include <QList>
+#include <QObject>
 #include <QSet>
 #include <QSortFilterProxyModel>
+#include <QVariant>
+#include <Qt>
 #include <fcitxqtdbustypes.h>
+#include <utility>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 enum {
     FcitxRowTypeRole = 0x324da8fc,
@@ -31,6 +38,19 @@ public:
     virtual void
     filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
                       const FcitxQtStringKeyValueList &enabledIMs) = 0;
+
+protected:
+    struct LanguageNames {
+        // Language names in own locale
+        QString nativeName;
+        // Language names in system locale
+        QString localName;
+    };
+
+    const LanguageNames &languageNames(const QString &langCode) const;
+
+    mutable QHash<QString, LanguageNames> languageNames_;
+    Iso639 iso639_;
 };
 
 class CategorizedItemModel : public QAbstractItemModel {
@@ -60,7 +80,7 @@ public:
     AvailIMModel(QObject *parent = 0);
     void
     filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
-                      const FcitxQtStringKeyValueList &enabledIMs) override;
+                      const FcitxQtStringKeyValueList &enabledIMList) override;
 
 protected:
     int listSize() const override { return filteredIMEntryList.size(); }
@@ -95,7 +115,7 @@ public:
     const QString &filterText() const { return filterText_; }
     void setFilterText(const QString &text);
     bool showOnlyCurrentLanguage() const { return showOnlyCurrentLanguage_; }
-    void setShowOnlyCurrentLanguage(bool checked);
+    void setShowOnlyCurrentLanguage(bool show);
 
     void
     filterIMEntryList(const FcitxQtInputMethodEntryList &imEntryList,
@@ -153,8 +173,6 @@ private:
     FcitxQtStringKeyValueList enabledIMList_;
 };
 
-} // namespace kcm
-
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX_MODEL_H_

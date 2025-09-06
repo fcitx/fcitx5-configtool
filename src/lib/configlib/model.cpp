@@ -5,12 +5,66 @@
  */
 
 #include "model.h"
+#include <QAbstractItemModel>
 #include <QCollator>
+#include <QHash>
 #include <QLocale>
+#include <QObject>
+#include <QSet>
+#include <QSortFilterProxyModel>
+#include <QString>
+#include <QStringLiteral>
+#include <Qt>
+#include <QtTypes>
+#include <algorithm>
 #include <fcitx-utils/i18n.h>
+#include <fcitxqtdbustypes.h>
+#include <utility>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
+
+const IMConfigModelInterface::LanguageNames &
+IMConfigModelInterface::languageNames(const QString &langCode) const {
+    auto iter = languageNames_.find(langCode);
+    if (iter == languageNames_.end()) {
+        LanguageNames names;
+        if (langCode.isEmpty()) {
+            names.nativeName = names.localName = _("Unknown");
+        } else if (langCode == "*" || langCode == "mul") {
+            names.nativeName = names.localName = _("Multilingual");
+        } else {
+            QString lang = langCode;
+            // The lang before _.
+            QString territory;
+            if (auto items = langCode.split('_'); !items.isEmpty()) {
+                if (!items.first().isEmpty()) {
+                    lang = items.first();
+                }
+                if (items.size() > 1) {
+                    QLocale locale(langCode);
+                    if (locale.territory() != QLocale::AnyTerritory) {
+                        territory =
+                            QLocale::territoryToString(locale.territory());
+                    }
+                    if (!territory.isEmpty()) {
+                        territory =
+                            D_("iso_3166", territory.toUtf8().constData());
+                    }
+                }
+            }
+            names.nativeName = iso639_.queryNative(lang);
+            names.localName = iso639_.query(lang);
+            if (!territory.isEmpty()) {
+                names.localName =
+                    QString(C_("%1 is language name, %2 is country name",
+                               "%1 (%2)"))
+                        .arg(names.localName, territory);
+            }
+        }
+        iter = languageNames_.insert(langCode, std::move(names));
+    }
+    return iter.value();
+}
 
 CategorizedItemModel::CategorizedItemModel(QObject *parent)
     : QAbstractItemModel(parent) {}
@@ -31,7 +85,9 @@ int CategorizedItemModel::rowCount(const QModelIndex &parent) const {
     return subListSize(parent.row());
 }
 
-int CategorizedItemModel::columnCount(const QModelIndex &) const { return 1; }
+int CategorizedItemModel::columnCount(const QModelIndex & /*parent*/) const {
+    return 1;
+}
 
 QModelIndex CategorizedItemModel::parent(const QModelIndex &child) const {
     if (!child.isValid()) {
@@ -52,9 +108,8 @@ QModelIndex CategorizedItemModel::index(int row, int column,
     if (!parent.isValid()) {
         if (column > 0 || row >= listSize()) {
             return QModelIndex();
-        } else {
-            return createIndex(row, column, static_cast<quintptr>(0));
         }
+        return createIndex(row, column, static_cast<quintptr>(0));
     }
 
     // return im index
@@ -90,54 +145,6 @@ QVariant CategorizedItemModel::data(const QModelIndex &index, int role) const {
     return dataForItem(index, role);
 }
 
-static QString languageName(const QString &langCode) {
-    if (langCode.isEmpty()) {
-        return _("Unknown");
-    } else if (langCode == "*")
-        return _("Multilingual");
-    else {
-        QLocale locale(langCode);
-        if (locale.language() == QLocale::C) {
-            // return lang code seems to be a better solution other than
-            // indistinguishable "unknown"
-            return langCode;
-        }
-
-        const bool hasTerritory = (langCode.indexOf("_") != -1 &&
-                                   locale.territory() != QLocale::AnyTerritory);
-        QString languageName;
-        if (hasTerritory) {
-            languageName = locale.nativeLanguageName();
-        }
-        if (languageName.isEmpty()) {
-            languageName =
-                D_("iso_639",
-                   QLocale::languageToString(locale.language()).toUtf8());
-        }
-        if (languageName.isEmpty()) {
-            languageName = _("Other");
-        }
-        QString territoryName;
-        // QLocale will always assign a default country for us, check if our
-        // lang code
-
-        if (hasTerritory) {
-            territoryName = locale.nativeTerritoryName();
-            if (territoryName.isEmpty()) {
-                territoryName = QLocale::territoryToString(locale.territory());
-            }
-        }
-
-        if (territoryName.isEmpty()) {
-            return languageName;
-        } else {
-            return QString(
-                       C_("%1 is language name, %2 is country name", "%1 (%2)"))
-                .arg(languageName, territoryName);
-        }
-    }
-}
-
 AvailIMModel::AvailIMModel(QObject *parent) : CategorizedItemModel(parent) {}
 
 QVariant AvailIMModel::dataForCategory(const QModelIndex &index,
@@ -145,7 +152,7 @@ QVariant AvailIMModel::dataForCategory(const QModelIndex &index,
     switch (role) {
 
     case Qt::DisplayRole:
-        return languageName(filteredIMEntryList[index.row()].first);
+        return languageNames(filteredIMEntryList[index.row()].first).localName;
 
     case FcitxLanguageRole:
         return filteredIMEntryList[index.row()].first;
@@ -180,8 +187,11 @@ QVariant AvailIMModel::dataForItem(const QModelIndex &index, int role) const {
 
     case FcitxLanguageRole:
         return imEntry.languageCode();
+
+    default:
+        break;
     }
-    return QVariant();
+    return {};
 }
 
 void AvailIMModel::filterIMEntryList(
@@ -292,24 +302,33 @@ bool IMProxyModel::filterIM(const QModelIndex &index) const {
         return true;
     }
 
-    bool flag = true;
-    QString lang = langCode.left(2);
-    bool showOnlyCurrentLanguage =
-        filterText_.isEmpty() && showOnlyCurrentLanguage_;
-
-    flag =
-        flag && (showOnlyCurrentLanguage
-                     ? !lang.isEmpty() && (QLocale().name().startsWith(lang) ||
-                                           languageSet_.contains(lang))
-                     : true);
-    if (!filterText_.isEmpty()) {
-        flag = flag && (name.contains(filterText_, Qt::CaseInsensitive) ||
-                        uniqueName.contains(filterText_, Qt::CaseInsensitive) ||
-                        langCode.contains(filterText_, Qt::CaseInsensitive) ||
-                        languageName(langCode).contains(filterText_,
-                                                        Qt::CaseInsensitive));
+    QString lang = langCode;
+    // The lang before _.
+    if (auto items = langCode.split('_');
+        !items.isEmpty() && !items[0].isEmpty()) {
+        lang = items.first();
     }
-    return flag;
+
+    if (filterText_.isEmpty()) {
+        if (showOnlyCurrentLanguage_) {
+            return !lang.isEmpty() && (QLocale().name().startsWith(lang) ||
+                                       languageSet_.contains(lang));
+        }
+        return true;
+    }
+
+    if (name.contains(filterText_, Qt::CaseInsensitive) ||
+        uniqueName.contains(filterText_, Qt::CaseInsensitive) ||
+        langCode.contains(filterText_, Qt::CaseInsensitive)) {
+        return true;
+    }
+
+    const auto &langNames = languageNames(langCode);
+    if (langNames.localName.contains(filterText_, Qt::CaseInsensitive) ||
+        langNames.nativeName.contains(filterText_, Qt::CaseInsensitive)) {
+        return true;
+    }
+    return false;
 }
 
 bool IMProxyModel::lessThan(const QModelIndex &left,
@@ -378,7 +397,7 @@ QVariant FilteredIMModel::data(const QModelIndex &index, int role) const {
         return imEntry.configurable();
 
     case FcitxLanguageNameRole:
-        return languageName(imEntry.languageCode());
+        return languageNames(imEntry.languageCode()).localName;
 
     case FcitxIMLayoutRole: {
         auto iter = std::find_if(enabledIMList_.begin(), enabledIMList_.end(),
@@ -395,7 +414,7 @@ QVariant FilteredIMModel::data(const QModelIndex &index, int role) const {
                                : QStringLiteral("inactive");
 
     default:
-        return QVariant();
+        return {};
     }
 }
 
@@ -477,5 +496,4 @@ void FilteredIMModel::remove(int idx) {
     Q_EMIT imListChanged(filteredIMEntryList_);
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
