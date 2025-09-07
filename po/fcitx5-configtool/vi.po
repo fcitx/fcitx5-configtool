@@ -3,16 +3,16 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# csslayer <wengxt@gmail.com>, 2017
-# hoanghuy309 <hoanghuy309@gmail.com>, 2025
+# Xuetian Weng <wengxt@gmail.com>, 2017
+# Huy Võ <hoanghuy309@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-04-23 20:24+0000\n"
+"POT-Creation-Date: 2025-09-07 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
+"Last-Translator: Huy Võ <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:149
+#: src/lib/configlib/model.cpp:60
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -92,17 +92,17 @@ msgstr ""
 msgid "&Reset"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:412
+#: src/lib/configwidgetslib/addonselector.cpp:400
 msgctxt "Separator of a comma list"
 msgid ", "
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:422
+#: src/lib/configwidgetslib/addonselector.cpp:410
 #, kde-format
 msgid "- Disable %1\n"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:433
+#: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable some features in %1\n"
 msgstr ""
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Addons"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:322
+#: src/lib/configwidgetslib/addonselector.cpp:310
 msgid "Advanced options"
 msgstr ""
 
@@ -199,7 +199,7 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
 #. i18n: file: src/lib/configwidgetslib/impage.ui:239
 #. i18n: ectx: property (text), widget (QToolButton, configureButton)
-#: src/lib/configwidgetslib/addonselector.cpp:196
+#: src/lib/configwidgetslib/addonselector.cpp:190
 #: src/lib/configwidgetslib/optionwidget.cpp:475 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
@@ -241,12 +241,12 @@ msgstr ""
 msgid "Directory %1 does not exist."
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:441
+#: src/lib/configwidgetslib/addonselector.cpp:429
 #, kde-format
 msgid "Disable %1"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:436
+#: src/lib/configwidgetslib/addonselector.cpp:424
 #, kde-format
 msgid ""
 "Disabling %1 will also:\n"
@@ -356,12 +356,12 @@ msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
 msgstr ""
 "Đã tìm thấy cập nhật để cài đặt fcitx. Bạn có muốn khởi động lại fcitx?"
 
-#: src/lib/configlib/addonmodel.cpp:26
+#: src/lib/configlib/addonmodel.cpp:36
 msgid "Frontend"
 msgstr ""
 
 #. namespace
-#: src/migrator/global/globalconfigmigrator.cpp:44
+#: src/migrator/global/globalconfigmigrator.cpp:50
 msgid "Global Config"
 msgstr "Cấu Hình Chung"
 
@@ -385,7 +385,7 @@ msgstr ""
 msgid "Group:"
 msgstr ""
 
-#: src/migrator/pinyin/pinyinmigrator.cpp:19
+#: src/migrator/pinyin/pinyinmigrator.cpp:20
 msgid "Import Pinyin dictionary from Fcitx 4"
 msgstr ""
 
@@ -393,11 +393,11 @@ msgstr ""
 msgid "Import data from other input method such as Fcitx 4"
 msgstr ""
 
-#: src/migrator/table/tablemigrator.cpp:42
+#: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:26
+#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:36
 msgid "Input Method"
 msgstr "Kiểu gõ"
 
@@ -409,7 +409,7 @@ msgstr "Cấu hình Kiểu Gõ"
 msgid "Keyboard <layout>"
 msgstr "Bàn phím <layout>"
 
-#: layout/main.cpp:58
+#: layout/main.cpp:54
 msgid "Keyboard Layout viewer"
 msgstr ""
 
@@ -433,7 +433,7 @@ msgid "Keyboard layout viewer"
 msgstr "Trình xem bố cục bàn phím"
 
 #. namespace
-#: src/migrator/kkc/kkcmigrator.cpp:37
+#: src/migrator/kkc/kkcmigrator.cpp:39
 msgid "Kkc"
 msgstr ""
 
@@ -458,7 +458,7 @@ msgstr ""
 msgid "Layout:"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:26
+#: src/lib/configlib/addonmodel.cpp:36
 msgid "Loader"
 msgstr ""
 
@@ -469,37 +469,37 @@ msgstr ""
 msgid "Migrate Data from Fcitx 4"
 msgstr ""
 
-#: src/migrator/kkc/kkcmigrator.cpp:40
+#: src/migrator/kkc/kkcmigrator.cpp:42
 msgid "Migrate Kkc dictionary from Fcitx 4"
 msgstr ""
 
-#: src/migrator/rime/rimemigrator.cpp:39
+#: src/migrator/rime/rimemigrator.cpp:41
 msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
 
-#: src/migrator/skk/skkmigrator.cpp:40
+#: src/migrator/skk/skkmigrator.cpp:43
 msgid "Migrate Skk dictionary from Fcitx 4"
 msgstr ""
 
-#: src/migrator/global/globalconfigmigrator.cpp:47
+#: src/migrator/global/globalconfigmigrator.cpp:53
 msgid "Migrate global key option from Fcitx 4"
 msgstr ""
 
-#: src/migrator/kkc/kkcmigrator.cpp:74
+#: src/migrator/kkc/kkcmigrator.cpp:77
 msgid "Migrating Kkc rule option..."
 msgstr ""
 
-#: src/migrator/pinyin/pinyinmigrator.cpp:35
+#: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Migrating Pinyin data..."
 msgstr ""
 
-#: src/migrator/skk/skkmigrator.cpp:74
+#: src/migrator/skk/skkmigrator.cpp:78
 msgid "Migrating Skk rule option..."
 msgstr ""
 
-#: src/migrator/global/globalconfigmigrator.cpp:88
+#: src/migrator/global/globalconfigmigrator.cpp:95
 msgid "Migrating global hotkey key option..."
 msgstr ""
 
@@ -507,7 +507,7 @@ msgstr ""
 msgid "Migration Tool"
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:27
+#: src/lib/configlib/addonmodel.cpp:37
 msgid "Module"
 msgstr ""
 
@@ -525,7 +525,7 @@ msgstr ""
 msgid "Move Up"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:97
+#: src/lib/configlib/model.cpp:34
 msgid "Multilingual"
 msgstr "Đa ngôn ngữ"
 
@@ -552,15 +552,11 @@ msgstr ""
 msgid "Only &Show Current Language"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:123
-msgid "Other"
-msgstr "Khác"
-
-#: src/migrator/pinyin/pinyinmigrator.cpp:16
+#: src/migrator/pinyin/pinyinmigrator.cpp:17
 msgid "Pinyin"
 msgstr ""
 
-#: src/migrator/pinyin/pinyinmigrator.cpp:36
+#: src/migrator/pinyin/pinyinmigrator.cpp:37
 msgid "Pinyin data is migrated."
 msgstr ""
 
@@ -590,7 +586,7 @@ msgid "Restore &Defaults"
 msgstr "Khôi Phục Mặc Định"
 
 #. namespace
-#: src/migrator/rime/rimemigrator.cpp:36
+#: src/migrator/rime/rimemigrator.cpp:38
 msgid "Rime"
 msgstr ""
 
@@ -676,16 +672,16 @@ msgid "Show &Advanced options"
 msgstr ""
 
 #. namespace
-#: src/migrator/skk/skkmigrator.cpp:37
+#: src/migrator/skk/skkmigrator.cpp:40
 msgid "Skk"
 msgstr ""
 
 #. namespace
-#: src/migrator/table/tablemigrator.cpp:39
+#: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
 msgstr ""
 
-#: src/lib/configwidgetslib/addonselector.cpp:323
+#: src/lib/configwidgetslib/addonselector.cpp:311
 msgid ""
 "The feature of enabling/disabling addons is only intended for advanced users "
 "who understand the potential implication. Fcitx needs to be restarted to "
@@ -719,11 +715,11 @@ msgstr ""
 msgid "Try to Migrating table file: %1 ..."
 msgstr ""
 
-#: src/lib/configlib/addonmodel.cpp:27
+#: src/lib/configlib/addonmodel.cpp:37
 msgid "UI"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:95
+#: src/lib/configlib/model.cpp:32
 msgid "Unknown"
 msgstr "Không rõ"
 

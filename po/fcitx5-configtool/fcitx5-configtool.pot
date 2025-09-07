@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-05-24 20:24+0000\n"
+"POT-Creation-Date: 2025-09-07 20:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "%1 (%2)"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:135
+#: src/lib/configlib/model.cpp:60
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
@@ -516,7 +516,7 @@ msgstr ""
 msgid "Move Up"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:97
+#: src/lib/configlib/model.cpp:34
 msgid "Multilingual"
 msgstr ""
 
@@ -541,10 +541,6 @@ msgstr ""
 #: rc.cpp:99
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr ""
-
-#: src/lib/configlib/model.cpp:118
-msgid "Other"
 msgstr ""
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:17
@@ -714,7 +710,7 @@ msgstr ""
 msgid "UI"
 msgstr ""
 
-#: src/lib/configlib/model.cpp:95
+#: src/lib/configlib/model.cpp:32
 msgid "Unknown"
 msgstr ""
 
