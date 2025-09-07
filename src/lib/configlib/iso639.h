@@ -33,6 +33,22 @@ public:
         return value;
     }
 
+    QString queryNative(const QString &code) const {
+        auto value = iso639_2data_.value(code);
+        if (!value.isEmpty()) {
+            return value;
+        }
+        value = iso639_3data_.value(code);
+        if (!value.isEmpty()) {
+            return value;
+        }
+        value = iso639_5data_.value(code);
+        if (!value.isEmpty()) {
+            return value;
+        }
+        return value;
+    }
+
 private:
     QMap<QString, QString> iso639_2data_;
     QMap<QString, QString> iso639_3data_;

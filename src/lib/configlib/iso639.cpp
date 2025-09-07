@@ -37,14 +37,20 @@ QMap<QString, QString> readAlpha3ToNameMap(const char *name, const char *base) {
             continue;
         }
         auto alpha3 = item.toObject().value("alpha_3").toString();
+        auto alpha2 = item.toObject().value("alpha_2").toString();
         auto bibliographic = item.toObject().value("bibliographic").toString();
         auto name = item.toObject().value("name").toString();
-        if (alpha3.isEmpty() || name.isEmpty()) {
+        if (name.isEmpty()) {
             continue;
         }
-        map.insert(alpha3, name);
-        if (!bibliographic.isEmpty()) {
-            map.insert(bibliographic, name);
+        if (!alpha2.isEmpty()) {
+            map.insert(alpha2, name);
+        }
+        if (!alpha3.isEmpty()) {
+            map.insert(alpha3, name);
+            if (!bibliographic.isEmpty()) {
+                map.insert(bibliographic, name);
+            }
         }
     }
     return map;
