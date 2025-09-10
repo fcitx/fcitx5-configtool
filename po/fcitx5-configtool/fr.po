@@ -5,14 +5,15 @@
 # Translators:
 # roxfr <roxfr@outlook.fr>, 2022
 # Xuetian Weng <wengxt@gmail.com>, 2022
+# Popolon_Github, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-07 20:24+0000\n"
+"POT-Creation-Date: 2025-09-10 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>, 2022\n"
+"Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -139,7 +140,7 @@ msgstr "Modules complémentaires"
 
 #: src/lib/configwidgetslib/addonselector.cpp:310
 msgid "Advanced options"
-msgstr ""
+msgstr "Options avancées"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -559,7 +560,7 @@ msgstr "Non"
 
 #: src/migrator/app/taskpage.cpp:183
 msgid "No available options."
-msgstr ""
+msgstr "Aucune option disponible."
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
@@ -707,6 +708,10 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"La fonctionnalité d'activation/désactivation d'extension n'est prévue que "
+"pour les utilisateurs expérimentés, qui comprennent les implications "
+"potentielles. Fcitx à besoin d'être redémarré pour que les changements "
+"d'activation/désactivation soient effectifs."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
