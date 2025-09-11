@@ -4,14 +4,15 @@
 #
 # Translators:
 # roxfr <roxfr@outlook.fr>, 2022
+# Popolon_Github, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-05-24 20:24+0000\n"
+"POT-Creation-Date: 2025-09-11 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: roxfr <roxfr@outlook.fr>, 2022\n"
+"Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: src/kcm/ui/AddonPage.qml:143
 #, kde-format
 msgid "%1 (Disabled)"
-msgstr ""
+msgstr "%1 (Désactivé)"
 
 #: src/kcm/ui/ConfigGroup.qml:71
 #, kde-format
@@ -136,7 +137,7 @@ msgstr ""
 #: src/kcm/ui/ListOption.qml:141
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "Éditer"
 
 #: src/kcm/ui/KeyOption.qml:54
 #, kde-format
@@ -146,7 +147,7 @@ msgstr "Vide"
 #: src/plasmathemegenerator/main.cpp:95
 #, kde-format
 msgid "File descriptor <fd> "
-msgstr ""
+msgstr "Descripteur de fichier <fd>"
 
 #: src/kcm/ui/main.qml:293 src/kcm/ui/main.qml:312
 #, kde-format
@@ -160,14 +161,14 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
-"Mises à jour trouvées pour l'installation de fcitx. Voulez-vous vérifier les "
-"nouvelles \" \"Méthodes d'entrée et addons installés ? Pour mettre à jour "
-"les addons déjà chargés, fcitx \" \"devrait être redémarré."
+"Mises à jour trouvées de l'installation de fcitx. Voulez-vous vérifier les "
+"méthodes de saisie et extension nouvellement installées ? Pour mettre à jour "
+"les extesions déjà chargées, fcitx devrait avoir besoin d'être redémarré."
 
 #: src/plasmathemegenerator/main.cpp:89
 #, kde-format
 msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
-msgstr ""
+msgstr "Générer un thème Fcitx 5 Classic UI basé sur un thème Plasma"
 
 #: src/kcm/ui/main.qml:214
 #, kde-format
@@ -232,12 +233,12 @@ msgstr "&Afficher uniquement la langue actuelle"
 #: src/plasmathemegenerator/main.cpp:94
 #, kde-format
 msgid "Output path <output> "
-msgstr ""
+msgstr "Chemin de sortie <output>"
 
 #: src/plasmathemegenerator/main.cpp:93
 #, kde-format
 msgid "Plasma theme name <name> "
-msgstr ""
+msgstr "Nom du thème Plasma <name>"
 
 #: src/kcm/ui/AddonPage.qml:61
 #, kde-format
@@ -304,7 +305,7 @@ msgstr "Sélectionner la disposition du système..."
 #: src/kcm/ui/AddonPage.qml:166
 #, kde-format
 msgid "Show &Advanced options"
-msgstr ""
+msgstr "Afficher les options &avancées"
 
 #: src/kcm/ui/SaveWarningDialog.qml:16
 #, kde-format
@@ -323,11 +324,15 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
+"La fonctionnalité d'activation/désactivation des extensions n'est prévu que "
+"pour les utilisateurs avancés qui comprennent les implications potentielles. "
+"Fcitx à besoin d'être redémarré pour que les changement à activer/désactiver "
+"prennent effet."
 
 #: src/plasmathemegenerator/main.cpp:191
 #, kde-format
 msgid "Theme generated from Plasma Theme %1"
-msgstr ""
+msgstr "Thème généré depuis le thème Plasma %1"
 
 #: src/kcm/ui/main.qml:265
 #, kde-format
@@ -355,8 +360,8 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"Votre méthode de saisie actuellement configurée ne correspond pas à votre "
-"disposition, n'est-ce pas, vous voulez changer le paramètre de disposition ?"
+"La méthode de saisie actuellement configurée ne correspond pas à votre "
+"disposition, désirez-vous changer le paramètre de disposition ?"
 
 #: src/kcm/ui/main.qml:306
 #, kde-format
@@ -364,7 +369,7 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
-"Votre méthode de saisie actuellement configurée ne correspond pas à la "
+"La méthode de saisie actuellement configurée ne correspond pas à la "
 "disposition sélectionnée, voulez-vous ajouter la méthode de saisie "
 "correspondante pour la disposition ?"
 
@@ -376,14 +381,14 @@ msgstr "[%1]"
 #: src/plasmathemegenerator/main.cpp:96
 #, kde-format
 msgid "fd"
-msgstr ""
+msgstr "fd"
 
 #: src/plasmathemegenerator/main.cpp:93
 #, kde-format
 msgid "name"
-msgstr ""
+msgstr "nom"
 
 #: src/plasmathemegenerator/main.cpp:94
 #, kde-format
 msgid "output"
-msgstr ""
+msgstr "sortie"

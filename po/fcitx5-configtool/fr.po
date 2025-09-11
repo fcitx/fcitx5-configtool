@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-10 20:24+0000\n"
+"POT-Creation-Date: 2025-09-11 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -164,7 +164,7 @@ msgstr "Demande à Fcitx de quitter..."
 #: rc.cpp:93
 #, kde-format
 msgid "Available Input Method:"
-msgstr "Méthode de saisie disponible :"
+msgstr "Méthodes de saisie disponibles :"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:167
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
@@ -182,14 +182,14 @@ msgstr "Modifier la configuration de Fcitx 5"
 #: src/lib/configwidgetslib/impage.cpp:305
 msgid "Change Input method to match layout selection."
 msgstr ""
-"Modifier la méthode d'entrée pour correspondre à la sélection de la "
-"disposition."
+"Changer la méthode de saisie pour qu'elle corresponde à la disposition "
+"sélectionnée."
 
 #: src/lib/configwidgetslib/impage.cpp:383
 msgid "Change System layout to match input method selection."
 msgstr ""
-"Modifier la disposition du système pour correspondre à la sélection de la "
-"méthode d'entrée."
+"Changer la disposition du système pour qu'elle corresponde à la méthode "
+"d'entrée sélectionnée."
 
 #: src/migrator/app/taskpage.cpp:272
 msgid "Checking if Fcitx is running..."
@@ -227,7 +227,7 @@ msgstr "Copie du fichier %1 vers %2"
 #: rc.cpp:33
 #, kde-format
 msgid "Current Input Method:"
-msgstr "Méthode d'entrée actuelle :"
+msgstr "Méthode de saisie actuelle :"
 
 #: src/lib/configwidgetslib/impage.cpp:205
 msgid "Current group changed"
@@ -361,9 +361,8 @@ msgid ""
 "would need to be restarted."
 msgstr ""
 "Mises à jour trouvées pour l'installation de fcitx. Voulez-vous vérifier les "
-"méthodes de saisie et les modules complémentaires nouvellement installés ? "
-"Pour mettre à jour les modules complémentaires déjà chargés, fcitx doit être "
-"redémarré."
+"méthodes de saisie et les extensions nouvellement installés ? fcitx doit "
+"être redémarré pour mettre à jour les extensions déjà chargées,"
 
 #: src/lib/configwidgetslib/impage.cpp:110
 msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
@@ -407,7 +406,7 @@ msgstr "Importer le dictionnaire Pinyin depuis Fcitx 4"
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Import data from other input method such as Fcitx 4"
 msgstr ""
-"Importer des données à partir d'une autre méthode d'entrée telle que Fcitx 4"
+"Importer des données à partir d'une autre méthode de saisie telle que Fcitx 4"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
@@ -420,7 +419,7 @@ msgstr "Méthode de saisie"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Input Method Configuration"
-msgstr "Configuration de la méthode d'entrée"
+msgstr "Configuration de la méthode de saisie"
 
 #: layout/main.cpp:35
 msgid "Keyboard <layout>"
@@ -630,7 +629,7 @@ msgstr "Modules de recherche"
 #: rc.cpp:96
 #, kde-format
 msgid "Search Input Method"
-msgstr "Méthode d'entrée de recherche"
+msgstr "Rechercher une méthode de saisie"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
@@ -721,9 +720,9 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"La première méthode d'entrée sera l'état inactif. Habituellement, vous devez "
-"mettre<b> Clavier</b>ou <b>Clavier - <i>nom de la disposition</i></b> en "
-"premier lieu."
+"La première méthode de saisie sera l'état inactif. Habituellement, vous "
+"devez mettre<b> Clavier</b>ou Clavier<b> - <i>nom de la disposition</i></b> "
+"en premier lieu."
 
 #: layout/main.cpp:25
 msgid "This program only works on X11."
@@ -793,7 +792,7 @@ msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"Votre méthode de saisie actuellement configurée ne correspond pas à votre "
+"La méthode de saisie actuellement configurée ne correspond pas à votre "
 "disposition, voulez-vous modifier le paramètre de la disposition ?"
 
 #: src/lib/configwidgetslib/impage.cpp:306
@@ -801,9 +800,9 @@ msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
-"Votre méthode de saisie actuellement configurée ne correspond pas à la "
+"La méthode de saisie actuellement configurée ne correspond pas à la "
 "disposition sélectionnée, voulez-vous ajouter la méthode de saisie "
-"correspondante pour la disposition ?"
+"correspondante à la disposition ?"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:662
 #, kde-format
