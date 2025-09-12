@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-11 20:24+0000\n"
+"POT-Creation-Date: 2025-09-12 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -347,7 +347,7 @@ msgstr "Variante :"
 #: src/kcm/ui/KeyOption.qml:148
 #, kde-format
 msgid "Void Symbol"
-msgstr ""
+msgstr "Symbole joker"
 
 #: src/kcm/ui/ListOption.qml:56
 #, kde-format
