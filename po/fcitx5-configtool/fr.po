@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-12 20:24+0000\n"
+"POT-Creation-Date: 2025-09-17 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -699,7 +699,7 @@ msgstr "Skk"
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr "Tableau"
+msgstr "Table"
 
 #: src/lib/configwidgetslib/addonselector.cpp:311
 msgid ""
