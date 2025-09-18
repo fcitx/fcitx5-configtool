@@ -373,6 +373,9 @@ void AddonProxyModel::setFilterText(const QString &text) {
 }
 
 void launchExternalConfig(const QString &uri, WId wid) {
+    if (uri.isEmpty()) {
+        return;
+    }
     QFileInfo pathToWrapper(FCITX5_QT_GUI_WRAPPER);
     QDir dirToWrapper = pathToWrapper.dir();
     if (uri.startsWith("fcitx://config/addon/")) {
