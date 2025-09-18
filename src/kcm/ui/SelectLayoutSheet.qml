@@ -25,7 +25,7 @@ Kirigami.OverlaySheet {
     }
 
     Kirigami.FormLayout {
-        implicitWidth: Kirigami.Units.gridUnit * 45
+        implicitWidth: Kirigami.Units.gridUnit * 30
 
         ComboBox {
             id: languageComboBox
