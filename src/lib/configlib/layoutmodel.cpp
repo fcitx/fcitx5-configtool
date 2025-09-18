@@ -5,26 +5,33 @@
  *
  */
 #include "layoutmodel.h"
+#include <QHash>
+#include <QObject>
+#include <QStandardItem>
+#include <QStringList>
+#include <Qt>
+#include <fcitx-utils/i18n.h>
+#include <fcitxqtdbustypes.h>
+#include <utility>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 LanguageModel::LanguageModel(QObject *parent) : QStandardItemModel(parent) {
     setItemRoleNames({{Qt::DisplayRole, "name"}, {Qt::UserRole, "language"}});
-}
-
-QString LanguageModel::language(int row) const {
-    auto idx = index(row, 0);
-    if (idx.isValid()) {
-        return idx.data(Qt::UserRole).toString();
-    }
-    return QString();
 }
 
 void LanguageModel::append(const QString &name, const QString &language) {
     QStandardItem *item = new QStandardItem(name);
     item->setData(language, Qt::UserRole);
     appendRow(item);
+}
+
+QString SortedLanguageModel::language(int row) const {
+    auto idx = index(row, 0);
+    if (idx.isValid()) {
+        return idx.data(Qt::UserRole).toString();
+    }
+    return QString();
 }
 
 void LanguageFilterModel::setLanguage(const QString &language) {
@@ -56,8 +63,9 @@ bool LanguageFilterModel::filterAcceptsRow(int source_row,
 }
 bool LanguageFilterModel::lessThan(const QModelIndex &left,
                                    const QModelIndex &right) const {
-    return data(left, Qt::DisplayRole).toString() <
-           data(right, Qt::DisplayRole).toString();
+    return QString::localeAwareCompare(left.data(Qt::DisplayRole).toString(),
+                                       right.data(Qt::DisplayRole).toString()) <
+           0;
 }
 
 QHash<int, QByteArray> LayoutInfoModel::roleNames() const {
@@ -157,5 +165,4 @@ int VariantInfoModel::rowCount(const QModelIndex &parent) const {
     return variantInfo_.size();
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

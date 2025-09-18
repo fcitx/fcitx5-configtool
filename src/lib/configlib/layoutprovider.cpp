@@ -6,19 +6,34 @@
  */
 #include "layoutprovider.h"
 #include "dbusprovider.h"
+#include "layoutmodel.h"
+#include <QDBusPendingReply>
+#include <QObject>
+#include <QSet>
+#include <QStandardItem>
+#include <QString>
+#include <QStringList>
+#include <Qt>
+#include <algorithm>
+#include <fcitx-utils/i18n.h>
+#include <fcitxqtdbustypes.h>
+#include <iterator>
+#include <utility>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 LayoutProvider::LayoutProvider(DBusProvider *dbus, QObject *parent)
     : QObject(parent), dbus_(dbus), languageModel_(new LanguageModel(this)),
+      sortedLanguageModel_(new SortedLanguageModel(this)),
       layoutModel_(new LayoutInfoModel(this)),
       variantModel_(new VariantInfoModel(this)),
       layoutFilterModel_(new LanguageFilterModel(this)),
       variantFilterModel_(new LanguageFilterModel(this)) {
     layoutFilterModel_->setSourceModel(layoutModel_);
     variantFilterModel_->setSourceModel(variantModel_);
-
+    sortedLanguageModel_->setSourceModel(languageModel_);
+    sortedLanguageModel_->sort(0);
+    layoutFilterModel_->sort(0);
     connect(dbus, &DBusProvider::availabilityChanged, this,
             &LayoutProvider::availabilityChanged);
     availabilityChanged();
@@ -154,5 +169,4 @@ QString LayoutProvider::layoutDescription(const QString &layoutString) {
         .arg(iter->description(), variantIter->description());
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

@@ -9,9 +9,14 @@
 
 #include "iso639.h"
 #include "layoutmodel.h"
+#include <QAbstractItemModel>
+#include <QObject>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
+#include <QString>
 #include <QStringListModel>
+#include <QStringLiteral>
+#include <Qt>
 #include <fcitxqtdbustypes.h>
 
 class QDBusPendingCallWatcher;
@@ -26,15 +31,14 @@ class VariantInfoModel;
 
 class LayoutProvider : public QObject {
     Q_OBJECT
-    Q_PROPERTY(
-        fcitx::kcm::LanguageModel *languageModel READ languageModel CONSTANT)
+    Q_PROPERTY(QAbstractItemModel *languageModel READ languageModel CONSTANT)
     Q_PROPERTY(LanguageFilterModel *layoutModel READ layoutModel CONSTANT)
     Q_PROPERTY(LanguageFilterModel *variantModel READ variantModel CONSTANT)
 public:
     LayoutProvider(DBusProvider *dbus, QObject *parent = nullptr);
     ~LayoutProvider();
 
-    auto languageModel() const { return languageModel_; }
+    QAbstractItemModel *languageModel() const { return sortedLanguageModel_; }
     auto layoutModel() const { return layoutFilterModel_; }
     auto variantModel() const { return variantFilterModel_; }
 
@@ -83,6 +87,7 @@ private:
     DBusProvider *dbus_;
     bool loaded_ = false;
     LanguageModel *languageModel_;
+    SortedLanguageModel *sortedLanguageModel_;
     LayoutInfoModel *layoutModel_;
     VariantInfoModel *variantModel_;
     LanguageFilterModel *layoutFilterModel_;
