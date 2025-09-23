@@ -362,7 +362,7 @@ bool AddonProxyModel::lessThan(const QModelIndex &left,
 
     QString l = left.data(Qt::DisplayRole).toString();
     QString r = right.data(Qt::DisplayRole).toString();
-    return QCollator().compare(l, r) < 0;
+    return QString::localeAwareCompare(l, r) < 0;
 }
 
 void AddonProxyModel::setFilterText(const QString &text) {

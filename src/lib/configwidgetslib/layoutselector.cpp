@@ -95,12 +95,8 @@ void LayoutSelector::setLayout(const QString &layout, const QString &variant) {
     }
     ui_->languageComboBox->setCurrentIndex(0);
     ui_->layoutComboBox->setCurrentIndex(layoutProvider_->layoutIndex(layout));
-    if (variant.isEmpty()) {
-        ui_->variantComboBox->setCurrentIndex(0);
-    } else {
-        ui_->variantComboBox->setCurrentIndex(
-            layoutProvider_->variantIndex(variant));
-    }
+    ui_->variantComboBox->setCurrentIndex(
+        layoutProvider_->variantIndex(variant));
     preSelectLayout_.clear();
     preSelectVariant_.clear();
 }

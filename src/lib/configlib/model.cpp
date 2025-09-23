@@ -342,7 +342,7 @@ bool IMProxyModel::lessThan(const QModelIndex &left,
 
     QString l = left.data(Qt::DisplayRole).toString();
     QString r = right.data(Qt::DisplayRole).toString();
-    return QCollator().compare(l, r) < 0;
+    return QString::localeAwareCompare(l, r) < 0;
 }
 
 int IMProxyModel::compareCategories(const QModelIndex &left,
