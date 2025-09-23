@@ -421,6 +421,9 @@ void launchExternalConfig(const QString &uri, WId wid) {
     } else {
         // Assume this is a program path.
         QStringList args = QProcess::splitCommand(uri);
+        if (args.isEmpty()) {
+            return;
+        }
         QString program = args.takeFirst();
         QProcess::startDetached(program, args);
     }
