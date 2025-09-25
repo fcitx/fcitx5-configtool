@@ -79,7 +79,7 @@ class WatcherApp : public QGuiApplication {
     Q_OBJECT
 public:
     WatcherApp(int &argc, char **argv) : QGuiApplication(argc, argv) {
-        setApplicationName(QLatin1String("fcitx5-plasma-theme-watcher"));
+        setApplicationName(QLatin1String("fcitx5-plasma-theme-generator"));
         setApplicationVersion(QLatin1String(PROJECT_VERSION));
     }
 
@@ -413,8 +413,6 @@ private:
 
 int main(int argc, char *argv[]) {
     WatcherApp app(argc, argv);
-    app.setApplicationName(QLatin1String("fcitx5-plasma-theme-generator"));
-    app.setApplicationVersion(QLatin1String(PROJECT_VERSION));
     if (!app.init()) {
         return 1;
     }
