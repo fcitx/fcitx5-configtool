@@ -4,15 +4,15 @@
 #
 # Translators:
 # zenfas, 2024
-# hoanghuy309 <hoanghuy309@gmail.com>, 2025
+# Huy Võ <hoanghuy309@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-05-24 20:24+0000\n"
+"POT-Creation-Date: 2025-11-18 20:24+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: hoanghuy309 <hoanghuy309@gmail.com>, 2025\n"
+"Last-Translator: Huy Võ <hoanghuy309@gmail.com>, 2025\n"
 "Language-Team: Vietnamese (https://app.transifex.com/fcitx/teams/12005/vi/)\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -94,12 +94,12 @@ msgstr "Cấu hình"
 #: src/kcm/ui/main.qml:218
 #, kde-format
 msgid "Configure addons..."
-msgstr ""
+msgstr "Cấu hình addons..."
 
 #: src/kcm/ui/main.qml:212
 #, kde-format
 msgid "Configure global options..."
-msgstr ""
+msgstr "Cấu hình các tùy chọn chung..."
 
 #: src/kcm/ui/main.qml:158
 #, kde-format
@@ -118,6 +118,9 @@ msgid ""
 "%2\n"
 "Are you sure you want to disable it?"
 msgstr ""
+"Tắt %1 cũng sẽ:\n"
+"%2\n"
+"Bạn có chắc chắn muốn tắt nó không?"
 
 #: src/kcm/ui/main.qml:176
 #, kde-format
@@ -193,7 +196,7 @@ msgstr "Chế độ mã phím"
 #: src/kcm/ui/SelectLayoutSheet.qml:32
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "Ngôn Ngữ:"
 
 #: src/kcm/ui/SelectLayoutSheet.qml:46
 #, kde-format
@@ -218,7 +221,7 @@ msgstr ""
 #: src/kcm/ui/AddIMPage.qml:29
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr ""
+msgstr "Chỉ Hiển Thị Ngôn Ngữ Hiện Tại"
 
 #: src/plasmathemegenerator/main.cpp:94
 #, kde-format
