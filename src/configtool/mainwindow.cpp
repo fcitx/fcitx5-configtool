@@ -5,16 +5,26 @@
  *
  */
 #include "mainwindow.h"
+#include "addonselector.h"
+#include "configwidget.h"
+#include "erroroverlay.h"
+#include "impage.h"
 #include "logging.h"
 #include "verticalscrollarea.h"
+#include <QDialogButtonBox>
 #include <QKeyEvent>
+#include <QKeySequence>
+#include <QLoggingCategory>
+#include <QMainWindow>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QSessionManager>
+#include <QWidget>
+#include <QtVersionChecks>
 #include <fcitx-utils/i18n.h>
+#include <QApplication>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), dbus_(new DBusProvider(this)),
@@ -42,7 +52,7 @@ MainWindow::MainWindow(QWidget *parent)
         qCDebug(KCM_FCITX5) << "AddonSelector changed";
         Q_EMIT changed(true);
     });
-    auto configPageWrapper = new VerticalScrollArea;
+    auto *configPageWrapper = new VerticalScrollArea;
     configPageWrapper->setWidget(configPage_);
     pageWidget->addTab(impage_, _("Input Method"));
     pageWidget->addTab(configPageWrapper, _("Global Options"));
@@ -96,6 +106,11 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     }
 }
 
+void MainWindow::focusInEvent(QFocusEvent *event) {
+    QMainWindow::focusInEvent(event);
+    impage_->config()->checkUpdate();
+}
+
 void MainWindow::clicked(QAbstractButton *button) {
     QDialogButtonBox::StandardButton standardButton =
         buttonBox->standardButton(button);
@@ -136,5 +151,4 @@ void MainWindow::commitData(QSessionManager &manager) {
     }
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

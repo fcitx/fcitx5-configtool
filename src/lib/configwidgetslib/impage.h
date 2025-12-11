@@ -28,6 +28,9 @@ class IMPage : public QWidget {
 public:
     IMPage(DBusProvider *dbus, QWidget *parent);
     ~IMPage();
+
+    auto *config() const { return config_; }
+
 Q_SIGNALS:
     void changed();
 public Q_SLOTS:

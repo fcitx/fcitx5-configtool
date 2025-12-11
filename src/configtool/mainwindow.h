@@ -14,10 +14,12 @@
 #include "impage.h"
 #include "ui_mainwindow.h"
 #include <QAbstractButton>
+#include <QKeyEvent>
 #include <QMainWindow>
+#include <QSessionManager>
+#include <QWidget>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class MainWindow : public QMainWindow, public Ui::MainWindow {
     Q_OBJECT
@@ -32,13 +34,14 @@ Q_SIGNALS:
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    void focusInEvent(QFocusEvent *event) override;
 
 private Q_SLOTS:
     void clicked(QAbstractButton *button);
     void commitData(QSessionManager &manager);
 
 private:
-    void handleChanged(bool state);
+    void handleChanged(bool changed);
     bool changed_ = false;
     DBusProvider *dbus_;
     ErrorOverlay *errorOverlay_;
@@ -46,7 +49,6 @@ private:
     AddonSelector *addonPage_;
     ConfigWidget *configPage_;
 };
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX5_CONFIGTOOL_MAINWINDOW_H (2)_

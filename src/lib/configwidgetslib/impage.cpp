@@ -9,22 +9,37 @@
 #include "categoryhelper.h"
 #include "configwidget.h"
 #include "dbusprovider.h"
+#include "imconfig.h"
 #include "layoutselector.h"
 #include "model.h"
 #include "ui_impage.h"
 #include <QAction>
+#include <QComboBox>
+#include <QDialog>
+#include <QIcon>
 #include <QInputDialog>
+#include <QItemSelectionModel>
+#include <QListView>
 #include <QMessageBox>
+#include <QModelIndex>
+#include <QObject>
 #include <QPainter>
+#include <QPointer>
+#include <QPushButton>
+#include <QSize>
+#include <QString>
+#include <QStringList>
+#include <QStyle>
+#include <QStyleOptionViewItem>
 #include <QStyledItemDelegate>
+#include <QTreeView>
+#include <Qt>
+#include <fcitx-utils/i18n.h>
+#include <fcitx-utils/misc.h>
+#include <fcitxqtdbustypes.h>
+#include <memory>
 
-namespace fcitx {
-namespace kcm {
-
-bool isInFlatpak() {
-    static bool inFlatpak = QFile::exists("/.flatpak-info");
-    return inFlatpak;
-}
+namespace fcitx::kcm {
 
 class IMDelegate : public QStyledItemDelegate {
     Q_OBJECT
@@ -56,9 +71,8 @@ QSize IMDelegate::sizeHint(const QStyleOptionViewItem &option,
                            const QModelIndex &index) const {
     if (index.data(FcitxRowTypeRole).toInt() == IMType) {
         return QStyledItemDelegate::sizeHint(option, index);
-    } else {
-        return categoryHeaderSizeHint();
     }
+    return categoryHeaderSizeHint();
 }
 
 IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
@@ -107,18 +121,20 @@ IMPage::IMPage(DBusProvider *dbus, QWidget *parent)
 
     if (isInFlatpak()) {
         ui_->checkUpdateMessage->setText(
-            _("Found updates to fcitx installation. Do you want to restart "
-              "Fcitx?"));
-    } else {
-        auto refreshAction = new QAction(_("Update"), this);
-        connect(refreshAction, &QAction::triggered, this,
-                [this]() { config_->refresh(); });
-        ui_->checkUpdateMessage->addAction(refreshAction);
+            _("Found updates to fcitx installation. Do you want to check for "
+              "new input methods with loaded addons? For Flatpak version of "
+              "Fcitx, it is required to restart fcitx to load newly "
+              "installed/updated addons. To do this, you may need to logout or "
+              "restart your computer."));
     }
+    auto *refreshAction = new QAction(_("Update"), this);
+    connect(refreshAction, &QAction::triggered, this,
+            [this]() { config_->refresh(); });
+    ui_->checkUpdateMessage->addAction(refreshAction);
 
     // Restart action is the last action, so we can just remove/add without
     // "ïnsert".
-    auto restartAction = new QAction(_("Restart"), this);
+    auto *restartAction = new QAction(_("Restart"), this);
     connect(restartAction, &QAction::triggered, this,
             [this]() { config_->restart(); });
     connect(dbus, &DBusProvider::canRestartChanged, this,
@@ -227,10 +243,7 @@ void IMPage::selectedGroupChanged() {
 }
 
 void IMPage::availIMSelectionChanged() {
-    if (!ui_->availIMView->currentIndex().isValid())
-        ui_->addIMButton->setEnabled(false);
-    else
-        ui_->addIMButton->setEnabled(true);
+    ui_->addIMButton->setEnabled(ui_->availIMView->currentIndex().isValid());
 }
 
 void IMPage::currentIMCurrentChanged() {
@@ -241,16 +254,11 @@ void IMPage::currentIMCurrentChanged() {
         ui_->configureButton->setEnabled(false);
         ui_->layoutButton->setEnabled(false);
     } else {
-        if (ui_->currentIMView->currentIndex().row() == 0)
-            ui_->moveUpButton->setEnabled(false);
-        else
-            ui_->moveUpButton->setEnabled(true);
-        if (ui_->currentIMView->currentIndex().row() ==
-            config_->currentIMModel()->rowCount() - 1) {
-            ui_->moveDownButton->setEnabled(false);
-        } else {
-            ui_->moveDownButton->setEnabled(true);
-        }
+        ui_->moveUpButton->setEnabled(
+            ui_->currentIMView->currentIndex().row() != 0);
+        ui_->moveDownButton->setEnabled(
+            ui_->currentIMView->currentIndex().row() !=
+            config_->currentIMModel()->rowCount() - 1);
         ui_->removeIMButton->setEnabled(true);
         ui_->configureButton->setEnabled(
             config_->currentIMModel()
@@ -278,7 +286,8 @@ void IMPage::doubleClickAvailIM(const QModelIndex &index) { addIM(index); }
 void IMPage::selectDefaultLayout() {
     auto defaultLayout = config_->defaultLayout();
     auto dashPos = defaultLayout.indexOf("-");
-    QString layout, variant;
+    QString layout;
+    QString variant;
     if (dashPos >= 0) {
         variant = defaultLayout.mid(dashPos + 1);
         layout = defaultLayout.left(dashPos);
@@ -339,7 +348,8 @@ void IMPage::selectLayout() {
         layoutString = config_->defaultLayout();
     }
     auto dashPos = layoutString.indexOf("-");
-    QString layout, variant;
+    QString layout;
+    QString variant;
     if (dashPos >= 0) {
         variant = layoutString.mid(dashPos + 1);
         layout = layoutString.left(dashPos);
@@ -452,7 +462,6 @@ void IMPage::deleteGroup() {
     config_->deleteGroup(ui_->inputMethodGroupComboBox->currentText());
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #include "impage.moc"

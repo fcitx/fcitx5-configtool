@@ -7,9 +7,16 @@
 #include "imconfig.h"
 #include "dbusprovider.h"
 #include "model.h"
+#include <QDBusPendingCallWatcher>
+#include <QDBusPendingReply>
+#include <QModelIndex>
+#include <QObject>
+#include <QString>
+#include <QStringList>
+#include <algorithm>
+#include <fcitxqtdbustypes.h>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 IMConfig::IMConfig(DBusProvider *dbus, ModelMode mode, QObject *parent)
     : QObject(parent), dbus_(dbus), availIMModel_(new IMProxyModel(this)),
@@ -19,12 +26,12 @@ IMConfig::IMConfig(DBusProvider *dbus, ModelMode mode, QObject *parent)
     availabilityChanged();
 
     if (mode == Flatten) {
-        auto flattenAvailIMModel =
+        auto *flattenAvailIMModel =
             new FilteredIMModel(FilteredIMModel::AvailIM, this);
         availIMModel_->setSourceModel(flattenAvailIMModel);
         internalAvailIMModel_ = flattenAvailIMModel;
     } else {
-        auto availIMModel = new AvailIMModel(this);
+        auto *availIMModel = new AvailIMModel(this);
         availIMModel_->setSourceModel(availIMModel);
         internalAvailIMModel_ = availIMModel;
     }
@@ -96,7 +103,7 @@ void IMConfig::reloadGroup() {
         return;
     }
     auto call = dbus_->controller()->InputMethodGroups();
-    auto watcher = new QDBusPendingCallWatcher(call, this);
+    auto *watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [this](QDBusPendingCallWatcher *watcher) {
                 fetchGroupsFinished(watcher);
@@ -124,13 +131,10 @@ void IMConfig::availabilityChanged() {
     }
     reloadGroup();
     auto imcall = dbus_->controller()->AvailableInputMethods();
-    auto imcallwatcher = new QDBusPendingCallWatcher(imcall, this);
+    auto *imcallwatcher = new QDBusPendingCallWatcher(imcall, this);
     connect(imcallwatcher, &QDBusPendingCallWatcher::finished, this,
             &IMConfig::fetchInputMethodsFinished);
-    auto checkUpdate = dbus_->controller()->CheckUpdate();
-    auto checkUpdateWatcher = new QDBusPendingCallWatcher(checkUpdate, this);
-    connect(checkUpdateWatcher, &QDBusPendingCallWatcher::finished, this,
-            &IMConfig::checkUpdateFinished);
+    checkUpdate();
 }
 
 void IMConfig::fetchInputMethodsFinished(QDBusPendingCallWatcher *watcher) {
@@ -157,7 +161,7 @@ void IMConfig::setCurrentGroup(const QString &name) {
         auto call = dbus_->controller()->InputMethodGroupInfo(name);
         lastGroup_ = name;
         Q_EMIT currentGroupChanged(lastGroup_);
-        auto watcher = new QDBusPendingCallWatcher(call, this);
+        auto *watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 &IMConfig::fetchGroupInfoFinished);
     }
@@ -184,6 +188,17 @@ void IMConfig::emitChanged() {
     Q_EMIT changed();
 }
 
+void IMConfig::checkUpdate() {
+    if (!dbus_->controller()) {
+        return;
+    }
+    qDebug() << "Checking update for input methods and addons";
+    auto checkUpdate = dbus_->controller()->CheckUpdate();
+    auto *checkUpdateWatcher = new QDBusPendingCallWatcher(checkUpdate, this);
+    connect(checkUpdateWatcher, &QDBusPendingCallWatcher::finished, this,
+            &IMConfig::checkUpdateFinished);
+}
+
 void IMConfig::updateIMList(bool excludeCurrent) {
     if (!excludeCurrent) {
         currentIMModel_->filterIMEntryList(allIMs_, imEntries_);
@@ -197,7 +212,7 @@ void IMConfig::updateIMList(bool excludeCurrent) {
 void IMConfig::addGroup(const QString &name) {
     if (!name.isEmpty() && dbus_->controller()) {
         auto call = dbus_->controller()->AddInputMethodGroup(name);
-        auto watcher = new QDBusPendingCallWatcher(call, this);
+        auto *watcher = new QDBusPendingCallWatcher(call, this);
         connect(watcher, &QDBusPendingCallWatcher::finished, this,
                 [this](QDBusPendingCallWatcher *watcher) {
                     watcher->deleteLater();
@@ -213,7 +228,7 @@ void IMConfig::deleteGroup(const QString &name) {
         return;
     }
     auto call = dbus_->controller()->RemoveInputMethodGroup(name);
-    auto watcher = new QDBusPendingCallWatcher(call, this);
+    auto *watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [this](QDBusPendingCallWatcher *watcher) {
                 watcher->deleteLater();
@@ -228,7 +243,7 @@ void IMConfig::refresh() {
         return;
     }
     auto call = dbus_->controller()->Refresh();
-    auto watcher = new QDBusPendingCallWatcher(call, this);
+    auto *watcher = new QDBusPendingCallWatcher(call, this);
     connect(watcher, &QDBusPendingCallWatcher::finished, this,
             [this](QDBusPendingCallWatcher *watcher) {
                 watcher->deleteLater();
@@ -245,5 +260,4 @@ void IMConfig::restart() {
     dbus_->controller()->Restart();
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

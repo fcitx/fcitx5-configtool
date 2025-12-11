@@ -8,11 +8,13 @@
 #define _CONFIGLIB_ABSTRACTIMPAGE_H_
 
 #include <QDBusPendingCallWatcher>
+#include <QModelIndex>
 #include <QObject>
+#include <QString>
+#include <QStringList>
 #include <fcitxqtdbustypes.h>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class IMConfigModelInterface;
 class IMProxyModel;
@@ -82,11 +84,12 @@ public Q_SLOTS:
     void save();
     void load();
     void defaults();
-    void addIM(int index);
-    void removeIM(int index);
+    void addIM(int idx);
+    void removeIM(int idx);
     void move(int from, int to);
     void refresh();
     void restart();
+    void checkUpdate();
 
 Q_SIGNALS:
     void changed();
@@ -119,7 +122,6 @@ private:
     bool needSave_ = false;
     bool needUpdate_ = false;
 };
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _CONFIGLIB_ABSTRACTIMPAGE_H_
