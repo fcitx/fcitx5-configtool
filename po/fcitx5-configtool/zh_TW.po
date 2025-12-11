@@ -8,7 +8,6 @@
 # bruh, 2020
 # Weizhong Yang <zonble@gmail.com>, 2022
 # 菘菘 <rrt467778@gmail.com>, 2022
-# yan12125, 2022
 # Haowei Hsu, 2023
 # Xuetian Weng <wengxt@gmail.com>, 2024
 # Yiyu Liu, 2024
@@ -18,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-07 20:24+0000\n"
+"POT-Creation-Date: 2025-12-11 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Kisaragi Hiu <flyingfeather1501@gmail.com>, 2024\n"
 "Language-Team: Chinese (Taiwan) (https://app.transifex.com/fcitx/teams/12005/"
@@ -29,7 +28,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/lib/configlib/layoutprovider.cpp:74
+#: src/lib/configlib/layoutprovider.cpp:89
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -40,7 +39,7 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/layoutprovider.cpp:153
+#: src/lib/configlib/layoutprovider.cpp:168
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 - %2"
@@ -67,7 +66,7 @@ msgstr "%1 啟動失敗。"
 msgid "%1:"
 msgstr "%1："
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:68
 msgid "&Apply"
 msgstr "套用(&A)"
 
@@ -81,7 +80,7 @@ msgstr "取消(&C)"
 msgid "&Clear"
 msgstr "清除(&C)"
 
-#: src/configtool/mainwindow.cpp:60
+#: src/configtool/mainwindow.cpp:70
 msgid "&Close"
 msgstr "關閉(&C)"
 
@@ -89,7 +88,7 @@ msgstr "關閉(&C)"
 msgid "&Next >"
 msgstr "下一步(&N) >"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:69
 #: src/lib/configwidgetslib/configwidget.cpp:237
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:73
@@ -97,7 +96,7 @@ msgstr "下一步(&N) >"
 msgid "&OK"
 msgstr "確定(&O)"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:71
 msgid "&Reset"
 msgstr "重設(&R)"
 
@@ -141,7 +140,7 @@ msgstr "新增"
 msgid "Add Group"
 msgstr "新增群組"
 
-#: src/configtool/mainwindow.cpp:49
+#: src/configtool/mainwindow.cpp:59
 msgid "Addons"
 msgstr "附加元件"
 
@@ -153,12 +152,12 @@ msgstr "進階選項"
 msgid "All migration tasks are completed successfully."
 msgstr "遷移任務已全部完成。"
 
-#: src/lib/configlib/layoutprovider.cpp:66
-#: src/lib/configlib/layoutprovider.cpp:68
+#: src/lib/configlib/layoutprovider.cpp:81
+#: src/lib/configlib/layoutprovider.cpp:83
 msgid "Any language"
 msgstr "任何語言"
 
-#: src/configtool/mainwindow.cpp:122
+#: src/configtool/mainwindow.cpp:137
 msgid "Apply configuration changes"
 msgstr "修改設定"
 
@@ -184,11 +183,11 @@ msgstr "無法透過 DBus 連線至 Fcitx，Fcitx 有在執行嗎？"
 msgid "Change Fcitx 5 Configuration"
 msgstr "變更 Fcitx 5 設定"
 
-#: src/lib/configwidgetslib/impage.cpp:305
+#: src/lib/configwidgetslib/impage.cpp:314
 msgid "Change Input method to match layout selection."
 msgstr "變更輸入法以符合選擇的配置。"
 
-#: src/lib/configwidgetslib/impage.cpp:383
+#: src/lib/configwidgetslib/impage.cpp:393
 msgid "Change System layout to match input method selection."
 msgstr "變更系統配置以符合選擇的輸入法。"
 
@@ -230,11 +229,11 @@ msgstr "複製文件 %1 至 %2"
 msgid "Current Input Method:"
 msgstr "目前輸入法："
 
-#: src/lib/configwidgetslib/impage.cpp:205
+#: src/lib/configwidgetslib/impage.cpp:221
 msgid "Current group changed"
 msgstr "目前的群組已變更"
 
-#: src/lib/configlib/layoutmodel.cpp:123
+#: src/lib/configlib/layoutmodel.cpp:131
 msgid "Default"
 msgstr "預設"
 
@@ -266,11 +265,11 @@ msgstr ""
 "%2%3\n"
 "確認要停用它嗎？"
 
-#: src/lib/configwidgetslib/impage.cpp:206
+#: src/lib/configwidgetslib/impage.cpp:222
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr "您想要變更群組嗎？對目前群組的變更將會遺失！"
 
-#: src/configtool/mainwindow.cpp:123
+#: src/configtool/mainwindow.cpp:138
 msgid "Do you want to save the changes or discard them?"
 msgstr "您想要儲存還是要捨棄修改過的設定？"
 
@@ -350,6 +349,14 @@ msgstr "Fcitx 已完全退出。"
 msgid "Fcitx is started."
 msgstr "Fcitx 已啟動。"
 
+#: src/lib/configwidgetslib/impage.cpp:124
+msgid ""
+"Found updates to fcitx installation. Do you want to check for new input "
+"methods with loaded addons? For Flatpak version of Fcitx, it is required to "
+"restart fcitx to load newly installed/updated addons. To do this, you may "
+"need to logout or restart your computer."
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -362,10 +369,6 @@ msgstr ""
 "發現了 Fcitx 安裝上的變更。您想要檢查是否有新安裝輸入法或附加元件嗎？如果要更"
 "新已經載入的附加元件，您需要重新啟動 Fcitx。"
 
-#: src/lib/configwidgetslib/impage.cpp:110
-msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
-msgstr "安裝的 Fcitx 已更新。是否要重新啟動 Fcitx？"
-
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Frontend"
 msgstr "前端"
@@ -375,7 +378,7 @@ msgstr "前端"
 msgid "Global Config"
 msgstr "全域設定"
 
-#: src/configtool/mainwindow.cpp:48
+#: src/configtool/mainwindow.cpp:58
 msgid "Global Options"
 msgstr "全域選項"
 
@@ -384,7 +387,7 @@ msgstr "全域選項"
 msgid "Got error: %1 %2"
 msgstr "發生錯誤：%1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:444
+#: src/lib/configwidgetslib/impage.cpp:454
 msgid "Group Name:"
 msgstr "群組名稱："
 
@@ -407,7 +410,7 @@ msgstr "從其他輸入法（如 Fcitx 4）匯入資料"
 msgid "Import table data for installed table from Fcitx 4"
 msgstr "從 Fcitx 4 匯入已安裝碼表的碼表資料"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:36
+#: src/configtool/mainwindow.cpp:57 src/lib/configlib/addonmodel.cpp:36
 msgid "Input Method"
 msgstr "輸入法"
 
@@ -461,7 +464,7 @@ msgstr "語言："
 msgid "Layout"
 msgstr "佈局"
 
-#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
+#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:108
 #, kde-format
@@ -539,7 +542,7 @@ msgstr "上移"
 msgid "Multilingual"
 msgstr "多語言"
 
-#: src/lib/configwidgetslib/impage.cpp:444
+#: src/lib/configwidgetslib/impage.cpp:454
 msgid "New Group"
 msgstr "新群組"
 
@@ -586,11 +589,11 @@ msgstr "移除"
 
 #. Restart action is the last action, so we can just remove/add without
 #. "ïnsert".
-#: src/lib/configwidgetslib/impage.cpp:121
+#: src/lib/configwidgetslib/impage.cpp:137
 msgid "Restart"
 msgstr "重新啟動"
 
-#: src/configtool/mainwindow.cpp:63
+#: src/configtool/mainwindow.cpp:73
 #: src/lib/configwidgetslib/configwidget.cpp:240
 msgid "Restore &Defaults"
 msgstr "還原成預設值(&D)"
@@ -637,12 +640,12 @@ msgstr "選取字型"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:350 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:360 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "選取佈局"
 
-#: src/lib/configwidgetslib/impage.cpp:290
+#: src/lib/configwidgetslib/impage.cpp:299
 msgid "Select default layout"
 msgstr "選取預設配置"
 
@@ -746,11 +749,11 @@ msgstr "未知"
 msgid "Up"
 msgstr "上"
 
-#: src/lib/configwidgetslib/impage.cpp:113
+#: src/lib/configwidgetslib/impage.cpp:130
 msgid "Update"
 msgstr "更新"
 
-#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
+#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:111
 #, kde-format
@@ -772,13 +775,13 @@ msgstr "歡迎頁"
 msgid "Yes"
 msgstr "確定"
 
-#: src/lib/configwidgetslib/impage.cpp:384
+#: src/lib/configwidgetslib/impage.cpp:394
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr "您目前設定的輸入法與配置不符，是否變更配置設定？"
 
-#: src/lib/configwidgetslib/impage.cpp:306
+#: src/lib/configwidgetslib/impage.cpp:315
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"

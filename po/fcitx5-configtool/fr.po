@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# roxfr <roxfr@outlook.fr>, 2022
+# roxfr, 2022
 # Xuetian Weng <wengxt@gmail.com>, 2022
 # Popolon_Github, 2025
 #
@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-09-17 20:24+0000\n"
+"POT-Creation-Date: 2025-12-11 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
 "Last-Translator: Popolon_Github, 2025\n"
 "Language-Team: French (https://app.transifex.com/fcitx/teams/12005/fr/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % "
 "1000000 == 0 ? 1 : 2;\n"
 
-#: src/lib/configlib/layoutprovider.cpp:74
+#: src/lib/configlib/layoutprovider.cpp:89
 #, kde-format
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -33,7 +33,7 @@ msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: src/lib/configlib/layoutprovider.cpp:153
+#: src/lib/configlib/layoutprovider.cpp:168
 #, kde-format
 msgid "%1 - %2"
 msgstr "%1 -%2"
@@ -60,7 +60,7 @@ msgstr "%1 n'a pas pu démarrer."
 msgid "%1:"
 msgstr "%1  :"
 
-#: src/configtool/mainwindow.cpp:58
+#: src/configtool/mainwindow.cpp:68
 msgid "&Apply"
 msgstr "&Appliquer"
 
@@ -74,7 +74,7 @@ msgstr "&Annuler"
 msgid "&Clear"
 msgstr "&Effacer"
 
-#: src/configtool/mainwindow.cpp:60
+#: src/configtool/mainwindow.cpp:70
 msgid "&Close"
 msgstr "&Fermer"
 
@@ -82,7 +82,7 @@ msgstr "&Fermer"
 msgid "&Next >"
 msgstr "&Suivant >"
 
-#: src/configtool/mainwindow.cpp:59
+#: src/configtool/mainwindow.cpp:69
 #: src/lib/configwidgetslib/configwidget.cpp:237
 #: src/lib/configwidgetslib/fontbutton.cpp:47
 #: src/lib/configwidgetslib/layoutselector.cpp:73
@@ -90,7 +90,7 @@ msgstr "&Suivant >"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/configtool/mainwindow.cpp:61
+#: src/configtool/mainwindow.cpp:71
 msgid "&Reset"
 msgstr "&Réinitialiser"
 
@@ -134,7 +134,7 @@ msgstr "Ajouter"
 msgid "Add Group"
 msgstr "Ajouter un groupe"
 
-#: src/configtool/mainwindow.cpp:49
+#: src/configtool/mainwindow.cpp:59
 msgid "Addons"
 msgstr "Modules complémentaires"
 
@@ -146,12 +146,12 @@ msgstr "Options avancées"
 msgid "All migration tasks are completed successfully."
 msgstr "Toutes les tâches de migration sont terminées avec succès."
 
-#: src/lib/configlib/layoutprovider.cpp:66
-#: src/lib/configlib/layoutprovider.cpp:68
+#: src/lib/configlib/layoutprovider.cpp:81
+#: src/lib/configlib/layoutprovider.cpp:83
 msgid "Any language"
 msgstr "N'importe quelle langue"
 
-#: src/configtool/mainwindow.cpp:122
+#: src/configtool/mainwindow.cpp:137
 msgid "Apply configuration changes"
 msgstr "Appliquer les changements de configuration"
 
@@ -179,13 +179,13 @@ msgstr ""
 msgid "Change Fcitx 5 Configuration"
 msgstr "Modifier la configuration de Fcitx 5"
 
-#: src/lib/configwidgetslib/impage.cpp:305
+#: src/lib/configwidgetslib/impage.cpp:314
 msgid "Change Input method to match layout selection."
 msgstr ""
 "Changer la méthode de saisie pour qu'elle corresponde à la disposition "
 "sélectionnée."
 
-#: src/lib/configwidgetslib/impage.cpp:383
+#: src/lib/configwidgetslib/impage.cpp:393
 msgid "Change System layout to match input method selection."
 msgstr ""
 "Changer la disposition du système pour qu'elle corresponde à la méthode "
@@ -229,11 +229,11 @@ msgstr "Copie du fichier %1 vers %2"
 msgid "Current Input Method:"
 msgstr "Méthode de saisie actuelle :"
 
-#: src/lib/configwidgetslib/impage.cpp:205
+#: src/lib/configwidgetslib/impage.cpp:221
 msgid "Current group changed"
 msgstr "Le groupe actuel a changé"
 
-#: src/lib/configlib/layoutmodel.cpp:123
+#: src/lib/configlib/layoutmodel.cpp:131
 msgid "Default"
 msgstr "Par défaut"
 
@@ -265,13 +265,13 @@ msgstr ""
 "%2%3\n"
 "Êtes-vous sûr de vouloir le désactiver ?"
 
-#: src/lib/configwidgetslib/impage.cpp:206
+#: src/lib/configwidgetslib/impage.cpp:222
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 "Voulez-vous changer de groupe ? Les modifications apportées au groupe actuel "
 "seront perdues !"
 
-#: src/configtool/mainwindow.cpp:123
+#: src/configtool/mainwindow.cpp:138
 msgid "Do you want to save the changes or discard them?"
 msgstr "Voulez-vous enregistrer les modifications ou les annuler ?"
 
@@ -351,6 +351,14 @@ msgstr "Fcitx est complètement fermé."
 msgid "Fcitx is started."
 msgstr "Fcitx est démarré."
 
+#: src/lib/configwidgetslib/impage.cpp:124
+msgid ""
+"Found updates to fcitx installation. Do you want to check for new input "
+"methods with loaded addons? For Flatpak version of Fcitx, it is required to "
+"restart fcitx to load newly installed/updated addons. To do this, you may "
+"need to logout or restart your computer."
+msgstr ""
+
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
 #: rc.cpp:30
@@ -364,12 +372,6 @@ msgstr ""
 "méthodes de saisie et les extensions nouvellement installés ? fcitx doit "
 "être redémarré pour mettre à jour les extensions déjà chargées,"
 
-#: src/lib/configwidgetslib/impage.cpp:110
-msgid "Found updates to fcitx installation. Do you want to restart Fcitx?"
-msgstr ""
-"Mises à jour trouvées pour l'installation de fcitx. Voulez-vous redémarrer "
-"Fcitx ?"
-
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Frontend"
 msgstr "Frontal"
@@ -379,7 +381,7 @@ msgstr "Frontal"
 msgid "Global Config"
 msgstr "Configuration globale"
 
-#: src/configtool/mainwindow.cpp:48
+#: src/configtool/mainwindow.cpp:58
 msgid "Global Options"
 msgstr "Options globales"
 
@@ -388,7 +390,7 @@ msgstr "Options globales"
 msgid "Got error: %1 %2"
 msgstr "Erreur : %1 %2"
 
-#: src/lib/configwidgetslib/impage.cpp:444
+#: src/lib/configwidgetslib/impage.cpp:454
 msgid "Group Name:"
 msgstr "Nom du groupe :"
 
@@ -413,7 +415,7 @@ msgid "Import table data for installed table from Fcitx 4"
 msgstr ""
 "Importer les données de la table pour la table installée depuis Fcitx 4"
 
-#: src/configtool/mainwindow.cpp:47 src/lib/configlib/addonmodel.cpp:36
+#: src/configtool/mainwindow.cpp:57 src/lib/configlib/addonmodel.cpp:36
 msgid "Input Method"
 msgstr "Méthode de saisie"
 
@@ -469,7 +471,7 @@ msgstr "Langue :"
 msgid "Layout"
 msgstr "Disposition"
 
-#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:39
+#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:108
 #, kde-format
@@ -549,7 +551,7 @@ msgstr "Déplacer vers le haut"
 msgid "Multilingual"
 msgstr "Multilingue"
 
-#: src/lib/configwidgetslib/impage.cpp:444
+#: src/lib/configwidgetslib/impage.cpp:454
 msgid "New Group"
 msgstr "Nouveau groupe"
 
@@ -596,11 +598,11 @@ msgstr "Supprimer"
 
 #. Restart action is the last action, so we can just remove/add without
 #. "ïnsert".
-#: src/lib/configwidgetslib/impage.cpp:121
+#: src/lib/configwidgetslib/impage.cpp:137
 msgid "Restart"
 msgstr "Redémarrer"
 
-#: src/configtool/mainwindow.cpp:63
+#: src/configtool/mainwindow.cpp:73
 #: src/lib/configwidgetslib/configwidget.cpp:240
 msgid "Restore &Defaults"
 msgstr "Restaurer les &défauts"
@@ -647,12 +649,12 @@ msgstr "Sélectionner la &police..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
-#: src/lib/configwidgetslib/impage.cpp:350 rc.cpp:87
+#: src/lib/configwidgetslib/impage.cpp:360 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
 msgstr "Sélectionner la disposition"
 
-#: src/lib/configwidgetslib/impage.cpp:290
+#: src/lib/configwidgetslib/impage.cpp:299
 msgid "Select default layout"
 msgstr "Sélectionner la disposition par défaut"
 
@@ -761,11 +763,11 @@ msgstr "Inconnu"
 msgid "Up"
 msgstr "Haut"
 
-#: src/lib/configwidgetslib/impage.cpp:113
+#: src/lib/configwidgetslib/impage.cpp:130
 msgid "Update"
 msgstr "Mettre à jour"
 
-#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:56
+#. i18n: file: src/lib/configwidgetslib/layoutselector.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:111
 #, kde-format
@@ -787,7 +789,7 @@ msgstr "Page d'accueil"
 msgid "Yes"
 msgstr "Oui"
 
-#: src/lib/configwidgetslib/impage.cpp:384
+#: src/lib/configwidgetslib/impage.cpp:394
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
@@ -795,7 +797,7 @@ msgstr ""
 "La méthode de saisie actuellement configurée ne correspond pas à votre "
 "disposition, voulez-vous modifier le paramètre de la disposition ?"
 
-#: src/lib/configwidgetslib/impage.cpp:306
+#: src/lib/configwidgetslib/impage.cpp:315
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
