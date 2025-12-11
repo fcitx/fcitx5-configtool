@@ -11,6 +11,7 @@
 #include "impage.h"
 #include "logging.h"
 #include "verticalscrollarea.h"
+#include <QApplication>
 #include <QDialogButtonBox>
 #include <QKeyEvent>
 #include <QKeySequence>
@@ -22,7 +23,6 @@
 #include <QWidget>
 #include <QtVersionChecks>
 #include <fcitx-utils/i18n.h>
-#include <QApplication>
 
 namespace fcitx::kcm {
 
