@@ -6,15 +6,15 @@
 # Xuetian Weng <wengxt@gmail.com>, 2017
 # ABE Tsunehiko, 2017
 # Takuro Onoue <kusanaginoturugi@gmail.com>, 2020
-# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-12-11 20:24+0000\n"
+"POT-Creation-Date: 2025-12-14 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2024\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/fcitx/teams/12005/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -350,6 +350,11 @@ msgid ""
 "restart fcitx to load newly installed/updated addons. To do this, you may "
 "need to logout or restart your computer."
 msgstr ""
+"fcitx インストールのアップデートが見つかりました。ロードされたアドオンで新し"
+"い入力メソッドを確認しますか？Flatpak 版の fcitx では、新しくインストールまた"
+"は更新されたアドオンをロードするのに、fcitx を再起動する必要があります。これ"
+"を行うにはログアウトするか、コンピューターを再起動する必要があるかもしれませ"
+"ん。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
