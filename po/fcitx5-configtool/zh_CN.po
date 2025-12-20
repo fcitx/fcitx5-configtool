@@ -5,15 +5,15 @@
 # Translators:
 # wwj402 <wwj402@gmail.com>, 2021
 # shijie.chen <xingwozhonghua@126.com>, 2024
-# Xuetian Weng <wengxt@gmail.com>, 2024
+# Xuetian Weng <wengxt@gmail.com>, 2025
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-12-11 20:24+0000\n"
+"POT-Creation-Date: 2025-12-20 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Xuetian Weng <wengxt@gmail.com>, 2024\n"
+"Last-Translator: Xuetian Weng <wengxt@gmail.com>, 2025\n"
 "Language-Team: Chinese (China) (https://app.transifex.com/fcitx/teams/12005/"
 "zh_CN/)\n"
 "Language: zh_CN\n"
@@ -350,6 +350,9 @@ msgid ""
 "restart fcitx to load newly installed/updated addons. To do this, you may "
 "need to logout or restart your computer."
 msgstr ""
+"发现 Fcitx 安装的更新。您想要检查已加载的附加组件的新输入法吗？对 Flatpak 版"
+"本的 Fcitx，需要重新启动 Fcitx 来加载新安装/更新的附加组件。您也许需要注销或"
+"者重新启动您的计算机以更新。"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
