@@ -2,44 +2,48 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
+# Translators:
+# Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: fcitx5-configtool\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2026-02-01 20:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: LANG\n"
+"PO-Revision-Date: 2017-11-23 04:55+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>, 2026\n"
+"Language-Team: Georgian (https://app.transifex.com/fcitx/teams/12005/ka/)\n"
+"Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #: src/lib/configlib/layoutprovider.cpp:89
 #, kde-format
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/lib/configlib/model.cpp:60
 #, kde-format
 msgctxt "%1 is language name, %2 is country name"
 msgid "%1 (%2)"
-msgstr ""
+msgstr "%1 (%2)"
 
 #: src/lib/configlib/layoutprovider.cpp:168
 #, kde-format
 msgid "%1 - %2"
-msgstr ""
+msgstr "%1 - %2"
 
 #: src/migrator/lib/processrunner.cpp:66
 #, kde-format
 msgid "%1 crashed."
-msgstr ""
+msgstr "%1 ავარიულად გაითიშა."
 
 #: src/migrator/lib/processrunner.cpp:73
 #, kde-format
 msgid "%1 failed to start."
-msgstr ""
+msgstr "%1-ის გაშვების შეცდომა."
 
 #: src/lib/configwidgetslib/optionwidget.cpp:519
 #: src/lib/configwidgetslib/optionwidget.cpp:530
@@ -51,29 +55,29 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:551
 #, kde-format
 msgid "%1:"
-msgstr ""
+msgstr "%1:"
 
 #: src/configtool/mainwindow.cpp:68
 msgid "&Apply"
-msgstr ""
+msgstr "&გადატარება"
 
 #: src/lib/configwidgetslib/configwidget.cpp:238
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:595
 msgid "&Cancel"
-msgstr ""
+msgstr "&გაუქმება"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:74
 msgid "&Clear"
-msgstr ""
+msgstr "&გასუფთავება"
 
 #: src/configtool/mainwindow.cpp:70
 msgid "&Close"
-msgstr ""
+msgstr "&დახურვა"
 
 #: src/migrator/app/taskpage.cpp:226
 msgid "&Next >"
-msgstr ""
+msgstr "შ&ემდეგი >"
 
 #: src/configtool/mainwindow.cpp:69
 #: src/lib/configwidgetslib/configwidget.cpp:237
@@ -81,16 +85,16 @@ msgstr ""
 #: src/lib/configwidgetslib/layoutselector.cpp:73
 #: src/lib/configwidgetslib/optionwidget.cpp:594
 msgid "&OK"
-msgstr ""
+msgstr "&დიახ"
 
 #: src/configtool/mainwindow.cpp:71
 msgid "&Reset"
-msgstr ""
+msgstr "ჩამოყ&რა"
 
 #: src/lib/configwidgetslib/addonselector.cpp:400
 msgctxt "Separator of a comma list"
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: src/lib/configwidgetslib/addonselector.cpp:410
 #, kde-format
@@ -104,7 +108,7 @@ msgstr ""
 
 #: layout/main.cpp:31
 msgid "A general keyboard layout viewer"
-msgstr ""
+msgstr "კლავიატურის განლაგებების დათვალიერება"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:31
 #. i18n: ectx: property (text), widget (QToolButton, addButton)
@@ -118,22 +122,22 @@ msgstr ""
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
-msgstr ""
+msgstr "დამატება"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:66
 #. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr ""
+msgstr "ჯგუფის დამატება"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "Addons"
-msgstr ""
+msgstr "დამატებები"
 
 #: src/lib/configwidgetslib/addonselector.cpp:310
 msgid "Advanced options"
-msgstr ""
+msgstr "დამატებითი პარამეტრები"
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
@@ -142,7 +146,7 @@ msgstr ""
 #: src/lib/configlib/layoutprovider.cpp:81
 #: src/lib/configlib/layoutprovider.cpp:83
 msgid "Any language"
-msgstr ""
+msgstr "ნებისმიერი ენა"
 
 #: src/configtool/mainwindow.cpp:137
 msgid "Apply configuration changes"
@@ -157,14 +161,14 @@ msgstr ""
 #: rc.cpp:93
 #, kde-format
 msgid "Available Input Method:"
-msgstr ""
+msgstr "შეყვანის ხელმისაწვდომი მეთოდი:"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:167
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #: rc.cpp:24
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr ""
+msgstr "Fcitx-თან DBus-ით მიერთების პრობლემა. Fcitx გაშვებულია?"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Change Fcitx 5 Configuration"
@@ -198,11 +202,11 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:475 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
-msgstr ""
+msgstr "მორგება"
 
 #: src/migrator/lib/renamefile.cpp:28
 msgid "Converter crashed."
-msgstr ""
+msgstr "გადამყვანი ავარიულად დასრულდა."
 
 #: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
@@ -214,7 +218,7 @@ msgstr ""
 #: rc.cpp:33
 #, kde-format
 msgid "Current Input Method:"
-msgstr ""
+msgstr "შეყვანის მიმდინარე მეთოდი:"
 
 #: src/lib/configwidgetslib/impage.cpp:221
 msgid "Current group changed"
@@ -222,14 +226,14 @@ msgstr ""
 
 #: src/lib/configlib/layoutmodel.cpp:131
 msgid "Default"
-msgstr ""
+msgstr "ნაგულისხმევი"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:82
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteGroupButton)
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr ""
+msgstr "ჯგუფის წაშლა"
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
@@ -239,7 +243,7 @@ msgstr ""
 #: src/lib/configwidgetslib/addonselector.cpp:429
 #, kde-format
 msgid "Disable %1"
-msgstr ""
+msgstr "%1-ის გამორთვა"
 
 #: src/lib/configwidgetslib/addonselector.cpp:424
 #, kde-format
@@ -264,23 +268,23 @@ msgstr ""
 #: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
-msgstr ""
+msgstr "გამორთულია"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr ""
+msgstr "ჩასწორება"
 
 #: layout/main.cpp:24
 msgid "Error"
-msgstr ""
+msgstr "შეცდომა"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
-msgstr ""
+msgstr "შეცდომა %1 ფაილის %2-ში კოპირებისას"
 
 #: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
@@ -298,12 +302,12 @@ msgstr ""
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:2
 msgid "Fcitx 5 Configuration"
-msgstr ""
+msgstr "Fcitx 5-ის მორგება"
 
 #: src/migrator/app/main.cpp:22
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:2
 msgid "Fcitx 5 Migration Wizard"
-msgstr ""
+msgstr "Fcitx 5-ის მიგრაციის ოსტატი"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -312,26 +316,26 @@ msgstr ""
 #: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr ""
+msgstr "Fcitx 5 გაშვებული არა."
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/configtool/main.cpp:22 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr ""
+msgstr "Fcitx-ის მორგება"
 
 #: src/migrator/app/taskpage.cpp:258
 msgid "Fcitx Exited."
-msgstr ""
+msgstr "Fcitx გავიდა."
 
 #: src/migrator/app/taskpage.cpp:261
 msgid "Fcitx is fully exited."
-msgstr ""
+msgstr "Fcitx სრულად გავიდა."
 
 #: src/migrator/app/taskpage.cpp:273
 msgid "Fcitx is started."
-msgstr ""
+msgstr "Fcitx გაეშვა."
 
 #: src/lib/configwidgetslib/impage.cpp:124
 msgid ""
@@ -353,16 +357,16 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Frontend"
-msgstr ""
+msgstr "წინაბოლო"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:50
 msgid "Global Config"
-msgstr ""
+msgstr "გლობალური კონფიგურაცია"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "Global Options"
-msgstr ""
+msgstr "გლობალური პარამეტრები"
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
@@ -371,14 +375,14 @@ msgstr ""
 
 #: src/lib/configwidgetslib/impage.cpp:454
 msgid "Group Name:"
-msgstr ""
+msgstr "ჯგუფის სახელი:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:43
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:36
 #, kde-format
 msgid "Group:"
-msgstr ""
+msgstr "ჯგუფი:"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:20
 msgid "Import Pinyin dictionary from Fcitx 4"
@@ -394,38 +398,38 @@ msgstr ""
 
 #: src/configtool/mainwindow.cpp:57 src/lib/configlib/addonmodel.cpp:36
 msgid "Input Method"
-msgstr ""
+msgstr "შეტანის მეთოდი"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Input Method Configuration"
-msgstr ""
+msgstr "შეტანის მეთოდის მორგება"
 
 #: layout/main.cpp:35
 msgid "Keyboard <layout>"
-msgstr ""
+msgstr "კლავიატურის <განლაგება>"
 
 #: layout/main.cpp:54
 msgid "Keyboard Layout viewer"
-msgstr ""
+msgstr "კლავიატურის განლაგებების დათვალიერება"
 
 #: layout/main.cpp:34
 msgid "Keyboard layout <group> (0-3)"
-msgstr ""
+msgstr "კლავიატურის განლაგება <ჯგუფი> (0-3)"
 
 #: layout/main.cpp:36
 msgid "Keyboard layout <variant>"
-msgstr ""
+msgstr "კლავიატურის განლაგების <ვარიანტი>"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:97
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:51
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr ""
+msgstr "კლავიატურის განლაგება, როცა შეყვანის მეთოდი არ არსებობს"
 
 #: layout/kbd-layout-viewer5.desktop.in:6
 msgid "Keyboard layout viewer"
-msgstr ""
+msgstr "კლავიატურის განლაგებების დათვალიერება"
 
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:39
@@ -437,25 +441,25 @@ msgstr ""
 #: rc.cpp:105
 #, kde-format
 msgid "Language:"
-msgstr ""
+msgstr "ენა:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:261
 #. i18n: ectx: property (text), widget (QToolButton, layoutButton)
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr ""
+msgstr "განლაგება"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:108
 #, kde-format
 msgid "Layout:"
-msgstr ""
+msgstr "განლაგება:"
 
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Loader"
-msgstr ""
+msgstr "ჩამტვირთავი"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
@@ -504,29 +508,29 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:37
 msgid "Module"
-msgstr ""
+msgstr "მოდული"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:214
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveDownButton)
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr ""
+msgstr "ჩამოწევა"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr ""
+msgstr "აწევა"
 
 #: src/lib/configlib/model.cpp:34
 msgid "Multilingual"
-msgstr ""
+msgstr "მრავალენოვანი"
 
 #: src/lib/configwidgetslib/impage.cpp:454
 msgid "New Group"
-msgstr ""
+msgstr "ახალი ჯგუფი"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:627
 msgid "No"
@@ -545,11 +549,11 @@ msgstr ""
 #: rc.cpp:99
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr ""
+msgstr "მხოლოდ &მიმდინარე ენის ჩვენება"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:17
 msgid "Pinyin"
-msgstr ""
+msgstr "პინინი"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:37
 msgid "Pinyin data is migrated."
@@ -567,13 +571,13 @@ msgstr ""
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
-msgstr ""
+msgstr "წაშლა"
 
 #. Restart action is the last action, so we can just remove/add without
 #. "ïnsert".
 #: src/lib/configwidgetslib/impage.cpp:137
 msgid "Restart"
-msgstr ""
+msgstr "გადატვირთვა"
 
 #: src/configtool/mainwindow.cpp:73
 #: src/lib/configwidgetslib/configwidget.cpp:240
@@ -597,28 +601,28 @@ msgstr ""
 #: rc.cpp:114
 #, kde-format
 msgid "Search Addons"
-msgstr ""
+msgstr "დამატებების ძებნა"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:292
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
 #: rc.cpp:96
 #, kde-format
 msgid "Search Input Method"
-msgstr ""
+msgstr "შეყვანის მეთოდის მოძებნა"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr ""
+msgstr "ყველაფრის &მონიშვნა"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:60
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 #, kde-format
 msgid "Select &Font..."
-msgstr ""
+msgstr "ფონტი..."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
@@ -669,12 +673,12 @@ msgstr ""
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:40
 msgid "Skk"
-msgstr ""
+msgstr "Skk"
 
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr ""
+msgstr "ცხრილი"
 
 #: src/lib/configwidgetslib/addonselector.cpp:311
 msgid ""
@@ -691,6 +695,9 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
+"პირველი შეყვანის მეთოდი არააქტიური მდგომარეობა იქნება. ჩვეულებრივ თქვენ "
+"გჭირდებათ <b>კლავიატურის</b> ან <b>კლავიატურის <i>განლაგება</i></b> პირველ "
+"ადგილზე დადოთ."
 
 #: layout/main.cpp:25
 msgid "This program only works on X11."
@@ -712,11 +719,11 @@ msgstr ""
 
 #: src/lib/configlib/addonmodel.cpp:37
 msgid "UI"
-msgstr ""
+msgstr "UI"
 
 #: src/lib/configlib/model.cpp:32
 msgid "Unknown"
-msgstr ""
+msgstr "უცნობი"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
@@ -725,22 +732,22 @@ msgstr ""
 #: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
-msgstr ""
+msgstr "მაღლა"
 
 #: src/lib/configwidgetslib/impage.cpp:130
 msgid "Update"
-msgstr ""
+msgstr "განახლება"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:111
 #, kde-format
 msgid "Variant:"
-msgstr ""
+msgstr "ვარიანტი:"
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "View keyboard layout"
-msgstr ""
+msgstr "კლავიატურის განლაგების დათვალიერება"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
@@ -751,7 +758,7 @@ msgstr ""
 
 #: src/lib/configwidgetslib/optionwidget.cpp:627
 msgid "Yes"
-msgstr ""
+msgstr "დიახ"
 
 #: src/lib/configwidgetslib/impage.cpp:394
 msgid ""
@@ -768,16 +775,16 @@ msgstr ""
 #: src/lib/configwidgetslib/optionwidget.cpp:662
 #, kde-format
 msgid "[%1]"
-msgstr ""
+msgstr "[%1]"
 
 #: layout/main.cpp:34
 msgid "group"
-msgstr ""
+msgstr "ჯგუფი"
 
 #: layout/main.cpp:35
 msgid "layout"
-msgstr ""
+msgstr "განლაგება"
 
 #: layout/main.cpp:36
 msgid "variant"
-msgstr ""
+msgstr "variant"
