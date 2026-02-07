@@ -14,6 +14,7 @@
 #include <QVector2D>
 #include <qmath.h>
 
+#include <fcitx-utils/i18n.h>
 #include <fcitx-utils/key.h>
 #include <fcitx-utils/misc.h>
 
@@ -1379,6 +1380,16 @@ void KeyboardLayoutWidget::paintEvent(QPaintEvent *event) {
     QRect r(QPoint(dx, dy), image.size() / image.devicePixelRatio());
     r.moveTo(dx, dy);
     p.drawPixmap(r, image, image.rect());
+
+    // Draw instruction text at bottom right corner
+    QFont font = p.font();
+    font.setPointSize(14);
+    p.setFont(font);
+    QString instructionText = _("Press any key to test keyboard layout");
+    QRect textRect = p.fontMetrics().boundingRect(instructionText);
+    int x = rect().right() - textRect.width() - 20;
+    int y = rect().bottom() - 20;
+    p.drawText(x, y, instructionText);
 }
 
 void KeyboardLayoutWidget::resizeEvent(QResizeEvent *event) {
