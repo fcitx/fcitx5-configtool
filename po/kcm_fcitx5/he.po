@@ -1,18 +1,16 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kcm_fcitx5 package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
 # 63f334ffc0709ba0fc2361b80bf3c0f0_00ffd1e <ab96c93ca0ac55ba7fa06385427e60dd_878890>, 2020
 # Xuetian Weng <wengxt@gmail.com>, 2026
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2026-02-24 07:35+0000\n"
+"POT-Creation-Date: 2026-02-24 09:43+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
 "Last-Translator: Xuetian Weng <wengxt@gmail.com>, 2026\n"
 "Language-Team: Hebrew (https://app.transifex.com/fcitx/teams/12005/he/)\n"
@@ -374,10 +372,17 @@ msgstr ""
 msgid "Theme generated from Plasma Theme %1"
 msgstr ""
 
-#~ msgctxt "Name"
-#~ msgid "Input Method"
-#~ msgstr "שיטת קלט"
+#: src/kcm/kcm_fcitx5.json
+msgctxt "X-KDE-Keywords"
+msgid "keyboard,input,im,fcitx"
+msgstr ""
 
-#~ msgctxt "Description"
-#~ msgid "Configure Input Method"
-#~ msgstr "הגדרת שיטת קלט"
+#: src/kcm/kcm_fcitx5.json
+msgctxt "Name"
+msgid "Input Method"
+msgstr "שיטת קלט"
+
+#: src/kcm/kcm_fcitx5.json
+msgctxt "Description"
+msgid "Configure Input Method"
+msgstr "הגדרת שיטת קלט"

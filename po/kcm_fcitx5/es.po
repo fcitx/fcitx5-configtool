@@ -4,14 +4,15 @@
 #
 # Translators:
 # Adolfo Jayme Barrientos, 2021
+# Xuetian Weng <wengxt@gmail.com>, 2026
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: kcm_fcitx5\n"
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-"POT-Creation-Date: 2025-05-24 20:24+0000\n"
+"POT-Creation-Date: 2026-02-24 09:43+0000\n"
 "PO-Revision-Date: 2020-08-01 05:15+0000\n"
-"Last-Translator: Adolfo Jayme Barrientos, 2021\n"
+"Last-Translator: Xuetian Weng <wengxt@gmail.com>, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/fcitx/teams/12005/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -20,15 +21,58 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: src/kcm/ui/AddonPage.qml:143
+#: src/kcm/ui/ListOption.qml:56
 #, kde-format
-msgid "%1 (Disabled)"
+msgid "Yes"
+msgstr "Sí"
+
+#: src/kcm/ui/ListOption.qml:56
+#, kde-format
+msgid "No"
+msgstr "No"
+
+#: src/kcm/ui/ListOption.qml:87
+#, kde-format
+msgid "[%1]"
 msgstr ""
 
-#: src/kcm/ui/ConfigGroup.qml:71
+#: src/kcm/ui/ListOption.qml:141
 #, kde-format
-msgid "%1:"
+msgid "Edit"
 msgstr ""
+
+#: src/kcm/ui/ListOption.qml:152 src/kcm/ui/main.qml:80
+#, kde-format
+msgid "Remove"
+msgstr "Quitar"
+
+#: src/kcm/ui/ListOption.qml:192 src/kcm/ui/AddIMPage.qml:41
+#, kde-format
+msgid "Add"
+msgstr "Añadir"
+
+#: src/kcm/ui/AddonPage.qml:18
+#, kde-format
+msgid "Addons"
+msgstr "Complementos"
+
+#: src/kcm/ui/AddonPage.qml:49
+#, kde-format
+msgid ""
+"The feature of enabling/disabling addons is only intended for advanced users "
+"who understand the potential implication. Fcitx needs to be restarted to "
+"make the changes to enable/disable to take effect."
+msgstr ""
+
+#: src/kcm/ui/AddonPage.qml:61
+#, kde-format
+msgid "Re-Enable"
+msgstr "Reactivar"
+
+#: src/kcm/ui/AddonPage.qml:74 src/kcm/ui/AddIMPage.qml:59
+#, kde-format
+msgid "Search..."
+msgstr "Buscar…"
 
 #: src/kcm/ui/AddonPage.qml:109
 #, kde-format
@@ -46,73 +90,6 @@ msgstr ""
 msgid "- Disable some features in %1\n"
 msgstr ""
 
-#: src/kcm/ui/KeyOption.qml:52
-#, kde-format
-msgid "..."
-msgstr ""
-
-#: src/kcm/ui/ListOption.qml:192 src/kcm/ui/AddIMPage.qml:41
-#, kde-format
-msgid "Add"
-msgstr "Añadir"
-
-#: src/kcm/ui/main.qml:123
-#, kde-format
-msgid "Add Group"
-msgstr "Añadir grupo"
-
-#: src/kcm/ui/AddIMPage.qml:14
-#, kde-format
-msgid "Add Input Method"
-msgstr "Añadir método de entrada"
-
-#: src/kcm/ui/main.qml:227
-#, kde-format
-msgid "Add Input Method..."
-msgstr "Añadir método de entrada…"
-
-#: src/kcm/ui/AddonPage.qml:18
-#, kde-format
-msgid "Addons"
-msgstr "Complementos"
-
-#: src/kcm/ui/main.qml:237
-#, kde-format
-msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr ""
-"No se puede conectar con Fcitx por DBus. Cerciórese de que se esté "
-"ejecutando Fcitx."
-
-#: src/kcm/ui/SelectLayoutSheet.qml:73
-#, kde-format
-msgid "Clear"
-msgstr ""
-
-#: src/kcm/ui/AddonPage.qml:153 src/kcm/ui/main.qml:60
-#, kde-format
-msgid "Configure"
-msgstr "Configurar"
-
-#: src/kcm/ui/main.qml:218
-#, kde-format
-msgid "Configure addons..."
-msgstr "Configurar complementos…"
-
-#: src/kcm/ui/main.qml:212
-#, kde-format
-msgid "Configure global options..."
-msgstr "Configurar opciones globales…"
-
-#: src/kcm/ui/main.qml:158
-#, kde-format
-msgid "Current group changed"
-msgstr ""
-
-#: src/kcm/ui/SaveWarningDialog.qml:21
-#, kde-format
-msgid "Current page is not yet saved. Please save the config first."
-msgstr ""
-
 #: src/kcm/ui/AddonPage.qml:131
 #, kde-format
 msgid ""
@@ -121,30 +98,122 @@ msgid ""
 "Are you sure you want to disable it?"
 msgstr ""
 
+#: src/kcm/ui/AddonPage.qml:143
+#, kde-format
+msgid "%1 (Disabled)"
+msgstr ""
+
+#: src/kcm/ui/AddonPage.qml:153 src/kcm/ui/main.qml:60
+#, kde-format
+msgid "Configure"
+msgstr "Configurar"
+
+#: src/kcm/ui/AddonPage.qml:166
+#, kde-format
+msgid "Show &Advanced options"
+msgstr ""
+
+#: src/kcm/ui/SaveWarningDialog.qml:16
+#, kde-format
+msgid "Some config is not saved"
+msgstr ""
+
+#: src/kcm/ui/SaveWarningDialog.qml:21
+#, kde-format
+msgid "Current page is not yet saved. Please save the config first."
+msgstr ""
+
+#: src/kcm/ui/main.qml:70
+#, kde-format
+msgid "Select Layout"
+msgstr ""
+
+#: src/kcm/ui/main.qml:76
+#, kde-format
+msgid "Select layout for %1"
+msgstr ""
+
+#: src/kcm/ui/main.qml:102
+#, kde-format
+msgid "Name:"
+msgstr "Nombre:"
+
+#: src/kcm/ui/main.qml:103
+#, kde-format
+msgid "Group Name"
+msgstr ""
+
+#: src/kcm/ui/main.qml:112 src/kcm/ui/SelectLayoutSheet.qml:82
+#, kde-format
+msgid "Ok"
+msgstr "Aceptar"
+
+#: src/kcm/ui/main.qml:123
+#, kde-format
+msgid "Add Group"
+msgstr "Añadir grupo"
+
+#: src/kcm/ui/main.qml:158
+#, kde-format
+msgid "Current group changed"
+msgstr ""
+
 #: src/kcm/ui/main.qml:176
 #, kde-format
 msgid "Do you want to change group? Changes to current group will be lost!"
 msgstr ""
 
-#: src/kcm/ui/ListOption.qml:141
+#: src/kcm/ui/main.qml:188
 #, kde-format
-msgid "Edit"
+msgid "Select system layout..."
 msgstr ""
 
-#: src/kcm/ui/KeyOption.qml:54
+#: src/kcm/ui/main.qml:191
 #, kde-format
-msgid "Empty"
-msgstr "Vacío"
-
-#: src/plasmathemegenerator/main.cpp:95
-#, kde-format
-msgid "File descriptor <fd> "
+msgid "Select system layout for group %1"
 msgstr ""
 
-#: src/kcm/ui/main.qml:293 src/kcm/ui/main.qml:312
+#: src/kcm/ui/main.qml:195
 #, kde-format
-msgid "Fix"
+msgid "Select system keyboard layout..."
 msgstr ""
+
+#: src/kcm/ui/main.qml:204
+#, kde-format
+msgid "Test Input"
+msgstr ""
+
+#: src/kcm/ui/main.qml:212
+#, kde-format
+msgid "Configure global options..."
+msgstr "Configurar opciones globales…"
+
+#: src/kcm/ui/main.qml:214
+#, kde-format
+msgid "Global Options"
+msgstr "Opciones globales"
+
+#: src/kcm/ui/main.qml:218
+#, kde-format
+msgid "Configure addons..."
+msgstr "Configurar complementos…"
+
+#: src/kcm/ui/main.qml:227
+#, kde-format
+msgid "Add Input Method..."
+msgstr "Añadir método de entrada…"
+
+#: src/kcm/ui/main.qml:237
+#, kde-format
+msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
+msgstr ""
+"No se puede conectar con Fcitx por DBus. Cerciórese de que se esté "
+"ejecutando Fcitx."
+
+#: src/kcm/ui/main.qml:245
+#, kde-format
+msgid "Run Fcitx"
+msgstr "Ejecutar Fcitx"
 
 #: src/kcm/ui/main.qml:257
 #, kde-format
@@ -154,19 +223,33 @@ msgid ""
 "would need to be restarted."
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:89
+#: src/kcm/ui/main.qml:265
 #, kde-format
-msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
+msgid "Update"
+msgstr "Actualizar"
+
+#: src/kcm/ui/main.qml:274
+#, kde-format
+msgid "Restart"
+msgstr "Reiniciar"
+
+#: src/kcm/ui/main.qml:287
+#, kde-format
+msgid ""
+"Your currently configured input method does not match your layout, do you "
+"want to change the layout setting?"
 msgstr ""
 
-#: src/kcm/ui/main.qml:214
+#: src/kcm/ui/main.qml:293 src/kcm/ui/main.qml:312
 #, kde-format
-msgid "Global Options"
-msgstr "Opciones globales"
+msgid "Fix"
+msgstr ""
 
-#: src/kcm/ui/main.qml:103
+#: src/kcm/ui/main.qml:306
 #, kde-format
-msgid "Group Name"
+msgid ""
+"Your currently configured input method does not match your selected layout, "
+"do you want to add the corresponding input method for the layout?"
 msgstr ""
 
 #: src/kcm/ui/main.qml:324
@@ -184,9 +267,9 @@ msgstr ""
 msgid "Input Method On"
 msgstr ""
 
-#: src/kcm/ui/KeyOption.qml:144
+#: src/kcm/ui/ConfigGroup.qml:71
 #, kde-format
-msgid "Key code mode"
+msgid "%1:"
 msgstr ""
 
 #: src/kcm/ui/SelectLayoutSheet.qml:32
@@ -199,65 +282,14 @@ msgstr "Idioma:"
 msgid "Layout:"
 msgstr "Disposición:"
 
-#: src/kcm/ui/main.qml:102
+#: src/kcm/ui/SelectLayoutSheet.qml:61
 #, kde-format
-msgid "Name:"
-msgstr "Nombre:"
+msgid "Variant:"
+msgstr "Variante:"
 
-#: src/kcm/ui/ListOption.qml:56
+#: src/kcm/ui/SelectLayoutSheet.qml:73
 #, kde-format
-msgid "No"
-msgstr "No"
-
-#: src/kcm/ui/main.qml:112 src/kcm/ui/SelectLayoutSheet.qml:82
-#, kde-format
-msgid "Ok"
-msgstr "Aceptar"
-
-#: src/kcm/ui/AddIMPage.qml:29
-#, kde-format
-msgid "Only &Show Current Language"
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:94
-#, kde-format
-msgid "Output path <output> "
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:93
-#, kde-format
-msgid "Plasma theme name <name> "
-msgstr ""
-
-#: src/kcm/ui/AddonPage.qml:61
-#, kde-format
-msgid "Re-Enable"
-msgstr "Reactivar"
-
-#: src/kcm/ui/ListOption.qml:152 src/kcm/ui/main.qml:80
-#, kde-format
-msgid "Remove"
-msgstr "Quitar"
-
-#: src/kcm/ui/main.qml:274
-#, kde-format
-msgid "Restart"
-msgstr "Reiniciar"
-
-#: src/kcm/ui/main.qml:245
-#, kde-format
-msgid "Run Fcitx"
-msgstr "Ejecutar Fcitx"
-
-#: src/kcm/ui/AddonPage.qml:74 src/kcm/ui/AddIMPage.qml:59
-#, kde-format
-msgid "Search..."
-msgstr "Buscar…"
-
-#: src/kcm/ui/ColorOption.qml:53
-#, kde-format
-msgctxt "@title:window"
-msgid "Select Color"
+msgid "Clear"
 msgstr ""
 
 #: src/kcm/ui/FontOption.qml:44
@@ -266,101 +298,50 @@ msgctxt "@title:window"
 msgid "Select Font"
 msgstr ""
 
-#: src/kcm/ui/main.qml:70
+#: src/kcm/ui/KeyOption.qml:52
 #, kde-format
-msgid "Select Layout"
+msgid "..."
 msgstr ""
 
-#: src/kcm/ui/main.qml:76
+#: src/kcm/ui/KeyOption.qml:54
 #, kde-format
-msgid "Select layout for %1"
+msgid "Empty"
+msgstr "Vacío"
+
+#: src/kcm/ui/KeyOption.qml:144
+#, kde-format
+msgid "Key code mode"
 msgstr ""
-
-#: src/kcm/ui/main.qml:195
-#, kde-format
-msgid "Select system keyboard layout..."
-msgstr ""
-
-#: src/kcm/ui/main.qml:191
-#, kde-format
-msgid "Select system layout for group %1"
-msgstr ""
-
-#: src/kcm/ui/main.qml:188
-#, kde-format
-msgid "Select system layout..."
-msgstr ""
-
-#: src/kcm/ui/AddonPage.qml:166
-#, kde-format
-msgid "Show &Advanced options"
-msgstr ""
-
-#: src/kcm/ui/SaveWarningDialog.qml:16
-#, kde-format
-msgid "Some config is not saved"
-msgstr ""
-
-#: src/kcm/ui/main.qml:204
-#, kde-format
-msgid "Test Input"
-msgstr ""
-
-#: src/kcm/ui/AddonPage.qml:49
-#, kde-format
-msgid ""
-"The feature of enabling/disabling addons is only intended for advanced users "
-"who understand the potential implication. Fcitx needs to be restarted to "
-"make the changes to enable/disable to take effect."
-msgstr ""
-
-#: src/plasmathemegenerator/main.cpp:191
-#, kde-format
-msgid "Theme generated from Plasma Theme %1"
-msgstr ""
-
-#: src/kcm/ui/main.qml:265
-#, kde-format
-msgid "Update"
-msgstr "Actualizar"
-
-#: src/kcm/ui/SelectLayoutSheet.qml:61
-#, kde-format
-msgid "Variant:"
-msgstr "Variante:"
 
 #: src/kcm/ui/KeyOption.qml:148
 #, kde-format
 msgid "Void Symbol"
 msgstr ""
 
-#: src/kcm/ui/ListOption.qml:56
+#: src/kcm/ui/AddIMPage.qml:14
 #, kde-format
-msgid "Yes"
-msgstr "Sí"
+msgid "Add Input Method"
+msgstr "Añadir método de entrada"
 
-#: src/kcm/ui/main.qml:287
+#: src/kcm/ui/AddIMPage.qml:29
 #, kde-format
-msgid ""
-"Your currently configured input method does not match your layout, do you "
-"want to change the layout setting?"
+msgid "Only &Show Current Language"
 msgstr ""
 
-#: src/kcm/ui/main.qml:306
+#: src/kcm/ui/ColorOption.qml:53
 #, kde-format
-msgid ""
-"Your currently configured input method does not match your selected layout, "
-"do you want to add the corresponding input method for the layout?"
+msgctxt "@title:window"
+msgid "Select Color"
 msgstr ""
 
-#: src/kcm/ui/ListOption.qml:87
+#: src/plasmathemegenerator/main.cpp:89
 #, kde-format
-msgid "[%1]"
+msgid "Generate Fcitx 5 Classic UI Theme based on Plasma theme"
 msgstr ""
 
-#: src/plasmathemegenerator/main.cpp:96
+#: src/plasmathemegenerator/main.cpp:93
 #, kde-format
-msgid "fd"
+msgid "Plasma theme name <name> "
 msgstr ""
 
 #: src/plasmathemegenerator/main.cpp:93
@@ -370,5 +351,40 @@ msgstr ""
 
 #: src/plasmathemegenerator/main.cpp:94
 #, kde-format
+msgid "Output path <output> "
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:94
+#, kde-format
 msgid "output"
 msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:95
+#, kde-format
+msgid "File descriptor <fd> "
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:96
+#, kde-format
+msgid "fd"
+msgstr ""
+
+#: src/plasmathemegenerator/main.cpp:191
+#, kde-format
+msgid "Theme generated from Plasma Theme %1"
+msgstr ""
+
+#: src/kcm/kcm_fcitx5.json
+msgctxt "X-KDE-Keywords"
+msgid "keyboard,input,im,fcitx"
+msgstr "teclado,entrada,método,im,fcitx"
+
+#: src/kcm/kcm_fcitx5.json
+msgctxt "Name"
+msgid "Input Method"
+msgstr "Método de entrada"
+
+#: src/kcm/kcm_fcitx5.json
+msgctxt "Description"
+msgid "Configure Input Method"
+msgstr "Configurar método de entrada"
