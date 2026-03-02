@@ -1,7 +1,7 @@
 fcitx5-configtool
 ==============================================
 
-[![Jenkins Build Status](https://img.shields.io/jenkins/s/https/jenkins.fcitx-im.org/job/fcitx5-configtool.svg)](https://jenkins.fcitx-im.org/job/fcitx5-configtool/)
+![Jenkins Build](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fjenkins.fcitx-im.org%2Fjob%2Ffcitx5-configtool%2F)
 
 fcitx5-configtool is a Qt-based GUI tool that provides a user-friendly configuration interface for Fcitx 5. It has two different implementations: one based on QWidget, which can be accessed via fcitx5-config-qt, and the other based on KCM/Kirigami2, which can be found in Plasma systemsettings.
 
