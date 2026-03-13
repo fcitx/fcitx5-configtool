@@ -7,15 +7,16 @@
 #define _KCM_FCITX_FONTBUTTON_H_
 
 #include "ui_fontbutton.h"
+#include <QFont>
+#include <QWidget>
+#include <QString>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class FontButton : public QWidget, public Ui::FontButton {
     Q_OBJECT
 public:
-    explicit FontButton(QWidget *parent = 0);
-    virtual ~FontButton();
+    explicit FontButton(QWidget *parent = nullptr);
     const QFont &font();
     QString fontName();
 
@@ -30,7 +31,6 @@ private:
     QFont font_;
 };
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX_FONTBUTTON_H_

@@ -4,24 +4,24 @@
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
+#include "fontbutton.h"
+#include "font.h"
 #include <KFontChooser>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QWidget>
+#include <QString>
+#include <QVBoxLayout>
+#include <fcitx-utils/i18n.h>
 
-#include "font.h"
-#include "fontbutton.h"
-
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 FontButton::FontButton(QWidget *parent) : QWidget(parent) {
     setupUi(this);
     connect(fontSelectButton, &QPushButton::clicked, this,
             &FontButton::selectFont);
 }
-
-FontButton::~FontButton() {}
 
 const QFont &FontButton::font() { return font_; }
 
@@ -37,12 +37,12 @@ void FontButton::setFont(const QFont &font) {
 }
 
 void FontButton::selectFont() {
-    QDialog dialog(NULL);
-    KFontChooser *chooser = new KFontChooser(&dialog);
+    QDialog dialog(nullptr);
+    auto *chooser = new KFontChooser(&dialog);
     chooser->setFont(font_);
-    QVBoxLayout *dialogLayout = new QVBoxLayout;
+    auto *dialogLayout = new QVBoxLayout;
     dialog.setLayout(dialogLayout);
-    QDialogButtonBox *buttonBox =
+    auto *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     buttonBox->button(QDialogButtonBox::Ok)->setText(_("&OK"));
     buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
@@ -56,5 +56,4 @@ void FontButton::selectFont() {
     }
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
