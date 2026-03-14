@@ -49,6 +49,8 @@ Loader {
             return "ColorOption.qml";
         } else if (data.type.startsWith("List|")) {
             return "ListOption.qml";
+        } else if (data.type.startsWith("Optional|")) {
+            return "OptionalOption.qml";
         } else if (data.type == "External") {
             return "ExternalOption.qml";
         } else {
