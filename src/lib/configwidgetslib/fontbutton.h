@@ -8,8 +8,8 @@
 
 #include "ui_fontbutton.h"
 #include <QFont>
-#include <QWidget>
 #include <QString>
+#include <QWidget>
 
 namespace fcitx::kcm {
 

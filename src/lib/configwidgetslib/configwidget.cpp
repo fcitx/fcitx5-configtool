@@ -154,6 +154,9 @@ void ConfigWidget::setValue(const QVariant &value) {
         map = value.toMap();
     }
     for (auto optionWidget : optionWidgets) {
+        if (optionWidget->skipConfig()) {
+            continue;
+        }
         optionWidget->readValueFrom(map);
     }
     dontEmitChanged_ = false;
@@ -163,6 +166,9 @@ QVariant ConfigWidget::value() const {
     QVariantMap map;
     auto optionWidgets = findChildren<OptionWidget *>();
     for (auto optionWidget : optionWidgets) {
+        if (optionWidget->skipConfig()) {
+            continue;
+        }
         optionWidget->writeValueTo(map);
     }
     return map;
@@ -172,6 +178,9 @@ void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton button) {
     if (button == QDialogButtonBox::RestoreDefaults) {
         auto optionWidgets = findChildren<OptionWidget *>();
         for (auto optionWidget : optionWidgets) {
+            if (optionWidget->skipConfig()) {
+                continue;
+            }
             optionWidget->restoreToDefault();
         }
     } else if (button == QDialogButtonBox::Ok) {
@@ -185,7 +194,7 @@ void ConfigWidget::setupWidget(QWidget *widget, const QString &type,
         qCCritical(KCM_FCITX5) << type << " type does not exists.";
     }
 
-    auto layout = new QFormLayout(widget);
+    auto *layout = new QFormLayout(widget);
     const auto &options = desc_[type];
     for (auto &option : options) {
         addOptionWidget(layout, option, joinPath(path, option.name()));
@@ -197,7 +206,7 @@ void ConfigWidget::setupWidget(QWidget *widget, const QString &type,
 void ConfigWidget::addOptionWidget(QFormLayout *layout,
                                    const FcitxQtConfigOption &option,
                                    const QString &path) {
-    if (auto optionWidget =
+    if (auto *optionWidget =
             OptionWidget::addWidget(layout, option, path, this)) {
         connect(optionWidget, &OptionWidget::valueChanged, this,
                 &ConfigWidget::doChanged);

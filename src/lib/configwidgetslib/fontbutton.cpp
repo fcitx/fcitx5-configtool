@@ -10,9 +10,9 @@
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QPushButton>
-#include <QWidget>
 #include <QString>
 #include <QVBoxLayout>
+#include <QWidget>
 #include <fcitx-utils/i18n.h>
 
 namespace fcitx::kcm {
