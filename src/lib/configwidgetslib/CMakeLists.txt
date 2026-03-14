@@ -8,6 +8,7 @@ add_library(configwidgetslib STATIC
     layoutselector.cpp
     listoptionwidget.cpp
     optionwidget.cpp
+    optionaloptionwidget.cpp
     varianthelper.cpp
     verticalscrollarea.cpp
     impage.cpp

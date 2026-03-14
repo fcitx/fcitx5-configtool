@@ -7,36 +7,46 @@
 
 #include "optionwidget.h"
 #include "addonmodel.h"
-#include "config.h"
 #include "configwidget.h"
 #include "font.h"
 #include "fontbutton.h"
 #include "keylistwidget.h"
 #include "listoptionwidget.h"
-#include "logging.h"
+#include "optionaloptionwidget.h"
 #include "varianthelper.h"
 #include <KColorButton>
 #include <QCheckBox>
+#include <QColor>
 #include <QComboBox>
+#include <QDBusArgument>
 #include <QDialog>
 #include <QDialogButtonBox>
 #include <QFileInfo>
 #include <QFormLayout>
 #include <QGuiApplication>
+#include <QLabel>
 #include <QLineEdit>
+#include <QOverload>
 #include <QPointer>
 #include <QProcess>
 #include <QPushButton>
 #include <QSpinBox>
+#include <QString>
 #include <QToolButton>
 #include <QVBoxLayout>
+#include <QVariant>
+#include <QWidget>
+#include <Qt>
+#include <QtContainerFwd>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/i18n.h>
+#include <fcitx-utils/key.h>
 #include <fcitx-utils/standardpaths.h>
+#include <fcitxqtdbustypes.h>
 #include <fcitxqtkeysequencewidget.h>
+#include <limits>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 namespace {
 
@@ -51,8 +61,8 @@ public:
         layout->setContentsMargins(0, 0, 0, 0);
 
         spinBox_ = new QSpinBox;
-        spinBox_->setMaximum(INT_MAX);
-        spinBox_->setMinimum(INT_MIN);
+        spinBox_->setMaximum(std::numeric_limits<int>::max());
+        spinBox_->setMinimum(std::numeric_limits<int>::min());
         if (option.properties().contains("IntMax")) {
             auto max = option.properties().value("IntMax");
             spinBox_->setMaximum(max.toString().toInt());
@@ -394,7 +404,7 @@ private:
     QComboBox *comboBox_;
     QToolButton *toolButton_;
     QString defaultValue_;
-    inline static constexpr int subConfigPathRole = Qt::UserRole + 1;
+    static constexpr int subConfigPathRole = Qt::UserRole + 1;
 };
 
 class ColorOptionWidget : public OptionWidget {
@@ -420,6 +430,7 @@ public:
 
     void readValueFrom(const QVariantMap &map) override {
         auto value = readString(map, path());
+        qDebug() << "Read color value" << path() << value;
         Color color;
         try {
             color.setFromString(value.toStdString());
@@ -499,8 +510,8 @@ public:
                 });
     }
 
-    void readValueFrom(const QVariantMap &) override {}
-    void writeValueTo(QVariantMap &) override {}
+    void readValueFrom(const QVariantMap & /*map*/) override {}
+    void writeValueTo(QVariantMap & /*map*/) override {}
     void restoreToDefault() override {}
 
 private:
@@ -512,11 +523,23 @@ private:
 
 OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
                                       const fcitx::FcitxQtConfigOption &option,
-                                      const QString &path, QWidget *parent) {
+                                      const QString &path, QWidget *parent,
+                                      QWidget *labelWidget) {
     OptionWidget *widget = nullptr;
+
+    if (!labelWidget) {
+        QString label;
+        if (option.type() != "Boolean" && !option.description().isEmpty()) {
+            label = QString(_("%1:")).arg(option.description());
+        }
+        if (!label.isEmpty()) {
+            labelWidget = new QLabel(label);
+        }
+    }
+
     if (option.type() == "Integer") {
         widget = new IntegerOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "String") {
         const auto isFont = readBool(option.properties(), "Font");
         const auto isEnum = readBool(option.properties(), "IsEnum");
@@ -527,28 +550,31 @@ OptionWidget *OptionWidget::addWidget(QFormLayout *layout,
         } else {
             widget = new StringOptionWidget(option, path, parent);
         }
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "Boolean") {
         widget = new BooleanOptionWidget(option, path, parent);
         layout->addRow("", widget);
     } else if (option.type() == "Key") {
         widget = new KeyOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "List|Key") {
         widget = new KeyListOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "Enum") {
         widget = new EnumOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "Color") {
         widget = new ColorOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     } else if (option.type().startsWith("List|")) {
         widget = new ListOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
+    } else if (option.type().startsWith("Optional|")) {
+        widget = new OptionalOptionWidget(option, path, parent);
+        layout->addRow(labelWidget, widget);
     } else if (option.type() == "External") {
         widget = new ExternalOptionWidget(option, path, parent);
-        layout->addRow(QString(_("%1:")).arg(option.description()), widget);
+        layout->addRow(labelWidget, widget);
     }
     if (widget) {
         if (option.properties().contains("Tooltip")) {
@@ -621,13 +647,17 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
                                const QVariant &value) {
     if (option.type() == "Integer") {
         return value.toString();
-    } else if (option.type() == "String") {
+    }
+    if (option.type() == "String") {
         return value.toString();
-    } else if (option.type() == "Boolean") {
+    }
+    if (option.type() == "Boolean") {
         return value.toString() == "True" ? _("Yes") : _("No");
-    } else if (option.type() == "Key") {
+    }
+    if (option.type() == "Key") {
         return value.toString();
-    } else if (option.type() == "Enum") {
+    }
+    if (option.type() == "Enum") {
         QMap<QString, QString> enumMap;
         int i = 0;
         while (true) {
@@ -645,7 +675,8 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
             i++;
         }
         return enumMap.value(value.toString());
-    } else if (option.type().startsWith("List|")) {
+    }
+    if (option.type().startsWith("List|")) {
         int i = 0;
         QStringList strs;
         strs.clear();
@@ -660,27 +691,24 @@ QString OptionWidget::prettify(const fcitx::FcitxQtConfigOption &option,
             i++;
         }
         return QString(_("[%1]")).arg(strs.join(" "));
-    } else {
-        auto *configWidget = getConfigWidget(this);
-        if (configWidget &&
-            configWidget->description().contains(option.type())) {
-            if (auto key =
-                    option.properties().value("ListDisplayOption").toString();
-                !key.isEmpty()) {
-                const auto &options =
-                    *configWidget->description().find(option.type());
-                for (const auto &option : options) {
-                    if (option.name() == key) {
-                        return prettify(option, readVariant(value, key));
-                    }
+    }
+    auto *configWidget = getConfigWidget(this);
+    if (configWidget && configWidget->description().contains(option.type())) {
+        if (auto key =
+                option.properties().value("ListDisplayOption").toString();
+            !key.isEmpty()) {
+            const auto &options =
+                *configWidget->description().find(option.type());
+            for (const auto &option : options) {
+                if (option.name() == key) {
+                    return prettify(option, readVariant(value, key));
                 }
             }
         }
     }
-    return QString();
+    return {};
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #include "optionwidget.moc"

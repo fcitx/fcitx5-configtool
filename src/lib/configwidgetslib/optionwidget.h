@@ -7,23 +7,27 @@
 #ifndef _KCM_FCITX_OPTIONWIDGET_H_
 #define _KCM_FCITX_OPTIONWIDGET_H_
 
+#include <QString>
+#include <QVariantMap>
 #include <QWidget>
+#include <QtContainerFwd>
 #include <fcitxqtdbustypes.h>
+#include <utility>
 
 class QFormLayout;
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class OptionWidget : public QWidget {
     Q_OBJECT
 public:
-    OptionWidget(const QString &path, QWidget *parent)
-        : QWidget(parent), path_(path) {}
+    OptionWidget(QString path, QWidget *parent)
+        : QWidget(parent), path_(std::move(path)) {}
 
     static OptionWidget *addWidget(QFormLayout *layout,
                                    const fcitx::FcitxQtConfigOption &option,
-                                   const QString &path, QWidget *parent);
+                                   const QString &path, QWidget *parent,
+                                   QWidget *labelWidget = nullptr);
 
     static bool execOptionDialog(QWidget *parent,
                                  const fcitx::FcitxQtConfigOption &option,
@@ -33,6 +37,8 @@ public:
     virtual void writeValueTo(QVariantMap &map) = 0;
     virtual void restoreToDefault() = 0;
     virtual bool isValid() const { return true; }
+    bool skipConfig() const { return skipConfig_; }
+    void setSkipConfig(bool skip) { skipConfig_ = skip; }
 
     QString prettify(const FcitxQtConfigOption &option, const QVariant &value);
 
@@ -42,9 +48,9 @@ Q_SIGNALS:
 
 private:
     QString path_;
+    bool skipConfig_ = false;
 };
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX_OPTIONWIDGET_H_
