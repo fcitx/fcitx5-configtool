@@ -6,7 +6,9 @@
 
 #include "layoutselector.h"
 #include "dbusprovider.h"
+#ifdef ENABLE_X11
 #include "keyboardlayoutwidget.h"
+#endif	// ENABLE_X11
 #include "layoutmodel.h"
 #include "ui_layoutselector.h"
 #include <QDBusPendingCallWatcher>
@@ -44,6 +46,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
     connect(ui_->variantComboBox,
             qOverload<int>(&QComboBox::currentIndexChanged), this,
             &LayoutSelector::variantComboBoxChanged);
+#ifdef ENABLE_X11
     if (qApp->platformName() == "xcb") {
         keyboardLayoutWidget_ = new KeyboardLayoutWidget(this);
         keyboardLayoutWidget_->setMinimumSize(QSize(400, 200));
@@ -51,6 +54,7 @@ LayoutSelector::LayoutSelector(DBusProvider *dbus, QWidget *parent)
                                              QSizePolicy::Expanding);
         ui_->verticalLayout->addWidget(keyboardLayoutWidget_);
     }
+#endif	// ENABLE_X11
 }
 
 LayoutSelector::~LayoutSelector() {}
@@ -123,6 +127,7 @@ void LayoutSelector::layoutComboBoxChanged() {
     ui_->variantComboBox->setCurrentIndex(0);
 }
 
+#ifdef ENABLE_X11
 void LayoutSelector::variantComboBoxChanged() {
     if (!keyboardLayoutWidget_) {
         return;
@@ -137,6 +142,9 @@ void LayoutSelector::variantComboBoxChanged() {
         keyboardLayoutWidget_->setVisible(true);
     }
 }
+#else
+void LayoutSelector::variantComboBoxChanged() { return; }
+#endif	// ENABLE_X11
 
 } // namespace kcm
 } // namespace fcitx
