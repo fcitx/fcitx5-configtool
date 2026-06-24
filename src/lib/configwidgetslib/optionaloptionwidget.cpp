@@ -48,8 +48,14 @@ OptionalOptionWidget::OptionalOptionWidget(const FcitxQtConfigOption &option,
     valueCheckBox_ = new QCheckBox;
     connect(valueCheckBox_, &QCheckBox::checkStateChanged, this,
             &OptionalOptionWidget::updateValueWidget);
+    connect(valueCheckBox_, &QCheckBox::checkStateChanged, this,
+            &OptionWidget::valueChanged);
     subWidget_ = OptionWidget::addWidget(layout, subOption_, "Value", this,
                                          valueCheckBox_);
+    if (subWidget_) {
+        connect(subWidget_, &OptionWidget::valueChanged, this,
+                &OptionWidget::valueChanged);
+    }
     subWidget_->setSkipConfig(true);
     setLayout(layout);
 

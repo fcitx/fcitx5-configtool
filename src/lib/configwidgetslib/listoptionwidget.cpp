@@ -151,6 +151,14 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
 
     connect(model_, &QAbstractListModel::rowsMoved, this,
             [this]() { updateButton(); });
+    connect(model_, &QAbstractListModel::rowsInserted, this,
+            &OptionWidget::valueChanged);
+    connect(model_, &QAbstractListModel::rowsRemoved, this,
+            &OptionWidget::valueChanged);
+    connect(model_, &QAbstractListModel::dataChanged, this,
+            &OptionWidget::valueChanged);
+    connect(model_, &QAbstractListModel::rowsMoved, this,
+            &OptionWidget::valueChanged);
     connect(addButton, &QAbstractButton::clicked, this, [this]() {
         QVariant result;
         auto ok = OptionWidget::execOptionDialog(this, subOption_, result);
