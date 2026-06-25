@@ -1,6 +1,7 @@
 {
     "Categories": "Qt;KDE;X-KDE-settings-fcitx;",
     "KPlugin": {
+        "BugReportUrl": "https://github.com/fcitx/fcitx5/issues?dummy=1",
         "Description": "Configure Input Method",
         "Description[ca]": "Configura el mètode d'entrada",
         "Description[da]": "Konfigurer inputmetode",
