@@ -277,7 +277,7 @@ public:
                 }
             }
 
-            menu["Spacing"] = std::to_string(textMargin);
+            menu["Spacing"] = std::to_string(qRound(textMargin));
             setMarginsToConfig(inputPanel, "ContentMargin", bgLeft, bgTop,
                                bgRight, bgBottom);
             setMarginsToConfig(menu, "ContentMargin", bgLeft, bgTop, bgRight,
@@ -290,6 +290,10 @@ public:
                 inputPanel["EnableBlur"] = "True";
             }
             menu["Background"]["Image"] = "panel.png";
+            if (theme_->blurBehindEnabled()) {
+                menu["BlurMask"] = "mask.png";
+                menu["EnableBlur"] = "True";
+            }
             setMarginsToConfig(inputPanel["Background"], "Margin", bgLeft,
                                bgTop, bgRight, bgBottom);
             setMarginsToConfig(menu["Background"], "Margin", bgLeft, bgTop,
