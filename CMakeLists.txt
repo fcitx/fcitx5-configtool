@@ -29,9 +29,13 @@ include(GenerateExportHeader)
 option(ENABLE_KCM "Enable KDE Config Module" On)
 option(ENABLE_CONFIG_QT "Enable fcitx5-config-qt" On)
 option(ENABLE_TEST "Enable test" Off)
+option(ENABLE_X11 "Enable X11 integration" On)
 add_definitions(-DTRANSLATION_DOMAIN=\"kcm_fcitx5\")
 add_definitions(-DFCITX_GETTEXT_DOMAIN=\"fcitx5-configtool\")
 add_definitions(-DQT_NO_KEYWORDS)
+if (ENABLE_X11)
+add_definitions(-DENABLE_X11)
+endif ()
 
 set(CONFIG_QT_UNIQUE_APP_SUPPORT 0)
 if (ENABLE_CONFIG_QT)
@@ -79,15 +83,19 @@ include("${FCITX_INSTALL_CMAKECONFIG_DIR}/Fcitx5Utils/Fcitx5CompilerSettings.cma
 
 find_package(PkgConfig REQUIRED)
 find_package(Gettext REQUIRED)
+if (ENABLE_X11)
 find_package(X11 REQUIRED)
 find_package(XKeyboardConfig REQUIRED)
 pkg_check_modules(XkbFile "xkbfile" REQUIRED IMPORTED_TARGET)
+endif ()
 
 configure_file(config.h.in config.h)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_subdirectory(po)
 add_subdirectory(src)
+if (ENABLE_X11)
 add_subdirectory(layout)
+endif ()
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
