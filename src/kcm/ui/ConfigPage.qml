@@ -15,6 +15,7 @@ Kirigami.ScrollablePage {
     property alias rawValue: configGroup.rawValue
     property alias typeMap: configGroup.typeMap
     property alias typeName: configGroup.typeName
+    property alias valid: configGroup.valid
     property string uri
 
     function defaults() {
@@ -24,8 +25,11 @@ Kirigami.ScrollablePage {
         configGroup.load();
     }
     function save() {
-        configGroup.save();
+        if (!configGroup.save()) {
+            return false;
+        }
         kcm.saveConfig(uri, rawValue);
+        return true;
     }
     function showWarning() {
         dialog.open();

@@ -19,6 +19,15 @@ Kirigami.FormLayout {
     property variant rawValue
     property bool needsSave
     property variant typeMap
+    readonly property bool valid: {
+        for (var i = 0; i < repeater.count; i++) {
+            var loader = repeater.itemAt(i);
+            if (loader.status === Loader.Ready && Utils.hasProperty(loader.item, "valid") && !loader.item.valid) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     function defaults() {
         for (var i = 0; i < repeater.count; i++) {
@@ -38,11 +47,16 @@ Kirigami.FormLayout {
         needsSave = false;
     }
     function save() {
+        if (!valid) {
+            return false;
+        }
         var rawValue = {};
         for (var i = 0; i < repeater.count; i++) {
             var loader = repeater.itemAt(i);
             if (loader.status == Loader.Ready) {
-                loader.item.save();
+                if (loader.item.save() === false) {
+                    return false;
+                }
                 if (Utils.hasProperty(loader.item, "rawValue")) {
                     Utils.setRawValue(rawValue, loader.option.name, loader.item.rawValue);
                 }
@@ -50,6 +64,7 @@ Kirigami.FormLayout {
         }
         configGroup.rawValue = rawValue;
         configGroup.needsSave = false;
+        return true;
     }
     function setRawValue(rawValue) {
         for (var i = 0; i < repeater.count; i++) {
