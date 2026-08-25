@@ -17,6 +17,7 @@
 #include <QMap>
 #include <QObject>
 #include <QString>
+#include <fcitx-config/option.h>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/key.h>
 #include <layoutprovider.h>
@@ -90,6 +91,9 @@ public Q_SLOTS:
 
     QString eventToString(bool keyCode);
     QString localizedKeyString(const QString &str);
+    bool isValidRegex(const QString &str) {
+        return RegexConstrain().check(str.toStdString());
+    }
 
     void runFcitx();
     void fixLayout();

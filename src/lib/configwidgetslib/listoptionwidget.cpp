@@ -136,7 +136,7 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
     subOption_.setType(option.type().mid(5)); // Remove List|
     auto props = option.properties();
     if (props.contains("ListConstrain")) {
-        auto itemConstrain = props.value("ListConstrain").toMap();
+        auto itemConstrain = toMap(props.value("ListConstrain"));
         props.remove("ListConstrain");
         for (auto iter = itemConstrain.begin(), end = itemConstrain.end();
              iter != end; ++iter) {

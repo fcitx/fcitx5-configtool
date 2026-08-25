@@ -38,6 +38,7 @@
 #include <QWidget>
 #include <Qt>
 #include <QtContainerFwd>
+#include <fcitx-config/option.h>
 #include <fcitx-utils/color.h>
 #include <fcitx-utils/i18n.h>
 #include <fcitx-utils/key.h>
@@ -102,13 +103,20 @@ public:
     StringOptionWidget(const FcitxQtConfigOption &option, const QString &path,
                        QWidget *parent)
         : OptionWidget(path, parent), lineEdit_(new QLineEdit),
-          defaultValue_(option.defaultValue().variant().toString()) {
+          defaultValue_(option.defaultValue().variant().toString()),
+          isRegex_(readBool(option.properties(), "IsRegex") ||
+                   readBool(option.properties(), "ListConstrain/IsRegex")),
+          normalPalette_(lineEdit_->palette()) {
         QVBoxLayout *layout = new QVBoxLayout;
         layout->setContentsMargins(0, 0, 0, 0);
 
-        lineEdit_ = new QLineEdit;
         connect(lineEdit_, &QLineEdit::textChanged, this,
                 &OptionWidget::valueChanged);
+        if (isRegex_) {
+            connect(lineEdit_, &QLineEdit::textChanged, this,
+                    &StringOptionWidget::validateRegex);
+            validateRegex();
+        }
         layout->addWidget(lineEdit_);
         setLayout(layout);
     }
@@ -124,9 +132,36 @@ public:
 
     void restoreToDefault() override { lineEdit_->setText(defaultValue_); }
 
+    bool isValid() const override { return valid_; }
+
+private Q_SLOTS:
+    void validateRegex() {
+        if (!isRegex_) {
+            valid_ = true;
+        } else {
+            const auto text = lineEdit_->text().toStdString();
+            valid_ = fcitx::RegexConstrain().check(text);
+        }
+        auto palette = normalPalette_;
+        if (!valid_) {
+            const auto base = palette.color(QPalette::Base);
+            const auto red = QColor(Qt::red);
+            palette.setColor(
+                QPalette::Base,
+                QColor::fromRgbF(base.redF() * 0.8 + red.redF() * 0.2,
+                                 base.greenF() * 0.8 + red.greenF() * 0.2,
+                                 base.blueF() * 0.8 + red.blueF() * 0.2,
+                                 base.alphaF()));
+        }
+        lineEdit_->setPalette(palette);
+    }
+
 private:
     QLineEdit *lineEdit_;
     QString defaultValue_;
+    bool isRegex_;
+    QPalette normalPalette_;
+    bool valid_ = true;
 };
 
 class FontOptionWidget : public OptionWidget {
@@ -621,7 +656,14 @@ bool OptionWidget::execOptionDialog(QWidget *parent,
     buttonBox->button(QDialogButtonBox::Cancel)->setText(_("&Cancel"));
     dialogLayout->addWidget(buttonBox);
 
-    connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::accepted, dialog,
+            [dialog, optionWidget, configWidget]() {
+                const bool valid = optionWidget ? optionWidget->isValid()
+                                                : configWidget->isValid();
+                if (valid) {
+                    dialog->accept();
+                }
+            });
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
     auto ret = dialog->exec();

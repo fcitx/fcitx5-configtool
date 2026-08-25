@@ -5,6 +5,7 @@ target_link_libraries(kcm_fcitx5
   Qt${QT_MAJOR_VERSION}::Quick
   KF${QT_MAJOR_VERSION}::CoreAddons
   KF${QT_MAJOR_VERSION}::I18n
+  Fcitx5::Config
   XKBCommon::XKBCommon
   configlib
 )
