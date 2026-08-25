@@ -13,6 +13,8 @@
 namespace fcitx {
 namespace kcm {
 
+QVariantMap toMap(const QVariant &variant);
+
 QVariant readVariant(const QVariant &value, const QString &path);
 
 bool readBool(const QVariantMap &map, const QString &path);

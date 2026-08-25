@@ -27,6 +27,7 @@ target_link_libraries(configwidgetslib
     KF${QT_MAJOR_VERSION}::WidgetsAddons
     KF${QT_MAJOR_VERSION}::ItemViews
     Fcitx5::Utils
+    Fcitx5::Config
     Fcitx5Qt${QT_MAJOR_VERSION}::DBusAddons
     Fcitx5Qt${QT_MAJOR_VERSION}::WidgetsAddons
     configlib
