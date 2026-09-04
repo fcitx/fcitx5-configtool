@@ -3,9 +3,7 @@
 # This file is distributed under the same license as the fcitx5-configtool package.
 #
 # Translators:
-# Xuetian Weng <wengxt@gmail.com>, 2017
-# Bon Keun Seo <scobyseo@gmail.com>, 2021
-# Junghee Lee <daemul72@gmail.com>, 2026
+# Daniel Nylander <po@danielnylander.se>, 2026
 #
 msgid ""
 msgstr ""
@@ -13,69 +11,69 @@ msgstr ""
 "Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
 "POT-Creation-Date: 2026-09-04 20:24+0000\n"
 "PO-Revision-Date: 2017-11-23 04:55+0000\n"
-"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2026\n"
-"Language-Team: Korean (https://app.transifex.com/fcitx/teams/12005/ko/)\n"
-"Language: ko\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
+"Language-Team: Swedish (https://app.transifex.com/fcitx/teams/12005/sv/)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: layout/main.cpp:24
 msgid "Error"
-msgstr "오류"
+msgstr "Fel"
 
 #: layout/main.cpp:25
 msgid "This program only works on X11."
-msgstr "이 프로그램은 X11에서만 작동합니다."
+msgstr "Det här programmet fungerar endast på X11."
 
 #: layout/main.cpp:31
 msgid "A general keyboard layout viewer"
-msgstr "일반 키보드 자판 배열 보기 도구"
+msgstr "En allmän visare för tangentbordslayouter"
 
 #: layout/main.cpp:34
 msgid "Keyboard layout <group> (0-3)"
-msgstr "키보드 자판 배열 <그룹> (0-3)"
+msgstr "Tangentbordslayoutens <group> (0–3)"
 
 #: layout/main.cpp:34
 msgid "group"
-msgstr "그룹"
+msgstr "grupp"
 
 #: layout/main.cpp:35
 msgid "Keyboard <layout>"
-msgstr "키보드 <자판 배열>"
+msgstr "Tangentbordets <layout>"
 
 #: layout/main.cpp:35
 msgid "layout"
-msgstr "자판"
+msgstr "layout"
 
 #: layout/main.cpp:36
 msgid "Keyboard layout <variant>"
-msgstr "키보드 자판 배열 <변형>"
+msgstr "Tangentbordslayoutens <variant>"
 
 #: layout/main.cpp:36
 msgid "variant"
-msgstr "변형"
+msgstr "variant"
 
 #: layout/main.cpp:54
 msgid "Keyboard Layout viewer"
-msgstr "키보드 자판 배열 보기 도구"
+msgstr "Visare för tangentbordslayout"
 
 #: src/configtool/mainwindow.cpp:57 src/lib/configlib/addonmodel.cpp:36
 msgid "Input Method"
-msgstr "입력기"
+msgstr "Inmatningsmetod"
 
 #: src/configtool/mainwindow.cpp:58
 msgid "Global Options"
-msgstr "전역 옵션"
+msgstr "Globala alternativ"
 
 #: src/configtool/mainwindow.cpp:59
 msgid "Addons"
-msgstr "애드온"
+msgstr "Tillägg"
 
 #: src/configtool/mainwindow.cpp:68
 msgid "&Apply"
-msgstr "적용(&A)"
+msgstr "&Verkställ"
 
 #: src/configtool/mainwindow.cpp:69
 #: src/lib/configwidgetslib/configwidget.cpp:246
@@ -83,40 +81,40 @@ msgstr "적용(&A)"
 #: src/lib/configwidgetslib/layoutselector.cpp:73
 #: src/lib/configwidgetslib/optionwidget.cpp:620
 msgid "&OK"
-msgstr "확인(&O)"
+msgstr "&OK"
 
 #: src/configtool/mainwindow.cpp:70
 msgid "&Close"
-msgstr "닫기(&C)"
+msgstr "&Stäng"
 
 #: src/configtool/mainwindow.cpp:71
 msgid "&Reset"
-msgstr "재설정(&R)"
+msgstr "&Återställ"
 
 #: src/configtool/mainwindow.cpp:73
 #: src/lib/configwidgetslib/configwidget.cpp:249
 msgid "Restore &Defaults"
-msgstr "기본값 복원(&D)"
+msgstr "Återställ &standardvärden"
 
 #: src/configtool/mainwindow.cpp:137
 msgid "Apply configuration changes"
-msgstr "설정 변경 사항 적용"
+msgstr "Verkställ konfigurationsändringar"
 
 #: src/configtool/mainwindow.cpp:138
 msgid "Do you want to save the changes or discard them?"
-msgstr "변경 사항을 저장하시겠습니까, 아니면 버리시겠습니까?"
+msgstr "Vill du spara ändringarna eller förkasta dem?"
 
 #. i18n: file: src/configtool/mainwindow.ui:14
 #. i18n: ectx: property (windowTitle), widget (QMainWindow, MainWindow)
 #: src/configtool/main.cpp:22 rc.cpp:3
 #, kde-format
 msgid "Fcitx Configuration"
-msgstr "Fcitx 설정"
+msgstr "Fcitx-inställningar"
 
 #: src/lib/configlib/layoutprovider.cpp:81
 #: src/lib/configlib/layoutprovider.cpp:83
 msgid "Any language"
-msgstr "모든 언어"
+msgstr "Alla språk"
 
 #: src/lib/configlib/layoutprovider.cpp:89
 #, kde-format
@@ -126,19 +124,19 @@ msgstr "%1 (%2)"
 #: src/lib/configlib/layoutprovider.cpp:168
 #, kde-format
 msgid "%1 - %2"
-msgstr "%1 - %2"
+msgstr "%1 – %2"
 
 #: src/lib/configlib/layoutmodel.cpp:131
 msgid "Default"
-msgstr "기본값"
+msgstr "Standard"
 
 #: src/lib/configlib/model.cpp:32
 msgid "Unknown"
-msgstr "알 수 없음"
+msgstr "Okänd"
 
 #: src/lib/configlib/model.cpp:34
 msgid "Multilingual"
-msgstr "다국어"
+msgstr "Flerspråkig"
 
 #: src/lib/configlib/model.cpp:60
 #, kde-format
@@ -148,25 +146,25 @@ msgstr "%1 (%2)"
 
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Frontend"
-msgstr "프런트엔드"
+msgstr "Framände"
 
 #: src/lib/configlib/addonmodel.cpp:36
 msgid "Loader"
-msgstr "로더"
+msgstr "Inläsare"
 
 #: src/lib/configlib/addonmodel.cpp:37
 msgid "Module"
-msgstr "모듈"
+msgstr "Modul"
 
 #: src/lib/configlib/addonmodel.cpp:37
 msgid "UI"
-msgstr "사용자 인터페이스"
+msgstr "Gränssnitt"
 
 #: src/lib/configwidgetslib/configwidget.cpp:247
 #: src/lib/configwidgetslib/fontbutton.cpp:48
 #: src/lib/configwidgetslib/optionwidget.cpp:621
 msgid "&Cancel"
-msgstr "취소(&C)"
+msgstr "&Avbryt"
 
 #: src/lib/configwidgetslib/impage.cpp:124
 msgid ""
@@ -175,75 +173,76 @@ msgid ""
 "restart fcitx to load newly installed/updated addons. To do this, you may "
 "need to logout or restart your computer."
 msgstr ""
-"Fcitx 설치 업데이트가 발견되었습니다. 현재 불러온 애드온 기준으로 새 입력기"
-"를 확인하시겠습니까? Flatpak 버전의 Fcitx는 새로 설치되거나 업데이트된 애드온"
-"을 불러오려면 재시작해야 합니다. 이 작업을 위해 로그아웃하거나 컴퓨터를 다시 "
-"시작해야 할 수 있습니다."
+"Uppdateringar av Fcitx-installationen har hittats. Vill du söka efter nya "
+"inmatningsmetoder med inlästa tillägg? För Flatpak-versionen av Fcitx krävs "
+"en omstart av Fcitx för att läsa in nyligen installerade eller uppdaterade "
+"tillägg. Du kan behöva logga ut eller starta om datorn för att göra detta."
 
 #: src/lib/configwidgetslib/impage.cpp:130
 msgid "Update"
-msgstr "업데이트"
+msgstr "Uppdatera"
 
 #. Restart action is the last action, so we can just remove/add without
 #. "ïnsert".
 #: src/lib/configwidgetslib/impage.cpp:137
 msgid "Restart"
-msgstr "재시작"
+msgstr "Starta om"
 
 #: src/lib/configwidgetslib/impage.cpp:221
 msgid "Current group changed"
-msgstr "현재 그룹이 변경되었습니다"
+msgstr "Aktuell grupp har ändrats"
 
 #: src/lib/configwidgetslib/impage.cpp:222
 msgid "Do you want to change group? Changes to current group will be lost!"
-msgstr "그룹을 변경하시겠습니까? 현재 그룹의 변경 사항은 사라집니다!"
+msgstr ""
+"Vill du byta grupp? Ändringar i den aktuella gruppen kommer att gå förlorade!"
 
 #: src/lib/configwidgetslib/impage.cpp:299
 msgid "Select default layout"
-msgstr "기본 자판 선택"
+msgstr "Välj standardlayout"
 
 #: src/lib/configwidgetslib/impage.cpp:314
 msgid "Change Input method to match layout selection."
-msgstr "선택한 자판 배열에 맞게 입력기 변경"
+msgstr "Ändra inmatningsmetoden så att den motsvarar layoutvalet."
 
 #: src/lib/configwidgetslib/impage.cpp:315
 msgid ""
 "Your currently configured input method does not match your selected layout, "
 "do you want to add the corresponding input method for the layout?"
 msgstr ""
-"현재 설정된 입력기가 선택한 자판 배열과 일치하지 않습니다. 이 자판 배열에 맞"
-"는 입력기를 추가하시겠습니까?"
+"Din nuvarande inmatningsmetod motsvarar inte den valda layouten. Vill du "
+"lägga till den inmatningsmetod som hör till layouten?"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:258
 #. i18n: ectx: property (toolTip), widget (QToolButton, layoutButton)
 #: src/lib/configwidgetslib/impage.cpp:360 rc.cpp:87
 #, kde-format
 msgid "Select Layout"
-msgstr "자판 배열 선택"
+msgstr "Välj layout"
 
 #: src/lib/configwidgetslib/impage.cpp:393
 msgid "Change System layout to match input method selection."
-msgstr "입력기 선택에 맞게 시스템 자판 배열 변경"
+msgstr "Ändra systemlayouten så att den motsvarar valet av inmatningsmetod."
 
 #: src/lib/configwidgetslib/impage.cpp:394
 msgid ""
 "Your currently configured input method does not match your layout, do you "
 "want to change the layout setting?"
 msgstr ""
-"현재 설정된 입력기가 자판 배열과 일치하지 않습니다. 자판 배열 설정을 변경하시"
-"겠습니까?"
+"Din nuvarande inmatningsmetod motsvarar inte layouten. Vill du ändra "
+"layoutinställningen?"
 
 #: src/lib/configwidgetslib/impage.cpp:454
 msgid "New Group"
-msgstr "새 그룹"
+msgstr "Ny grupp"
 
 #: src/lib/configwidgetslib/impage.cpp:454
 msgid "Group Name:"
-msgstr "그룹 이름:"
+msgstr "Gruppnamn:"
 
 #: src/lib/configwidgetslib/layoutselector.cpp:74
 msgid "&Clear"
-msgstr "지우기(&C)"
+msgstr "&Rensa"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:236
 #. i18n: ectx: property (toolTip), widget (QToolButton, configureButton)
@@ -253,11 +252,11 @@ msgstr "지우기(&C)"
 #: src/lib/configwidgetslib/optionwidget.cpp:486 rc.cpp:81 rc.cpp:84
 #, kde-format
 msgid "Configure"
-msgstr "설정"
+msgstr "Konfigurera"
 
 #: src/lib/configwidgetslib/addonselector.cpp:310
 msgid "Advanced options"
-msgstr "고급 옵션"
+msgstr "Avancerade alternativ"
 
 #: src/lib/configwidgetslib/addonselector.cpp:311
 msgid ""
@@ -265,8 +264,10 @@ msgid ""
 "who understand the potential implication. Fcitx needs to be restarted to "
 "make the changes to enable/disable to take effect."
 msgstr ""
-"애드온 활성화/비활성화 기능은 그 영향까지 이해하는 고급 사용자용입니다. 활성"
-"화/비활성화 변경 사항을 적용하려면 Fcitx를 다시 시작해야 합니다."
+"Funktionen för att aktivera eller inaktivera tillägg är endast avsedd för "
+"avancerade användare som förstår de möjliga följderna. Fcitx måste startas "
+"om för att ändringar av aktiverade eller inaktiverade tillägg ska träda i "
+"kraft."
 
 #: src/lib/configwidgetslib/addonselector.cpp:400
 msgctxt "Separator of a comma list"
@@ -276,12 +277,12 @@ msgstr ", "
 #: src/lib/configwidgetslib/addonselector.cpp:410
 #, kde-format
 msgid "- Disable %1\n"
-msgstr "- %1 비활성화\n"
+msgstr "- Inaktivera %1\n"
 
 #: src/lib/configwidgetslib/addonselector.cpp:421
 #, kde-format
 msgid "- Disable some features in %1\n"
-msgstr "- %1의 일부 기능 비활성화\n"
+msgstr "- Inaktivera vissa funktioner i %1\n"
 
 #: src/lib/configwidgetslib/addonselector.cpp:424
 #, kde-format
@@ -290,13 +291,14 @@ msgid ""
 "%2%3\n"
 "Are you sure you want to disable it?"
 msgstr ""
-"%1을 해제하면 %2%3도 함께 꺼집니다.\n"
-"정말로 해제하실 건가요?"
+"Om du inaktiverar %1 kommer följande också att ske:\n"
+"%2%3\n"
+"Är du säker på att du vill inaktivera det?"
 
 #: src/lib/configwidgetslib/addonselector.cpp:429
 #, kde-format
 msgid "Disable %1"
-msgstr "%1 비활성화"
+msgstr "Inaktivera %1"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:533
 #, kde-format
@@ -305,11 +307,11 @@ msgstr "%1:"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:655
 msgid "Yes"
-msgstr "예"
+msgstr "Ja"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:655
 msgid "No"
-msgstr "아니오"
+msgstr "Nej"
 
 #: src/lib/configwidgetslib/optionwidget.cpp:693
 #, kde-format
@@ -328,11 +330,11 @@ msgstr "[%1]"
 #: rc.cpp:60
 #, kde-format
 msgid "Add"
-msgstr "추가"
+msgstr "Lägg till"
 
 #: src/lib/configwidgetslib/keylistwidget.cpp:56
 msgid "Set to Void Symbol"
-msgstr "빈 심볼로 설정"
+msgstr "Ställ in på VoidSymbol"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:95
 #. i18n: ectx: property (text), widget (QToolButton, removeButton)
@@ -346,20 +348,20 @@ msgstr "빈 심볼로 설정"
 #: rc.cpp:66
 #, kde-format
 msgid "Remove"
-msgstr "제거"
+msgstr "Ta bort"
 
 #. namespace
 #: src/migrator/global/globalconfigmigrator.cpp:50
 msgid "Global Config"
-msgstr "전역 설정"
+msgstr "Global konfiguration"
 
 #: src/migrator/global/globalconfigmigrator.cpp:53
 msgid "Migrate global key option from Fcitx 4"
-msgstr "Fcitx 4에서 전역 키 옵션 마이그레이션"
+msgstr "Migrera alternativet för global tangent till Fcitx 4"
 
 #: src/migrator/global/globalconfigmigrator.cpp:95
 msgid "Migrating global hotkey key option..."
-msgstr "전역 단축키 키 옵션을 마이그레이션하는 중..."
+msgstr "Migrerar alternativet för global snabbtangent …"
 
 #. namespace
 #: src/migrator/skk/skkmigrator.cpp:40
@@ -368,11 +370,11 @@ msgstr "Skk"
 
 #: src/migrator/skk/skkmigrator.cpp:43
 msgid "Migrate Skk dictionary from Fcitx 4"
-msgstr "Fcitx 4에서 Skk 사전 마이그레이션"
+msgstr "Migrera Skk-ordbok från Fcitx 4"
 
 #: src/migrator/skk/skkmigrator.cpp:78
 msgid "Migrating Skk rule option..."
-msgstr "Skk 규칙 옵션을 마이그레이션하는 중..."
+msgstr "Migrerar alternativet för Skk-regel …"
 
 #. namespace
 #: src/migrator/rime/rimemigrator.cpp:38
@@ -384,119 +386,119 @@ msgid ""
 "Migrate Rime dictionary from Fcitx 4. Notice: this will remove all the "
 "existing data."
 msgstr ""
-"Fcitx 4에서 Rime 사전을 마이그레이션합니다. 참고: 기존 데이터가 모두 제거됩니"
-"다."
+"Migrera Rime-ordbok från Fcitx 4. Observera: detta tar bort alla befintliga "
+"data."
 
 #: src/migrator/app/progresspage.cpp:44
 msgid "All migration tasks are completed successfully."
-msgstr "모든 마이그레이션 작업이 성공적으로 완료되었습니다."
+msgstr "Alla migreringsuppgifter slutfördes."
 
 #: src/migrator/app/progresspage.cpp:49
 msgid "One of the task is failed. Terminating the migration."
-msgstr "작업 중 하나가 실패했습니다. 마이그레이션을 종료합니다."
+msgstr "En av uppgifterna misslyckades. Avbryter migreringen."
 
 #: src/migrator/app/mainwindow.cpp:23
 msgid "Migration Tool"
-msgstr "마이그레이션 도구"
+msgstr "Migreringsverktyg"
 
 #: src/migrator/app/taskpage.cpp:170 src/migrator/app/taskpage.cpp:180
 msgid "Click on an item for more details."
-msgstr "자세한 내용을 보려면 항목을 클릭합니다."
+msgstr "Klicka på ett objekt för mer information."
 
 #: src/migrator/app/taskpage.cpp:183
 msgid "No available options."
-msgstr "사용 가능한 옵션이 없습니다."
+msgstr "Inga tillgängliga alternativ."
 
 #: src/migrator/app/taskpage.cpp:226
 msgid "&Next >"
-msgstr "다음(&N)>"
+msgstr "&Nästa >"
 
 #: src/migrator/app/taskpage.cpp:258
 msgid "Asking Fcitx to exit..."
-msgstr "Fcitx를 종료하도록 요청하는 중..."
+msgstr "Ber Fcitx att avslutas …"
 
 #: src/migrator/app/taskpage.cpp:258
 msgid "Fcitx Exited."
-msgstr "Fcitx가 종료되었습니다."
+msgstr "Fcitx avslutades."
 
 #: src/migrator/app/taskpage.cpp:260
 msgid "Checking if Fcitx is still running..."
-msgstr "Fcitx가 여전히 실행 중인지 확인하는 중..."
+msgstr "Kontrollerar om Fcitx fortfarande körs …"
 
 #: src/migrator/app/taskpage.cpp:261
 msgid "Fcitx is fully exited."
-msgstr "Fcitx가 완전히 종료되었습니다."
+msgstr "Fcitx har avslutats helt."
 
 #: src/migrator/app/taskpage.cpp:272
 msgid "Checking if Fcitx is running..."
-msgstr "Fcitx가 실행 중인지 확인하는 중..."
+msgstr "Kontrollerar om Fcitx körs …"
 
 #: src/migrator/app/taskpage.cpp:273
 msgid "Fcitx is started."
-msgstr "Fcitx가 시작됩니다."
+msgstr "Fcitx är startat."
 
 #: src/migrator/app/main.cpp:22
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:2
 msgid "Fcitx 5 Migration Wizard"
-msgstr "Fcitx 5 마이그레이션 마법사"
+msgstr "Migreringsguide för Fcitx 5"
 
 #: src/migrator/lib/configmigrator.cpp:89
 #, kde-format
 msgid "Failed to fetch config for %1"
-msgstr "%1의 설정을 가져오지 못했습니다"
+msgstr "Det gick inte att hämta konfigurationen för %1"
 
 #: src/migrator/lib/dbuswatcher.cpp:33
 #, kde-format
 msgid "Service %1 still present on DBus."
-msgstr "%1 서비스가 여전히 DBus에 있습니다."
+msgstr "Tjänsten %1 finns fortfarande på D-Bus."
 
 #: src/migrator/lib/dbuswatcher.cpp:37
 #, kde-format
 msgid "Service %1 does not present on DBus."
-msgstr "%1 서비스가 DBus에 없습니다."
+msgstr "Tjänsten %1 finns inte på D-Bus."
 
 #: src/migrator/lib/processrunner.cpp:66
 #, kde-format
 msgid "%1 crashed."
-msgstr "%1이(가) 충돌했습니다."
+msgstr "%1 kraschade."
 
 #: src/migrator/lib/processrunner.cpp:73
 #, kde-format
 msgid "%1 failed to start."
-msgstr "%1을(를) 시작하지 못했습니다."
+msgstr "%1 kunde inte starta."
 
 #: src/migrator/lib/renamefile.cpp:28
 msgid "Converter crashed."
-msgstr "변환기가 충돌했습니다."
+msgstr "Konverteraren kraschade."
 
 #: src/migrator/lib/copydirectory.cpp:86
 #, kde-format
 msgid "Directory %1 does not exist."
-msgstr "디렉터리 %1이(가) 없습니다."
+msgstr "Katalogen %1 finns inte."
 
 #: src/migrator/lib/copydirectory.cpp:93
 #, kde-format
 msgid "Failed to create directory %1."
-msgstr "디렉터리 %1을(를) 만들지 못했습니다."
+msgstr "Det gick inte att skapa katalogen %1."
 
 #: src/migrator/lib/copydirectory.cpp:114
 #, kde-format
 msgid "Copying file %1 to %2"
-msgstr "파일 %1을 %2로 복사 중"
+msgstr "Kopierar filen %1 till %2"
 
 #: src/migrator/lib/copydirectory.cpp:120
 #, kde-format
 msgid "Failed to copy file %1 to %2"
-msgstr "파일 %1을(를) %2에 복사하지 못했습니다"
+msgstr "Det gick inte att kopiera filen %1 till %2"
 
 #: src/migrator/lib/dbuscaller.cpp:21
 msgid "Failed to start DBus Call."
-msgstr "DBus 호출을 시작하지 못했습니다."
+msgstr "Det gick inte att starta D-Bus-anropet."
 
 #: src/migrator/lib/dbuscaller.cpp:29
 #, kde-format
 msgid "Got error: %1 %2"
-msgstr "오류: %1 %2"
+msgstr "Fel uppstod: %1 %2"
 
 #. namespace
 #: src/migrator/kkc/kkcmigrator.cpp:39
@@ -505,25 +507,25 @@ msgstr "Kkc"
 
 #: src/migrator/kkc/kkcmigrator.cpp:42
 msgid "Migrate Kkc dictionary from Fcitx 4"
-msgstr "Fcitx 4에서 Kkc 사전 마이그레이션"
+msgstr "Migrera Kkc-ordbok från Fcitx 4"
 
 #: src/migrator/kkc/kkcmigrator.cpp:77
 msgid "Migrating Kkc rule option..."
-msgstr "Kkc 규칙 옵션을 마이그레이션하는 중..."
+msgstr "Migrerar alternativet för Kkc-regel …"
 
 #. namespace
 #: src/migrator/table/tablemigrator.cpp:41
 msgid "Table"
-msgstr "표"
+msgstr "Tabell"
 
 #: src/migrator/table/tablemigrator.cpp:44
 msgid "Import table data for installed table from Fcitx 4"
-msgstr "Fcitx 4에서 설치된 표 입력기의 테이블 데이터 가져오기"
+msgstr "Importera tabelldata för installerad tabell från Fcitx 4"
 
 #: src/migrator/table/tablemigrator.cpp:66
 #, kde-format
 msgid "Try to Migrating table file: %1 ..."
-msgstr "테이블 파일 마이그레이션 시도 중: %1 ..."
+msgstr "Försöker migrera tabellfilen: %1 …"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:17
 msgid "Pinyin"
@@ -531,53 +533,53 @@ msgstr "Pinyin"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:20
 msgid "Import Pinyin dictionary from Fcitx 4"
-msgstr "Fcitx 4에서 Pinyin 사전 가져오기"
+msgstr "Importera Pinyin-ordbok från Fcitx 4"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:36
 msgid "Migrating Pinyin data..."
-msgstr "Pinyin 데이터를 마이그레이션하는 중..."
+msgstr "Migrerar Pinyin-data …"
 
 #: src/migrator/pinyin/pinyinmigrator.cpp:37
 msgid "Pinyin data is migrated."
-msgstr "Pinyin 데이터가 마이그레이션되었습니다."
+msgstr "Pinyin-data har migrerats."
 
 #: layout/kbd-layout-viewer5.desktop.in:6
 msgid "Keyboard layout viewer"
-msgstr "키보드 자판 배열 보기 도구"
+msgstr "Visare för tangentbordslayout"
 
 #: layout/kbd-layout-viewer5.desktop.in:7
 msgid "View keyboard layout"
-msgstr "키보드 자판 보기"
+msgstr "Visa tangentbordslayout"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:2
 msgid "Fcitx 5 Configuration"
-msgstr "Fcitx 5 설정"
+msgstr "Fcitx 5-inställningar"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:3
 msgid "Input Method Configuration"
-msgstr "입력기 설정"
+msgstr "Konfiguration av inmatningsmetod"
 
 #: src/configtool/org.fcitx.fcitx5-config-qt.desktop.in:4
 msgid "Change Fcitx 5 Configuration"
-msgstr "Fcitx 5 설정 변경"
+msgstr "Ändra Fcitx 5-inställningar"
 
 #: src/migrator/app/org.fcitx.fcitx5-migrator.desktop.in:3
 msgid "Import data from other input method such as Fcitx 4"
-msgstr "Fcitx 4와 같은 다른 입력기에서 데이터 가져오기"
+msgstr "Importera data från en annan inmatningsmetod, exempelvis Fcitx 4"
 
 #. i18n: file: src/lib/configwidgetslib/fontbutton.ui:48
 #. i18n: ectx: property (text), widget (QPushButton, fontSelectButton)
 #: rc.cpp:6
 #, kde-format
 msgid "Select &Font..."
-msgstr "글꼴 선택(&F)"
+msgstr "Välj &teckensnitt …"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:47
 #. i18n: ectx: property (text), widget (QToolButton, editButton)
 #: rc.cpp:12
 #, kde-format
 msgid "Edit"
-msgstr "편집"
+msgstr "Redigera"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:63
 #. i18n: ectx: property (text), widget (QToolButton, moveUpButton)
@@ -586,7 +588,7 @@ msgstr "편집"
 #: rc.cpp:15 rc.cpp:72
 #, kde-format
 msgid "Up"
-msgstr "위쪽"
+msgstr "Upp"
 
 #. i18n: file: src/lib/configwidgetslib/listoptionwidget.ui:79
 #. i18n: ectx: property (text), widget (QToolButton, moveDownButton)
@@ -595,21 +597,21 @@ msgstr "위쪽"
 #: rc.cpp:18 rc.cpp:78
 #, kde-format
 msgid "Down"
-msgstr "아래쪽"
+msgstr "Ner"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:167
 #. i18n: ectx: property (text), widget (QLabel, textLabel)
 #: rc.cpp:24
 #, kde-format
 msgid "Cannot connect to Fcitx by DBus, is Fcitx running?"
-msgstr "DBus로 Fcitx에 연결할 수 없습니다. Fcitx가 실행 중입니까?"
+msgstr "Det går inte att ansluta till Fcitx via D-Bus. Körs Fcitx?"
 
 #. i18n: file: src/lib/configwidgetslib/erroroverlay.ui:177
 #. i18n: ectx: property (text), widget (QPushButton, runFcitxButton)
 #: rc.cpp:27
 #, kde-format
 msgid "Run Fcitx 5"
-msgstr "Fcitx 5 실행"
+msgstr "Starta Fcitx 5"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:20
 #. i18n: ectx: property (text), widget (KMessageWidget, checkUpdateMessage)
@@ -620,92 +622,93 @@ msgid ""
 "installed input methods and addons? To update already loaded addons, fcitx "
 "would need to be restarted."
 msgstr ""
-"Fcitx 설치 업데이트가 발견되었습니다. 새로 설치된 입력기와 애드온을 확인하시"
-"겠습니까? 이미 불러온 애드온을 업데이트하려면 Fcitx를 다시 시작해야 합니다."
+"Uppdateringar av Fcitx-installationen har hittats. Vill du söka efter "
+"nyligen installerade inmatningsmetoder och tillägg? Fcitx måste startas om "
+"för att uppdatera redan inlästa tillägg."
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:34
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:33
 #, kde-format
 msgid "Current Input Method:"
-msgstr "현재 입력기:"
+msgstr "Aktuell inmatningsmetod:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:43
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: rc.cpp:36
 #, kde-format
 msgid "Group:"
-msgstr "그룹:"
+msgstr "Grupp:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:66
 #. i18n: ectx: property (toolTip), widget (QToolButton, addGroupButton)
 #: rc.cpp:39
 #, kde-format
 msgid "Add Group"
-msgstr "그룹 추가"
+msgstr "Lägg till grupp"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:82
 #. i18n: ectx: property (toolTip), widget (QToolButton, deleteGroupButton)
 #: rc.cpp:45
 #, kde-format
 msgid "Delete Group"
-msgstr "그룹 삭제"
+msgstr "Ta bort grupp"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:97
 #. i18n: ectx: property (toolTip), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:51
 #, kde-format
 msgid "Keyboard layout to use when no input method active"
-msgstr "활성 입력기가 없을 때 사용할 키보드 자판 배열"
+msgstr "Tangentbordslayout att använda när ingen inmatningsmetod är aktiv"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:100
 #. i18n: ectx: property (text), widget (QPushButton, defaultLayoutButton)
 #: rc.cpp:54
 #, kde-format
 msgid "Select system keyboard layout"
-msgstr "시스템 키보드 자판 배열 선택"
+msgstr "Välj systemets tangentbordslayout"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:189
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveUpButton)
 #: rc.cpp:69
 #, kde-format
 msgid "Move Up"
-msgstr "위로 이동"
+msgstr "Flytta upp"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:214
 #. i18n: ectx: property (toolTip), widget (QToolButton, moveDownButton)
 #: rc.cpp:75
 #, kde-format
 msgid "Move Down"
-msgstr "아래로 이동"
+msgstr "Flytta ner"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:261
 #. i18n: ectx: property (text), widget (QToolButton, layoutButton)
 #: rc.cpp:90
 #, kde-format
 msgid "Layout"
-msgstr "자판"
+msgstr "Layout"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:285
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:93
 #, kde-format
 msgid "Available Input Method:"
-msgstr "사용 가능한 입력기:"
+msgstr "Tillgänglig inmatningsmetod:"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:292
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, filterTextEdit)
 #: rc.cpp:96
 #, kde-format
 msgid "Search Input Method"
-msgstr "입력기 검색"
+msgstr "Sök efter inmatningsmetod"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:324
 #. i18n: ectx: property (text), widget (QCheckBox, onlyCurrentLanguageCheckBox)
 #: rc.cpp:99
 #, kde-format
 msgid "Only &Show Current Language"
-msgstr "현재 언어만 표시(&S)"
+msgstr "Visa endast &aktuellt språk"
 
 #. i18n: file: src/lib/configwidgetslib/impage.ui:381
 #. i18n: ectx: property (text), widget (QLabel, infoLabel)
@@ -715,57 +718,57 @@ msgid ""
 "The first input method will be inactive state. Usually you need to put "
 "<b>Keyboard</b> or <b>Keyboard - <i>layout name</i></b> in the first place."
 msgstr ""
-"첫 번째 입력기는 비활성 상태가 됩니다. 보통 첫 번째 항목에는 <b>키보드</b> 또"
-"는 <b>키보드 - <i>자판 배열 이름</i></b>을 두어야 합니다."
+"Den första inmatningsmetoden har inaktiv status. Vanligen bör du placera "
+"<b>Tangentbord</b> eller <b>Tangentbord – <i>layoutnamn</i></b> först."
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:22
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: rc.cpp:105
 #, kde-format
 msgid "Language:"
-msgstr "언어:"
+msgstr "Språk:"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:45
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: rc.cpp:108
 #, kde-format
 msgid "Layout:"
-msgstr "자판:"
+msgstr "Layout:"
 
 #. i18n: file: src/lib/configwidgetslib/layoutselector.ui:62
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: rc.cpp:111
 #, kde-format
 msgid "Variant:"
-msgstr "변형:"
+msgstr "Variant:"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:32
 #. i18n: ectx: property (placeholderText), widget (QLineEdit, lineEdit)
 #: rc.cpp:114
 #, kde-format
 msgid "Search Addons"
-msgstr "애드온 검색"
+msgstr "Sök efter tillägg"
 
 #. i18n: file: src/lib/configwidgetslib/addonselector.ui:76
 #. i18n: ectx: property (text), widget (QCheckBox, advancedCheckbox)
 #: rc.cpp:117
 #, kde-format
 msgid "Show &Advanced options"
-msgstr "고급 옵션 표시(&A)"
+msgstr "Visa &avancerade alternativ"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:14
 #. i18n: ectx: property (windowTitle), widget (QWizardPage, WelcomePage)
 #: rc.cpp:120
 #, kde-format
 msgid "WelcomePage"
-msgstr "시작 페이지"
+msgstr "Välkomstsida"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, WelcomePage)
 #: rc.cpp:123
 #, kde-format
 msgid "Migrate Data from Fcitx 4"
-msgstr "Fcitx 4에서 데이터 마이그레이션"
+msgstr "Migrera data från Fcitx 4"
 
 #. i18n: file: src/migrator/app/welcomepage.ui:23
 #. i18n: ectx: property (text), widget (KMessageWidget, fcitxNotRunningMessage)
@@ -774,7 +777,7 @@ msgstr "Fcitx 4에서 데이터 마이그레이션"
 #: rc.cpp:126 rc.cpp:135
 #, kde-format
 msgid "Fcitx 5 is not running."
-msgstr "Fcitx 5가 실행되고 있지 않습니다."
+msgstr "Fcitx 5 körs inte."
 
 #. i18n: file: src/migrator/app/welcomepage.ui:33
 #. i18n: ectx: property (text), widget (QLabel, label)
@@ -784,19 +787,19 @@ msgid ""
 "This wizard will help you to migrate existing user data from Fcitx 4 to "
 "Fcitx 5"
 msgstr ""
-"이 마법사는 기존 사용자 데이터를 Fcitx 4에서 Fcitx 5로 옮기는 작업을 도와줍니"
-"다."
+"Den här guiden hjälper dig att migrera befintliga användardata från Fcitx 4 "
+"till Fcitx 5"
 
 #. i18n: file: src/migrator/app/taskpage.ui:17
 #. i18n: ectx: property (title), widget (QWizardPage, TaskPage)
 #: rc.cpp:132
 #, kde-format
 msgid "Select migration tasks"
-msgstr "마이그레이션 작업 선택"
+msgstr "Välj migreringsuppgifter"
 
 #. i18n: file: src/migrator/app/taskpage.ui:47
 #. i18n: ectx: property (text), widget (QCheckBox, selectAllBox)
 #: rc.cpp:138
 #, kde-format
 msgid "Select &All"
-msgstr "모두 선택(&A)"
+msgstr "Markera &alla"
