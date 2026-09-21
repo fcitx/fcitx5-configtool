@@ -5,6 +5,7 @@
  *
  */
 #include "config.h"
+#include "screenscaletracker.h"
 #include <KIconLoader>
 #include <KLocalizedString>
 #include <KSvg/FrameSvg>
@@ -17,6 +18,7 @@
 #include <QCommandLineParser>
 #include <QDebug>
 #include <QDir>
+#include <QFileInfo>
 #include <QLatin1String>
 #include <QObject>
 #include <QPainter>
@@ -24,7 +26,6 @@
 #include <QSocketNotifier>
 #include <QStringLiteral>
 #include <Qt>
-#include <QtNumeric>
 #include <algorithm>
 #include <cerrno>
 #include <fcitx-config/iniparser.h>
@@ -57,6 +58,17 @@ void setMarginsToConfig(fcitx::RawConfig &config, const std::string &name,
     subConfig["Top"] = std::to_string(qRound(top));
     subConfig["Right"] = std::to_string(qRound(right));
     subConfig["Bottom"] = std::to_string(qRound(bottom));
+}
+
+QString scaledImagePath(const QString &path, int scale) {
+    if (scale == 1) {
+        return path;
+    }
+    const QFileInfo fileInfo(path);
+    return fileInfo.dir().filePath(QStringLiteral("%1@%2x.%3")
+                                       .arg(fileInfo.completeBaseName())
+                                       .arg(scale)
+                                       .arg(fileInfo.suffix()));
 }
 
 template <typename ImageType>
@@ -136,6 +148,7 @@ public:
         }
 
         if (monitorMode()) {
+            screenScaleTracker_ = new ScreenScaleTracker(this);
             socketNotifier_ =
                 new QSocketNotifier(fd_, QSocketNotifier::Read, this);
             connect(socketNotifier_, &QSocketNotifier::activated, this,
@@ -155,6 +168,9 @@ public:
                     qDebug() << "Failed to generate theme.";
                 }
             });
+            connect(screenScaleTracker_,
+                    &ScreenScaleTracker::maximumScaleChanged, this,
+                    [this](int) { regenerateThemeForScaleChange(); });
         }
 
         auto disableSessionManagement = [](QSessionManager &sm) {
@@ -174,6 +190,10 @@ public:
         if (!dir.mkpath(".")) {
             return false;
         }
+        const int maximumScale =
+            screenScaleTracker_
+                ? screenScaleTracker_->maximumScale()
+                : ScreenScaleTracker::calculateMaximumScale(this);
         // Same logic from plasma-frameworks
         const int gridUnit = QFontMetrics(QGuiApplication::font())
                                  .boundingRect(QStringLiteral("M"))
@@ -190,6 +210,7 @@ public:
         metadata["Description"] =
             i18n("Theme generated from Plasma Theme %1", theme_->themeName())
                 .toStdString();
+        config["SupportedScale"] = std::to_string(maximumScale);
 
         auto &inputPanel = config["InputPanel"];
         inputPanel["NormalColor"] =
@@ -204,13 +225,55 @@ public:
                 .toString();
         inputPanel["PageButtonAlignment"] = "Last Candidate";
 
-        auto &menu = config["Menu"];
         inputPanel["NormalColor"] =
             toFcitxColor(theme_->color(Plasma::Theme::TextColor)).toString();
         inputPanel["HighlightCandidateColor"] =
             toFcitxColor(theme_->color(Plasma::Theme::TextColor)).toString();
 
-        QImage background(QSize(200, 200), QImage::Format_ARGB32);
+        for (int scale = 1; scale <= maximumScale; scale++) {
+            if (!renderScaleAssets(dir, config, textMargin, scale)) {
+                return false;
+            }
+        }
+
+        auto ret = fcitx::safeSaveAsIni(
+            config, dir.filePath("theme.conf").toLocal8Bit().constData());
+
+        if (monitorMode()) {
+            char buf = 0;
+            fcitx::fs::safeWrite(fd_, &buf, 1);
+            qDebug() << "Notify theme reloading.";
+        }
+        if (ret) {
+            generatedTheme_ = theme_->themeName();
+            generatedMaximumScale_ = maximumScale;
+        }
+        return ret;
+    }
+
+    void regenerateThemeForScaleChange() {
+        if (theme_->themeName() == generatedTheme_ &&
+            screenScaleTracker_->maximumScale() <= generatedMaximumScale_) {
+            return;
+        }
+        if (!generateTheme()) {
+            qDebug() << "Failed to generate theme.";
+        }
+    }
+
+    template <typename T>
+    void setThemeToSvg(T &svg, int scale = 1) {
+        svg.setImageSet(imageSet_.get());
+        svg.setDevicePixelRatio(scale);
+    }
+
+private:
+    bool renderScaleAssets(const QDir &dir, fcitx::RawConfig &config,
+                           qreal textMargin, int scale) {
+        auto &inputPanel = config["InputPanel"];
+        auto &menu = config["Menu"];
+        QImage background(QSize(200, 200) * scale, QImage::Format_ARGB32);
+        background.setDevicePixelRatio(scale);
         background.fill(Qt::transparent);
 
         {
@@ -223,7 +286,7 @@ public:
             qreal bgTop = 0;
             qreal bgBottom = 0;
             FrameSvg shadowSvg;
-            setThemeToSvg(shadowSvg);
+            setThemeToSvg(shadowSvg, scale);
             shadowSvg.setImagePath("dialogs/background");
             const bool hasShadow = shadowSvg.hasElementPrefix("shadow");
             if (hasShadow) {
@@ -234,7 +297,7 @@ public:
             }
 
             FrameSvg svg;
-            setThemeToSvg(svg);
+            setThemeToSvg(svg, scale);
             svg.setImagePath("dialogs/background");
             svg.resizeFrame(
                 QSizeF(200, 200) -
@@ -257,7 +320,9 @@ public:
             bgTop += shadowTop;
             bgRight += shadowRight;
             bgBottom += shadowBottom;
-            if (!safeSaveImage(background, dir.filePath("panel.png"))) {
+            if (!safeSaveImage(
+                    background,
+                    scaledImagePath(dir.filePath("panel.png"), scale))) {
                 return false;
             }
             svg.resizeFrame(
@@ -265,14 +330,17 @@ public:
                 QSizeF(shadowLeft + shadowRight, shadowTop + shadowBottom) -
                 QSizeF(2, 2));
             if (theme_->blurBehindEnabled()) {
-                QImage mask(QSize(200, 200), QImage::Format_ARGB32);
+                QImage mask(QSize(200, 200) * scale, QImage::Format_ARGB32);
+                mask.setDevicePixelRatio(scale);
                 mask.fill(Qt::transparent);
                 QPainter p(&mask);
                 p.setRenderHint(QPainter::SmoothPixmapTransform);
                 p.drawPixmap(QPointF(shadowLeft + 1, shadowTop + 1),
                              svg.alphaMask().mask());
                 p.end();
-                if (!safeSaveImage(mask, dir.filePath("mask.png"))) {
+                if (!safeSaveImage(
+                        mask,
+                        scaledImagePath(dir.filePath("mask.png"), scale))) {
                     return false;
                 }
             }
@@ -302,7 +370,7 @@ public:
 
         {
             FrameSvg highlightSvg;
-            setThemeToSvg(highlightSvg);
+            setThemeToSvg(highlightSvg, scale);
             highlightSvg.setImagePath("widgets/viewitem");
             if (highlightSvg.hasElementPrefix("hover")) {
                 highlightSvg.setElementPrefix("hover");
@@ -310,8 +378,9 @@ public:
                 highlightSvg.setElementPrefix("selected");
             }
             highlightSvg.resizeFrame(QSize(200, 200));
-            if (!safeSaveImage(highlightSvg.framePixmap(),
-                               dir.filePath("highlight.png"))) {
+            if (!safeSaveImage(
+                    highlightSvg.framePixmap(),
+                    scaledImagePath(dir.filePath("highlight.png"), scale))) {
                 return false;
             }
             qreal bgLeft = 0;
@@ -340,79 +409,73 @@ public:
         {
             Svg icon;
             icon.setContainsMultipleImages(true);
-            setThemeToSvg(icon);
+            setThemeToSvg(icon, scale);
             icon.setImagePath("widgets/arrows");
             icon.resize(KIconLoader::SizeSmallMedium,
                         KIconLoader::SizeSmallMedium);
             if (icon.hasElement("left-arrow") &&
                 icon.hasElement("right-arrow")) {
                 inputPanel["PrevPage/Image"] = "prev.png";
-                if (!safeSaveImage(icon.pixmap("left-arrow"),
-                                   dir.filePath("prev.png"))) {
+                if (!safeSaveImage(
+                        icon.pixmap("left-arrow"),
+                        scaledImagePath(dir.filePath("prev.png"), scale))) {
                     return false;
                 }
                 inputPanel["NextPage/Image"] = "next.png";
-                if (!safeSaveImage(icon.pixmap("right-arrow"),
-                                   dir.filePath("next.png"))) {
+                if (!safeSaveImage(
+                        icon.pixmap("right-arrow"),
+                        scaledImagePath(dir.filePath("next.png"), scale))) {
                     return false;
                 }
             }
             icon.resize(KIconLoader::SizeSmall, KIconLoader::SizeSmall);
             if (icon.hasElement("right-arrow")) {
                 menu["SubMenu/Image"] = "arrow.png";
-                if (!safeSaveImage(icon.pixmap("right-arrow"),
-                                   dir.filePath("arrow.png"))) {
+                if (!safeSaveImage(
+                        icon.pixmap("right-arrow"),
+                        scaledImagePath(dir.filePath("arrow.png"), scale))) {
                     return false;
                 }
             }
 
             Svg radio;
             radio.setContainsMultipleImages(true);
-            setThemeToSvg(radio);
+            setThemeToSvg(radio, scale);
             radio.setImagePath("widgets/checkmarks");
             radio.resize(KIconLoader::SizeSmall, KIconLoader::SizeSmall);
             if (radio.hasElement("radiobutton")) {
                 menu["CheckBox/Image"] = "radio.png";
-                if (!safeSaveImage(radio.pixmap("radiobutton"),
-                                   dir.filePath("radio.png"))) {
+                if (!safeSaveImage(
+                        radio.pixmap("radiobutton"),
+                        scaledImagePath(dir.filePath("radio.png"), scale))) {
                     return false;
                 }
             }
             Svg line;
             line.setContainsMultipleImages(true);
-            setThemeToSvg(line);
+            setThemeToSvg(line, scale);
             line.setImagePath("widgets/line");
             if (line.hasElement("horizontal-line")) {
-                if (!safeSaveImage(line.pixmap("horizontal-line"),
-                                   dir.filePath("line.png"))) {
+                if (!safeSaveImage(
+                        line.pixmap("horizontal-line"),
+                        scaledImagePath(dir.filePath("line.png"), scale))) {
                     return false;
                 }
                 menu["Separator/Image"] = "line.png";
             }
         }
 
-        auto ret = fcitx::safeSaveAsIni(
-            config, dir.filePath("theme.conf").toLocal8Bit().constData());
-
-        if (monitorMode()) {
-            char buf = 0;
-            fcitx::fs::safeWrite(fd_, &buf, 1);
-            qDebug() << "Notify theme reloading.";
-        }
-        return ret;
+        return true;
     }
 
-    template <typename T>
-    void setThemeToSvg(T &svg) {
-        svg.setImageSet(imageSet_.get());
-    }
-
-private:
     QSocketNotifier *socketNotifier_ = nullptr;
     int fd_ = -1;
     std::unique_ptr<Plasma::Theme> theme_;
     std::unique_ptr<KSvg::ImageSet> imageSet_;
+    ScreenScaleTracker *screenScaleTracker_ = nullptr;
     QString outputPath_;
+    QString generatedTheme_;
+    int generatedMaximumScale_ = 0;
 };
 
 int main(int argc, char *argv[]) {
