@@ -1,4 +1,7 @@
-add_executable(fcitx5-plasma-theme-generator main.cpp)
+add_executable(fcitx5-plasma-theme-generator
+    main.cpp
+    screenscaletracker.cpp
+    screenscaletracker.h)
 
 target_link_libraries(fcitx5-plasma-theme-generator
     KF${QT_MAJOR_VERSION}::IconThemes
