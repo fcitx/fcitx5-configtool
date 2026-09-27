@@ -17,12 +17,18 @@
 #include <QGuiApplication>
 #include <QLabel>
 #include <QLineEdit>
+#include <QMap>
 #include <QPushButton>
 #include <QScrollArea>
+#include <QSizePolicy>
 #include <QSpinBox>
 #include <QString>
+#include <QVBoxLayout>
+#include <QWidget>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
+#include <fcitxqtdbustypes.h>
+#include <utility>
 
 namespace fcitx::kcm {
 
@@ -35,11 +41,11 @@ QString joinPath(const QString &path, const QString &option) {
 }
 } // namespace
 
-ConfigWidget::ConfigWidget(const QString &uri, DBusProvider *dbus,
-                           QWidget *parent)
-    : QWidget(parent), uri_(uri), dbus_(dbus), mainWidget_(new QWidget(this)) {
+ConfigWidget::ConfigWidget(QString uri, DBusProvider *dbus, QWidget *parent)
+    : QWidget(parent), uri_(std::move(uri)), dbus_(dbus),
+      mainWidget_(new QWidget(this)) {
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
-    QVBoxLayout *layout = new QVBoxLayout;
+    auto *layout = new QVBoxLayout;
     layout->addWidget(mainWidget_);
     setLayout(layout);
 }
@@ -47,10 +53,10 @@ ConfigWidget::ConfigWidget(const QString &uri, DBusProvider *dbus,
 ConfigWidget::ConfigWidget(const QMap<QString, FcitxQtConfigOptionList> &desc,
                            QString mainType, DBusProvider *dbus,
                            QWidget *parent)
-    : QWidget(parent), desc_(desc), mainType_(mainType), dbus_(dbus),
+    : QWidget(parent), desc_(desc), mainType_(std::move(mainType)), dbus_(dbus),
       mainWidget_(new QWidget(this)) {
     setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Preferred);
-    QVBoxLayout *layout = new QVBoxLayout;
+    auto *layout = new QVBoxLayout;
     layout->addWidget(mainWidget_);
     setLayout(layout);
 

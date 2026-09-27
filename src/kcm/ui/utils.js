@@ -31,3 +31,19 @@ function setRawValue(rawValue, name, value) {
         }
     }
 }
+
+function flattenProperties(properties, name) {
+    var optionProperties = {};
+    for (var property in properties) {
+        if (property !== name) {
+            optionProperties[property] = properties[property];
+        }
+    }
+    if (hasProperty(properties, name)) {
+        for (var constrainedProperty in properties[name]) {
+            optionProperties[constrainedProperty] =
+                properties[name][constrainedProperty];
+        }
+    }
+    return optionProperties;
+}

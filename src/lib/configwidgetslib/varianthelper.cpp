@@ -6,9 +6,11 @@
  */
 #include "varianthelper.h"
 #include <QDBusArgument>
+#include <QStringList>
+#include <QVariant>
+#include <QVariantMap>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 QVariantMap toMap(const QVariant &variant) {
     QVariantMap map;
@@ -56,12 +58,12 @@ QVariant valueFromVariantHelper(const QVariant &value,
 }
 
 QVariant readVariant(const QVariant &value, const QString &path) {
-    auto pathList = path.split("/");
+    auto pathList = path.split("/", Qt::SkipEmptyParts);
     return valueFromVariantHelper(toMap(value), pathList, 0);
 }
 
 QString readString(const QVariantMap &map, const QString &path) {
-    auto pathList = path.split("/");
+    auto pathList = path.split("/", Qt::SkipEmptyParts);
     if (pathList.empty()) {
         return QString();
     }
@@ -101,5 +103,4 @@ void writeVariant(QVariantMap &map, const QString &path,
     writeVariantHelper(map, pathList, value, 0);
 }
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm

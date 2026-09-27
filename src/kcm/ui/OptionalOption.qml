@@ -30,7 +30,7 @@ RowLayout {
         var option = {};
         option.isSection = false;
         option.type = subTypeName;
-        option.properties = properties;
+        option.properties = Utils.flattenProperties(properties, "OptionalConstrain");
         option.defaultValue = "";
         option.name = [];
         return option;

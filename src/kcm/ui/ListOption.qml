@@ -25,7 +25,7 @@ ColumnLayout {
         var option = {};
         option.isSection = false;
         option.type = subTypeName;
-        option.properties = properties;
+        option.properties = Utils.flattenProperties(properties, "ListConstrain");
         option.defaultValue = "";
         option.name = [];
         return option;

@@ -9,14 +9,15 @@
 
 #include <QDialog>
 #include <QDialogButtonBox>
+#include <QMap>
+#include <QString>
 #include <QWidget>
 #include <fcitxqtdbustypes.h>
 
 class QDBusPendingCallWatcher;
 class QFormLayout;
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 class DBusProvider;
 
@@ -24,11 +25,10 @@ class ConfigWidget : public QWidget {
     Q_OBJECT
 
 public:
-    explicit ConfigWidget(const QString &uri, DBusProvider *module,
-                          QWidget *parent = 0);
+    explicit ConfigWidget(QString uri, DBusProvider *dbus, QWidget *parent = 0);
 
     explicit ConfigWidget(const QMap<QString, FcitxQtConfigOptionList> &desc,
-                          QString mainType, DBusProvider *module,
+                          QString mainType, DBusProvider *dbus,
                           QWidget *parent = 0);
 
     static QDialog *configDialog(QWidget *parent, DBusProvider *module,
@@ -73,7 +73,6 @@ private:
 
 ConfigWidget *getConfigWidget(QWidget *widget);
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX_CONFIGWIDGET_H_
