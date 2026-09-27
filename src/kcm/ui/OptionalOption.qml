@@ -19,8 +19,9 @@ RowLayout {
     property variant rawValue
     property alias hovered: toggle.hovered
     property bool hasValue: false
-    property bool needsSave: toggle.checked !== hasValue || (toggle.checked && item().needsSave)
+    property bool needsSave: toggle.checked !== hasValue || (toggle.checked && item() && item().needsSave)
     readonly property string subTypeName: typeName.substr(9)
+    readonly property bool valid: !toggle.checked || (item() && (!Utils.hasProperty(item(), "valid") || item().valid))
 
     function onNeedsSaveChanged() {
         console.log("needsSave changed: " + needsSave);
@@ -47,14 +48,18 @@ RowLayout {
     function save() {
         var newRawValue = {};
         if (toggle.checked) {
-            item().save();
-            newRawValue["Value"] = item().rawValue;
+            var editor = item();
+            if (!editor || (Utils.hasProperty(editor, "valid") && !editor.valid) || editor.save() === false) {
+                return false;
+            }
+            newRawValue["Value"] = editor.rawValue;
         }
         rawValue = newRawValue;
+        return true;
     }
 
     function item() {
-        return optionEditor.item.item;
+        return optionEditor.item ? optionEditor.item.item : null;
     }
 
     Component.onCompleted: {

@@ -233,7 +233,12 @@ ColumnLayout {
             standardButtons: DialogButtonBox.Ok | DialogButtonBox.Cancel
 
             onAccepted: {
-                sheet.item().save();
+                if (Utils.hasProperty(sheet.item(), "valid") && !sheet.item().valid) {
+                    return;
+                }
+                if (sheet.item().save() === false) {
+                    return;
+                }
                 // Add a new one.
                 if (sheet.editIndex == listModel.count) {
                     listModel.append({

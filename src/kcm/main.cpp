@@ -125,6 +125,16 @@ void FcitxModule::load() {
 }
 
 void FcitxModule::save() {
+    for (const auto &page : pages_) {
+        if (page) {
+            const auto valid = page->property("valid");
+            if (valid.isValid() && !valid.toBool()) {
+                setNeedsSave(true);
+                return;
+            }
+        }
+    }
+
     imConfig_->save();
     for (const auto &page : pages_) {
         if (page && page->property("needsSave").isValid()) {

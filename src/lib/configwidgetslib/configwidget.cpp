@@ -21,6 +21,7 @@
 #include <QScrollArea>
 #include <QSpinBox>
 #include <QString>
+#include <algorithm>
 #include <fcitx-utils/i18n.h>
 #include <fcitxqtcontrollerproxy.h>
 
@@ -172,6 +173,15 @@ QVariant ConfigWidget::value() const {
         optionWidget->writeValueTo(map);
     }
     return map;
+}
+
+bool ConfigWidget::isValid() const {
+    const auto optionWidgets = findChildren<OptionWidget *>();
+    return std::all_of(optionWidgets.cbegin(), optionWidgets.cend(),
+                       [](const OptionWidget *optionWidget) {
+                           return optionWidget->skipConfig() ||
+                                  optionWidget->isValid();
+                       });
 }
 
 void ConfigWidget::buttonClicked(QDialogButtonBox::StandardButton button) {

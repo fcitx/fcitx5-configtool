@@ -48,6 +48,7 @@ public Q_SLOTS:
 
     QVariant value() const;
     void setValue(const QVariant &variant);
+    bool isValid() const;
 
     QString extractOnlyExternalCommand() const;
 
