@@ -210,7 +210,9 @@ public:
         metadata["Description"] =
             i18n("Theme generated from Plasma Theme %1", theme_->themeName())
                 .toStdString();
-        config["SupportedScale"] = std::to_string(maximumScale);
+        if (maximumScale > 1) {
+            config["SupportedScale"]["Value"] = std::to_string(maximumScale);
+        }
 
         auto &inputPanel = config["InputPanel"];
         inputPanel["NormalColor"] =
