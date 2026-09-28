@@ -33,7 +33,8 @@ OptionalOptionWidget::OptionalOptionWidget(const FcitxQtConfigOption &option,
         std::string_view("Optional|").size())); // Remove Optional|
     auto props = option.properties();
     if (props.contains("OptionalConstrain")) {
-        auto itemConstrain = props.value("OptionalConstrain").toMap();
+        auto itemConstrain =
+            readVariant(props.value("OptionalConstrain"), "").toMap();
         props.remove("OptionalConstrain");
         for (auto iter = itemConstrain.begin(), end = itemConstrain.end();
              iter != end; ++iter) {

@@ -10,8 +10,7 @@
 #include <QString>
 #include <QVariantMap>
 
-namespace fcitx {
-namespace kcm {
+namespace fcitx::kcm {
 
 QVariant readVariant(const QVariant &value, const QString &path);
 
@@ -21,7 +20,6 @@ QString readString(const QVariantMap &map, const QString &path);
 
 void writeVariant(QVariantMap &map, const QString &path, const QVariant &value);
 
-} // namespace kcm
-} // namespace fcitx
+} // namespace fcitx::kcm
 
 #endif // _KCM_FCITX5_VARIANTHELPER_H_
