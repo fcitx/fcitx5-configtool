@@ -151,6 +151,18 @@ ListOptionWidget::ListOptionWidget(const FcitxQtConfigOption &option,
 
     connect(model_, &QAbstractListModel::rowsMoved, this,
             [this]() { updateButton(); });
+
+    // Report the change so the Apply button becomes enabled. Every other
+    // option widget connects its change signal here; ListOptionWidget
+    // was the only one missing it.
+    connect(model_, &QAbstractListModel::rowsInserted, this,
+            [this]() { Q_EMIT valueChanged(); });
+    connect(model_, &QAbstractListModel::rowsRemoved, this,
+            [this]() { Q_EMIT valueChanged(); });
+    connect(model_, &QAbstractListModel::dataChanged, this,
+            [this]() { Q_EMIT valueChanged(); });
+    connect(model_, &QAbstractListModel::rowsMoved, this,
+            [this]() { Q_EMIT valueChanged(); });
     connect(addButton, &QAbstractButton::clicked, this, [this]() {
         QVariant result;
         auto ok = OptionWidget::execOptionDialog(this, subOption_, result);
@@ -201,6 +213,10 @@ void ListOptionWidget::writeValueTo(QVariantMap &map) {
 
 void ListOptionWidget::restoreToDefault() {
     model_->readValueFrom(defaultValue_, "");
+    // readValueFrom() only resets the model, which is not connected to
+    // valueChanged() (loading must stay silent). Report the user-initiated
+    // restore explicitly so the Apply button becomes enabled.
+    Q_EMIT valueChanged();
 }
 
 } // namespace kcm
